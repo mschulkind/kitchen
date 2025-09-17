@@ -147,4 +147,12 @@ Here are the next 3 actionable items for development:
 - Use descriptive git commit messages that reference the todo summary
 - When all items are complete, suggest switching to implementation mode
 
+## Integration with Built-in Todo List
+
+- In addition to handling user "todo" commands via updates to `plans/development-todo.md` (for overall project milestones and user-facing checklists), use the built-in `update_todo_list` tool for any AI-internal multistep processes within this mode, such as iterative spec development, file updates, or git workflows.
+- Follow the guidelines in [.kilocode/rules.md#todo-list-usage-for-multistep-processes](.kilocode/rules.md#todo-list-usage-for-multistep-processes): Initialize with `update_todo_list` for complex tasks (e.g., multi-file updates during a conversation), update after each step to track progress ([ ] pending, [x] completed, [-] in progress), and add new items as discovered.
+- Example: During a conversation refining UX flows, create a todo list for steps like "Read ux-flow.md", "Append new section", "Update index.md", "Git commit" – mark complete as each is done.
+- This ensures structured progress for mode-specific workflows while maintaining the existing "todo" command for project-level tracking; use both in tandem for comprehensive planning.
+- Always update the todo list before and after git operations to log verification steps.
+
 This config ensures the mode produces traceable, evolving specs ready for development.
