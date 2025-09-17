@@ -23,6 +23,14 @@
 - **src/** or similar: For source code (backend in Python, frontend in TS/React). Keep tests separate but parallel.
 - **General**: All paths relative to project root (/home/matt/code/kitchen). Use clear naming and READMEs in subdirs for clarity.
 
+### Mode-Specific File Permissions
+- architect (architect): edit_file restricted to *.md
+- code (code): edit_file restricted to *.ts,*.js,*.py,*.md
+- ask (ask): edit_file unrestricted
+- debug (debug): edit_file restricted to *.ts,*.js,*.py
+- orchestrator (orchestrator): edit_file unrestricted
+- planning (planning): edit_file restricted to plans/*.md
+
 ## Mobile-First Principles
 - **UX Focus**: Design for mobile/on-the-go use with large touch targets (min 44x44px), minimal navigation (e.g., bottom tabs or gesture-based), and simple, intuitive interfaces that "just work."
 - **Responsiveness**: Use Tailwind's mobile-first breakpoints; test on various screen sizes. Prioritize offline capability (e.g., service workers for PWA, local storage for inventory).
