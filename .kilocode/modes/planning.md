@@ -20,16 +20,19 @@ The mode promotes a back-and-forth dialogue that progressively fleshes out a ful
 
 ## Allowed Tools and File Restrictions
 - **Tools**:
-  - read_file: For accessing existing .md files in plans/ and context/ to inform responses.
+  - read_file: For accessing existing .md files in plans/ and docs/ to inform responses.
   - edit_file: Restricted to files matching "plans/*.md" for updates; use to append sections, revise summaries, or create new sub-docs (e.g., plans/api-spec.md).
-  - search_files: Limited to plans/ and context/ directories for finding relevant sections (e.g., regex for "LLM integration").
+  - search_files: Limited to plans/ and docs/ directories for finding relevant sections (e.g., regex for "LLM integration").
   - execute_command: Only for git operations (e.g., "git add plans/ && git commit -m 'Updated spec with X decision' && git push").
   - ask_followup_question: For clarification during conversations, with suggestions tied to spec gaps.
   - Prohibited: browser_action, list_code_definition_names (to keep focus on planning, not execution or code analysis).
 - **File Permissions**: Enforce via mode restrictions—reject edits outside plans/*.md. Always update plans/index.md after any change to maintain the central hub.
+- **Directory Structure**:
+  - context/ directory is gitignored and should only contain files for LLM agent use
+  - docs/ directory contains human-readable documentation that should be referenced instead of context/ files
 
 ## Custom Rules
-- **Update Protocol**: After answering a question, use edit_file to encode the response (e.g., "Add to ux-flow.md: User flow for inventory verification includes..."). Reference the conversation timestamp or key phrase in comments.
+- **Update Protocol**: After answering a question, use edit_file to encode the response (e.g., "Add to ux-flow.md: User flow for inventory verification includes..."). Reference the conversation timestamp or key phrase in comments. Always reference docs/ files instead of context/ files for human-readable content.
 - **Index Maintenance**: Every file update must include a revision to plans/index.md, adding/updating the document's summary and link.
 - **Git Workflow**: After each set of file changes (e.g., end of response), execute git commands: pull first, then add/commit/push with messages like "Planning mode: Incorporated discussion on UX flows [timestamp]". Ensure commits are atomic and descriptive for GitHub viewing.
 - **Conversation Structure**: Responses should: 1) Answer directly, 2) Describe file updates made, 3) Suggest next focus areas, 4) Use attempt_completion only for full spec sections. For "todo", output summary then update development-todo.md.

@@ -12,9 +12,9 @@ The mode promotes a back-and-forth dialogue that progressively fleshes out a ful
 
 ## Allowed Tools and File Restrictions
 - **Tools**:
-  - read_file: For accessing existing .md files in plans/ and context/ to inform responses.
+  - read_file: For accessing existing .md files in plans/ and docs/ to inform responses.
   - edit_file: Restricted to files matching "plans/*.md" for updates; use to append sections, revise summaries, or create new sub-docs (e.g., plans/api-spec.md).
-  - search_files: Limited to plans/ and context/ directories for finding relevant sections (e.g., regex for "LLM integration").
+  - search_files: Limited to plans/ and docs/ directories for finding relevant sections (e.g., regex for "LLM integration").
   - execute_command: Only for git operations (e.g., "git add plans/ &amp;&amp; git commit -m 'Updated spec with X decision' &amp;&amp; git push").
   - ask_followup_question: For clarification during conversations, with suggestions tied to spec gaps.
   - Prohibited: browser_action, list_code_definition_names (to keep focus on planning, not execution or code analysis).

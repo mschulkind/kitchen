@@ -8,7 +8,7 @@ This document outlines the technical design decisions for the Personalized Dinne
 - **Framework**: FastAPI (chosen for async support, auto-generated docs, and performance; fallback to Flask if simplicity is prioritized).
   - Decision: Confirmed based on brief's emphasis on efficiency.
 - **Database**: **Chosen: SQLite for initial MVP** (lightweight, embedded, zero setup for fast dev; use sql.js for frontend offline persistence and sqlite3/SQLAlchemy for backend). **Pros**: No server/auth needed, full SQL for structured data (PantryItem, recipes), easy TDD with in-memory DB; PWA offline via service workers. **Cons**: Manual sync logic (simple API endpoints for personal use). Future: Migrate to Supabase (PostgreSQL with easy realtime/offline sync) if multi-device backups required. ORM: SQLAlchemy for backend models, integrated with Pydantic.
-  - See [context/db-research.md](../context/db-research.md) for full analysis.
+  - See [docs/db-research.md](../docs/db-research.md) for full analysis.
 - **Other**: Pydantic for data validation (integrated with FastAPI).
 
 ### Frontend
@@ -79,7 +79,7 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
 This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
 
 ## Pending Decisions
-- **Database Choice**: Decided – SQLite for MVP (see [context/db-research.md](../context/db-research.md)); evaluate Supabase migration post-MVP if sync needed.
+- **Database Choice**: Decided – SQLite for MVP (see [docs/db-research.md](../docs/db-research.md)); evaluate Supabase migration post-MVP if sync needed.
 - **Authentication**: None for personal use, but if multi-user, consider JWT or none (local-only).
 - **Deployment Tech**: See [hosting.md](hosting.md) for details.
 - **Offline Capabilities**: Implement IndexedDB for inventory; sync on reconnect.

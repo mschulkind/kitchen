@@ -163,7 +163,7 @@ These flows build on single-user paths, adding collaboration layers without over
 - **Testing**: Simulate on mobile devices; ensure flows work in 5-10 seconds.
 
 ## TODOs
-- Wireframe tools: Consider Figma prototypes (link in [context/](context/)).
+- Wireframe tools: Consider Figma prototypes (link in [docs/](docs/)).
 - User Testing: Validate checklist UX with sample users.
 - Integration: Link to backend endpoints in [design-system.md](design-system.md).
 

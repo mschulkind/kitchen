@@ -26,12 +26,12 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 ### [development-todo.md](development-todo.md)
 **Summary**: Detailed checklist for fleshing out the planning phase, covering design decisions, UX refinements, hosting choices, and implementation preparation.
 
-### [../context/db-research.md](../context/db-research.md)
+### [../docs/db-research.md](../docs/db-research.md)
 **Summary**: Research and recommendations for database options tailored to the app's offline-first PWA needs, evaluating SQLite, IndexedDB, PouchDB, Supabase, and PostgreSQL; recommends SQLite for fast MVP development with optional Supabase for future sync.
 
 ## Navigation Notes
 - Use relative links for easy navigation within the `plans/` directory.
 - As new documents are added or updated, this index will be revised to include summaries and links.
-- For temporary research or data dumps, refer to the [context/index.md](../context/index.md).
+- For temporary research or data dumps, refer to the [docs/index.md](../docs/index.md).
 
 TODO: Add more documents as the planning phase progresses (e.g., API specs, testing strategy)...
