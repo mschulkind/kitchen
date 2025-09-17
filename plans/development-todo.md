@@ -13,10 +13,10 @@ Focus on the app's mobile-first PWA nature, emphasizing offline capabilities, in
 ## Phase 1: Core Decisions (Design System Foundations)
 These items finalize technical choices that underpin UX and implementation.
 
-- [-] Finalize database choice: Evaluate SQLite vs PostgreSQL for local/offline PWA use (considering sync needs for cloud), document pros/cons, migration paths, and decision in [`plans/design-system.md`](plans/design-system.md).
+- [x] Finalize database choice: **Supabase (PostgreSQL)** has been selected. Decision is documented in [`plans/design-system.md`](plans/design-system.md) and [`docs/db-research.md`](../docs/db-research.md).
   *Level of detail:* Add subsections with bullet-point comparisons, a simple text-based decision table, and reference to brief.md's offline requirements.
 
-- [-] Define authentication strategy: Assess options like JWT with local storage vs OAuth for PWA (prioritizing secure, offline-resilient login), include pros/cons and selected approach in [`plans/design-system.md`](plans/design-system.md).
+- [x] Define authentication strategy: **Supabase Auth** will be used, as it integrates seamlessly with the chosen database. Decision documented in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Bullet points for each option, flow diagram in Mermaid (e.g., login → token storage → offline validation), cross-reference hosting.md for cloud integration.
 
 - [-] Specify ingredient optimization algorithm: Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).
@@ -56,14 +56,16 @@ This phase ensures realtime multiuser without delaying core dev—Supabase's SDK
 ## Phase 3: Infrastructure Setup (Hosting and Integration)
 Address deployment to support PWA features.
 
-- [ ] Select hosting providers: Compare Vercel/Netlify for frontend vs Render/Heroku for backend, evaluate PWA support (e.g., service workers, HTTPS), document choices and setup sketches in [`plans/hosting.md`](plans/hosting.md).  
+- [x] Select hosting providers: **Self-hosted on Raspberry Pi using Docker** is the primary strategy. Cloud options are secondary. Decision documented in [`plans/hosting.md`](plans/hosting.md).
   *Level of detail:* Bullet pros/cons, cost estimates, TODO resolutions from existing file; include text-based architecture diagram.
 
-- [ ] Outline offline sync mechanisms: Define strategies for data sync (e.g., IndexedDB local + API polling on reconnect), add to hosting and design-system sections in respective files.  
+- [-] Outline offline sync mechanisms: Define strategies for data sync (e.g., IndexedDB local + API polling on reconnect), add to hosting and design-system sections in respective files.  
   *Level of detail:* High-level flow in Mermaid, reference to database choice; ensure alignment with mobile-first brief.
 
 ## Phase 4: Implementation Prep (Finalizing for Coding)
 Prepare artifacts for transition to development.
+
+- [ ] Create `Procfile.dev` for Overmind: Define the processes for the frontend, backend, and Supabase CLI to streamline local development, as specified in [`plans/hosting.md`](plans/hosting.md).
 
 - [ ] Review and consolidate data models: Ensure models (e.g., PantryItem, ShoppingListItem, Recipe) include all fields, relationships, and validation rules; update [`plans/design-system.md`](plans/design-system.md) with ER diagram (text-based).  
   *Level of detail:* Add relational diagram in Mermaid, examples of JSON schemas; cover brief's optimization needs.
