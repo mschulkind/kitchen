@@ -27,28 +27,28 @@ These items finalize technical choices that underpin UX and implementation.
 - [x] Define authentication strategy: **Supabase Auth** will be used, as it integrates seamlessly with the chosen database. Decision documented in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Bullet points for each option, flow diagram in Mermaid (e.g., login → token storage → offline validation), cross-reference hosting.md for cloud integration.
 
-- [-] Specify ingredient optimization algorithm: Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md). Decision documented in [`decisions/phase-1/ingredient-optimization.md`](decisions/phase-1/ingredient-optimization.md).
+- [-] [`Specify ingredient optimization algorithm`](decisions/phase-1/ingredient-optimization.md): Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Pseudocode snippets, bullet-point steps, example inputs/outputs; reference brief.md's personalization goals.
 
 ### Phase 1.5: Realtime Collaboration Setup
 This phase builds on core setup to enable multiuser sync, focusing on quick integration via Supabase SDKs for dev speed.
 
-- [ ] Integrate Supabase Realtime: Set up client subscriptions for key tables (e.g., meal_plans, inventory, shopping_lists); test live updates with multiple simulated users/devices. Decision documented in [`decisions/phase-1.5/realtime-integration.md`](decisions/phase-1.5/realtime-integration.md).
+- [ ] [`Integrate Supabase Realtime`](decisions/phase-1.5/realtime-integration.md): Set up client subscriptions for key tables (e.g., meal_plans, inventory, shopping_lists); test live updates with multiple simulated users/devices.
   - API Sketch: Use `supabase.channel('shared-list').on('postgres_changes', { event: '*', schema: 'public', table: 'shopping_lists' }, callback)` for broadcasting changes.
   - Mobile: Ensure Expo compatibility; implement optimistic updates (e.g., local state mutation before DB write).
 
-- [ ] Implement User Auth & Presence: Configure Supabase auth (email/password or social); add presence tracking for online indicators. Decision documented in [`decisions/phase-1.5/auth-and-presence.md`](decisions/phase-1.5/auth-and-presence.md).
+- [ ] [`Implement User Auth & Presence`](decisions/phase-1.5/auth-and-presence.md): Configure Supabase auth (email/password or social); add presence tracking for online indicators.
   - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.
   - UX Tie-in: Big avatar buttons for invites; simple alerts for conflicts.
 
-- [ ] Conflict Resolution & Offline Handling: Add last-write-wins logic for simple cases; optimistic UI with sync queues. Decision documented in [`decisions/phase-1.5/conflict-resolution-and-offline.md`](decisions/phase-1.5/conflict-resolution-and-offline.md).
+- [ ] [`Conflict Resolution & Offline Handling`](decisions/phase-1.5/conflict-resolution-and-offline.md): Add last-write-wins logic for simple cases; optimistic UI with sync queues.
   - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
   - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
 
-- [ ] Notifications Setup: Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications. Decision documented in [`decisions/phase-1.5/notifications.md`](decisions/phase-1.5/notifications.md).
+- [ ] [`Notifications Setup`](decisions/phase-1.5/notifications.md): Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
   - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
 
-- [ ] Testing Multiuser Sync: Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows. Decision documented in [`decisions/phase-1.5/multiuser-testing.md`](decisions/phase-1.5/multiuser-testing.md).
+- [ ] [`Testing Multiuser Sync`](decisions/phase-1.5/multiuser-testing.md): Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows.
 
 This phase ensures realtime multiuser without delaying core dev—Supabase's SDKs allow rapid prototyping of sync features.
 
