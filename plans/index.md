@@ -15,7 +15,7 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 **Summary**: The core project brief outlining the app's summary, key features (e.g., intelligent meal planning, inventory tracking, categorical checklist UI, optimized shopping lists), technical architecture (backend logic, LLM integration), and high-level goals for usability and efficiency.
 
 ### [design-system.md](design-system.md)
-**Summary**: Skeleton for recording technical decisions, including frameworks (FastAPI, React/TS, Tailwind), libraries, architecture patterns, data models (e.g., PantryItem, ShoppingListItem), and LLM integration choices. Includes sections for pending decisions like DB selection, auth, and deployment tech.
+**Summary**: Records key technical decisions. **Supabase** has been selected as the primary database and authentication provider. The document now includes architectural patterns, data models (e.g., PantryItem), and a strategy for local development and testing using the Supabase CLI.
 
 ### [ux-flow.md](ux-flow.md)
 **Summary**: Outline of user experience flows, such as meal planning → inventory verification → shopping list generation. Emphasizes mobile-first considerations with text-based wireframe sketches, key screens, and interactions.

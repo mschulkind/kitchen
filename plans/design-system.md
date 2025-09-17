@@ -2,26 +2,24 @@
 
 This document outlines the technical design decisions for the Personalized Dinner & Shopping App, including frameworks, libraries, architecture patterns, data models, and integration choices. It serves as a living reference for the tech stack and unresolved decisions. Reference [.kilocode/rules.md](../.kilocode/rules.md) for high-level guidelines.
 
-## Frameworks and Libraries
+### Core Technologies & Architectural Decisions
 
-### Backend
-- **Framework**: FastAPI (chosen for async support, auto-generated docs, and performance; fallback to Flask if simplicity is prioritized).
-  - Decision: Confirmed based on brief's emphasis on efficiency.
-- **Database**: **Chosen: SQLite for initial MVP** (lightweight, embedded, zero setup for fast dev; use sql.js for frontend offline persistence and sqlite3/SQLAlchemy for backend). **Pros**: No server/auth needed, full SQL for structured data (PantryItem, recipes), easy TDD with in-memory DB; PWA offline via service workers. **Cons**: Manual sync logic (simple API endpoints for personal use). Future: Migrate to Supabase (PostgreSQL with easy realtime/offline sync) if multi-device backups required. ORM: SQLAlchemy for backend models, integrated with Pydantic.
-  - See [docs/db-research.md](../docs/db-research.md) for full analysis.
-- **Other**: Pydantic for data validation (integrated with FastAPI).
+- **Database**: **Supabase (PostgreSQL)**
+  - **Reasoning**: Chosen for its robust realtime sync, built-in authentication, row-level security, and excellent client libraries for both our React/TS frontend and Python/FastAPI backend. This aligns with our need for rapid development of collaborative features like shared shopping lists and inventories.
+  - **Reference**: See [`../docs/db-research.md`](../docs/db-research.md) for a detailed comparison.
+  
+- **Authentication**: **Supabase Auth**
+  - **Reasoning**: Tightly integrated with the database, providing a seamless solution for user management and security.
 
-### Frontend
-- **Framework**: React with TypeScript for type safety and component reusability.
-  - Build Tool: Vite for fast HMR and bundling.
-- **Styling**: Tailwind CSS for mobile-first, utility-based design.
-- **State Management**: TanStack Query (formerly React Query) for data fetching/caching (e.g., inventory sync); Zustand for simple global state if needed.
-- **Other**: React Router for navigation (if multi-page feel is required, though single-page preferred for mobile).
+- **Deployment**:
+  - **Frontend**: *Pending (Vercel recommended)*
+  - **Backend**: *Pending (Heroku or similar recommended)*
 
-### Testing
-- Backend: pytest with pytest-asyncio for async tests.
-- Frontend: Vitest for fast unit tests; integrate with Vite.
-- TODO: Decide on E2E testing tool (e.g., Playwright for mobile simulation).
+### Local Development & Testing Strategy
+- **Environment**: Utilize the Supabase CLI to run a full local stack (PostgreSQL, Auth, Storage) via Docker.
+- **Data Seeding**: Implement scripts to seed the local database for consistent test states.
+- **Workflow**: Automated tests will reset the database (`supabase db reset`) before runs to ensure isolation and prevent test contamination.
+- **Goal**: Achieve production parity in the local environment, enabling thorough testing of all features, including realtime sync, offline capabilities, and security policies.
 
 ## Architecture Patterns
 - **Overall**: Client-server architecture with backend API for core logic (meal planning, inventory). Frontend consumes API; consider offline-first with local storage/Service Workers for PWA.
