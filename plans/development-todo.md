@@ -13,13 +13,13 @@ Focus on the app's mobile-first PWA nature, emphasizing offline capabilities, in
 ## Phase 1: Core Decisions (Design System Foundations)
 These items finalize technical choices that underpin UX and implementation.
 
-- [ ] Finalize database choice: Evaluate SQLite vs PostgreSQL for local/offline PWA use (considering sync needs for cloud), document pros/cons, migration paths, and decision in [`plans/design-system.md`](plans/design-system.md).  
+- [-] Finalize database choice: Evaluate SQLite vs PostgreSQL for local/offline PWA use (considering sync needs for cloud), document pros/cons, migration paths, and decision in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Add subsections with bullet-point comparisons, a simple text-based decision table, and reference to brief.md's offline requirements.
 
-- [ ] Define authentication strategy: Assess options like JWT with local storage vs OAuth for PWA (prioritizing secure, offline-resilient login), include pros/cons and selected approach in [`plans/design-system.md`](plans/design-system.md).  
+- [-] Define authentication strategy: Assess options like JWT with local storage vs OAuth for PWA (prioritizing secure, offline-resilient login), include pros/cons and selected approach in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Bullet points for each option, flow diagram in Mermaid (e.g., login → token storage → offline validation), cross-reference hosting.md for cloud integration.
 
-- [ ] Specify ingredient optimization algorithm: Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).  
+- [-] Specify ingredient optimization algorithm: Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Pseudocode snippets, bullet-point steps, example inputs/outputs; reference brief.md's personalization goals.
 
 ### Phase 1.5: Realtime Collaboration Setup
