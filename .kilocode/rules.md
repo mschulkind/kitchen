@@ -37,7 +37,7 @@
   ### Git Workflow
 
 - Always commit and push after a logical set of changes, such as after completing any subtask, feature, or even a single file update like rules.md modifications. This applies to all phases, including planning—do not wait for major milestones.
-- For AI-assisted changes (e.g., via Kilo Code modes), the assistant will confirm readiness, but the user must execute the git add ., commit, and push commands manually if automated tools are unavailable in the current mode.
+- For AI-assisted changes (e.g., via Kilo Code modes), in modes that permit execute_command (e.g., Code, Debug, potentially Ask), automatically run git status to check for changes, then git add ., commit with descriptive message, and push at the end of each subtask that modifies tracked files. This ensures seamless version control without manual intervention where possible; fallback to manual for restricted modes like Architect/Orchestrator, where the assistant will confirm readiness but the user must execute the git add ., commit, and push commands.
 - Err on the side of more commits than fewer, but ensure each commit is logical and meaningful (e.g., atomic changes with descriptive messages like "Add PantryItem model and tests").
 - After completing any major planning or implementation phase, commit and push everything to main.
 - If at any time you discover unstaged or uncommitted changes while working on something else, immediately commit those changes with a good summary message that includes a note of when and during what task you found them (e.g., 'Commit orphaned changes from initial setup found during planning review on 2025-09-17'). This prevents loss of work and maintains a clean history.
