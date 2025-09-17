@@ -1,5 +1,13 @@
 # Modes Index
 
+## Table of Contents
+- [Architect](#architect)
+- [Code](#code)
+- [Ask](#ask)
+- [Debug](#debug)
+- [Orchestrator](#orchestrator)
+- [Planning](#planning)
+
 This file lists all available modes in the .kilocode/modes/ directory, with summaries and links.
 
 ### [Architect](modes/architect.md)

@@ -1,5 +1,12 @@
 # Decision Log: Notifications Setup
 
+## Table of Contents
+- [1. Goal](#1-goal)
+- [2. Technical Strategy](#2-technical-strategy)
+- [3. Database Trigger Setup](#3-database-trigger-setup)
+- [4. Client-Side Implementation (Expo)](#4-client-side-implementation-expo)
+- [5. Next Steps](#5-next-steps)
+
 This document describes the plan for implementing push notifications to alert users of relevant activity.
 
 *   **Phase:** 1.5

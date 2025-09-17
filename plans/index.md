@@ -1,5 +1,11 @@
 # Planning Documents Index
 
+## Table of Contents
+- [Overview](#overview)
+- [Documents](#documents)
+- [Decision Logs](#decision-logs)
+- [Navigation Notes](#navigation-notes)
+
 This index serves as a central hub for all planning, outlines, specifications, and decisions in the Personalized Dinner & Shopping App project. It is maintained in the `plans/` directory, which is git-tracked for version control.
   
   - Updated [.kilocode/rules.md](.kilocode/rules.md) with a new "Git Workflow" section outlining commit and push practices aligned with TDD iterations.

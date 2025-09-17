@@ -8,6 +8,18 @@ These instructions supersede general mode rules to enforce planning focus.
 
 # Planning Mode Configuration
 
+## Table of Contents
+- [Purpose and Capabilities](#purpose-and-capabilities)
+- [Allowed Tools and File Restrictions](#allowed-tools-and-file-restrictions)
+- [Custom Rules](#custom-rules)
+- [Integration with Existing Modes](#integration-with-existing-modes)
+- [Edge Cases](#edge-cases)
+- [Todo Command Handling](#todo-command-handling)
+  - [Process Overview](#process-overview)
+  - [Example Responses and Actions Taken](#example-responses-and-actions-taken)
+  - [Todo Command Best Practices](#todo-command-best-practices)
+- [Integration with Built-in Todo List](#integration-with-built-in-todo-list)
+
 ## Purpose and Capabilities
 The "planning" mode is specialized for iterative, conversational development of project specifications, particularly for the Personalized Dinner & Shopping App. It enables:
 - **Iterative Planning**: Responding to user questions with answers that advance the spec, while encoding decisions and progress into relevant .md files in plans/.

@@ -1,5 +1,17 @@
 # UX Flows
 
+## Table of Contents
+- [Core Principles](#core-principles)
+- [Primary Flow: Generate Meal Plan → Verify Inventory → Create Shopping List](#primary-flow-generate-meal-plan-→-verify-inventory-→-create-shopping-list)
+  - [1. Initiate Meal Planning](#1-initiate-meal-planning)
+  - [2. Review and Select Recipes](#2-review-and-select-recipes)
+  - [3. Inventory Verification](#3-inventory-verification)
+  - [4. Generate and Optimize Shopping List](#4-generate-and-optimize-shopping-list)
+- [Multiuser Flows](#multiuser-flows)
+- [Secondary Flows](#secondary-flows)
+- [Mobile Considerations](#mobile-considerations)
+- [TODOs](#todos)
+
 This document outlines the primary user experience flows for the Personalized Dinner & Shopping App, emphasizing mobile-first design principles for on-the-go use. Flows are designed to be intuitive, with minimal navigation, large touch targets, and quick interactions. Reference [brief.md](brief.md) for feature context and [design-system.md](design-system.md) for technical alignment.
 
 ## Core Principles

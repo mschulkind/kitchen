@@ -1,5 +1,14 @@
 # Documentation Index
 
+## Table of Contents
+- [Overview](#overview)
+- [Categories and Content](#categories-and-content)
+  - [Research Notes](#research-notes)
+  - [API References](#api-references)
+  - [Data Dumps](#data-dumps)
+  - [Temporary Notes](#temporary-notes)
+- [Navigation Notes](#navigation-notes)
+
 This index organizes the `docs/` directory, which contains human-readable documentation such as research notes, data dumps, API references, and other supporting materials referenced during development. It helps maintain navigability without cluttering the main planning docs.
 
 ## Overview

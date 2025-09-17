@@ -1,5 +1,10 @@
 # Database Research for Personalized Dinner & Shopping App
 
+## Table of Contents
+- [Overview of Needs](#overview-of-needs)
+- [Comparison Table](#comparison-table)
+- [Recommendations](#recommendations)
+
 ## Overview of Needs
 
 The app requires a database solution that supports realtime multiuser collaboration for shared meal plans, inventories, and shopping lists across users/devices, while maintaining offline-first functionality for mobile PWA usage. Handling structured data like recipes, ingredients, pantry inventories (PantryItem model), shopping lists, and meal plans. Key needs include:

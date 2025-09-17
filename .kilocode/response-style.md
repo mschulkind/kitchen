@@ -1,5 +1,11 @@
 # Response Style Guidelines
 
+## Table of Contents
+- [Structure](#structure)
+- [Readability](#readability)
+- [Appearance](#appearance)
+- [Attention to User Feedback](#attention-to-user-feedback)
+
 ## Structure
 - Use clear sections with # headings to organize content logically.
 - Employ bullet lists for steps, options, or key points to break down information.

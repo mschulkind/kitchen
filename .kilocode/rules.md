@@ -1,5 +1,17 @@
 # Project Rules and Guidelines
 
+## Table of Contents
+- [Tech Stack](#tech-stack)
+- [TDD Practices](#tdd-practices)
+- [Directory Usage Rules](#directory-usage-rules)
+  - [Mode-Specific File Permissions](#mode-specific-file-permissions)
+- [Mobile-First Principles](#mobile-first-principles)
+- [Other Relevant Rules](#other-relevant-rules)
+- [Todo List Usage for Multistep Processes](#todo-list-usage-for-multistep-processes)
+- [Git Workflow](#git-workflow)
+- [Documentation & Visualization](#documentation--visualization)
+- [Response Formatting](#response-formatting)
+
 ## Tech Stack
 
 - **Frontend**: React Native with Expo for cross-platform mobile app (iOS/Android), focusing on touch-friendly UI (big buttons, simple gestures for shared lists).

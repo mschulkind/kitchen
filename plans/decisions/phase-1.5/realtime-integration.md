@@ -1,5 +1,13 @@
 # Decision Log: Realtime Collaboration with Supabase
 
+## Table of Contents
+- [1. Goal](#1-goal)
+- [2. Technical Approach](#2-technical-approach)
+  - [Key Implementation Points](#key-implementation-points)
+- [3. Channels and Subscriptions](#3-channels-and-subscriptions)
+- [4. Conflict Resolution and UI Updates](#4-conflict-resolution-and-ui-updates)
+- [5. Next Steps](#5-next-steps)
+
 This document details the plan for integrating Supabase Realtime to enable multi-user collaboration features.
 
 *   **Phase:** 1.5

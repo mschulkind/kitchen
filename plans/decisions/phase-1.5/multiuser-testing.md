@@ -1,6 +1,15 @@
 # Decision Log: Multiuser Sync Testing Strategy
 
-This document outlines the testing strategy to ensure the reliability and correctness of real-time multiuser features.
+## Table of Contents
+- [1. Goal](#1-goal)
+- [2. Testing Pyramid](#2-testing-pyramid)
+  - [2.1. Unit Tests](#21-unit-tests)
+  - [2.2. Integration Tests](#22-integration-tests)
+  - [2.3. End-to-End (E2E) Tests](#23-end-to-end-e2e-tests)
+  - [2.4. E2E Test Example with Detox](#24-e2e-test-example-with-detox)
+- [3. Setup and Tooling](#3-setup-and-tooling)
+- [4. Manual Testing](#4-manual-testing)
+- [5. Next Steps](#5-next-steps)
 
 *   **Phase:** 1.5
 *   **Status:** Scoping

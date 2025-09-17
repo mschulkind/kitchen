@@ -1,5 +1,15 @@
 # Decision Log: User Authentication & Presence
 
+## Table of Contents
+- [1. Goal](#1-goal)
+- [2. Authentication Strategy](#2-authentication-strategy)
+  - [Key Features](#key-features)
+- [3. Presence Strategy](#3-presence-strategy)
+  - [Key Features](#key-features-1)
+- [4. UI/UX Considerations](#4-uiux-considerations)
+- [5. Row Level Security (RLS) Policies](#5-row-level-security-rls-policies)
+- [6. Next Steps](#6-next-steps)
+
 This document outlines the strategy for implementing user authentication and real-time presence indicators.
 
 *   **Phase:** 1.5

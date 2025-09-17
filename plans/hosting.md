@@ -1,5 +1,14 @@
 # Hosting and Deployment
 
+## Table of Contents
+- [Primary Hosting Strategy: Self-Hosted on Raspberry Pi](#primary-hosting-strategy-self-hosted-on-raspberry-pi)
+- [Local Development Setup](#local-development-setup)
+- [Alternative Hosting Options (Cloud)](#alternative-hosting-options-cloud)
+- [PWA and Mobile Deployment](#pwa-and-mobile-deployment)
+- [CI/CD and Monitoring](#cicd-and-monitoring)
+- [Pending Decisions](#pending-decisions)
+- [References](#references)
+
 This document outlines the hosting and deployment strategy for the Personalized Dinner & Shopping App, from local development to potential production environments. It focuses on simplicity for personal use while allowing scalability. Reference [design-system.md](design-system.md) for tech stack details and [brief.md](brief.md) for offline-capable goals.
 
 ## Primary Hosting Strategy: Self-Hosted on Raspberry Pi

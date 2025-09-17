@@ -1,6 +1,16 @@
 # Decision Log: Conflict Resolution & Offline Handling
 
-This document specifies the strategy for managing data conflicts in a multi-user environment and ensuring a seamless experience for users who may have intermittent connectivity.
+## Table of Contents
+- [1. Goal](#1-goal)
+- [2. Conflict Resolution Strategy](#2-conflict-resolution-strategy)
+  - [How It Works](#how-it-works)
+  - [Future Enhancements (Post-MVP)](#future-enhancements-post-mvp)
+- [3. Offline Handling Strategy](#3-offline-handling-strategy)
+  - [Implementation Details](#implementation-details)
+  - [Example Flow](#example-flow)
+- [4. Offline Queue Implementation](#4-offline-queue-implementation)
+- [5. User Feedback & UI](#5-user-feedback--ui)
+- [6. Next Steps](#6-next-steps)
 
 *   **Phase:** 1.5
 *   **Status:** Scoping
