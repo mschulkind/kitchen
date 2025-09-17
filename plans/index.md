@@ -21,7 +21,7 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 **Summary**: Outline of user experience flows, such as meal planning → inventory verification → shopping list generation. Emphasizes mobile-first considerations with text-based wireframe sketches, key screens, and interactions.
 
 ### [hosting.md](hosting.md)
-**Summary**: Skeleton for hosting and deployment details, covering local development setup (e.g., Vite + Uvicorn), potential cloud options (e.g., Vercel for frontend, Heroku for backend), and PWA considerations for mobile deployment.
+**Summary**: Outlines the hosting strategy, with the primary approach being self-hosting on a Raspberry Pi using Docker and Docker Compose. This includes running the frontend, backend, and Supabase stack in containers. Cloud hosting options are now considered secondary.
 
 ### [development-todo.md](development-todo.md)
 **Summary**: Detailed checklist for fleshing out the planning phase, covering design decisions, UX refinements, hosting choices, and implementation preparation.

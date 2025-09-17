@@ -2,32 +2,22 @@
 
 This document outlines the hosting and deployment strategy for the Personalized Dinner & Shopping App, from local development to potential production environments. It focuses on simplicity for personal use while allowing scalability. Reference [design-system.md](design-system.md) for tech stack details and [brief.md](brief.md) for offline-capable goals.
 
-## Realtime Hosting Recommendations
+## Primary Hosting Strategy: Self-Hosted on Raspberry Pi
 
-Given the realtime multiuser collaboration requirements, hosting must support instant sync across devices while maintaining mobile-first deployment ease and scalability.
+Based on the decision to self-host, the primary deployment target will be a Raspberry Pi running Docker. This approach provides full control over the environment and data.
 
-**Primary Stack:**
-- **Database & Realtime: Supabase**
-  - Use Supabase's PostgreSQL with realtime subscriptions (WebSockets) for live updates (e.g., shared inventory changes propagate instantly).
-  - Integrated auth and edge functions for handling initial syncs, notifications, and conflict resolution.
-  - Offline support via client SDKs for mobile apps—optimistic updates sync on reconnect without user intervention.
-  - Setup: Free tier for dev; scales to production with row-level security for multiuser permissions.
-  - Mobile Considerations: Supabase JS client works seamlessly with React Native/Expo; low-latency edge network minimizes mobile data usage.
-
-- **Frontend Hosting: Vercel**
-  - Deploy React Native/Expo web views or companion web app for desktop collaboration.
-  - Serverless functions for backend logic (e.g., invite processing, custom sync hooks if needed beyond Supabase).
-  - Automatic deployments from Git; integrates with Supabase for full-stack realtime.
-  - Pros: Fast deploys, global CDN for low-latency realtime; free for small teams.
-
-**CI/CD for Collaborative Development**
-- **GitHub Actions or Vercel Pipelines**: Automate testing/deployments on pull requests—essential for multiuser dev (e.g., test realtime sync in CI with simulated users).
-  - Steps: Lint/test on PR > Deploy preview branch > Merge to main triggers prod deploy.
-  - Include Supabase migrations in CI (e.g., db push on deploy).
-- **Version Control Best Practices**: Branch-per-feature for collaborative changes; protect main branch with required reviews.
-- **Monitoring**: Vercel Analytics for perf; Supabase logs for realtime events; add Sentry for error tracking in shared sessions.
-
-This setup enables quick iteration on realtime features (e.g., Supabase dashboard for testing subscriptions) without slowing dev speed, while supporting shared use cases like live shopping list edits across mobile devices.
+- **Orchestration**: `docker-compose` will be used to define and manage the multi-container application stack.
+- **Application Components**:
+    - **Frontend (React/Vite)**: A multi-stage `Dockerfile` will be created to first build the static assets, which are then served by a lightweight web server like Nginx.
+    - **Backend (Python/FastAPI)**: A dedicated Docker container running the FastAPI application with `uvicorn`.
+    - **Database (Supabase)**: We will leverage the official Supabase Docker images to run the entire Supabase stack (Postgres, GoTrue, Realtime, etc.) locally on the Raspberry Pi. This provides the power of Supabase while keeping all data on-premise.
+- **Networking**: All containers will be connected via a shared Docker network. The frontend container's web server will be configured to proxy API requests to the backend container.
+- **ARM64 Compatibility**: All Docker images must be compatible with the Raspberry Pi's ARM64 architecture. We will need to verify or build ARM-compatible images for each service.
+- **Deployment Workflow**:
+  1. Develop and test locally using the Supabase CLI.
+  2. Build and tag production-ready Docker images for each service.
+  3. Push images to a private registry (or use local builds on the Pi).
+  4. Use `docker-compose up -d` on the Raspberry Pi to deploy or update the application.
 
 ## Local Development Setup
 **Goal**: Quick, reliable local runs for development and testing, emphasizing fast iteration.
@@ -47,6 +37,7 @@ This setup enables quick iteration on realtime features (e.g., Supabase dashboar
   - Scripts: Add `npm run dev:full` to start both (concurrently).
   - Testing: Run tests with `pytest` and `vitest`; aim for sub-second suites.
   - PWA: Enable service worker in Vite for offline caching during dev.
+  - **Database**: Use the Supabase CLI (`supabase start`) to mirror the self-hosted production environment.
 
 - **Requirements**:
   - Install: `pip install -r requirements.txt` (FastAPI, Pydantic, etc.); `npm install` for frontend.
@@ -54,14 +45,15 @@ This setup enables quick iteration on realtime features (e.g., Supabase dashboar
 
 **Text Setup Flow**:
 ```
-1. Clone repo & cd into root
+1. Clone repo &amp; cd into root
 2. Backend: pip install -r requirements.txt; uvicorn main:app --reload
 3. Frontend: npm install; npm run dev
-4. Access: http://localhost:5173 (frontend proxies to :8000)
+4. Database: `supabase start`
+5. Access: http://localhost:5173 (frontend proxies to :8000)
 5. Test: npm run test:all
 ```
 
-## Cloud Hosting Options
+## Alternative Hosting Options (Cloud)
 **Goal**: Optional deployment for access from multiple devices (e.g., phone, home server); prioritize free/low-cost for personal app.
 
 - **Frontend (React/Vite)**:
