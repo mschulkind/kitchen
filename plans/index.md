@@ -9,6 +9,8 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 
 ## Documents
 
+### [planning-mode.md](planning-mode.md) **Summary**: Configuration spec for the new 'planning' mode, detailing capabilities for conversational spec-building, file updates, git workflows, and integration with the app's architecture.
+
 ### [brief.md](brief.md)
 **Summary**: The core project brief outlining the app's summary, key features (e.g., intelligent meal planning, inventory tracking, categorical checklist UI, optimized shopping lists), technical architecture (backend logic, LLM integration), and high-level goals for usability and efficiency.
 
