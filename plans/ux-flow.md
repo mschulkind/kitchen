@@ -125,6 +125,32 @@ This document outlines the primary user experience flows for the Personalized Di
 - Check item → Remove from list, update plan costs.
 - "Done Shopping" → Archive list, suggest next plan.
 
+## Multiuser Flows
+
+With the shift to realtime multiuser collaboration, we extend the single-user UX flows to support shared experiences across devices/users, while prioritizing mobile usability (e.g., large touch targets, simple alerts). Core features from brief.md (e.g., meal planning, inventory verification, shopping lists) now support collaboration.
+
+### Inviting Collaborators
+- **Flow**: From any shared resource screen (e.g., meal plan or shopping list), tap a prominent "Invite" button (large, full-width for mobile). Select contacts or enter email/share link. Confirm with a simple modal: "Invite [Name] to edit this list?" with big Yes/No buttons.
+- **Realtime Aspect**: Upon acceptance (via Supabase auth), the invitee joins instantly; show live presence (e.g., avatars lighting up online).
+- **Mobile Considerations**: Use device contacts integration; handle offline invites by queuing and syncing on reconnect.
+
+### Realtime Shared Verification Checklist (e.g., Inventory/Shopping)
+- **Flow**: In shared inventory or shopping list view, display items with live checkmarks. When one user checks an item (tap large checkbox), it updates instantly for all via Supabase realtime subscriptions—others see the checkmark appear/disappear in real-time.
+- **UX Enhancements**: Show presence indicators (e.g., "Alice is checking off items" with animated dots); optimistic updates for offline users (check item locally, sync on reconnect; if conflict, show alert: "Another user unchecked this—review changes?" with big Reload/Keep Mine buttons).
+- **Notifications**: Push alert for changes (e.g., "Bob added milk to the shopping list") via Expo Notifications, with quick-tap actions to view/update.
+
+### Shared Meal Planning
+- **Flow**: Collaborative editing of meal plans: Users add/edit recipes in real-time; changes broadcast via WebSockets. Use simple concurrent editing cues (e.g., highlight edited sections with user initials).
+- **Conflict Resolution**: For overlaps, apply last-write-wins with user-friendly alerts (e.g., toast notification: "Your change overwritten by [User]—undo?"); mobile: Ensure alerts don't block screen, with swipe-to-dismiss.
+- **Offline Handling**: Optimistic UI (e.g., add recipe immediately, flag as "Pending Sync" with spinner); on sync failure, simple modal with options.
+
+### General Multiuser UX Principles
+- **Presence & Awareness**: Always show collaborator count/online status in headers (e.g., "2 people viewing"); use subtle animations for live updates to avoid distraction on mobile.
+- **Permissions**: Role-based UI (e.g., owners see "Remove Collaborator" button); viewers get read-only mode with live updates.
+- **Exit/Leave**: Easy opt-out: Tap profile > "Leave Shared List" with confirmation.
+
+These flows build on single-user paths, adding collaboration layers without overwhelming the mobile-first design—focus on intuitive, realtime feedback with minimal cognitive load.
+
 ## Secondary Flows
 - **Inventory Management**: Standalone screen to add/update items (scan barcode or manual). Flow: Home → Inventory Tab → Add Item (dropdown for location, expiry picker).
 - **Recipe Library**: Search/browse saved recipes; integrate LLM for "Similar to this with my inventory".

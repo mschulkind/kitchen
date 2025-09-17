@@ -54,6 +54,30 @@ This document outlines the technical design decisions for the Personalized Dinne
 - **Error Handling**: Fallback to rule-based logic if LLM fails; cache responses.
 - TODO: API key management (environment vars); rate limiting; prompt templates in code.
 
+## Database
+
+Previously, we decided on SQLite for local/offline storage in this personal-use app. However, with the new requirement for realtime multiuser collaboration (e.g., shared meal plans, inventory, and shopping lists across devices), we shift to Supabase (PostgreSQL-based with built-in realtime subscriptions via WebSockets). 
+
+**Recommendation: Supabase**
+- **Pros**: Instant sync across users/devices using client SDKs (JS/Python); integrated auth for user management; supports offline mode with optimistic updates and automatic conflict resolution on reconnect; scalable for multiuser without heavy setup.
+- **Cons**: Cloud dependency (no fully local option like SQLite), but offers free tier for dev/testing; potential latency for very remote users, mitigated by edge functions.
+- **Offline Handling**: Use Supabase's client-side caching for mobile-first app; implement optimistic UI updates (e.g., add item to shared list immediately, sync in background).
+- **Migration Path**: Start with Supabase from scratch for simplicity; later, if needed, hybrid with local SQLite for pure offline fallback.
+
+This enables realtime features without sacrificing dev speed, leveraging Supabase's JS SDK for quick integration in our React Native/Expo frontend.
+
+## Collaboration Architecture
+
+To support multiuser realtime collaboration while keeping the app mobile-friendly and usable:
+
+- **Realtime Features**: Use Supabase Realtime (WebSockets) for live updates, e.g., inventory changes propagate instantly to all collaborators; shared shopping lists update checkmarks in real-time; meal plans sync additions/edits across devices.
+- **User Presence**: Track online status via Supabase auth and presence channels (e.g., show "User X is editing the list" indicators in the UI, with large, touch-friendly avatars for mobile).
+- **Concurrent Editing & Conflict Resolution**: Implement last-write-wins for simple cases (e.g., timestamped updates); for complex edits like meal plans, use operational transforms or Supabase's row-level locking. On mobile, show simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons.
+- **Invites & Access**: Auth-based invites via email/share links; role-based permissions (owner, editor, viewer) stored in Supabase tables.
+- **Notifications**: Push notifications for changes (e.g., "Item added to shared inventory") using Supabase Edge Functions, optimized for mobile with Expo Notifications.
+
+This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
+
 ## Pending Decisions
 - **Database Choice**: Decided – SQLite for MVP (see [context/db-research.md](../context/db-research.md)); evaluate Supabase migration post-MVP if sync needed.
 - **Authentication**: None for personal use, but if multi-user, consider JWT or none (local-only).

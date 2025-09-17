@@ -4,6 +4,12 @@ This document provides an ordered checklist for expanding the foundational plann
 
 Focus on the app's mobile-first PWA nature, emphasizing offline capabilities, intuitive touch interfaces, and usability for busy users managing meals and shopping.
 
+## Phases
+
+### Phase 0: Core Decisions
+- [x] Finalize tech stack (React Native/Expo, Supabase for realtime DB/auth)
+- [x] Define MVP features from brief.md (now extended to multiuser)
+
 ## Phase 1: Core Decisions (Design System Foundations)
 These items finalize technical choices that underpin UX and implementation.
 
@@ -16,8 +22,27 @@ These items finalize technical choices that underpin UX and implementation.
 - [ ] Specify ingredient optimization algorithm: Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).  
   *Level of detail:* Pseudocode snippets, bullet-point steps, example inputs/outputs; reference brief.md's personalization goals.
 
-## Phase 2: UX Refinements (User-Centric Details)
-Build on core decisions to detail interactions, ensuring mobile usability.
+### Phase 1.5: Realtime Collaboration Setup
+This phase builds on core setup to enable multiuser sync, focusing on quick integration via Supabase SDKs for dev speed.
+
+- [ ] Integrate Supabase Realtime: Set up client subscriptions for key tables (e.g., meal_plans, inventory, shopping_lists); test live updates with multiple simulated users/devices.
+  - API Sketch: Use `supabase.channel('shared-list').on('postgres_changes', { event: '*', schema: 'public', table: 'shopping_lists' }, callback)` for broadcasting changes.
+  - Mobile: Ensure Expo compatibility; implement optimistic updates (e.g., local state mutation before DB write).
+
+- [ ] Implement User Auth & Presence: Configure Supabase auth (email/password or social); add presence tracking for online indicators.
+  - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.
+  - UX Tie-in: Big avatar buttons for invites; simple alerts for conflicts.
+
+- [ ] Conflict Resolution & Offline Handling: Add last-write-wins logic for simple cases; optimistic UI with sync queues.
+  - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
+  - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
+
+- [ ] Notifications Setup: Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
+  - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
+
+- [ ] Testing Multiuser Sync: Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows.
+
+This phase ensures realtime multiuser without delaying core dev—Supabase's SDKs allow rapid prototyping of sync features.
 
 - [ ] Refine categorical UI for shopping lists: Expand wireframes with specifics for categories (e.g., drag-to-reorder, swipe-to-checkoff), update mobile text wireframes in [`plans/ux-flow.md`](plans/ux-flow.md).  
   *Level of detail:* Add subsections with updated Mermaid flowcharts, accessibility notes (e.g., ARIA for screen readers), and usability best practices for touch interfaces.

@@ -2,6 +2,33 @@
 
 This document outlines the hosting and deployment strategy for the Personalized Dinner & Shopping App, from local development to potential production environments. It focuses on simplicity for personal use while allowing scalability. Reference [design-system.md](design-system.md) for tech stack details and [brief.md](brief.md) for offline-capable goals.
 
+## Realtime Hosting Recommendations
+
+Given the realtime multiuser collaboration requirements, hosting must support instant sync across devices while maintaining mobile-first deployment ease and scalability.
+
+**Primary Stack:**
+- **Database & Realtime: Supabase**
+  - Use Supabase's PostgreSQL with realtime subscriptions (WebSockets) for live updates (e.g., shared inventory changes propagate instantly).
+  - Integrated auth and edge functions for handling initial syncs, notifications, and conflict resolution.
+  - Offline support via client SDKs for mobile apps—optimistic updates sync on reconnect without user intervention.
+  - Setup: Free tier for dev; scales to production with row-level security for multiuser permissions.
+  - Mobile Considerations: Supabase JS client works seamlessly with React Native/Expo; low-latency edge network minimizes mobile data usage.
+
+- **Frontend Hosting: Vercel**
+  - Deploy React Native/Expo web views or companion web app for desktop collaboration.
+  - Serverless functions for backend logic (e.g., invite processing, custom sync hooks if needed beyond Supabase).
+  - Automatic deployments from Git; integrates with Supabase for full-stack realtime.
+  - Pros: Fast deploys, global CDN for low-latency realtime; free for small teams.
+
+**CI/CD for Collaborative Development**
+- **GitHub Actions or Vercel Pipelines**: Automate testing/deployments on pull requests—essential for multiuser dev (e.g., test realtime sync in CI with simulated users).
+  - Steps: Lint/test on PR > Deploy preview branch > Merge to main triggers prod deploy.
+  - Include Supabase migrations in CI (e.g., db push on deploy).
+- **Version Control Best Practices**: Branch-per-feature for collaborative changes; protect main branch with required reviews.
+- **Monitoring**: Vercel Analytics for perf; Supabase logs for realtime events; add Sentry for error tracking in shared sessions.
+
+This setup enables quick iteration on realtime features (e.g., Supabase dashboard for testing subscriptions) without slowing dev speed, while supporting shared use cases like live shopping list edits across mobile devices.
+
 ## Local Development Setup
 **Goal**: Quick, reliable local runs for development and testing, emphasizing fast iteration.
 
