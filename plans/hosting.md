@@ -34,7 +34,18 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   - Database Sync: Use local storage or IndexedDB for offline inventory; sync to backend when online.
 
 - **Full Stack Run**:
-  - Scripts: Add `npm run dev:full` to start both (concurrently).
+  - **Process Management**: Use Overmind (https://github.com/DarthSim/overmind) to manage multiple development services in a single terminal session. Overmind provides a tmux-based interface for starting, stopping, and monitoring all services simultaneously.
+  - **Procfile**: Create a `Procfile.dev` at the project root with the following processes:
+    ```
+    frontend: npm run dev
+    backend: uvicorn main:app --reload --port 8000
+    supabase: supabase start
+    ```
+  - **Commands**:
+    - Install Overmind: `cargo install overmind` (requires Rust/Cargo).
+    - Start all services: `overmind start -f Procfile.dev`
+    - This will launch the frontend (Vite on port 5173), backend (FastAPI on port 8000), and Supabase local stack in separate panes, allowing easy monitoring and hot-reloading.
+  - **Benefits**: Unified control for full-stack development; easy to add more services (e.g., tests, watchers); persists sessions across terminal closes.
   - Testing: Run tests with `pytest` and `vitest`; aim for sub-second suites.
   - PWA: Enable service worker in Vite for offline caching during dev.
   - **Database**: Use the Supabase CLI (`supabase start`) to mirror the self-hosted production environment.
@@ -45,12 +56,12 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
 
 **Text Setup Flow**:
 ```
-1. Clone repo &amp; cd into root
-2. Backend: pip install -r requirements.txt; uvicorn main:app --reload
-3. Frontend: npm install; npm run dev
-4. Database: `supabase start`
+1. Clone repo & cd into root
+2. Install dependencies: pip install -r requirements.txt; npm install
+3. Install Overmind: cargo install overmind
+4. Start all services: overmind start -f Procfile.dev
 5. Access: http://localhost:5173 (frontend proxies to :8000)
-5. Test: npm run test:all
+6. Test: npm run test:all
 ```
 
 ## Alternative Hosting Options (Cloud)
