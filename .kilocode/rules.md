@@ -46,10 +46,12 @@
 - Treat both code changes (e.g., .py, .ts, .js files with implementation or tests) and markdown documentation updates (e.g., .md files in plans/ for specs, outlines, or decisions) as equally worthy of individual commits and pushes, since they both represent meaningful progress in the iterative TDD and planning workflow.
 
 
-### Documentation & Visualization
+### Documentation &amp; Visualization
 - All project documentation and planning will be viewed on GitHub, so structure markdown files for optimal rendering there, following GitHub Markdown best practices to enhance readability for remote review (e.g., use clear headings, lists, and code blocks).
 - Incorporate lots of diagrams using GitHub-supported formats like Mermaid for flowcharts, architecture diagrams, wireframes, etc., to visualize UX flows, data models, system architecture, and other key concepts (e.g., meal planning flow or DB schema).
 - Place Mermaid diagrams in dedicated code blocks (```mermaid ... ```) within planning files to ensure proper rendering on GitHub, improving communication of complex ideas like user journeys or component interactions.
 
+### Response Formatting
+See [.kilocode/response-style.md](.kilocode/response-style.md) for guidelines on structured, readable outputs.
 
 TODO: Review and expand as tech decisions solidify (link to plans/design-system.md).
