@@ -41,6 +41,7 @@
 - Err on the side of more commits than fewer, but ensure each commit is logical and meaningful (e.g., atomic changes with descriptive messages like "Add PantryItem model and tests").
 - After completing any major planning or implementation phase, commit and push everything to main.
 - If at any time you discover unstaged or uncommitted changes while working on something else, immediately commit those changes with a good summary message that includes a note of when and during what task you found them (e.g., 'Commit orphaned changes from initial setup found during planning review on 2025-09-17'). This prevents loss of work and maintains a clean history.
+- Treat both code changes (e.g., .py, .ts, .js files with implementation or tests) and markdown documentation updates (e.g., .md files in plans/ for specs, outlines, or decisions) as equally worthy of individual commits and pushes, since they both represent meaningful progress in the iterative TDD and planning workflow.
 
 
 ### Documentation & Visualization
