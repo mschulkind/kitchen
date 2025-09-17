@@ -17,8 +17,82 @@ Users need a way to find recipes that make the best use of their current pantry 
 *   **Nutritional Awareness:** (Optional, stretch goal) Factor in nutritional similarity when suggesting substitutions.
 *   **Personalization:** The algorithm should align with user-defined dietary preferences.
 
-## 3. Next Steps
+## 3. Proposed Algorithm: Heuristic-Based Similarity Score
 
-*   Flesh out specific algorithm options (e.g., similarity scores, heuristics, embeddings).
-*   Add pseudocode examples.
-*   Create example input/output scenarios.
+For the initial implementation (MVP), we will use a straightforward, heuristic-based approach. This method avoids the complexity and cost of LLM embeddings while still providing relevant and useful suggestions. The core idea is to score recipes based on how well they match the user's pantry and then suggest substitutions for missing ingredients based on pre-defined rules.
+
+### 3.1. Algorithm Steps
+
+1.  **Fetch Recipes**: Retrieve a pool of candidate recipes that vaguely match a user's query (e.g., "chicken dishes").
+2.  **Score Recipes**: For each recipe, calculate a "pantry match score".
+    *   +2 points for each ingredient that exists in the user's pantry.
+    *   -1 point for each missing ingredient.
+3.  **Rank Recipes**: Sort recipes from highest to lowest score.
+4.  **Suggest Substitutions**: For the top-ranked recipes, identify missing ingredients.
+    *   For each missing ingredient, look up potential substitutions from a pre-defined "substitutions" table (e.g., "butter" -> "margarine", "olive oil").
+    *   If a viable substitution exists in the user's pantry, present the recipe to the user with the suggested swap.
+5.  **Filter by Preferences**: Exclude any recipes that contain ingredients violating the user's dietary restrictions (e.g., "nuts", "dairy").
+
+### 3.2. Pseudocode
+
+```
+function suggest_recipes(user_pantry, all_recipes, user_preferences):
+    scored_recipes = []
+
+    for recipe in all_recipes:
+        score = 0
+        missing_ingredients = []
+
+        is_compatible = check_dietary_preferences(recipe, user_preferences)
+        if not is_compatible:
+            continue // Skip recipe if it violates preferences
+
+        for ingredient in recipe.ingredients:
+            if ingredient.name in user_pantry:
+                score += 2
+            else:
+                score -= 1
+                missing_ingredients.append(ingredient)
+
+        recipe.pantry_score = score
+        recipe.missing_ingredients = missing_ingredients
+        scored_recipes.append(recipe)
+
+    // Sort by score, descending
+    sorted_recipes = sorted(scored_recipes, key=lambda r: r.pantry_score, reverse=True)
+
+    final_suggestions = []
+    for recipe in sorted_recipes[0:5]: // Top 5 suggestions
+        recipe.substitutions = find_substitutions(recipe.missing_ingredients, user_pantry)
+        final_suggestions.append(recipe)
+        
+    return final_suggestions
+
+function find_substitutions(missing_ingredients, user_pantry):
+    suggested_swaps = {}
+    
+    // substitution_map is a pre-defined dictionary like {'butter': ['olive oil', 'margarine']}
+    for ingredient in missing_ingredients:
+        possible_subs = substitution_map.get(ingredient.name, [])
+        for sub in possible_subs:
+            if sub in user_pantry:
+                suggested_swaps[ingredient.name] = sub
+                break // Found a substitution, move to next missing ingredient
+                
+    return suggested_swaps
+```
+
+### 3.3. Example Scenario
+
+*   **User Pantry**: `['chicken breast', 'rice', 'broccoli', 'olive oil', 'garlic']`
+*   **Recipe A (Chicken & Rice)**: Requires `['chicken breast', 'rice', 'butter', 'garlic']`
+    *   **Score**: (2+2-1+2) = +5
+    *   **Missing**: `butter`
+    *   **Substitution Check**: The system finds that `olive oil` is a valid substitute for `butter` and is in the user's pantry.
+    *   **Result**: Suggest "Chicken & Rice" and recommend swapping `butter` for `olive oil`.
+
+## 4. Next Steps
+
+*   Create the data model for the `substitutions` table.
+*   Integrate this logic into the `plans/design-system.md` data models section.
+*   (Future) Explore embedding-based models for more nuanced nutritional and flavor-profile matching.
