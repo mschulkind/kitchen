@@ -29,6 +29,17 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 ### [../docs/db-research.md](../docs/db-research.md)
 **Summary**: Research and recommendations for database options tailored to the app's offline-first PWA needs, evaluating SQLite, IndexedDB, PouchDB, Supabase, and PostgreSQL; recommends SQLite for fast MVP development with optional Supabase for future sync.
 
+## Decision Logs
+
+This section contains detailed documentation for key technical and architectural decisions.
+
+*   [**Phase 1: Ingredient Optimization Algorithm**](decisions/phase-1/ingredient-optimization.md): Logic for recipe and ingredient suggestions.
+*   [**Phase 1.5: Realtime Integration**](decisions/phase-1.5/realtime-integration.md): Strategy for using Supabase Realtime.
+*   [**Phase 1.5: Auth and Presence**](decisions/phase-1.5/auth-and-presence.md): User authentication and online presence tracking.
+*   [**Phase 1.5: Conflict Resolution and Offline**](decisions/phase-1.5/conflict-resolution-and-offline.md): Handling for data sync and offline usage.
+*   [**Phase 1.5: Notifications**](decisions/phase-1.5/notifications.md): Push notification setup using Supabase Edge Functions.
+*   [**Phase 1.5: Multiuser Testing**](decisions/phase-1.5/multiuser-testing.md): Testing strategy for real-time features.
+
 ## Navigation Notes
 - Use relative links for easy navigation within the `plans/` directory.
 - As new documents are added or updated, this index will be revised to include summaries and links.
