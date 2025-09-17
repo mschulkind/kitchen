@@ -65,15 +65,77 @@ serve(async (req) => {
 });
 ```
 
-## 3. Client-Side Implementation (Expo)
+## 3. Database Trigger Setup
 
-*   **Permissions:** The app will need to request permission from the user to send push notifications.
-*   **Token Management:** Upon granting permission, the app will get the Expo push token and save it to the user's profile in the Supabase database.
-*   **Listeners:** The app will set up listeners to handle notifications that are received while the app is in the foreground or background.
+To invoke the Edge Function automatically, we will create a trigger on the `shopping_list_items` table. The trigger will fire after a new item is inserted, calling a function that then invokes our Edge Function.
 
-## 4. Next Steps
+```sql
+-- 1. Create a function to be called by the trigger
+CREATE OR REPLACE FUNCTION handle_new_shopping_item()
+RETURNS TRIGGER AS $$
+DECLARE
+  -- Variables to hold user info
+  list_owner_id UUID;
+  -- Add more variables for all list members if needed
+BEGIN
+  -- Get the owner of the list to notify them
+  SELECT owner_id INTO list_owner_id
+  FROM shopping_lists
+  WHERE id = NEW.list_id;
 
-*   Create the `profiles` table with a `push_token` column.
-*   Implement the permission request flow in the Expo app.
-*   Develop and deploy the `send-notification` Edge Function.
-*   Set up the database trigger to invoke the function on relevant events.
+  -- Invoke the Supabase Edge Function
+  -- We pass the ID of the user to notify and a custom message
+  PERFORM net.http_post(
+    url:='https://<project_ref>.supabase.co/functions/v1/send-notification',
+    headers:='{"Content-Type": "application/json", "Authorization": "Bearer <supabase_service_role_key>"}'::jsonb,
+    body:=('{"user_id": "' || list_owner_id || '", "message": "A new item was added to your list!"}')::jsonb
+  );
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 2. Create the trigger that fires the function
+CREATE TRIGGER on_new_shopping_item_trigger
+AFTER INSERT ON shopping_list_items
+FOR EACH ROW
+EXECUTE FUNCTION handle_new_shopping_item();
+
+```
+*(Note: This is a simplified example notifying only the list owner. A more robust solution would iterate through all members of a shared list.)*
+
+## 4. Client-Side Implementation (Expo)
+
+The Expo app needs to be configured to handle push notifications.
+
+1.  **Request Permissions**: When the app starts, or at a logical point in the user flow, we must ask the user for permission to send notifications.
+
+    ```javascript
+    async function registerForPushNotificationsAsync() {
+      let token;
+      // ... (permission checks for iOS and Android) ...
+      
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+      
+      // Save the token to the user's profile in Supabase
+      const { error } = await supabase
+        .from('profiles')
+        .update({ push_token: token })
+        .eq('id', supabase.auth.user().id);
+
+      return token;
+    }
+    ```
+
+2.  **Handle Incoming Notifications**: We need to set up event listeners to decide what to do when a notification is received.
+
+    *   `Notifications.addNotificationReceivedListener`: Fires when a notification is received while the app is in the **foreground**.
+    *   `Notifications.addNotificationResponseReceivedListener`: Fires when a user **taps on** a notification (works for foreground, background, or killed app).
+
+## 5. Next Steps
+
+*   Create a `profiles` table that includes a `push_token` text field.
+*   Implement the permission request flow and token storage in the Expo app.
+*   Deploy the `send-notification` Edge Function and the database trigger via a Supabase migration.
+*   Write an integration test to verify the end-to-end notification flow.

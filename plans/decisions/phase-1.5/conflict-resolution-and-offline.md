@@ -46,8 +46,53 @@ The application will be built with an **offline-first** mindset, leveraging an o
 7.  Once the API confirms the write, the item is removed from the queue.
 8.  A toast notification "Changes synced" is briefly displayed.
 
-## 4. Next Steps
+## 4. Offline Queue Implementation
 
-*   Choose a library for managing the offline queue (e.g., `redux-persist` with a custom storage engine, or a dedicated library like WatermelonDB if complexity warrants it).
-*   Define the exact schema for the offline action queue.
-*   Write unit and integration tests for the sync manager.
+- **Library Choice**: We will use **Zustand** with the `persist` middleware for state management and offline caching. Zustand is lightweight, simple, and already planned for our stack. The `persist` middleware can be configured with `AsyncStorage` (for React Native) to automatically save and rehydrate state, including our offline queue.
+
+- **Queue Schema**: The offline queue will be a simple array within our Zustand store. Each item in the array will represent a pending mutation.
+
+```typescript
+// Example state slice in Zustand store
+{
+  offlineQueue: [
+    {
+      type: 'UPDATE_ITEM_QUANTITY',
+      payload: { listId: 'abc-123', itemId: 'xyz-789', newQuantity: 3 }
+    },
+    {
+      type: 'ADD_ITEM',
+      payload: { listId: 'abc-123', name: 'Milk', quantity: 1 }
+    }
+  ]
+}
+```
+
+- **Sync Manager**: A dedicated "sync manager" will be responsible for:
+    1.  Listening for changes in network status (online/offline).
+    2.  When the app comes online, it iterates through the `offlineQueue`.
+    3.  For each action, it calls the corresponding Supabase API function.
+    4.  Upon successful API confirmation, the action is removed from the queue.
+    5.  If an API call fails, the action remains in the queue for a later retry, and the UI is notified of the conflict/error.
+
+## 5. User Feedback & UI
+
+Clear communication about sync status is essential for user trust.
+
+- **Global Indicator**: A subtle, persistent indicator (e.g., a small cloud icon in the header) will show the current status:
+    - **Green Cloud**: Online and all changes are synced.
+    - **Yellow Cloud with Spinner**: Online and currently syncing.
+    - **Grey Cloud with Slash**: Offline.
+- **Toast Notifications**: Non-intrusive toast messages will provide contextual updates:
+    - "You are currently offline. Changes will be synced later." (When going offline)
+    - "Syncing 3 changes..." (When coming online with a pending queue)
+    - "All changes synced!" (When the queue is successfully cleared)
+    - "Could not sync 'Add Milk'. Please check your connection." (On a persistent error)
+- **UI State**: While offline, UI elements should remain fully interactive. Optimistic updates ensure the app feels fast and responsive, regardless of network connectivity.
+
+## 6. Next Steps
+
+*   Implement the Zustand `persist` middleware with `AsyncStorage`.
+*   Develop the sync manager logic to process the offline queue.
+*   Create the global UI components for displaying sync status and toasts.
+*   Write unit tests for the sync manager, covering various success and failure scenarios.

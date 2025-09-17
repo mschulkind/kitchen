@@ -44,16 +44,63 @@ Our testing strategy will follow the principles of the testing pyramid, with a b
     *   **Live Editing Flow:** User A and User B concurrently add and check off items from a list, verifying that both UIs stay in sync.
     *   **Offline-to-Online Sync:** One user goes offline, makes several changes, comes back online, and their changes are correctly synced and reflected for the other user.
 
-## 3. Manual Testing
+### 2.4. E2E Test Example with Detox
+
+Detox is uniquely suited for our needs because it can orchestrate multiple simulators. Here is a conceptual test case for a live editing flow:
+
+```javascript
+// e2e/shopping-list.test.js
+describe('Shared Shopping List', () => {
+  let listId;
+
+  beforeAll(async () => {
+    // Start two simulators: 'userA' and 'userB'
+    await detox.init(); 
+    await device.launchApp({ newInstance: true });
+    // Assume login and list creation happens here, storing the listId
+    listId = await createSharedShoppingList('userA');
+    await launchAppForUser('userB', listId); 
+  });
+
+  it('should sync new items between users in real-time', async () => {
+    // On User A's device, add a new item
+    await device.select('userA');
+    await element(by.id('add-item-input')).typeText('Apples');
+    await element(by.id('add-item-button')).tap();
+    
+    // On User B's device, wait for the item to appear
+    await device.select('userB');
+    await waitFor(element(by.text('Apples'))).toBeVisible().withTimeout(5000);
+    
+    // On User B's device, check off the item
+    await element(by.id('item-checkbox-Apples')).tap();
+
+    // On User A's device, assert that the item is now checked
+    await device.select('userA');
+    await expect(element(by.id('item-checkbox-Apples'))).toHaveValue('checked');
+  });
+
+});
+```
+*(This is a conceptual example. The actual Detox API might differ slightly.)*
+
+## 3. Setup and Tooling
+
+*   **Detox Configuration**: The `.detoxrc.js` file will be configured with two device profiles (`userA` and `userB`) to allow parallel execution.
+*   **Mock Server**: For CI/CD environments, we will use a mocked Supabase backend to ensure tests are deterministic and don't rely on a live network connection. MSW (Mock Service Worker) can be used to intercept and mock `fetch` requests made by the Supabase client.
+*   **Test Data**: Before each test run, the database (or mock server) will be seeded with a consistent set of test data to ensure reproducibility.
+
+## 4. Manual Testing
 
 In addition to automated tests, structured manual testing will be essential.
 
-*   **Test Plan:** A manual test plan will be created with specific scenarios.
-*   **Device Matrix:** Testing will be performed on a matrix of different devices (iOS/Android) and network conditions (WiFi, 4G, throttled/offline connections).
-*   **Exploratory Testing:** Testers will be encouraged to perform exploratory testing to find edge cases not covered by the scripted tests.
+*   **Test Plan:** A manual test plan will be created in a shared document (e.g., Google Sheets) with specific scenarios covering invites, live edits, offline mode, and conflict resolution.
+*   **Device Matrix:** Testing will be performed on a matrix of different physical devices (e.g., iPhone 13, Google Pixel 6) and network conditions (WiFi, 5G, throttled 3G, and airplane mode).
+*   **Exploratory Testing:** Testers will be encouraged to perform exploratory "bug bashes" to find edge cases not covered by the scripted tests.
 
-## 4. Next Steps
+## 5. Next Steps
 
-*   Set up Detox in the Expo project.
-*   Write the first E2E test for the invitation flow.
-*   Develop a suite of unit tests for the core sync logic.
+*   Set up Detox in the Expo project with a two-device configuration.
+*   Write the first E2E test for the user invitation flow.
+*   Develop a suite of unit tests for the core sync logic using Vitest and React Testing Library.
+*   Create the initial manual test plan document.

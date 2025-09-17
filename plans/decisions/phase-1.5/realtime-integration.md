@@ -44,7 +44,29 @@ channel.on(
 
 ```
 
-## 3. Next Steps
-*   Define specific channels and tables for subscription.
-*   Detail the conflict resolution strategy.
-*   Outline the testing plan for real-time features.
+## 3. Channels and Subscriptions
+
+To structure the real-time communication, we will define channels based on shared resources. A user will subscribe to a channel corresponding to a specific shared object (e.g., a single shopping list or meal plan).
+
+| Channel Type        | Naming Convention                                  | Watched Table(s)        | Purpose                                                                                |
+| ------------------- | -------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------- |
+| **Shared List**     | `shared-list:{list_id}`                            | `shopping_list_items`   | Broadcasts changes to items within a specific shopping list (adds, updates, deletes).  |
+| **Meal Plan**       | `meal-plan:{plan_id}`                              | `meal_plan_recipes`     | Syncs recipes added to or removed from a collaborative meal plan.                      |
+| **Presence**        | `presence-list:{list_id}` or `presence-plan:{plan_id}` | (N/A - Presence state)  | Tracks which users are currently viewing a specific list or plan.                      |
+
+### Subscription Logic:
+- When a user views a shared shopping list, the app will subscribe to `shared-list:{list_id}` and `presence-list:{list_id}`.
+- The `filter` parameter in the subscription will be used to ensure clients only receive events for the specific resource they are viewing.
+
+## 4. Conflict Resolution and UI Updates
+
+- **Strategy**: As defined in [`conflict-resolution-and-offline.md`](conflict-resolution-and-offline.md), we will use a **Last Write Wins (LWW)** approach.
+- **UI Feedback**:
+    - **Optimistic Updates**: Local changes are reflected instantly in the UI.
+    - **Incoming Changes**: When a change is received from the channel, the UI will smoothly update to reflect the new state (e.g., an item appearing, a quantity changing).
+    - **User Avatars**: Presence information will be used to display the avatars of other users currently viewing the same resource, providing a clear sense of collaboration.
+
+## 5. Next Steps
+*   Detail the conflict resolution strategy (covered in the dedicated document).
+*   Outline the testing plan for real-time features (covered in the dedicated document).
+*   Implement a proof-of-concept with two simulated clients.
