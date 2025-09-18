@@ -11,8 +11,15 @@
 This document details the plan for integrating Supabase Realtime to enable multi-user collaboration features.
 
 *   **Phase:** 1.5
-*   **Status:** Completed (2025-09-18: Added Expo integration, error handling, and data model ties; ready for auth-and-presence implementation)
+*   **Status:** Finalized (2025-09-18: Decision approved. Implementation plan confirmed.)
 *   **Owner:** A.I. Assistant
+
+## Final Decision Summary
+The decision to integrate Supabase Realtime is finalized with the following core components:
+- **Channels**: Dedicated channels will be used for `shopping_lists`, `meal_plans`, and `inventory_items`.
+- **Optimistic Updates**: The frontend will use React Query (TanStack Query) for optimistic UI updates.
+- **Offline Handling**: User actions taken while offline will be queued using IndexedDB and synced upon reconnection.
+- **Mobile Integration**: The implementation will ensure full Expo compatibility, including background sync tasks and robust error handling.
 
 ## 1. Goal
 
