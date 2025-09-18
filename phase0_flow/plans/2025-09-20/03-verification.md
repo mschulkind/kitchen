@@ -1,5 +1,14 @@
 # Step 3: Verify Your Ingredients
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Produce](#produce)
+- [Pantry](#pantry)
+- [Freezer](#freezer)
+- [Dairy &amp; Fridge](#dairy-amp-fridge)
+
+## Introduction
+
 Please review this list and check off the items you have on hand. Feel free to make notes or suggest substitutions.
 
 ---

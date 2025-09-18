@@ -1,10 +1,17 @@
 # Step 2: Choose Your Meal Plan
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Option 1: Hearty Comfort Classics](#option-1-hearty-comfort-classics)
+- [Option 2: South-of-the-Border Fiesta](#option-2-south-of-the-border-fiesta)
+- [Option 3: Quick &amp; Easy Staples](#option-3-quick-amp-easy-staples)
+- [Option 4: Fish &amp; Veggie Forward](#option-4-fish-amp-veggie-forward)
+
+## Introduction
+
 Here are a few options for your 3-day meal plan. Please select one by marking it with `[x]`.
 
----
-
-### Option 1: Hearty Comfort Classics
+## Option 1: Hearty Comfort Classics
 A plan focused on crowd-pleasing, familiar dishes with a hearty touch.
 
 - **Day 1:** Spicy Chicken Pasta with a side of Roasted Brussels Sprouts.
@@ -17,9 +24,7 @@ A plan focused on crowd-pleasing, familiar dishes with a hearty touch.
 
 `[ ]` Choose this plan
 
----
-
-### Option 2: South-of-the-Border Fiesta
+## Option 2: South-of-the-Border Fiesta
 A vibrant, flavorful menu inspired by Mexican cuisine, utilizing the garden's peppers.
 
 - **Day 1:** Chicken Street Tacos using the marinated chicken strips, with a side of homemade Pico de Gallo.
@@ -34,9 +39,7 @@ A vibrant, flavorful menu inspired by Mexican cuisine, utilizing the garden's pe
 
 `[ ]` Choose this plan
 
----
-
-### Option 3: Quick &amp; Easy Staples
+## Option 3: Quick &amp; Easy Staples
 A low-stress plan that leans on family favorites and makes smart use of leftovers.
 
 - **Day 1:** Pan-Fried Chicken Breasts with a side of buttered pasta and sauteed Swiss Chard. (Pasta can be served plain for kids).
@@ -48,9 +51,7 @@ A low-stress plan that leans on family favorites and makes smart use of leftover
 
 `[ ]` Choose this plan
 
----
-
-### Option 4: Fish &amp; Veggie Forward
+## Option 4: Fish &amp; Veggie Forward
 A lighter plan that incorporates fish and plenty of fresh vegetables from the garden.
 
 - **Day 1:** Pan-Seared Pollock with a simple pan sauce, alongside Roasted Carrots and fresh Parsley.
