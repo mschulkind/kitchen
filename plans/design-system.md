@@ -8,9 +8,9 @@ This document outlines the technical design decisions for the Personalized Dinne
   - **Reasoning**: Chosen for its robust realtime sync, built-in authentication, row-level security, and excellent client libraries for both our React/TS frontend and Python/FastAPI backend. This aligns with our need for rapid development of collaborative features like shared shopping lists and inventories.
   - **Reference**: See [`../docs/db-research.md`](../docs/db-research.md) for a detailed comparison.
   
-- **Authentication**: **Supabase Auth**
-  - **Reasoning**: Tightly integrated with the database, providing a seamless solution for user management and security.
-
+- **Authentication**: **Supabase Auth (Google Social Login)**
+  - **Reasoning**: Exclusively using Google Social Login simplifies the user experience for our mobile-first audience, reduces development overhead, and allows for easy profile data pre-filling (name, avatar), which benefits collaborative features. This decision aligns with the principle of minimizing friction for users. For full details, see the decision log at [`decisions/phase-1.5/auth-and-presence.md`](decisions/phase-1.5/auth-and-presence.md).
+  
 - **Deployment**:
   - **Frontend**: *Pending (Vercel recommended)*
   - **Backend**: *Pending (Heroku or similar recommended)*
@@ -170,7 +170,7 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
 - **Optimistic Updates & Offline Handling**: The frontend will use React Query (TanStack Query) for optimistic UI updates, providing a seamless experience even with poor connectivity. Actions taken offline are queued in IndexedDB and synced upon reconnection.
 - **User Presence**: Track online status via Supabase presence channels (e.g., show "User X is editing" indicators with large, touch-friendly avatars).
 - **Concurrent Editing & Conflict Resolution**: Implement last-write-wins for simple cases (e.g., timestamped updates). On mobile, show simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons.
-- **Invites & Access**: Auth-based invites via email/share links; role-based permissions (owner, editor, viewer) stored in Supabase tables.
+- **Invites & Access**: Auth-based invites via Google account integration, leveraging the simplicity of a single sign-on provider. Role-based permissions (owner, editor, viewer) will be stored in Supabase tables.
 - **Notifications**: Push notifications for changes (e.g., "Item added to shared inventory") using Supabase Edge Functions, optimized for mobile with Expo Notifications.
 - **Reference**: For a detailed breakdown of the realtime architecture, channel design, and implementation pseudocode, see the full decision log at [`decisions/phase-1.5/realtime-integration.md`](decisions/phase-1.5/realtime-integration.md).
 
@@ -204,7 +204,7 @@ Align with [.kilocode/rules.md](../.kilocode/rules.md) TDD practices: Test-first
 TODO: Add test setup to Procfile.dev (e.g., test: pytest + vitest); integrate with hosting CI/CD.
 
 ## Pending Decisions
-- **Authentication**: Supabase Auth for multi-user support (see Collaboration Architecture).
+- **Authentication**: Decision finalized to use **Google Social Login exclusively** via Supabase Auth. See the [`auth-and-presence.md` decision log](decisions/phase-1.5/auth-and-presence.md) for details.
 - **Deployment Tech**: See [hosting.md](hosting.md) for details.
 - **Offline Capabilities**: Implement IndexedDB for inventory; sync on reconnect via Supabase.
 - **Performance**: Caching strategies (Supabase built-in); optimize LLM calls.
