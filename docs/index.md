@@ -12,7 +12,10 @@
 This index organizes the `docs/` directory, which contains human-readable documentation such as research notes, data dumps, API references, and other supporting materials referenced during development. It helps maintain navigability without cluttering the main planning docs.
 
 ## Overview
-The `docs/` directory contains documentation that is intended to be read by humans. This includes research notes, references, and other supporting materials that are part of the project documentation but don't fit into the planning specifications.
+This directory contains research, notes, and other supporting documentation for the project.
+
+- **[db-research.md](db-research.md)**: A detailed comparison of database technologies.
+- **[phase0-workflow.md](phase0-workflow.md)**: A guide for agents on how to execute the Phase 0 conversational meal planning flow.
 
 ## Categories and Content
 
