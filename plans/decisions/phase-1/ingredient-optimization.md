@@ -1,5 +1,18 @@
 # Decision Log: Ingredient Optimization Algorithm
 
+## Table of Contents
+- [1. Problem Statement](#1-problem-statement)
+- [2. Core Requirements](#2-core-requirements)
+- [3. Finalized Algorithm: Heuristic-Based Similarity Score](#3-finalized-algorithm-heuristic-based-similarity-score)
+  - [3.1. Algorithm Flow Diagram](#31-algorithm-flow-diagram)
+  - [3.2. Detailed Algorithm Steps](#32-detailed-algorithm-steps)
+  - [3.3. Pseudocode](#33-pseudocode)
+  - [3.4. Nutritional Heuristics](#34-nutritional-heuristics)
+  - [3.5. Example Inputs/Outputs](#35-example-inputsoutputs)
+  - [3.6. Data Model for Substitutions](#36-data-model-for-substitutions)
+- [4. Decision &amp; Rationale](#4-decision--rationale)
+- [5. Next Steps](#5-next-steps)
+
 This document details the decision-making process for the ingredient optimization algorithm, a key feature for enhancing user experience by providing intelligent meal suggestions and reducing food waste.
 
 *   **Phase:** 1
@@ -17,11 +30,28 @@ Users need a way to find recipes that make the best use of their current pantry 
 *   **Nutritional Awareness:** (Optional, stretch goal) Factor in nutritional similarity when suggesting substitutions.
 *   **Personalization:** The algorithm should align with user-defined dietary preferences.
 
-## 3. Proposed Algorithm: Heuristic-Based Similarity Score
+## 3. Finalized Algorithm: Heuristic-Based Similarity Score
 
 For the initial implementation (MVP), we will use a straightforward, heuristic-based approach. This method avoids the complexity and cost of LLM embeddings while still providing relevant and useful suggestions. The core idea is to score recipes based on how well they match the user's pantry and then suggest substitutions for missing ingredients based on pre-defined rules.
 
-### 3.1. Algorithm Steps
+### 3.1. Algorithm Flow Diagram
+
+```mermaid
+graph TD
+    A[Start: User queries for recipes] --> B{Fetch Candidate Recipes};
+    B --> C{For each recipe};
+    C --> D{Check Dietary Preferences};
+    D -- Incompatible --> E[Discard Recipe];
+    D -- Compatible --> F{Calculate Pantry Match Score};
+    F --> G{Identify Missing Ingredients};
+    G --> H[Rank Recipes by Score];
+    H --> I{For Top 5 Recipes};
+    I --> J{Find Substitutions from Pantry};
+    J --> K[Present Final Suggestions with Swaps];
+    K --> L[End];
+```
+
+### 3.2. Detailed Algorithm Steps
 
 1.  **Fetch Recipes**: Retrieve a pool of candidate recipes that vaguely match a user's query (e.g., "chicken dishes").
 2.  **Score Recipes**: For each recipe, calculate a "pantry match score".
@@ -33,7 +63,7 @@ For the initial implementation (MVP), we will use a straightforward, heuristic-b
     *   If a viable substitution exists in the user's pantry, present the recipe to the user with the suggested swap.
 5.  **Filter by Preferences**: Exclude any recipes that contain ingredients violating the user's dietary restrictions (e.g., "nuts", "dairy").
 
-### 3.2. Pseudocode
+### 3.3. Pseudocode
 
 ```
 function suggest_recipes(user_pantry, all_recipes, user_preferences):
@@ -87,13 +117,13 @@ function find_substitutions(missing_ingredients, user_pantry, categories):
     return suggested_swaps
 ```
 
-### 3.3. Nutritional Heuristics (Simple MVP)
+### 3.4. Nutritional Heuristics (Simple MVP)
 To incorporate basic nutritional awareness without embeddings:
 - **Category Matching**: Define ingredient categories (e.g., protein, carb, fat, vegetable) in the substitutions map. Prioritize subs within the same category (e.g., chicken -> turkey for proteins).
 - **Score Adjustment**: For substitutions, add +1 to recipe score if sub matches category; -1 if cross-category (e.g., oil for butter is fat-for-fat, good).
-- **Reference**: Aligns with brief.md's personalization by allowing user-defined categories/preferences to filter.
+- **Reference**: Aligns with [brief.md](plans/brief.md)'s personalization by allowing user-defined categories/preferences to filter.
 
-### 3.4. Example Inputs/Outputs
+### 3.5. Example Inputs/Outputs
 **Input**:
 - User Pantry: `{'chicken breast': 2, 'rice': 1, 'broccoli': 1, 'olive oil': 1, 'garlic': 1}`
 - User Preferences: `{diet: 'low-carb', avoid: ['dairy']}`
@@ -108,7 +138,30 @@ To incorporate basic nutritional awareness without embeddings:
 
 This output format enables UI display with highlighted subs and nutritional notes.
 
-## 4. Next Steps
-*   Substitutions table model created and integrated into plans/design-system.md data models section.
-*   Algorithm logic added to plans/design-system.md under new "Ingredient Optimization" subsection.
+### 3.6. Data Model for Substitutions
+
+To power the `find_substitutions` function, we'll need a simple data model, likely a table in our Supabase DB, with the following structure:
+
+| Field             | Type    | Description                                      | Example                  |
+| ----------------- | ------- | ------------------------------------------------ | ------------------------ |
+| `original_item`   | `text`  | The ingredient that might be missing.            | `butter`                 |
+| `substitute_item` | `text`  | A potential substitute for the original.         | `olive oil`              |
+| `category`        | `text`  | Nutritional category (e.g., fat, protein).       | `fat`                    |
+| `priority`        | `int`   | Rank for suggestions (lower is better).          | `1`                        |
+
+This structure allows for flexible and ranked suggestions.
+
+## 4. Decision &amp; Rationale
+
+**Decision**: The Heuristic-Based Similarity Score algorithm is approved for the MVP.
+
+**Rationale**:
+*   **Feasibility**: It's simple to implement and test, aligning with our TDD practices.
+*   **Performance**: The logic is fast, avoiding slow API calls to an LLM for core functionality.
+*   **User Value**: It directly addresses the core user need of utilizing existing pantry items and reducing food waste.
+*   **Extensibility**: The model can be expanded later with embedding-based logic for more nuanced matching without a full rewrite.
+
+## 5. Next Steps
+*   Substitutions table model created and integrated into [plans/design-system.md](plans/design-system.md) data models section.
+*   Algorithm logic added to [plans/design-system.md](plans/design-system.md) under new "Ingredient Optimization" subsection.
 *   (Future) Explore embedding-based models for more nuanced nutritional and flavor-profile matching.
