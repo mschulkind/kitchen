@@ -1,5 +1,10 @@
 # Freezer Stock
 
+## Staples
+-Peeled garlic
+
+## Other
+
 Assume meat is raw unless otherwise specified.
 
 -Stuffing bread, 2 loaves

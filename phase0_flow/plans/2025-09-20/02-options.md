@@ -61,4 +61,4 @@ A lighter plan that incorporates fish and plenty of fresh vegetables from the ga
 - Lemons
 - Asian-style noodles (e.g., ramen or udon)
 
-`[ ]` Choose this plan
+`[x]` Choose this plan

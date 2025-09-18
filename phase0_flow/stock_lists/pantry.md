@@ -2,10 +2,10 @@
 
 ## Staples
 -Olive Oil
--Butter (salted and unsalted)
+-Balsamic vinegar
+-White vinegar
 -Rice
--Garlic
--Salad dressing
+-Whole garlic
 
 ## 2nd tier staples
 
@@ -14,3 +14,5 @@
 -Onions
 -Potatoes
 -Canned refried beans
+-Shredded parmesan cheese
+-Shredded cheese like cheddar or mozzarella
