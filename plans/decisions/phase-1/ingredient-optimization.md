@@ -38,7 +38,7 @@ Based on user feedback, we are pivoting to an LLM-first approach from the MVP st
 graph TD
     A[Start: User queries for recipes] --> B{Construct LLM Prompt};
     B -- Includes Pantry, Preferences, Query --> C[Send Prompt to LLM API];
-    C --> D{Receive LLM Response (JSON)};
+    C --> D{Receive LLM Response JSON};
     D -- Invalid JSON --> E[Handle Error / Retry];
     D -- Valid JSON --> F{Parse Recipe Suggestions};
     F --> G[Display Suggestions in UI];
