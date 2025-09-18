@@ -24,7 +24,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ## Phase 0: Markdown-Driven MVP (Weeks 0-1)
 **Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
 **Milestone**:
-- **Week 0: Conversational Flow**: Create and test the full back-and-forth flow using the `plans/meal-plan-generator/` templates, from request to final plan.
+- **Week 0: Conversational Flow**: Create and test the full back-and-forth flow using the `phase0_flow/` directory, from request to final plan.
 
 **Outcome of Phase 0**: You can collaboratively create a meal plan through a series of markdown files, proving the value and logic of the core LLM interaction before any code is written.
 

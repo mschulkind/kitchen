@@ -17,10 +17,10 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 **Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
 
 - [ ] **Conversational Flow Setup**
-    - [ ] Create a new directory `plans/meal-plan-generator/`.
-    - [ ] Create templates for the conversational flow (`01-request.md`, `02-options.md`, `03-verification.md`, `04-final-plan.md`).
+    - [ ] Create a new directory `phase0_flow/`.
+    - [ ] Create templates for the conversational flow within `phase0_flow/`.
 - [ ] **Example Generation**
-    - [ ] Walk through a full conversational example in the `plans/meal-plan-generator/example/` directory.
+    - [ ] Walk through a full conversational example in the `phase0_flow/plans/` directory.
 
 ---
 
