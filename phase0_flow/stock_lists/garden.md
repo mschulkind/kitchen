@@ -22,11 +22,12 @@
 - Basil (just a little)
 
 ## Veggies
-- Tons of tomatoes
+- Tons of tomatoes. They never end.
 - A few cucumbers
-- Poblano peppers
+- Poblano peppers (quite a few)
 - Shoshito peppers
 - Green beans
 - Habanero Peppers
 - Sweet peppers
+- Cayenne peppers (tons)
 

@@ -1,65 +1,64 @@
 # Step 2: Choose Your Meal Plan
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Option 1: Hearty Comfort Classics](#option-1-hearty-comfort-classics)
-- [Option 2: South-of-the-Border Fiesta](#option-2-south-of-the-border-fiesta)
-- [Option 3: Quick &amp; Easy Staples](#option-3-quick-amp-easy-staples)
-- [Option 4: Fish &amp; Veggie Forward](#option-4-fish-amp-veggie-forward)
-
-## Introduction
-
 Here are a few options for your 3-day meal plan. Please select one by marking it with `[x]`.
 
-## Option 1: Hearty Comfort Classics
-A plan focused on crowd-pleasing, familiar dishes with a hearty touch.
+---
 
-- **Day 1:** Spicy Chicken Pasta with a side of Roasted Brussels Sprouts.
-- **Day 2:** Savory Ribeye Steaks with Pan-Seared Poblano Peppers &amp; Onions.
-- **Day 3:** Flavorful Smoked Sausage and Rice Skillet with Fresh Garden Tomatoes.
+### Option 1: Summer Harvest Feast
+A plan that celebrates the bounty of the garden, especially the corn and peppers.
 
-**New Ingredients:**
-- Heavy cream
-- Parmesan cheese
-
-`[ ]` Choose this plan
-
-## Option 2: South-of-the-Border Fiesta
-A vibrant, flavorful menu inspired by Mexican cuisine, utilizing the garden's peppers.
-
-- **Day 1:** Chicken Street Tacos using the marinated chicken strips, with a side of homemade Pico de Gallo.
-- **Day 2:** Spicy Ground Chicken Chili topped with cheese and a side of rice.
-- **Day 3:** Tostadas with Refried Beans and leftover Chili, topped with fresh greens.
+- **Day 1:** Grilled Chicken Thighs with a side of Corn on the Cob and a fresh Tomato Salad.
+- **Day 2:** Spicy Poblano Pepper and Onion Fajitas using the marinated chicken strips.
+- **Day 3:** Hearty Beef Stew with carrots, potatoes, and a side of that fancy sourdough.
 
 **New Ingredients:**
-- Corn tortillas
-- Shredded cheese blend
+- Fajita seasoning
+- Flour tortillas
 - Sour cream
-- Avocado
 
 `[ ]` Choose this plan
 
-## Option 3: Quick &amp; Easy Staples
-A low-stress plan that leans on family favorites and makes smart use of leftovers.
+---
 
-- **Day 1:** Pan-Fried Chicken Breasts with a side of buttered pasta and sauteed Swiss Chard. (Pasta can be served plain for kids).
-- **Day 2:** Breakfast for Dinner: Omelettes with chopped Smoked Sausage, Sweet Peppers, and cheese.
-- **Day 3:** Fried Rice using leftover rice, cubed cooked chicken, and garden veggies like green beans and carrots.
+### Option 2: Spicy &amp; Savory Adventures
+A menu for those who like a little kick, using those garden peppers to their full potential.
+
+- **Day 1:** Fiery Chicken Wings with a cooling side of cucumber and tomato salad.
+- **Day 2:** Instant Ramen "Doctor Up" with sliced smoked sausage, fresh kale, and a spicy broth.
+- **Day 3:** Ground Chicken Chili with a mix of sweet and spicy peppers.
 
 **New Ingredients:**
-- Shredded cheddar cheese
+- Your favorite hot sauce
+- Chili powder
 
 `[ ]` Choose this plan
 
-## Option 4: Fish &amp; Veggie Forward
-A lighter plan that incorporates fish and plenty of fresh vegetables from the garden.
+---
 
-- **Day 1:** Pan-Seared Pollock with a simple pan sauce, alongside Roasted Carrots and fresh Parsley.
-- **Day 2:** Pork Broth Noodle Soup with chunks of Braised Pork Shoulder and wilted Kale.
-- **Day 3:** Hearty salad with grilled marinated chicken strips, tomatoes, cucumbers, and a simple vinaigrette.
+### Option 3: Italian-Inspired Comfort
+A cozy and satisfying menu with a nod to classic Italian-American flavors.
+
+- **Day 1:** Pasta with a simple, fresh Tomato and Basil sauce, topped with Parmesan.
+- **Day 2:** Pan-Seared Cod with a lemon-butter pan sauce and a side of sauteed Swiss Chard.
+- **Day 3:** "Pantry" Minestrone soup with canned tomatoes, beans, pasta, and any extra garden veggies.
 
 **New Ingredients:**
+- Fresh mozzarella cheese
 - Lemons
-- Asian-style noodles (e.g., ramen or udon)
 
-`[x]` Choose this plan
+`[ ]` Choose this plan
+
+---
+
+### Option 4: The Carnivore's Delight
+A meat-focused menu for a hearty appetite.
+
+- **Day 1:** Juicy Ribeye Steaks with a side of roasted potatoes and green beans.
+- **Day 2:** Braised Pork Shoulder sandwiches on that rosemary garlic bread.
+- **Day 3:** Smoked sausage and pepper skewers on the grill.
+
+**New Ingredients:**
+- BBQ sauce
+- Provolone cheese
+
+`[ ]` Choose this plan
