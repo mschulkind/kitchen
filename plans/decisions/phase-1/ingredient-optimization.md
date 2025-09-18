@@ -3,13 +3,11 @@
 ## Table of Contents
 - [1. Problem Statement](#1-problem-statement)
 - [2. Core Requirements](#2-core-requirements)
-- [3. Finalized Algorithm: Heuristic-Based Similarity Score](#3-finalized-algorithm-heuristic-based-similarity-score)
+- [3. Finalized Algorithm: LLM-Powered Dynamic Suggestions](#3-finalized-algorithm-llm-powered-dynamic-suggestions)
   - [3.1. Algorithm Flow Diagram](#31-algorithm-flow-diagram)
   - [3.2. Detailed Algorithm Steps](#32-detailed-algorithm-steps)
-  - [3.3. Pseudocode](#33-pseudocode)
-  - [3.4. Nutritional Heuristics](#34-nutritional-heuristics)
-  - [3.5. Example Inputs/Outputs](#35-example-inputsoutputs)
-  - [3.6. Data Model for Substitutions](#36-data-model-for-substitutions)
+  - [3.3. Prompt Engineering](#33-prompt-engineering)
+  - [3.4. Example API Interaction](#34-example-api-interaction)
 - [4. Decision &amp; Rationale](#4-decision--rationale)
 - [5. Next Steps](#5-next-steps)
 
@@ -30,138 +28,99 @@ Users need a way to find recipes that make the best use of their current pantry 
 *   **Nutritional Awareness:** (Optional, stretch goal) Factor in nutritional similarity when suggesting substitutions.
 *   **Personalization:** The algorithm should align with user-defined dietary preferences.
 
-## 3. Finalized Algorithm: Heuristic-Based Similarity Score
+## 3. Finalized Algorithm: LLM-Powered Dynamic Suggestions
 
-For the initial implementation (MVP), we will use a straightforward, heuristic-based approach. This method avoids the complexity and cost of LLM embeddings while still providing relevant and useful suggestions. The core idea is to score recipes based on how well they match the user's pantry and then suggest substitutions for missing ingredients based on pre-defined rules.
+Based on user feedback, we are pivoting to an LLM-first approach from the MVP stage. This aligns with the core vision of the app as an intelligent kitchen assistant. Instead of a rigid heuristic system, we will use a large language model to dynamically generate recipe ideas and substitutions based on the user's context.
 
 ### 3.1. Algorithm Flow Diagram
 
 ```mermaid
 graph TD
-    A[Start: User queries for recipes] --> B{Fetch Candidate Recipes};
-    B --> C{For each recipe};
-    C --> D{Check Dietary Preferences};
-    D -- Incompatible --> E[Discard Recipe];
-    D -- Compatible --> F{Calculate Pantry Match Score};
-    F --> G{Identify Missing Ingredients};
-    G --> H[Rank Recipes by Score];
-    H --> I{For Top 5 Recipes};
-    I --> J{Find Substitutions from Pantry};
-    J --> K[Present Final Suggestions with Swaps];
-    K --> L[End];
+    A[Start: User queries for recipes] --> B{Construct LLM Prompt};
+    B -- Includes Pantry, Preferences, Query --> C[Send Prompt to LLM API];
+    C --> D{Receive LLM Response (JSON)};
+    D -- Invalid JSON --> E[Handle Error / Retry];
+    D -- Valid JSON --> F{Parse Recipe Suggestions};
+    F --> G[Display Suggestions in UI];
+    G --> H[End];
 ```
 
 ### 3.2. Detailed Algorithm Steps
 
-1.  **Fetch Recipes**: Retrieve a pool of candidate recipes that vaguely match a user's query (e.g., "chicken dishes").
-2.  **Score Recipes**: For each recipe, calculate a "pantry match score".
-    *   +2 points for each ingredient that exists in the user's pantry.
-    *   -1 point for each missing ingredient.
-3.  **Rank Recipes**: Sort recipes from highest to lowest score.
-4.  **Suggest Substitutions**: For the top-ranked recipes, identify missing ingredients.
-    *   For each missing ingredient, look up potential substitutions from a pre-defined "substitutions" table (e.g., "butter" -> "margarine", "olive oil").
-    *   If a viable substitution exists in the user's pantry, present the recipe to the user with the suggested swap.
-5.  **Filter by Preferences**: Exclude any recipes that contain ingredients violating the user's dietary restrictions (e.g., "nuts", "dairy").
+1.  **Gather Context**: Collect all relevant user data:
+    *   The user's full pantry list (e.g., `{'chicken breast': 2, 'rice': 1, 'broccoli': 1}`).
+    *   Their dietary preferences and restrictions (e.g., `diet: 'low-carb', avoid: ['dairy']`).
+    *   The user's specific query, if any (e.g., "healthy dinner ideas").
+2.  **Construct Prompt**: Dynamically build a detailed prompt for the LLM. This is the most critical step and will involve careful engineering to guide the model toward the desired output. (See Prompt Engineering section below). The prompt will explicitly ask for a JSON object containing a list of recipes.
+3.  **Call LLM API**: Send the constructed prompt to the chosen LLM API (e.g., OpenAI, Ollama).
+4.  **Parse and Validate Response**: The LLM is instructed to return a structured JSON response. The backend will parse this JSON. If the response is malformed or invalid, the system will include error handling, potentially with a retry mechanism or a fallback response.
+5.  **Present to User**: The validated recipe suggestions, including substitutions and notes, are passed to the frontend to be displayed in the user interface.
 
-### 3.3. Pseudocode
+### 3.3. Prompt Engineering
 
+The prompt is the core of this algorithm. It will be structured to constrain the LLM and ensure reliable, structured output.
+
+**Core Components of the Prompt:**
+
+*   **Role-Play/Persona**: "You are a helpful and creative culinary assistant."
+*   **Core Task**: "Your task is to suggest 3-5 recipes based on the ingredients a user has in their pantry. Prioritize using the ingredients they already have. For any missing ingredients, suggest common substitutions if possible."
+*   **Context Injection**:
+    *   `USER_PANTRY`: "Here is the user's pantry: `{pantry_list_json}`."
+    *   `USER_PREFERENCES`: "The user has the following dietary needs: `{preferences_json}`. Adhere to these strictly."
+    *   `USER_QUERY`: "The user is looking for: `{query_text}`."
+*   **Output Formatting Instructions**: "You MUST respond with ONLY a valid JSON object. Do not include any explanatory text before or after the JSON. The JSON object should follow this structure: `{\"recipes\": [{\"name\": \"...\", \"description\": \"...\", \"ingredients_used\": [\"...\"], \"missing_ingredients\": [{\"item\": \"...\", \"substitution\": \"...\"}]}]}`."
+
+This structured approach makes the LLM's output predictable and developer-friendly.
+
+### 3.4. Example API Interaction
+
+**Input (Prompt sent to LLM):**
 ```
-function suggest_recipes(user_pantry, all_recipes, user_preferences):
-    scored_recipes = []
+You are a helpful and creative culinary assistant. Your task is to suggest 3 recipes based on the ingredients a user has in their pantry...
 
-    for recipe in all_recipes:
-        score = 0
-        missing_ingredients = []
+USER_PANTRY: {'chicken breast': 2, 'rice': 1, 'broccoli': 1, 'olive oil': 1, 'garlic': 1}
+USER_PREFERENCES: {diet: 'low-carb', avoid: ['dairy']}
+USER_QUERY: "Healthy dinner"
 
-        is_compatible = check_dietary_preferences(recipe, user_preferences)
-        if not is_compatible:
-            continue // Skip recipe if it violates preferences
-
-        for ingredient in recipe.ingredients:
-            if ingredient.name in user_pantry:
-                score += 2
-            else:
-                score -= 1
-                missing_ingredients.append(ingredient)
-
-        recipe.pantry_score = score
-        recipe.missing_ingredients = missing_ingredients
-        scored_recipes.append(recipe)
-
-    // Sort by score, descending
-    sorted_recipes = sorted(scored_recipes, key=lambda r: r.pantry_score, reverse=True)
-
-    final_suggestions = []
-    for recipe in sorted_recipes[0:5]: // Top 5 suggestions
-        recipe.substitutions = find_substitutions(recipe.missing_ingredients, user_pantry)
-        final_suggestions.append(recipe)
-        
-    return final_suggestions
-
-function find_substitutions(missing_ingredients, user_pantry, categories):
-    suggested_swaps = {}
-    
-    // substitution_map now includes categories: {'butter': [{'sub': 'olive oil', 'category': 'fat'}, {'sub': 'margarine', 'category': 'fat'}]}
-    for ingredient in missing_ingredients:
-        orig_category = get_category(ingredient.name)
-        possible_subs = substitution_map.get(ingredient.name, [])
-        for sub in possible_subs:
-            if sub['sub'] in user_pantry:
-                if sub['category'] == orig_category:
-                    suggested_swaps[ingredient.name] = sub['sub']
-                    break // Same category preferred
-                else:
-                    suggested_swaps[ingredient.name] = sub['sub'] // Fallback to any available
-                    break
-                    
-    return suggested_swaps
+You MUST respond with ONLY a valid JSON object...
 ```
 
-### 3.4. Nutritional Heuristics (Simple MVP)
-To incorporate basic nutritional awareness without embeddings:
-- **Category Matching**: Define ingredient categories (e.g., protein, carb, fat, vegetable) in the substitutions map. Prioritize subs within the same category (e.g., chicken -> turkey for proteins).
-- **Score Adjustment**: For substitutions, add +1 to recipe score if sub matches category; -1 if cross-category (e.g., oil for butter is fat-for-fat, good).
-- **Reference**: Aligns with [brief.md](plans/brief.md)'s personalization by allowing user-defined categories/preferences to filter.
-
-### 3.5. Example Inputs/Outputs
-**Input**:
-- User Pantry: `{'chicken breast': 2, 'rice': 1, 'broccoli': 1, 'olive oil': 1, 'garlic': 1}`
-- User Preferences: `{diet: 'low-carb', avoid: ['dairy']}`
-- Candidate Recipes: [Recipe A: Chicken & Rice (ingredients: ['chicken breast', 'rice', 'butter', 'garlic'], category matches), Recipe B: Pasta (ingredients: ['pasta', 'cheese', 'tomato'], violates low-carb)]
-
-**Output** (Top Suggestion):
-- Recipe: Chicken & Rice
-- Pantry Match Score: +5 (after category adjustment: +1 for olive oil as fat sub for butter)
-- Missing: ['butter']
-- Suggested Substitution: butter -> olive oil (same category: fat)
-- Final Recipe Adjustments: Use 1 tbsp olive oil instead of butter; total carbs: low (rice portion reduced per prefs).
-
-This output format enables UI display with highlighted subs and nutritional notes.
-
-### 3.6. Data Model for Substitutions
-
-To power the `find_substitutions` function, we'll need a simple data model, likely a table in our Supabase DB, with the following structure:
-
-| Field             | Type    | Description                                      | Example                  |
-| ----------------- | ------- | ------------------------------------------------ | ------------------------ |
-| `original_item`   | `text`  | The ingredient that might be missing.            | `butter`                 |
-| `substitute_item` | `text`  | A potential substitute for the original.         | `olive oil`              |
-| `category`        | `text`  | Nutritional category (e.g., fat, protein).       | `fat`                    |
-| `priority`        | `int`   | Rank for suggestions (lower is better).          | `1`                        |
-
-This structure allows for flexible and ranked suggestions.
+**Output (Expected JSON from LLM):**
+```json
+{
+  "recipes": [
+    {
+      "name": "Garlic Chicken & Broccoli",
+      "description": "A simple and healthy low-carb meal using chicken, broccoli, and garlic.",
+      "ingredients_used": ["chicken breast", "broccoli", "garlic", "olive oil"],
+      "missing_ingredients": []
+    },
+    {
+      "name": "Chicken Stir-fry",
+      "description": "A quick stir-fry. You're missing soy sauce, but can use coconut aminos as a low-carb alternative.",
+      "ingredients_used": ["chicken breast", "broccoli", "olive oil"],
+      "missing_ingredients": [
+        {
+          "item": "soy sauce",
+          "substitution": "coconut aminos or salt"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## 4. Decision &amp; Rationale
 
-**Decision**: The Heuristic-Based Similarity Score algorithm is approved for the MVP.
+**Decision**: The LLM-Powered Dynamic Suggestion algorithm is approved for the MVP.
 
 **Rationale**:
-*   **Feasibility**: It's simple to implement and test, aligning with our TDD practices.
-*   **Performance**: The logic is fast, avoiding slow API calls to an LLM for core functionality.
-*   **User Value**: It directly addresses the core user need of utilizing existing pantry items and reducing food waste.
-*   **Extensibility**: The model can be expanded later with embedding-based logic for more nuanced matching without a full rewrite.
+*   **Aligns with Vision**: This approach makes the app "LLM-first" from the beginning, matching the project's core goal.
+*   **Flexibility & Creativity**: The LLM can provide much more creative and nuanced suggestions than a static heuristic system. It can understand concepts like "healthy" or "quick" without explicit programming.
+*   **Reduced Data Management**: Eliminates the need to build and maintain a complex substitutions database. The LLM's general knowledge can handle this dynamically.
+*   **Scalability**: The quality of suggestions can be improved over time simply by refining the prompt, without changing backend code.
 
 ## 5. Next Steps
-*   Substitutions table model created and integrated into [plans/design-system.md](plans/design-system.md) data models section.
-*   Algorithm logic added to [plans/design-system.md](plans/design-system.md) under new "Ingredient Optimization" subsection.
-*   (Future) Explore embedding-based models for more nuanced nutritional and flavor-profile matching.
+*   LLM provider and integration method to be finalized in [plans/design-system.md](plans/design-system.md).
+*   Prompt templates and logic to be added to [plans/design-system.md](plans/design-system.md) under a new "LLM Integration" section.
+*   (Future) Explore fine-tuning a model for even more personalized and cost-effective results.
