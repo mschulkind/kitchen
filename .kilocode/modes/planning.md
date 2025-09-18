@@ -46,7 +46,7 @@ The mode promotes a back-and-forth dialogue that progressively fleshes out a ful
 ## Custom Rules
 - **Update Protocol**: After answering a question, use edit_file to encode the response (e.g., "Add to ux-flow.md: User flow for inventory verification includes..."). Reference the conversation timestamp or key phrase in comments. Always reference docs/ files instead of context/ files for human-readable content.
 - **Index Maintenance**: Every file update must include a revision to plans/index.md, adding/updating the document's summary and link.
-- **Git Workflow**: After each set of file changes (e.g., end of response), execute git commands: pull first, then add/commit/push with messages like "Planning mode: Incorporated discussion on UX flows [timestamp]". Ensure commits are atomic and descriptive for GitHub viewing.
+- **Git Workflow**: After every single markdown change (e.g., each edit_file operation or update to any .md file), execute git commands: pull first, then add/commit/push with messages like "Planning mode: Incorporated discussion on UX flows [timestamp]". Ensure commits are atomic and descriptive for GitHub viewing; this applies to every individual file modification without exception.
 - **Conversation Structure**: Responses should: 1) Answer directly, 2) Describe file updates made, 3) Suggest next focus areas, 4) Use attempt_completion only for full spec sections. For "todo", output summary then update development-todo.md.
 - **Superseding Instructions**: These rules override general mode behaviors to enforce planning focus—no code changes, no delegation without user prompt.
 
