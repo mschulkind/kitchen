@@ -162,16 +162,22 @@ This enables realtime features without sacrificing dev speed, leveraging Supabas
 
 To support multiuser realtime collaboration while keeping the app mobile-friendly and usable:
 
-- **Realtime Features**: Use Supabase Realtime (WebSockets) for live updates, e.g., inventory changes propagate instantly to all collaborators; shared shopping lists update checkmarks in real-time; meal plans sync additions/edits across devices.
-- **User Presence**: Track online status via Supabase auth and presence channels (e.g., show "User X is editing the list" indicators in the UI, with large, touch-friendly avatars for mobile).
-- **Concurrent Editing & Conflict Resolution**: Implement last-write-wins for simple cases (e.g., timestamped updates); for complex edits like meal plans, use operational transforms or Supabase's row-level locking. On mobile, show simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons.
+- **Realtime Features**: Use Supabase Realtime (WebSockets) for live updates. Subscriptions are managed through dedicated channels for key resources to ensure efficient data sync.
+  - **Channels**:
+    - `shared-list:{id}` for `shopping_list_items`
+    - `meal-plan:{id}` for `meal_plan_recipes` and `meal_plans`
+    - `inventory:{id}` for `inventory_items`
+- **Optimistic Updates & Offline Handling**: The frontend will use React Query (TanStack Query) for optimistic UI updates, providing a seamless experience even with poor connectivity. Actions taken offline are queued in IndexedDB and synced upon reconnection.
+- **User Presence**: Track online status via Supabase presence channels (e.g., show "User X is editing" indicators with large, touch-friendly avatars).
+- **Concurrent Editing & Conflict Resolution**: Implement last-write-wins for simple cases (e.g., timestamped updates). On mobile, show simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons.
 - **Invites & Access**: Auth-based invites via email/share links; role-based permissions (owner, editor, viewer) stored in Supabase tables.
 - **Notifications**: Push notifications for changes (e.g., "Item added to shared inventory") using Supabase Edge Functions, optimized for mobile with Expo Notifications.
+- **Reference**: For a detailed breakdown of the realtime architecture, channel design, and implementation pseudocode, see the full decision log at [`decisions/phase-1.5/realtime-integration.md`](decisions/phase-1.5/realtime-integration.md).
 
 This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
 
 ## Testing Strategy
-Align with [.kilocode/rules.md](../.kilocode/rules.md) TDD practices: Test-first, fast suites (<1s), 80%+ coverage on critical paths (e.g., LLM prompts, ingredient-optimization, realtime sync, offline queue). Structure tests in tests/ mirroring src/; colocate frontend tests. Use mocking for externalities (LLM, Supabase) to ensure speed. Reference [decisions/phase-1.5/multiuser-testing.md](decisions/phase-1.5/multiuser-testing.md) for realtime/multiuser specifics; align with brief.md reliability for core flows (meal planning, verification, shopping).
+Align with [.kilocode/rules.md](../.kilocode/rules.md) TDD practices: Test-first, fast suites (<1s), 80%+ coverage on critical paths (e.g., LLM prompts, ingredient-optimization, realtime sync, offline). Structure tests in tests/ mirroring src/; colocate frontend tests. Use mocking for externalities (LLM, Supabase) to ensure speed. Reference [decisions/phase-1.5/multiuser-testing.md](decisions/phase-1.5/multiuser-testing.md) for realtime/multiuser specifics; align with brief.md reliability for core flows (meal planning, verification, shopping).
 
 ### Phased Checklist
 - **Unit Tests** (Broad base, 70% total coverage):
