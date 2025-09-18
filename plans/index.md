@@ -15,6 +15,9 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 
 ## Documents
 
+### [meal-plan-generator/index.md](meal-plan-generator/index.md)
+**Summary**: A markdown-based conversational workflow for generating and refining meal plans. This allows for rapid prototyping and validation of the core LLM logic before any code is written.
+
 ### [project-phases.md](project-phases.md)
 **Summary**: A detailed, phased development plan focused on delivering a usable MVP as quickly as possible. Outlines a 12-week roadmap from a bare-bones MVP to a polished V1, with clear milestones, tasks, and phased decision-making.
 
