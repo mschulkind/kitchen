@@ -69,10 +69,10 @@ These items refine user-facing flows and integrations for intuitive mobile exper
   *Progress: Review initiated 2025-09-18 00:23 EDT*
   *Progress (2025-09-18 02:06 EDT):* Phased UI/UX strategy for categorical shopping lists has been finalized and documented.
 
-- [ ] [`Develop LLM prompt examples for meal suggestions`](decisions/phase-1/llm-prompts.md): Create 3-5 sample prompts for generating recipes (e.g., "Suggest low-carb meal using [pantry items], optimize for [diet prefs]"), integrate into LLM section of [`plans/design-system.md`](plans/design-system.md) and link from UX flow.  
+- [x] [`Develop LLM prompt examples for meal suggestions`](decisions/phase-1/llm-prompts.md): Create 3-5 sample prompts for generating recipes (e.g., "Suggest low-carb meal using [pantry items], optimize for [diet prefs]"), integrate into LLM section of [`plans/design-system.md`](plans/design-system.md) and link from UX flow.  
   *Level of detail:* Bullet-point prompt templates with variables, expected outputs, error-handling (e.g., fallback if LLM unavailable offline); reference brief.md's AI personalization.
   *Progress: Review initiated 2025-09-18 00:23 EDT*
-  (Requires user decision)
+  *Progress (2025-09-18 02:12 EDT):* A standardized set of LLM prompt examples has been finalized and documented.
 
 - [ ] [`Detail meal planning verification flow`](decisions/phase-1/meal-planning-verification.md): Flesh out user confirmation steps (e.g., edit suggestions, approve shopping additions), including error states, in [`plans/ux-flow.md`](plans/ux-flow.md).  
   *Level of detail:* Sequence diagrams in Mermaid, mobile-specific interactions (e.g., modal popups), cross-reference data models like MealPlan.

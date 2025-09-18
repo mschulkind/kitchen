@@ -100,19 +100,23 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
   - Dynamic suggestions: Input current inventory → Output recipe ideas.
   - Customization: Modify recipes on-the-fly (e.g., substitute ingredients).
 - **Error Handling**: Fallback to rule-based logic if LLM fails or unavailable offline (e.g., use ingredient-optimization algorithm for pantry matching/substitutions); cache responses in IndexedDB for retry; log failures without user disruption (e.g., show "Using cached recipes").
-- **Prompt Templates**: The following 4 prompts have been approved. For full details, see the decision log at [`decisions/phase-1/llm-prompts.md`](decisions/phase-1/llm-prompts.md).
-
+- **Prompt Templates**: A standardized set of prompt examples has been finalized. For full details, see the decision log at [`decisions/phase-1/llm-prompts.md`](decisions/phase-1/llm-prompts.md).
   - **1. Basic Meal Plan Generation**:
+    ```
     "You are a meal planning assistant. Generate a {days}-day meal plan for {servings} people, using as many of these pantry items as possible: {pantry_list} and garden items: {garden_list}. Prioritize ingredient reuse and simple recipes (under 45min prep). Exclude {diet_restrictions}. Output a valid JSON object with the structure: {days: [{day: 'Day 1', recipe_name: string, ingredients_used: string[], new_shopping_list_items: string[], instructions: string}]}"
-
+    ```
   - **2. Recipe Substitution & Customization**:
+    ```
     "You are a recipe customization assistant. The user wants to make '{recipe_name}' which requires {full_ingredients_list}. They only have these items from their pantry: {available_pantry}. Suggest logical substitutions for the missing ingredients. Consider dietary preferences: {prefs}. Output a valid JSON object with the structure: {original_recipe: string, substitutions: [{original: string, substitute: string, rationale: string}], adjusted_instructions: string, nutritional_notes: string}"
-
+    ```
   - **3. Low-Waste Plan with Leftovers**:
+    ```
     "You are a waste-reduction assistant. Create a 3-day meal plan that minimizes food waste. Use leftovers from these previous meals: {previous_meals} and items from the current pantry: {pantry_list}. Focus on {cuisine_pref} recipes and adhere to {diet_prefs}. Output a valid JSON object with the structure: {days: [{day: string, recipe_name: string, uses_leftovers_from: string[], shopping_list_additions: string[]}]}"
-
+    ```
   - **4. Garden Surplus Optimization**:
+    ```
     "You are a garden-to-table assistant. Suggest 2-3 simple recipes that make the most of a garden surplus. The user has: {garden_items_with_quantities}. Supplement with common pantry staples: {pantry_staples}. Respect these dietary restrictions: {diet_restrictions}. Output a valid JSON object with the structure: {recipes: [{recipe_name: string, key_garden_ingredients: string[], full_ingredient_list: string[], instructions: string, prep_time_minutes: int}]}"
+    ```
 
 TODO: Implement prompts in backend (FastAPI endpoint); test with mock responses; add rate limiting (e.g., 10 calls/day free tier).
 
