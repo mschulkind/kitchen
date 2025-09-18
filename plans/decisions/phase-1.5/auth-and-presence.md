@@ -4,8 +4,10 @@
 - [1. Goal](#1-goal)
 - [2. Authentication Strategy](#2-authentication-strategy)
   - [Key Features](#key-features)
+  - [Options & Pros/Cons](#options-proscons)
 - [3. Presence Strategy](#3-presence-strategy)
   - [Key Features](#key-features-1)
+  - [Options & Pros/Cons](#options-proscons-1)
 - [4. UI/UX Considerations](#4-uiux-considerations)
 - [5. Row Level Security (RLS) Policies](#5-row-level-security-rls-policies)
 - [6. Next Steps](#6-next-steps)
@@ -28,6 +30,43 @@ We will use **Supabase Auth**, leveraging its tight integration with the Supabas
 *   **Authentication Methods:** Email/password for core; enable social providers (Google, Apple) via Supabase dashboard config (add provider keys in project settings). Supports Expo's WebView for OAuth flows on mobile.
 *   **Session Management:** Supabase handles token refresh; persist sessions in AsyncStorage for Expo/React Native, with auto-sign-in on app launch.
 *   **Security:** RLS enforced; add email confirmation for sign-ups to prevent spam.
+
+### Options & Pros/Cons
+
+#### Option 1: Email/Password + Social Logins (Recommended)
+- **Description**: Core email/password with optional social providers (Google, Apple).
+- **Pros**:
+  - Familiar and secure for users who prefer traditional logins.
+  - Social logins reduce friction for quick sign-ups, especially on mobile.
+  - Supabase handles OAuth seamlessly with Expo integration.
+  - Supports email confirmation to prevent spam.
+- **Cons**:
+  - Requires users to manage passwords (though Supabase offers magic links as alternative).
+  - Social logins depend on provider availability and privacy concerns.
+
+#### Option 2: Social Logins Only (No Email/Password)
+- **Description**: Rely solely on Google/Apple for auth, no custom passwords.
+- **Pros**:
+  - Faster onboarding, no password creation.
+  - Higher security (no password breaches).
+  - Aligns with mobile ecosystem (e.g., Apple Sign-In on iOS).
+- **Cons**:
+  - Excludes users without social accounts.
+  - Potential lock-in to providers; harder for privacy-focused users.
+  - Invite flows may need email fallback for non-logged-in users.
+
+#### Option 3: Magic Links Only (Passwordless)
+- **Description**: Email-based magic links, no passwords or social.
+- **Pros**:
+  - Simple and secure (no stored passwords).
+  - Easy for mobile (tap link in email).
+  - Low friction for existing email users.
+- **Cons**:
+  - Requires email access every login.
+  - No offline login capability.
+  - Slower for frequent use compared to biometrics.
+
+Recommended: Option 1 for flexibility, aligning with multiuser collaboration needs in brief.md.
 
 ### API Sketch (Authentication):
 
@@ -86,6 +125,40 @@ Supabase's built-in **Presence** feature will be used to track user online statu
 *   **Real-time Tracking:** Integrate with realtime-integration.md channels (e.g., track on 'presence-list:{list_id}'); broadcast user metadata (avatar, name) for rich indicators.
 *   **UI Indicators:** Mobile-optimized: Large (60x60px) circular avatars at screen top/bottom tabs; green dot for online, pulse animation for active edits; tap to view user profile or chat (future).
 
+### Options & Pros/Cons
+
+#### Option 1: Supabase Presence Channels (Recommended)
+- **Description**: Use Supabase's native presence for realtime tracking on resource channels.
+- **Pros**:
+  - Built-in, no extra setup; integrates with auth and realtime subscriptions.
+  - Supports metadata (e.g., user avatar, device type) for rich UI indicators.
+  - Automatic cleanup on disconnect; scales with Supabase.
+  - Ties directly to RLS for secure, role-filtered views.
+- **Cons**:
+  - Limited to Supabase ecosystem; custom events need channel broadcasts.
+  - Potential latency in high-traffic shared resources (mitigated by edge).
+
+#### Option 2: Custom Presence via WebSockets/Polling
+- **Description**: Implement manual presence using Supabase Realtime broadcasts or external service like Pusher.
+- **Pros**:
+  - More control over state (e.g., typing indicators, detailed activity).
+  - Flexible for non-Supabase future migrations.
+- **Cons**:
+  - Increases complexity and maintenance.
+  - Duplicates Supabase features; higher dev time.
+  - Polling wastes battery on mobile.
+
+#### Option 3: Basic Online/Offline Only (No Metadata)
+- **Description**: Simple boolean tracking without user details.
+- **Pros**:
+  - Lightweight; minimal UI changes.
+  - Easier offline handling.
+- **Cons**:
+  - Less engaging UX (no avatars/names).
+  - Misses collaboration cues like "who is editing."
+
+Recommended: Option 1 for seamless integration with existing realtime setup in realtime-integration.md.
+
 ### API Sketch (Presence with Mobile Ties):
 ```javascript
 const presenceChannel = supabase.channel(`presence-resource:${resourceId}`, { 
@@ -123,6 +196,32 @@ presenceChannel.untrack();
 *   In shared views, avatars stack horizontally (scrollable if >3 users); green dot + "Online" label; for conflicts, modal alert: "User X edited item Y—view changes?" with big Yes/No buttons.
 *   Typing indicators: Via presence metadata updates (e.g., { typing: true }); show "Collaborator is adding to list..." in ARIA live region.
 *   Offline UX: Grayed avatars for last-seen; auto-reconnect toast on presence sync.
+
+### Authentication Flow Diagram
+```mermaid
+flowchart TD
+    A[App Launch] --> B{User Authenticated?}
+    B -->|No| C[Show Auth Screen]
+    C --> D[Choose Method: Email/Password or Social]
+    D --> E[Supabase Auth Call: signUp/signInWithPassword/OAuth]
+    E --> F{Error?}
+    F -->|Yes| G[Show Error Toast & Retry]
+    F -->|No| H[Store Session in AsyncStorage]
+    H --> I[Fetch User Profile & Subscribe to Presence]
+    B -->|Yes| I
+    I --> J[Load Shared Resources with RLS]
+    J --> K[Track Presence on Resource Channel]
+    K --> L[UI: Show Avatars & Online Indicators]
+    G --> C
+    style A fill:#f9f,stroke:#333
+    style L fill:#bbf,stroke:#333
+```
+This diagram outlines the mobile-first auth flow, emphasizing quick session restore and presence tie-in.
+
+### Specific Questions for Decision
+- Which auth option do you prefer: 1 (Email + Social, recommended), 2 (Social only), or 3 (Magic links only)?
+- Which presence option: 1 (Supabase channels, recommended), 2 (Custom), or 3 (Basic)?
+- Any additional requirements (e.g., biometric support, custom invite UX)?
 
 ## 5. Row Level Security (RLS) Policies
 
