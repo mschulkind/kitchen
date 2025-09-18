@@ -16,3 +16,8 @@
 -Canned refried beans
 -Shredded parmesan cheese
 -Shredded cheese like cheddar or mozzarella
+-Ramen noodles
+-Instant ramen packets, various flavors
+
+## Perishable
+-Rosemary garlic sourdough bread

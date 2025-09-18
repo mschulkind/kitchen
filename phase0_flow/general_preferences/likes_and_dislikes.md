@@ -23,3 +23,9 @@ once in a while is nice so we don't have to make a separate meal for the kids.
 
 Each meal should have some sort of veggie component. This can be something like pan fried chicken
 breasts with roasted brussels sprouts on the side, or a pasta dish with roasted zucchini mixed in.
+
+## Prioritization
+
+Prioritize using ingredients that are perishable that are in the stock lists. Freezer stuff lasts
+forever, but veggies in the fridge don't last forever or bread in the pantry has a limited shelf
+life.

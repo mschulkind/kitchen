@@ -8,6 +8,9 @@
 -Salad dressing
 -Minced garlic
 
+## Perishables
+-Corn on the cob
+
 ## Other
 
 -Carrots

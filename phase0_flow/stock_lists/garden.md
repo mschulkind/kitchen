@@ -1,4 +1,4 @@
-# Garden Inventory
+# Garden Stock
 
 ## Herbs
 -Sage
