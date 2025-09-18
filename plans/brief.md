@@ -17,19 +17,15 @@ LLM Integration: An LLM agent will be integrated into the backend to provide dyn
 
 This preliminary design document captures the core vision for the app, emphasizing usability and efficiency as the primary design drivers.
 
-## Development Strategy: Phased Mobile-First Approach
+## Scope and Target Audience
+This application is designed for private use by a maximum of two users (a couple). It will be developed exclusively for the Android platform and distributed via side-loading an APK file. There are no plans for a public release on the Google Play Store or for an iOS version. This narrow focus allows for a simplified architecture and a faster development cycle.
 
-To balance speed-to-market with a high-quality native mobile experience, we will adopt a two-phased development strategy. This approach prioritizes validating the core application logic and user flows before committing to a full-featured native build.
+## Development Strategy: Simplified Direct-to-Native Approach
 
-### Phase 1: Headless Backend & Progressive Web App (PWA)
+Given the private, Android-only nature of the app, we will adopt a streamlined, direct-to-native development strategy. This eliminates the need for a phased rollout or a preliminary web application.
 
-1.  **Backend First:** The initial focus will be on building a robust, "headless" backend using Supabase. This includes the database schema, core business logic for meal planning and inventory, user authentication, and LLM integration.
-2.  **Lightweight PWA:** A simple Progressive Web App will be developed using React to serve as the initial frontend. This PWA will be installable on mobile devices and support offline functionality, allowing us to test and validate the primary user experience—from meal planning to ingredient verification and shopping list generation—with real users quickly.
+1.  **Backend First:** The initial focus remains on building a robust, "headless" backend using Supabase. This includes the database schema, core business logic, two-user authentication, and LLM integration.
+2.  **Direct React Native Development:** We will proceed directly to building the Android application using React Native. The focus will be on creating a functional, user-friendly interface that meets the core requirements without the overhead of multi-platform support or App Store compliance.
+3.  **Deployment:** The application will be deployed by generating an APK file that can be side-loaded directly onto the target Android devices.
 
-### Phase 2: Full-Featured React Native App
-
-1.  **Native Build:** Once the backend is battle-tested and the core flows are validated, development will begin on a full-featured mobile application using React Native for both iOS and Android.
-2.  **Enhanced UX:** This phase will focus on creating a polished, native user experience, incorporating features like push notifications, seamless animations, and deeper integration with device hardware.
-3.  **PWA Maintenance:** The PWA can be maintained as a simple web-based alternative for users who prefer not to download a dedicated application.
-
-This phased strategy mitigates risk, allows for early user feedback, and ensures the final native application is built on a solid, proven foundation.
+This simplified strategy significantly reduces complexity and development time, allowing for a rapid path to a usable product for the intended users.
