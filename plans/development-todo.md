@@ -64,10 +64,10 @@ This phase ensures realtime multiuser without delaying core dev—Supabase's SDK
 ### Phase 2: UX Refinements
 These items refine user-facing flows and integrations for intuitive mobile experience.
 
-- [ ] [`Refine categorical UI for shopping lists`](decisions/phase-1/ui-categorical-shopping.md): Expand wireframes with specifics for categories (e.g., drag-to-reorder, swipe-to-checkoff), update mobile text wireframes in [`plans/ux-flow.md`](plans/ux-flow.md).  
+- [x] [`Refine categorical UI for shopping lists`](decisions/phase-1/ui-categorical-shopping.md): Expand wireframes with specifics for categories (e.g., drag-to-reorder, swipe-to-checkoff), update mobile text wireframes in [`plans/ux-flow.md`](plans/ux-flow.md).  
   *Level of detail:* Add subsections with updated Mermaid flowcharts, accessibility notes (e.g., ARIA for screen readers), and usability best practices for touch interfaces.
   *Progress: Review initiated 2025-09-18 00:23 EDT*
-  (Requires user decision)
+  *Progress (2025-09-18 02:06 EDT):* Phased UI/UX strategy for categorical shopping lists has been finalized and documented.
 
 - [ ] [`Develop LLM prompt examples for meal suggestions`](decisions/phase-1/llm-prompts.md): Create 3-5 sample prompts for generating recipes (e.g., "Suggest low-carb meal using [pantry items], optimize for [diet prefs]"), integrate into LLM section of [`plans/design-system.md`](plans/design-system.md) and link from UX flow.  
   *Level of detail:* Bullet-point prompt templates with variables, expected outputs, error-handling (e.g., fallback if LLM unavailable offline); reference brief.md's AI personalization.

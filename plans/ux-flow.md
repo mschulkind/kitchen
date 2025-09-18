@@ -165,13 +165,13 @@ This flow ensures accurate verification, tying LLM suggestions to real inventory
   - Checkboxes to mark as bought; quantities editable via tap-to-increment or slider.
   - Export/share options (e.g., PDF, email, or share link for realtime collab).
   - Realtime multiuser: Live checkmarks propagate (from realtime-integration); presence avatars next to categories (e.g., "Bob viewing Produce").
-  - Text Wireframe (Refined for Categories):
+  - Text Wireframe (Refined for Phased UI):
     ```
     Shopping List (Total: 12 items, ~$25 | 2 Collaborators Online)
     
-    [Collapsible Header: Produce ▼]
-    - [ ] Tomatoes (2) - For Day 1 [Avatar: You]
-    - [ ] Onions (3)     [Swipe to check]
+    [Collapsible Header: Produce ▼] [Avatar: Bob]
+    - [ ] Tomatoes (2) - For Day 1 [Drag Handle]
+    - [x] Onions (3)     [Checked by You]
     
     [Collapsible Header: Dairy ▼]
     - [ ] Butter (1 stick) [Live Check by Alice]
@@ -179,62 +179,49 @@ This flow ensures accurate verification, tying LLM suggestions to real inventory
     [Collapsible Header: Meat ▼]
     - [ ] Chicken (1lb)
     
-    [Search: Filter items...] [Sort: By Store | By Aisle | Custom Drag]
+    [Search: Filter items...] [Sort: Store (MVP) | Custom (V2)]
     [Button: Mark All Bought | Share List | Export PDF]
     [Back to Plan]
     ```
 
 **Interactions (Refined Categorical UI)**:
-- **Drag-to-Reorder**: Long-press item → Drag handle appears; drag within/across categories to reorder (e.g., move "Tomatoes" to top of Produce). Use React Native Reanimated/Gesture Handler for smooth 60fps animation; visual feedback with drop shadows and snap to category boundaries. In multiuser, broadcast reorder via Supabase channel; others see animated update.
-- **Swipe-to-Checkoff**: Right-swipe item → Haptic feedback + checkmark animation; left-swipe to edit quantity/notes. For categories, swipe header to collapse/expand. Optimistic update for offline (queue in conflict-resolution).
-- **Category Management**: Tap header to expand/collapse; long-press to reorder categories (e.g., prioritize Dairy if low-stock alert). Search filters across categories; auto-group uncategorized items.
-- **Multiuser Touches**: When collaborator checks item, show animated check + attribution (e.g., "Checked by Bob"); tap to undo if conflict (LWW alert from conflict-resolution).
-- **Usability Best Practices for Touch**: All targets ≥44x44px (e.g., checkboxes 48px); thumb-friendly bottom placement for reorder/share; reduced motion mode respects device settings. Haptics on swipe/drag for confirmation; voice feedback "Item checked off" for accessibility.
+- **Phased Implementation**:
+    - **MVP (V1)**: Use fixed, server-defined categories (e.g., Produce, Dairy, Meat). Users can collapse/expand categories but not reorder them. This simplifies the initial build while still providing essential organization.
+    - **V2**: Introduce custom categories and smart sorting. Users can create their own categories (e.g., "Aisle 5"), reorder them, and the app will learn their preferred store layout over time.
+- **Drag-to-Reorder (V2)**: Long-press item → A drag handle appears. Drag items within or between categories. Uses `React Native Reanimated/Gesture Handler` for smooth animations. Changes are broadcast to collaborators in real-time.
+- **Swipe-to-Checkoff**: A right-swipe on an item marks it as "bought" with haptic feedback and a satisfying checkmark animation. A left-swipe reveals options to edit quantity or delete. This is an intuitive, one-handed interaction perfect for a user in a busy store.
+- **Multiuser Touches**: When a collaborator checks an item, the UI updates instantly with an animation and an attribution tag (e.g., "Checked by Alice"). Conflicts are handled with a simple "last-write-wins" strategy, accompanied by a toast notification.
 
 **Accessibility Notes**:
 - **ARIA Labels**: Category headers as `role="group" aria-label="Produce section"`; items as `role="checkbox" aria-checked="false" aria-label="Tomatoes, quantity 2, needed for Day 1"`. Reorder drag: `aria-live="polite"` announcements for position changes (e.g., "Tomatoes moved to position 1").
-- **Screen Readers/VoiceOver**: Support TalkBack/VoiceOver for swipe gestures (custom handlers announce "Swipe right to check"); keyboard nav for reorder (arrow keys + Enter to move). High contrast mode for categories (e.g., colored borders); semantic HTML in React Native via react-native-aria.
-- **Testing**: Validate with TalkBack simulator; ensure 100% navigable without sight (e.g., announce live updates from collaborators).
+- **Screen Readers/VoiceOver**: Support for swipe gestures is crucial. Custom actions will announce "Swipe right to check" or "Swipe left to edit." Full keyboard navigation will be supported for reordering items. High-contrast themes will be available.
 
-**Mermaid Flowchart: Categorical Shopping List Interactions**
+**Mermaid Flowchart: Phased Shopping List UI**
 ```mermaid
-sequenceDiagram
-    participant U as User
-    participant C as Collaborator
-    participant A as App (UI)
-    participant S as Supabase (Realtime/DB)
-    
-    U->>A: Open Shopping List
-    A->>S: Subscribe to channel (shared-list:{id})
-    S->>A: Broadcast current items/categories
-    A->>U: Display categorized list
-    
-    U->>A: Swipe item to checkoff (optimistic)
-    A->>S: Update DB via mutation
-    S->>A: Confirm + broadcast to channel
-    Note over C,A: Realtime: C sees checkmark animate
-    C->>A: Drag reorder category
-    A->>S: Broadcast reorder
-    S->>A: Sync for all (LWW if conflict)
-    A->>U: Visual feedback (snap animation)
-    
-    U->>A: Search/Filter
-    A->>U: Update visible categories/items
-    
-    alt Conflict (LWW)
-        S->>A: Incoming newer update from C
-        A->>U: Toast alert + rollback UI
+graph TD
+    subgraph MVP - Fixed Categories
+        A[User opens list] --> B{Fixed categories displayed};
+        B --> C[User swipes item to check];
+        C --> D[Item marked as bought];
+        B --> E[User collapses/expands category];
     end
     
-    U->>A: Export/Share
-    A->>U: Generate PDF or link
+    subgraph V2 - Custom Sorting & Gestures
+        F[User opens list] --> G{Custom categories displayed};
+        G --> H[User long-presses item];
+        H --> I[Drags to reorder within/across categories];
+        I --> J[Order updates for all collaborators];
+        G --> K[User creates new custom category];
+    end
+
+    MVP -- Evolves to --> V2;
 ```
 
 This refined UI ensures efficient, collaborative shopping on mobile, aligning with brief.md's categorical sorting and multiuser realtime.
 
 ## Multiuser Flows
 
-With the shift to realtime multiuser collaboration, we extend the single-user UX flows to support shared experiences across devices/users, while prioritizing mobile usability (e.g., large touch targets, simple alerts). Core features from brief.md (e.g., meal planning, inventory verification, shopping lists) now support collaboration.
+With the shift to realtime multiuser collaboration, we extend the single-user UX flows to support shared experiences across devices/users, while prioritizing mobile usability (e.g., large touch targets, simple alerts).
 
 ### Inviting Collaborators
 - **Flow**: From any shared resource screen (e.g., meal plan or shopping list), tap a prominent "Invite" button (large, full-width for mobile). Select contacts or enter email/share link. Confirm with a simple modal: "Invite [Name] to edit this list?" with big Yes/No buttons.
