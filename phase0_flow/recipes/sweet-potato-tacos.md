@@ -1,5 +1,7 @@
 ### Sweet Potato Tacos with Corn Salsa 🌮
 
+Source: Vegan, at Times: 120+ Recipes for Every Day or Every So Often, page 130
+
 ---
 
 ## For the Tacos
