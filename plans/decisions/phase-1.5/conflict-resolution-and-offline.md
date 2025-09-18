@@ -49,6 +49,26 @@ To ensure a well-rounded decision, here are other common conflict resolution str
 
 Given our focus on rapid development for a mobile-first PWA where the most common action is toggling a checkbox or updating a quantity, the simplicity and low implementation overhead of **Last-Write-Wins** remains the most pragmatic choice for our MVP.
 
+### Future Evolution: Phased Migration to CRDTs
+While LWW is ideal for the MVP, a more sophisticated approach may be needed as the application's collaborative features mature. A transition to CRDTs is the recommended path for a future version (V2).
+
+**Phase 1: MVP (Current Plan)**
+- **Strategy**: Implement **Last-Write-Wins** as described above.
+- **Data Model**: Simple state-based model. An update overwrites the entire record (e.g., `UPDATE shopping_list_items SET checked = true WHERE id = ?`).
+- **Goal**: Rapid development and delivery of core features.
+
+**Phase 2: V2 Migration to CRDTs**
+- **Strategy**: Transition the data synchronization layer to use **Conflict-Free Replicated Data Types**.
+- **Data Model**: Shift from a state-based to an operation-based model. Instead of sending the new state, the client sends the action (e.g., `{'op': 'checkItem', 'itemId': 'uuid-123'}`).
+- **Client-Side Changes**:
+    - Implement a CRDT library (e.g., Y.js, Automerge) to manage the local state and merge operations from the server and other clients.
+    - The sync queue would be adapted to store these operations instead of full state updates.
+- **Backend Changes**:
+    - The backend would need to be adapted to store and relay these operations to all connected clients. Supabase Realtime can still be used as the transport layer.
+- **Benefit**: This would provide a truly seamless and robust multi-user experience, eliminating data loss from concurrent edits and providing a solid foundation for more advanced collaborative features.
+
+By adopting this phased approach, we can move quickly now while ensuring the architecture is prepared for future enhancements.
+
 ## Decision
 *This section will be filled in once the proposal is approved.*
 
