@@ -46,13 +46,14 @@ This phase builds on core setup to enable multiuser sync, focusing on quick inte
    - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.
    - UX Tie-in: Big avatar buttons for invites; simple alerts for conflicts.
     *Progress (2025-09-18 00:59 EDT):* Decision approved to use Google social login exclusively. Documented.
+  
+   - [x] [`Conflict Resolution &amp; Offline Handling`](decisions/phase-1.5/conflict-resolution-and-offline.md): Add last-write-wins logic for simple cases; optimistic UI with sync queues.
+    - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
+    - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
+    *Progress (2025-09-18 01:11 EDT):* Decision finalized for LWW (MVP) and CRDT (V2). Documented.
  
- - [ ] [`Conflict Resolution &amp; Offline Handling`](decisions/phase-1.5/conflict-resolution-and-offline.md): Add last-write-wins logic for simple cases; optimistic UI with sync queues.
-   - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
-   - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
-
-- [ ] [`Notifications Setup`](decisions/phase-1.5/notifications.md): Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
-  - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
+ - [ ] [`Notifications Setup`](decisions/phase-1.5/notifications.md): Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
+   - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
 
 - [ ] [`Testing Multiuser Sync`](decisions/phase-1.5/multiuser-testing.md): Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows.
 
