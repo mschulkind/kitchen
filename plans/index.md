@@ -18,7 +18,7 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 ### [planning-mode.md](planning-mode.md) **Summary**: Configuration spec for the new 'planning' mode, detailing capabilities for conversational spec-building, file updates, git workflows, and integration with the app's architecture.
 
 ### [brief.md](brief.md)
-**Summary**: The core project brief outlining the app's summary, key features (e.g., intelligent meal planning, inventory tracking, categorical checklist UI, optimized shopping lists), technical architecture (backend logic, LLM integration), and high-level goals for usability and efficiency.
+**Summary**: The core project brief outlining the app's summary, key features, and high-level goals. It now includes a **phased, mobile-first development strategy**, starting with a PWA for validation, followed by a full-featured React Native application.
 
 ### [design-system.md](design-system.md)
 **Summary**: Comprehensive technical design including tech stack (Supabase DB/auth, React Native/Expo frontend, FastAPI backend), data models (PantryItem, ShoppingListItem, Recipe, MealPlan, Substitutions with Pydantic schemas), LLM integration (prompt templates for personalization), ingredient optimization algorithm, collaboration architecture (realtime, presence, conflicts, notifications), API endpoint sketches, testing strategy (TDD pyramid, 80% coverage), and offline handling. Updated for Phase 4 completion.
