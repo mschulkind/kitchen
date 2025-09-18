@@ -17,7 +17,7 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 
 ### Day 1: Sweet Potato &amp; Poblano Tacos
 
-*This recipe is from [`phase0_flow/recipes/sweet-potato-tacos.md`](phase0_flow/recipes/sweet-potato-tacos.md). We'll be making our own tortillas using this recipe: [`phase0_flow/recipes/corn-tortillas.md`](phase0_flow/recipes/corn-tortillas.md)!*
+*This recipe is from [`../../recipes/sweet-potato-tacos.md`](../../recipes/sweet-potato-tacos.md). We'll be making our own tortillas using this recipe: [`../../recipes/corn-tortillas.md`](../../recipes/corn-tortillas.md)!*
 
 **Instructions:**
 1.  Follow the instructions in the taco recipe.
