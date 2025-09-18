@@ -31,6 +31,64 @@ This decision outlines the approach to implementing categorical organization for
   - Pros: Balances simplicity and personalization; leverages LLM for smart defaults.
   - Cons: Requires store data integration; higher dev effort for mapping.
 
+## Phased Approach to Hybrid Model
+To achieve the power of the Hybrid model (Option 3) without initial over-engineering, we will adopt a three-phase approach. This allows us to deliver value quickly while building towards the final vision.
+
+### Phase A: Foundational MVP (The Heist Prep)
+This phase mirrors **Option 1** and focuses on core functionality.
+- **UI:** Fixed, predefined categories (e.g., Produce, Dairy, Protein, Pantry, Frozen, General).
+- **Interactions:**
+    - Drag-to-reorder items within and between categories.
+    - Swipe-to-checkoff.
+    - Tap to edit.
+- **Intelligence:** Basic LLM-powered categorization on item creation, with manual override.
+- **Goal:** Launch a solid, usable feature that covers 80% of user needs.
+
+### Phase B: User-Centric Enhancements (The Getaway)
+This phase introduces elements of **Option 2** to add flexibility.
+- **Features:**
+    - **Custom Categories:** Allow users to create, rename, and delete their own categories.
+    - **Category Reordering:** Users can reorder the category sections themselves to match their personal shopping flow.
+- **Data Model:** The `shopping_list_categories` table will need to support user-specific entries and ordering.
+- **Goal:** Increase personalization and adapt the tool to individual user habits.
+
+### Phase C: Smart, Context-Aware UI (The Big Score)
+This is the full realization of **Option 3**.
+- **Features:**
+    - **Store Layout Mapping:** Users can optionally select a grocery store. The app will reorder the categories to match that store's known layout.
+    - **Smart Suggestions:** The LLM can learn from user corrections and past shopping history to improve automatic categorization.
+- **Integration:** Requires a data source for store layouts. This could start with a few major chains and expand over time.
+- **Goal:** Create a hyper-efficient, "smart" shopping list that minimizes time spent in the store.
+
+---
+
+## Final Decision: Phased Approach Approved
+
+The phased approach detailed above is **approved**. Development will begin with **Phase A: Foundational MVP**.
+
+### Phase A: UX Flow
+
+This flow outlines the primary user interactions for the MVP.
+
+```mermaid
+graph TD
+    A[Start: Shopping List] --> B{Add Item};
+    B --> C[LLM categorizes item];
+    C --> D[Item appears in correct category list];
+    D --> E{User Interaction};
+    E --> F[Drag & Drop to reorder/recategorize];
+    E --> G[Swipe right to mark as complete];
+    G --> H[Item moves to 'Completed' section];
+    E --> I[Tap item to open edit modal];
+    I --> J[User edits details];
+    J --> D;
+```
+
+### Accessibility Notes
+- All interactive elements (drag handles, swipe zones, buttons) will be clearly labeled for screen readers using ARIA attributes.
+- The UI will adhere to WCAG 2.1 AA contrast ratios.
+- Keyboard navigation will be fully supported for all interactions.
+
 ## Questions for User
 - What primary categories should be default (e.g., include "Pantry Staples" or focus on perishables)?
 - Preferred interaction: Drag-and-drop, swipe-to-categorize, or voice input via Expo?
@@ -40,4 +98,4 @@ This decision outlines the approach to implementing categorical organization for
 ## Next Steps
 Once decided, update ux-flow.md with wireframes (Mermaid diagrams) and design-system.md with component specs. Reference: [plans/ux-flow.md](../ux-flow.md), [plans/design-system.md](../design-system.md).
 
-*Decision Pending - Awaiting User Input*
+*Decision Finalized: Phased approach approved on 2025-09-18.*
