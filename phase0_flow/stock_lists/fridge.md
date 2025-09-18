@@ -1,7 +1,5 @@
 # Fridge Stock
 
-- Chicken Breasts
-- Eggs
-- Milk
-- Carrots
-- Celery
+-Eggs
+-Milk
+-Carrots
