@@ -177,7 +177,20 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
 This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
 
 ## Testing Strategy
-Align with [.kilocode/rules.md](../.kilocode/rules.md) TDD practices: Test-first, fast suites (<1s), 80%+ coverage on critical paths (e.g., LLM prompts, ingredient-optimization, realtime sync, offline). Structure tests in tests/ mirroring src/; colocate frontend tests. Use mocking for externalities (LLM, Supabase) to ensure speed. Reference [decisions/phase-1.5/multiuser-testing.md](decisions/phase-1.5/multiuser-testing.md) for realtime/multiuser specifics; align with brief.md reliability for core flows (meal planning, verification, shopping).
+Align with TDD practices from [.kilocode/rules/tdd-practices.md](../.kilocode/rules/tdd-practices.md): Test-first, fast suites (&lt;1s), and aim for 80%+ coverage on critical paths. All tests will run against a local Supabase stack to ensure a production-parity environment.
+
+The testing strategy is phased to align with the development roadmap, prioritizing rapid feedback during web development and comprehensive native testing for the mobile release. For full details, see the complete strategy at [`decisions/phase-1.5/multiuser-testing.md`](decisions/phase-1.5/multiuser-testing.md).
+
+### Phase 1: PWA / Web App Development
+- **Focus**: Manual testing and automated component/integration tests (Vitest/RTL).
+- **Environment**: Desktop web browsers.
+- **Manual Tests**: All multiuser scenarios (invites, live edits, offline sync) will be executed on the web PWA for quick iteration.
+- **Automated Tests**: Unit and integration tests will cover shared logic. E2E tests are deferred to the native phase.
+
+### Phase 2: Native Android App Development
+- **Focus**: Automated End-to-End (E2E) testing and manual regression.
+- **Environment**: Android Emulator and physical devices.
+- **Automated E2E Tests**: A full **Detox test suite** will be implemented to run against the Android app, automating critical multiuser and offline flows to ensure native stability.
 
 ### Phased Checklist
 - **Unit Tests** (Broad base, 70% total coverage):
@@ -195,13 +208,13 @@ Align with [.kilocode/rules.md](../.kilocode/rules.md) TDD practices: Test-first
 
 - **E2E Tests** (Top, 10% coverage, critical flows only):
   - **Scope**: Full user journeys (e.g., initiate plan → verify inventory → generate list; multiuser invite → live edit → conflict alert).
-  - **Mobile Focus**: Detox for React Native/Expo (simulate two devices for sync, offline toggle).
+  - **Mobile Focus**: Detox for React Native/Expo (simulate two devices for sync, offline toggle). E2E tests will be implemented during the native Android development phase.
   - **Tools**: Detox (E2E mobile); Playwright if web PWA testing needed.
-  - **Goals**: Cover top 5 flows from brief.md (planning, verification, shopping); run on CI with device matrix (iOS/Android); <30s suite.
+  - **Goals**: Cover top 5 flows from brief.md (planning, verification, shopping); run on CI with device matrix (Android); &lt;30s suite.
 
-**Overall**: CI via GitHub Actions (lint → unit → integration → E2E on PR); coverage report with threshold gates. Mock LLM with fixed responses for determinism; test offline with network throttling. Link to multiuser-testing.md for realtime details.
+**Overall**: CI via GitHub Actions (lint → unit → integration → E2E on PR); coverage report with threshold gates. Mock LLM with fixed responses for determinism; test offline with network throttling. The full multiuser testing plan is detailed in [`decisions/phase-1.5/multiuser-testing.md`](decisions/phase-1.5/multiuser-testing.md).
 
-TODO: Add test setup to Procfile.dev (e.g., test: pytest + vitest); integrate with hosting CI/CD.
+TODO: Add test setup to Procfile.dev (e.g., `test: pytest + vitest`); integrate with hosting CI/CD.
 
 ## Pending Decisions
 - **Authentication**: Decision finalized to use **Google Social Login exclusively** via Supabase Auth. See the [`auth-and-presence.md` decision log](decisions/phase-1.5/auth-and-presence.md) for details.

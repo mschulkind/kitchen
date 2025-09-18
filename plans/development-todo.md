@@ -55,8 +55,9 @@ This phase builds on core setup to enable multiuser sync, focusing on quick inte
  - [x] [`Notifications Setup`](decisions/phase-1.5/notifications.md): Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
    *Progress (2025-09-18 01:19 EDT):* Decision finalized to defer push notifications until post-MVP. Documented.
    - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
-
-- [ ] [`Testing Multiuser Sync`](decisions/phase-1.5/multiuser-testing.md): Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows.
+ 
+- [x] [`Testing Multiuser Sync`](decisions/phase-1.5/multiuser-testing.md): Manual tests for invites, live edits, conflicts; add e2e tests with tools like Detox for mobile realtime flows.
+  *Progress (2025-09-18 01:59 EDT):* Multiuser testing strategy finalized and documented.
 
 This phase ensures realtime multiuser without delaying core dev—Supabase's SDKs allow rapid prototyping of sync features.
 
