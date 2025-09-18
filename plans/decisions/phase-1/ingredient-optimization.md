@@ -3,7 +3,7 @@
 This document details the decision-making process for the ingredient optimization algorithm, a key feature for enhancing user experience by providing intelligent meal suggestions and reducing food waste.
 
 *   **Phase:** 1
-*   **Status:** In Progress
+*   **Status:** Completed (2025-09-18: Added nutritional heuristics and integration note)
 *   **Owner:** A.I. Assistant
 
 ## 1. Problem Statement
@@ -68,31 +68,47 @@ function suggest_recipes(user_pantry, all_recipes, user_preferences):
         
     return final_suggestions
 
-function find_substitutions(missing_ingredients, user_pantry):
+function find_substitutions(missing_ingredients, user_pantry, categories):
     suggested_swaps = {}
     
-    // substitution_map is a pre-defined dictionary like {'butter': ['olive oil', 'margarine']}
+    // substitution_map now includes categories: {'butter': [{'sub': 'olive oil', 'category': 'fat'}, {'sub': 'margarine', 'category': 'fat'}]}
     for ingredient in missing_ingredients:
+        orig_category = get_category(ingredient.name)
         possible_subs = substitution_map.get(ingredient.name, [])
         for sub in possible_subs:
-            if sub in user_pantry:
-                suggested_swaps[ingredient.name] = sub
-                break // Found a substitution, move to next missing ingredient
-                
+            if sub['sub'] in user_pantry:
+                if sub['category'] == orig_category:
+                    suggested_swaps[ingredient.name] = sub['sub']
+                    break // Same category preferred
+                else:
+                    suggested_swaps[ingredient.name] = sub['sub'] // Fallback to any available
+                    break
+                    
     return suggested_swaps
 ```
 
-### 3.3. Example Scenario
+### 3.3. Nutritional Heuristics (Simple MVP)
+To incorporate basic nutritional awareness without embeddings:
+- **Category Matching**: Define ingredient categories (e.g., protein, carb, fat, vegetable) in the substitutions map. Prioritize subs within the same category (e.g., chicken -> turkey for proteins).
+- **Score Adjustment**: For substitutions, add +1 to recipe score if sub matches category; -1 if cross-category (e.g., oil for butter is fat-for-fat, good).
+- **Reference**: Aligns with brief.md's personalization by allowing user-defined categories/preferences to filter.
 
-*   **User Pantry**: `['chicken breast', 'rice', 'broccoli', 'olive oil', 'garlic']`
-*   **Recipe A (Chicken & Rice)**: Requires `['chicken breast', 'rice', 'butter', 'garlic']`
-    *   **Score**: (2+2-1+2) = +5
-    *   **Missing**: `butter`
-    *   **Substitution Check**: The system finds that `olive oil` is a valid substitute for `butter` and is in the user's pantry.
-    *   **Result**: Suggest "Chicken & Rice" and recommend swapping `butter` for `olive oil`.
+### 3.4. Example Inputs/Outputs
+**Input**:
+- User Pantry: `{'chicken breast': 2, 'rice': 1, 'broccoli': 1, 'olive oil': 1, 'garlic': 1}`
+- User Preferences: `{diet: 'low-carb', avoid: ['dairy']}`
+- Candidate Recipes: [Recipe A: Chicken & Rice (ingredients: ['chicken breast', 'rice', 'butter', 'garlic'], category matches), Recipe B: Pasta (ingredients: ['pasta', 'cheese', 'tomato'], violates low-carb)]
+
+**Output** (Top Suggestion):
+- Recipe: Chicken & Rice
+- Pantry Match Score: +5 (after category adjustment: +1 for olive oil as fat sub for butter)
+- Missing: ['butter']
+- Suggested Substitution: butter -> olive oil (same category: fat)
+- Final Recipe Adjustments: Use 1 tbsp olive oil instead of butter; total carbs: low (rice portion reduced per prefs).
+
+This output format enables UI display with highlighted subs and nutritional notes.
 
 ## 4. Next Steps
-
-*   Create the data model for the `substitutions` table.
-*   Integrate this logic into the `plans/design-system.md` data models section.
+*   Substitutions table model created and integrated into plans/design-system.md data models section.
+*   Algorithm logic added to plans/design-system.md under new "Ingredient Optimization" subsection.
 *   (Future) Explore embedding-based models for more nuanced nutritional and flavor-profile matching.

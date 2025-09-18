@@ -199,9 +199,5 @@ customModes:
       - **Git Workflow**: After each set of file changes, execute git commands: pull first, then add/commit/push with descriptive messages
       - **Conversation Structure**: Responses should: 1) Answer directly, 2) Describe file updates made, 3) Suggest next focus areas, 4) Use attempt_completion only for full spec sections
       - **Superseding Instructions**: These rules override general mode behaviors to enforce planning focus—no code changes, no delegation without user prompt
-
-      **Integration with Existing Modes**:
-      - **Handoffs**: After a spec section is fully defined, suggest switch_mode to "architect" for design refinement or "code" for implementation
-      - **Coordination**: Reference orchestrator for multi-mode workflows; pull context from plans/brief.md to stay aligned with app goals
-      - **Transitions**: If conversation shifts to implementation, prompt user approval for mode switch
+      - **Decision Tracking**: With every response, include a summary of the next item that needs a decision along with a link to its decision file. If that decision file does not yet exist or hasn't been expanded, create/expand it first.
     source: project

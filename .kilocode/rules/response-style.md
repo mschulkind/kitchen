@@ -29,3 +29,7 @@
 - Pay close attention to user feedback provided in responses.
 - Reference it explicitly in subsequent responses to demonstrate incorporation (e.g., "Based on your feedback about X, I updated Y").
 - Adapt future outputs accordingly to align with user preferences.
+
+## Completeness
+- Always detail assumptions you've made.
+- Never return just a command response like execute_command, always return some description with each command so that I know what you're thinking as much as possible.

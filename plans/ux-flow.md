@@ -77,65 +77,160 @@ This document outlines the primary user experience flows for the Personalized Di
 - Confirm plan → Proceed to verification.
 
 ### 3. Inventory Verification
-**Goal**: User confirms what's on hand via categorical checklist; app adjusts needs.
+**Goal**: User confirms what's on hand via categorical checklist; app adjusts needs based on MealPlan (from design-system.md) and PantryItem data. This step includes reviewing LLM-generated recipe suggestions, editing quantities/substitutions, and approving additions to shopping list, with error handling for issues like expired items or insufficient stock.
 
 **Key Screens**:
-- **Categorical Checklist Screen**:
-  - Tabs or accordion for locations: Pantry | Fridge | Freezer | Garden.
-  - Checkboxes for ingredients (grouped, with quantities editable).
-  - Large toggles for quick yes/no; search bar for staples.
-  - Text Wireframe:
+- **Categorical Checklist Screen** (Expanded for Confirmation):
+  - Tabs/accordion for locations: Pantry | Fridge | Freezer | Garden (from PantryItem.location enum).
+  - Items grouped by category, showing plan needs (e.g., "Needed: 2 tomatoes for Day 1 MealPlan").
+  - For each item: Checkbox for availability, editable quantity slider, substitution suggestions (from ingredient-optimization).
+  - Review section: Summary of LLM suggestions (e.g., "3 recipes use garden basil—approve?").
+  - Error states: Red highlights for expiry (e.g., "Milk expires soon—use now?"), insufficient (modal: "Only 1 cup flour available (need 2)—substitute or buy?").
+  - Text Wireframe (Refined for Verification):
     ```
-    Verify Ingredients (Plan needs 15 items)
+    Verify Inventory (Plan: 4 Days, 15 Items Needed)
     
     [Tab: Pantry] [Fridge] [Freezer] [Garden]
     
-    Pantry:
-    - [ ] Butter (1 stick) - Needed for Days 1-3
-    - [ ] Flour (2 cups) - Needed for Day 4
-    - [x] Milk (1L) - In stock
+    Pantry (MealPlan Days 1-3):
+    - [ ] Butter (1 stick) - Needed for recipes [Sub: Olive Oil] [Slider: 0-2]
+      (Expiry: Good | Error: None)
+    - [x] Flour (2 cups) - In stock [Edit Quantity]
     
+    Fridge:
+    - [ ] Milk (1L) - Expires in 2 days [Alert: Use soon?]
+    
+    [Review Suggestions: 3 recipes use garden items - Edit/Approve All]
     [Search: Find ingredient...]
-    [Button: Confirm & Generate List] (Disabled until 80% verified)
+    [Button: Confirm Verification] (Enabled after review)
+    [Back to Plan Review]
     ```
 
-**Interactions**:
-- Tap checkbox → Adjust quantity slider if partial; auto-mark based on last sync.
-- Garden tab: Photo upload or manual entry for fresh produce.
-- Progress bar shows verification %; hints like "Using garden tomatoes saves $5".
-- Submit → Backend calculates deficits.
+**Interactions (Detailed Verification Flow)**:
+- **Review LLM Suggestions**: After initial checklist, show modal popup with LLM plan summary (from LLM Integration): "This plan uses 70% pantry—suggested subs for missing: Butter → Oil. Approve or edit?" Big buttons: "Approve Plan" (proceed to shopping) or "Edit Recipes" (back to review with highlights).
+- **Edit & Approve**: Tap item → Modal for quantity/sub (e.g., "Reduce servings? Or add to shopping?"); swipe to approve individual (haptic + check animation). For multiuser, live updates show collaborator edits (e.g., "Alice confirmed tomatoes").
+- **Error States & Handling**:
+  - **Expiry Alert**: Items near expiry (>80% used or <3 days left) show yellow modal: "Milk expires soon—include in today's meal?" Options: "Use Now" (prioritize in plan) or "Buy More" (add to list).
+  - **Insufficient Quantity**: If < needed, red banner + modal: "Only 1 tomato (need 2)—substitute with pantry onion or add to shopping?" Tie to Substitutions model; default to buy.
+  - **Offline Error**: Cached checklist; on submit, queue verification (from conflict-resolution); toast: "Verified offline—sync on reconnect."
+  - **Multiuser Conflict**: If collaborator changes stock during verification, realtime alert: "Inventory updated by Bob—review changes?" with diff highlights.
+- **Mobile-Specific**: Modals full-screen for small devices (e.g., iPhone SE); swipe-up to dismiss edit modal; voice-over announces "Insufficient flour—tap to substitute." Ensure 48px touch targets for sliders/buttons; gesture support (pinch to zoom list if long).
+
+**Mermaid Sequence Diagram: Meal Planning Verification Flow**
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as App UI
+    participant L as LLM/Backend
+    participant S as Supabase/DB
+    participant M as MealPlan Model
+    
+    U->>A: Open Verification (from Plan Review)
+    A->>S: Fetch PantryItem data
+    S->>A: Return inventory by location/category
+    A->>L: Query LLM suggestions (Template 1/4)
+    L->>A: Return optimized MealPlan (days/recipes/needs)
+    A->>U: Display categorical checklist w/ plan highlights
+    
+    loop For each item
+        U->>A: Check/Adjust quantity (swipe/edit modal)
+        alt Error: Expiry/Insufficient
+            A->>U: Show alert modal (use/sub/buy options)
+            U->>A: Resolve (e.g., approve sub)
+        end
+        A->>S: Update PantryItem (optimistic)
+        S->>A: Confirm (realtime broadcast if shared)
+    end
+    
+    U->>A: Review suggestions summary (modal)
+    U->>A: Edit/Approve plan
+    A->>M: Generate final MealPlan (w/ approvals)
+    alt Multiuser
+        S->>A: Incoming change from collaborator
+        A->>U: Conflict alert (LWW from conflict-resolution)
+    end
+    
+    A->>U: Proceed to Shopping List (deficits only)
+    Note over U,S: Cross-ref: MealPlan.days link to verified PantryItem
+```
+
+This flow ensures accurate verification, tying LLM suggestions to real inventory, with robust error handling for mobile usability and multiuser sync.
 
 ### 4. Generate and Optimize Shopping List
-**Goal**: User gets a sorted, actionable list for the store.
+**Goal**: User gets a sorted, actionable list for the store, with categorical organization for quick scanning and editing in multiuser scenarios.
 
 **Key Screens**:
 - **Shopping List Screen**:
-  - List sorted by store layout (Produce first, then Dairy, etc.).
-  - Checkboxes to mark as bought; quantities editable.
-  - Export/share options (e.g., PDF, email).
-  - Text Wireframe:
+  - List sorted by store layout (Produce first, then Dairy, etc.); collapsible category headers for mobile scrolling.
+  - Checkboxes to mark as bought; quantities editable via tap-to-increment or slider.
+  - Export/share options (e.g., PDF, email, or share link for realtime collab).
+  - Realtime multiuser: Live checkmarks propagate (from realtime-integration); presence avatars next to categories (e.g., "Bob viewing Produce").
+  - Text Wireframe (Refined for Categories):
     ```
-    Shopping List (Total: 12 items, ~$25)
+    Shopping List (Total: 12 items, ~$25 | 2 Collaborators Online)
     
-    Produce:
-    - [ ] Tomatoes (2) - For Day 1
-    - [ ] Onions (3)
+    [Collapsible Header: Produce ▼]
+    - [ ] Tomatoes (2) - For Day 1 [Avatar: You]
+    - [ ] Onions (3)     [Swipe to check]
     
-    Dairy:
-    - [ ] Butter (1 stick)
+    [Collapsible Header: Dairy ▼]
+    - [ ] Butter (1 stick) [Live Check by Alice]
     
-    Meat:
+    [Collapsible Header: Meat ▼]
     - [ ] Chicken (1lb)
     
-    [Sort: By Store | By Aisle]
-    [Button: Mark All Bought | Share List]
+    [Search: Filter items...] [Sort: By Store | By Aisle | Custom Drag]
+    [Button: Mark All Bought | Share List | Export PDF]
     [Back to Plan]
     ```
 
-**Interactions**:
-- Drag to reorder; integrate with device maps if possible (future).
-- Check item → Remove from list, update plan costs.
-- "Done Shopping" → Archive list, suggest next plan.
+**Interactions (Refined Categorical UI)**:
+- **Drag-to-Reorder**: Long-press item → Drag handle appears; drag within/across categories to reorder (e.g., move "Tomatoes" to top of Produce). Use React Native Reanimated/Gesture Handler for smooth 60fps animation; visual feedback with drop shadows and snap to category boundaries. In multiuser, broadcast reorder via Supabase channel; others see animated update.
+- **Swipe-to-Checkoff**: Right-swipe item → Haptic feedback + checkmark animation; left-swipe to edit quantity/notes. For categories, swipe header to collapse/expand. Optimistic update for offline (queue in conflict-resolution).
+- **Category Management**: Tap header to expand/collapse; long-press to reorder categories (e.g., prioritize Dairy if low-stock alert). Search filters across categories; auto-group uncategorized items.
+- **Multiuser Touches**: When collaborator checks item, show animated check + attribution (e.g., "Checked by Bob"); tap to undo if conflict (LWW alert from conflict-resolution).
+- **Usability Best Practices for Touch**: All targets ≥44x44px (e.g., checkboxes 48px); thumb-friendly bottom placement for reorder/share; reduced motion mode respects device settings. Haptics on swipe/drag for confirmation; voice feedback "Item checked off" for accessibility.
+
+**Accessibility Notes**:
+- **ARIA Labels**: Category headers as `role="group" aria-label="Produce section"`; items as `role="checkbox" aria-checked="false" aria-label="Tomatoes, quantity 2, needed for Day 1"`. Reorder drag: `aria-live="polite"` announcements for position changes (e.g., "Tomatoes moved to position 1").
+- **Screen Readers/VoiceOver**: Support TalkBack/VoiceOver for swipe gestures (custom handlers announce "Swipe right to check"); keyboard nav for reorder (arrow keys + Enter to move). High contrast mode for categories (e.g., colored borders); semantic HTML in React Native via react-native-aria.
+- **Testing**: Validate with TalkBack simulator; ensure 100% navigable without sight (e.g., announce live updates from collaborators).
+
+**Mermaid Flowchart: Categorical Shopping List Interactions**
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Collaborator
+    participant A as App (UI)
+    participant S as Supabase (Realtime/DB)
+    
+    U->>A: Open Shopping List
+    A->>S: Subscribe to channel (shared-list:{id})
+    S->>A: Broadcast current items/categories
+    A->>U: Display categorized list
+    
+    U->>A: Swipe item to checkoff (optimistic)
+    A->>S: Update DB via mutation
+    S->>A: Confirm + broadcast to channel
+    Note over C,A: Realtime: C sees checkmark animate
+    C->>A: Drag reorder category
+    A->>S: Broadcast reorder
+    S->>A: Sync for all (LWW if conflict)
+    A->>U: Visual feedback (snap animation)
+    
+    U->>A: Search/Filter
+    A->>U: Update visible categories/items
+    
+    alt Conflict (LWW)
+        S->>A: Incoming newer update from C
+        A->>U: Toast alert + rollback UI
+    end
+    
+    U->>A: Export/Share
+    A->>U: Generate PDF or link
+```
+
+This refined UI ensures efficient, collaborative shopping on mobile, aligning with brief.md's categorical sorting and multiuser realtime.
 
 ## Multiuser Flows
 
@@ -175,8 +270,7 @@ These flows build on single-user paths, adding collaboration layers without over
 - **Testing**: Simulate on mobile devices; ensure flows work in 5-10 seconds.
 
 ## TODOs
-- Wireframe tools: Consider Figma prototypes (link in [docs/](docs/)).
-- User Testing: Validate checklist UX with sample users.
-- Integration: Link to backend endpoints in [design-system.md](design-system.md).
+- Flesh out verification flow with prototypes (link Figma).
+- Test modals on devices for touch/voice-over.
 
 References: Align with mobile-first rules in [.kilocode/rules.md](../.kilocode/rules.md).

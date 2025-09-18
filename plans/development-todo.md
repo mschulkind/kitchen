@@ -33,9 +33,10 @@ These items finalize technical choices that underpin UX and implementation.
 ### Phase 1.5: Realtime Collaboration Setup
 This phase builds on core setup to enable multiuser sync, focusing on quick integration via Supabase SDKs for dev speed.
 
-- [ ] [`Integrate Supabase Realtime`](decisions/phase-1.5/realtime-integration.md): Set up client subscriptions for key tables (e.g., meal_plans, inventory, shopping_lists); test live updates with multiple simulated users/devices.
+- [-] [`Integrate Supabase Realtime`](decisions/phase-1.5/realtime-integration.md): Set up client subscriptions for key tables (e.g., meal_plans, inventory, shopping_lists); test live updates with multiple simulated users/devices.
   - API Sketch: Use `supabase.channel('shared-list').on('postgres_changes', { event: '*', schema: 'public', table: 'shopping_lists' }, callback)` for broadcasting changes.
   - Mobile: Ensure Expo compatibility; implement optimistic updates (e.g., local state mutation before DB write).
+  - *Progress (2025-09-18):* Expanded channels to include inventory_items and meal_plans tables with filters; detailed optimistic updates using React Query for mutations, IndexedDB for offline queuing, and mobile-specific UX (e.g., toasts on sync). Pseudocode added for update hooks and reconnect sync.
 
 - [ ] [`Implement User Auth & Presence`](decisions/phase-1.5/auth-and-presence.md): Configure Supabase auth (email/password or social); add presence tracking for online indicators.
   - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.

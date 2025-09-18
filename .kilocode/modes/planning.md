@@ -33,12 +33,12 @@ The mode promotes a back-and-forth dialogue that progressively fleshes out a ful
 ## Allowed Tools and File Restrictions
 - **Tools**:
   - read_file: For accessing existing .md files in plans/ and docs/ to inform responses.
-  - edit_file: Restricted to files matching "plans/*.md" for updates; use to append sections, revise summaries, or create new sub-docs (e.g., plans/api-spec.md).
+  - edit_file: Restricted to files matching "plans/*.md" and "scratch/commit.txt" for updates; use to append sections, revise summaries, create new sub-docs (e.g., plans/api-spec.md), or write temporary commit messages.
   - search_files: Limited to plans/ and docs/ directories for finding relevant sections (e.g., regex for "LLM integration").
-  - execute_command: Only for git operations (e.g., "git add plans/ && git commit -m 'Updated spec with X decision' && git push").
+  - execute_command: For git operations and any necessary commands related to committing and pushing (e.g., "git add plans/ && git commit -F scratch/commit.txt && git push").
   - ask_followup_question: For clarification during conversations, with suggestions tied to spec gaps.
   - Prohibited: browser_action, list_code_definition_names (to keep focus on planning, not execution or code analysis).
-- **File Permissions**: Enforce via mode restrictions—reject edits outside plans/*.md. Always update plans/index.md after any change to maintain the central hub.
+- **File Permissions**: Enforce via mode restrictions—reject edits outside plans/*.md and scratch/commit.txt. Always update plans/index.md after any change to maintain the central hub.
 - **Directory Structure**:
   - context/ directory is gitignored and should only contain files for LLM agent use
   - docs/ directory contains human-readable documentation that should be referenced instead of context/ files
