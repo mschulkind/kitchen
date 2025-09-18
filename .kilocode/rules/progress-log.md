@@ -81,7 +81,7 @@ When the user issues a command like "update progress log: [summary]" (or similar
 
 7. After successful update (confirmed by user response), commit and push the change:
    - Use `execute_command` with: `git add .kilocode/progress/YYYY-MM.md && git commit -m "Update progress log for YYYY-MM-DD: [brief summary]" && git push`.
-   - Follow git workflow rules from [.kilocode/rules/rules.md](.kilocode/rules/rules.md). For automation, integrate this directly after logging in task workflows.
+   - Follow git workflow rules from [.kilocode/rules/git-workflow.md](.kilocode/rules/git-workflow.md). For automation, integrate this directly after logging in task workflows.
 
 8. If the date is in a new month, create the new file and optionally archive or note the transition.
 
