@@ -13,4 +13,4 @@
 - ask (ask): edit_file unrestricted
 - debug (debug): edit_file restricted to *.ts,*.js,*.py
 - orchestrator (orchestrator): edit_file unrestricted
-- planning (planning): edit_file restricted to plans/*.md
+- planning (planning): edit_file restricted to plans/*.md,trash/*
