@@ -18,14 +18,14 @@ LLM Integration: An LLM agent will be integrated into the backend to provide dyn
 This preliminary design document captures the core vision for the app, emphasizing usability and efficiency as the primary design drivers.
 
 ## Scope and Target Audience
-This application is designed for private use by a maximum of two users (a couple). It will be developed exclusively for the Android platform and distributed via side-loading an APK file. There are no plans for a public release on the Google Play Store or for an iOS version. This narrow focus allows for a simplified architecture and a faster development cycle.
+This application is designed for private use by a small number of users. The initial target platforms are a **desktop web application** (for testing and usage on Linux) and an **Android mobile app**. The project will prioritize code sharing to maintain a single, unified codebase for both platforms.
 
-## Development Strategy: Simplified Direct-to-Native Approach
+## Development Strategy: Multi-Platform via Code Sharing
+To accommodate the need for both a testable desktop/web application and a native Android app, we will adopt a multi-platform strategy centered around code sharing with `react-native-web`.
 
-Given the private, Android-only nature of the app, we will adopt a streamlined, direct-to-native development strategy. This eliminates the need for a phased rollout or a preliminary web application.
+1.  **Shared Core Development:** The project will begin by developing a shared core of React components and business logic. This core will be written in a platform-agnostic way, allowing it to run on both the web and native Android.
+2.  **Web-First for Testing:** A web application will be the first target output. This will serve as the primary platform for development, testing, and light usage on a Linux PC. It will be built from the shared core components and can be run in any modern web browser.
+3.  **Android Application Wrapper:** Once the web application and its core components are stable, they will be wrapped in a React Native shell to create the native Android application. This approach ensures that the vast majority of the code is shared, reducing development time and ensuring consistency between the two platforms.
+4.  **Deployment:** The web application can be deployed on any standard web server, and the Android application will be distributed via a side-loadable APK.
 
-1.  **Backend First:** The initial focus remains on building a robust, "headless" backend using Supabase. This includes the database schema, core business logic, two-user authentication, and LLM integration.
-2.  **Direct React Native Development:** We will proceed directly to building the Android application using React Native. The focus will be on creating a functional, user-friendly interface that meets the core requirements without the overhead of multi-platform support or App Store compliance.
-3.  **Deployment:** The application will be deployed by generating an APK file that can be side-loaded directly onto the target Android devices.
-
-This simplified strategy significantly reduces complexity and development time, allowing for a rapid path to a usable product for the intended users.
+This strategy provides a clear path for testing on Linux, delivers a native mobile experience, and creates a flexible foundation for future platform expansion.

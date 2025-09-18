@@ -18,7 +18,7 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 19 | ### [planning-mode.md](planning-mode.md) **Summary**: Configuration spec for the new 'planning' mode, detailing capabilities for conversational spec-building, file updates, git workflows, and integration with the app's architecture.
 20 | 
 21 | ### [brief.md](brief.md)
-22 | **Summary**: The core project brief, updated to reflect a simplified scope for a **private, two-user, Android-only application**. Outlines a direct-to-native development strategy and key features.
+22 | **Summary**: The core project brief, outlining a **multi-platform strategy** for a private app targeting both a desktop web app (for Linux testing) and a native Android app via a shared codebase with `react-native-web`.
 23 | 
 24 | ### [design-system.md](design-system.md)
 25 | **Summary**: Comprehensive technical design including tech stack (Supabase DB/auth, React Native/Expo frontend, FastAPI backend), data models (PantryItem, ShoppingListItem, Recipe, MealPlan, Substitutions with Pydantic schemas), LLM integration (prompt templates for personalization), ingredient optimization algorithm, collaboration architecture (realtime, presence, conflicts, notifications), API endpoint sketches, testing strategy (TDD pyramid, 80% coverage), and offline handling. Updated for Phase 4 completion.
