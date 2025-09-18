@@ -130,14 +130,13 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
 TODO: Implement prompts in backend (FastAPI endpoint); test with mock responses; add rate limiting (e.g., 10 calls/day free tier).
 
 ## Ingredient Optimization
-This section details the heuristic-based algorithm for matching recipes to user pantry, suggesting substitutions, and incorporating basic nutritional awareness. It enhances LLM-generated suggestions by prioritizing available ingredients and minimizing waste, aligning with brief.md's personalization goals.
+This section details the LLM-powered algorithm for matching recipes to the user's pantry, suggesting substitutions, and dynamically generating meal ideas. This approach prioritizes creating an intelligent and flexible user experience, aligning with the core vision of the app. For a full breakdown of the logic, prompt engineering, and rationale, see the detailed decision log.
 
 ### Key Logic
-- **Pantry Match Scoring**: +2 for available ingredients, -1 for missing; filter by dietary preferences first.
-- **Substitution Rules**: Use Substitutions model for swaps (e.g., butter -> olive oil if both fats); prefer same-category matches (+1 score adjustment).
-- **Integration**: Called post-LLM recipe generation or on direct search; outputs adjusted recipes with highlighted subs for mobile UI (e.g., swipe to accept swap).
-- **Pseudocode Reference**: See full steps and examples in [decisions/phase-1/ingredient-optimization.md](decisions/phase-1/ingredient-optimization.md).
-- **Future Enhancements**: Embeddings for flavor/nutritional similarity; tie into user feedback loops for learning preferences.
+- **Dynamic Generation**: Instead of a fixed heuristic system, the app will use a large language model (LLM) to generate recipe and substitution suggestions based on the user's real-time context (pantry, preferences, query).
+- **Prompt Engineering**: The core of the logic resides in carefully constructed prompts that guide the LLM to return structured, reliable JSON data.
+- **Integration**: The LLM is called via a backend API endpoint, which processes the user's context and formats the response for the UI. The system includes fallbacks for offline use or API failures.
+- **Reference**: The complete algorithm flow, prompt structure, and rationale are documented in [`decisions/phase-1/ingredient-optimization.md`](decisions/phase-1/ingredient-optimization.md).
 
 This algorithm ensures efficient, offline-capable optimization using local data models, with realtime sync via Supabase for shared inventories.
 

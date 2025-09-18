@@ -28,8 +28,9 @@ These items finalize technical choices that underpin UX and implementation.
 - [x] Define authentication strategy: **Supabase Auth** will be used, as it integrates seamlessly with the chosen database. Decision documented in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Bullet points for each option, flow diagram in Mermaid (e.g., login → token storage → offline validation), cross-reference hosting.md for cloud integration.
 
-- [-] [`Specify ingredient optimization algorithm`](decisions/phase-1/ingredient-optimization.md): Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).
+- [x] [`Specify ingredient optimization algorithm`](decisions/phase-1/ingredient-optimization.md): Detail logic for suggesting substitutions (e.g., based on pantry similarity scores, nutritional matching via simple heuristics or embeddings), add to data models section in [`plans/design-system.md`](plans/design-system.md).
   *Level of detail:* Pseudocode snippets, bullet-point steps, example inputs/outputs; reference brief.md's personalization goals.
+  *Progress (2025-09-18 00:45 EDT):* Decision finalized to use an LLM-powered approach. Details are in the decision log and integrated into the design system.
 
 ### Phase 1.5: Realtime Collaboration Setup
 This phase builds on core setup to enable multiuser sync, focusing on quick integration via Supabase SDKs for dev speed.
