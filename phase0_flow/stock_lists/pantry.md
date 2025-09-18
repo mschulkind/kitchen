@@ -25,3 +25,26 @@
 
 ## Perishable
 - Rosemary garlic sourdough bread
+
+## Dried Herbs and Spices
+
+### Tier 1: Essential Staples
+* Salt & Pepper
+* Garlic Powder & Onion Powder
+* Paprika
+* Cumin
+
+### Tier 2: Versatile All-Rounders
+* Cayenne Pepper or Red Pepper Flakes
+* Chili Powder
+* Oregano
+* Cinnamon
+* Ginger Powder
+
+### Tier 3: Flavor Enhancers & Specialty Spices
+* Nutmeg
+* Coriander
+* Rosemary
+* Bay Leaves
+* Cloves
+* Thyme
