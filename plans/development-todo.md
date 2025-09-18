@@ -14,15 +14,13 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 ---
 
 ## Phase 0: Markdown-Driven MVP (Weeks 0-1)
-**Goal**: A set of markdown templates that can be manually filled out to generate a meal plan.
+**Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
 
-- [ ] **Template Creation**
+- [ ] **Conversational Flow Setup**
     - [ ] Create a new directory `plans/meal-plan-generator/`.
-    - [ ] Create `plans/meal-plan-generator/pantry.md` template.
-    - [ ] Create `plans/meal-plan-generator/preferences.md` template.
-    - [ ] Create `plans/meal-plan-generator/request.md` template.
+    - [ ] Create templates for the conversational flow (`01-request.md`, `02-options.md`, `03-verification.md`, `04-final-plan.md`).
 - [ ] **Example Generation**
-    - [ ] Create a comprehensive example of a 3-day meal plan using the new templates.
+    - [ ] Walk through a full conversational example in the `plans/meal-plan-generator/example/` directory.
 
 ---
 
