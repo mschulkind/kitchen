@@ -17,18 +17,11 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 
 ### Day 1: Sweet Potato &amp; Poblano Tacos
 
-*This recipe is from [`phase0_flow/recipes/sweet-potato-tacos.md`](phase0_flow/recipes/sweet-potato-tacos.md). We'll be making our own tortillas!*
-
-**For the Tortillas:**
-*   2 cups Masa Harina
-*   1 1/2 cups warm water
-*   Pinch of salt
+*This recipe is from [`phase0_flow/recipes/sweet-potato-tacos.md`](phase0_flow/recipes/sweet-potato-tacos.md). We'll be making our own tortillas using this recipe: [`phase0_flow/recipes/corn-tortillas.md`](phase0_flow/recipes/corn-tortillas.md)!*
 
 **Instructions:**
-1.  Follow the instructions in the recipe for the tacos.
-2.  For the tortillas, mix the Masa Harina and salt in a bowl. Slowly add the water, mixing with your hands until a dough forms. Knead for a few minutes until smooth.
-3.  Divide the dough into 16 balls. Press each ball between two pieces of parchment paper with a heavy pan or tortilla press.
-4.  Cook on a hot, dry skillet for about a minute per side. Keep warm in a clean towel.
+1.  Follow the instructions in the taco recipe.
+2.  Make the tortillas following the recipe link above.
 
 ### Day 2: Pan-fried Chicken Thighs with Roasted Carrots
 
