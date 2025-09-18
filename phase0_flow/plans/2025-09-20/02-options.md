@@ -1,64 +1,62 @@
 # Step 2: Choose Your Meal Plan
 
-Here are a few options for your 3-day meal plan. Please select one by marking it with `[x]`.
+Here are a few options for your 4-day meal plan. Please select one by marking it with `[x]`.
 
 ---
 
-### Option 1: Summer Harvest Feast
-A plan that celebrates the bounty of the garden, especially the corn and peppers.
+### Option 1: The Garden-Forward Italian
+This plan leans heavily on the fresh produce from the garden and fridge.
 
-- **Day 1:** Grilled Chicken Thighs with a side of Corn on the Cob and a fresh Tomato Salad.
-- **Day 2:** Spicy Poblano Pepper and Onion Fajitas using the marinated chicken strips.
-- **Day 3:** Hearty Beef Stew with carrots, potatoes, and a side of that fancy sourdough.
+- **Day 1:** Sweet Potato &amp; Poblano Tacos (uses up those avocados and corn!)
+- **Day 2:** Hearty "Minestrone" Soup using the pork broth, canned tomatoes, pasta, and any leftover garden veggies. Served with the rosemary garlic sourdough.
+- **Day 3:** Pan-Seared Cod with a lemon-butter sauce and a side of garlicky sauteed Swiss Chard.
+- **Day 4:** Pasta with a simple, fresh Cherry Tomato and Basil sauce.
 
 **New Ingredients:**
-- Fajita seasoning
-- Flour tortillas
-- Sour cream
+- Sweet potatoes
+- Red onion
+- Cilantro
+- Chipotle powder
+- Corn tortillas
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 2: Spicy &amp; Savory Adventures
-A menu for those who like a little kick, using those garden peppers to their full potential.
+### Option 2: The Hearty &amp; Meaty Italian
+A more traditional, meat-focused take on Italian comfort food.
 
-- **Day 1:** Fiery Chicken Wings with a cooling side of cucumber and tomato salad.
-- **Day 2:** Instant Ramen "Doctor Up" with sliced smoked sausage, fresh kale, and a spicy broth.
-- **Day 3:** Ground Chicken Chili with a mix of sweet and spicy peppers.
+- **Day 1:** Sweet Potato &amp; Poblano Tacos.
+- **Day 2:** Big Batch of Bolognese sauce using the ground chicken and canned tomatoes. Served over pasta.
+- **Day 3:** Leftover Bolognese sauce repurposed as a topping for baked potatoes, with melted cheese on top.
+- **Day 4:** Smoked Sausage &amp; Peppers, served with a side of rice.
 
 **New Ingredients:**
-- Your favorite hot sauce
-- Chili powder
+- Sweet potatoes
+- Red onion
+- Cilantro
+- Chipotle powder
+- Corn tortillas
+- Celery (for bolognese)
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 3: Italian-Inspired Comfort
-A cozy and satisfying menu with a nod to classic Italian-American flavors.
+### Option 3: The Leftover Artist's Italian
+This plan is all about smart reuse of ingredients and leftovers.
 
-- **Day 1:** Pasta with a simple, fresh Tomato and Basil sauce, topped with Parmesan.
-- **Day 2:** Pan-Seared Cod with a lemon-butter pan sauce and a side of sauteed Swiss Chard.
-- **Day 3:** "Pantry" Minestrone soup with canned tomatoes, beans, pasta, and any extra garden veggies.
-
-**New Ingredients:**
-- Fresh mozzarella cheese
-- Lemons
-
-`[ ]` Choose this plan
-
----
-
-### Option 4: The Carnivore's Delight
-A meat-focused menu for a hearty appetite.
-
-- **Day 1:** Juicy Ribeye Steaks with a side of roasted potatoes and green beans.
-- **Day 2:** Braised Pork Shoulder sandwiches on that rosemary garlic bread.
-- **Day 3:** Smoked sausage and pepper skewers on the grill.
+- **Day 1:** Sweet Potato &amp; Poblano Tacos.
+- **Day 2:** Pan-fried Chicken Thighs with a side of roasted carrots and a simple pan sauce.
+- **Day 3:** Leftover chicken gets shredded and added to a creamy, cheesy pasta dish with kale.
+- **Day 4:** "Pantry" Fried Rice using leftover rice, any remaining chicken, and garden veggies.
 
 **New Ingredients:**
-- BBQ sauce
-- Provolone cheese
+- Sweet potatoes
+- Red onion
+- Cilantro
+- Chipotle powder
+- Corn tortillas
+- Heavy cream or cream cheese
 
 `[ ]` Choose this plan

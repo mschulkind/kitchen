@@ -4,5 +4,5 @@
 - [Request Details](#request-details)
 
 ## Request Details
-- **Number of Days**: 3
+- **Number of Days**: 4
 - **Portions per Meal**: 4 adults
