@@ -15,13 +15,16 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 
 ## Documents
 
-19 | ### [planning-mode.md](planning-mode.md) **Summary**: Configuration spec for the new 'planning' mode, detailing capabilities for conversational spec-building, file updates, git workflows, and integration with the app's architecture.
-20 | 
-21 | ### [brief.md](brief.md)
-22 | **Summary**: The core project brief, outlining a **multi-platform strategy** for a private app targeting both a desktop web app (for Linux testing) and a native Android app via a shared codebase with `react-native-web`.
-23 | 
-24 | ### [design-system.md](design-system.md)
-25 | **Summary**: Comprehensive technical design including tech stack (Supabase DB/auth, React Native/Expo frontend, FastAPI backend), data models (PantryItem, ShoppingListItem, Recipe, MealPlan, Substitutions with Pydantic schemas), LLM integration (prompt templates for personalization), ingredient optimization algorithm, collaboration architecture (realtime, presence, conflicts, notifications), API endpoint sketches, testing strategy (TDD pyramid, 80% coverage), and offline handling. Updated for Phase 4 completion.
+### [project-phases.md](project-phases.md)
+**Summary**: A detailed, phased development plan focused on delivering a usable MVP as quickly as possible. Outlines a 12-week roadmap from a bare-bones MVP to a polished V1, with clear milestones, tasks, and phased decision-making.
+
+### [planning-mode.md](planning-mode.md) **Summary**: Configuration spec for the new 'planning' mode, detailing capabilities for conversational spec-building, file updates, git workflows, and integration with the app's architecture.
+
+### [brief.md](brief.md)
+**Summary**: The core project brief, outlining a **multi-platform strategy** for a private app targeting both a desktop web app (for Linux testing) and a native Android app via a shared codebase with `react-native-web`.
+24 | 
+25 | ### [design-system.md](design-system.md)
+26 | **Summary**: Comprehensive technical design including tech stack (Supabase DB/auth, React Native/Expo frontend, FastAPI backend), data models (PantryItem, ShoppingListItem, Recipe, MealPlan, Substitutions with Pydantic schemas), LLM integration (prompt templates for personalization), ingredient optimization algorithm, collaboration architecture (realtime, presence, conflicts, notifications), API endpoint sketches, testing strategy (TDD pyramid, 80% coverage), and offline handling. Updated for Phase 4 completion.
 
 ### [ux-flow.md](ux-flow.md)
 **Summary**: Detailed user experience flows for primary (meal plan → verification → shopping) and multiuser scenarios, with text wireframes, interactions (drag/swipe for lists, modals for verification), Mermaid diagrams (verification sequence, shopping interactions), accessibility notes (ARIA, touch targets), and mobile considerations (gestures, offline UX). Refined categorical UI and verification flow.
