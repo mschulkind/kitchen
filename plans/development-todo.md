@@ -40,14 +40,16 @@ This phase builds on core setup to enable multiuser sync, focusing on quick inte
   - Mobile: Ensure Expo compatibility; implement optimistic updates (e.g., local state mutation before DB write).
   - *Progress (2025-09-18):* Expanded channels to include inventory_items and meal_plans tables with filters; detailed optimistic updates using React Query for mutations, IndexedDB for offline queuing, and mobile-specific UX (e.g., toasts on sync). Pseudocode added for update hooks and reconnect sync.
   *Progress (2025-09-18 00:53 EDT):* Decision approved and finalized.
-
-- [ ] [`Implement User Auth &amp; Presence`](decisions/phase-1.5/auth-and-presence.md): Configure Supabase auth (email/password or social); add presence tracking for online indicators.
-  - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.
-  - UX Tie-in: Big avatar buttons for invites; simple alerts for conflicts.
-
-- [ ] [`Conflict Resolution & Offline Handling`](decisions/phase-1.5/conflict-resolution-and-offline.md): Add last-write-wins logic for simple cases; optimistic UI with sync queues.
-  - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
-  - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
+ 
+ 
+- [x] [`Implement User Auth &amp; Presence`](decisions/phase-1.5/auth-and-presence.md): Configure Supabase auth (email/password or social); add presence tracking for online indicators.
+   - API Sketch: `supabase.auth.signInWithPassword({ email, password })`; track presence with `supabase.channel('presence').track({ user: userId, online: true })`.
+   - UX Tie-in: Big avatar buttons for invites; simple alerts for conflicts.
+    *Progress (2025-09-18 00:59 EDT):* Decision approved to use Google social login exclusively. Documented.
+ 
+ - [ ] [`Conflict Resolution &amp; Offline Handling`](decisions/phase-1.5/conflict-resolution-and-offline.md): Add last-write-wins logic for simple cases; optimistic UI with sync queues.
+   - TDD: Write unit tests for sync handlers (e.g., mock WebSocket events, assert state updates); integration tests for multiuser scenarios (e.g., two clients editing simultaneously).
+   - Mobile Focus: Use local storage for offline queuing; show user-friendly toasts on sync (e.g., "Changes synced with 2 collaborators").
 
 - [ ] [`Notifications Setup`](decisions/phase-1.5/notifications.md): Integrate Supabase Edge Functions for push alerts on changes; hook to Expo Notifications.
   - API Sketch: Trigger function on DB insert/update: `supabase.functions.invoke('send-notification', { body: { userId, message } })`.
