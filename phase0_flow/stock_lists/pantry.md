@@ -15,7 +15,7 @@
 ## 2nd Tier Staples
 - Pasta
 - Canned Tomatoes
-- Onions
+- White Onions
 - Potatoes
 - Canned refried beans
 - Shredded parmesan cheese
