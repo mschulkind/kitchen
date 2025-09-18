@@ -36,6 +36,19 @@ A rigorous TDD approach will be taken to ensure the reliability of this critical
 
 This proposal provides a robust yet straightforward foundation for building a reliable, multi-user, offline-first application.
 
+### Alternative Strategies Considered
+
+To ensure a well-rounded decision, here are other common conflict resolution strategies and their trade-offs compared to LWW.
+
+| Strategy | Complexity | Pros | Cons | Best For |
+| :--- | :--- | :--- | :--- | :--- |
+| **Last-Write-Wins (LWW)** | **Low** | Simple to implement, often the default behavior of databases. No complex client-side logic needed. | Can lead to unintentional data loss if users are not aware of each other's changes. | Simple applications where the risk of critical data loss from overwrites is low, like our checklist/inventory app. |
+| **Operational Transformation (OT)** | **High** | Preserves user intent by transforming operations so they can be applied in any order. Provides a very granular and intuitive collaboration experience. | Extremely complex to implement correctly. Requires a central server to manage and transform operations, which can be a single point of failure. | Real-time collaborative text editors like Google Docs, where preserving every keystroke is critical. |
+| **Conflict-Free Replicated Data Types (CRDTs)** | **Medium-High** | Mathematically proven to converge to the same state without a central server. Excellent for peer-to-peer and offline-first applications. | Can have higher storage/memory overhead. The data types and merge logic can be complex to reason about and debug. Some operations are difficult to model. | Multi-user applications that require strong eventual consistency and offline capabilities, like collaborative drawing tools or certain types of databases. |
+| **Three-Way Merge** | **Medium** | A common strategy used in version control (like Git). Compares changes against a common ancestor to merge conflicts. | Requires storing the "ancestor" version of the data. Can require user intervention to resolve complex conflicts, which may not be ideal for our seamless mobile UX. | Systems where users can manually resolve merge conflicts, like code repositories or document versioning systems. |
+
+Given our focus on rapid development for a mobile-first PWA where the most common action is toggling a checkbox or updating a quantity, the simplicity and low implementation overhead of **Last-Write-Wins** remains the most pragmatic choice for our MVP.
+
 ## Decision
 *This section will be filled in once the proposal is approved.*
 
