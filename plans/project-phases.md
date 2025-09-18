@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Guiding Principles](#guiding-principles)
+- [Phase 0: Markdown-Driven MVP (Weeks 0-1)](#phase-0-markdown-driven-mvp-weeks-0-1)
 - [Phase 1: The Bare-Bones MVP (Weeks 1-3)](#phase-1-the-bare-bones-mvp-weeks-1-3)
 - [Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)](#phase-2-the-i-can-actually-cook-with-this-mvp-weeks-4-6)
 - [Phase 3: Multi-User &amp; Realtime (Weeks 7-9)](#phase-3-multi-user--realtime-weeks-7-9)
@@ -14,8 +15,20 @@ This document outlines a phased approach to developing the Personalized Dinner &
 
 ## Guiding Principles
 - **Speed to Value**: Get a working, cookable-from version of the app in your hands ASAP.
+- **Manual First**: Test the core LLM value proposition through a markdown-based interface before writing any code.
 - **Minimum Viable UX**: The initial UX will be rough but functional. We'll polish it in later phases.
 - **Phased Decisions**: We'll make just-in-time decisions for each phase, avoiding over-planning.
+
+---
+
+## Phase 0: Markdown-Driven MVP (Weeks 0-1)
+**Goal**: A set of markdown templates that can be manually filled out to generate a meal plan. This allows us to test the entire LLM-driven process without building a UI.
+
+| Milestone | Key Tasks | Decisions to Make |
+| :--- | :--- | :--- |
+| **Week 0: Template Creation** | - Create markdown templates for `pantry`, `preferences`, and `request`. <br> - Develop a comprehensive example of a 3-day meal plan. | - N/A |
+
+**Outcome of Phase 0**: You can manually create a meal plan by filling in a few text files. This validates the core logic and LLM prompts before a single line of frontend or backend code is written.
 
 ---
 
