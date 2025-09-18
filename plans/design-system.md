@@ -66,7 +66,7 @@ This document outlines the technical design decisions for the Personalized Dinne
     - Response: 200 { "notifications": list[dict {message, resource_id, timestamp}] }.
     - Auth: Required.
     - Errors: 401 unauthorized.
-    - Notes: Poll or realtime subscribe; tie to notifications.md Edge Functions.
+    - Notes: Poll or realtime subscribe. Push notifications are deferred until post-MVP as per the decision in [`decisions/phase-1.5/notifications.md`](decisions/phase-1.5/notifications.md).
 
   - **General Best Practices**: All endpoints async (FastAPI); rate limit (5/min free); CORS for frontend; OpenAPI tags for grouping (e.g., "meal-planning", "inventory"). PWA: Cache GETs with service worker; queue PUT/POST offline.
 
@@ -171,7 +171,7 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
 - **User Presence**: Track online status via Supabase presence channels (e.g., show "User X is editing" indicators with large, touch-friendly avatars).
 - **Concurrent Editing & Conflict Resolution**: For the MVP, the system will use a **Last-Write-Wins (LWW)** strategy. The last update to reach the server will be considered the canonical version. For V2, a migration to **CRDTs** is planned to handle concurrent edits more gracefully. This decision is fully documented in [`decisions/phase-1.5/conflict-resolution-and-offline.md`](decisions/phase-1.5/conflict-resolution-and-offline.md). On mobile, simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons will be used.
 - **Invites & Access**: Auth-based invites via Google account integration, leveraging the simplicity of a single sign-on provider. Role-based permissions (owner, editor, viewer) will be stored in Supabase tables.
-- **Notifications**: Push notifications for changes (e.g., "Item added to shared inventory") using Supabase Edge Functions, optimized for mobile with Expo Notifications.
+- **Notifications**: *Post-MVP feature.* Push notifications for changes (e.g., "Item added to shared inventory") will use Supabase Edge Functions, optimized for mobile with Expo Notifications. The decision to defer this feature is documented in [`decisions/phase-1.5/notifications.md`](decisions/phase-1.5/notifications.md).
 - **Reference**: For a detailed breakdown of the realtime architecture, channel design, and implementation pseudocode, see the full decision log at [`decisions/phase-1.5/realtime-integration.md`](decisions/phase-1.5/realtime-integration.md).
 
 This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
