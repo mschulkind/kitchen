@@ -100,32 +100,19 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
   - Dynamic suggestions: Input current inventory → Output recipe ideas.
   - Customization: Modify recipes on-the-fly (e.g., substitute ingredients).
 - **Error Handling**: Fallback to rule-based logic if LLM fails or unavailable offline (e.g., use ingredient-optimization algorithm for pantry matching/substitutions); cache responses in IndexedDB for retry; log failures without user disruption (e.g., show "Using cached recipes").
-- **Prompt Templates**: 3-5 structured templates for key use cases, using JSON output for easy parsing. Prompts include variables from inventory (PantryItem/Recipe models), user prefs (diet, servings), and brief.md goals (efficiency, waste reduction). Offline: Fallback to pre-defined recipe DB or heuristics.
+- **Prompt Templates**: The following 4 prompts have been approved. For full details, see the decision log at [`decisions/phase-1/llm-prompts.md`](decisions/phase-1/llm-prompts.md).
 
-  - **Template 1: Basic Meal Plan Generation** (4-day plan from pantry/garden)
-    Prompt: "Generate a 4-day meal plan for {servings} people, using as many of these pantry items as possible: {pantry_list} and garden items: {garden_list}. Prioritize ingredient reuse and simple recipes (under 45min prep). Exclude {diet_restrictions}. Output JSON: {days: [{day: 'Day 1', recipe_name: str, ingredients_used: list, new_needed: list, instructions: str}]}"
-    Expected Output: JSON array of days with recipes optimized for overlap (e.g., Day 1 uses tomatoes from garden, Day 2 leftovers); if offline, fallback to scored recipes from ingredient-optimization.
-    Error Handling: If no valid plan, return rule-based top-4 from pantry match score.
+  - **1. Basic Meal Plan Generation**:
+    "You are a meal planning assistant. Generate a {days}-day meal plan for {servings} people, using as many of these pantry items as possible: {pantry_list} and garden items: {garden_list}. Prioritize ingredient reuse and simple recipes (under 45min prep). Exclude {diet_restrictions}. Output a valid JSON object with the structure: {days: [{day: 'Day 1', recipe_name: string, ingredients_used: string[], new_shopping_list_items: string[], instructions: string}]}"
 
-  - **Template 2: Recipe Substitution & Customization**
-    Prompt: "Suggest substitutions for missing ingredients in this recipe: {recipe_name} requiring {full_ingredients}. User has {available_pantry}. Dietary: {prefs}. Use categories (protein/fat/veg) for matches. Output JSON: {original_recipe: str, substituted_ingredients: dict (original: sub), adjusted_instructions: str, nutritional_notes: str}"
-    Expected Output: Adjusted recipe with swaps (e.g., butter -> olive oil, same fat category); tie to Substitutions model for validation.
-    Error Handling: Offline fallback to pre-defined substitutions table query.
+  - **2. Recipe Substitution & Customization**:
+    "You are a recipe customization assistant. The user wants to make '{recipe_name}' which requires {full_ingredients_list}. They only have these items from their pantry: {available_pantry}. Suggest logical substitutions for the missing ingredients. Consider dietary preferences: {prefs}. Output a valid JSON object with the structure: {original_recipe: string, substitutions: [{original: string, substitute: string, rationale: string}], adjusted_instructions: string, nutritional_notes: string}"
 
-  - **Template 3: Low-Waste Plan with Leftovers**
-    Prompt: "Create a 3-day meal plan minimizing waste: Use leftovers from {previous_meals} and current {pantry_list}. Focus on {cuisine_pref} recipes. Optimize for {diet_prefs}. Output JSON: {days: [{day: str, recipe: str, uses_leftovers: list, reduces_waste_by: str, shopping_adds: list}]}"
-    Expected Output: Plan chaining leftovers (e.g., Day 1 chicken → Day 2 soup); quantify savings (e.g., "Uses 80% pantry").
-    Error Handling: If LLM timeout, use heuristic chaining from ingredient-optimization (score recipes by leftover match).
+  - **3. Low-Waste Plan with Leftovers**:
+    "You are a waste-reduction assistant. Create a 3-day meal plan that minimizes food waste. Use leftovers from these previous meals: {previous_meals} and items from the current pantry: {pantry_list}. Focus on {cuisine_pref} recipes and adhere to {diet_prefs}. Output a valid JSON object with the structure: {days: [{day: string, recipe_name: string, uses_leftovers_from: string[], shopping_list_additions: string[]}]}"
 
-  - **Template 4: Garden Surplus Optimization**
-    Prompt: "Suggest 2-3 recipes using garden surplus: {garden_items} (quantities: {garden_quantities}), supplemented by {pantry_staples}. {diet_restrictions}. Keep simple for busy users. Output JSON: {recipes: [{name: str, ingredients: list (garden_used, pantry_used), instructions: str, prep_time: int}]}"
-    Expected Output: Recipes highlighting garden (e.g., "Tomato Salad" using 3 tomatoes); prioritize fresh/seasonal.
-    Error Handling: Offline: Local recipe filter by garden tags.
-
-  - **Template 5: Dietary Personalization**
-    Prompt: "Adapt a {base_recipe} for {diet_type} (e.g., low-carb, vegan), using {user_pantry}. Suggest alternatives if needed. Output JSON: {adapted_recipe: str, substitutions: dict, nutritional_summary: str (calories, macros)}"
-    Expected Output: Customized version (e.g., low-carb swap rice for cauliflower); include macros for health focus.
-    Error Handling: Fallback to category-based subs from ingredient-optimization if no LLM.
+  - **4. Garden Surplus Optimization**:
+    "You are a garden-to-table assistant. Suggest 2-3 simple recipes that make the most of a garden surplus. The user has: {garden_items_with_quantities}. Supplement with common pantry staples: {pantry_staples}. Respect these dietary restrictions: {diet_restrictions}. Output a valid JSON object with the structure: {recipes: [{recipe_name: string, key_garden_ingredients: string[], full_ingredient_list: string[], instructions: string, prep_time_minutes: int}]}"
 
 TODO: Implement prompts in backend (FastAPI endpoint); test with mock responses; add rate limiting (e.g., 10 calls/day free tier).
 
