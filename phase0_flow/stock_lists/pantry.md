@@ -22,6 +22,7 @@
 - Shredded cheese like cheddar or mozzarella
 - Ramen noodles
 - Instant ramen packets, various flavors
+- Masa Harina for corn tortillas
 
 ## Perishable
 - Rosemary garlic sourdough bread

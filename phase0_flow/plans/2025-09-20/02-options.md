@@ -59,4 +59,4 @@ This plan is all about smart reuse of ingredients and leftovers.
 - Corn tortillas
 - Heavy cream or cream cheese
 
-`[ ]` Choose this plan
+`[x]` Choose this plan
