@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
+- [Phase 0: Markdown-Driven MVP (Weeks 0-1)](#phase-0-markdown-driven-mvp-weeks-0-1)
 - [Phase 1: The Bare-Bones MVP (Weeks 1-3)](#phase-1-the-bare-bones-mvp-weeks-1-3)
 - [Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)](#phase-2-the-i-can-actually-cook-with-this-mvp-weeks-4-6)
 - [Phase 3: Multi-User &amp; Realtime (Weeks 7-9)](#phase-3-multi-user--realtime-weeks-7-9)
@@ -9,6 +10,19 @@
 
 ## Overview
 This to-do list is aligned with the [Phased Development Plan](project-phases.md). It breaks down the work into actionable items for each phase, with a focus on getting to a usable product as quickly as possible.
+
+---
+
+## Phase 0: Markdown-Driven MVP (Weeks 0-1)
+**Goal**: A set of markdown templates that can be manually filled out to generate a meal plan.
+
+- [ ] **Template Creation**
+    - [ ] Create a new directory `plans/meal-plan-generator/`.
+    - [ ] Create `plans/meal-plan-generator/pantry.md` template.
+    - [ ] Create `plans/meal-plan-generator/preferences.md` template.
+    - [ ] Create `plans/meal-plan-generator/request.md` template.
+- [ ] **Example Generation**
+    - [ ] Create a comprehensive example of a 3-day meal plan using the new templates.
 
 ---
 
