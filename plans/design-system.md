@@ -146,18 +146,18 @@ With the requirement for realtime multiuser collaboration (e.g., shared meal pla
 
 **Pros**: Instant sync across users/devices using client SDKs (JS/Python); integrated auth for user management; supports offline mode with optimistic updates and automatic conflict resolution on reconnect; scalable for multiuser without heavy setup.
 **Cons**: Cloud dependency, but offers free tier for dev/testing; potential latency for very remote users, mitigated by edge functions.
-
-**Offline Handling** (Expanded): Use Supabase's client-side caching for queries (e.g., from()...select() caches recent data); implement optimistic UI updates (local state mutation before DB write, rollback on error). For mutations, queue in IndexedDB (Dexie.js for structured store) or Expo AsyncStorage (mobile key-value); on reconnect (navigator.onLine or Expo NetInfo), replay queue with retries, applying LWW for conflicts (conflict-resolution-and-offline). Cache critical models (PantryItem, MealPlan) for offline view/edit; sync notifications queued if offline.
-
-- **Queue & Sync Flow**: Mutations added to queue on fail/offline; background task (Expo TaskManager) replays on online, invalidates cache on success, broadcasts via realtime channels.
-- **Mobile Optimization**: AsyncStorage for prefs/tokens; limit queue to 50 items to avoid bloat; UX: Offline indicator in header, sync progress bar.
-- **Error Resolution**: If sync conflicts, alert with diff (e.g., "Server has newer inventory—merge?"); fallback to local-only mode if persistent.
-- **Reference**: See [hosting.md](hosting.md) for full sync mechanisms and diagrams.
-
-**Migration Path**: Start with Supabase from scratch for simplicity; hybrid with local IndexedDB for pure offline fallback if needed.
-
+ 
+**Offline Handling**: The application will employ an optimistic UI strategy with a client-side sync queue to ensure offline functionality. For the MVP, conflicts will be managed using a **Last-Write-Wins (LWW)** approach. A future migration to **Conflict-Free Replicated Data Types (CRDTs)** is planned for V2 to support more advanced collaboration. This two-phased approach is detailed in the [`conflict-resolution-and-offline.md` decision log](decisions/phase-1.5/conflict-resolution-and-offline.md).
+ 
+- **Queue & Sync Flow**: Mutations are queued in **IndexedDB** during offline periods. A background task processes the queue upon reconnection, replaying actions and invalidating the local cache on success.
+- **Mobile Optimization**: Use Expo's AsyncStorage for preferences and tokens; display a non-intrusive offline indicator in the UI.
+- **Error Resolution**: If sync conflicts occur under the LWW model, the latest server state will prevail. For critical conflicts, a user notification system may be considered in later iterations.
+- **Reference**: See [hosting.md](hosting.md) for full sync mechanisms and diagrams, and the decision log for the complete rationale.
+ 
+**Migration Path**: The initial implementation will rely on Supabase's default behaviors, which align with LWW. The data models and API will be designed to facilitate a future transition to an operation-based CRDT model.
+ 
 This enables realtime features without sacrificing dev speed, leveraging Supabase's JS SDK for quick integration in our React Native/Expo frontend.
-
+ 
 ## Collaboration Architecture
 
 To support multiuser realtime collaboration while keeping the app mobile-friendly and usable:
@@ -169,7 +169,7 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
     - `inventory:{id}` for `inventory_items`
 - **Optimistic Updates & Offline Handling**: The frontend will use React Query (TanStack Query) for optimistic UI updates, providing a seamless experience even with poor connectivity. Actions taken offline are queued in IndexedDB and synced upon reconnection.
 - **User Presence**: Track online status via Supabase presence channels (e.g., show "User X is editing" indicators with large, touch-friendly avatars).
-- **Concurrent Editing & Conflict Resolution**: Implement last-write-wins for simple cases (e.g., timestamped updates). On mobile, show simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons.
+- **Concurrent Editing & Conflict Resolution**: For the MVP, the system will use a **Last-Write-Wins (LWW)** strategy. The last update to reach the server will be considered the canonical version. For V2, a migration to **CRDTs** is planned to handle concurrent edits more gracefully. This decision is fully documented in [`decisions/phase-1.5/conflict-resolution-and-offline.md`](decisions/phase-1.5/conflict-resolution-and-offline.md). On mobile, simple conflict alerts (e.g., "List changed by another user—reload?") with big confirm buttons will be used.
 - **Invites & Access**: Auth-based invites via Google account integration, leveraging the simplicity of a single sign-on provider. Role-based permissions (owner, editor, viewer) will be stored in Supabase tables.
 - **Notifications**: Push notifications for changes (e.g., "Item added to shared inventory") using Supabase Edge Functions, optimized for mobile with Expo Notifications.
 - **Reference**: For a detailed breakdown of the realtime architecture, channel design, and implementation pseudocode, see the full decision log at [`decisions/phase-1.5/realtime-integration.md`](decisions/phase-1.5/realtime-integration.md).
