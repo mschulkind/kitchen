@@ -1,185 +1,106 @@
-# Decision Log: Multiuser Sync Testing Strategy
+# Decision: Testing Strategy for Multiuser Sync
 
 ## Table of Contents
-- [1. Goal](#1-goal)
-- [2. Testing Pyramid](#2-testing-pyramid)
-  - [2.1. Unit Tests](#21-unit-tests)
-  - [2.2. Integration Tests](#22-integration-tests)
-  - [2.3. End-to-End (E2E) Tests](#23-end-to-end-e2e-tests)
-  - [2.4. E2E Test Example with Detox](#24-e2e-test-example-with-detox)
-- [3. Setup and Tooling](#3-setup-and-tooling)
-- [4. Manual Testing](#4-manual-testing)
-- [5. Next Steps](#5-next-steps)
+- [Status](#status)
+- [Context](#context)
+- [Decision](#decision)
+- [Next Steps](#next-steps)
 
-*   **Phase:** 1.5
-*   **Status:** Completed (2025-09-18: Expanded scenarios/code/examples for full Phase 1.5 coverage; 80%+ on realtime/auth/conflict/offline/notifications paths)
-*   **Owner:** A.I. Assistant
+## Status
+**Finalized**
 
-## 1. Goal
+## Context
+As per the requirements in [`plans/development-todo.md`](../../development-todo.md:59), we need a comprehensive testing strategy for the realtime multiuser synchronization features. The development strategy, outlined in [`plans/brief.md`](../../brief.md), prioritizes a multi-platform approach using `react-native-web`. A **desktop web application** (PWA) will be used for initial development and testing, with a native **Android application** as the final mobile target.
 
-To rigorously test all aspects of the real-time collaboration and synchronization features, including invites (from auth-and-presence), live edits (realtime-integration channels), conflict resolution (LWW from conflict-resolution-and-offline), notifications (Edge triggers), and offline behavior, ensuring a stable and intuitive user experience. Align with rules.md TDD: tests first, <1s runs, 80%+ coverage on critical paths (sync/conflict), mocking for externalities.
+This testing plan must therefore account for both environments. Manual testing will be performed primarily on the web application for rapid feedback, while automated E2E tests with Detox will target the Android platform specifically to validate mobile-native functionality.
 
-## 2. Testing Pyramid
+## Phased Testing Strategy
+To align with the project's development roadmap, our testing efforts will be phased as follows. This ensures we apply the right type of testing at the right time.
 
-Our testing strategy will follow the principles of the testing pyramid, with a broad base of unit tests, a smaller number of integration tests, and a select few end-to-end (E2E) tests for critical user flows. Total coverage goal: 80%+ on Phase 1.5 features; use Vitest for JS/TS, pytest if backend involved.
+### Phase 1: PWA / Web App Development
+During the initial development phase focused on the web application, testing will prioritize speed and core logic validation.
 
-### 2.1. Unit Tests
+-   **Focus**: Manual testing and component/integration tests (Vitest/RTL).
+-   **Environment**: Desktop web browsers (e.g., Chrome, Firefox).
+-   **Manual Testing**: All manual test scenarios (invites, live edits, offline sync) will be executed on the web app. This allows for rapid iteration and debugging using browser developer tools.
+-   **Automated Testing**: We will write unit and integration tests for the shared React components and business logic. E2E tests with Detox are **deferred** at this stage, as they are specific to the native Android environment.
 
-*   **Scope:** Individual functions and components in isolation.
-*   **Tools:** Vitest or Jest with MSW for API mocks.
-*   **Focus Areas:**
-  *   **Sync Handlers:** Mock WebSocket events from Supabase and assert local state updates (e.g., Zustand store).
-    ```javascript
-    // test/syncHandlers.test.js
-    import { vi } from 'vitest';
-    import { handleIncomingChange } from '../syncHandlers';
+### Phase 2: Native Android App Development
+Once the core features are stable on the web, development will shift to the native Android wrapper. At this point, testing expands to include mobile-specific validation.
 
-    test('handleIncomingChange applies server update on LWW (from conflict-resolution)', () => {
-      const mockPayload = { new: { id: 'item1', quantity: 5, updated_at: '2025-09-18T03:10:00Z' } };
-      const localState = { item1: { quantity: 3, updated_at: '2025-09-18T03:09:00Z' } };
-      const mockUpdateLocal = vi.fn();
-      const mockToast = vi.fn();
+-   **Focus**: End-to-end (E2E) testing and manual regression testing on a native device/emulator.
+-   **Environment**: Android Emulator and physical Android devices.
+-   **Manual Testing**: A full regression run of the manual test scenarios will be performed on the Android app to catch any platform-specific bugs.
+-   **Automated E2E Testing**: The **Detox test suite will be implemented** during this phase. The test cases outlined below will be automated to run against the Android app, ensuring that critical multiuser and offline flows work reliably in a native context.
 
-      handleIncomingChange(mockPayload, localState, mockUpdateLocal, mockToast);
-      expect(mockUpdateLocal).toHaveBeenCalledWith(mockPayload.new);
-      expect(mockToast).toHaveBeenCalledWith(expect.stringContaining('applied'));
-    });
-    ```
-  *   **UI Components:** Test rendering for states (online/offline/conflict); e.g., avatar presence from auth-and-presence.
-  *   **Offline Queue:** Test add/remove/process (from conflict-resolution).
-    ```javascript
-    test('syncMutation skips on server newer timestamp', async () => {
-      const mockSupabase = { from: () => ({ select: () => ({ single: () => Promise.resolve({ updated_at: '2025-09-18T03:11:00Z' }) }) }) };
-      const mutation = { updated_at: '2025-09-18T03:10:00Z' };
-      await syncMutation(mutation, mockSupabase);
-      expect(mockSupabase.from().update).not.toHaveBeenCalled();
-    });
-    ```
+This phased approach allows us to validate core functionality quickly on the web and then build a robust, mobile-specific E2E test suite for long-term stability on Android.
 
-### 2.2. Integration Tests
+## Decision
+We will adopt a two-pronged, phased testing strategy:
 
-*   **Scope:** Interactions between components/client-backend mocks.
-*   **Tools:** React Testing Library + MSW to mock Supabase realtime/auth APIs.
-*   **Focus Areas:**
-  *   **Multi-user Scenarios:** Simulate clients with mocked channels (realtime-integration).
-    *   Client A adds item to shopping_list_items; assert B receives via mock postgres_changes, UI updates.
-    *   Simultaneous edits: Mock two payloads, test LWW (conflict-resolution) resolves with timestamps.
-    *   Invite flow: Mock auth signIn, insert to memberships (auth-and-presence), assert presence track and notification invoke (notifications).
-    *   Offline sync: Mock navigator.onLine false, add to queue, then online, assert Supabase update and realtime broadcast.
-  *   **Auth and Presence:** Mock signInWithPassword, assert channel.track (auth-and-presence), other client sees sync event.
-    ```javascript
-    // test/multiuserIntegration.test.js
-    test('invite notifies and syncs presence', async () => {
-      const mockSupabase = mswSetup(); // MSW mock for auth/realtime
-      await userEvent.click(screen.getByText('Invite User B'));
-      expect(mockSupabase.from('resource_memberships').insert).toHaveBeenCalled();
-      expect(mockSupabase.functions.invoke).toHaveBeenCalledWith('send-invite-email'); // From notifications
-      // Mock presence sync, assert UI avatars update
-      fireEvent(new CustomEvent('presence-sync', { detail: { users: [{ id: 'B', online: true }] } }));
-      expect(screen.getByText('User B Online')).toBeInTheDocument();
-    });
-    ```
+### 1. Manual Testing Scenarios
+A dedicated QA or development team member will execute the following manual tests using at least two separate browser windows or devices to simulate a collaborative environment. These tests will be performed on the **web application** running locally.
 
-### 2.3. End-to-End (E2E) Tests
+- **Invitation Flow:**
+  - User A invites User B to a shared shopping list.
+  - Verify User B receives the invitation (e.g., in-app notification).
+  - Verify User B can accept and access the shared list.
+  - User A removes User B's access.
+  - Verify User B can no longer access the list.
 
-*   **Scope:** Full user flows in real environment.
-*   **Tool:** Detox for React Native/Expo, orchestrating multiple devices/simulators.
-*   **Focus Areas (Critical Flows):**
-  *   **Invitation Flow:** User A invites B (auth), B accepts, both edit list (realtime), B gets push (notifications).
-  *   **Live Editing Flow:** A/B concurrent adds/checkoffs on shopping_list_items, verify sync via channels.
-  *   **Offline-to-Online Sync:** A offline adds items (queue), online syncs, B sees updates; test conflict if B edits meanwhile (LWW).
-  *   **Conflict Resolution:** A/B edit same item, assert toast on overwrite, UI reflects last write.
-  *   **Notifications:** A adds item, B receives push in background, taps to open list.
+- **Live Edits &amp; Synchronization:**
+  - User A and User B are viewing the same shopping list in different browser tabs.
+  - User A adds an item. Verify it appears instantly for User B.
+  - User B checks off an item. Verify it updates instantly for User A.
+  - User A edits the quantity of an item. Verify the change for User B.
+  - Both users add items simultaneously. Verify both items appear for both users.
 
-### 2.4. E2E Test Example with Detox
+- **Conflict Handling (based on Last-Write-Wins):**
+  - User A and User B edit the name of the *same* item at nearly the same time in their respective browser tabs.
+  - Verify that the last change saved is the one that persists for both users.
+  - Verify there is a clear but unobtrusive UI indicator of the change (e.g., a subtle highlight or toast message).
 
-Detox is uniquely suited for our needs because it can orchestrate multiple simulators. Here is a conceptual test case for a live editing flow:
+- **Presence Indicators:**
+  - User A and User B are on the same list.
+  - Verify that both users can see that the other is "online" or "active" on that list.
+  - User B navigates away or closes the app.
+  - Verify User A sees User B's presence indicator disappear.
 
-```javascript
-// e2e/shopping-list.test.js
-describe('Shared Shopping List', () => {
-  let listId;
+- **Offline Syncing:**
+  - User A opens the web app and loads a shared list.
+  - User A disconnects from the network (e.g., using browser developer tools).
+  - User A checks off three items. Verify the UI updates optimistically.
+  - User A reconnects to the network.
+  - Verify the changes are synced and are visible to User B on their device.
+  - Verify a toast message confirms the successful sync.
 
-  beforeAll(async () => {
-    // Start two simulators: 'userA' and 'userB'
-    await detox.init(); 
-    await device.launchApp({ newInstance: true });
-    // Assume login and list creation happens here, storing the listId
-    listId = await createSharedShoppingList('userA');
-    await launchAppForUser('userB', listId); 
-  });
+### 2. Automated E2E Testing with Detox
+For long-term stability on the **native mobile platform**, we will implement an e2e test suite using Detox. These tests will be run against the compiled **Android application**.
 
-  it('should sync new items between users in real-time', async () => {
-    // On User A's device, add a new item
-    await device.select('userA');
-    await element(by.id('add-item-input')).typeText('Apples');
-    await element(by.id('add-item-button')).tap();
-    
-    // On User B's device, wait for the item to appear
-    await device.select('userB');
-    await waitFor(element(by.text('Apples'))).toBeVisible().withTimeout(5000);
-    
-    // On User B's device, check off the item
-    await element(by.id('item-checkbox-Apples')).tap();
+- **Setup:**
+  - Configure Detox in the project for the **Android emulator**. (iOS is out of scope for now).
+  - Create helper functions to manage test users and shared list states (e.g., `createSharedList(userA, userB)`).
+  - Tests will run against the local Supabase stack managed by the `Procfile.dev` setup.
 
-    // On User A's device, assert that the item is now checked
-    await device.select('userA');
-    await expect(element(by.id('item-checkbox-Apples'))).toHaveValue('checked');
-  });
+- **Initial Test Cases:**
+  - **Test Case 1: Live Item Addition**
+    - `userA` launches the app and creates a shared list.
+    - `userB` launches the app and accepts an invite to the list.
+    - `userA` adds "Milk" to the list.
+    - Assert that `userB`'s app shows "Milk" within a reasonable time (~2 seconds).
+  - **Test Case 2: Live Item Check-off**
+    - Building on the previous state...
+    - `userB` taps to check off "Milk".
+    - Assert that `userA`'s app shows "Milk" as checked off.
+  - **Test Case 3: Offline Sync**
+    - `userA` launches the app and loads a list.
+    - `userA`'s device simulates going offline.
+    - `userA` adds "Bread" to the list.
+    - `userA`'s device simulates coming back online.
+    - Assert that `userB`'s app shows "Bread" on their list after the sync.
 
-});
-```
-*(This is a conceptual example. The actual Detox API might differ slightly.)*
-
-Additional Example - Invite & Conflict:
-```javascript
-it('invites user and handles conflict', async () => {
-  await device.select('userA');
-  await element(by.id('invite-button')).tap();
-  await element(by.id('email-input')).typeText('userb@example.com');
-  await element(by.id('send-invite')).tap();
-
-  // Switch to B, accept invite
-  await device.select('userB');
-  await element(by.id('accept-invite')).tap(); // Deep link from notification mock
-  await expect(element(by.text('Shared List'))).toBeVisible();
-
-  // A adds item
-  await device.select('userA');
-  await addItem('Milk');
-
-  // B edits same (conflict simulation)
-  await device.select('userB');
-  await element(by.id('milk-quantity')).typeText('2');
-  await element(by.id('save')).tap();
-
-  // A tries to edit to 3, but B's wins (mock timestamp)
-  await device.select('userA');
-  await element(by.id('milk-quantity')).typeText('3');
-  await element(by.id('save')).tap();
-  await expect(element(by.text('2'))).toBeVisible(); // LWW
-  await expect(element(by.text('Update from User B'))).toBeVisible(); // Toast
-});
-```
-
-## 3. Setup and Tooling
-
-*   **Detox Configuration:** Two devices (iOS simulator 'userA', Android 'userB'); parallel execution for speed.
-*   **Mock Server:** MSW for CI (mock Supabase realtime/auth/notifications); seed test DB with Supabase CLI for local.
-*   **Test Data:** Pre-seed users/lists/memberships; reset between tests via supabase db reset.
-*   **Coverage:** Use Vitest --coverage; target 80%+ on src/realtime, auth, offline modules; <1s total run with mocks.
-
-## 4. Manual Testing
-
-In addition to automated tests, structured manual testing will be essential.
-
-*   **Test Plan:** Document in plans/testing-plan.md with scenarios: invites (email/social), live edits (2+ browsers/devices), conflicts (simultaneous), offline (network toggle), notifications (physical devices for push).
-*   **Device Matrix:** iOS (iPhone 14 simulator/physical), Android (Pixel emulator), network: WiFi/5G/airplane/offline; browsers for PWA fallback.
-*   **Exploratory Testing:** Bug bashes with team; log issues in GitHub issues linked to decisions.
-
-## 5. Next Steps
-
-*   Set up Detox/MSW in project; write first unit test for sync handler.
-*   Develop E2E suite for top 3 flows (invite, live edit, conflict).
-*   Create manual plan doc and run initial session.
-*   Integrate testing strategy outline into design-system.md (Phase 4).
+## Next Steps
+- Await approval of this proposed strategy.
+- Upon approval, change the status to **Finalized**.
+- Begin implementation of the Detox test suite setup.
+- Execute a full manual test run.

@@ -14,6 +14,8 @@ This document defines the system for maintaining a daily progress log to track a
 
 The progress logs are tracked in Git for persistence and review. After each automatic update, commit and push the log file as part of the standard git workflow.
 
+Include liberal links to other files that are involved.
+
 ## File Structure
 
 Progress logs are stored in the `.kilocode/progress/` directory (create if it does not exist). Each file represents one month and is named `YYYY-MM.md`, where:
