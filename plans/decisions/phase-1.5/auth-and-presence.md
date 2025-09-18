@@ -8,6 +8,7 @@
 - [3. Presence Strategy](#3-presence-strategy)
   - [Key Features](#key-features-1)
   - [Options & Pros/Cons](#options-proscons-1)
+  - [Self-Hosting Availability for Presence](#self-hosting-availability-for-presence)
 - [4. UI/UX Considerations](#4-uiux-considerations)
 - [5. Row Level Security (RLS) Policies](#5-row-level-security-rls-policies)
 - [6. Next Steps](#6-next-steps)
@@ -124,6 +125,11 @@ Supabase's built-in **Presence** feature will be used to track user online statu
 ### Key Features:
 *   **Real-time Tracking:** Integrate with realtime-integration.md channels (e.g., track on 'presence-list:{list_id}'); broadcast user metadata (avatar, name) for rich indicators.
 *   **UI Indicators:** Mobile-optimized: Large (60x60px) circular avatars at screen top/bottom tabs; green dot for online, pulse animation for active edits; tap to view user profile or chat (future).
+
+### Self-Hosting Availability for Presence
+Supabase's Realtime features, including Presence, are fully available and free in the self-hosted open-source stack. The self-hosted option uses Docker Compose or Kubernetes to run the entire platform (database, auth, realtime, etc.) on your own infrastructure, with no licensing fees—only costs for hosting resources (e.g., VPS or cloud VM). The Realtime server is built on open-source Elixir and Phoenix Framework, and Presence is included without additional charges or limitations. For setup, clone the supabase/supabase repo, configure docker-compose.yml with environment variables, and run `docker compose up`. This aligns with local development strategies in design-system.md, enabling production-like testing of collaborative features.
+
+Reference: Supabase docs on self-hosting (docker/ directory in repo) and Realtime (Elixir-based, integrated with Postgres via WALRUS for RLS).
 
 ### Options & Pros/Cons
 
