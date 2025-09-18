@@ -30,3 +30,9 @@ Each meal should have some sort of veggie component. This can be something like 
 ## Prioritization
 
 Prioritize using ingredients that are perishable that are in the stock lists. Freezer stuff lasts forever, but veggies in the fridge don't last forever or bread in the pantry has a limited shelf life.
+
+## Sequencing
+
+Line up meals in a plan that share as many ingredients as possible from the list of things that need
+to be purchased that aren't already in stock. Also sequence recipes where the leftovers from one
+night can be repurposed for the next night's recipe.
