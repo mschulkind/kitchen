@@ -70,10 +70,17 @@ While LWW is ideal for the MVP, a more sophisticated approach may be needed as t
 By adopting this phased approach, we can move quickly now while ensuring the architecture is prepared for future enhancements.
 
 ## Decision
-*This section will be filled in once the proposal is approved.*
+**Approved on 2025-09-18.**
+
+The project will proceed with a **two-phased strategy**:
+1.  **MVP**: Implement a **Last-Write-Wins (LWW)** conflict resolution strategy combined with an optimistic UI and an IndexedDB-based sync queue for offline handling.
+2.  **V2 (Future Evolution)**: Plan for a migration to a **Conflict-Free Replicated Data Types (CRDTs)** model to support more advanced collaborative features.
 
 ## Rationale
-*This section will detail why the chosen approach is the best fit for the project.*
+This decision strikes a critical balance between **speed of delivery** for the MVP and **long-term architectural scalability**.
+
+- The **LWW** approach is the simplest to implement, allowing us to deliver the core offline and multi-user features quickly. For the primary use cases of the app (e.g., managing shared lists), the risk of significant data loss from concurrent edits is low, making LWW a pragmatic initial choice.
+- Acknowledging the limitations of LWW, the plan for a future migration to **CRDTs** provides a clear path to a more robust and scalable system. This foresight ensures that the application can evolve to handle more complex collaboration scenarios without requiring a fundamental architectural rethink. It is the responsible way to build for the future without over-engineering for the present.
 
 ## Implementation Details
 *This section will provide technical details for implementation.*
