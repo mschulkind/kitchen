@@ -88,5 +88,3 @@ When the user issues a command like "update progress log: [summary]" (or similar
 8. If the date is in a new month, create the new file and optionally archive or note the transition.
 
 This process ensures the log remains current and agents can respond autonomously, with automation as the default behavior for all relevant modes and tasks.
-
-For generic guidelines, see [.kilocode/rules/library/progress-log-automation.md](.kilocode/rules/library/progress-log-automation.md).
