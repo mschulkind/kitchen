@@ -16,4 +16,5 @@
 - Chili (can be made into omelettes)
 - Breakfast for dinner
 - Fried rice. can include veggies and frozen cooked cubed chicken breasts.
-
+- Roast chicken. Simple nytimes recipes. Also roasted brussels sprouts on the side.
+    - next day use leftovers to make sandwiches on sourdough, with an herb mayo (herbs from the garden), cheese (provolone or swiss), and then chopped up chicken and brussels.
