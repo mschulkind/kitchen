@@ -43,23 +43,28 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 5.  **Important:** Shred the leftover chicken and store in the fridge for tomorrow.
 
 ****
-#### **Option B: Oven-Baked with Rosemary & Garlic**
-*A hands-off oven recipe that fills the kitchen with a great aroma.*
+#### **Option B: Oven-Baked with Rosemary, Garlic & Onion (with Pan Gravy)**
+*A hands-off oven recipe that fills the kitchen with a great aroma, now with a simple gravy.*
 
 **Ingredients:**
 *   4-6 boneless, skinless Chicken Thighs
 *   1 lb Carrots, peeled and chopped
+*   1 Onion, cut into wedges
 *   2 tbsp Olive Oil
 *   2 cloves Garlic, minced
 *   1 tbsp fresh Rosemary, chopped
+*   1/2 cup Beef Broth
+*   1 tbsp Butter (optional)
 *   Salt & Pepper
 
 **Instructions:**
 1.  Preheat oven to 400°F.
-2.  In a bowl, toss the chicken thighs with olive oil, minced garlic, rosemary, salt, and pepper.
-3.  Arrange the chicken and the carrots on a single sheet pan.
-4.  Bake for 20-25 minutes, or until the chicken is cooked through and the carrots are tender.
-5.  **Important:** Shred the leftover chicken and store in the fridge for tomorrow.
+2.  In a bowl, toss the chicken thighs, carrots, and onion wedges with olive oil, minced garlic, rosemary, salt, and pepper.
+3.  Arrange everything on a single sheet pan.
+4.  Bake for 20-25 minutes, or until the chicken is cooked through and the vegetables are tender.
+5.  Remove the chicken and vegetables to a platter. Scrape all the drippings from the pan into a small saucepan.
+6.  Add the beef broth to the saucepan and bring to a simmer, scraping up any last bits. Let it reduce for 2-3 minutes. For a richer sauce, whisk in the butter.
+7.  **Important:** Shred the leftover chicken and store in the fridge for tomorrow. You can drizzle a little gravy over it to keep it moist.
 
 ****
 #### **Option C: Pan-Seared with a Sage & Chive Pan Sauce**
