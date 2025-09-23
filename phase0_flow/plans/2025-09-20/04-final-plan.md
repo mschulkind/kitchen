@@ -6,16 +6,16 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 
 ## The Plan
 
-*   **Day 1:** Sweet Potato &amp; Poblano Tacos
-*   **Day 2:** Pan-fried Chicken Thighs with Roasted Carrots
-*   **Day 3:** Creamy Chicken &amp; Kale Pasta
+*   **Day 1:** Sweet Potato & Poblano Tacos
+*   **Day 2:** Chicken Thighs with Roasted Carrots (See options below)
+*   **Day 3:** Creamy Chicken & Kale Pasta
 *   **Day 4:** "Pantry" Fried Rice
 
 ---
 
 ## Recipes
 
-### Day 1: Sweet Potato &amp; Poblano Tacos
+### Day 1: Sweet Potato & Poblano Tacos
 
 *This recipe is from [`../../recipes/sweet-potato-tacos.md`](../../recipes/sweet-potato-tacos.md). We'll be making our own tortillas using this recipe: [`../../recipes/corn-tortillas.md`](../../recipes/corn-tortillas.md)!*
 
@@ -23,12 +23,14 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 1.  Follow the instructions in the taco recipe.
 2.  Make the tortillas following the recipe link above.
 
-### Day 2: Pan-fried Chicken Thighs with Roasted Carrots
+### Day 2: Chicken Thighs with Roasted Carrots
 
-*A simple, classic meal. We'll save the leftover chicken for tomorrow.*
+*A simple, classic meal. We'll save the leftover chicken for tomorrow. Choose one of the following preparations.*
 
+****
+#### **Option A: Simple Pan-Fried (Original)**
 **Ingredients:**
-*   4-6 Chicken Thighs
+*   4-6 boneless, skinless Chicken Thighs
 *   1 lb Carrots, peeled and chopped
 *   Olive Oil
 *   Salt, Pepper, Garlic Powder
@@ -37,10 +39,54 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 1.  Preheat oven to 400°F.
 2.  Toss carrots with olive oil, salt, and pepper. Roast for 20-25 minutes, until tender.
 3.  Pat chicken thighs dry and season generously with salt, pepper, and garlic powder.
-4.  Heat a skillet with olive oil over medium-high heat. Cook chicken for 5-7 minutes per side, until cooked through.
+4.  Heat a skillet with olive oil over medium-high heat. Cook chicken for 6-8 minutes per side, until cooked through.
 5.  **Important:** Shred the leftover chicken and store in the fridge for tomorrow.
 
-### Day 3: Creamy Chicken &amp; Kale Pasta
+****
+#### **Option B: Oven-Baked with Rosemary & Garlic**
+*A hands-off oven recipe that fills the kitchen with a great aroma.*
+
+**Ingredients:**
+*   4-6 boneless, skinless Chicken Thighs
+*   1 lb Carrots, peeled and chopped
+*   2 tbsp Olive Oil
+*   2 cloves Garlic, minced
+*   1 tbsp fresh Rosemary, chopped
+*   Salt & Pepper
+
+**Instructions:**
+1.  Preheat oven to 400°F.
+2.  In a bowl, toss the chicken thighs with olive oil, minced garlic, rosemary, salt, and pepper.
+3.  Arrange the chicken and the carrots on a single sheet pan.
+4.  Bake for 20-25 minutes, or until the chicken is cooked through and the carrots are tender.
+5.  **Important:** Shred the leftover chicken and store in the fridge for tomorrow.
+
+****
+#### **Option C: Pan-Seared with a Sage & Chive Pan Sauce**
+*Uses fresh herbs to create a delicious, savory sauce right in the pan.*
+
+**Ingredients:**
+*   4-6 boneless, skinless Chicken Thighs
+*   1 lb Carrots, peeled and chopped
+*   2 tbsp Olive Oil
+*   1/4 cup Beef Broth (from stock)
+*   1 tbsp Butter
+*   1 tbsp fresh Sage, chopped
+*   1 tbsp fresh Chives, chopped
+*   Salt & Pepper
+
+**Instructions:**
+1.  Preheat oven to 400°F and roast the carrots as described in Option A.
+2.  Pat chicken thighs dry and season with salt and pepper.
+3.  Heat olive oil in a skillet over medium-high heat. Cook chicken for 6-8 minutes per side, until cooked through. Remove chicken to a plate.
+4.  Reduce heat to medium. Add beef broth to the pan, scraping up any browned bits. Let it simmer for 1-2 minutes.
+5.  Stir in the butter, sage, and chives. Let the sauce bubble for another minute.
+6.  Return the chicken to the pan to coat with the sauce.
+7.  **Important:** Shred the leftover chicken (reserving some sauce if desired) and store in the fridge for tomorrow.
+
+****
+
+### Day 3: Creamy Chicken & Kale Pasta
 
 *Using our leftover chicken, we'll make a quick and delicious pasta dish.*
 
@@ -90,5 +136,5 @@ Here is your complete 4-day meal plan, including recipes and a final shopping li
 *   Red onion
 *   Cilantro
 
-### Dairy &amp; Fridge
+### Dairy & Fridge
 *   Heavy cream or cream cheese
