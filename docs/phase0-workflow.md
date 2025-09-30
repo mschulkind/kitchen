@@ -12,6 +12,8 @@
 ## Overview
 This document serves as a comprehensive guide for an agent to execute the "Phase 0" markdown-driven conversational meal planning flow. The purpose of this flow is to test and refine the core LLM-driven value proposition of the app without any UI, using only markdown files.
 
+- **Use Emojis**: The agent should use plenty of emojis to make the meal planning process more fun and engaging. 🥳
+
 ## Human/Agent Interaction Model
 
 - **Agent's Role**: The agent (LLM) is responsible for all file modifications. This includes creating, editing, and deleting files as required by the workflow. After each step, the agent will commit and push the changes to the repository.
