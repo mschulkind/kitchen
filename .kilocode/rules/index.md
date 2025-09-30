@@ -6,6 +6,22 @@ This directory contains project-specific rules for the Kitchen project, consolid
 - [Project Structure and Practices](project-structure.md)
 - [Tech Design Rules](tech-design.md)
 - [Recipe Scraping Guidelines](recipe-scraping.md)
+- [Documentation Guidelines](documentation.md)
+- [Library Rules](library/index.md)
+
+## Table of Contents
+- [Project Structure and Practices](project-structure.md)
+- [Tech Design Rules](tech-design.md)
+- [Recipe Scraping Guidelines](recipe-scraping.md)
+## Recipe Scraping Guidelines
+
+[recipe-scraping.md](recipe-scraping.md) outlines the standards and procedures for scraping recipes from external sources using automated tools.
+
+## Documentation Guidelines
+
+[documentation.md](documentation.md) outlines the standards for generating documentation in the Kitchen project.
+
+For generic guidelines, refer to the [library/ rules](library/index.md).
 - [Library Rules](library/index.md)
 
 ## Table of Contents

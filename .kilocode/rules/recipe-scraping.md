@@ -27,6 +27,7 @@ This document outlines the standards and procedures for scraping recipes from ex
 
 ## Content Formatting
 
+- **Attribution**: Always include source attribution to respect original content creators.
 - **Structure**: Use standard markdown with `# Title`, `### Ingredients`, `### Instructions`.
 - **Ingredients**: List ingredients in bullet points, grouped by component if applicable.
 - **Instructions**: Number the steps sequentially.
