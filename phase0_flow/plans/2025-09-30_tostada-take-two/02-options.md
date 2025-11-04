@@ -1,55 +1,59 @@
-# Meal Plan Options: The Flavor Base Challenge! 🧑‍🍳
+# Meal Plan Options: The 5-Day Subrecipe Showcase! ✨
 
-New plan! We're building these options around two core ideas: a delicious **Braised Pork Shoulder Skillet** that makes leftovers, and a versatile **Flavor Base** to tie the meals together. Let's get cooking! 🥳
+This is it! The ultimate meal plan challenge, now expanded to five glorious days! Each of these options features a **delicious subrecipe** that you'll make in a big batch on day one and then use in creative ways throughout the week. Plus, we're still guaranteeing that **Braised Pork Shoulder Skillet** makes an appearance! 🍳
 
 ---
 
-### Option 1: The Sofrito Fiesta 💃
+### Option 1: The Homemade Refried Beans Bonanza 🫘
 
-*   **Flavor Base**: A classic **Sofrito** (onions, bell peppers, garlic, and tomatoes) that can be used in many Latin-inspired dishes.
+*   **Subrecipe**: **Creamy Homemade Refried Beans**. We'll make a big pot, and I'll even provide the recipe! They're way better than canned.
 *   **Meals**:
-    1.  **Sofrito & Pork Skillet** 🍳: We'll make the sofrito and use some of it to cook the braised pork shoulder with potatoes. This makes our leftovers!
-    2.  **Sofrito Chicken & Rice** 🍚: The rest of the sofrito becomes a savory base for a one-pan meal with your cooked chicken and rice.
-    3.  **Ethan's Tostadas with Crispy Pork** 🌮: The classic bean and cheese tostadas, topped with the crispy leftover pork.
-    4.  **Black Bean Soup** 🥣: We can use a touch of the sofrito to deepen the flavor of a simple black bean soup from your pantry staples.
-*   **Key New Ingredients**: Bell peppers, canned tomatoes, black beans.
+    1.  **Prep Day!** 💪 **Braised Pork Shoulder Skillet & Big Batch Beans**: We'll cook up the crispy pork and potatoes, and while that's going, we'll simmer a delicious pot of refried beans. We'll serve the skillet with a side of the fresh beans.
+    2.  **Bean & Pork Burrito Bowls** 🌯: A satisfying bowl of rice, leftover crispy pork, a generous scoop of our homemade refried beans, and your favorite toppings.
+    3.  **Ethan's Tostadas with Extra Beans!** 🌮: The star of the show, featuring our amazing homemade refried beans and topped with leftover crispy pork.
+    4.  **Huevos Rancheros** 🍳: A perfect breakfast-for-dinner. We'll gently heat the last of the refried beans and serve them with fried eggs and warm tortillas.
+    5.  **Cheesy Bean Dip & Movie Night!** 🎬: A fun, simple finale. We'll mix the last of the beans with shredded cheese, bake until bubbly, and serve with tortilla chips.
+*   **Key New Ingredients**: Dried pinto beans, bacon or lard (for authentic flavor!), Cotija cheese, tortilla chips.
 
 ---
 
-### Option 2: The Savory Herb & Garlic Butter Base 🌿
+### Option 2: The Versatile Red Sauce Venture 🍅
 
-*   **Flavor Base**: A compound **Herb & Garlic Butter** (butter, minced garlic, fresh or dried herbs like rosemary and thyme).
+*   **Subrecipe**: A **Rich & Simple Red Sauce**. Think marinara, but with the flexibility to go in a few different culinary directions.
 *   **Meals**:
-    1.  **Garlic-Herb Pork Skillet** 🍳: We'll crisp up the pork shoulder and potatoes in our delicious garlic-herb butter. Leftovers are guaranteed!
-    2.  **Garlic-Herb Pollock** 🐟: Your pollock filets, pan-seared to perfection with a healthy dollop of the flavor base. Served with carrots.
-    3.  **Ethan's Tostadas with Crispy Pork** 🌮: The bean and cheese tostadas, made even better with the garlic-herb crispy pork.
-    4.  **Garlic Bread Pasta** 🍝: A simple pasta dish tossed with the remaining garlic-herb butter and a side of your sourdough bread, toasted.
-*   **Key New Ingredients**: Fresh or dried herbs (rosemary/thyme if you don't have them).
+    1.  **Prep Day!** 💪 **Simmer a Big Pot of Red Sauce** & enjoy **Sausage & Pepper Subs**: While the sauce simmers, we'll cook your smoked sausages with peppers and onions and serve them on buns with a little of the fresh sauce.
+    2.  **Braised Pork Shoulder Skillet with a Red Sauce Twist** 🍳: We'll crisp up the pork and potatoes, then finish the dish with a bit of our red sauce for a little extra flavor.
+    3.  **Ethan's "Pizza" Tostadas** 🍕: A fun twist! We'll use the red sauce as the base on a crispy tortilla, then top with beans, cheese, and our leftover crispy pork.
+    4.  **Classic Pasta Night** 🍝: The rest of our delicious homemade red sauce, tossed with pasta. Simple and perfect.
+    5.  **Chicken Parmesan-ish** 🐔: Your cooked chicken breast, warmed in the last of the red sauce and topped with melted mozzarella.
+*   **Key New Ingredients**: Canned whole tomatoes, fresh basil (optional), sausage buns, mozzarella cheese.
 
 ---
 
-### Option 3: The Tangy Vinaigrette Adventure 🥗
+### Option 3: The Zesty Salsa Verde Celebration 💚
 
-*   **Flavor Base**: A zesty homemade **Balsamic Vinaigrette** (balsamic, olive oil, garlic, maybe a touch of sweetener).
+*   **Subrecipe**: A bright, tangy **Salsa Verde**. Made from tomatillos, cilantro, and lime, it's a flavor powerhouse.
 *   **Meals**:
-    1.  **Pork & Potato Skillet with Vinaigrette Drizzle** 🍳: The crispy pork and potatoes get a flavor explosion from a drizzle of our tangy vinaigrette after cooking.
-    2.  **Marinated Chicken Salad** 🥗: We'll use the vinaigrette to marinate your chicken thighs before grilling or pan-searing, then serve them over a simple green salad.
-    3.  **Ethan's Tostadas with Crispy Pork** 🌮: The tang from the pork leftovers will cut through the richness of the cheese and beans beautifully.
-    4.  **Caprese-Style Pasta** 🍝: A simple dish of pasta, cherry tomatoes (if available), and mozzarella, all brought together with our versatile vinaigrette.
-*   **Key New Ingredients**: Salad greens, cherry tomatoes.
+    1.  **Prep Day!** 💪 **Whip up a Batch of Salsa Verde** and make **Chicken Verde Tacos**: We'll toss your cooked chicken with some of the fresh salsa verde and serve it in warm tortillas.
+    2.  **Braised Pork Shoulder Skillet with a Verde Kick** 🍳: The crispy pork and potatoes get a flavor boost from a spoonful of our zesty salsa verde.
+    3.  **Ethan's Tostadas with Pork & Salsa Verde** 🌮: The classic bean and cheese tostada, elevated with crispy pork and a drizzle of our amazing green salsa.
+    4.  **Salsa Verde Pollock** 🐟: Your pollock filets, pan-seared and then simmered briefly in the remaining salsa verde for a quick, flavorful fish dish.
+    5.  **Green Rice Bowls** 🍚: We'll stir the last bit of salsa verde into a pot of rice for a vibrant, flavorful side dish to serve with pan-fried eggs.
+*   **Key New Ingredients**: Tomatillos, cilantro, jalapeño.
 
 ---
 
-### Option 4: The Smoky Spice Rub Sensation 🔥
+### Option 4: The Creamy Chipotle Crema Creation 🌶️
 
-*   **Flavor Base**: A homemade **Smoky Spice Rub** (paprika, cumin, chili powder, garlic powder, onion powder - all from your pantry!).
+*   **Subrecipe**: A smooth, smoky **Chipotle Crema**. A little spicy, a little creamy, and a lot delicious.
 *   **Meals**:
-    1.  **Spiced Pork & Potato Skillet** 🍳: We'll toss the pork and potatoes in our smoky spice rub before crisping them up.
-    2.  **Smoky Chicken Wings** 🍗: Your chicken wings, coated in the spice rub and baked or grilled until crispy.
-    3.  **Ethan's Tostadas with Smoky Crispy Pork** 🌮: The spice from the leftover pork will make these tostadas unforgettable.
-    4.  **Spiced Pollock Tacos** 🐟: We'll use the spice rub on your pollock filets, then flake them into corn tortillas for a quick and easy taco night.
-*   **Key New Ingredients**: Corn tortillas (or use your masa harina to make fresh ones!).
+    1.  **Prep Day!** 💪 **Blend up the Chipotle Crema** and make **Spicy Chicken Fried Rice**: Your classic fried rice, but with a swirl of chipotle crema at the end to make it extra special.
+    2.  **Braised Pork Shoulder Skillet with a Creamy Drizzle** 🍳: That smoky crema will be the perfect counterpoint to the rich, crispy pork and potatoes.
+    3.  **Ethan's Tostadas, Extra Smoky** 🌮: Bean and cheese tostadas with crispy pork and a generous drizzle of our chipotle crema.
+    4.  **Chipotle Pollock & Corn** 🌽: Pan-seared pollock and your corn on the cob, both served with a side of our versatile crema for dipping.
+    5.  **Spicy Corn Chowder** 🥣: We'll use your remaining corn, potatoes, and a swirl of the chipotle crema to make a quick and comforting chowder.
+*   **Key New Ingredients**: Can of chipotles in adobo sauce, sour cream or Mexican crema.
 
 ---
 
-Let me know which of these flavor adventures you'd like to embark on! 😊
+Let me know which 5-day subrecipe adventure sparks the most joy! 😊
