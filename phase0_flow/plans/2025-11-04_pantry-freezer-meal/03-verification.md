@@ -5,14 +5,14 @@ Here is the consolidated ingredient list for both meals: the **Thick & Hearty Ch
 Please review the list and let me know if there are any inaccuracies or substitutions you'd like to make. I've pre-checked (`[x]`) the items I believe you have based on your pantry, freezer, and garden stock lists.
 
 ### Produce
-- [x] Onion (`White Onions`)
+- [ ] Onion (You have `chives` and `green onions` in the garden, and `onion powder` in the pantry, which we can use as substitutes.)
 - [x] Garlic (`Whole garlic`)
 - [x] Purple Potatoes (`Potatoes`)
 - [x] Poblano Peppers
 - [x] Tomatoes
 - [x] Swiss Chard
 - [x] Habanero Pepper
-- [x] Limes (for garnish)
+- [ ] Limes (You have `lemons` in the fridge, which can be used as a substitute for acidity.)
 
 ### Pantry
 - [x] Masa Harina
@@ -27,6 +27,7 @@ Please review the list and let me know if there are any inaccuracies or substitu
 - [x] Oregano
 - [x] Salt
 - [x] Black Pepper
+- [x] Onion Powder (Adding this to the list since you have it and it will be used as an onion substitute)
 
 ### Potential New Ingredients
-- None! It looks like we can make both of these meals entirely from your existing stock. 🎉
+- None! We can still make both of these meals entirely from your existing stock by using the suggested substitutes. 🎉
