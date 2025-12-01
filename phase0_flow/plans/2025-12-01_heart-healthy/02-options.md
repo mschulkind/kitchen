@@ -1,86 +1,82 @@
 # Step 2: Choose Your Meal Plan
 
-Here are 5 broad categories for your heart-healthy, high-fiber meal plan. Each option focuses on using your existing stock (chicken, fish, garden veggies) while boosting fiber intake.
+Here are 5 broad categories for your heart-healthy, high-fiber meal plan, revised to reflect your updated stock and the end of garden season. Each option focuses on using your existing stock (chicken, fish, pantry, fridge items) while boosting fiber intake.
 
 Please select one by marking it with `[x]`.
 
 ---
 
-### Option 1: Sheet Pan Simplicity 🥘
-**Theme**: Easy cleanup with roasted proteins and vegetables. Deep flavors from roasting.
+### Option 1: Comforting & Lean Poultry Focus 🐔
+**Theme**: Hearty, satisfying meals using chicken, paired with high-fiber pantry staples and available fresh produce.
 
-*   **Meal 1:** **Paprika Roasted Chicken Thighs** with carrots and onions.
-*   **Meal 2:** **Baked Cod** with a cherry tomato and garlic confit (using garden tomatoes).
-*   **Meal 3:** **Roasted Vegetable Rice Bowls** with black beans and avocado.
+*   **Meal 1:** **White Bean Chicken Chili** - Utilizing cubed cooked chicken or thighs, canned white beans, and pantry aromatics.
+*   **Meal 2:** **Sheet Pan Roasted Chicken Thighs** - With carrots, onions, and pantry spices for easy cleanup.
+*   **Meal 3:** **Chicken & Kale Pasta** - Using pantry pasta, your garden kale, cubed chicken, and canned tomatoes.
 
 **Key New Ingredients**:
-*   Black Beans (canned or dry)
-*   Fresh herbs (Parsley/Cilantro)
-*   Lemon (if low on stock)
+*   Canned White Beans (e.g., Cannellini or Great Northern)
+*   Whole wheat pasta (optional, for even higher fiber)
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 2: The Fiber-Rich Stew Pot 🍲
-**Theme**: Maximum heart health with beans, lentils, and lean proteins. Comforting and filling.
+### Option 2: Seafood Suppers (Omega-3 Rich) 🐟
+**Theme**: Lean protein from fish, combined with fiber-rich sides and pantry ingredients for a Mediterranean flair.
 
-*   **Meal 1:** **White Bean Chicken Chili** (using cubed cooked chicken or thighs).
-*   **Meal 2:** **Mediterranean Fish Stew** with cod, tomatoes, and cannellini beans.
-*   **Meal 3:** **Lentil & Garden Green Soup** using Swiss chard or kale from the garden.
+*   **Meal 1:** **Baked Cod with Canned Tomatoes & Herbs** - A simple, flavorful dish leveraging pantry canned tomatoes and available herbs (sage, rosemary, parsley).
+*   **Meal 2:** **Mediterranean Fish & Lentil Stew** - Cod, pantry canned tomatoes, dried lentils, potatoes, and carrots for a warming, fiber-packed meal.
+*   **Meal 3:** **Pan-Seared Pollock with Fresh Corn Salsa** - Using fridge corn on the cob, limes, and pantry spices for a bright, flavorful dish.
 
 **Key New Ingredients**:
-*   Cannellini Beans (White Kidney Beans)
 *   Dried Lentils
-*   Chicken Broth (if not using Pork/Beef broth substitute)
+*   Bell Peppers (for additional fiber and freshness in salsa/stew)
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 3: Garden Spice & Zest 🌶️
-**Theme**: Utilizing your abundance of garden peppers and tomatoes for bold, metabolism-boosting flavors.
+### Option 3: Bean-Powered High Fiber 🫘
+**Theme**: Maximizing fiber and plant-based protein with various bean dishes, supplemented by available meats.
 
-*   **Meal 1:** **Spicy Pan-Seared Pollock** with a roasted poblano and tomato salsa.
-*   **Meal 2:** **Chicken Tinga-Style Tacos** (using thighs) with homemade corn tortillas.
-*   **Meal 3:** **Spicy Green Bean & Chicken Stir-fry** served over brown rice (or white rice from stock).
+*   **Meal 1:** **Hearty Bean and Vegetable Soup** - A robust soup using canned tomatoes, potatoes, carrots, onions, and a mix of canned white beans/kidney beans.
+*   **Meal 2:** **Homemade Black Bean Burgers** - Utilizing canned black beans, pantry spices, and served with avocado.
+*   **Meal 3:** **Classic Refried Bean & Cheese Tostadas** - Made with pantry refried beans, masa harina for homemade tortillas (or store-bought tostadas), and fridge limes.
 
 **Key New Ingredients**:
-*   Brown Rice (optional, for extra fiber)
-*   Chipotle peppers in adobo (for Tinga depth)
-*   Fresh Cilantro
+*   Canned Black Beans
+*   Canned Kidney Beans (optional, for soup variety)
+*   Burger Buns (if making burgers)
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 4: Mediterranean Light 🍋
-**Theme**: Heart-healthy fats, fresh lemon, and herbs. Light but satisfying.
+### Option 4: Mediterranean Inspired (Simple & Fresh) 🌿
+**Theme**: Emphasizing healthy fats, fresh citrus, and available vegetables for vibrant, heart-healthy meals.
 
-*   **Meal 1:** **Cod Piccata** (Lemon, capers, and parsley) served with steamed green beans.
-*   **Meal 2:** **Greek-Style Roasted Chicken Thighs** with oregano and lemon potatoes.
-*   **Meal 3:** **Pasta with Roasted Garden Vegetables** (tomatoes, zucchini if you have it, peppers) and chickpeas.
+*   **Meal 1:** **Lemon Herb Chicken Thighs with Roasted Potatoes** - Using stock chicken thighs, pantry potatoes, and fridge lemons, seasoned with garden herbs.
+*   **Meal 2:** **Cod with Capers & Steamed Carrots** - A quick, elegant dish with pantry capers and fridge carrots.
+*   **Meal 3:** **Pasta with Canned Tomatoes, Kale & Garlic** - A simple, flavorful vegetarian pasta dish using pantry staples and garden kale.
 
 **Key New Ingredients**:
 *   Capers
 *   Chickpeas (Garbanzo beans)
-*   Fresh Parsley
 
 `[ ]` Choose this plan
 
 ---
 
-### Option 5: Asian-Inspired Steams & Stir-Fries 🥢
-**Theme**: Gentle cooking methods (steaming) and high vegetable content.
+### Option 5: Stir-Fries & Grain Bowls (Quick & Custom) 🥢
+**Theme**: Quick-cooking and customizable meals, focusing on lean proteins, grains, and available vegetables.
 
-*   **Meal 1:** **Ginger Soy Steamed Cod** with scallions and bok choy (or garden greens).
-*   **Meal 2:** **Chicken & Green Bean Stir-Fry** with a garlic-ginger sauce.
-*   **Meal 3:** **Vegetable Fried Rice** using leftover rice, eggs, and plenty of garden veggies (peppers, carrots, greens).
+*   **Meal 1:** **Chicken & Carrot Stir-Fry with Rice** - Using cubed cooked chicken, fridge carrots, pantry rice, and a simple savory sauce.
+*   **Meal 2:** **Pollock and Vegetable Grain Bowls** - Flaky pollock served over rice with sautéed onions, carrots, and any available greens.
+*   **Meal 3:** **Vegetable Fried Rice with Eggs** - A great way to use leftover rice, eggs, onions, carrots, and garden kale.
 
 **Key New Ingredients**:
 *   Fresh Ginger root
-*   Scallions (Green onions)
-*   Soy Sauce or Tamari (if low)
-*   Bok Choy (optional, can substitute garden greens)
+*   Soy Sauce or Tamari (if not already a staple)
+*   Broth (if not using water for rice, or need more for sauce)
 
 `[ ]` Choose this plan

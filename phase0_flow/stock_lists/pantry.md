@@ -25,7 +25,6 @@
 - Masa Harina for corn tortillas
 
 ## Perishable
-- Rosemary garlic sourdough bread
 
 ## Dried Herbs and Spices
 
