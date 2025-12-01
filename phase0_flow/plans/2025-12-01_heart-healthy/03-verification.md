@@ -7,25 +7,25 @@ Please review this list and check off the items you have on hand. I have pre-che
 ---
 
 ## Produce
-- [x] Carrots (Fridge)
-- [x] Celery (Fridge)
+- [x] Carrots (5 large carrots)
+- [x] Celery (1 heart)
 - [ ] Onions (Pantry listed "White Onions" - assuming you have enough for 3 meals)
 - [x] Garlic (Pantry/Fridge/Freezer all list garlic!)
-- [ ] Fresh Parsley (Optional, for garnish)
-- [ ] Fresh Basil or Oregano (Optional, but you have dried)
+- [x] Fresh Parsley (Optional, for garnish)
+- [x] Fresh Basil or Oregano (Optional, but you have dried)
 
 ## Pantry
 - [x] Olive Oil
-- [x] Canned Tomatoes (Pantry listed "Canned Tomatoes", need 2-3 cans total)
-- [x] Pasta (Pantry listed "Pasta", need ditalini or small pasta for soup, and pasta for Cacciatore if desired)
+- [x] Canned Tomatoes (4x14.5oz fire roasted, 1x28oz whole peeled)
+- [ ] Pasta (Pantry listed "Pasta", need ditalini or small pasta for soup, and pasta for Cacciatore if desired)
 - [x] Dried Oregano/Rosemary (Pantry)
 - [x] Balsamic Vinegar (Can be used as red wine sub)
-- [ ] Red Wine (Optional, for Cacciatore)
+- [x] Red Wine (Optional, for Cacciatore)
 - [ ] Canned Cannellini Beans (White Kidney Beans) - **Need to buy**
-- [ ] Olives & Capers (For Cod Pizzaiola) - **Need to buy**
+- [ ] Capers (hopefully I can find them)
 
 ## Freezer
-- [x] Chicken Thighs
+- [ ] Chicken Thighs
 - [x] Cod Filets
 - [x] Pork Broth (Can be used for Pasta e Fagioli)
 
