@@ -14,10 +14,7 @@
 - Minced garlic
 
 ## Perishables
-- Corn on the cob
-- Avocados
-- Limes
-- Lemons
 
 ## Other
 - Carrots
+- Celery
