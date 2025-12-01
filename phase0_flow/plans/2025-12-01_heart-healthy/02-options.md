@@ -1,82 +1,79 @@
 # Step 2: Choose Your Meal Plan
 
-Here are 5 broad categories for your heart-healthy, high-fiber meal plan, revised to reflect your updated fridge stock (no more fresh citrus or avocados, but added celery!). Each option focuses on using your existing stock (chicken, fish, pantry, freezer) while boosting fiber intake.
+You've zoomed in on the **Braised & Roasted Comfort** theme! Here are 5 distinct paths within that theme, now refined with top-tier recipe ideas from the web. Each path features 3 meals designed to be heart-healthy and high-fiber, utilizing your stock of chicken, fish, and root vegetables.
 
 Please select one by marking it with `[x]`.
 
 ---
 
-### Option 1: The Hearty Stew & Soup Pot 🍲
-**Theme**: Warm, comforting, and packed with fiber from beans and vegetables. Perfect for using up root veggies.
-
-*   **Meal 1:** **Old-Fashioned Chicken Noodle Soup** - A classic using your carrots, celery, onions, garlic, and cubed cooked chicken.
-*   **Meal 2:** **White Bean & Kale Stew** - A rustic stew with canned white beans, garden kale, carrots, and celery.
-*   **Meal 3:** **Lentil Shepherd's Pie** - A twist on the classic using lentils and ground chicken (or just lentils) for the base, topped with mashed potatoes.
+### Path A: The Italian Countryside 🇮🇹
+**Focus**: Rustic, tomato-based dishes and herbs.
+*   **Meal 1: Authentic Chicken Cacciatore** - Chicken thighs braised with canned tomatoes, onions, carrots, celery, and wine. A classic, hearty dish.
+*   **Meal 2: Cod Pizzaiola (Baccalà Style)** - Cod fillets baked in a "pizza-style" sauce of tomatoes, garlic, oregano, and optional olives/capers. Served with roasted potatoes.
+*   **Meal 3: Creamy White Bean Pasta e Fagioli** - A comforting soup where half the beans are pureed for creaminess (no dairy needed). Uses ditalini, carrots, celery, and a rich tomato broth.
 
 **Key New Ingredients**:
-*   Canned White Beans (Cannellini or Great Northern)
-*   Dried Lentils
+*   Canned Cannellini Beans
+*   Fresh Parsley (optional)
+*   Red wine (optional, for Cacciatore)
 
-`[ ]` Choose this plan
+`[ ]` Choose this path
 
 ---
 
-### Option 2: Braised & Roasted Comfort 🥘
-**Theme**: Deep flavors developed through slow cooking and roasting.
-
-*   **Meal 1:** **Braised Chicken Thighs with Root Vegetables** - Thighs slowly cooked with carrots, celery, onions, and potatoes.
-*   **Meal 2:** **Roasted Pollock with a Savory Crumb** - Pollock fillets topped with seasoned breadcrumbs (using stuffing bread) and baked, served with roasted carrots.
-*   **Meal 3:** **Pasta e Fagioli** - A traditional Italian pasta and bean soup using your ditalini (or similar small pasta), canned tomatoes, and beans.
+### Path B: The French Bistro 🇫🇷
+**Focus**: Elegant but simple techniques, utilizing aromatics (mirepoix) and wine/broth.
+*   **Meal 1: Chicken with 40 Cloves of Garlic** - Thighs slow-cooked with a mellow, sweet garlic sauce and thyme. Incredible depth of flavor.
+*   **Meal 2: Healthy Pollock En Papillote** - Fillets steamed in parchment packets with julienned carrots, celery, and lemon. Healthy, moist, and aromatic.
+*   **Meal 3: French Green Lentil Stew** - Earthy Puy lentils simmered with a classic mirepoix (carrots, onions, celery) and herbs. Deeply savory and high in fiber.
 
 **Key New Ingredients**:
-*   Canned Kidney or Cannellini Beans
-*   Fresh Parsley (optional, for garnish)
+*   Dried French Green Lentils (Puy lentils)
+*   Parchment Paper (if not in stock)
+*   Fresh Thyme (optional)
 
-`[ ]` Choose this plan
+`[ ]` Choose this path
 
 ---
 
-### Option 3: Seafood & Grain Bowls 🍚
-**Theme**: Lighter, protein-packed meals featuring fish and grains.
-
-*   **Meal 1:** **Pan-Seared Cod with Rice Pilaf** - Cod served alongside a flavorful rice pilaf made with onions, garlic, celery, and carrots.
-*   **Meal 2:** **Warm Grain Bowl with Pollock** - Flaky pollock over rice with sautéed kale, carrots, and a vinaigrette dressing.
-*   **Meal 3:** **Tuna (or Canned Fish) Pasta Salad** - Using pasta, celery, onions, and a light dressing (yogurt or oil-based) – *Note: requires buying canned tuna if not in stock, or use cooked pollock.*
+### Path C: The Sunday Roast & Remix 🍗
+**Focus**: One big roast meal that feeds into lighter, clever leftovers.
+*   **Meal 1: Sheet Pan Chicken & Root Veggies** - Crispy chicken thighs roasted alongside caramelized carrots, potatoes, and red onion wedges. One pan, easy cleanup.
+*   **Meal 2: Classic Fisherman's Pie** - Chunks of Cod and Pollock in a creamy sauce (can be dairy-free) topped with fluffy mashed potatoes.
+*   **Meal 3: Roasted Veggie & White Bean Soup** - Roast extra carrots and onions on Day 1, then blend them with white beans and cashew cream (or just broth) for a luxurious, dairy-free soup.
 
 **Key New Ingredients**:
-*   Lemon juice (bottled) or Red Wine Vinegar (for acid)
-*   Canned Tuna (optional)
+*   Canned White Beans
+*   Cashews (optional, for dairy-free creaminess)
+*   Milk (if making traditional pie topping)
 
-`[ ]` Choose this plan
+`[ ]` Choose this path
 
 ---
 
-### Option 4: Tex-Mex Pantry Style 🌮
-**Theme**: Flavorful and spicy meals relying on pantry spices and freezer proteins.
-
-*   **Meal 1:** **Chicken Tinga Tacos** - Using cubed chicken simmered in a sauce of canned tomatoes and chipotles (if available) or chili powder/cumin, served on homemade corn tortillas.
-*   **Meal 2:** **Mexican Rice & Beans** - A hearty side or main with rice, canned black beans, onions, and garlic.
-*   **Meal 3:** **Chicken Tortilla Soup** - A broth-based soup with shredded chicken, corn (frozen/canned if available, or omit), beans, and strips of corn tortillas.
+### Path D: The Smoky & Savory 🥓
+**Focus**: Deep, savory flavors using your smoked sausage and pantry spices.
+*   **Meal 1: Hearty Chicken & Sausage Stew** - Chicken thighs and sliced smoked sausage braised with potatoes, carrots, celery, and Cajun spices.
+*   **Meal 2: Spanish Cod with Chickpeas** - Cod fillets poached in a paprika-spiced tomato sauce with chickpeas. A one-pan wonder.
+*   **Meal 3: Smoky Hoppin' John** - A Southern classic using black-eyed peas, rice, the "holy trinity" (onion, celery, pepper), and smoked meat flavor.
 
 **Key New Ingredients**:
-*   Canned Black Beans
-*   Chipotles in Adobo (optional, for heat)
-*   Salsa (jarred)
+*   Canned Chickpeas
+*   Dried Black-Eyed Peas
+*   Green Bell Pepper (for Hoppin' John)
 
-`[ ]` Choose this plan
+`[ ]` Choose this path
 
 ---
 
-### Option 5: The "Use It Up" Casserole & Bake 🥧
-**Theme**: efficient one-dish meals that combine proteins, starches, and veggies.
-
-*   **Meal 1:** **Chicken & Rice Casserole** - Creamy (using milk/butter roux) casserole with chicken, rice, carrots, and celery.
-*   **Meal 2:** **Fish Pie** - Pollock and Cod chunks in a white sauce with peas (frozen) or corn, topped with mashed potatoes.
-*   **Meal 3:** **Baked Ziti with Meat Sauce** - Using ground chicken (or leftover meat), canned tomatoes, onions, garlic, and mozzarella (if available, or buy).
+### Path E: The Simply Wholesome 🥕
+**Focus**: Clean flavors, minimal fuss, high nutrient density.
+*   **Meal 1: Lemon-Garlic Braised Chicken** - Thighs braised with plenty of garlic, lemon juice, and tender carrots. Bright and savory.
+*   **Meal 2: Herb-Crusted Baked Pollock** - Fillets topped with a crispy breadcrumb and herb mixture (using stuffing bread), baked until golden.
+*   **Meal 3: Hearty Vegetable & Barley Soup** - A clear broth soup packed with diced carrots, celery, onions, and pearl barley for a chewy, high-fiber grain addition.
 
 **Key New Ingredients**:
-*   Frozen Peas (for Fish Pie)
-*   Mozzarella Cheese
-*   Milk (check quantity for sauces)
+*   Pearl Barley
+*   Fresh Parsley/Dill (for crust)
 
-`[ ]` Choose this plan
+`[ ]` Choose this path
