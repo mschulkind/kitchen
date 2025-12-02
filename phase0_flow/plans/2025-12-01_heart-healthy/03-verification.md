@@ -21,6 +21,7 @@ Please review this list and check off the items you have on hand. I have pre-che
 - [x] Dried Oregano/Rosemary (Pantry)
 - [x] Balsamic Vinegar (Can be used as red wine sub)
 - [x] Red Wine (Optional, for Cacciatore)
+- [x] Tomato Paste (Cans of it)
 - [ ] Canned Cannellini Beans (White Kidney Beans) - **Need to buy**
 - [ ] Capers (hopefully I can find them)
 
