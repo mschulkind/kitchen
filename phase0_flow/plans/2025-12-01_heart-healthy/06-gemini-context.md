@@ -117,7 +117,7 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
 ```
 # Experimental Recipe Formats: Pasta e Fagioli
 
-Here are 4 different ways to view the execution of your **Ultimate Smoky Pasta e Fagioli** recipe. These are designed for an experienced cook to visualize the flow and timing.
+Here are 6 different ways to view the execution of your **Ultimate Smoky Pasta e Fagioli** recipe. These are designed for an experienced cook to visualize the flow and timing.
 
 ---
 
@@ -141,20 +141,16 @@ Here are 4 different ways to view the execution of your **Ultimate Smoky Pasta e
 
 ---
 
-### Format 2: The "Pot Architecture" (Flavor Stack)
-*Best for: Visualizing how to build the layers of flavor from the bottom up.*
+### Format 2: The "Flavor Layers" (Step-by-Step Build)
+*Best for: understanding the sequential build-up of flavors in the pot.*
 
-```text
-    (Day 2)  [ FINISH ]  Add Ditalini & Beans -> Simmer 10m
-                ^
-    (Day 1)  [ LIQUID ]  Add 28oz Tomatoes + Broth + Herbs -> Simmer 30m
-                ^
-    (Day 1)  [ DEPTH  ]  Add Whole Garlic + Chili + Paste -> FRY 2m (Rust Color)
-                ^
-    (Day 1)  [ BASE   ]  Add Mirepoix (Onion/Carrot/Celery) -> Sweat 8m
-                ^
-    (Day 1)  [ FAT    ]  Brown Sausage -> Release Fat
-```
+Here's how the dish comes together, building flavor layer by layer:
+
+1.  **FAT Layer (Day 1 Start):** Brown sliced sausage until fat renders and the sausage is cooked through.
+2.  **BASE Layer (Day 1):** Sauté diced mirepoix (onion, carrot, celery) in rendered fat (or a splash of olive oil) until soft, about 8 minutes.
+3.  **DEPTH Layer (Day 1):** Add whole garlic cloves, red pepper flakes, and tomato paste. Fry the paste for 2 minutes, stirring constantly, until it turns a dark rust color.
+4.  **LIQUID Layer (Day 1):** Deglaze the pot with hand-crushed 28oz tomatoes and pork broth. Add herbs (rosemary/bay leaf/Parmesan rind). Bring to a boil, then reduce heat and simmer for 20-30 minutes.
+5.  **FINISH Layer (Day 2):** Reheat the soup to a simmer. Add rinsed cannellini beans and ditalini pasta. Simmer for 10 minutes, stirring occasionally, until pasta is al dente.
 
 ---
 
@@ -188,3 +184,56 @@ Here are 4 different ways to view the execution of your **Ultimate Smoky Pasta e
 | **Next Day** | **Reheat** | Bring to simmer. |
 | **+10m** | Add Pasta | Drop ditalini & beans. Stir often. |
 | **Serve** | **SERVE** | Remove rind. Season & Serve. |
+
+---
+
+### Format 5: The "Sensory Script" (Audio-Visual)
+*Best for: Cooking by feel and intuition, focusing on cues rather than time.*
+
+*   **LOOK:** Sausage edges are crispy brown.
+    *   *Action:* Add veggies.
+*   **LOOK:** Onions are translucent and soft.
+    *   *Action:* Add paste/garlic.
+*   **SMELL:** Rich, roasted tomato scent; no metallic/raw smell (approx 2 mins).
+    *   *Action:* Deglaze immediately.
+*   **LISTEN:** Violent sizzling subsides into a gentle bubble.
+    *   *Action:* Add broth & herbs.
+*   **TASTE:** Broth should be rich and flavorful before cooling.
+    *   *Action:* Adjust salt/pepper, then store.
+*   **TOUCH:** Pasta offers slight resistance (al dente).
+    *   *Action:* Serve immediately; it will soften more in the bowl.
+
+---
+
+### Format 6: The "Pseudocode" (Logic Flow)
+*Best for: Systematic execution.*
+
+```python
+def make_pasta_e_fagioli():
+    pot = DutchOven()
+    fat = pot.render(sausage)
+    
+    # Build Base
+    while not mirepoix.is_soft():
+        pot.saute(mirepoix, fat)
+    
+    # Develop Flavor
+    pot.add(garlic, chili, tomato_paste)
+    pot.fry(until="dark_rust_color") # Critical Step
+    
+    # Simmer
+    pot.deglaze(tomatoes, broth)
+    pot.add(herbs)
+    pot.simmer(minutes=30)
+    
+    # Pause
+    pot.cool_and_store()
+    
+    # Finish (Day 2)
+    pot.reheat()
+    pot.add(ditalini, beans)
+    pot.cook(until="al_dente")
+    
+    return pot.serve(garnish="balsamic")
+```
+```

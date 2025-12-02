@@ -1,46 +1,8 @@
-# Step 5: Alternatives & Flavor Boosters
+# Experimental Recipe Formats: Pasta e Fagioli
 
-This guide focuses on enhancing **Meal 3 (Creamy White Bean Pasta e Fagioli)** using ingredients from your pantry, freezer, and garden stash without requiring any extra shopping.
-
----
-
-## Meal 3: Deepening the Flavor of Pasta e Fagioli 🥣
-
-Since you are using **ditalini**, **white onions**, and a **28 oz can of whole peeled tomatoes**, here is how to adjust the recipe and boost the flavor profile.
-
-### 1. The "Smoked Meat" Depth (Recommended) 🥓
-Your freezer stock lists **Cooked Smoked Sausages**. This is the single best way to add authentic depth to this soup.
-*   **How to:** Take 1-2 sausages, slice them into thin rounds or half-moons.
-*   **When:** Add them to the pot *after* sautéing the veggies but *before* adding the broth. Let them brown slightly to release their smoky fat into the base.
-
-### 2. Handling the 28 oz Tomatoes 🍅
-The original recipe calls for a 14.5 oz can. Using a 28 oz can will make the soup much more tomato-forward and acidic, more like a stew.
-*   **Option A (Rich & Red):** Use the whole can. Pour the tomatoes into a bowl and crush them thoroughly with your hands. Add them to the pot and cook for at least 10 extra minutes to mellow the acidity. You may need to add a pinch of sugar (or a splash of balsamic vinegar) to balance it.
-*   **Option B (Standard):** Use half the can (store the rest for a quick pasta sauce later).
-*   **Option C (Roasted Depth):** If you have time, roast the whole peeled tomatoes on a sheet pan at 400°F for 20 minutes before adding them. This concentrates the sugars and adds a "simmered all day" flavor.
-
-### 3. The Umami & Spice Boosters 🌶️
-Check your pantry for these hidden gems to add complexity:
-*   **Tomato Paste:** This is a powerhouse for umami! Sauté 1-2 tablespoons with your onions, carrots, and celery *after* they've softened but *before* adding liquids. Cook it for 1-2 minutes, stirring constantly, until it darkens slightly. This caramelizes the sugars and deepens the flavor profile significantly.
-*   **Red Pepper Flakes (Tier 2 Pantry):** Add a generous pinch with the onions. The heat cuts through the creamy beans.
-*   **Bay Leaf (Tier 3 Pantry):** Throw 1-2 leaves in while the soup simmers. Remove before serving.
-*   **Parmesan Rind:** If you have a rind from your parmesan cheese (pantry listed), throw it in the simmering broth. It adds a salty, nutty richness that is classic Italian.
-*   **Balsamic Finish:** A splash of balsamic vinegar stirred in *right before serving* adds a brightness that lifts the heavy flavors.
-
-### 4. Cooking with Ditalini 🍝
-*   **Timing:** Ditalini cooks fast (usually 8-10 minutes).
-*   **Method:** Add the raw pasta directly to the simmering soup 10 minutes before you plan to eat.
-*   **Note:** The pasta will release starch, naturally thickening the soup (making the bean puree step optional if you prefer). If you have leftovers, the pasta will absorb the liquid overnight, turning it into a thick stew—this is actually traditional and delicious! Add a splash of water when reheating.
-
-### 5. Garlic Overload (The "Good" Kind) 🧄
-You have plenty of garlic. For a mellower, sweeter garlic flavor:
-*   Take 4-5 cloves, leave them whole (peeled), and simmer them in the soup. They will become soft and buttery. Mash them against the side of the pot before serving.
+Here are 6 different ways to view the execution of your **Ultimate Smoky Pasta e Fagioli** recipe. These are designed for an experienced cook to visualize the flow and timing.
 
 ---
-
-## Experimental Instruction Formats
-
-Since you are an experienced cook, here are 4 different ways to view the execution of this recipe. See which one fits your mental model best!
 
 ### Format 1: The "Mise-en-place" & Execution Flow
 *Best for: Ensuring you have everything ready before you start the heat.*
@@ -62,20 +24,16 @@ Since you are an experienced cook, here are 4 different ways to view the executi
 
 ---
 
-### Format 2: The "Pot Architecture" (Flavor Stack)
-*Best for: Visualizing how to build the layers of flavor from the bottom up.*
+### Format 2: The "Flavor Layers" (Step-by-Step Build)
+*Best for: understanding the sequential build-up of flavors in the pot.*
 
-```text
-    (Day 2)  [ FINISH ]  Add Ditalini & Beans -> Simmer 10m
-                ^
-    (Day 1)  [ LIQUID ]  Add 28oz Tomatoes + Broth + Herbs -> Simmer 30m
-                ^
-    (Day 1)  [ DEPTH  ]  Add Whole Garlic + Chili + Paste -> FRY 2m (Rust Color)
-                ^
-    (Day 1)  [ BASE   ]  Add Mirepoix (Onion/Carrot/Celery) -> Sweat 8m
-                ^
-    (Day 1)  [ FAT    ]  Brown Sausage -> Release Fat
-```
+Here's how the dish comes together, building flavor layer by layer:
+
+1.  **FAT Layer (Day 1 Start):** Brown sliced sausage until fat renders and the sausage is cooked through.
+2.  **BASE Layer (Day 1):** Sauté diced mirepoix (onion, carrot, celery) in rendered fat (or a splash of olive oil) until soft, about 8 minutes.
+3.  **DEPTH Layer (Day 1):** Add whole garlic cloves, red pepper flakes, and tomato paste. Fry the paste for 2 minutes, stirring constantly, until it turns a dark rust color.
+4.  **LIQUID Layer (Day 1):** Deglaze the pot with hand-crushed 28oz tomatoes and pork broth. Add herbs (rosemary/bay leaf/Parmesan rind). Bring to a boil, then reduce heat and simmer for 20-30 minutes.
+5.  **FINISH Layer (Day 2):** Reheat the soup to a simmer. Add rinsed cannellini beans and ditalini pasta. Simmer for 10 minutes, stirring occasionally, until pasta is al dente.
 
 ---
 
@@ -109,3 +67,55 @@ Since you are an experienced cook, here are 4 different ways to view the executi
 | **Next Day** | **Reheat** | Bring to simmer. |
 | **+10m** | Add Pasta | Drop ditalini & beans. Stir often. |
 | **Serve** | **SERVE** | Remove rind. Season & Serve. |
+
+---
+
+### Format 5: The "Sensory Script" (Audio-Visual)
+*Best for: Cooking by feel and intuition, focusing on cues rather than time.*
+
+*   **LOOK:** Sausage edges are crispy brown.
+    *   *Action:* Add veggies.
+*   **LOOK:** Onions are translucent and soft.
+    *   *Action:* Add paste/garlic.
+*   **SMELL:** Rich, roasted tomato scent; no metallic/raw smell (approx 2 mins).
+    *   *Action:* Deglaze immediately.
+*   **LISTEN:** Violent sizzling subsides into a gentle bubble.
+    *   *Action:* Add broth & herbs.
+*   **TASTE:** Broth should be rich and flavorful before cooling.
+    *   *Action:* Adjust salt/pepper, then store.
+*   **TOUCH:** Pasta offers slight resistance (al dente).
+    *   *Action:* Serve immediately; it will soften more in the bowl.
+
+---
+
+### Format 6: The "Pseudocode" (Logic Flow)
+*Best for: Systematic execution.*
+
+```python
+def make_pasta_e_fagioli():
+    pot = DutchOven()
+    fat = pot.render(sausage)
+    
+    # Build Base
+    while not mirepoix.is_soft():
+        pot.saute(mirepoix, fat)
+    
+    # Develop Flavor
+    pot.add(garlic, chili, tomato_paste)
+    pot.fry(until="dark_rust_color") # Critical Step
+    
+    # Simmer
+    pot.deglaze(tomatoes, broth)
+    pot.add(herbs)
+    pot.simmer(minutes=30)
+    
+    # Pause
+    pot.cool_and_store()
+    
+    # Finish (Day 2)
+    pot.reheat()
+    pot.add(ditalini, beans)
+    pot.cook(until="al_dente")
+    
+    return pot.serve(garnish="balsamic")
+```
