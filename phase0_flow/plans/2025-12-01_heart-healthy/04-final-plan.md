@@ -10,8 +10,8 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
     *   *Heart Healthy Focus:* Leaner preparation of thighs, antioxidant-rich tomato sauce, and lots of veggies.
 *   **Meal 2: Cod Pizzaiola (Baccalà Style)** 🐟
     *   *Heart Healthy Focus:* High Omega-3s from cod, lycopene from tomatoes, and healthy fats from olive oil.
-*   **Meal 3: Creamy White Bean Pasta e Fagioli** 🥣
-    *   *Heart Healthy Focus:* High fiber from beans and vegetables, dairy-free creaminess.
+*   **Meal 3: Ultimate Smoky Pasta e Fagioli** 🥣
+    *   *Heart Healthy Focus:* High fiber from beans and vegetables, nutrient-dense tomato base.
 
 ---
 
@@ -21,7 +21,7 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
 *A hunter-style stew with deep tomato flavors and wine.*
 
 **Ingredients:**
-*   4-6 Chicken Thighs (bone-in, skin-on preferred for flavor, but remove skin before eating for heart health if desired)
+*   4-6 Chicken Thighs (bone-in, skin-on preferred for flavor)
 *   2 tbsp Olive Oil
 *   1 Onion, diced
 *   2 Carrots, diced
@@ -65,29 +65,32 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
 
 ---
 
-### Meal 3: Creamy White Bean Pasta e Fagioli
-*A comforting soup that uses pureed beans for a rich, creamy texture without dairy.*
+### Meal 3: Ultimate Smoky Pasta e Fagioli
+*A rich, stew-like version built on smoked meat and a deep tomato base. Best made a day ahead.*
 
 **Ingredients:**
-*   1 tbsp Olive Oil
+*   1-2 Smoked Sausages, sliced (from freezer)
 *   1 Onion, diced
 *   2 Carrots, diced
 *   2 stalks Celery, diced
-*   3 cloves Garlic, minced
-*   1 (14.5 oz) can Fire Roasted Tomatoes
+*   4-5 cloves Garlic, whole peeled
+*   1-2 tbsp Tomato Paste
+*   1 (28 oz) can Whole Peeled Tomatoes, hand-crushed
 *   2 (15 oz) cans Cannellini Beans (rinsed and drained)
 *   4 cups Pork Broth (from freezer)
-*   1 cup Small Pasta (ditalini, elbows, or shells)
-*   1 tsp Dried Rosemary
+*   1 cup Ditalini Pasta
+*   1/2 tsp Red Pepper Flakes
+*   1 tsp Dried Rosemary (or 1 fresh sprig)
+*   Parmesan Rind (optional)
 *   Salt & Pepper
 
 **Instructions:**
-1.  **Sauté Base:** Heat oil in a large pot over medium heat. Add onion, carrots, and celery. Sauté until tender (8-10 mins). Add garlic and rosemary; cook for 1 minute.
-2.  **Build Soup:** Add the can of tomatoes and the pork broth. Stir to combine.
-3.  **Creaminess Trick:** In a blender (or using an immersion blender in a separate bowl), puree **one can** of the beans with a ladleful of the hot broth until smooth. Add this puree to the pot.
-4.  **Simmer:** Add the **second can** of whole beans to the pot. Bring to a simmer and cook for 15 minutes.
-5.  **Cook Pasta:** Add the pasta directly to the soup and cook until al dente (usually 8-10 mins). The pasta will release starch and thicken the soup further.
-6.  **Finish:** Taste and season generously with salt and pepper. If it's too thick, add a splash of water.
+1.  **Render:** In a large pot, sauté sliced sausage until browned and fat is released.
+2.  **Sauté Base:** Add onion, carrots, and celery directly to the sausage fat (add a splash of oil if needed). Cook until soft (8-10 mins).
+3.  **Deepen:** Add the **whole garlic cloves**, **red pepper flakes**, and **tomato paste**. Fry the paste for 2 minutes until it turns a dark rust color.
+4.  **Simmer:** Add the hand-crushed tomatoes (and their juices), pork broth, rosemary, and parmesan rind. Bring to a boil, then reduce to low. Simmer for 20-30 minutes.
+5.  **Make Ahead (Recommended):** Stop here. Let cool and store in the fridge overnight.
+6.  **Finish (Day Of):** Reheat soup to a simmer. Add the ditalini and beans. Cook until pasta is al dente (about 10 mins). The pasta will thicken the soup naturally. Season with salt, pepper, and a splash of balsamic vinegar before serving.
 
 ---
 
@@ -96,5 +99,5 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
 *   [ ] Onions (Ensure you have at least 3 large ones)
 *   [ ] Canned Cannellini Beans (2 cans)
 *   [ ] Capers
-*   [ ] Small Pasta (Ditalini/Elbows) - *Check pantry if you have a suitable shape, otherwise buy.*
+*   [ ] Small Pasta (Ditalini) - *Check pantry if you have a suitable shape, otherwise buy.*
 *   [ ] Crusty Bread (Optional)
