@@ -65,16 +65,16 @@ Since you are an experienced cook, here are 4 different ways to view the executi
 ```mermaid
 graph TD
     Start((Start Heat)) --> A[Brown Sausage];
-    A --> B[Add Mirepoix<br/>(Onion, Carrot, Celery)];
+    A --> B["Add Mirepoix<br/>(Onion, Carrot, Celery)"];
     B --> C{Softened?};
-    C -- Yes --> D[Add Garlic & <br/>**Tomato Paste**];
+    C -- Yes --> D["Add Garlic & <br/>**Tomato Paste**"];
     D --> E[Fry Paste 2 mins];
-    E --> F[Deglaze with<br/>Tomatoes & Broth];
-    F --> G[Add Herbs & <br/>Parmesan Rind];
+    E --> F["Deglaze with<br/>Tomatoes & Broth"];
+    F --> G["Add Herbs & <br/>Parmesan Rind"];
     G --> H[Simmer 20 mins];
     H --> I{Serving Now?};
-    I -- Yes --> J[Add Ditalini & Beans];
-    I -- No --> K[Stop Heat.<br/>Add Pasta later.];
+    I -- Yes --> J["Add Ditalini & Beans"];
+    I -- No --> K["Stop Heat.<br/>Add Pasta later."];
     J --> L[Simmer 10 mins];
     L --> M((Serve));
 ```
