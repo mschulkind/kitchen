@@ -1,44 +1,45 @@
-# Ingredient Verification: Green Stew & Brisket Party
+# Ingredient Verification: Green Stew & Brisket Party (Updated)
 
-Please review this list and let me know if I've missed anything or if you actually have items I marked as "Need".
+I've updated the list to remove the Matzo Ball Soup ingredients and added a few key items we missed (like the Fig Spread for that deep flavor!).
 
 ## 🛒 Shopping List (Items you likely need)
 
 ### Produce
-- [ ] **Fresh Dill** (Get a large "bulk" bunch; used in stew, soup, and salad)
+- [ ] **Fresh Dill** (1 large bunch; for stew swirl and salad)
 - [ ] **Spinach or Swiss Chard** (1 large bag/bunch for Thursday's stew)
-- [ ] **Lemons** (3-4 for stew and salad)
-- [ ] **Carrots** (1 large bag; you have some, but need plenty for Brisket and Matzo Ball Soup)
-- [ ] **Parsnips** (3-4 for the soup)
-- [ ] **Celery** (1 bunch; you have some, but need more for the soup)
+- [ ] **Lemons** (2-3; for stew and salad)
+- [ ] **Carrots** (1 bag; for Brisket)
 - [ ] **Cucumbers** (2 English or 4-5 Persian for the Saturday salad)
+- [ ] **Red Onion** (1 medium; specifically for the Cucumber Salad - much better than white onion here)
 
-### Meat / Poultry
+### Meat
 - [ ] **Beef Brisket** (4-5 lbs)
-- [ ] **Whole Chicken** (For the best Matzo Ball Soup stock)
 
 ### Pantry / Bakery
 - [ ] **Sourdough Loaf** (1 large, dense/rustic loaf for Thursday's stew)
 - [ ] **Brown or Green Lentils** (1 bag/box)
-- [ ] **Matzo Meal** (1 canister for the matzo balls)
+- [ ] **Tomato Paste** (Essential for the stew base; pantry only lists canned tomatoes)
+- [ ] **Fig Spread** (Dalmatia brand or similar; crucial for the stew's "Maghrebi" profile and great in the brisket glaze)
+- [ ] **Applesauce** (For the latkes)
+
+### Dairy
+- [ ] **Sour Cream** (For latkes and the stew swirl)
 
 ---
 
 ## ✅ Stock Check (Items I believe you have)
 
-### Dairy / Refrigerated
-- [x] **Sour Cream** (You mentioned buying this for the latkes; we will also use it for the stew swirl!)
-- [x] **Eggs** (For the matzo balls)
-- [x] **Butter** (In fridge)
-
 ### Pantry Staples
-- [x] **White Onions** (In pantry)
-- [x] **Garlic** (Whole in pantry, peeled in freezer)
-- [x] **Beef Broth** (5 containers in freezer; perfect for the brisket)
+- [x] **White Onions** (For stew and brisket base)
+- [x] **Garlic** (Whole in pantry)
+- [x] **Potatoes** (For latkes)
+- [x] **Canned Tomatoes** (For stew liquid)
 - [x] **Olive Oil**
 - [x] **White Vinegar** (For the cucumber salad)
-- [x] **Canned Tomatoes / Paste**
 - [x] **Sugar / Salt / Pepper**
+
+### Freezer
+- [x] **Beef Broth** (5 containers; perfect for the brisket braise)
 
 ### Spices
 - [x] **Cumin**
@@ -47,10 +48,8 @@ Please review this list and let me know if I've missed anything or if you actual
 - [x] **Thyme** (For the brisket)
 - [x] **Bay Leaves**
 
-### Already Covered
-- [x] **Latkes** (You've got these!)
-- [x] **Applesauce** (Assuming you'll grab this with the sour cream)
-
 ---
 
-**Note on Synergy:** Since you are buying **Sour Cream** for the latkes, I have swapped the Greek Yogurt in the "Green Stew" recipe for a Sour Cream & Dill swirl. It will be just as delicious and saves you buying another dairy item! 🥣✨
+**Changes from last version:**
+*   ❌ Removed: Whole Chicken, Matzo Meal, Parsnips, Celery (Soup cancelled).
+*   ➕ Added: **Tomato Paste** (was missing), **Fig Spread** (key flavor), **Red Onion** (for salad), **Applesauce**.
