@@ -62,6 +62,32 @@ Here are the options for Thursday and Saturday separated out. You can mix and ma
 
 ---
 
+## 💡 Recommended Pairings (Maximum Synergy)
+
+If you want to minimize your shopping list and save money, choose one of these "Power Pairs":
+
+### 🏆 The "Dill & Lemon" Bundle (Option 1 + A or D)
+*   **Why:** Both the **Original Maghrebi Stew** and the **Brisket (A)** or **Salmon (D)** rely heavily on fresh Dill and Lemons.
+*   **Savings:** Buy one large "bulk" bunch of dill and a 2lb bag of lemons. You'll use them across every single meal.
+*   **Best for:** Fans of bright, acidic, and herbaceous flavors.
+
+### 🏆 The "Creamy & Fresh" Bundle (Option 3 + D)
+*   **Why:** The **Green Lentil Stew** uses Yogurt, and the **Salmon Bar (D)** uses Creme Fraiche.
+*   **Savings:** Buy one large tub of high-quality Greek Yogurt. It works perfectly as the stew swirl AND as the creamy topping for latkes/salmon.
+*   **Best for:** A lighter, more modern feeling menu.
+
+### 🏆 The "Produce Power" Bundle (Option 5 + B)
+*   **Why:** The **Harira Stew** and **Schnitzel/Israeli Salad (B)** both require a lot of "crisper drawer" items (Lemons, Celery, Cucumbers, Tomatoes).
+*   **Savings:** You can buy your produce in one go and use the "scraps" (like celery hearts or extra parsley) across both nights.
+*   **Best for:** If you want a very fresh, vegetable-forward week.
+
+### 🏆 The "Pantry Hero" Bundle (Option 2 + E)
+*   **Why:** The **Smoky Red Pepper Stew** and **Sweet & Sour Meatballs** rely mostly on jarred/canned goods (Roasted Peppers, Chickpeas, Cranberry Sauce).
+*   **Savings:** Lowest "fresh" grocery bill. Most ingredients are shelf-stable or frozen (like the ground beef).
+*   **Best for:** A busy week where you don't want to worry about produce wilting.
+
+---
+
 ## Ingredient Synergies & Analysis
 
 ### 🌿 Fresh Herbs
