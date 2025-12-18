@@ -18,8 +18,9 @@ I've updated the list to remove the Matzo Ball Soup ingredients and added a few 
 ### Pantry / Bakery
 - [ ] **Sourdough Loaf** (1 large, dense/rustic loaf for Thursday's stew)
 - [ ] **Brown or Green Lentils** (1 bag/box)
-- [ ] **Tomato Paste** (Essential for the stew base; pantry only lists canned tomatoes)
-- [ ] **Fig Spread** (Dalmatia brand or similar; crucial for the stew's "Maghrebi" profile and great in the brisket glaze)
+- [ ] **Tomato Paste** (1 small can/tube; essential for the stew base)
+- [ ] **Canned Tomatoes** (1 can (28oz) Crushed or Whole Peeled; for the stew liquid)
+- [ ] **Fig Spread** (1 small jar (approx 8-9oz); you'll use ~2 tbsp for the stew and ~2 tbsp for the brisket glaze)
 - [ ] **Applesauce** (For the latkes)
 
 ### Dairy
@@ -33,9 +34,8 @@ I've updated the list to remove the Matzo Ball Soup ingredients and added a few 
 - [x] **White Onions** (For stew and brisket base)
 - [x] **Garlic** (Whole in pantry)
 - [x] **Potatoes** (For latkes)
-- [x] **Canned Tomatoes** (For stew liquid)
 - [x] **Olive Oil**
-- [x] **White Vinegar** (For the cucumber salad)
+- [x] **Vinegar** (You have many! **Apple Cider Vinegar** or **Red Wine Vinegar** would be excellent for the cucumber salad instead of plain white)
 - [x] **Sugar / Salt / Pepper**
 
 ### Freezer
