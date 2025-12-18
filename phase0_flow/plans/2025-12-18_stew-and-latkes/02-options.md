@@ -1,67 +1,48 @@
 # Meal Plan Options
 
-Here are 4 options for your upcoming meals. All options include the **Maghrebi-Style Stew** for Thursday/Friday. The variation comes in the **Saturday Dinner Party** menu to complement your Latkes.
+Here are 5 options for your upcoming meals. Each option features a **unique variation** of the Thursday Stew and a **distinct Jewish dinner concept** for Saturday.
 
-## Option 1: The Classic Brisket (Crowd Pleaser)
-A traditional, melt-in-your-mouth brisket is the ultimate partner for latkes. It's rich, savory, and the sauce is perfect for dipping latkes into.
-*   **Thursday:** Maghrebi-Style Spiced Tomato & Lentil Bread Stew.
-*   **Saturday Menu:**
-    *   **Main:** Slow-Cooked Beef Brisket with Onions & Carrots (Sweet & Savory).
-    *   **Side:** Your Latkes.
-    *   **Side:** Cucumber & Dill Salad (Acidic and crisp to cut through the richness).
-    *   **Starter:** Matzo Ball Soup (Kids usually love the "fluffy balls").
+## Option 1: The Classics
+*   **Thursday: The Original Maghrebi Stew**
+    *   **Profile:** The exact recipe you requested. Rich tomato & lentil base, cumin/coriander/cinnamon, fig spread, lemon, topped with marinated feta and dill.
+    *   **Vibe:** Deep, earthy, sweet-and-savory.
+*   **Saturday: Slow-Cooked Beef Brisket**
+    *   **Concept:** Melt-in-your-mouth brisket with onions and carrots. The savory gravy is perfect for dipping latkes.
+    *   **Sides:** Latkes, Cucumber & Dill Salad (for crunch), Matzo Ball Soup.
+    *   **Why:** It's the quintessential Jewish holiday meal.
 
-**Key New Ingredients:**
-*   **Produce:** Fresh Dill, Lemons, Cucumbers, Carrots, Onions, Parsnips (for soup).
-*   **Dairy/Cheese:** Feta Block.
-*   **Pantry:** Lentils (Brown/Green), Fig Spread, Matzo Meal (or mix).
-*   **Meat:** Beef Brisket (3-4 lbs), Whole Chicken (for soup stock) or extra broth.
-*   **Bakery:** Sourdough Loaf (for stew).
+## Option 2: The Kid-Friendly & Smoky
+*   **Thursday: Smoky Red Pepper & Chickpea Stew**
+    *   **Profile:** A variation on the base recipe adding roasted red peppers (blended or chopped) and smoked paprika. Swaps half the lentils for chickpeas for texture.
+    *   **Vibe:** Sweet, smoky, and very mild/approachable for kids.
+*   **Saturday: Chicken Schnitzel**
+    *   **Concept:** Thin, crispy breaded chicken cutlets. Basically giant, high-quality chicken nuggets.
+    *   **Sides:** Latkes, Israeli Salad (chopped tomato/cucumber), Lemon wedges.
+    *   **Why:** Guaranteed win with the kids, and schnitzel + latkes is a delicious fried feast.
 
-## Option 2: The Schnitzel & Salad (Kid Favorite)
-Chicken Schnitzel is basically a giant chicken nugget, making it a guaranteed hit with the kids. It pairs wonderfully with latkes and a fresh Israeli salad.
-*   **Thursday:** Maghrebi-Style Spiced Tomato & Lentil Bread Stew.
-*   **Saturday Menu:**
-    *   **Main:** Chicken Schnitzel (Thin, breaded, fried chicken cutlets).
-    *   **Side:** Your Latkes.
-    *   **Side:** Israeli Salad (Finely chopped tomatoes, cucumbers, peppers, parsley).
-    *   **Sauce:** Lemon wedges and maybe a Tahini sauce for dipping.
+## Option 3: The Lighter & Herby
+*   **Thursday: "Green" Lentil & Spinach Stew**
+    *   **Profile:** Uses the same bread/lentil technique but reduces the tomato paste. Folds in lots of fresh spinach/chard at the end. Topped with a Yogurt-Dill swirl instead of just feta.
+    *   **Vibe:** Fresh, herbaceous, and lighter.
+*   **Saturday: Roast Chicken with Apples**
+    *   **Concept:** Whole roasted chicken with apples, onions, and thyme.
+    *   **Sides:** Latkes, Roasted Green Beans, Hummus & Pita platter.
+    *   **Why:** The apples tie into the applesauce tradition, and it's a lighter protein to balance the heavy latkes.
 
-**Key New Ingredients:**
-*   **Produce:** Fresh Dill, Lemons, Cucumbers, Tomatoes, Bell Peppers, Parsley.
-*   **Dairy/Cheese:** Feta Block.
-*   **Pantry:** Lentils, Fig Spread, Panko or Breadcrumbs.
-*   **Meat:** Chicken Breasts (thinly sliced or pounded).
-*   **Bakery:** Sourdough Loaf.
+## Option 4: The "Appetizing" & Winter Roots
+*   **Thursday: Winter Root Vegetable Stew**
+    *   **Profile:** Adds cubes of roasted butternut squash or sweet potato to the lentil base. Uses sage and thyme alongside the warm spices. Topped with Goat Cheese.
+    *   **Vibe:** Sweet, autumnal, and very comforting.
+*   **Saturday: Roasted Salmon & "Latke Bar"**
+    *   **Concept:** A side of roasted salmon with lemon/dill. Plus a "Bar" with smoked salmon, creme fraiche, chives, and capers.
+    *   **Sides:** Latkes, Arugula & Pear Salad.
+    *   **Why:** Feels fancy and "brunch-for-dinner" style. Very little active cooking time for the host.
 
-## Option 3: The Roast Chicken & Apples (Lighter & Elegant)
-A perfectly roasted chicken is less heavy than brisket but still festive. Adding apples or apricots to the roast ties in with the applesauce usually served with latkes.
-*   **Thursday:** Maghrebi-Style Spiced Tomato & Lentil Bread Stew.
-*   **Saturday Menu:**
-    *   **Main:** Roast Chicken with Apples, Onions, and Thyme.
-    *   **Side:** Your Latkes.
-    *   **Side:** Roasted Green Beans with Garlic.
-    *   **Appetizer:** Hummus & Pita platter with veggie sticks (Great for grazing guests).
-
-**Key New Ingredients:**
-*   **Produce:** Fresh Dill, Lemons, Apples (Granny Smith/Gala), Green Beans, Thyme.
-*   **Dairy/Cheese:** Feta Block.
-*   **Pantry:** Lentils, Fig Spread, Hummus (or chickpeas/tahini to make), Pita Bread.
-*   **Meat:** Whole Roasting Chickens (x2 for 9 people).
-*   **Bakery:** Sourdough Loaf.
-
-## Option 4: The "Latke Bar" & Salmon (Fish Forward)
-Lean into the "appetizing" tradition. This is less cooking for you on the day and feels very fancy but casual.
-*   **Thursday:** Maghrebi-Style Spiced Tomato & Lentil Bread Stew.
-*   **Saturday Menu:**
-    *   **Main:** Roasted Salmon Side with Lemon & Dill.
-    *   **The "Bar":** Smoked Salmon, Sour Cream, Creme Fraiche, Chives, Applesauce.
-    *   **Side:** Your Latkes.
-    *   **Side:** Arugula Salad with Pear and Walnuts.
-
-**Key New Ingredients:**
-*   **Produce:** Fresh Dill, Lemons, Chives, Arugula, Pears.
-*   **Dairy/Cheese:** Feta Block, Sour Cream, Creme Fraiche.
-*   **Pantry:** Lentils, Fig Spread, Walnuts.
-*   **Meat/Fish:** Large Salmon Fillet (Side), Smoked Salmon package.
-*   **Bakery:** Sourdough Loaf.
+## Option 5: The Party Spread
+*   **Thursday: "Harira-Style" Stew**
+    *   **Profile:** Inspired by Moroccan Harira. Adds turmeric, ginger, celery, and a mix of lentils and chickpeas. Finished with lots of cilantro and lemon.
+    *   **Vibe:** Zesty, aromatic, and complex.
+*   **Saturday: Sweet & Sour Meatballs**
+    *   **Concept:** Beef meatballs simmered in a traditional sweet & sour tomato sauce (often made with cranberry sauce or apricot jam).
+    *   **Sides:** Latkes, Rice (optional, for sauce), Steamed Broccoli.
+    *   **Why:** A classic Jewish party dish that kids love because it's sweet and saucy.
