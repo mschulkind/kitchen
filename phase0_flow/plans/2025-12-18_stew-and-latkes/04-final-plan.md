@@ -11,14 +11,15 @@ This plan covers your rich stew for tonight (with leftovers for Friday) and your
 *   **Vibe:** Deep, earthy, and comforting with a fresh herby finish.
 *   **Recipe:** [Green Maghrebi Stew](recipes/green-maghrebi-stew.md)
 
-### Friday, Dec 19: Stew Leftovers
-*   **Portions:** 2 Adults + 2 Kids.
-*   **Note:** The bread in the stew will have softened further, making it even richer.
+### Friday, Dec 19: Stew Leftovers & Brisket Prep
+*   **Dinner:** Stew Leftovers (2 Adults + 2 Kids).
+*   **Prep:** Braise the [Slow-Cooked Beef Brisket](recipes/slow-cooked-brisket.md) today.
+*   **Note:** The bread in the stew will have softened further, making it even richer. The brisket will chill overnight, making it much easier to slice tomorrow!
 
 ### Saturday, Dec 20: The Latke & Brisket Party
 *   **Portions:** 4 Adults + 5 Kids.
 *   **Menu:**
-    *   **Main:** [Slow-Cooked Beef Brisket](recipes/slow-cooked-brisket.md)
+    *   **Main:** [Slow-Cooked Beef Brisket](recipes/slow-cooked-brisket.md) (Slice cold and reheat in sauce).
     *   **Side:** Your Latkes (with Sour Cream & Applesauce).
     *   **Side:** [Cucumber & Dill Salad](recipes/cucumber-dill-salad.md)
 
