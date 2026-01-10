@@ -21,5 +21,5 @@ Assume meat is raw unless otherwise specified.
 - Beef broth x 5
 - Cubed cooked chicken breast
 - Chicken wings
-- Braised pork shoulder
 - Marinated chicken breast strips for street tacos
+- fire roasted root vegetables (purchased)
