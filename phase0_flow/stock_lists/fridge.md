@@ -19,5 +19,3 @@
 
 ## Other
 
-- Carrots
-- Celery
