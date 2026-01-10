@@ -23,3 +23,35 @@ recipe name:
 # Remove generated PDFs
 clean:
     rm -rf {{output_dir}}
+
+# ============================================================================
+# Code Quality & Testing
+# ============================================================================
+
+# Run all checks (format, lint, test)
+check: lint test
+
+# Lint all code (Python, Markdown, Mermaid)
+lint: lint-py lint-md lint-mmd
+
+# Lint Python code
+lint-py:
+    uv run ruff check .
+
+# Lint Markdown (GitHub format)
+lint-md:
+    npm run lint
+
+# Lint Mermaid diagrams in Markdown
+lint-mmd:
+    python3 scripts/lint_mermaid.py
+
+# Format Python code
+format:
+    uv run ruff check --fix .
+    uv run ruff format .
+
+# Run tests
+test:
+    uv run pytest
+

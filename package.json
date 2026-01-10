@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "@google/gemini-cli": "^0.11.3"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0",
+    "markdownlint-cli": "^0.47.0"
+  },
+  "scripts": {
+    "lint": "markdownlint '**/*.md' --ignore node_modules"
   }
 }

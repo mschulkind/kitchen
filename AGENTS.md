@@ -12,7 +12,7 @@ This document consolidates the project-specific rules and guidelines for AI agen
 
 ### Directory Usage
 
-- **`plans/`**: Git-tracked for planning, outlines, specs, and decisions. Use `index.md` for navigation.
+- **`docs/plans/`**: Git-tracked for planning, outlines, specs, and decisions. Use `index.md` for navigation.
 - **`context/`**: Gitignored for research, data, temporary notes, and references. Use `index.md` for organization.
 - **`src/`**: Source code (Python backend, TS/React frontend). Tests should be separate but parallel.
 - **General**: All paths are relative to the project root. Use clear naming and READMEs.
