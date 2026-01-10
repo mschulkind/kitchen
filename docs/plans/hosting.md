@@ -1,6 +1,7 @@
 # Hosting and Deployment
 
 ## Table of Contents
+
 - [Primary Hosting Strategy: Self-Hosted on Raspberry Pi](#primary-hosting-strategy-self-hosted-on-raspberry-pi)
 - [Local Development Setup](#local-development-setup)
 - [Alternative Hosting Options (Cloud)](#alternative-hosting-options-cloud)
@@ -17,9 +18,9 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
 
 - **Orchestration**: `docker-compose` will be used to define and manage the multi-container application stack.
 - **Application Components**:
-    - **Frontend (React/Vite)**: A multi-stage `Dockerfile` will be created to first build the static assets, which are then served by a lightweight web server like Nginx.
-    - **Backend (Python/FastAPI)**: A dedicated Docker container running the FastAPI application with `uvicorn`.
-    - **Database (Supabase)**: We will leverage the official Supabase Docker images to run the entire Supabase stack (Postgres, GoTrue, Realtime, etc.) locally on the Raspberry Pi. This provides the power of Supabase while keeping all data on-premise.
+  - **Frontend (React/Vite)**: A multi-stage `Dockerfile` will be created to first build the static assets, which are then served by a lightweight web server like Nginx.
+  - **Backend (Python/FastAPI)**: A dedicated Docker container running the FastAPI application with `uvicorn`.
+  - **Database (Supabase)**: We will leverage the official Supabase Docker images to run the entire Supabase stack (Postgres, GoTrue, Realtime, etc.) locally on the Raspberry Pi. This provides the power of Supabase while keeping all data on-premise.
 - **Networking**: All containers will be connected via a shared Docker network. The frontend container's web server will be configured to proxy API requests to the backend container.
 - **ARM64 Compatibility**: All Docker images must be compatible with the Raspberry Pi's ARM64 architecture. We will need to verify or build ARM-compatible images for each service.
 - **Deployment Workflow**:
@@ -29,6 +30,7 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   4. Use `docker-compose up -d` on the Raspberry Pi to deploy or update the application.
 
 ## Local Development Setup
+
 **Goal**: Quick, reliable local runs for development and testing, emphasizing fast iteration.
 
 - **Backend**:
@@ -43,13 +45,15 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   - Database Sync: Use local storage or IndexedDB for offline inventory; sync to backend when online.
 
 - **Full Stack Run**:
-  - **Process Management**: Use Overmind (https://github.com/DarthSim/overmind) to manage multiple development services in a single terminal session. Overmind provides a tmux-based interface for starting, stopping, and monitoring all services simultaneously.
+  - **Process Management**: Use Overmind (<https://github.com/DarthSim/overmind>) to manage multiple development services in a single terminal session. Overmind provides a tmux-based interface for starting, stopping, and monitoring all services simultaneously.
   - **Procfile**: Create a `Procfile.dev` at the project root with the following processes:
+
     ```
     frontend: npm run dev
     backend: uvicorn main:app --reload --port 8000
     supabase: supabase start
     ```
+
   - **Commands**:
     - Install Overmind: `cargo install overmind` (requires Rust/Cargo).
     - Start all services: `overmind start -f Procfile.dev`
@@ -64,7 +68,8 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   - TODO: Create `setup.sh` or `Makefile` for one-command setup.
 
 **Text Setup Flow**:
-```
+
+```text
 1. Clone repo & cd into root
 2. Install dependencies: pip install -r requirements.txt; npm install
 3. Install Overmind: cargo install overmind
@@ -74,6 +79,7 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
 ```
 
 ## Alternative Hosting Options (Cloud)
+
 **Goal**: Optional deployment for access from multiple devices (e.g., phone, home server); prioritize free/low-cost for personal app.
 
 - **Frontend (React/Vite)**:
@@ -104,6 +110,7 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   4. Custom Domain: Optional via Vercel (e.g., dinnerapp.example.com).
 
 ## PWA and Mobile Deployment
+
 **Goal**: Enable installable app on mobile for offline use, aligning with on-the-go UX.
 
 - **PWA Setup**:
@@ -119,6 +126,7 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
   - TODO: Permissions for notifications (e.g., "Low on staples").
 
 ## CI/CD and Monitoring
+
 - **CI**: GitHub Actions for tests on push/PR (run pytest + vitest).
   - Workflow: Lint → Test → Build → Deploy preview.
 - **Monitoring**: Basic logging with Sentry (free tier) for errors; track LLM usage.
@@ -126,12 +134,14 @@ Based on the decision to self-host, the primary deployment target will be a Rasp
 - TODO: Set up deploy checklist (e.g., backup DB, test offline mode).
 
 ## Pending Decisions
+
 - **Primary Hosting**: Vercel + Heroku combo vs. all-in-one (e.g., DigitalOcean).
 - **Database Migration**: Tool choice (Alembic vs. manual scripts).
 - **Cost Management**: Monitor free tiers; budget for LLM API (~$5/month low use).
 - **Scaling**: If app grows, consider Docker for containerization.
 
 ## References
+
 - Align with TDD rules in [.kilocode/rules.md](../.kilocode/rules.md).
 - UX flows in [ux-flow.md](ux-flow.md) for deployment testing.
 

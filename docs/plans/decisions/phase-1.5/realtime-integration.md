@@ -1,6 +1,7 @@
 # Decision Log: Realtime Collaboration with Supabase
 
 ## Table of Contents
+
 - [1. Goal](#1-goal)
 - [2. Technical Approach](#2-technical-approach)
   - [Key Implementation Points](#key-implementation-points)
@@ -10,12 +11,14 @@
 
 This document details the plan for integrating Supabase Realtime to enable multi-user collaboration features.
 
-*   **Phase:** 1.5
-*   **Status:** Finalized (2025-09-18: Decision approved. Implementation plan confirmed.)
-*   **Owner:** A.I. Assistant
+- **Phase:** 1.5
+- **Status:** Finalized (2025-09-18: Decision approved. Implementation plan confirmed.)
+- **Owner:** A.I. Assistant
 
 ## Final Decision Summary
+
 The decision to integrate Supabase Realtime is finalized with the following core components:
+
 - **Channels**: Dedicated channels will be used for `shopping_lists`, `meal_plans`, and `inventory_items`.
 - **Optimistic Updates**: The frontend will use React Query (TanStack Query) for optimistic UI updates.
 - **Offline Handling**: User actions taken while offline will be queued using IndexedDB and synced upon reconnection.
@@ -29,14 +32,14 @@ Enable seamless, real-time synchronization of data across multiple devices and u
 
 We will use the Supabase client-side SDK (`supabase-js`) to subscribe to database changes. This allows the application to listen for inserts, updates, and deletes on specific tables and reflect those changes in the UI instantly.
 
-### Key Implementation Points:
+### Key Implementation Points
 
-*   **Client-Side Subscriptions:** Use `supabase.channel()` to create channels for key shared resources.
-*   **Postgres Changes:** Listen to `postgres_changes` events to receive database updates.
-*   **Optimistic UI:** To ensure a fluid user experience, especially on mobile, we will implement optimistic updates. The local UI state will update immediately upon a user's action, before the database confirms the change.
-*   **Offline First:** Changes made while offline will be queued and synced upon reconnection.
+- **Client-Side Subscriptions:** Use `supabase.channel()` to create channels for key shared resources.
+- **Postgres Changes:** Listen to `postgres_changes` events to receive database updates.
+- **Optimistic UI:** To ensure a fluid user experience, especially on mobile, we will implement optimistic updates. The local UI state will update immediately upon a user's action, before the database confirms the change.
+- **Offline First:** Changes made while offline will be queued and synced upon reconnection.
 
-### API Sketch:
+### API Sketch
 
 ```javascript
 // Example for a shared shopping list
@@ -57,7 +60,7 @@ channel.on(
   }
 ).subscribe();
 
-```
+```text
 
 ## 3. Channels and Subscriptions
 
@@ -70,7 +73,8 @@ To structure the real-time communication, we will define channels based on share
 | **Inventory**       | `inventory:{pantry_id}`                            | `inventory_items`                 | Tracks changes to shared pantry stock (e.g., quantity updates after shopping).         |
 | **Presence**        | `presence-list:{list_id}` or `presence-plan:{plan_id}` or `presence-inventory:{pantry_id}` | (N/A - Presence state)            | Tracks which users are currently viewing a specific list, plan, or inventory.          |
 
-### Subscription Logic:
+### Subscription Logic
+
 - When a user views a shared shopping list, the app will subscribe to `shared-list:{list_id}` and `presence-list:{list_id}`.
 - The `filter` parameter in the subscription will be used to ensure clients only receive events for the specific resource they are viewing.
 - For meal plans, subscribe to both `meal_plan_recipes` and `meal_plans` to capture recipe assignments and overall plan changes.
@@ -80,17 +84,19 @@ To structure the real-time communication, we will define channels based on share
 
 To provide a responsive mobile experience in the PWA, we will implement optimistic updates combined with offline queuing. This ensures users can interact seamlessly even with poor connectivity, aligning with the mobile-first brief.
 
-### Preferences and Strategy:
+### Preferences and Strategy
+
 - **Library Choice:** Use React Query (TanStack Query) for data fetching, caching, and mutations. It supports optimistic updates out-of-the-box and integrates well with Supabase via custom hooks.
 - **Offline Storage:** Leverage IndexedDB (via idb-keyval or Dexie.js for simplicity) for queuing mutations on mobile. Fallback to AsyncStorage in Expo for smaller payloads.
 - **Sync Mechanism:** On reconnection, replay queued mutations with retries (exponential backoff). Use Supabase's `realtime` to confirm sync and resolve conflicts via last-write-wins.
-- **Mobile Considerations:** 
+- **Mobile Considerations:**
   - Minimize battery drain by disabling polling during active subscriptions; use WebSocket for realtime.
   - Handle Expo specifics: Ensure subscriptions persist across app suspends using background tasks if needed.
   - UX: Show loading spinners for optimistic actions, success toasts on sync, and error banners for unresolvable conflicts.
   - Accessibility: Announce queued changes via ARIA live regions for screen readers.
 
-### Pseudocode Example:
+### Pseudocode Example
+
 ```javascript
 // Hook for optimistic mutation with queue
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -155,27 +161,31 @@ This approach ensures low-latency interactions for busy users managing shared me
 
 - **Strategy**: As defined in [`conflict-resolution-and-offline.md`](conflict-resolution-and-offline.md), we will use a **Last Write Wins (LWW)** approach.
 - **UI Feedback**:
-    - **Optimistic Updates**: Local changes are reflected instantly in the UI.
-    - **Incoming Changes**: When a change is received from the channel, the UI will smoothly update to reflect the new state (e.g., an item appearing, a quantity changing).
-    - **User Avatars**: Presence information will be used to display the avatars of other users currently viewing the same resource, providing a clear sense of collaboration.
+  - **Optimistic Updates**: Local changes are reflected instantly in the UI.
+  - **Incoming Changes**: When a change is received from the channel, the UI will smoothly update to reflect the new state (e.g., an item appearing, a quantity changing).
+  - **User Avatars**: Presence information will be used to display the avatars of other users currently viewing the same resource, providing a clear sense of collaboration.
 
 ## 7. Expo Compatibility and Error Handling
+
 To ensure seamless realtime in the React Native/Expo frontend:
 
-### Expo Integration:
+### Expo Integration
+
 - **SDK Usage**: Supabase JS SDK works natively in Expo; install via `npx expo install @supabase/supabase-js`.
 - **Background Sync**: Use Expo's TaskManager for background fetches on app resume/reconnect (e.g., register task to replay queued mutations from IndexedDB). Limit to 30s execution for iOS/Android battery efficiency.
 - **Permissions**: Request notification perms for sync toasts; handle Expo's dev client for local testing.
 - **Data Model Ties**: Subscriptions filter on models like `shopping_list_items` (for categorical lists), `inventory_items` (location-aware), and `meal_plan_recipes` (day-based); ensure row-level security (RLS) policies allow subscribed users only.
 
-### Error Handling:
+### Error Handling
+
 - **Subscription Errors**: Wrap `channel.subscribe()` in try-catch; on failure (e.g., network error), implement exponential backoff reconnect (e.g., retry after 1s, 2s, 4s up to 5 attempts).
 - **Payload Validation**: On `postgres_changes` receipt, validate payload against expected schema (e.g., check `new` has required fields like id, quantity for inventory_items); discard invalid to prevent UI corruption.
 - **Offline Reconnect**: Listen to `navigator.connection` changes or Supabase's `supabase.realtime.connect()`; on online, resubscribe channels and sync queues, showing progress toast (e.g., "Reconnected: 3 changes synced").
 - **Mobile UX**: For errors, display non-intrusive banners (e.g., "Sync paused—check connection") with retry button; log to console for debugging.
 
 Pseudocode for Reconnect:
-```
+
+```text
 function setupReconnect() {
   let retryCount = 0;
   const maxRetries = 5;
@@ -214,7 +224,8 @@ function setupReconnect() {
 This ensures robust, mobile-optimized realtime integration aligned with Supabase's RLS and our data models.
 
 ## 6. Next Steps
--   Implement auth and presence tracking (see [auth-and-presence.md](auth-and-presence.md)).
--   Detail conflict resolution (covered in [conflict-resolution-and-offline.md](conflict-resolution-and-offline.md)).
--   Outline testing plan (covered in [multiuser-testing.md](multiuser-testing.md)).
--   Integrate into design-system.md Collaboration Architecture section with channel summaries.
+
+- Implement auth and presence tracking (see [auth-and-presence.md](auth-and-presence.md)).
+- Detail conflict resolution (covered in [conflict-resolution-and-offline.md](conflict-resolution-and-offline.md)).
+- Outline testing plan (covered in [multiuser-testing.md](multiuser-testing.md)).
+- Integrate into design-system.md Collaboration Architecture section with channel summaries.

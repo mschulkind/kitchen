@@ -1,6 +1,7 @@
 # Database Research for Personalized Dinner & Shopping App
 
 ## Table of Contents
+
 - [Overview of Needs](#overview-of-needs)
 - [Comparison Table](#comparison-table)
 - [Recommendations](#recommendations)
@@ -8,6 +9,7 @@
 ## Overview of Needs
 
 The app requires a database solution that supports realtime multiuser collaboration for shared meal plans, inventories, and shopping lists across users/devices, while maintaining offline-first functionality for mobile PWA usage. Handling structured data like recipes, ingredients, pantry inventories (PantryItem model), shopping lists, and meal plans. Key needs include:
+
 - **Realtime Multiuser Sync**: Live updates for shared checklists/inventories (e.g., concurrent editing with conflict resolution), user presence/notifications, and auth for collaborators (e.g., invites, row-level security).
 - **Offline Support**: Local storage and editing of inventory/meal plans without internet (e.g., via IndexedDB or SQLite in browser), with optimistic updates and queued sync on reconnect.
 - **Data Scale**: Small to medium (hundreds of items per user/group); structured relational data with relationships (e.g., recipes to ingredients, users to shared plans).

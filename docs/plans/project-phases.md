@@ -1,6 +1,7 @@
 # Phased Development Plan: From MVP to V1
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Guiding Principles](#guiding-principles)
 - [Phase 0: Markdown-Driven MVP (Weeks 0-1)](#phase-0-markdown-driven-mvp-weeks-0-1)
@@ -11,9 +12,11 @@
 - [Phased Planning Decisions](#phased-planning-decisions)
 
 ## Overview
+
 This document outlines a phased approach to developing the Personalized Dinner &amp; Shopping App. The goal is to deliver a usable Minimum Viable Product (MVP) as quickly as possible so you can start cooking with it, then iteratively add features. Each phase has a clear focus, dependencies, and a timeline.
 
 ## Guiding Principles
+
 - **Speed to Value**: Get a working, cookable-from version of the app in your hands ASAP.
 - **Manual First**: Test the core LLM value proposition through a markdown-based interface before writing any code.
 - **Minimum Viable UX**: The initial UX will be rough but functional. We'll polish it in later phases.
@@ -22,8 +25,10 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phase 0: Markdown-Driven MVP (Weeks 0-1)
+
 **Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
 **Milestone**:
+
 - **Week 0: Conversational Flow**: Create and test the full back-and-forth flow using the `phase0_flow/` directory, from request to final plan.
 
 **Outcome of Phase 0**: You can collaboratively create a meal plan through a series of markdown files, proving the value and logic of the core LLM interaction before any code is written.
@@ -31,6 +36,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phase 1: The Bare-Bones MVP (Weeks 1-3)
+
 **Goal**: A single-user, web-based app that can generate a meal plan and shopping list. The core logic will be in place, even if the UI is just buttons and text.
 
 | Milestone | Key Tasks | Decisions to Make |
@@ -44,6 +50,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)
+
 **Goal**: Integrate the core "smart" features: inventory tracking and LLM-powered suggestions. This makes the app genuinely useful for daily cooking.
 
 | Milestone | Key Tasks | Decisions to Make |
@@ -57,6 +64,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phase 3: Multi-User &amp; Realtime (Weeks 7-9)
+
 **Goal**: Add the collaborative features that make the app sharable.
 
 | Milestone | Key Tasks | Decisions to Make |
@@ -70,6 +78,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phase 4: V1 Polish &amp; Future-Proofing (Weeks 10-12)
+
 **Goal**: Refine the UI/UX, solidify the testing strategy, and prepare for long-term maintenance.
 
 | Milestone | Key Tasks | Decisions to Make |
@@ -83,6 +92,7 @@ This document outlines a phased approach to developing the Personalized Dinner &
 ---
 
 ## Phased Planning Decisions
+
 To keep us moving fast, we'll only focus on the decisions needed for the current phase. Here's how the pending decisions map to our new phases:
 
 | Phase | Decisions to Make |

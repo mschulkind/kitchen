@@ -1,10 +1,12 @@
 # Freezer Stock
 
 ## Table of Contents
+
 - [Staples](#staples)
 - [Other](#other)
 
 ## Staples
+
 - Peeled garlic
 
 ## Other
@@ -18,7 +20,7 @@ Assume meat is raw unless otherwise specified.
 - Chuck stew meat
 - Pork broth x 2
 - Beef broth x 5
-- Cubed cooked chicken breast 
+- Cubed cooked chicken breast
 - Ribeye steaks
 - Chicken wings
 - Braised pork shoulder

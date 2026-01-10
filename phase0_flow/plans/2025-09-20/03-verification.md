@@ -5,6 +5,7 @@ Please review this list and check off the items you have on hand. Feel free to m
 ---
 
 ## Produce
+
 - [ ] Sweet potatoes
 - [ ] Red onion
 - [ ] Cilantro
@@ -16,6 +17,7 @@ Please review this list and check off the items you have on hand. Feel free to m
 - [x] Kale
 
 ## Pantry
+
 - [x] Olive Oil
 - [x] Rice
 - [x] Pasta
@@ -24,10 +26,12 @@ Please review this list and check off the items you have on hand. Feel free to m
 - [ ] Heavy cream or cream cheese
 
 ## Freezer
+
 - [x] Chicken thighs
 - [x] Cubed cooked chicken breast
 
 ## Spices
+
 - [x] Kosher salt
 - [x] Cumin
 - [x] Garlic Powder

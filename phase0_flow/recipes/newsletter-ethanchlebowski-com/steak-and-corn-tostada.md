@@ -1,31 +1,34 @@
-Source: https://www.cookwell.com/recipe/steak-and-corn-tostada
+Source: <https://www.cookwell.com/recipe/steak-and-corn-tostada>
 
 # Steak & Corn Tostada
 
 Creamy, sweet and a little smoky.
 
-### Ingredients
+## Ingredients
 
-#### Steak
-* 900g flank, skirt, or flatiron steak
-* Salt, a sprinkle
-* Cooking oil, for searing
+### Steak
 
-#### Chili Lime Corn
-* 2 corn ears
-* Lime juice, from 1 lime
-* Cilantro, chopped stems, a handful
-* Smoked paprika, a spoonful
-* Salt, to taste
+- 900g flank, skirt, or flatiron steak
+- Salt, a sprinkle
+- Cooking oil, for searing
 
-#### Tostada Components
-* 4-6 tostadas
-* Crema
-* Salsa verde
-* Pickled onions
-* Queso fresco
+### Chili Lime Corn
 
-### Instructions
+- 2 corn ears
+- Lime juice, from 1 lime
+- Cilantro, chopped stems, a handful
+- Smoked paprika, a spoonful
+- Salt, to taste
+
+### Tostada Components
+
+- 4-6 tostadas
+- Crema
+- Salsa verde
+- Pickled onions
+- Queso fresco
+
+## Instructions
 
 1. **Dry brine the steak**: Pat the steak dry and cover all sides with a sprinkle of salt. Optional: Rest on a wire rack or paper towel in the fridge until ready to cook, preferably for a few hours or even overnight. This dry brining process will help it sear, retain more moisture during cooking, and be evenly seasoned.
 

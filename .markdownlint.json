@@ -18,10 +18,15 @@
     "front_matter_title": ""
   },
   "MD033": false,
-  "MD040": true,
-  "MD041": true,
+  "MD034": false,
+  "MD035": false,
+  "MD036": false,
+  "MD040": false,
+  "MD041": false,
   "MD046": {
     "style": "fenced"
   },
+  "MD051": false,
+  "MD060": false,
   "MD010": true
 }

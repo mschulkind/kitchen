@@ -1,36 +1,40 @@
-Source: https://www.cookwell.com/recipe/bean-and-cheese-tostada
+Source: <https://www.cookwell.com/recipe/bean-and-cheese-tostada>
 
 # Bean & Cheese Tostada
 
 Easy weekday tostada recipe that's good for breakfast or lunch.
 
-### Ingredients
+## Ingredients
 
-#### Refried Beans
-* 400g pinto beans (1 14 oz can)
-* Cooking oil, a drizzle
-* 2 cloves garlic, thinly sliced
-* Cumin seeds, a sprinkle
-* Smoked paprika, a sprinkle
-* Salt, to taste
-* Lime juice, to taste
+### Refried Beans
 
-#### Tostada Components
-* 2-4 tostadas
-* Monterey jack cheese, shredded
-* Sour cream
+- 400g pinto beans (1 14 oz can)
+- Cooking oil, a drizzle
+- 2 cloves garlic, thinly sliced
+- Cumin seeds, a sprinkle
+- Smoked paprika, a sprinkle
+- Salt, to taste
+- Lime juice, to taste
 
-#### Breakfast Additions
-* Eggs, fried
-* Hot sauce
-* Cilantro
+### Tostada Components
 
-#### Lunch Additions
-* Lettuce, shredded
-* Tomatoes, diced
-* Pickled onions
+- 2-4 tostadas
+- Monterey jack cheese, shredded
+- Sour cream
 
-### Instructions
+### Breakfast Additions
+
+- Eggs, fried
+- Hot sauce
+- Cilantro
+
+### Lunch Additions
+
+- Lettuce, shredded
+- Tomatoes, diced
+- Pickled onions
+
+## Instructions
 
 1. **Simmer the beans**: Set a pan over medium-high heat and add a drizzle of oil to the pan. Add the sliced garlic and cumin seeds to the pan. Let these bloom for 60 seconds to flavor the oil. Then, right before adding the beans, add a sprinkle of smoked paprika. Follow this by adding the pinto beans, including the liquid. Bring this mixture to a simmer and let it cook for about 5 minutes.
 

@@ -4,7 +4,8 @@ Here are a few options for your 4-day meal plan. Please select one by marking it
 
 ---
 
-### Option 1: The Garden-Forward Italian
+## Option 1: The Garden-Forward Italian
+
 This plan leans heavily on the fresh produce from the garden and fridge.
 
 - **Day 1:** Sweet Potato &amp; Poblano Tacos (uses up those avocados and corn!)
@@ -13,6 +14,7 @@ This plan leans heavily on the fresh produce from the garden and fridge.
 - **Day 4:** Pasta with a simple, fresh Cherry Tomato and Basil sauce.
 
 **New Ingredients:**
+
 - Sweet potatoes
 - Red onion
 - Cilantro
@@ -23,7 +25,8 @@ This plan leans heavily on the fresh produce from the garden and fridge.
 
 ---
 
-### Option 2: The Hearty &amp; Meaty Italian
+## Option 2: The Hearty &amp; Meaty Italian
+
 A more traditional, meat-focused take on Italian comfort food.
 
 - **Day 1:** Sweet Potato &amp; Poblano Tacos.
@@ -32,6 +35,7 @@ A more traditional, meat-focused take on Italian comfort food.
 - **Day 4:** Smoked Sausage &amp; Peppers, served with a side of rice.
 
 **New Ingredients:**
+
 - Sweet potatoes
 - Red onion
 - Cilantro
@@ -43,7 +47,8 @@ A more traditional, meat-focused take on Italian comfort food.
 
 ---
 
-### Option 3: The Leftover Artist's Italian
+## Option 3: The Leftover Artist's Italian
+
 This plan is all about smart reuse of ingredients and leftovers.
 
 - **Day 1:** Sweet Potato &amp; Poblano Tacos.
@@ -52,6 +57,7 @@ This plan is all about smart reuse of ingredients and leftovers.
 - **Day 4:** "Pantry" Fried Rice using leftover rice, any remaining chicken, and garden veggies.
 
 **New Ingredients:**
+
 - Sweet potatoes
 - Red onion
 - Cilantro

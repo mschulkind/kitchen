@@ -1,32 +1,34 @@
-Source: https://www.cookwell.com/recipe/tinga-poblana-tostada
+Source: <https://www.cookwell.com/recipe/tinga-poblana-tostada>
 
 # Tinga Poblana Tostada
 
 Flavorful tostada dish for when you've got some braised meat on hand.
 
-### Ingredients
+## Ingredients
 
-#### Tinga Poblana Sauce
-* 800g whole peeled tomatoes (1 28 oz can)
-* 2-3 chipotles in adobo
-* 2 cloves garlic
-* 1/4 onion
-* 1 bay leaf
-* Dried oregano, a sprinkle
-* Sugar, to taste
-* Salt, to taste
-* Cooking oil, a drizzle
+### Tinga Poblana Sauce
 
-#### Tostada Toppings (to preference)
-* Braised meat
-* Tostadas
-* Avocados
-* Onions, diced
-* Sour cream
-* Cotija cheese
-* Limes
+- 800g whole peeled tomatoes (1 28 oz can)
+- 2-3 chipotles in adobo
+- 2 cloves garlic
+- 1/4 onion
+- 1 bay leaf
+- Dried oregano, a sprinkle
+- Sugar, to taste
+- Salt, to taste
+- Cooking oil, a drizzle
 
-### Instructions
+### Tostada Toppings (to preference)
+
+- Braised meat
+- Tostadas
+- Avocados
+- Onions, diced
+- Sour cream
+- Cotija cheese
+- Limes
+
+## Instructions
 
 1. **Blend the sauce**: Add all tinga poblana sauce ingredients except for the oil and bay leaf to a blender. Puree until smooth.
 

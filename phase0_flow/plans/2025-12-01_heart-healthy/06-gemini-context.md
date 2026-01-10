@@ -7,7 +7,8 @@ To quickly get context for your cooking session, copy the entire block below and
 **Today's Date:** Monday, December 1, 2025
 
 **Meal Plan (04-final-plan.md):**
-```
+
+```text
 # Step 4: Your Final Meal Plan
 
 Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan focuses on rustic, authentic flavors using your existing stock while being heart-healthy and high in fiber.
@@ -114,7 +115,8 @@ Here is your complete 3-meal plan for **"The Italian Countryside"**. This plan f
 ```
 
 **Meal Prep Notes & Alternatives (05-alternatives.md):**
-```
+
+```text
 # Experimental Recipe Formats: Pasta e Fagioli
 
 Here are 6 different ways to view the execution of your **Ultimate Smoky Pasta e Fagioli** recipe. These are designed for an experienced cook to visualize the flow and timing.
@@ -236,4 +238,5 @@ def make_pasta_e_fagioli():
     
     return pot.serve(garnish="balsamic")
 ```
-```
+
+```text

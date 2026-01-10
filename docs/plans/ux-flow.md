@@ -1,6 +1,7 @@
 # UX Flows
 
 ## Table of Contents
+
 - [Core Principles](#core-principles)
 - [Primary Flow: Generate Meal Plan → Verify Inventory → Create Shopping List](#primary-flow-generate-meal-plan-→-verify-inventory-→-create-shopping-list)
   - [1. Initiate Meal Planning](#1-initiate-meal-planning)
@@ -15,6 +16,7 @@
 This document outlines the primary user experience flows for the Personalized Dinner & Shopping App, emphasizing mobile-first design principles for on-the-go use. Flows are designed to be intuitive, with minimal navigation, large touch targets, and quick interactions. Reference [brief.md](brief.md) for feature context and [design-system.md](design-system.md) for technical alignment.
 
 ## Core Principles
+
 - **Mobile-First**: All screens optimized for touch (e.g., 44px+ buttons), portrait orientation, thumb-friendly layouts.
 - **Simplicity**: 3-4 taps max per flow; no deep menus. Use bottom navigation or gestures.
 - **Offline-Capable**: Cache inventory and plans locally; sync when online.
@@ -24,14 +26,17 @@ This document outlines the primary user experience flows for the Personalized Di
 ## Primary Flow: Generate Meal Plan → Verify Inventory → Create Shopping List
 
 ### 1. Initiate Meal Planning
+
 **Goal**: User requests a meal plan (e.g., 4 days), app suggests recipes based on inventory/garden.
 
 **Key Screens**:
+
 - **Home/Dashboard Screen**:
   - Large "Plan Meals" button (primary CTA, full-width, green).
   - Quick stats: Current inventory summary (e.g., "5 staples low"), garden highlights.
   - Text Wireframe:
-    ```
+
+    ```text
     [Header: App Logo | Settings Icon]
     
     Welcome back! Ready to plan?
@@ -45,19 +50,23 @@ This document outlines the primary user experience flows for the Personalized Di
     ```
 
 **Interactions**:
+
 - Tap "Plan Meals" → Modal for days (default 4, slider or buttons: 3/4/7 days).
 - App fetches inventory → Calls backend/LLM for suggestions (e.g., "Recipes using tomatoes and leftovers").
 - Loading: Spinner with "Finding efficient recipes...".
 
 ### 2. Review and Select Recipes
+
 **Goal**: User views suggested plan, adjusts if needed.
 
 **Key Screens**:
+
 - **Meal Plan Review Screen**:
   - Vertical scroll of days, each with recipe card (name, prep time, key ingredients, overlap indicator e.g., "Shares 70% with Day 1").
   - Edit button per day for LLM re-suggest.
   - Text Wireframe:
-    ```
+
+    ```text
     4-Day Plan (Efficient: 80% ingredient reuse)
     
     Day 1: Tomato Basil Chicken (30min)
@@ -73,13 +82,16 @@ This document outlines the primary user experience flows for the Personalized Di
     ```
 
 **Interactions**:
+
 - Swipe to approve/edit; tap edit → LLM prompt for alternatives (e.g., "Vegetarian option using these ingredients").
 - Confirm plan → Proceed to verification.
 
 ### 3. Inventory Verification
+
 **Goal**: User confirms what's on hand via categorical checklist; app adjusts needs based on MealPlan (from design-system.md) and PantryItem data. This step includes reviewing LLM-generated recipe suggestions, editing quantities/substitutions, and approving additions to shopping list, with error handling for issues like expired items or insufficient stock.
 
 **Key Screens**:
+
 - **Categorical Checklist Screen** (Expanded for Confirmation):
   - Tabs/accordion for locations: Pantry | Fridge | Freezer | Garden (from PantryItem.location enum).
   - Items grouped by category, showing plan needs (e.g., "Needed: 2 tomatoes for Day 1 MealPlan").
@@ -87,7 +99,8 @@ This document outlines the primary user experience flows for the Personalized Di
   - Review section: Summary of LLM suggestions (e.g., "3 recipes use garden basil—approve?").
   - Error states: Red highlights for expiry (e.g., "Milk expires soon—use now?"), insufficient (modal: "Only 1 cup flour available (need 2)—substitute or buy?").
   - Text Wireframe (Refined for Verification):
-    ```
+
+    ```text
     Verify Inventory (Plan: 4 Days, 15 Items Needed)
     
     [Tab: Pantry] [Fridge] [Freezer] [Garden]
@@ -107,6 +120,7 @@ This document outlines the primary user experience flows for the Personalized Di
     ```
 
 **Interactions (Detailed Verification Flow)**:
+
 - **Review LLM Suggestions**: After initial checklist, show modal popup with LLM plan summary (from LLM Integration): "This plan uses 70% pantry—suggested subs for missing: Butter → Oil. Approve or edit?" Big buttons: "Approve Plan" (proceed to shopping) or "Edit Recipes" (back to review with highlights).
 - **Edit & Approve**: Tap item → Modal for quantity/sub (e.g., "Reduce servings? Or add to shopping?"); swipe to approve individual (haptic + check animation). For multiuser, live updates show collaborator edits (e.g., "Alice confirmed tomatoes").
 - **Error States & Handling**:
@@ -117,6 +131,7 @@ This document outlines the primary user experience flows for the Personalized Di
 - **Mobile-Specific**: Modals full-screen for small devices (e.g., iPhone SE); swipe-up to dismiss edit modal; voice-over announces "Insufficient flour—tap to substitute." Ensure 48px touch targets for sliders/buttons; gesture support (pinch to zoom list if long).
 
 **Mermaid Sequence Diagram: Meal Planning Verification Flow**
+
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -152,21 +167,24 @@ sequenceDiagram
     
     A->>U: Proceed to Shopping List (deficits only)
     Note over U,S: Cross-ref: MealPlan.days link to verified PantryItem
-```
+```text
 
 This flow ensures accurate verification, tying LLM suggestions to real inventory, with robust error handling for mobile usability and multiuser sync.
 
 ### 4. Generate and Optimize Shopping List
+
 **Goal**: User gets a sorted, actionable list for the store, with categorical organization for quick scanning and editing in multiuser scenarios.
 
 **Key Screens**:
+
 - **Shopping List Screen**:
   - List sorted by store layout (Produce first, then Dairy, etc.); collapsible category headers for mobile scrolling.
   - Checkboxes to mark as bought; quantities editable via tap-to-increment or slider.
   - Export/share options (e.g., PDF, email, or share link for realtime collab).
   - Realtime multiuser: Live checkmarks propagate (from realtime-integration); presence avatars next to categories (e.g., "Bob viewing Produce").
   - Text Wireframe (Refined for Phased UI):
-    ```
+
+    ```text
     Shopping List (Total: 12 items, ~$25 | 2 Collaborators Online)
     
     [Collapsible Header: Produce ▼] [Avatar: Bob]
@@ -185,18 +203,21 @@ This flow ensures accurate verification, tying LLM suggestions to real inventory
     ```
 
 **Interactions (Refined Categorical UI)**:
+
 - **Phased Implementation**:
-    - **MVP (V1)**: Use fixed, server-defined categories (e.g., Produce, Dairy, Meat). Users can collapse/expand categories but not reorder them. This simplifies the initial build while still providing essential organization.
-    - **V2**: Introduce custom categories and smart sorting. Users can create their own categories (e.g., "Aisle 5"), reorder them, and the app will learn their preferred store layout over time.
+  - **MVP (V1)**: Use fixed, server-defined categories (e.g., Produce, Dairy, Meat). Users can collapse/expand categories but not reorder them. This simplifies the initial build while still providing essential organization.
+  - **V2**: Introduce custom categories and smart sorting. Users can create their own categories (e.g., "Aisle 5"), reorder them, and the app will learn their preferred store layout over time.
 - **Drag-to-Reorder (V2)**: Long-press item → A drag handle appears. Drag items within or between categories. Uses `React Native Reanimated/Gesture Handler` for smooth animations. Changes are broadcast to collaborators in real-time.
 - **Swipe-to-Checkoff**: A right-swipe on an item marks it as "bought" with haptic feedback and a satisfying checkmark animation. A left-swipe reveals options to edit quantity or delete. This is an intuitive, one-handed interaction perfect for a user in a busy store.
 - **Multiuser Touches**: When a collaborator checks an item, the UI updates instantly with an animation and an attribution tag (e.g., "Checked by Alice"). Conflicts are handled with a simple "last-write-wins" strategy, accompanied by a toast notification.
 
 **Accessibility Notes**:
+
 - **ARIA Labels**: Category headers as `role="group" aria-label="Produce section"`; items as `role="checkbox" aria-checked="false" aria-label="Tomatoes, quantity 2, needed for Day 1"`. Reorder drag: `aria-live="polite"` announcements for position changes (e.g., "Tomatoes moved to position 1").
 - **Screen Readers/VoiceOver**: Support for swipe gestures is crucial. Custom actions will announce "Swipe right to check" or "Swipe left to edit." Full keyboard navigation will be supported for reordering items. High-contrast themes will be available.
 
 **Mermaid Flowchart: Phased Shopping List UI**
+
 ```mermaid
 graph TD
     subgraph MVP - Fixed Categories
@@ -224,21 +245,25 @@ This refined UI ensures efficient, collaborative shopping on mobile, aligning wi
 With the shift to realtime multiuser collaboration, we extend the single-user UX flows to support shared experiences across devices/users, while prioritizing mobile usability (e.g., large touch targets, simple alerts).
 
 ### Inviting Collaborators
+
 - **Flow**: From any shared resource screen (e.g., meal plan or shopping list), tap a prominent "Invite" button (large, full-width for mobile). Select contacts or enter email/share link. Confirm with a simple modal: "Invite [Name] to edit this list?" with big Yes/No buttons.
 - **Realtime Aspect**: Upon acceptance (via Supabase auth), the invitee joins instantly; show live presence (e.g., avatars lighting up online).
 - **Mobile Considerations**: Use device contacts integration; handle offline invites by queuing and syncing on reconnect.
 
 ### Realtime Shared Verification Checklist (e.g., Inventory/Shopping)
+
 - **Flow**: In shared inventory or shopping list view, display items with live checkmarks. When one user checks an item (tap large checkbox), it updates instantly for all via Supabase realtime subscriptions—others see the checkmark appear/disappear in real-time.
 - **UX Enhancements**: Show presence indicators (e.g., "Alice is checking off items" with animated dots); optimistic updates for offline users (check item locally, sync on reconnect; if conflict, show alert: "Another user unchecked this—review changes?" with big Reload/Keep Mine buttons).
 - **Notifications**: Push alert for changes (e.g., "Bob added milk to the shopping list") via Expo Notifications, with quick-tap actions to view/update.
 
 ### Shared Meal Planning
+
 - **Flow**: Collaborative editing of meal plans: Users add/edit recipes in real-time; changes broadcast via WebSockets. Use simple concurrent editing cues (e.g., highlight edited sections with user initials).
 - **Conflict Resolution**: For overlaps, apply last-write-wins with user-friendly alerts (e.g., toast notification: "Your change overwritten by [User]—undo?"); mobile: Ensure alerts don't block screen, with swipe-to-dismiss.
 - **Offline Handling**: Optimistic UI (e.g., add recipe immediately, flag as "Pending Sync" with spinner); on sync failure, simple modal with options.
 
 ### General Multiuser UX Principles
+
 - **Presence & Awareness**: Always show collaborator count/online status in headers (e.g., "2 people viewing"); use subtle animations for live updates to avoid distraction on mobile.
 - **Permissions**: Role-based UI (e.g., owners see "Remove Collaborator" button); viewers get read-only mode with live updates.
 - **Exit/Leave**: Easy opt-out: Tap profile > "Leave Shared List" with confirmation.
@@ -246,17 +271,20 @@ With the shift to realtime multiuser collaboration, we extend the single-user UX
 These flows build on single-user paths, adding collaboration layers without overwhelming the mobile-first design—focus on intuitive, realtime feedback with minimal cognitive load.
 
 ## Secondary Flows
+
 - **Inventory Management**: Standalone screen to add/update items (scan barcode or manual). Flow: Home → Inventory Tab → Add Item (dropdown for location, expiry picker).
 - **Recipe Library**: Search/browse saved recipes; integrate LLM for "Similar to this with my inventory".
 - **Settings**: Offline mode toggle, garden setup, store layout customization.
 
 ## Mobile Considerations
+
 - **Gestures**: Swipe to delete/archive, pull-to-refresh inventory.
 - **Performance**: Lazy-load recipe details; pre-fetch common staples.
 - **Edge Cases**: Low battery mode (reduce LLM calls); no internet (use cached plan).
 - **Testing**: Simulate on mobile devices; ensure flows work in 5-10 seconds.
 
 ## TODOs
+
 - Flesh out verification flow with prototypes (link Figma).
 - Test modals on devices for touch/voice-over.
 

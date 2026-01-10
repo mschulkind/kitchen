@@ -1,6 +1,7 @@
 # Likes and Dislikes
 
 ## Table of Contents
+
 - [Likes](#likes)
 - [Dislikes](#dislikes)
 - [Kid Meals](#kid-meals)
@@ -8,6 +9,7 @@
 - [Prioritization](#prioritization)
 
 ## Likes
+
 - Spicy food, to a degree
 - Hearty salads
 - Pasta dishes
@@ -15,6 +17,7 @@
 - Roasted carrots
 
 ## Dislikes
+
 - Olives
 - Mushrooms
 - Too much cilantro

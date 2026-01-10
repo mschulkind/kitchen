@@ -3,6 +3,7 @@
 This document consolidates the project-specific rules and guidelines for AI agents working on the Kitchen project.
 
 ## Table of Contents
+
 - [Project Structure and Practices](#project-structure-and-practices)
 - [Tech Design Rules](#tech-design-rules)
 - [Documentation Guidelines](#documentation-guidelines)

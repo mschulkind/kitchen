@@ -3,6 +3,7 @@
 This is a complete checklist of all ingredients required for "The Comfort Classic" meal plan. Please review and let me know of any inaccuracies.
 
 ## Produce
+
 - [x] White Onions
 - [x] Potatoes
 - [x] Carrots
@@ -12,6 +13,7 @@ This is a complete checklist of all ingredients required for "The Comfort Classi
 - [ ] Fresh Parsley or other fresh herbs for garnish (optional)
 
 ## Pantry
+
 - [x] Olive Oil
 - [x] Balsamic vinegar
 - [x] Salt & Pepper
@@ -28,15 +30,18 @@ This is a complete checklist of all ingredients required for "The Comfort Classi
 - [ ] Sausage buns or hoagie rolls
 
 ## Dairy & Fridge
+
 - [x] Butter (salted or unsalted)
 - [x] Shredded cheese like cheddar or mozzarella
 - [x] Eggs (for breakfast or other meals, not explicitly in plan but good to have)
 
 ## Meat & Protein
+
 - [ ] 1 Whole chicken (about 4-5 lbs)
 - [x] Cooked smoked sausages
 
 ## Spices
+
 - [x] Thyme
 - [x] Rosemary
 - [x] Bay Leaves

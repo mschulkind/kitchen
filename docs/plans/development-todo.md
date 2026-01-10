@@ -1,6 +1,7 @@
 # Development TODO: Phased MVP Development
 
 ## Table of Contents
+
 - [Purpose](#purpose)
 - [Phase 0: Markdown-Driven MVP (Weeks 0-1)](#phase-0-markdown-driven-mvp-weeks-0-1)
 - [Phase 1: The Bare-Bones MVP (Weeks 1-3)](#phase-1-the-bare-bones-mvp-weeks-1-3)
@@ -9,11 +10,13 @@
 - [Phase 4: V1 Polish & Future-Proofing (Weeks 10-12)](#phase-4-v1-polish--future-proofing-weeks-10-12)
 
 ## Purpose
+
 This to-do list is aligned with the [Phased Development Plan](project-phases.md). It breaks down the work into actionable items for each phase, with a focus on getting to a usable product as quickly as possible.
 
 ---
 
 ## Phase 0: Markdown-Driven MVP (Weeks 0-1)
+
 **Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
 
 - pending: **Conversational Flow Setup**
@@ -25,6 +28,7 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 ---
 
 ## Phase 1: The Bare-Bones MVP (Weeks 1-3)
+
 **Goal**: A single-user, web-based app that can generate a meal plan and shopping list.
 
 - pending: **Project Setup**
@@ -43,6 +47,7 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 ---
 
 ## Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)
+
 **Goal**: Integrate inventory tracking and LLM suggestions.
 
 - pending: **Inventory**
@@ -60,6 +65,7 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 ---
 
 ## Phase 3: Multi-User & Realtime (Weeks 7-9)
+
 **Goal**: Add collaborative features.
 
 - pending: **Auth & Presence**
@@ -75,6 +81,7 @@ This to-do list is aligned with the [Phased Development Plan](project-phases.md)
 ---
 
 ## Phase 4: V1 Polish & Future-Proofing (Weeks 10-12)
+
 **Goal**: Refine UI/UX and solidify testing.
 
 - pending: **UI/UX Polish**

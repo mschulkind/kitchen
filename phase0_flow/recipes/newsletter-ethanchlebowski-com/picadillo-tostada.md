@@ -1,33 +1,35 @@
-Source: https://www.cookwell.com/recipe/picadillo-tostada
+Source: <https://www.cookwell.com/recipe/picadillo-tostada>
 
 # Picadillo Tostada
 
 Beef & potato picadillo tostada.
 
-### Ingredients
+## Ingredients
 
-#### Picadillo
-* 450g ground beef (1 lb)
-* 400g whole peeled tomatoes (1 14 oz can)
-* 350g potatoes, diced (3/4 lb)
-* 2 cloves garlic, minced
-* 1/4 white onion, diced
-* Smoked paprika, a sprinkle
-* Ancho chili powder, a sprinkle
-* Ground cinnamon, a sprinkle
-* Hot sauce, to taste
-* Salt, to taste
-* Cooking oil, as needed
+### Picadillo
 
-#### Tostada Components
-* 4-6 tostadas
-* Lettuce, thinly shredded
-* Tomatoes, diced
-* Pickled onions
-* Queso fresco
-* Crema
+- 450g ground beef (1 lb)
+- 400g whole peeled tomatoes (1 14 oz can)
+- 350g potatoes, diced (3/4 lb)
+- 2 cloves garlic, minced
+- 1/4 white onion, diced
+- Smoked paprika, a sprinkle
+- Ancho chili powder, a sprinkle
+- Ground cinnamon, a sprinkle
+- Hot sauce, to taste
+- Salt, to taste
+- Cooking oil, as needed
 
-### Instructions
+### Tostada Components
+
+- 4-6 tostadas
+- Lettuce, thinly shredded
+- Tomatoes, diced
+- Pickled onions
+- Queso fresco
+- Crema
+
+## Instructions
 
 1. **Boil the potatoes**: Dice the potatoes into fairly small pieces by cutting them into planks, then strips, and finally cutting those across into cubes. Toss the diced potatoes into a pot, set them on a stove over high heat, and cover them with water. Lastly, add a generous sprinkle of salt. Once the potatoes are cooked through and tender, strain them. They should be done in about 10-15 minutes, but you can test them with a knife, which should poke through with little resistance.
 

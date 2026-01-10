@@ -1,11 +1,13 @@
 # Fridge Stock
 
 ## Table of Contents
+
 - [Staples](#staples)
 - [Perishables](#perishables)
 - [Other](#other)
 
 ## Staples
+
 - Eggs
 - Milk
 - Butter (salted and unsalted)
@@ -16,5 +18,6 @@
 ## Perishables
 
 ## Other
+
 - Carrots
 - Celery

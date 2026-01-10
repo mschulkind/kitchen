@@ -2,7 +2,7 @@
 
 This document outlines the technical design decisions for the Personalized Dinner & Shopping App, including frameworks, libraries, architecture patterns, data models, and integration choices. It serves as a living reference for the tech stack and unresolved decisions. Reference [.kilocode/rules.md](../.kilocode/rules.md) for high-level guidelines.
 
-### Core Technologies & Architectural Decisions
+## Core Technologies & Architectural Decisions
 
 - **Database**: **Supabase (PostgreSQL)**
   - **Reasoning**: Chosen for its robust realtime sync, built-in authentication, row-level security, and excellent client libraries for both our React/TS frontend and Python/FastAPI backend. This aligns with our need for rapid development of collaborative features like shared shopping lists and inventories.
@@ -15,13 +15,15 @@ This document outlines the technical design decisions for the Personalized Dinne
   - **Frontend**: *Pending (Vercel recommended)*
   - **Backend**: *Pending (Heroku or similar recommended)*
 
-### Local Development & Testing Strategy
+## Local Development & Testing Strategy
+
 - **Environment**: Utilize the Supabase CLI to run a full local stack (PostgreSQL, Auth, Storage) via Docker.
 - **Data Seeding**: Implement scripts to seed the local database for consistent test states.
 - **Workflow**: Automated tests will reset the database (`supabase db reset`) before runs to ensure isolation and prevent test contamination.
 - **Goal**: Achieve production parity in the local environment, enabling thorough testing of all features, including realtime sync, offline capabilities, and security policies.
 
 ## Architecture Patterns
+
 - **Overall**: Client-server architecture with backend API for core logic (meal planning, inventory). Frontend consumes API; consider offline-first with local storage/Service Workers for PWA.
 - **Modular Design**: Separate concerns – e.g., recipe module, inventory module, LLM agent module.
 - **API Design**: RESTful endpoints (e.g., /meals/plan, /inventory/verify) with JSON payloads. Use OpenAPI for docs. FastAPI for backend: auto-docs at /docs, Pydantic validation, async for realtime ties. Auth via Supabase JWT in Authorization header; RLS for data access. Error responses: JSON { "error": str, "details": dict } with HTTP codes (400 Bad Request, 401 Unauthorized, 500 Internal).
@@ -76,6 +78,7 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
 - TODO: Microservices vs. monolith? Likely monolith for personal app simplicity.
 
 ## Data Models
+
 - **PantryItem**:
   - Fields: id, name, location (enum: Pantry, Fridge, Freezer, Garden), quantity, unit, expiry_date, notes.
   - Usage: Tracks user inventory; queried for recipe matching.
@@ -94,26 +97,34 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
 - TODO: Define schemas in Pydantic; consider relationships (e.g., Recipe to Ingredients). Reference [decisions/phase-1/ingredient-optimization.md](decisions/phase-1/ingredient-optimization.md) for algorithm integration.
 
 ## LLM Integration
+
 - **Provider**: OpenAI GPT (e.g., GPT-4o-mini for cost-efficiency) or local Ollama for privacy/offline.
   - Prompts: Structured for recipe generation (e.g., "Suggest 4-day plan using [ingredients], prioritizing [garden items] and leftovers").
-- **Usage Patterns**: 
+- **Usage Patterns**:
   - Dynamic suggestions: Input current inventory → Output recipe ideas.
   - Customization: Modify recipes on-the-fly (e.g., substitute ingredients).
 - **Error Handling**: Fallback to rule-based logic if LLM fails or unavailable offline (e.g., use ingredient-optimization algorithm for pantry matching/substitutions); cache responses in IndexedDB for retry; log failures without user disruption (e.g., show "Using cached recipes").
 - **Prompt Templates**: A standardized set of prompt examples has been finalized. For full details, see the decision log at [`decisions/phase-1/llm-prompts.md`](decisions/phase-1/llm-prompts.md).
   - **1. Basic Meal Plan Generation**:
+
     ```
     "You are a meal planning assistant. Generate a {days}-day meal plan for {servings} people, using as many of these pantry items as possible: {pantry_list} and garden items: {garden_list}. Prioritize ingredient reuse and simple recipes (under 45min prep). Exclude {diet_restrictions}. Output a valid JSON object with the structure: {days: [{day: 'Day 1', recipe_name: string, ingredients_used: string[], new_shopping_list_items: string[], instructions: string}]}"
     ```
+
   - **2. Recipe Substitution & Customization**:
+
     ```
     "You are a recipe customization assistant. The user wants to make '{recipe_name}' which requires {full_ingredients_list}. They only have these items from their pantry: {available_pantry}. Suggest logical substitutions for the missing ingredients. Consider dietary preferences: {prefs}. Output a valid JSON object with the structure: {original_recipe: string, substitutions: [{original: string, substitute: string, rationale: string}], adjusted_instructions: string, nutritional_notes: string}"
     ```
+
   - **3. Low-Waste Plan with Leftovers**:
+
     ```
     "You are a waste-reduction assistant. Create a 3-day meal plan that minimizes food waste. Use leftovers from these previous meals: {previous_meals} and items from the current pantry: {pantry_list}. Focus on {cuisine_pref} recipes and adhere to {diet_prefs}. Output a valid JSON object with the structure: {days: [{day: string, recipe_name: string, uses_leftovers_from: string[], shopping_list_additions: string[]}]}"
     ```
+
   - **4. Garden Surplus Optimization**:
+
     ```
     "You are a garden-to-table assistant. Suggest 2-3 simple recipes that make the most of a garden surplus. The user has: {garden_items_with_quantities}. Supplement with common pantry staples: {pantry_staples}. Respect these dietary restrictions: {diet_restrictions}. Output a valid JSON object with the structure: {recipes: [{recipe_name: string, key_garden_ingredients: string[], full_ingredient_list: string[], instructions: string, prep_time_minutes: int}]}"
     ```
@@ -121,9 +132,11 @@ TODO: Implement in backend; test with Postman/Supabase mocks.
 TODO: Implement prompts in backend (FastAPI endpoint); test with mock responses; add rate limiting (e.g., 10 calls/day free tier).
 
 ## Ingredient Optimization
+
 This section details the LLM-powered algorithm for matching recipes to the user's pantry, suggesting substitutions, and dynamically generating meal ideas. This approach prioritizes creating an intelligent and flexible user experience, aligning with the core vision of the app. For a full breakdown of the logic, prompt engineering, and rationale, see the detailed decision log.
 
 ### Key Logic
+
 - **Dynamic Generation**: Instead of a fixed heuristic system, the app will use a large language model (LLM) to generate recipe and substitution suggestions based on the user's real-time context (pantry, preferences, query).
 - **Prompt Engineering**: The core of the logic resides in carefully constructed prompts that guide the LLM to return structured, reliable JSON data.
 - **Integration**: The LLM is called via a backend API endpoint, which processes the user's context and formats the response for the UI. The system includes fallbacks for offline use or API failures.
@@ -137,18 +150,18 @@ With the requirement for realtime multiuser collaboration (e.g., shared meal pla
 
 **Pros**: Instant sync across users/devices using client SDKs (JS/Python); integrated auth for user management; supports offline mode with optimistic updates and automatic conflict resolution on reconnect; scalable for multiuser without heavy setup.
 **Cons**: Cloud dependency, but offers free tier for dev/testing; potential latency for very remote users, mitigated by edge functions.
- 
+
 **Offline Handling**: The application will employ an optimistic UI strategy with a client-side sync queue to ensure offline functionality. For the MVP, conflicts will be managed using a **Last-Write-Wins (LWW)** approach. A future migration to **Conflict-Free Replicated Data Types (CRDTs)** is planned for V2 to support more advanced collaboration. This two-phased approach is detailed in the [`conflict-resolution-and-offline.md` decision log](decisions/phase-1.5/conflict-resolution-and-offline.md).
- 
+
 - **Queue & Sync Flow**: Mutations are queued in **IndexedDB** during offline periods. A background task processes the queue upon reconnection, replaying actions and invalidating the local cache on success.
 - **Mobile Optimization**: Use Expo's AsyncStorage for preferences and tokens; display a non-intrusive offline indicator in the UI.
 - **Error Resolution**: If sync conflicts occur under the LWW model, the latest server state will prevail. For critical conflicts, a user notification system may be considered in later iterations.
 - **Reference**: See [hosting.md](hosting.md) for full sync mechanisms and diagrams, and the decision log for the complete rationale.
- 
+
 **Migration Path**: The initial implementation will rely on Supabase's default behaviors, which align with LWW. The data models and API will be designed to facilitate a future transition to an operation-based CRDT model.
- 
+
 This enables realtime features without sacrificing dev speed, leveraging Supabase's JS SDK for quick integration in our React Native/Expo frontend.
- 
+
 ## Collaboration Architecture
 
 To support multiuser realtime collaboration while keeping the app mobile-friendly and usable:
@@ -168,22 +181,26 @@ To support multiuser realtime collaboration while keeping the app mobile-friendl
 This architecture extends core features from brief.md (e.g., shared inventory verification checklists) to multiuser without overcomplicating the UX.
 
 ## Testing Strategy
+
 Align with TDD practices from [.kilocode/rules/tdd-practices.md](../.kilocode/rules/tdd-practices.md): Test-first, fast suites (&lt;1s), and aim for 80%+ coverage on critical paths. All tests will run against a local Supabase stack to ensure a production-parity environment.
 
 The testing strategy is phased to align with the development roadmap, prioritizing rapid feedback during web development and comprehensive native testing for the mobile release. For full details, see the complete strategy at [`decisions/phase-1.5/multiuser-testing.md`](decisions/phase-1.5/multiuser-testing.md).
 
 ### Phase 1: PWA / Web App Development
+
 - **Focus**: Manual testing and automated component/integration tests (Vitest/RTL).
 - **Environment**: Desktop web browsers.
 - **Manual Tests**: All multiuser scenarios (invites, live edits, offline sync) will be executed on the web PWA for quick iteration.
 - **Automated Tests**: Unit and integration tests will cover shared logic. E2E tests are deferred to the native phase.
 
 ### Phase 2: Native Android App Development
+
 - **Focus**: Automated End-to-End (E2E) testing and manual regression.
 - **Environment**: Android Emulator and physical devices.
 - **Automated E2E Tests**: A full **Detox test suite** will be implemented to run against the Android app, automating critical multiuser and offline flows to ensure native stability.
 
 ### Phased Checklist
+
 - **Unit Tests** (Broad base, 70% total coverage):
   - **Backend (pytest)**: Test individual functions (e.g., ingredient-optimization scoring, LLM prompt formatting). Mock dependencies (OpenAI, Supabase client). Example: assert pantry_match_score(pantry, recipe) == expected.
   - **Frontend (Vitest)**: Test components/logic in isolation (e.g., verification checkbox updates state, drag-reorder in shopping list). Use RTL for user interactions.
@@ -208,6 +225,7 @@ The testing strategy is phased to align with the development roadmap, prioritizi
 TODO: Add test setup to Procfile.dev (e.g., `test: pytest + vitest`); integrate with hosting CI/CD.
 
 ## Pending Decisions
+
 - **Authentication**: Decision finalized to use **Google Social Login exclusively** via Supabase Auth. See the [`auth-and-presence.md` decision log](decisions/phase-1.5/auth-and-presence.md) for details.
 - **Deployment Tech**: See [hosting.md](hosting.md) for details.
 - **Offline Capabilities**: Implement IndexedDB for inventory; sync on reconnect via Supabase.
@@ -215,6 +233,7 @@ TODO: Add test setup to Procfile.dev (e.g., `test: pytest + vitest`); integrate 
 - **Security**: Sanitize LLM inputs/outputs; row-level security in Supabase.
 
 ## References
+
 - Project [brief.md](brief.md) for feature alignment.
 - [.kilocode/rules.md](../.kilocode/rules.md) for TDD and directory rules.
 

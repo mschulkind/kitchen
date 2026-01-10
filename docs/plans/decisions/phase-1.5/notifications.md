@@ -1,6 +1,7 @@
 # Phase 1.5 Decision: Notifications Setup
 
 ## Table of Contents
+
 - [Proposal](#proposal)
 - [API Sketch](#api-sketch)
 - [Client Handling](#client-handling)
@@ -13,6 +14,7 @@
 We will implement push notifications using a combination of Supabase Edge Functions and the Expo Notifications library. This approach aligns with our existing tech stack and provides a robust, scalable solution for alerting users to real-time events.
 
 The flow will be as follows:
+
 1. A database change (e.g., a new item added to a shared shopping list) triggers a Supabase database webhook.
 2. The webhook invokes a Supabase Edge Function.
 3. The Edge Function retrieves the necessary data (e.g., the user to be notified, the content of the message).
@@ -80,10 +82,11 @@ This function will be triggered by a database webhook on the `shopping_list_item
 ## Client Handling
 
 On the React Native/Expo client, we will use the `expo-notifications` library to:
-1.  **Request Permissions:** Ask the user for permission to send push notifications.
-2.  **Retrieve Push Token:** Get the unique Expo Push Token for the device.
-3.  **Store Token:** Send the push token to our backend to be stored in the `user_push_tokens` table, associated with the user.
-4.  **Handle Notifications:** Set up listeners to handle incoming notifications when the app is in the foreground, background, or closed.
+
+1. **Request Permissions:** Ask the user for permission to send push notifications.
+2. **Retrieve Push Token:** Get the unique Expo Push Token for the device.
+3. **Store Token:** Send the push token to our backend to be stored in the `user_push_tokens` table, associated with the user.
+4. **Handle Notifications:** Set up listeners to handle incoming notifications when the app is in the foreground, background, or closed.
 
 ## Decision
 
