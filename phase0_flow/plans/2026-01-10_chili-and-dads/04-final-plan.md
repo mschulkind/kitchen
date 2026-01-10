@@ -61,9 +61,15 @@
 *   [ ] Cilantro (1 bunch)
 *   [ ] Limes (4)
 *   [ ] White Onion (1 large)
+*   [ ] Greek Yogurt (1 tub)
+*   [ ] Cauliflower (1 head)
+*   [ ] Fresh Ginger (1 knob)
 
 **Pantry**
 *   [ ] Chickpeas (2 cans)
 *   [ ] Coconut Milk (2 cans, Full Fat)
 *   [ ] Black Beans (2 cans)
 *   [ ] Corn (Canned or Frozen)
+*   [ ] Chipotle in Adobo (1 can)
+*   [ ] Vegetable Broth (1 carton)
+*   [ ] Frozen Peas (1 bag)

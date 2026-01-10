@@ -12,7 +12,8 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 - [ ] **Cabbage** (1 head, green or red) for Tinga slaw.
 - [ ] **Radishes** (1 bunch) for Tinga topping.
 - [ ] **Onions** (Yellow/White) (3-4 large).
-- [ ] **Garlic** (Fresh bulbs) (Have stock but verify fresh).
+-- need just 1 large white more
+- [x] **Garlic** (Fresh bulbs) (Have stock but verify fresh).
 - [ ] **Spinach** (1 bag/bunch) for Curry.
 - [ ] **Cauliflower** (1 head) side for Curry.
 - [ ] **Limes** (3-4) for Tinga & Curry.
@@ -28,9 +29,10 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 ## Pantry/Dairy
 - [ ] **Chickpeas** (2 cans) for Curry.
 - [ ] **Coconut Milk** (2 cans, full fat) for Curry & Chowder creamy base.
-- [ ] **Red Curry Paste** (Small jar) or Curry Powder.
+- [x] **Red Curry Paste** (Small jar) or Curry Powder.
+-- have curry powder
 - [ ] **Black Beans** (2 cans) for Chili.
-- [ ] **Beef Broth** (Have 5x, check if fresh needed).
+- [x] **Beef Broth** (Have 5x, check if fresh needed).
 - [x] **Pork Broth** (Have 2x).
 - [ ] **Corn** (Frozen or Canned) for Tinga Salad.
 - [x] **Rice** (Have pantry stock).
