@@ -1,117 +1,118 @@
 # Meal Plan Options
 
-Here are 6 meal plan options updated to reflect that **Meat Needs to be Purchased** (Chuck & Chicken) and heavily utilizing your **Russet Potatoes** stock.
+Here are 4 "High-Latency" meal plan options. I have removed all mashed/blended potatoes to prevent glucose spikes.
 
-**Assumptions:**
-*   **Buy List:** You will be buying fresh Chuck Roast and Chicken Thighs/Breast (whichever you prefer, thigh assumed for flavor).
-*   **Russet Potatoes:** Integrated into most meals as the "Slow Starch" (cooled/reheated where possible for resistant starch).
-*   **Texture:** No olives, eggplant, or mushrooms.
-*   **Dad's Meal:** Portable and leftover-friendly.
-
----
-
-## Option 1: The "Potato Power" Plan 🥔
-*Uses your potato surplus as the anchor for almost every meal.*
-
-*   **Saturday (Tonight):** **Beef & Potato Chili.** Buy **Chuck Roast**. A hearty chili where cubed russets cook in the broth, absorbing the spice.
-    *   *Kid Submeal:* Beef chunks and plain boiled potatoes.
-*   **Sunday (Dad's):** **Shepherd's Pie (with Beef Chunks).** Buy **Chuck Roast**. Stewed beef base topped with a massive layer of **Russet Mashed Potatoes**. Travels brilliantly.
-    *   *Kid Submeal:* Meat and mash separated.
-*   **Monday:** **Pan-Seared Pollock & Potato Cakes.** Uses **Pollock Filets**. Leftover mash from Sunday made into cakes.
-    *   *Kid Submeal:* Fish and potato cake.
-*   **Tuesday:** **Sheet Pan Chicken & Wedges.** Buy **Chicken Thighs**. Roasted with large **Russet Wedges** and broccoli.
-    *   *Kid Submeal:* Chicken and fries.
-*   **Wednesday:** **Loaded Baked Potato Soup.** Buy **Bacon**. Creamy potato base (blended russets) with **Cubed Chicken** (use up stock or fresh) added for protein.
-    *   *Kid Submeal:* Plain baked potato with cheese.
-
-**Key New Ingredients:** Chuck Roast, Chicken Thighs, Broccoli, Bacon, Cream/Milk.
+**The "Resistant Starch" Protocol:**
+*   **Structure:** Potatoes are kept **Whole**, **Diced**, or **Wedged** (skin-on).
+*   **Chemistry:** Potatoes are often cooked, cooled, and reheated (or eaten cool) to maximize resistant starch.
+*   **Buffering:** Every potato serving is paired with a specific 2:1 volume of fibrous vegetables.
 
 ---
 
-## Option 2: The "Classic Stews" 🍲
-*Focuses on one-pot wonders that are easy to transport.*
+## Option 1: The "Resistant Starch" Champion (Refactored Option 3) 🏆
+*The "Joinery" Plan: Changes how starches are combined to act like fiber.*
 
-*   **Saturday (Tonight):** **Classic Texas Chili.** Buy **Chuck Roast**. Served over a **Baked Russet Potato** (Tamale style, but with potato).
-    *   *Kid Submeal:* Chili on a potato boat.
-*   **Sunday (Dad's):** **Chicken & Potato Stew (French Style).** Buy **Chicken Thighs**. White wine (or vinegar) broth, lots of herbs, and chunks of **Russet Potatoes**.
-    *   *Kid Submeal:* Chicken and potato chunks.
-*   **Monday:** **Cod Fish & Chips.** Uses **Cod Filets**. Homemade oven fries using **Russets**.
-    *   *Kid Submeal:* Fish and chips.
-*   **Tuesday:** **Steak (Buy) & Hasselback Potatoes.** Buy **Sirloin/Ribeye**. Fancy looking sliced **Russets** roasted crisp.
+*   **Saturday (Tonight):** **Beef Chili with "Cool" Potato Side.** Buy **Chuck Roast**. A rich, bean-free Texas chili.
+    *   *The Starch:* **Half a Baked Potato (Skin-on)**, cooked earlier and allowed to cool slightly.
+    *   *The Buffer:* A mountain of **Garlic-Sautéed Kale** (Garden/Buy).
+    *   *Kid Submeal:* Beef chunks and potato boat.
+*   **Sunday (Dad's):** **Braised Beef with Chunky Colcannon.** Buy **Chuck Roast**. Slow-braised beef chunks.
+    *   *The Starch:* **Boiled Russet Chunks** (not mashed) folded into braised cabbage and leeks.
+    *   *The Buffer:* The Cabbage/Leek ratio is high.
+    *   *Kid Submeal:* Beef chunks and plain boiled potato.
+*   **Monday:** **Pollock Chowder (Reheated).** Uses **Pollock Filets**.
+    *   *The Starch:* **Diced Russets** boiled, cooled, then added to the soup base (reheating creates resistant starch).
+    *   *Kid Submeal:* Fish and potato cubes.
+*   **Tuesday:** **Roasted Chicken & Roots.** Buy **Chicken Thighs**.
+    *   *The Starch:* **Frozen Fire Roasted Roots** mixed with large **Russet Wedges**.
+    *   *Kid Submeal:* Chicken and roasted root chunks.
+*   **Wednesday:** **Wings & Potato Salad.** Uses **Chicken Wings**.
+    *   *The Starch:* Classic **Vinegar-Mustard Potato Salad** (Cold = Max Resistant Starch).
+    *   *The Buffer:* Raw veggie platter (Cucumber, Celery, Peppers).
+    *   *Kid Submeal:* Wings and raw veggies.
+
+**Key New Ingredients:** Chuck Roast, Chicken Thighs, Kale, Cabbage, Leeks, Cucumber, Celery.
+
+---
+
+## Option 2: The "Classic Stews" (Refactored Option 2) 🥈
+*Focuses on slow digestion via liquid volume and chunky solids.*
+
+*   **Saturday (Tonight):** **Classic Texas Chili.** Buy **Chuck Roast**.
+    *   *The Starch:* **Potato Salad** (Cold side dish). The vinegar and temperature blunt the chili's heat and the glucose response.
+    *   *The Buffer:* Chili loaded with onions/peppers; side of green beans.
+    *   *Kid Submeal:* Beef chunks and plain potato.
+*   **Sunday (Dad's):** **French Chicken & Potato Stew.** Buy **Chicken Thighs**.
+    *   *The Starch:* Large **Russet Chunks** simmered in the broth (surface area preserved).
+    *   *The Buffer:* Loads of Carrots, Celery, and Green Beans in the pot.
+    *   *Kid Submeal:* Chicken and stew veggies.
+*   **Monday:** **Fish & "Chips" (Oven Fries).** Uses **Pollock Filets**.
+    *   *The Starch:* **Oven Fries**. Par-boiled, cooled, then roasted crisp.
+    *   *The Buffer:* Served with **Mushy Peas** (actually just smashed peas with mint, high fiber) or Vinegar Slaw.
+    *   *Kid Submeal:* Fish and fries.
+*   **Tuesday:** **Steak & Hasselback.** Buy **Ribeye/Sirloin**.
+    *   *The Starch:* **Hasselback Potato** (Sliced but whole).
+    *   *The Buffer:* **Critical:** Served with a massive portion of **Roasted Broccoli** (2 cups per person).
     *   *Kid Submeal:* Steak strips and potato.
-*   **Wednesday:** **Chicken Tinga Tostadas.** Uses **Marinated Chicken Strips**. Served with a side of "Mexican Street Corn" style potato salad.
-    *   *Kid Submeal:* Chicken tostada.
+*   **Wednesday:** **Chicken Tinga Bowl.** Uses **Marinated Chicken Strips**.
+    *   *The Starch:* **Mexican Street Corn Potato Salad** (Cold, lime dressing).
+    *   *The Buffer:* Bed of shredded cabbage.
+    *   *Kid Submeal:* Chicken and plain potato.
 
-**Key New Ingredients:** Chuck Roast, Chicken Thighs, Steak, Corn, Herbs.
-
----
-
-## Option 3: The "Roast & Reheat" 🥘
-*Optimized for leftovers and meal prep.*
-
-*   **Saturday (Tonight):** **Chili-Stuffed Potatoes.** Buy **Ground Beef** (or Chuck). Large baked **Russets** hollowed out and filled with chili.
-    *   *Kid Submeal:* Beef and potato skins.
-*   **Sunday (Dad's):** **Braised Beef with Colcannon.** Buy **Chuck Roast**. Slow cooked beef served with **Russet Mash** mixed with Kale/Cabbage.
-    *   *Kid Submeal:* Beef and plain mash.
-*   **Monday:** **Pollock Chowder.** Uses **Pollock Filets**. Creamy broth with diced **Russets** and corn.
-    *   *Kid Submeal:* Fish pieces and potato cubes from soup.
-*   **Tuesday:** **Roasted Chicken & Root Veg.** Buy **Chicken Thighs**. Uses the **Frozen Fire Roasted Roots** PLUS extra **Russets** to bulk it up.
-    *   *Kid Submeal:* Chicken and roasted potato.
-*   **Wednesday:** **Chicken Wings & Potato Salad.** Uses **Chicken Wings**. Classic vinegar-based potato salad (resistant starch win!).
-    *   *Kid Submeal:* Wings and plain boiled potato.
-
-**Key New Ingredients:** Ground Beef/Chuck, Chicken Thighs, Kale/Cabbage, Corn, Cream.
+**Key New Ingredients:** Chuck Roast, Chicken Thighs, Steak, Green Beans, Broccoli, Cabbage.
 
 ---
 
-## Option 4: The "Tex-Mex" Potato Twist 🌮
-*Spicy flavors paired with cooling potatoes.*
+## Option 3: The "Cold-Chain" Strategy ❄️
+*Optimizes for cooked-and-cooled starches exclusively.*
 
-*   **Saturday (Tonight):** **Beef & Potato Chili Verde.** Buy **Chuck Roast**. Green chile stew with chunks of **Russet Potatoes** to thicken it.
-    *   *Kid Submeal:* Beef and potato in green sauce (or rinsed).
-*   **Sunday (Dad's):** **Chicken Enchilada Casserole.** Buy **Chicken Thighs** (poach & shred). Layered with tortillas. Serve with **Spanish Rice**.
-    *   *Kid Submeal:* Plain chicken and tortilla.
-*   **Monday:** **Baja Fish Tacos.** Uses **Pollock**. Served with a side of **Roasted Potato "Nachos"** (sliced rounds with cheese).
-    *   *Kid Submeal:* Fish and cheese potato rounds.
-*   **Tuesday:** **Carne Asada (Buy Flank Steak) Fries.** Buy **Flank Steak**. Served over a bed of **Russet Fries** with salsa and guacamole.
-    *   *Kid Submeal:* Steak and fries.
-*   **Wednesday:** **Chicken Tortilla Soup.** Uses **Marinated Chicken Strips**. Avocado and cheese toppings.
-    *   *Kid Submeal:* Chicken and broth with chips.
+*   **Saturday (Tonight):** **Beef & Black Bean Chili.** Buy **Chuck Roast**.
+    *   *The Starch:* **Rice** (cooked, cooled, reheated - or served warm if Basmati).
+    *   *The Buffer:* Top chili with massive handfuls of **Cilantro & Diced Onions** and side Salad.
+    *   *Kid Submeal:* Beef and rice.
+*   **Sunday (Dad's):** **Nicoise-Style Roasted Chicken.** Buy **Chicken Thighs**.
+    *   *The Starch:* **Boiled Baby Potatoes** (or cut Russets) served warm/room temp with olives (swapped for capers/pickles) and beans.
+    *   *The Buffer:* **Green Beans** and **Lettuce** bed.
+    *   *Kid Submeal:* Chicken and boiled potato.
+*   **Monday:** **Cod with Warm Potato Salad.** Uses **Cod Filets**.
+    *   *The Starch:* **Boiled Russet Cubes** tossed with lemon/oil/capers.
+    *   *The Buffer:* **Asparagus** or Zucchini.
+    *   *Kid Submeal:* Fish and plain potato.
+*   **Tuesday:** **Pork-Style Beef Cubes.** Buy **Chuck Roast**. Marinated and seared like carnitas.
+    *   *The Starch:* **Black Beans** and **Corn**.
+    *   *The Buffer:* **Sautéed Peppers & Onions**.
+    *   *Kid Submeal:* Beef cubes and beans.
+*   **Wednesday:** **Wings & "Smashed" Potatoes.** Uses **Chicken Wings**.
+    *   *The Starch:* Boiled whole potatoes, smashed flat, seared (high surface area, no mashing).
+    *   *The Buffer:* **Celery & Carrot Sticks**.
+    *   *Kid Submeal:* Wings and smashed potato.
 
-**Key New Ingredients:** Chuck Roast, Chicken Thighs, Flank Steak, Tomatillos, Avocado.
-
----
-
-## Option 5: The "Healthy Comfort" 🥗
-*Lighter preparations of heavy ingredients.*
-
-*   **Saturday (Tonight):** **Beef & Black Bean Chili.** Buy **Chuck Roast**. Served with a side of **Roasted Potato Salad** (warm, with mustard dressing).
-    *   *Kid Submeal:* Beef and plain potato.
-*   **Sunday (Dad's):** **Lemon-Herb Roasted Chicken.** Buy **Whole Chicken** (or thighs). Roasted over a bed of **Russet Potatoes** and carrots (buy).
-    *   *Kid Submeal:* Chicken and roasted carrots/potatoes.
-*   **Monday:** **Cod in Tomato Basil Sauce.** Uses **Cod Filets**. Served over **Mashed Russets**.
-    *   *Kid Submeal:* Fish and mash.
-*   **Tuesday:** **Beef Stir-Fry.** Uses leftover **Chuck Roast** (slice raw before cooking Sat?) or buy extra. Stir-fried with snap peas and served over baked potato slices (weird but works!).
-    *   *Kid Submeal:* Beef and snap peas.
-*   **Wednesday:** **Wings & Roasted Veg Salad.** Uses **Chicken Wings**. **Frozen Fire Roasted Roots** and roasted potato croutons over greens.
-    *   *Kid Submeal:* Wings and sweet potato from mix.
-
-**Key New Ingredients:** Chuck Roast, Whole Chicken, Carrots, Snap Peas, Salad Greens.
+**Key New Ingredients:** Chuck Roast, Chicken Thighs, Green Beans, Asparagus/Zucchini, Lettuce.
 
 ---
 
-## Option 6: The "Batch Cook" King 👑
-*Big batches for maximum efficiency.*
+## Option 4: The "Soup & Salad" Balance 🥗
+*Liquid volume + Raw Fiber = Satiety.*
 
-*   **Saturday (Tonight):** **Slow Cooker Beef Chili.** Buy **Chuck Roast**. Set it and forget it. Serve with **Baked Potatoes**.
-    *   *Kid Submeal:* Beef and baked potato.
-*   **Sunday (Dad's):** **Chicken Pot Pie (with Potato Crust).** Buy **Chicken Thighs**. Traditional filling, but topped with thinly sliced **Russet Potatoes** (scalloped style) instead of pastry.
-    *   *Kid Submeal:* Chicken filling and potato "crust".
-*   **Monday:** **Fish Pie.** Uses **Pollock** and **Cod**. Creamy sauce, topped with **Mashed Russets**.
-    *   *Kid Submeal:* Fish and mash.
-*   **Tuesday:** **Chicken & "Gnocchi" (Potato Dumplings).** Uses **Marinated Chicken Strips**. Quick sauté with homemade (or store-bought) potato dumplings (easy with all your russets!).
-    *   *Kid Submeal:* Chicken and dumplings.
-*   **Wednesday:** **Wings & Potato Skins.** Uses **Chicken Wings**. Bake extra potatoes, hollow out for skins, use insides for mash/cakes later.
-    *   *Kid Submeal:* Wings and cheese potato skins.
+*   **Saturday (Tonight):** **Beef & Vegetable Soup.** Buy **Chuck Roast**.
+    *   *The Starch:* **Russet Chunks** boiled in the beef broth.
+    *   *The Buffer:* Kale, Carrots, Celery in the soup.
+    *   *Kid Submeal:* Beef and potato soup components.
+*   **Sunday (Dad's):** **Chicken "Pot Pie" Stew.** Buy **Chicken Thighs**.
+    *   *The Starch:* **Potato "Dumplings"** (Just large cubes of boiled potato acting as the carb).
+    *   *The Buffer:* Peas, Carrots, Onions (Buy frozen pea/carrot mix).
+    *   *Kid Submeal:* Chicken and potato cubes.
+*   **Monday:** **Pollock with Roasted Root Salad.** Uses **Pollock Filets**.
+    *   *The Starch:* **Frozen Fire Roasted Roots** + **Russet Cubes**, roasted and cooled.
+    *   *The Buffer:* Tossed with **Arugula/Spinach**.
+    *   *Kid Submeal:* Fish and roasted roots.
+*   **Tuesday:** **Taco Salad with Potato "Croutons".** Uses **Marinated Chicken Strips**.
+    *   *The Starch:* **Roasted Potato Cubes** (Spiced).
+    *   *The Buffer:* **Romaine Hearts**, Tomatoes, Radishes.
+    *   *Kid Submeal:* Chicken and potato cubes.
+*   **Wednesday:** **Wings & Slaw.** Uses **Chicken Wings**.
+    *   *The Starch:* Skip potato. Side of **Fruit** (Berries) or just extra veggies.
+    *   *The Buffer:* **Vinegar Coleslaw** (Cabbage).
+    *   *Kid Submeal:* Wings and fruit.
 
-**Key New Ingredients:** Chuck Roast, Chicken Thighs, Peas/Carrots (frozen), Cream.
+**Key New Ingredients:** Chuck Roast, Chicken Thighs, Kale, Arugula, Romaine, Cabbage.
