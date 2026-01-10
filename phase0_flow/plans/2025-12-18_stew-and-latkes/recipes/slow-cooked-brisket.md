@@ -8,12 +8,14 @@ Here are 5 different ways to view the execution of this recipe, optimized for **
 *Best for: Ensuring you have everything ready before you start the heat.*
 
 **Mise-en-place:**
+
 *   **The Meat:** 4-5 lb Beef Brisket (pat dry, heavily salted & peppered).
 *   **Aromatics:** 3-4 large Onions (thick slices), 1 bag Carrots (peeled, chunks), 4 cloves Garlic (smashed).
 *   **The Braise Liquid:** 2 cups Beef Broth, 1/2 cup Ketchup, 2 tbsp Fig Spread.
 *   **Herbs:** Fresh Thyme bunch, 2 Bay Leaves.
 
 **Execution (Friday):**
+
 1.  **Sear:** Heat oil in large Dutch oven. Sear brisket hard on both sides until dark brown (5-8m per side). Remove meat.
 2.  **Deglaze/Sauté:** Add onions to the beef fat. Cook until browning edges (5m).
 3.  **Build Sauce:** Stir in broth, ketchup, and fig spread. Scrape up browned bits (fond).
@@ -21,7 +23,9 @@ Here are 5 different ways to view the execution of this recipe, optimized for **
 5.  **Braise:** Cover tightly. Bake at $300^\circ\text{F}$ for 4-5 hours until fork-tender.
 6.  **STOP (Make Ahead):** Let cool in the liquid. Refrigerate the entire pot (or meat and liquid separately) overnight. This makes slicing much easier!
 
+
 **Execution (Saturday):**
+
 7.  **Slice:** Remove cold brisket from liquid. Slice against the grain while cold for perfect, clean slices.
 8.  **Reheat:** Place slices back in the sauce. Reheat in a $325^\circ\text{F}$ oven for 30-45 mins until hot and the sauce is bubbly.
 

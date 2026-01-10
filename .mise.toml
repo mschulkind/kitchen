@@ -1,0 +1,9 @@
+[tools]
+python = "3.13"
+nodejs = "24.7"
+pnpm = "latest"
+overmind = "latest"
+uv = "latest"
+
+[env]
+_.python.venv = { path = ".venv", create = true }

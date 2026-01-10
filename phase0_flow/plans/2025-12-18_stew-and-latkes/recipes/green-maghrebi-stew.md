@@ -8,6 +8,7 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 *Best for: Ensuring you have everything ready before you start the heat.*
 
 **Mise-en-place:**
+
 *   **The Bread:** 1/2 Sourdough Loaf (cubed into 1-inch pieces).
 *   **Aromatics:** 1 large Onion (diced), 3 cloves Garlic (minced).
 *   **Flavor Base:** 2 tbsp Tomato Paste, 2 tbsp Fig Spread.
@@ -17,6 +18,7 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 *   **The Finish:** 1 large bag Spinach or Chard, 1 Lemon (juiced), Sour Cream, Fresh Dill.
 
 **Execution:**
+
 1.  **Toast:** Bake bread cubes at $400^\circ\text{F}$ until bone dry and golden (15-20m).
 2.  **Sweat:** Sauté onion in olive oil until soft (5-8m). Add garlic for 1m.
 3.  **Deepen:** Add tomato paste & spices. Fry until paste darkens (2-3m).
