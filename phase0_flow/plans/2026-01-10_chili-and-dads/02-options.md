@@ -1,120 +1,116 @@
 # Meal Plan Options
 
-Here are 6 meal plan options tailored to your updated stock (goodbye garden 🍂, hello freezer stash 🧊).
+Here are 6 meal plan options updated for your current stock (Pork is out, Root Veggies are in).
 
-**Rules Applied:**
-*   **50-25-25:** High veg, adequate protein, slow carb.
-*   **Saturday:** Chili.
-*   **Sunday:** Easy/Portable/Leftover-friendly for Dad's.
+**Context:**
+*   **Produce Situation:** You have essentially zero fresh vegetables in the fridge. **All plans require a significant produce shop** to hit the 50% volume target.
+*   **The "Dad" Meal:** Focused on "Travel-Ready" stews or components that reheat well.
 *   **Texture:** No olives, eggplant, or mushrooms.
-*   **Kids:** Deconstructed submeals.
-
-**Note:** Since the garden is done and the fridge is light on produce, all plans require buying fresh vegetables to hit the 50% target.
 
 ---
 
-## Option 1: The "Beef & Pork" Powerhouse 🥩
-*Heavy on red meat and hearty flavors.*
+## Option 1: The "Beef & Root" Standard 🥩
+*Leverages the new frozen root veg for an easy fiber win.*
 
-*   **Saturday (Tonight):** **Classic Texas Beef Chili.** Uses **Chuck Stew Meat** (cut small) and **Beef Broth**. Simmered with dried chilies and onions. Served with a massive cabbage & carrot slaw (acid cuts the fat).
-    *   *Kid Submeal:* Rinsed beef chunks with plain rice and raw carrots.
-*   **Sunday (Dad's):** **Pulled Pork Sandwiches (or Sliders).** Uses frozen **Braised Pork Shoulder**. Heat and toss with a vinegar-based sauce. Serve on **Stuffing Bread** (toasted) or buns (buy).
-    *   *Kid Submeal:* Plain pork on bread with cheese.
-*   **Monday:** **Crispy Pan-Seared Pollock.** Uses **Pollock Filets**. Served with roasted broccoli and sweet potatoes.
-    *   *Kid Submeal:* Plain fish and roasted sweet potato rounds.
-*   **Tuesday:** **Chicken Street Tacos.** Uses **Marinated Chicken Strips**. Served with sautéed peppers and onions and black beans.
-    *   *Kid Submeal:* Chicken strips in a tortilla (corn) with cheese.
-*   **Wednesday:** **Chicken Wing Sheet Pan Dinner.** Uses **Chicken Wings**. Roasted alongside Brussels sprouts and cauliflower.
-    *   *Kid Submeal:* Plain wings and raw cauliflower.
+*   **Saturday (Tonight):** **Classic Beef Chili.** Uses **Chuck Stew Meat** (cut small) and **Beef Broth**. Simmered with kidney beans and onions.
+    *   *Kid Submeal:* Plain beef chunks, rinsed beans, side of cheese.
+*   **Sunday (Dad's):** **Chicken & Root Vegetable Stew.** Uses **Cubed Cooked Chicken** and the **Frozen Fire Roasted Root Veg**. Simmered in **Pork Broth** with added kale (buy) and white beans. Travels safely in one pot.
+    *   *Kid Submeal:* Chicken cubes and plain carrots/potatoes from the stew mix.
+*   **Monday:** **Pan-Seared Pollock.** Uses **Pollock Filets**. Served with roasted broccoli and quinoa.
+    *   *Kid Submeal:* Plain fish and quinoa.
+*   **Tuesday:** **Street Taco Bowls.** Uses **Marinated Chicken Strips**. Served over cabbage slaw with black beans.
+    *   *Kid Submeal:* Chicken strips, rice, and cheese.
+*   **Wednesday:** **Sheet Pan Wings.** Uses **Chicken Wings**. Roasted with bell peppers and onions.
+    *   *Kid Submeal:* Plain wings and raw pepper strips.
 
-**Key New Ingredients:** Dried Chilies, Cabbage, Broccoli, Sweet Potatoes, Bell Peppers, Brussels Sprouts, Cauliflower.
-
----
-
-## Option 2: The "White & Red" Contrast 🥣
-*Alternates between lighter chicken/fish and heavier beef dishes.*
-
-*   **Saturday (Tonight):** **Creamy White Chicken Chili.** Uses **Cubed Cooked Chicken** and **Pork Broth**. Base of blended white beans (cannellini) for creaminess without dairy.
-    *   *Kid Submeal:* Chicken chunks and beans (rinsed) with cheese.
-*   **Sunday (Dad's):** **Beef & Vegetable Stew.** Uses **Chuck Stew Meat** and **Beef Broth**. Loaded with carrots, celery, and potatoes. Travels safely in one pot.
-    *   *Kid Submeal:* Beef chunks and boiled potatoes.
-*   **Monday:** **Cod with Lemon-Caper Butter.** Uses **Cod Filets**. **Capers** provide the salt punch (replacing olives). Served with warm roasted kale salad.
-    *   *Kid Submeal:* Plain fish and rice.
-*   **Tuesday:** **Crispy Carnitas Bowl.** Uses **Braised Pork Shoulder** (crisped in pan). Served over slaw and beans.
-    *   *Kid Submeal:* Crispy pork and beans.
-*   **Wednesday:** **Chicken Stir-Fry.** Uses **Marinated Chicken Strips**. High heat sear with snap peas and carrots.
-    *   *Kid Submeal:* Chicken and plain snap peas.
-
-**Key New Ingredients:** Cannellini Beans, Carrots, Celery, Kale, Snap Peas, Capers.
+**Key New Ingredients:** Cabbage, Broccoli, Bell Peppers, Kale, Kidney Beans, Black Beans.
 
 ---
 
-## Option 3: The "Seafood & Spice" 🐟
-*Utilizes your fish stock early in the week.*
+## Option 2: The "White & Red" Switch 🥣
+*Swaps the proteins: Chicken for Chili, Beef for Dad.*
 
-*   **Saturday (Tonight):** **Beef & Black Bean Chili.** Uses **Chuck Stew Meat**. A tomato-heavy version with plenty of cumin/paprika.
-    *   *Kid Submeal:* Beef and black beans with cheddar.
-*   **Sunday (Dad's):** **Chicken Tinga Tostadas.** Uses **Marinated Chicken Strips** (simmered in tomato/chipotle sauce). Pack toppings separately; assemble there.
-    *   *Kid Submeal:* Plain chicken tostada.
-*   **Monday:** **Fisherman's Stew (Cioppino Style).** Uses **Pollock** and **Cod**. Tomato broth with fennel and onions.
-    *   *Kid Submeal:* Plain poached fish and dipping bread.
-*   **Tuesday:** **Pork Fried Rice.** Uses **Braised Pork Shoulder** and **Rice**. Lots of eggs and frozen peas/carrots (buy) added.
-    *   *Kid Submeal:* Fried rice with extra egg, no sauce.
-*   **Wednesday:** **Buffalo Chicken Wings.** Uses **Chicken Wings**. Served with massive veggie platter (celery, carrots, cucumber).
-    *   *Kid Submeal:* Plain wings and veggie sticks with ranch.
+*   **Saturday (Tonight):** **Creamy White Chicken Chili.** Uses **Cubed Cooked Chicken** and **Pork Broth**. Blended Cannellini beans provide the creamy texture. Topped with avocado.
+    *   *Kid Submeal:* Chicken cubes, plain white beans, avocado chunks.
+*   **Sunday (Dad's):** **Classic Pot Roast (Stew Style).** Uses **Chuck Stew Meat**. Slow cooked with **Potatoes**, **Onions**, and purchased carrots/celery. Best leftovers ever.
+    *   *Kid Submeal:* Beef chunks and plain boiled potatoes.
+*   **Monday:** **Cod with Tomato-Caper Sauce.** Uses **Cod Filets**. Baked in crushed **Canned Tomatoes** with capers. Served with roasted zucchini.
+    *   *Kid Submeal:* Plain cod and plain pasta.
+*   **Tuesday:** **Chicken "Fried" Rice.** Uses **Marinated Chicken Strips** (chopped). Sautéed with **Rice**, eggs, and frozen peas (buy).
+    *   *Kid Submeal:* Chicken and rice mix (no soy sauce).
+*   **Wednesday:** **Wings & Wedge Salad.** Uses **Chicken Wings**. Served with a massive wedge salad (Iceberg) with bacon bits.
+    *   *Kid Submeal:* Wings and cucumber slices.
 
-**Key New Ingredients:** Black Beans, Tostada Shells, Fennel, Frozen Peas/Carrots, Cucumber.
-
----
-
-## Option 4: The "Chili Verde" Twist 🟢
-*A different take on the Saturday Chili requirement.*
-
-*   **Saturday (Tonight):** **Pork Chili Verde.** Uses **Braised Pork Shoulder** and **Pork Broth**. Simmered with tomatillos and green chiles.
-    *   *Kid Submeal:* Pork and rice.
-*   **Sunday (Dad's):** **Beef Pot Roast.** Uses **Chuck Stew Meat**. Slow cooked with onions and carrots until falling apart.
-    *   *Kid Submeal:* Beef and carrots.
-*   **Monday:** **Baja Fish Tacos.** Uses **Pollock Filets** (pan-fried). Cabbage slaw and lime.
-    *   *Kid Submeal:* Fish pieces and a tortilla.
-*   **Tuesday:** **Chicken Caesar Salad (Warm).** Uses **Cubed Cooked Chicken**. Roasted romaine hearts (seared) and homemade dressing (anchovies/garlic).
-    *   *Kid Submeal:* Chicken and croutons (from Stuffing Bread).
-*   **Wednesday:** **Chicken Fajita Platter.** Uses **Marinated Chicken Strips**. Sizzling peppers and onions.
-    *   *Kid Submeal:* Chicken and cheese quesadilla.
-
-**Key New Ingredients:** Tomatillos, Green Chiles, Romaine Hearts, Anchovies, Bell Peppers.
+**Key New Ingredients:** Cannellini Beans, Carrots, Celery, Zucchini, Frozen Peas, Iceberg Lettuce, Bacon.
 
 ---
 
-## Option 5: The "Fish First" Strategy 🌊
-*Prioritizes delicate fish while fresh, saving hearty meats for later.*
+## Option 3: The "Tex-Mex" Traveler 🌮
+*Bold flavors for both key nights.*
 
-*   **Saturday (Tonight):** **Chunky Beef Chili.** Uses **Chuck Stew Meat**. Standard red kidney bean style.
+*   **Saturday (Tonight):** **Texas Red Chili (No Beans).** Uses **Chuck Stew Meat** and **Dried Chilies** (buy). Served with a lime-vinaigrette kale salad to hit the 50% veg.
+    *   *Kid Submeal:* Plain beef chunks in a corn tortilla.
+*   **Sunday (Dad's):** **Chicken Tinga Bowl Components.** Uses **Marinated Chicken Strips** simmered in chipotle tomato sauce. Pack rice, beans, and meat separately. Assemble at Dad's.
+    *   *Kid Submeal:* Plain chicken and rice.
+*   **Monday:** **Baja Pollock.** Uses **Pollock Filets** (dusted in Masa). Pan-fried and served with slaw.
+    *   *Kid Submeal:* Fish pieces and corn.
+*   **Tuesday:** **Loaded Baked Potatoes (Healthy-ish).** Uses **Cubed Cooked Chicken** and **Potatoes**. Topped with broccoli and cheddar.
+    *   *Kid Submeal:* Potato with butter and cheese.
+*   **Wednesday:** **Steak Salad (Buy Steak).** Since we are out of steak, buy one ribeye to share over a massive bed of spinach and roasted peppers.
+    *   *Kid Submeal:* Steak strips and toast.
+
+**Key New Ingredients:** Dried Ancho Chiles, Kale, Chipotles, Broccoli, Spinach, Ribeye Steak (optional purchase).
+
+---
+
+## Option 4: The "Fish & Fowl" Focus 🐟
+*Saves the red meat for a specific recipe later, uses fish early.*
+
+*   **Saturday (Tonight):** **Beef & Quinoa Chili.** Uses **Chuck Stew Meat**. Quinoa (buy) is cooked *in* the chili for texture.
+    *   *Kid Submeal:* Beef and plain quinoa.
+*   **Sunday (Dad's):** **Chicken & Dumplings (Stew).** Uses **Cubed Cooked Chicken** and **Pork Broth**. "Dumplings" made from **Stuffing Bread** chunks dropped in at the end. Loaded with carrots/celery (buy).
+    *   *Kid Submeal:* Chicken and soggy bread (kids usually love this texture, if not, keep bread dry).
+*   **Monday:** **Cod Cakes.** Uses **Cod Filets** and **Stuffing Bread** crumbs. Pan-fried patties. Served with green beans.
+    *   *Kid Submeal:* Fish cake and green beans.
+*   **Tuesday:** **Chicken Fajitas.** Uses **Marinated Chicken Strips**. Sizzling peppers and onions.
+    *   *Kid Submeal:* Chicken and tortilla.
+*   **Wednesday:** **Roasted Root Veggie Salad.** Uses **Frozen Fire Roasted Roots**. Roasted again to crisp, tossed with **Cubed Chicken** and arugula.
+    *   *Kid Submeal:* Chicken and roasted sweet potato from the mix.
+
+**Key New Ingredients:** Quinoa, Carrots, Celery, Green Beans, Bell Peppers, Arugula.
+
+---
+
+## Option 5: The "Pantry Raid" 🥫
+*Maximizes the canned goods and frozen stash.*
+
+*   **Saturday (Tonight):** **Three-Bean Beef Chili.** Uses **Chuck Stew Meat** and **Canned Tomatoes**. Kidney, Black, and Pinto beans (buy/pantry).
     *   *Kid Submeal:* Beef and beans.
-*   **Sunday (Dad's):** **Baked Pasta with Pork Ragu.** Uses **Braised Pork Shoulder** and **Pasta**. The pork is shredded into a tomato sauce and baked with cheese. Travels perfectly.
-    *   *Kid Submeal:* Pasta with plain butter/cheese (sauce on side).
-*   **Monday:** **Roasted Cod over Ratatouille.** Uses **Cod Filets**. The "Ratatouille" is roasted Zucchini, Peppers, and Onions (No eggplant!).
-    *   *Kid Submeal:* Fish and plain roasted zucchini.
-*   **Tuesday:** **Chicken & Quinoa Salad.** Uses **Cubed Cooked Chicken**. Cold or warm salad with crunchy veggies.
-    *   *Kid Submeal:* Chicken and plain quinoa.
-*   **Wednesday:** **Wings & Wedges.** Uses **Chicken Wings**. Served with potato wedges and a green salad.
+*   **Sunday (Dad's):** **Chicken Cacciatore.** Uses **Chicken Wings** (braised instead of roasted! Falling off the bone). Tomato, bell pepper, and onion sauce. Served over **Pasta** or **Polenta** (cornmeal).
+    *   *Kid Submeal:* Plain chicken wing meat and plain pasta.
+*   **Monday:** **Pollock in Parchment.** Uses **Pollock Filets**. Steamed in parchment with zucchini and tomatoes.
+    *   *Kid Submeal:* Plain steamed fish.
+*   **Tuesday:** **Taco Salad.** Uses **Marinated Chicken Strips**. Bed of romaine, corn, beans, salsa.
+    *   *Kid Submeal:* Chicken, corn, and chips.
+*   **Wednesday:** **Root Veggie Soup.** Uses **Frozen Fire Roasted Roots** blended with **Beef Broth**. topped with crispy **Stuffing Bread** croutons and **Cubed Chicken**.
+    *   *Kid Submeal:* Chicken cubes and croutons on side of soup.
+
+**Key New Ingredients:** Bell Peppers, Zucchini, Romaine, Corn (frozen/canned).
+
+---
+
+## Option 6: The "High Protein" Kick 💪
+*Focuses on maximizing the meat portions.*
+
+*   **Saturday (Tonight):** **Chunky Beef Chili.** Uses **Chuck Stew Meat**. Standard recipe but heavy on the meat.
+    *   *Kid Submeal:* Beef chunks.
+*   **Sunday (Dad's):** **Chicken & Wild Rice Soup.** Uses **Cubed Cooked Chicken** and **Pork Broth**. Creamy (milk added) with wild rice (buy) and the **Frozen Root Veg** added for bulk.
+    *   *Kid Submeal:* Chicken and rice.
+*   **Monday:** **Seared Cod with Asparagus.** Uses **Cod Filets**. Lemon butter sauce.
+    *   *Kid Submeal:* Fish and asparagus tips.
+*   **Tuesday:** **Chicken Quesadillas (loaded).** Uses **Marinated Chicken Strips**. Tortillas stuffed with chicken and sautéed peppers. Served with side salad.
+    *   *Kid Submeal:* Plain cheese and chicken quesadilla.
+*   **Wednesday:** **Wings & "Fries".** Uses **Chicken Wings**. Served with roasted parsnip "fries" (buy parsnips).
     *   *Kid Submeal:* Wings and fries.
 
-**Key New Ingredients:** Kidney Beans, Zucchini, Peppers, Quinoa, Salad Greens.
-
----
-
-## Option 6: The "Pre-Marinated" Express 🍗
-*Fastest prep times using your pre-flavored items.*
-
-*   **Saturday (Tonight):** **Beef & Pinto Bean Chili.** Uses **Chuck Stew Meat**.
-    *   *Kid Submeal:* Beef and pinto beans.
-*   **Sunday (Dad's):** **Arroz con Pollo.** Uses **Marinated Chicken Strips** and **Rice**. One pot, yellow rice with peas/carrots. Travels well.
-    *   *Kid Submeal:* Chicken and yellow rice.
-*   **Monday:** **Fish & Chips (Healthy-ish).** Uses **Pollock Filets** (breaded with **Stuffing Bread** crumbs and baked/pan-fried).
-    *   *Kid Submeal:* Fish sticks and fries.
-*   **Tuesday:** **Pork & Potato Hash.** Uses **Braised Pork Shoulder**. Crispy potatoes, onions, and pork topped with fried eggs.
-    *   *Kid Submeal:* Pork, eggs, and potatoes separated.
-*   **Wednesday:** **Cubed Chicken Cobb.** Uses **Cubed Cooked Chicken**. Bacon (buy), hard-boiled eggs, avocado, greens.
-    *   *Kid Submeal:* Chicken, egg, and bacon bits.
-
-**Key New Ingredients:** Pinto Beans, Frozen Peas, Bacon, Avocado, Salad Greens.
+**Key New Ingredients:** Wild Rice, Asparagus, Parsnips, Bell Peppers, Salad Greens.
