@@ -1,0 +1,2 @@
+-add property based testing. maybe we already have this?
+-add support for weights vs volumes

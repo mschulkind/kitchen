@@ -4,7 +4,7 @@ Tests the service layer independent of database.
 Uses mocked repositories.
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
@@ -37,6 +37,7 @@ def service(mock_repository):
 @pytest.fixture
 def sample_item():
     """Create a sample PantryItem for testing."""
+    now = datetime.now(UTC)
     return PantryItem(
         id=uuid4(),
         household_id=uuid4(),
@@ -46,8 +47,8 @@ def sample_item():
         location=PantryLocation.PANTRY,
         expiry_date=None,
         notes=None,
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=now,
+        updated_at=now,
     )
 
 

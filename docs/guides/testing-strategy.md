@@ -49,21 +49,12 @@ def test_parse_complex_line(mock_llm):
 
 *We use **Playwright** to test the Web PWA.*
 
-
-
 - **Location**: `tests/web/e2e/`
-
 - **Tool**: Playwright (Typescript)
-
 - **Key Flows**:
-
     1.  Add Item -> Verify in List.
-
     2.  Take Photo -> Verify Staging (Mocked Camera).
-
     3.  Generate Plan -> Verify Options.
-
-
 
 ## 3. The "Delta Engine" Test Suite
 

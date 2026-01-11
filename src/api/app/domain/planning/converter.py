@@ -247,14 +247,14 @@ class UnitConverter:
             else:
                 # Weight -> Volume
                 # First convert to grams, then divide by density for cups
-                grams = self.unit_registry.convert(value, from_unit, "gram")
-                if grams is None:
+                weight_in_grams = self.unit_registry.convert(value, from_unit, "gram")
+                if weight_in_grams is None:
                     return ConversionResult(
                         success=False,
                         method="failed",
                         error=f"Cannot convert {from_unit} to grams",
                     )
-                cups = grams / density
+                cups = weight_in_grams / density
 
                 # Convert cups to target unit
                 result = self.unit_registry.convert(cups, "cup", to_unit)

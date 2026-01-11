@@ -6,6 +6,7 @@ The "Choose Your Own Adventure" planner interface.
 Fun fact: 70% of people decide what to eat less than an hour before the meal! 🤔
 """
 
+from collections.abc import AsyncGenerator
 from typing import Annotated
 from uuid import UUID
 
@@ -28,7 +29,7 @@ from src.api.app.domain.recipes.repository import RecipeRepository
 router = APIRouter(prefix="/planner", tags=["Planner 📅"])
 
 
-async def get_planner_service() -> PlannerService:
+async def get_planner_service() -> AsyncGenerator[PlannerService, None]:
     """Dependency injection for PlannerService."""
     async with get_supabase() as supabase:
         repository = PlannerRepository(supabase)
@@ -252,7 +253,7 @@ async def lock_slot(
     slot_id: UUID,
     service: Annotated[PlannerService, Depends(get_planner_service)],
     household_id: Annotated[UUID, Depends(get_current_household_id)],
-):
+) -> MealSlot:
     """Lock a meal slot. 🔒
 
     Locked slots won't change when re-spinning the plan.
@@ -273,7 +274,7 @@ async def unlock_slot(
     slot_id: UUID,
     service: Annotated[PlannerService, Depends(get_planner_service)],
     household_id: Annotated[UUID, Depends(get_current_household_id)],
-):
+) -> MealSlot:
     """Unlock a meal slot. 🔓
 
     Unlocked slots can be changed when re-spinning.

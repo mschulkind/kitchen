@@ -120,8 +120,8 @@ erDiagram
 
 ### Phase 1A Tests (Infra)
 
-- [ ] **Command**: `docker compose up -d`
-- [ ] **Verify**:
+- [x] **Command**: `docker compose up -d`
+- [x] **Verify**:
   - `api` container is healthy (curl localhost:8000/health).
   - `supabase` (or db) container is accepting connections.
 
@@ -140,26 +140,51 @@ erDiagram
 
 *Run with `Playwright` (Web First)*
 
-
-
 1.  **Add Item Flow**:
-
     - **Go to**: `/inventory`
-
     - **Click**: "Add (+)"
-
     - **Fill**: Name="Milk", Qty="1", Unit="Gallon", Location="Fridge"
-
     - **Click**: "Save"
-
     - **Verify**: List contains row with "Milk" and "1 Gallon".
 
 2.  **Edit Item Flow**:
-
     - **Click**: "Milk" row.
-
     - **Fill**: Qty="0.5".
-
     - **Click**: "Save".
-
     - **Verify**: List row updates to "0.5 Gallon".
+
+3.  **Delete Item Flow**:
+    - **Click**: "Trash" icon on "Milk" row.
+    - **Verify**: Confirmation dialog appears.
+    - **Click**: "Confirm".
+    - **Verify**: "Milk" is removed from the list.
+
+4.  **Search & Filter Flow**:
+    - **Precondition**: Inventory has "Milk" (Fridge) and "Pasta" (Pantry).
+    - **Action**: Type "Pasta" in Search Bar.
+    - **Verify**: Only "Pasta" is visible.
+    - **Action**: Clear Search. Filter by "Fridge".
+    - **Verify**: Only "Milk" is visible.
+
+6.  **Authentication Flow**:
+    - **Go to**: `/login`
+    - **Click**: "Sign in with Google" (Mocked).
+    - **Verify**: Redirect to `/inventory`.
+    - **Verify**: User profile avatar appears in header.
+    - **Click**: "Logout".
+    - **Verify**: Redirect to `/login` or Landing Page.
+
+7.  **Realtime Multi-User Sync**:
+    - **Scenario**: Two users (User A, User B) in the *same* household.
+    - **Action**: User A adds "Shared Cookies".
+    - **Verify**: User B's screen shows "Shared Cookies" appearing instantly (Realtime/WebSocket).
+    - **Action**: User B edits "Shared Cookies" to "Stolen Cookies".
+    - **Verify**: User A's screen updates to "Stolen Cookies" instantly.
+
+8.  **Multi-Household Isolation**:
+    - **Scenario**: Two users (User A in HH1, User C in HH2).
+    - **Action**: User A adds "Secret Gold Bar".
+    - **Verify**: User A sees "Secret Gold Bar".
+    - **Verify**: User C does *not* see "Secret Gold Bar" (RLS check).
+    - **Action**: User C adds "Private Silver".
+    - **Verify**: User A does *not* see "Private Silver".

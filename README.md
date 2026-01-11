@@ -49,7 +49,25 @@ The project is a Monorepo using a **Hybrid Stack**:
     just web
     ```
 
-Visit `http://localhost:8081` for the App and `http://localhost:8000/docs` for the API Swagger UI.
+Visit `http://localhost:8200` for the App and `http://localhost:5300/docs` for the API Swagger UI.
+
+## ⚙️ Configuration & Ports
+
+The application is fully configurable via the `.env` file (loaded automatically by `mise` or `docker-compose`).
+
+| Service | Default Port | Env Var | Description |
+| :--- | :--- | :--- | :--- |
+| **Kitchen API** | `5300` | `API_PORT` | The main FastAPI backend. |
+| **Web App** | `8200` | `WEB_PORT` | The Expo PWA (Frontend). |
+| **Supabase (API)** | `8250` | `SUPABASE_PORT` | The Kong Gateway for Supabase (REST, Realtime, Auth). |
+| **Supabase Studio** | `5303` | `STUDIO_PORT` | The Supabase Admin UI dashboard. |
+| **Postgres** | `54322` | `DB_PORT` | Host mapping for direct DB access (avoiding system 5432). |
+
+To change a port, update `.env`:
+```bash
+API_PORT=5301
+WEB_PORT=8201
+```
 
 ---
 

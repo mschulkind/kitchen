@@ -25,11 +25,32 @@ clean:
     rm -rf {{output_dir}}
 
 # ============================================================================
+# Setup & Installation
+# ============================================================================
+
+# Setup the entire project
+setup: install
+    cd tests/web && npx playwright install --with-deps chromium
+
+# Install all dependencies
+install: install-py install-js
+
+# Install Python dependencies
+install-py:
+    uv sync
+
+# Install frontend and tool dependencies
+install-js:
+    npm install
+    cd src/mobile && npm install
+    cd tests/web && npm install
+
+# ============================================================================
 # Code Quality & Testing
 # ============================================================================
 
-# Run all checks (format, lint, test)
-check: lint test
+# Run all checks (format, lint, typecheck, test)
+check: lint test typecheck
 
 # Lint all code (Python, Markdown, Mermaid)
 lint: lint-py lint-md lint-mmd
@@ -37,6 +58,10 @@ lint: lint-py lint-md lint-mmd
 # Lint Python code
 lint-py:
     uv run ruff check .
+
+# Lint frontend code
+lint-js:
+    cd src/mobile && npm run lint
 
 # Lint Markdown (GitHub format)
 lint-md:
@@ -46,73 +71,80 @@ lint-md:
 lint-mmd:
     python3 scripts/lint_mermaid.py
 
+# Format all code
+format: format-py
+
 # Format Python code
-format:
+format-py:
     uv run ruff check --fix .
     uv run ruff format .
 
-# Run tests
-test:
+# Type check Python code
+typecheck:
+    uv run mypy src/api
+
+# Run all tests
+test: test-py
+
+# Run Python tests
+test-py:
     uv run pytest
+
+# Run frontend tests
+test-js:
+    cd src/mobile && npm run test
 
 # Run E2E tests (Playwright)
 test-e2e:
     cd tests/web && npx playwright test
 
-# Run tests with coverage report
-coverage:
+# Run tests with coverage
+test-cov:
     @echo "=== Backend Coverage ==="
     uv run pytest --cov=src/api --cov-report=term-missing tests/api
     @echo "\n=== Frontend Coverage ==="
     cd src/mobile && npm run test -- --coverage
 
-# Run tests with coverage
-test-cov:
-    uv run pytest --cov=src --cov-report=term-missing
+# Aliases
+coverage: test-cov
 
 # ============================================================================
 # Docker & Infrastructure (Phase 1)
 # ============================================================================
 
 # Start the full stack (API + Supabase)
-up:
+up: docker-up
+
+docker-up:
     docker compose -f infra/docker/docker-compose.yml up -d
 
 # Stop all containers
-down:
+down: docker-down
+
+docker-down:
     docker compose -f infra/docker/docker-compose.yml down
 
 # View logs for all services
 logs:
     docker compose -f infra/docker/docker-compose.yml logs -f
 
-# View API logs only
-logs-api:
-    docker compose -f infra/docker/docker-compose.yml logs -f api
-
-# Rebuild and restart API container
-rebuild-api:
-    docker compose -f infra/docker/docker-compose.yml up -d --build api
-
 # Run API locally (without Docker)
 dev-api:
-    cd src/api && uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    cd src/api && uv run uvicorn main:app --reload --host 0.0.0.0 --port 5300
 
 # ============================================================================
-# Mobile App (Phase 1C)
+# Mobile & Frontend (Phase 1C)
 # ============================================================================
-
-# Install mobile dependencies
-mobile-install:
-    cd src/mobile && npm install
 
 # Start Expo dev server (Web first - D3)
-mobile-web:
-    cd src/mobile && npm run web
+dev-frontend:
+    cd src/mobile && npx expo start --web --port 8200
+
+web: dev-frontend
 
 # Start Expo dev server (all platforms)
 mobile-start:
-    cd src/mobile && npm start
+    cd src/mobile && npx expo start --port 8200
 
 # ============================================================================
 # Database
@@ -120,5 +152,9 @@ mobile-start:
 
 # Open Supabase Studio (DB admin UI)
 studio:
-    @echo "Opening Supabase Studio at http://localhost:3000"
-    @xdg-open http://localhost:3000 2>/dev/null || open http://localhost:3000 2>/dev/null || echo "Visit http://localhost:3000"
+    @echo "Opening Supabase Studio at http://localhost:5303"
+    @xdg-open http://localhost:5303 2>/dev/null || open http://localhost:5303 2>/dev/null || echo "Visit http://localhost:5303"
+
+# ============================================================================
+# PDF Generation (Legacy)
+# ============================================================================

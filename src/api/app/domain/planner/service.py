@@ -302,7 +302,7 @@ class PlannerService:
         Returns:
             Updated MealSlot.
         """
-        return await self.repository.update_slot(
+        slot = await self.repository.update_slot(
             slot_id,
             plan_id,
             household_id,
@@ -310,6 +310,9 @@ class PlannerService:
             is_locked=is_locked,
             notes=notes,
         )
+        if not slot:
+            raise PlanNotFoundError(plan_id)
+        return slot
 
     async def lock_slot(
         self,
@@ -329,12 +332,15 @@ class PlannerService:
         Returns:
             Updated MealSlot.
         """
-        return await self.repository.update_slot(
+        slot = await self.repository.update_slot(
             slot_id,
             plan_id,
             household_id,
             is_locked=True,
         )
+        if not slot:
+            raise PlanNotFoundError(plan_id)
+        return slot
 
     async def unlock_slot(
         self,
@@ -352,9 +358,12 @@ class PlannerService:
         Returns:
             Updated MealSlot.
         """
-        return await self.repository.update_slot(
+        slot = await self.repository.update_slot(
             slot_id,
             plan_id,
             household_id,
             is_locked=False,
         )
+        if not slot:
+            raise PlanNotFoundError(plan_id)
+        return slot

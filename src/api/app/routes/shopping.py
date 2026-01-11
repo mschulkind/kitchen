@@ -6,6 +6,7 @@ Supports realtime sync for multi-user shopping.
 Fun fact: The average shopping trip takes 43 minutes! ⏱️
 """
 
+from collections.abc import AsyncGenerator
 from typing import Annotated
 from uuid import UUID
 
@@ -31,7 +32,7 @@ from src.api.app.domain.shopping.service import (
 router = APIRouter(prefix="/shopping", tags=["Shopping 🛒"])
 
 
-async def get_shopping_service() -> ShoppingService:
+async def get_shopping_service() -> AsyncGenerator[ShoppingService, None]:
     """Dependency injection for ShoppingService."""
     async with get_supabase() as supabase:
         repository = ShoppingRepository(supabase)

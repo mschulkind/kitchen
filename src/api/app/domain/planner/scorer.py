@@ -7,11 +7,12 @@ Fun fact: Using expiring ingredients first can reduce food waste by 40%! 🌍
 """
 
 from datetime import date, timedelta
+from typing import Sequence, cast
 
 from src.api.app.domain.pantry.models import PantryItem
 from src.api.app.domain.planner.models import RecipeScore, ScoringCriteria
 from src.api.app.domain.planning.delta_service import DeltaService
-from src.api.app.domain.recipes.models import Recipe
+from src.api.app.domain.recipes.models import ParsedIngredient, Recipe, RecipeIngredient
 
 
 class RecipeScorer:
@@ -89,8 +90,12 @@ class RecipeScorer:
             )
 
         # Use delta service to compare
-        comparison = self.delta_service.calculate_missing(
+        ingredients = cast(
+            list[RecipeIngredient | ParsedIngredient],
             recipe.ingredients,
+        )
+        comparison = self.delta_service.calculate_missing(
+            ingredients,
             pantry_items,
         )
 
@@ -144,17 +149,19 @@ class RecipeScorer:
         week_later = today + timedelta(days=7)
 
         # Build lookup of pantry items by name
-        pantry_by_name = {}
+        pantry_by_name: dict[str, PantryItem] = {}
         for item in pantry_items:
             key = item.name.lower().strip()
-            if key not in pantry_by_name or (
-                item.expiry_date
-                and (
-                    pantry_by_name[key].expiry_date is None
-                    or item.expiry_date < pantry_by_name[key].expiry_date
-                )
-            ):
+            if key not in pantry_by_name:
                 pantry_by_name[key] = item
+            else:
+                existing = pantry_by_name[key]
+                # Keep the one expiring sooner
+                if item.expiry_date and existing.expiry_date:
+                    if item.expiry_date < existing.expiry_date:
+                        pantry_by_name[key] = item
+                elif item.expiry_date and not existing.expiry_date:
+                    pantry_by_name[key] = item
 
         expiring_count = 0
         for delta_item in matched_items:

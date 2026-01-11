@@ -59,3 +59,19 @@
 - [ ] **Unknown Handling**:
   - Input: `["Weird Fruit" (Unknown)]`.
   - Assert: Appears at bottom or top (configurable).
+
+### Phase 8C Tests (Frontend E2E)
+
+1.  **Store Sort Flow**:
+    - **Go to**: `/shopping`
+    - **Verify**: List is in default category order.
+    - **Action**: Select Store "Shaw's".
+    - **Verify**: List reorders to match Shaw's layout (e.g., Produce first).
+    - **Verify**: Headers change to "Aisle 1", "Aisle 2", etc.
+
+2.  **Edit Mapping**:
+    - **Action**: Long press "Cumin".
+    - **Action**: Select "Edit Location".
+    - **Fill**: "Aisle 4".
+    - **Click**: Save.
+    - **Verify**: "Cumin" moves to "Aisle 4" group.

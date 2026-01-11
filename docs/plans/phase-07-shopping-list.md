@@ -71,3 +71,18 @@
   3. **Verify**: Client B shows "Milk" checked within < 1s.
   4. Client B unchecks "Milk".
   5. **Verify**: Client A shows unchecked.
+
+### Phase 7C Tests (Frontend E2E)
+
+1.  **Shopping Execution Flow**:
+    - **Go to**: `/shopping`
+    - **Action**: Click checkbox for "Apples".
+    - **Verify**: Item moves to "Completed" section (or strikes through).
+    - **Action**: Click "Clear Completed".
+    - **Verify**: "Apples" is removed from list.
+    - **Verify**: "Apples" count in Pantry increases (if configured to auto-add).
+
+2.  **Add Custom Item**:
+    - **Action**: Type "Batteries" in "Add item" input.
+    - **Click**: Add.
+    - **Verify**: "Batteries" appears in "Other" category.

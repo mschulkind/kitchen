@@ -32,7 +32,7 @@ class Settings(BaseSettings):
 
     # API Server
     api_host: str = "0.0.0.0"
-    api_port: int = 8000
+    api_port: int = 5300
 
     # LLM Providers (Multi-Adapter Strategy per D6)
     openai_api_key: str = ""

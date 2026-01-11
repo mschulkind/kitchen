@@ -71,10 +71,22 @@ flowchart TD
 
 ### Phase 3B Tests (Verification Logic)
 
-- [ ] **Lazy Discovery**:
+- [x] **Lazy Discovery**:
   - **Scenario**: User checks "I have Cumin".
   - **Action**: Call `confirm_possession("Cumin")`.
   - **Assert**: New `PantryItem(name="Cumin")` exists in DB.
-- [ ] **Assumption Generation**:
+- [x] **Assumption Generation**:
   - **Scenario**: User has "Salt". Recipe needs "Salt".
   - **Assert**: Response includes "Salt" in `assumptions` list, NOT in `missing`.
+
+### Phase 3C Tests (Frontend E2E)
+
+1.  **Stock Check Flow**:
+    - **Precondition**: Recipe needs "Eggs" and "Flour". Inventory has "Flour".
+    - **Action**: Open "Stock Check" for Recipe.
+    - **Verify**: "Flour" is listed under "You Have".
+    - **Verify**: "Eggs" is listed under "Missing".
+    - **Action**: Click "I have this" on "Eggs".
+    - **Verify**: "Eggs" moves to "You Have".
+    - **Action**: Confirm.
+    - **Verify**: "Eggs" is added to Inventory.

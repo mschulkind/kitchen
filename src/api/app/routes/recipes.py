@@ -6,6 +6,7 @@ Handles CRUD operations, URL ingestion, and ingredient parsing.
 Fun fact: The average cookbook has about 150 recipes! 📚
 """
 
+from collections.abc import AsyncGenerator
 from typing import Annotated
 from uuid import UUID
 
@@ -32,7 +33,7 @@ from src.api.app.domain.recipes.service import (
 router = APIRouter(prefix="/recipes", tags=["Recipes 📖"])
 
 
-async def get_recipe_service() -> RecipeService:
+async def get_recipe_service() -> AsyncGenerator[RecipeService, None]:
     """Dependency injection for RecipeService."""
     async with get_supabase() as supabase:
         repository = RecipeRepository(supabase)

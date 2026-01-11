@@ -12,7 +12,10 @@ import { Platform } from 'react-native';
 // Environment configuration
 // In production, these come from app.json extra or environment
 const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL || 'http://localhost:8001';
-const SUPABASE_ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || '';
+const SUPABASE_ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'test-key-for-development';
+
+// Flag to indicate if we're running in development mode without real Supabase
+export const IS_MOCK_SUPABASE = !process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
 /**
  * Secure storage adapter for auth tokens.

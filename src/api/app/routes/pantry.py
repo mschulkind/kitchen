@@ -6,6 +6,7 @@ Follows RESTful conventions with proper HTTP status codes.
 Fun fact: The first REST API was described by Roy Fielding in 2000! 📚
 """
 
+from collections.abc import AsyncGenerator
 from typing import Annotated
 from uuid import UUID
 
@@ -24,7 +25,7 @@ from src.api.app.domain.pantry.service import PantryItemNotFoundError, PantrySer
 router = APIRouter(prefix="/pantry", tags=["Pantry 🥫"])
 
 
-async def get_pantry_service() -> PantryService:
+async def get_pantry_service() -> AsyncGenerator[PantryService, None]:
     """Dependency injection for PantryService."""
     async with get_supabase() as supabase:
         repository = PantryRepository(supabase)

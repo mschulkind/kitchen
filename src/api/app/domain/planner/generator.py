@@ -9,6 +9,7 @@ reduces cognitive load by 60% compared to free-form planning! 🧠
 
 import random
 import time
+from typing import Any
 from uuid import uuid4
 
 from src.api.app.domain.pantry.models import PantryItem
@@ -244,7 +245,7 @@ class PlanGenerator:
     def _generate_single_option(
         self,
         theme_key: str,
-        theme: dict,
+        theme: dict[str, Any],
         recipes: list[Recipe],
         scored_recipes: dict,
         total_meals: int,
@@ -381,7 +382,7 @@ class PlanGenerator:
 
         # Ensure variety (don't repeat similar recipes)
         selected = []
-        used_titles = set()
+        used_titles: set[str] = set()
 
         for recipe in sorted_recipes:
             # Simple deduplication by title similarity

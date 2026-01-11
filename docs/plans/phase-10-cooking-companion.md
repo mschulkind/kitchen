@@ -52,11 +52,17 @@
 
 ### Phase 10B Tests (E2E)
 
-- [ ] **Copy Flow**:
-    1. Open Recipe.
-    2. Tap "Copy for AI".
-    3. Verify Clipboard content (Mock).
-- [ ] **Cook Flow**:
-    1. Tap "Mark as Cooked".
-    2. Navigate to Inventory.
-    3. Verify quantities reduced.
+1.  **Cooking Flow**:
+    - **Go to**: Recipe Detail.
+    - **Click**: "Start Cooking".
+    - **Verify**: Large Text Mode activates.
+    - **Action**: Click "Next Step".
+    - **Action**: Click "Mark as Cooked".
+    - **Verify**: Navigation to Inventory (or Success Toast).
+    - **Verify**: Inventory quantities reduced.
+
+2.  **Timers & Scaling**:
+    - **Action**: Click on "2 Servings". Change to "4".
+    - **Verify**: Ingredient quantities double.
+    - **Action**: Click on a timer link "10 mins" in text.
+    - **Verify**: Timer starts counting down.

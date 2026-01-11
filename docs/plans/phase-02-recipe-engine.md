@@ -66,7 +66,7 @@ classDiagram
 
 ### Phase 2A Tests (Ingestor)
 
-- [ ] **Integration**: `test_ingest_url`
+- [x] **Integration**: `test_ingest_url`
   - Input: Valid URL.
   - Assert: Recipe created in DB, Title matches page title.
 
@@ -83,7 +83,25 @@ classDiagram
 
 ### Phase 2B Tests (Integration)
 
-- [ ] **Full Flow**:
+- [x] **Full Flow**:
   - Input: `Ingestor` saves a recipe.
   - Action: Trigger `Parser` on that recipe.
   - Assert: `recipe_ingredients` table populates with >5 rows.
+
+### Phase 2C Tests (Frontend E2E)
+
+1.  **Import Recipe Flow**:
+    - **Go to**: `/recipes`
+    - **Click**: "Import URL"
+    - **Fill**: URL="https://example.com/tacos"
+    - **Click**: "Import"
+    - **Verify**: Loading spinner appears.
+    - **Verify**: Navigation to Recipe Detail page.
+    - **Verify**: Title is correct and Ingredients list is populated.
+
+2.  **Manual Recipe Entry**:
+    - **Click**: "Add Manual Recipe"
+    - **Fill**: Title="Mom's Stew"
+    - **Fill**: Ingredient="2 carrots"
+    - **Click**: "Save"
+    - **Verify**: Recipe appears in list.

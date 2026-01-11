@@ -82,3 +82,20 @@ classDiagram
     2. User selects Option A.
     3. `meal_plans` table has a new record.
     4. App navigates to Plan Detail.
+
+### Phase 5C Tests (Frontend E2E)
+
+1.  **Generate Plan Flow**:
+    - **Go to**: `/plan`
+    - **Click**: "New Plan"
+    - **Fill**: Days="3", Constraints="Vegetarian"
+    - **Click**: "Generate"
+    - **Verify**: 3 Option Cards appear.
+    - **Click**: Select Option 1.
+    - **Verify**: Grid view shows 3 days of meals.
+
+2.  **Manual Plan Entry**:
+    - **Go to**: `/plan`
+    - **Click**: Empty Slot on Day 1.
+    - **Action**: Search for "Tacos". Select it.
+    - **Verify**: "Tacos" appears in Day 1 Slot.

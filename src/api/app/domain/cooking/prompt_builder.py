@@ -6,10 +6,12 @@ Fun fact: Claude can process recipe context and suggest real-time
 substitutions based on what you have in your kitchen! 🤖
 """
 
+from typing import cast
+
 from src.api.app.domain.cooking.models import ContextExportResponse, CookingContext
 from src.api.app.domain.pantry.models import PantryItem
 from src.api.app.domain.planning.delta_service import DeltaService
-from src.api.app.domain.recipes.models import Recipe
+from src.api.app.domain.recipes.models import ParsedIngredient, Recipe, RecipeIngredient
 
 
 class PromptBuilder:
@@ -92,8 +94,12 @@ class PromptBuilder:
             ingredients.append(" ".join(parts))
 
         # Compare to inventory
-        result = self.delta_service.calculate_missing(
+        recipe_ingredients = cast(
+            list[RecipeIngredient | ParsedIngredient],
             recipe.ingredients or [],
+        )
+        result = self.delta_service.calculate_missing(
+            recipe_ingredients,
             pantry_items,
         )
 
