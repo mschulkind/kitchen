@@ -1,19 +1,30 @@
-# Planning Documents Index
+# Planning Documents Index 📋
+
+**Last Updated**: January 11, 2026
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [🚨 Start Here](#-start-here)
 - [Documents](#documents)
 - [Decision Logs](#decision-logs)
 - [Navigation Notes](#navigation-notes)
 
 This index serves as a central hub for all planning, outlines, specifications, and decisions in the Personalized Dinner & Shopping App project. It is maintained in the `docs/plans/` directory, which is git-tracked for version control.
-  
-- Updated [.kilocode/rules.md](.kilocode/rules.md) with a new "Git Workflow" section outlining commit and push practices aligned with TDD iterations.
 
 ## Overview
 
 The planning phase focuses on establishing the foundational architecture, UX flows, and technical decisions to ensure the app is efficient, user-friendly, and aligned with the project brief. Key themes include intelligent meal planning, dynamic inventory tracking, intuitive verification, and optimized shopping lists, with a mobile-first approach. Phase 1 (core decisions) and Phase 1.5 (realtime multiuser) are complete; Phase 3 (infrastructure) and Phase 4 (implementation prep) finalized, ready for coding transition.
+
+## 🚨 Start Here
+
+### [open-questions.md](open-questions.md) ⭐ NEW
+
+**Summary**: Unresolved decisions needing your input before development can proceed. Covers architecture choices, platform priorities, LLM strategy, and MVP scope. **Answer these first!**
+
+### [central-plan.md](central-plan.md)
+
+**Summary**: Master 10-phase roadmap with architecture overview and testing strategy. The single source of truth for what gets built when.
 
 ## Documents
 

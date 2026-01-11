@@ -18,11 +18,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 **Execution:**
 
-1.  **Sear:** Pan-fry chicken strips on high heat (cooked through).
-2.  **Simmer:** Lower heat, add onions (soften), then pour in salsa. Simmer 5-10m.
-3.  **Mix Salad:** In a bowl, toss cold potatoes, corn, mayo, lime, chili powder, cilantro, salt.
-4.  **Assemble:** Big bed of cabbage -> Hot Tinga Chicken -> Scoop of Cold Potato Salad.
-5.  **Garnish:** Radishes on top.
+1. **Sear:** Pan-fry chicken strips on high heat (cooked through).
+2. **Simmer:** Lower heat, add onions (soften), then pour in salsa. Simmer 5-10m.
+3. **Mix Salad:** In a bowl, toss cold potatoes, corn, mayo, lime, chili powder, cilantro, salt.
+4. **Assemble:** Big bed of cabbage -> Hot Tinga Chicken -> Scoop of Cold Potato Salad.
+5. **Garnish:** Radishes on top.
 
 ---
 
@@ -30,11 +30,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1.  **CHAR Layer:** Searing the chicken first gives texture before it gets bathed in sauce.
-2.  **SMOKE & HEAT Layer:** The Chipotle/Salsa creates the warm, spicy profile that permeates the meat.
-3.  **COOL CREAM Layer:** The potato salad (with mayo/corn) provides a starchy, cooling textural contrast to the spicy meat.
-4.  **CRUNCH Layer:** The raw cabbage and radishes act as the fresh palate cleanser against the soft chicken and soft potato.
-5.  **ACID Layer:** A final squeeze of lime brightens the heavy sauce.
+1. **CHAR Layer:** Searing the chicken first gives texture before it gets bathed in sauce.
+2. **SMOKE & HEAT Layer:** The Chipotle/Salsa creates the warm, spicy profile that permeates the meat.
+3. **COOL CREAM Layer:** The potato salad (with mayo/corn) provides a starchy, cooling textural contrast to the spicy meat.
+4. **CRUNCH Layer:** The raw cabbage and radishes act as the fresh palate cleanser against the soft chicken and soft potato.
+5. **ACID Layer:** A final squeeze of lime brightens the heavy sauce.
 
 ---
 

@@ -18,12 +18,12 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 **Execution:**
 
-1.  **Sear:** Brown beef cubes in oil/tallow over high heat in batches. Remove.
-2.  **Sweat:** Lower heat. Cook onions (5m) then add garlic & spice blend (1m).
-3.  **Deglaze:** Add splash of broth, scraping fond. Return beef to pot.
-4.  **Simmer:** Add remaining broth, tomatoes, and beans. Cover and simmer low for 2-2.5 hrs.
-5.  **The "Buffer":** 10 minutes before eating, sauté kale with sliced garlic until wilted.
-6.  **Serve:** Ladle chili over/next to tepid potato. Side of garlic kale. Top with Cilantro.
+1. **Sear:** Brown beef cubes in oil/tallow over high heat in batches. Remove.
+2. **Sweat:** Lower heat. Cook onions (5m) then add garlic & spice blend (1m).
+3. **Deglaze:** Add splash of broth, scraping fond. Return beef to pot.
+4. **Simmer:** Add remaining broth, tomatoes, and beans. Cover and simmer low for 2-2.5 hrs.
+5. **The "Buffer":** 10 minutes before eating, sauté kale with sliced garlic until wilted.
+6. **Serve:** Ladle chili over/next to tepid potato. Side of garlic kale. Top with Cilantro.
 
 ---
 
@@ -31,11 +31,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1.  **MAILLARD Layer:** Searing the chuck roast creates the deep, savory "meaty" foundation. Don't crowd the pan!
-2.  **AROMATIC Layer:** Onions provide sweetness; the spices (bloomed in hot oil/fat) release their oils to permeate the entire dish.
-3.  **UMAMI & ACID Layer:** The tomatoes provide acidity to balance the fat and break down collagen; the beef broth extends the meatiness.
-4.  **EARTH Layer:** The black beans absorb the chili liquid, becoming flavor bombs themselves.
-5.  **FRESH Layer:** The garlic-kale and fresh cilantro add a bright, bitter contrast to cuts through the richness of the beef.
+1. **MAILLARD Layer:** Searing the chuck roast creates the deep, savory "meaty" foundation. Don't crowd the pan!
+2. **AROMATIC Layer:** Onions provide sweetness; the spices (bloomed in hot oil/fat) release their oils to permeate the entire dish.
+3. **UMAMI & ACID Layer:** The tomatoes provide acidity to balance the fat and break down collagen; the beef broth extends the meatiness.
+4. **EARTH Layer:** The black beans absorb the chili liquid, becoming flavor bombs themselves.
+5. **FRESH Layer:** The garlic-kale and fresh cilantro add a bright, bitter contrast to cuts through the richness of the beef.
 
 ---
 

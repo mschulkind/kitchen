@@ -3,6 +3,7 @@
 Please review the list below. I have pre-checked `[x]` items I believe you have in stock. Unchecked `[ ]` items will need to be purchased.
 
 ## Produce
+
 - [ ] **Chuck Roast** (2-3 lbs) for Chili.
 - [ ] **Kale** (2 large bunches) for Sat Chili side & Mon Curry.
 - [ ] **Cilantro** (1 bunch) for Chili & Tinga topping.
@@ -21,12 +22,14 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 - [x] **Frozen Fire Roasted Roots** (Optional add-in).
 
 ## Meat/Seafood
+
 - [ ] **Chicken Thighs** (Bone-in/Skin-on pref for stew) (2-3 lbs).
 - [x] **Pollock Filets** (Frozen).
 - [x] **Marinated Chicken Strips** (Frozen).
 - [x] **Chicken Wings** (Not used in this specific 5-day flow, keeping in freezer).
 
 ## Pantry/Dairy
+
 - [ ] **Chickpeas** (2 cans) for Curry.
 - [ ] **Coconut Milk** (2 cans, full fat) for Curry & Chowder creamy base.
 - [x] **Red Curry Paste** (Small jar) or Curry Powder.
@@ -39,4 +42,5 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 - [x] **Spices:** Cumin, Chili Powder, Paprika, Salt, Pepper.
 
 ## Plan Specifics (Timeline)
-*   **Potatoes:** Need to bake ~4 large Russets TODAY (Saturday) at 3:45 PM for the week's "Cooling" rotation.
+
+- **Potatoes:** Need to bake ~4 large Russets TODAY (Saturday) at 3:45 PM for the week's "Cooling" rotation.

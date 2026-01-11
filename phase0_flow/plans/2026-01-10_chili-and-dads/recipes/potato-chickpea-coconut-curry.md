@@ -19,12 +19,12 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 **Execution:**
 
-1.  **Bloom:** Hot oil. Sauté onion (5m). Add garlic/ginger/spices (1m).
-2.  **Combine:** Add potatoes, chickpeas, milk, broth.
-3.  **Simmer:** Cover, low heat, 15-20m (until potatoes soft).
-4.  **Wilt:** Stir in spinach in batches.
-5.  **Acid:** Squeeze lime juice. Adjust salt.
-6.  **Serve:** Bowl up with roasted cauliflower on the side.
+1. **Bloom:** Hot oil. Sauté onion (5m). Add garlic/ginger/spices (1m).
+2. **Combine:** Add potatoes, chickpeas, milk, broth.
+3. **Simmer:** Cover, low heat, 15-20m (until potatoes soft).
+4. **Wilt:** Stir in spinach in batches.
+5. **Acid:** Squeeze lime juice. Adjust salt.
+6. **Serve:** Bowl up with roasted cauliflower on the side.
 
 ---
 
@@ -32,10 +32,10 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1.  **BLOOM Layer:** Frying the curry powder and turmeric in the oil "wakes up" the spices, making them potent rather than dusty.
-2.  **RICHNESS Layer:** Coconut milk fats carry the spice flavor to every corner of the dish.
-3.  **EARTH Layer:** Chickpeas and potato skins provide a deep, grounding earthiness and texture.
-4.  **FRESH Layer:** The spinach adds color and iron; the lime juice cuts through the coconut fat to make the flavors "pop."
+1. **BLOOM Layer:** Frying the curry powder and turmeric in the oil "wakes up" the spices, making them potent rather than dusty.
+2. **RICHNESS Layer:** Coconut milk fats carry the spice flavor to every corner of the dish.
+3. **EARTH Layer:** Chickpeas and potato skins provide a deep, grounding earthiness and texture.
+4. **FRESH Layer:** The spinach adds color and iron; the lime juice cuts through the coconut fat to make the flavors "pop."
 
 ---
 

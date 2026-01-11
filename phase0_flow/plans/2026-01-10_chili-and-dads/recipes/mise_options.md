@@ -83,4 +83,3 @@ Here are 3 different ways to display the ingredient lists using tables for bette
 | **1 can** | **Diced Tomatoes** | *14oz* |
 | **2 cans** | **Black Beans** | *15oz, Drained/Rinsed* |
 | **Sides** | **Potato / Kale / Garlic** | *For serving* |
-

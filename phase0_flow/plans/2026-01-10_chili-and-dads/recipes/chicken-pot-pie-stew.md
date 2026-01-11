@@ -18,13 +18,13 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 **Execution:**
 
-1.  **Sear:** Skin-side down in soup pot (med-high) until crispy golden. Flip, sear 2m. Remove.
-2.  **Sauté:** Drain excess fat (keep 2 tbsp). Cook onion, carrot, celery (5m).
-3.  **Combine:** Add broth, potatoes, herbs. Nestle chicken back in.
-4.  **Simmer:** Boil, then low cover for 35-40m.
-5.  **Shred:** Remove chicken, discard bones/skin, shred meat, return to pot.
-6.  **Finish:** Add peas. Stir in cornstarch slurry if you want it thick.
-7.  **Cool:** Let sit 30m before packing/serving (firms up potatoes).
+1. **Sear:** Skin-side down in soup pot (med-high) until crispy golden. Flip, sear 2m. Remove.
+2. **Sauté:** Drain excess fat (keep 2 tbsp). Cook onion, carrot, celery (5m).
+3. **Combine:** Add broth, potatoes, herbs. Nestle chicken back in.
+4. **Simmer:** Boil, then low cover for 35-40m.
+5. **Shred:** Remove chicken, discard bones/skin, shred meat, return to pot.
+6. **Finish:** Add peas. Stir in cornstarch slurry if you want it thick.
+7. **Cool:** Let sit 30m before packing/serving (firms up potatoes).
 
 ---
 
@@ -32,11 +32,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1.  **FOND Layer:** Rendering chicken fat creates the cooking medium and leaves "fond" (brown bits) for the soup base.
-2.  **SWEET VEG Layer:** The carrot/onion/celery trio provides the classic sweet savory vegetal base.
-3.  **HERBAL Layer:** Thyme and Bay Leaf infuse the broth during the simmer, giving it that "homestyle" smell.
-4.  **STARCH Layer:** The potatoes release starch as they cook, thickening the broth naturally. The cornstarch finish makes it glossy and gravy-like.
-5.  **FRESH Layer:** Peas are added last to keep them popping fresh, not mushy greens.
+1. **FOND Layer:** Rendering chicken fat creates the cooking medium and leaves "fond" (brown bits) for the soup base.
+2. **SWEET VEG Layer:** The carrot/onion/celery trio provides the classic sweet savory vegetal base.
+3. **HERBAL Layer:** Thyme and Bay Leaf infuse the broth during the simmer, giving it that "homestyle" smell.
+4. **STARCH Layer:** The potatoes release starch as they cook, thickening the broth naturally. The cornstarch finish makes it glossy and gravy-like.
+5. **FRESH Layer:** Peas are added last to keep them popping fresh, not mushy greens.
 
 ---
 

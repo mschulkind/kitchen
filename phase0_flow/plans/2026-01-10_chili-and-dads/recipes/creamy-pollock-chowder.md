@@ -18,12 +18,12 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 **Execution:**
 
-1.  **Roast:** Oven 400F. Brussels sprouts w/ oil & salt (20-25m).
-2.  **Sweat:** Pot, med heat. Onion & celery (5m).
-3.  **Boil:** Add stock, potatoes, Old Bay. Boil 10-12m (until tender).
-4.  **Enrich:** Add coconut milk and corn. Bring to return simmer.
-5.  **Poach:** Add fish chunks. COVER. Turn Heat OFF (or very low). Sit 5-7m.
-6.  **Serve:** Gentle ladle (save the chunks). Side of crispy sprouts.
+1. **Roast:** Oven 400F. Brussels sprouts w/ oil & salt (20-25m).
+2. **Sweat:** Pot, med heat. Onion & celery (5m).
+3. **Boil:** Add stock, potatoes, Old Bay. Boil 10-12m (until tender).
+4. **Enrich:** Add coconut milk and corn. Bring to return simmer.
+5. **Poach:** Add fish chunks. COVER. Turn Heat OFF (or very low). Sit 5-7m.
+6. **Serve:** Gentle ladle (save the chunks). Side of crispy sprouts.
 
 ---
 
@@ -31,11 +31,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1.  **ROASTED Layer:** The side of Brussels sprouts provides caramelized bitterness to cut the creamy soup.
-2.  **SAVORY Layer:** Onion, celery, and seafood stock build the traditional chowder backbone.
-3.  **SPICE Layer:** Old Bay adds celery salt/paprika/hard spices that define "seafood chowder."
-4.  **CREAM Layer:** Coconut milk provides rich, dairy-free fat that coats the palate.
-5.  **DELICATE Layer:** The fish is poached gently at the end so it remains flaky and moist, not rubbery.
+1. **ROASTED Layer:** The side of Brussels sprouts provides caramelized bitterness to cut the creamy soup.
+2. **SAVORY Layer:** Onion, celery, and seafood stock build the traditional chowder backbone.
+3. **SPICE Layer:** Old Bay adds celery salt/paprika/hard spices that define "seafood chowder."
+4. **CREAM Layer:** Coconut milk provides rich, dairy-free fat that coats the palate.
+5. **DELICATE Layer:** The fish is poached gently at the end so it remains flaky and moist, not rubbery.
 
 ---
 
