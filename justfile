@@ -55,3 +55,59 @@ format:
 test:
     uv run pytest
 
+# Run tests with coverage
+test-cov:
+    uv run pytest --cov=src --cov-report=term-missing
+
+# ============================================================================
+# Docker & Infrastructure (Phase 1)
+# ============================================================================
+
+# Start the full stack (API + Supabase)
+up:
+    docker compose -f infra/docker/docker-compose.yml up -d
+
+# Stop all containers
+down:
+    docker compose -f infra/docker/docker-compose.yml down
+
+# View logs for all services
+logs:
+    docker compose -f infra/docker/docker-compose.yml logs -f
+
+# View API logs only
+logs-api:
+    docker compose -f infra/docker/docker-compose.yml logs -f api
+
+# Rebuild and restart API container
+rebuild-api:
+    docker compose -f infra/docker/docker-compose.yml up -d --build api
+
+# Run API locally (without Docker)
+dev-api:
+    cd src/api && uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# ============================================================================
+# Mobile App (Phase 1C)
+# ============================================================================
+
+# Install mobile dependencies
+mobile-install:
+    cd src/mobile && npm install
+
+# Start Expo dev server (Web first - D3)
+mobile-web:
+    cd src/mobile && npm run web
+
+# Start Expo dev server (all platforms)
+mobile-start:
+    cd src/mobile && npm start
+
+# ============================================================================
+# Database
+# ============================================================================
+
+# Open Supabase Studio (DB admin UI)
+studio:
+    @echo "Opening Supabase Studio at http://localhost:3000"
+    @xdg-open http://localhost:3000 2>/dev/null || open http://localhost:3000 2>/dev/null || echo "Visit http://localhost:3000"

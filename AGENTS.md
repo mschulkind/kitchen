@@ -6,6 +6,8 @@ This document consolidates the project-specific rules and guidelines for AI agen
 
 - [Project Structure and Practices](#project-structure-and-practices)
 - [Tech Design Rules](#tech-design-rules)
+- [Implementation Patterns](#implementation-patterns)
+- [Development Workflow](#development-workflow)
 - [Documentation Guidelines](#documentation-guidelines)
 - [Recipe Scraping Guidelines](#recipe-scraping-guidelines)
 
@@ -15,7 +17,10 @@ This document consolidates the project-specific rules and guidelines for AI agen
 
 - **`docs/plans/`**: Git-tracked for planning, outlines, specs, and decisions. Use `index.md` for navigation.
 - **`context/`**: Gitignored for research, data, temporary notes, and references. Use `index.md` for organization.
-- **`src/`**: Source code (Python backend, TS/React frontend). Tests should be separate but parallel.
+- **`src/api/`**: Python FastAPI backend following Clean Architecture.
+- **`src/mobile/`**: Expo (React Native Web) frontend with Tamagui UI.
+- **`infra/docker/`**: Docker Compose and container configurations for self-hosted deployment.
+- **`tests/`**: Backend tests mirroring `src/api` structure.
 - **General**: All paths are relative to the project root. Use clear naming and READMEs.
 
 ### TDD Practices
@@ -42,6 +47,91 @@ This document consolidates the project-specific rules and guidelines for AI agen
 - **Responsiveness**: Use Tailwind's mobile-first breakpoints; test on various screen sizes. Prioritize offline capability (e.g., service workers for PWA, local storage for inventory).
 - **Accessibility**: Ensure high contrast, semantic HTML in React, and keyboard navigation support. Flows like ingredient verification should use categorical checklists for quick scanning.
 - **Performance**: Optimize for low latency; lazy-load non-essential components, use efficient data fetching (e.g., TanStack Query for React).
+
+## Implementation Patterns
+
+### Backend (FastAPI) - Clean Architecture
+
+The backend follows Domain-Driven Design with clear separation:
+
+```
+src/api/app/
+├── core/           # Configuration, logging, shared utilities
+├── db/             # Database session management (Supabase client)
+├── domain/         # Business logic organized by domain
+│   └── <domain>/
+│       ├── models.py      # Pydantic DTOs (NOT database models)
+│       ├── service.py     # Business logic, validation rules
+│       └── repository.py  # Database access layer
+└── routes/         # FastAPI routers (thin, delegate to services)
+```
+
+**Key Principles:**
+- **DTOs over ORM**: Use Pydantic models for all data transfer. No SQLAlchemy models.
+- **Repository Pattern**: All DB access goes through repository classes.
+- **Service Layer**: Business logic lives in services, not routes.
+- **Dependency Injection**: Use FastAPI's `Depends()` for loose coupling.
+
+### Frontend (Expo) - Component Architecture
+
+```
+src/mobile/
+├── app/                    # Expo Router pages (file-based routing)
+│   ├── (tabs)/             # Tab navigator screens
+│   └── <feature>/[id].tsx  # Dynamic routes
+├── components/             # Reusable UI components
+├── hooks/                  # Custom React hooks (realtime, queries)
+└── lib/                    # API clients, Supabase config
+```
+
+**Key Principles:**
+- **Tamagui Components**: Use Tamagui for all UI (compiles to native styles).
+- **TanStack Query**: All server state via `useQuery`/`useMutation`.
+- **Realtime Subscriptions**: Use `useInventorySubscription` pattern for live updates.
+- **Mobile-First**: Design for touch (44px min targets), then scale up.
+
+### Realtime Pattern (Critical for Multi-User)
+
+```typescript
+// Pattern: Realtime subscription that invalidates TanStack Query cache
+useEffect(() => {
+  const channel = supabase
+    .channel(`table:${id}`)
+    .on('postgres_changes', { event: '*', table: 'table_name' }, () => {
+      queryClient.invalidateQueries({ queryKey: ['table', id] });
+    })
+    .subscribe();
+  return () => supabase.removeChannel(channel);
+}, [id]);
+```
+
+## Development Workflow
+
+### Common Commands (justfile)
+
+```bash
+just check          # Run lint + test
+just test           # Run pytest
+just up             # Start Docker stack
+just down           # Stop Docker stack
+just dev-api        # Run API locally (no Docker)
+just mobile-web     # Start Expo for web (primary target)
+```
+
+### Commit Conventions
+
+- **feat(phase-X)**: New feature for a specific phase
+- **fix(phase-X)**: Bug fix
+- **docs**: Documentation updates
+- **test**: Test additions/changes
+- **refactor**: Code restructuring without behavior change
+
+### Decision References
+
+When implementing, reference decisions from `docs/plans/open-questions.md`:
+- **D4**: Self-hosted Docker on Synology
+- **D6**: Multi-provider LLM adapter (Gemini, Claude, OpenAI)
+- **D13**: Lazy Discovery - add items to pantry during verification
 
 ## Documentation Guidelines
 

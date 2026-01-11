@@ -56,7 +56,7 @@ The project is broken down into granular, testable phases. Each phase delivers a
 
 | Phase | Name | Priority | Status | Est. Effort |
 |-------|------|----------|--------|-------------|
-| 1 | [Foundation & Inventory](phase-01-foundation.md) | 🔴 Essential | 🚧 Not Started | 2-3 weeks |
+| 1 | [Foundation & Inventory](phase-01-foundation.md) | 🔴 Essential | � In Progress (1A ✅, 1B ✅, 1C 🚧) | 2-3 weeks |
 | 2 | [Recipe Engine](phase-02-recipe-engine.md) | 🔴 Essential | 🚧 Not Started | 2-3 weeks |
 | 3 | [Delta Engine](phase-03-delta-engine.md) | 🔴 Essential | 🚧 Not Started | 2-3 weeks |
 | 4 | [Visual Pantry](phase-04-vision.md) | 🟡 Nice-to-Have | 🚧 Not Started | 1-2 weeks |
