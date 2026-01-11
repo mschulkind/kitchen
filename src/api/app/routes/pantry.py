@@ -25,7 +25,7 @@ from src.api.app.domain.pantry.service import PantryItemNotFoundError, PantrySer
 router = APIRouter(prefix="/pantry", tags=["Pantry 🥫"])
 
 
-async def get_pantry_service() -> AsyncGenerator[PantryService, None]:
+async def get_pantry_service() -> AsyncGenerator[PantryService]:
     """Dependency injection for PantryService."""
     async with get_supabase() as supabase:
         repository = PantryRepository(supabase)

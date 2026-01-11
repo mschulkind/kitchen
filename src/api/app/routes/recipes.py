@@ -33,7 +33,7 @@ from src.api.app.domain.recipes.service import (
 router = APIRouter(prefix="/recipes", tags=["Recipes 📖"])
 
 
-async def get_recipe_service() -> AsyncGenerator[RecipeService, None]:
+async def get_recipe_service() -> AsyncGenerator[RecipeService]:
     """Dependency injection for RecipeService."""
     async with get_supabase() as supabase:
         repository = RecipeRepository(supabase)

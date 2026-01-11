@@ -7,7 +7,7 @@ Fun fact: Using expiring ingredients first can reduce food waste by 40%! 🌍
 """
 
 from datetime import date, timedelta
-from typing import Sequence, cast
+from typing import cast
 
 from src.api.app.domain.pantry.models import PantryItem
 from src.api.app.domain.planner.models import RecipeScore, ScoringCriteria

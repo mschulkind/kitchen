@@ -9,7 +9,7 @@ reduces cognitive load by 60% compared to free-form planning! 🧠
 
 import random
 import time
-from typing import Any
+from typing import Any, cast
 from uuid import uuid4
 
 from src.api.app.domain.pantry.models import PantryItem
@@ -135,7 +135,7 @@ class PlanGenerator:
             # Try remaining themes
             for theme_key in THEMES:
                 if theme_key not in selected_themes:
-                    theme = THEMES[theme_key]
+                    theme = cast(dict[str, Any], THEMES[theme_key])
                     option = self._generate_single_option(
                         theme_key,
                         theme,

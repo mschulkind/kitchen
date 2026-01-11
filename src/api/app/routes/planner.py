@@ -17,6 +17,7 @@ from src.api.app.domain.pantry.repository import PantryRepository
 from src.api.app.domain.planner.models import (
     CreatePlanRequest,
     MealPlan,
+    MealSlot,
     PlanOptionsResponse,
     PlanSummary,
     RecipeScore,
@@ -29,7 +30,7 @@ from src.api.app.domain.recipes.repository import RecipeRepository
 router = APIRouter(prefix="/planner", tags=["Planner 📅"])
 
 
-async def get_planner_service() -> AsyncGenerator[PlannerService, None]:
+async def get_planner_service() -> AsyncGenerator[PlannerService]:
     """Dependency injection for PlannerService."""
     async with get_supabase() as supabase:
         repository = PlannerRepository(supabase)

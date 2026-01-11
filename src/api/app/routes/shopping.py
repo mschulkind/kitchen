@@ -32,7 +32,7 @@ from src.api.app.domain.shopping.service import (
 router = APIRouter(prefix="/shopping", tags=["Shopping 🛒"])
 
 
-async def get_shopping_service() -> AsyncGenerator[ShoppingService, None]:
+async def get_shopping_service() -> AsyncGenerator[ShoppingService]:
     """Dependency injection for ShoppingService."""
     async with get_supabase() as supabase:
         repository = ShoppingRepository(supabase)
