@@ -120,7 +120,7 @@ async def get_recipe(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Recipe {recipe_id} not found",
-        )
+        ) from None
 
 
 @router.post("", response_model=Recipe, status_code=status.HTTP_201_CREATED)
@@ -139,7 +139,7 @@ async def create_recipe(
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail=f"Recipe from {e.url} already exists",
-        )
+        ) from None
 
 
 @router.post("/ingest", response_model=IngestRecipeResponse)
@@ -161,7 +161,7 @@ async def ingest_recipe(
                 "message": "Recipe already exists",
                 "existing_id": str(e.existing_recipe.id),
             },
-        )
+        ) from None
 
 
 @router.patch("/{recipe_id}", response_model=Recipe)
@@ -178,7 +178,7 @@ async def update_recipe(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Recipe {recipe_id} not found",
-        )
+        ) from None
 
 
 @router.delete("/{recipe_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -194,7 +194,7 @@ async def delete_recipe(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Recipe {recipe_id} not found",
-        )
+        ) from None
 
 
 # =========================================================================

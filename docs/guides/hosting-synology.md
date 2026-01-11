@@ -81,49 +81,39 @@ sudo docker-compose up -d
 
 ## 7. External Access & TLS (HTTPS) 🔒
 
-
-
 To access the app securely from outside your home (or just to stop browser warnings), use Synology's built-in tools.
-
-
 
 ### Step 1: DDNS (Dynamic DNS)
 
 If you don't have a static IP, set up a domain name.
 
-1.  **Control Panel** > **External Access** > **DDNS**.
+1. **Control Panel** > **External Access** > **DDNS**.
 
-2.  **Add**: Select provider (e.g., `Synology`, `DuckDNS`, `Google`).
+2. **Add**: Select provider (e.g., `Synology`, `DuckDNS`, `Google`).
 
-3.  Hostname: e.g., `my-kitchen-app.synology.me`.
+3. Hostname: e.g., `my-kitchen-app.synology.me`.
 
-4.  Test Connection & Save.
-
-
+4. Test Connection & Save.
 
 ### Step 2: SSL Certificate (Let's Encrypt)
 
-1.  **Control Panel** > **Security** > **Certificate**.
+1. **Control Panel** > **Security** > **Certificate**.
 
-2.  **Add** > **Add a new certificate** > **Get a certificate from Let's Encrypt**.
+2. **Add** > **Add a new certificate** > **Get a certificate from Let's Encrypt**.
 
-3.  Domain name: `my-kitchen-app.synology.me`.
+3. Domain name: `my-kitchen-app.synology.me`.
 
-4.  Email: Your email.
+4. Email: Your email.
 
-5.  **Apply**. Synology will auto-renew this for you.
-
-
+5. **Apply**. Synology will auto-renew this for you.
 
 ### Step 3: Reverse Proxy
 
 Map the HTTPS domain to your local Docker ports.
 
+1. **Control Panel** > **Login Portal** > **Advanced** > **Reverse Proxy**.
 
-
-1.  **Control Panel** > **Login Portal** > **Advanced** > **Reverse Proxy**.
-
-2.  **Create** Rule for Frontend:
+2. **Create** Rule for Frontend:
 
     - **Source**:
 
@@ -141,7 +131,7 @@ Map the HTTPS domain to your local Docker ports.
 
         - Port: `8081` (The Expo Web Port)
 
-3.  **Create** Rule for API (Optional/Advanced):
+3. **Create** Rule for API (Optional/Advanced):
 
     - *Note*: If your frontend calls the API via `/api`, you might need a custom Nginx config or Traefik.
 
@@ -149,59 +139,23 @@ Map the HTTPS domain to your local Docker ports.
 
     - *Recommended*: Configure your `docker-compose` or Expo config to proxy API calls so everything runs on one domain.
 
-
-
 ### Step 4: Websockets (Important for Realtime)
-
-
 
 Supabase Realtime needs Websocket headers.
 
+1. In the Reverse Proxy rule, click **Custom Header**.
 
+2. Create: `Upgrade` -> `$http_upgrade`.
 
-1.  In the Reverse Proxy rule, click **Custom Header**.
-
-
-
-2.  Create: `Upgrade` -> `$http_upgrade`.
-
-
-
-3.  Create: `Connection` -> `$connection_upgrade`.
-
-
-
-
-
-
+3. Create: `Connection` -> `$connection_upgrade`.
 
 ## 8. Storage & Backups (Backblaze B2) ☁️
 
-
-
-
-
-
-
 Since you already use Backblaze on Synology, follow this structure to ensure safe, consistent backups.
-
-
-
-
-
-
 
 ### 1. Recommended Folder Structure
 
-
-
 Organize your volume mappings to separate "Live Data" from "Safe-to-Backup Data".
-
-
-
-
-
-
 
 ```bash
 
@@ -233,23 +187,9 @@ Organize your volume mappings to separate "Live Data" from "Safe-to-Backup Data"
 
 ```
 
-
-
-
-
-
-
 ### 2. Configure Docker Compose
 
-
-
 Update your `docker-compose.yml` volumes to map to these host paths:
-
-
-
-
-
-
 
 ```yaml
 
@@ -285,47 +225,21 @@ services:
 
 ```
 
-
-
-
-
-
-
 ### 3. Database Backup Strategy (The "Safe" Way)
-
-
 
 Raw database files can be corrupted if synced while the DB is writing. Instead, schedule a nightly dump.
 
+1. Open Synology **Control Panel** > **Task Scheduler**.
 
+2. **Create** > **Scheduled Task** > **User-defined script**.
 
-
-
-
-
-1.  Open Synology **Control Panel** > **Task Scheduler**.
-
-
-
-2.  **Create** > **Scheduled Task** > **User-defined script**.
-
-
-
-3.  **Task Settings**:
-
-
+3. **Task Settings**:
 
     - User: `root`
 
-
-
     - Schedule: Daily at 3 AM.
 
-
-
     - **Run Command**:
-
-
 
       ```bash
 
@@ -353,56 +267,22 @@ Raw database files can be corrupted if synced while the DB is writing. Instead, 
 
       ```
 
-
-
-
-
-
-
 ### 4. Cloud Sync Configuration
-
-
 
 Now configure **Cloud Sync** to target only the safe folders.
 
+1. Open **Cloud Sync**.
 
+2. Add **Backblaze B2** task.
 
+3. **Local Path**: `/volume1/docker/kitchen/volumes/`.
 
-
-
-
-1.  Open **Cloud Sync**.
-
-
-
-2.  Add **Backblaze B2** task.
-
-
-
-3.  **Local Path**: `/volume1/docker/kitchen/volumes/`.
-
-
-
-4.  **Filter/Subfolders**:
-
-
+4. **Filter/Subfolders**:
 
     - ✅ Select `backups/`
 
-
-
     - ✅ Select `storage/`
-
-
 
     - ❌ **Uncheck** `db_raw/` (Crucial!)
 
-
-
-
-
-
-
 This ensures you have a point-in-time recovery for the DB and a live backup of all photos.
-
-

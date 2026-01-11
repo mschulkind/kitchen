@@ -70,6 +70,7 @@ classDiagram
   - Assert: Returns 3 Options with distinct IDs and titles.
 
 ### Phase 5B Tests (Integration)
+
 - [ ] **Full Flow**:
   - **Input**: User requests "4 Days, No Mushrooms".
   - **Action**: Call Generator.

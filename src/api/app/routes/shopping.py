@@ -98,7 +98,7 @@ async def get_shopping_list(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
 
 
 @router.post("/lists", response_model=ShoppingList, status_code=status.HTTP_201_CREATED)
@@ -127,7 +127,7 @@ async def complete_shopping_list(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
 
 
 @router.delete("/lists/{list_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -143,7 +143,7 @@ async def delete_shopping_list(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
 
 
 # =========================================================================
@@ -169,7 +169,7 @@ async def add_shopping_item(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
 
 
 @router.patch("/lists/{list_id}/items/{item_id}", response_model=ShoppingItem)
@@ -187,12 +187,12 @@ async def update_shopping_item(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
     except ShoppingItemNotFoundError:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping item {item_id} not found",
-        )
+        ) from None
 
 
 @router.post("/lists/{list_id}/items/{item_id}/check", response_model=ShoppingItem)
@@ -213,12 +213,12 @@ async def check_shopping_item(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
     except ShoppingItemNotFoundError:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping item {item_id} not found",
-        )
+        ) from None
 
 
 @router.post("/lists/{list_id}/items/{item_id}/uncheck", response_model=ShoppingItem)
@@ -238,12 +238,12 @@ async def uncheck_shopping_item(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
     except ShoppingItemNotFoundError:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping item {item_id} not found",
-        )
+        ) from None
 
 
 @router.delete(
@@ -263,12 +263,12 @@ async def delete_shopping_item(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None
     except ShoppingItemNotFoundError:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping item {item_id} not found",
-        )
+        ) from None
 
 
 @router.post("/lists/{list_id}/clear-checked", response_model=ClearCheckedResponse)
@@ -288,4 +288,4 @@ async def clear_checked_items(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
-        )
+        ) from None

@@ -47,6 +47,7 @@
   - Assert: Pantry has 1lb remaining.
 
 ### Phase 10B Tests (E2E)
+
 - [ ] **Copy Flow**:
     1. Open Recipe.
     2. Tap "Copy for AI".

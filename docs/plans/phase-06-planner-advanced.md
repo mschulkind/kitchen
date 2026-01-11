@@ -54,6 +54,7 @@
   - Assert: Returned recipe does not contain chicken ingredient/tag.
 
 ### Phase 6B Tests (E2E)
+
 - [ ] **The "Spin" Flow**:
     1. Open Plan.
     2. Tap **Lock** icon on "Roast Chicken" (Main).

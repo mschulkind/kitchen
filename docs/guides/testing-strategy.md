@@ -82,6 +82,7 @@ uv run pytest --cov=app src/api
 **Constraint**: Tests (Unit AND E2E) **MUST NOT** hit external APIs (OpenAI, Supabase Cloud, Shaws).
 
 ### Backend Enforcement
+
 We use `pytest-socket` to disable socket calls during tests.
 
 ```python
@@ -94,5 +95,5 @@ def pytest_runtest_setup():
 - **Exceptions**: Any test attempting a real network call will raise a `SocketBlockedError`.
 
 ### Frontend Enforcement
-- Configure `MSW` (Mock Service Worker) to `error` on unhandled requests.
 
+- Configure `MSW` (Mock Service Worker) to `error` on unhandled requests.

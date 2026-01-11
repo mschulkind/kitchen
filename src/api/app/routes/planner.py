@@ -111,7 +111,7 @@ async def generate_plan_options(
 @router.post("/score-recipes", response_model=list[RecipeScore])
 async def score_recipes(
     service: Annotated[PlannerService, Depends(get_planner_service)],
-    household_id: Annotated[UUID, Depends(get_current_household_id)],
+    _household_id: Annotated[UUID, Depends(get_current_household_id)],
     limit: Annotated[int, Query(ge=1, le=50)] = 10,
 ) -> list[RecipeScore]:
     """Score all recipes against current inventory. 📊
@@ -169,7 +169,7 @@ async def get_plan(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Plan {plan_id} not found",
-        )
+        ) from None
 
 
 @router.post("/plans", response_model=MealPlan, status_code=status.HTTP_201_CREATED)
@@ -203,7 +203,7 @@ async def activate_plan(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Plan {plan_id} not found",
-        )
+        ) from None
 
 
 @router.post("/plans/{plan_id}/complete", response_model=MealPlan)
@@ -222,7 +222,7 @@ async def complete_plan(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Plan {plan_id} not found",
-        )
+        ) from None
 
 
 @router.delete("/plans/{plan_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -238,7 +238,7 @@ async def delete_plan(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Plan {plan_id} not found",
-        )
+        ) from None
 
 
 # =========================================================================
