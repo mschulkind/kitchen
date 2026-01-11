@@ -76,6 +76,7 @@ class AnalyzeImageResponse(BaseModel):
     detected_items: list[DetectedItem]
     processing_time_ms: int | None = None
     model_used: str | None = None
+    error_message: str | None = None
 
 
 class ConfirmItemsRequest(BaseModel):

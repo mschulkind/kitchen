@@ -1,5 +1,6 @@
 """Vision service tests. 📸"""
 
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
@@ -10,6 +11,7 @@ from src.api.app.domain.vision.models import (
     ScanStatus,
 )
 from src.api.app.domain.vision.service import (
+    VISION_PROMPT,
     MockLLMVisionAdapter,
     VisionService,
 )
@@ -131,3 +133,121 @@ class TestVisionService:
         result = await service.analyze_image(household_id, request)
 
         assert result.model_used == "mock"
+
+class TestVisionPromptValidation:
+    """Phase 4A Tests - Prompt Validation. 📋
+
+    Tests that the prompt construction is correct.
+    """
+
+    def test_prompt_contains_json_instruction(self):
+        """Phase 4 test: Prompt instructs LLM to return JSON.
+
+        Input: VisionService.analyze(image_url)
+        Assert: Prompt contains "Return a JSON array"
+        """
+        assert "JSON" in VISION_PROMPT
+        assert "Return as JSON array" in VISION_PROMPT
+
+    def test_prompt_specifies_item_fields(self):
+        """Prompt specifies required item fields."""
+        assert "name" in VISION_PROMPT.lower()
+        assert "quantity" in VISION_PROMPT.lower()
+        assert "unit" in VISION_PROMPT.lower()
+        assert "confidence" in VISION_PROMPT.lower()
+
+    def test_prompt_has_example(self):
+        """Prompt includes example JSON for LLM to follow."""
+        assert "example" in VISION_PROMPT.lower()
+        assert '"name":' in VISION_PROMPT
+
+
+class TestVisionResponseParsing:
+    """Phase 4A Tests - Response Parsing. 🔍
+
+    Tests that LLM responses are parsed correctly.
+    """
+
+    @pytest.mark.asyncio
+    async def test_parse_valid_items(self):
+        """Phase 4 test: Mock LLM returns valid items.
+
+        Input: Mock LLM returns [{"name": "Apple", "qty": 3}]
+        Assert: Service parses into valid PantryCandidate objects.
+        """
+        mock_adapter = AsyncMock()
+        mock_adapter.analyze_image.return_value = [
+            DetectedItem(name="Apple", quantity=3, unit="count", confidence=0.9),
+            DetectedItem(name="Orange", quantity=2, unit="count", confidence=0.85),
+        ]
+
+        service = VisionService(adapter=mock_adapter)
+        result = await service.analyze_image(
+            uuid4(),
+            AnalyzeImageRequest(image_url="https://example.com/fruit.jpg"),
+        )
+
+        assert result.status == ScanStatus.COMPLETED
+        assert len(result.detected_items) == 2
+        assert result.detected_items[0].name == "Apple"
+        assert result.detected_items[0].quantity == 3
+
+    @pytest.mark.asyncio
+    async def test_parse_empty_response(self):
+        """Empty list from LLM is handled gracefully."""
+        mock_adapter = AsyncMock()
+        mock_adapter.analyze_image.return_value = []
+
+        service = VisionService(adapter=mock_adapter)
+        result = await service.analyze_image(
+            uuid4(),
+            AnalyzeImageRequest(image_url="https://example.com/empty.jpg"),
+        )
+
+        assert result.status == ScanStatus.COMPLETED
+        assert len(result.detected_items) == 0
+
+
+class TestVisionErrorHandling:
+    """Phase 4A Tests - Error Handling. ⚠️
+
+    Tests graceful failure modes.
+    """
+
+    @pytest.mark.asyncio
+    async def test_adapter_exception_handled(self):
+        """Phase 4 test: LLM errors are handled gracefully.
+
+        Input: Mock LLM raises exception
+        Assert: Service returns error status (not crash)
+        """
+        mock_adapter = AsyncMock()
+        mock_adapter.analyze_image.side_effect = Exception("LLM API Error")
+
+        service = VisionService(adapter=mock_adapter)
+        result = await service.analyze_image(
+            uuid4(),
+            AnalyzeImageRequest(image_url="https://example.com/image.jpg"),
+        )
+
+        # Should return error status, not crash
+        assert result.status == ScanStatus.FAILED
+        assert result.error_message is not None
+        assert "error" in result.error_message.lower()
+
+    @pytest.mark.asyncio
+    async def test_processing_time_recorded(self):
+        """Processing time is always recorded."""
+        mock_adapter = AsyncMock()
+        mock_adapter.analyze_image.return_value = [
+            DetectedItem(name="Test", quantity=1)
+        ]
+
+        service = VisionService(adapter=mock_adapter)
+        result = await service.analyze_image(
+            uuid4(),
+            AnalyzeImageRequest(image_url="https://example.com/image.jpg"),
+        )
+
+        assert result.processing_time_ms is not None
+        assert result.processing_time_ms >= 0

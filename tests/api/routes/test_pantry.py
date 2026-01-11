@@ -15,13 +15,28 @@ from src.api.app.domain.pantry.models import (
     PantryItemList,
     PantryLocation,
 )
+from src.api.app.domain.pantry.service import PantryService
+from src.api.app.routes.pantry import get_pantry_service
 from src.api.main import app
 
 
 @pytest.fixture
-def client():
-    """Create a test client."""
-    return TestClient(app)
+def mock_pantry_service():
+    """Create a mock PantryService."""
+    return AsyncMock(spec=PantryService)
+
+
+@pytest.fixture
+def client(mock_pantry_service):
+    """Create a test client with mocked dependencies."""
+
+    async def override_get_pantry_service():
+        yield mock_pantry_service
+
+    app.dependency_overrides[get_pantry_service] = override_get_pantry_service
+    with TestClient(app) as test_client:
+        yield test_client
+    app.dependency_overrides.clear()
 
 
 @pytest.fixture
@@ -42,12 +57,6 @@ def sample_item():
         created_at=datetime.now(UTC),
         updated_at=datetime.now(UTC),
     )
-
-
-@pytest.fixture
-def mock_service():
-    """Create a mock PantryService."""
-    return AsyncMock()
 
 
 class TestListPantryItems:
@@ -97,14 +106,17 @@ class TestCreatePantryItem:
         """Test creating a pantry item successfully."""
         # Would test POST with valid DTO
 
-    @pytest.mark.skip(reason="Requires mocked service dependency injection")
     def test_create_item_validation_error(self, client):
-        """Test validation error for invalid input."""
+        """Test validation error for invalid input.
+
+        FastAPI validates input BEFORE calling the service,
+        so this test works without mocking.
+        """
         response = client.post(
             "/api/v1/pantry",
             json={
                 "name": "Test",
-                "quantity": -5,  # Invalid
+                "quantity": -5,  # Invalid - must be > 0
                 "unit": "kg",
             },
         )
@@ -112,9 +124,12 @@ class TestCreatePantryItem:
         # Should get 422 Unprocessable Entity
         assert response.status_code == 422
 
-    @pytest.mark.skip(reason="Requires mocked service dependency injection")
     def test_create_item_empty_name_rejected(self, client):
-        """Test that empty names are rejected."""
+        """Test that empty names are rejected.
+
+        FastAPI validates input BEFORE calling the service,
+        so this test works without mocking.
+        """
         response = client.post(
             "/api/v1/pantry",
             json={
@@ -178,9 +193,12 @@ class TestSearchPantryItems:
         """Test searching pantry items."""
         # Would test ?q=rice returns matching items
 
-    @pytest.mark.skip(reason="Requires mocked service dependency injection")
     def test_search_minimum_query_length(self, client):
-        """Test search requires minimum query length."""
+        """Test search requires minimum query length.
+
+        FastAPI validates query params BEFORE calling the service,
+        so this test works without mocking.
+        """
         response = client.get("/api/v1/pantry/search?q=")
 
         # Should get 422 for empty query

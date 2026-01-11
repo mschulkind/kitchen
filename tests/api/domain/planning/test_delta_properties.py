@@ -215,12 +215,11 @@ class TestDeltaPropertyBased:
 class TestDeltaCommutativeProperties:
     """Tests for commutative and associative properties."""
 
-    @pytest.mark.skip(reason="Feature request: aggregation of multiple pantry items not yet implemented")
     def test_multiple_pantry_items_aggregate(self):
         """Test: Multiple pantry entries for same item should aggregate.
 
-        Note: This is a feature request - the current implementation
-        uses the first match rather than aggregating all matches.
+        This tests that when you have the same item in multiple pantry entries,
+        their quantities are combined when calculating if you have enough.
         """
         service = DeltaService()
         recipe = [make_ingredient("butter", 100, "gram")]

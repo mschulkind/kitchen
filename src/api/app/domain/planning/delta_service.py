@@ -300,6 +300,7 @@ class DeltaService:
         """Find best matching pantry item for an ingredient.
 
         Uses exact match first, then fuzzy matching.
+        Aggregates multiple pantry items with the same name into one.
 
         Args:
             ingredient_name: Normalized ingredient name.
@@ -310,10 +311,9 @@ class DeltaService:
         """
         # Exact match
         if ingredient_name in pantry_lookup:
-            # Return the item with highest quantity
             items = pantry_lookup[ingredient_name]
-            best = max(items, key=lambda x: x.quantity or 0)
-            return (best, 1.0)
+            aggregated = self._aggregate_pantry_items(items)
+            return (aggregated, 1.0)
 
         # Fuzzy match
         best_match: tuple[PantryItem, float] | None = None
@@ -323,10 +323,69 @@ class DeltaService:
             score = self._similarity_score(ingredient_name, pantry_name)
             if score >= self.FUZZY_MATCH_THRESHOLD and score > best_score:
                 best_score = score
-                best_item = max(items, key=lambda x: x.quantity or 0)
-                best_match = (best_item, score)
+                aggregated = self._aggregate_pantry_items(items)
+                best_match = (aggregated, score)
 
         return best_match
+
+    def _aggregate_pantry_items(self, items: list[PantryItem]) -> PantryItem:
+        """Aggregate multiple pantry items with same name into one.
+
+        Combines quantities when units are compatible.
+        Uses the first item as the base and aggregates quantities.
+
+        Args:
+            items: List of pantry items with the same name.
+
+        Returns:
+            A single PantryItem with aggregated quantity.
+        """
+        if len(items) == 1:
+            return items[0]
+
+        # Use first item as base
+        base = items[0]
+        base_unit = self.converter.unit_registry.normalize_unit(base.unit or "count")
+        total_quantity = base.quantity or 0
+
+        # Try to add quantities from other items
+        for item in items[1:]:
+            if item.quantity is None:
+                continue
+
+            item_unit = self.converter.unit_registry.normalize_unit(
+                item.unit or "count"
+            )
+
+            if item_unit == base_unit:
+                # Same unit - simple addition
+                total_quantity += item.quantity
+            else:
+                # Try to convert
+                conversion = self.converter.convert(
+                    item.quantity,
+                    item_unit,
+                    base_unit,
+                    ingredient=base.name,
+                )
+                if conversion.success and conversion.value is not None:
+                    total_quantity += conversion.value
+                # If conversion fails, skip this item (can't aggregate)
+
+        # Return a new PantryItem with aggregated quantity
+        return PantryItem(
+            id=base.id,
+            household_id=base.household_id,
+            name=base.name,
+            quantity=total_quantity,
+            unit=base.unit,
+            location=base.location,
+            expiry_date=base.expiry_date,
+            notes=base.notes,
+            is_staple=base.is_staple,
+            created_at=base.created_at,
+            updated_at=base.updated_at,
+        )
 
     def _similarity_score(self, a: str, b: str) -> float:
         """Calculate similarity between two strings.

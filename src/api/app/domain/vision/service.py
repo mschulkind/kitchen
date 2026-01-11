@@ -171,13 +171,14 @@ class VisionService:
                 model_used="mock" if isinstance(self.adapter, MockLLMVisionAdapter) else "llm",
             )
 
-        except Exception:
+        except Exception as e:
             return AnalyzeImageResponse(
                 scan_id=uuid4(),
                 status=ScanStatus.FAILED,
                 detected_items=[],
                 processing_time_ms=int((time.time() - start_time) * 1000),
                 model_used=None,
+                error_message=f"Error analyzing image: {e!s}",
             )
 
     async def confirm_and_create_items(
