@@ -37,11 +37,12 @@ class PantryItem(BaseModel):
     id: UUID
     household_id: UUID
     name: str
-    quantity: float
-    unit: str
+    quantity: float | None = None  # None means "have some, amount unknown"
+    unit: str | None = None
     location: PantryLocation
     expiry_date: date | None = None
     notes: str | None = None
+    is_staple: bool = False  # Lazy Discovery (D13)
     created_at: datetime
     updated_at: datetime
 
