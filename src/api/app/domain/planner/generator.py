@@ -118,7 +118,7 @@ class PlanGenerator:
         # Generate each option
         options = []
         for theme_key in selected_themes:
-            theme = THEMES[theme_key]
+            theme = cast(dict[str, Any], THEMES[theme_key])
             option = self._generate_single_option(
                 theme_key,
                 theme,
