@@ -46,12 +46,21 @@
 
 ### Phase 6A Tests (Unit)
 
-- [ ] **Locking**:
+- [ ] **Locking Logic**:
+
   - Input: Reroll Day 1. Main is Locked.
-  - Assert: Only Side dish changes.
-- [ ] **Directive**:
+
+  - Assert: Service calls Repository to find alternatives for *Side* only.
+
+- [ ] **Directive Prompting (Mocked LLM)**:
+
   - Input: Reroll with "No Chicken".
-  - Assert: Returned recipe does not contain chicken ingredient/tag.
+
+  - **Action**: Call `RefinerService.reroll`.
+
+  - **Assert (Request)**: Verify the mocked LLM Adapter received a prompt containing `"No Chicken"` and the correct context.
+
+  - **Assert (Response)**: Mock the LLM returning a "Spicy Tofu" recipe. Verify the Service returns this new recipe correctly.
 
 ### Phase 6B Tests (E2E)
 

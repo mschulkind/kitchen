@@ -62,12 +62,15 @@ classDiagram
 
 ### Phase 5A Tests (Generator Unit)
 
-- [ ] **Scoring**:
+- [ ] **Scoring Logic**:
   - Input: Recipe using "Rotting Spinach".
   - Assert: Score > Recipe using "Canned Beans".
-- [ ] **Clustering**:
-  - Input: 50 candidates.
-  - Assert: Returns 3 Options with distinct IDs and titles.
+- [ ] **Prompt Construction**:
+  - Input: `PlanRequest(constraints=["No Mushrooms"])`.
+  - **Assert**: Mocked `LLMAdapter` called with prompt containing "No Mushrooms".
+- [ ] **Response Parsing (Mock)**:
+  - Input: Mock LLM returns JSON with 3 Themes ("Fast", "Slow", "Fun").
+  - **Assert**: Service parses these into 3 `PlanOption` objects.
 
 ### Phase 5B Tests (Integration)
 

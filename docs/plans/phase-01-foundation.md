@@ -138,15 +138,28 @@ erDiagram
 
 ### Phase 1C Tests (Frontend E2E)
 
-*Run with `Maestro` or Manual Script initially*
+*Run with `Playwright` (Web First)*
 
-1. **Add Item Flow**:
-    - Tap "Add (+)" button.
-    - Enter "Milk", "1", "Gallon", "Fridge".
-    - Tap "Save".
-    - **Verify**: "Milk" appears in the list.
-2. **Edit Item Flow**:
-    - Tap "Milk".
-    - Change Qty to "0.5".
-    - Tap "Save".
-    - **Verify**: List shows "0.5 Gallon".
+
+
+1.  **Add Item Flow**:
+
+    - **Go to**: `/inventory`
+
+    - **Click**: "Add (+)"
+
+    - **Fill**: Name="Milk", Qty="1", Unit="Gallon", Location="Fridge"
+
+    - **Click**: "Save"
+
+    - **Verify**: List contains row with "Milk" and "1 Gallon".
+
+2.  **Edit Item Flow**:
+
+    - **Click**: "Milk" row.
+
+    - **Fill**: Qty="0.5".
+
+    - **Click**: "Save".
+
+    - **Verify**: List row updates to "0.5 Gallon".

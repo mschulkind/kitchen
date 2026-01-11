@@ -43,6 +43,9 @@ class Settings(BaseSettings):
     llm_provider_vision: str = "gemini"  # D2: Gemini for vision
     llm_provider_planning: str = "claude"  # D2: Claude for planning
 
+    # Voice/Webhook Integration (Phase 9)
+    webhook_secret: str = ""  # Secret key for voice assistant webhooks
+
 
 @lru_cache
 def get_settings() -> Settings:

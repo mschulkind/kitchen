@@ -22,7 +22,7 @@
   - [ ] Setup Expo + Tamagui + Router.
   - [ ] Create "Inventory List" Screen.
   - [ ] Connect to API (TanStack Query).
-  - *Test*: Can add/delete an item in the Browser and see it persist.
+  - *Test*: Playwright: Can add/delete an item in the Browser and see it persist.
 
 ## Phase 2: Recipe Engine (The Parser)
 

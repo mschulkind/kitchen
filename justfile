@@ -55,6 +55,10 @@ format:
 test:
     uv run pytest
 
+# Run E2E tests (Playwright)
+test-e2e:
+    cd tests/web && npx playwright test
+
 # Run tests with coverage report
 coverage:
     @echo "=== Backend Coverage ==="

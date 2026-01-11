@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.api.app.core.config import get_settings
 from src.api.app.core.logging import configure_logging, get_logger
-from src.api.app.routes import health, pantry, planner, recipes, shopping
+from src.api.app.routes import cooking, health, hooks, pantry, planner, recipes, shopping, vision
 
 
 @asynccontextmanager
@@ -70,6 +70,9 @@ def create_app() -> FastAPI:
     app.include_router(recipes.router, prefix="/api/v1")
     app.include_router(shopping.router, prefix="/api/v1")
     app.include_router(planner.router, prefix="/api/v1")
+    app.include_router(vision.router, prefix="/api/v1")
+    app.include_router(cooking.router, prefix="/api/v1")
+    app.include_router(hooks.router, prefix="/api/v1")
 
     return app
 

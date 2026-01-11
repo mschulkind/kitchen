@@ -61,10 +61,15 @@ sequenceDiagram
 
 ### Phase 4A Tests (Integration)
 
-- [ ] **Vision Mock**:
-  - Input: Test image URL.
-  - Action: Call `VisionService.analyze()`.
-  - Assert: Returns list of candidates (mocked or real API check).
+- [ ] **Prompt Validation**:
+  - Input: `VisionService.analyze(image_url)`.
+  - **Assert**: Mocked `LLMAdapter` called with prompt containing "Return a JSON array".
+- [ ] **Response Parsing (Mock)**:
+  - Input: Mock LLM returns `[{"name": "Apple", "qty": 3}]`.
+  - **Assert**: Service parses this into valid `PantryCandidate` objects.
+- [ ] **Error Handling**:
+  - Input: Mock LLM returns invalid JSON (e.g., "I see an apple").
+  - **Assert**: Service raises `VisionParseError` or returns empty list (graceful failure).
 
 ### Phase 4B Tests (E2E)
 

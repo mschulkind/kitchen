@@ -38,9 +38,13 @@
 
 ### Phase 10A Tests (Unit)
 
-- [ ] **Prompt Content**:
+- [ ] **Prompt Content Construction**:
   - Input: Recipe "Tacos" (needs Cheese). Pantry has "Cheddar".
-  - Assert: Output string mentions "You have Cheddar" in context section.
+  - **Action**: Call `PromptBuilder.build()`.
+  - **Assert**: Output string contains:
+    - "RECIPE: Tacos"
+    - "MY INVENTORY CONTEXT: ... Cheddar"
+  - *Note*: We do not call the LLM here; we just verify the context we *would* send.
 - [ ] **Decrement Logic**:
   - Input: Recipe uses 1lb Beef. Pantry has 2lb.
   - Action: Mark Cooked.

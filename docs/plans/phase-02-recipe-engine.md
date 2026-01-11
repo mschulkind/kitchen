@@ -74,13 +74,12 @@ classDiagram
 
 *Run with `pytest`*
 
-| Test Case | Input String | Expected JSON | Phase |
+| Test Case | Input String | Expected JSON | Mock Strategy |
 | :--- | :--- | :--- | :--- |
-| `test_parse_simple_mass` | "500g Flour" | `{qty: 500, unit: "g", item: "Flour"}` | 2B |
-| `test_parse_fraction_volume` | "1/2 cup Milk" | `{qty: 0.5, unit: "cup", item: "Milk"}` | 2B |
-| `test_parse_complex_count` | "1 large Onion, chopped" | `{qty: 1, unit: "count", item: "Onion", notes: "large, chopped"}` | 2B |
-| `test_parse_implicit_count` | "3 Eggs" | `{qty: 3, unit: "count", item: "Eggs"}` | 2B |
-| `test_parse_range` | "Salt and Pepper to taste" | `{qty: 0, unit: "n/a", item: "Salt and Pepper"}` | 2B |
+| `test_parse_simple_mass` | "500g Flour" | `{qty: 500, unit: "g", item: "Flour"}` | Regex (No LLM) |
+| `test_parse_complex_count` | "1 large Onion, chopped" | `{qty: 1, unit: "count", item: "Onion"}` | **Mock LLM**: Return valid JSON. |
+| `test_parse_implicit_count` | "3 Eggs" | `{qty: 3, unit: "count", item: "Eggs"}` | Regex/Heuristic |
+| `test_prompt_construction` | "Random String" | N/A | **Assert**: Mock LLM received prompt with "Random String". |
 
 ### Phase 2B Tests (Integration)
 
