@@ -268,7 +268,7 @@ class RecipeService:
         household_id: UUID,
         url: str,
         *,
-        parse_ingredients: bool = True,
+        _parse_ingredients: bool = True,
     ) -> IngestRecipeResponse:
         """Ingest a recipe from a URL.
 

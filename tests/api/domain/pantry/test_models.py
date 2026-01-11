@@ -4,14 +4,12 @@ Validates Pydantic DTOs and business logic constraints.
 """
 
 from datetime import date
-from uuid import uuid4
 
 import pytest
 from pydantic import ValidationError
 
 from src.api.app.domain.pantry.models import (
     CreatePantryItemDTO,
-    PantryItem,
     PantryLocation,
     UpdatePantryItemDTO,
 )

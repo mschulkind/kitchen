@@ -9,7 +9,7 @@ Fun fact: The word "recipe" comes from Latin "recipere" meaning "to receive"! ðŸ
 from datetime import datetime
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ParsedIngredient(BaseModel):

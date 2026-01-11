@@ -64,7 +64,7 @@ class IngredientParser:
         r"fluid\s*(?:ounces?|oz))(?:\s+|$)",
         re.IGNORECASE,
     )
-    
+
     # Size descriptors that can appear before units (like "large")
     SIZE_PATTERN = re.compile(
         r"^(large|medium|small|extra-large|extra large|jumbo)\s+",
@@ -172,10 +172,8 @@ class IngredientParser:
         item_name = self._normalize_item_name(item_name)
 
         # Step 10: Handle implicit count (e.g., "3 eggs" with no unit)
-        if quantity is not None and not unit and item_name:
-            # Check if this is a countable item
-            if self._is_countable_item(item_name):
-                unit = "count"
+        if quantity is not None and not unit and item_name and self._is_countable_item(item_name):
+            unit = "count"
 
         # Step 11: Handle "to taste" and similar
         if quantity is None and self._is_to_taste(original):

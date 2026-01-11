@@ -4,7 +4,7 @@ The "hard math" tests for the kitchen brain.
 These tests follow the spec from Phase 3.3.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from uuid import uuid4
 
 import pytest
@@ -35,8 +35,8 @@ def make_pantry_item(
         unit=unit,
         location="pantry",
         is_staple=False,
-        created_at=datetime.now(timezone.utc),
-        updated_at=datetime.now(timezone.utc),
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
     )
 
 

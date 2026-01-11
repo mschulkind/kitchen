@@ -4,8 +4,8 @@ Provides async database connections via Supabase Python client.
 For direct PostgreSQL access, we use asyncpg.
 """
 
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
 
 from supabase import AsyncClient, acreate_client
 
@@ -22,7 +22,7 @@ async def get_supabase_client() -> AsyncClient:
 
 
 @asynccontextmanager
-async def get_supabase() -> AsyncGenerator[AsyncClient, None]:
+async def get_supabase() -> AsyncGenerator[AsyncClient]:
     """Async context manager for Supabase client.
 
     Usage:

@@ -8,7 +8,7 @@ These tests follow the test cases from Phase 2.2 spec.
 
 import pytest
 
-from src.api.app.domain.recipes.parser import IngredientParser, ParserConfig
+from src.api.app.domain.recipes.parser import IngredientParser
 
 
 @pytest.fixture

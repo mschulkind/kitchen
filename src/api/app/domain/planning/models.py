@@ -2,7 +2,7 @@
 
 Pydantic models for the Delta Engine - comparing recipes to inventory.
 
-Fun fact: The average person throws away 25% of purchased groceries! 
+Fun fact: The average person throws away 25% of purchased groceries!
 The Delta Engine helps reduce waste by calculating exactly what's needed. 🌿
 """
 
@@ -10,7 +10,7 @@ from datetime import datetime
 from enum import Enum
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 class DeltaStatus(str, Enum):

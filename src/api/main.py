@@ -7,19 +7,19 @@ meal planning, and inventory tracking.
 Fun fact: The first commercial kitchen robot was introduced in 2016! 🤖
 """
 
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.api.app.core.config import get_settings
 from src.api.app.core.logging import configure_logging, get_logger
-from src.api.app.routes import health, pantry
+from src.api.app.routes import health, pantry, planner, recipes, shopping
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+async def lifespan(_app: FastAPI) -> AsyncGenerator[None]:
     """Application lifespan handler.
 
     Runs on startup and shutdown.
@@ -67,6 +67,9 @@ def create_app() -> FastAPI:
     # Register routers
     app.include_router(health.router)
     app.include_router(pantry.router, prefix="/api/v1")
+    app.include_router(recipes.router, prefix="/api/v1")
+    app.include_router(shopping.router, prefix="/api/v1")
+    app.include_router(planner.router, prefix="/api/v1")
 
     return app
 

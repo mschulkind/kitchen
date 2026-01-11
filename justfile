@@ -55,6 +55,13 @@ format:
 test:
     uv run pytest
 
+# Run tests with coverage report
+coverage:
+    @echo "=== Backend Coverage ==="
+    uv run pytest --cov=src/api --cov-report=term-missing tests/api
+    @echo "\n=== Frontend Coverage ==="
+    cd src/mobile && npm run test -- --coverage
+
 # Run tests with coverage
 test-cov:
     uv run pytest --cov=src --cov-report=term-missing

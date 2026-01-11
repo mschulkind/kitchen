@@ -7,7 +7,6 @@ Fun fact: A "pinch" is approximately 1/16 of a teaspoon! 🤏
 """
 
 import re
-from fractions import Fraction
 from typing import NamedTuple
 
 import pint
@@ -191,7 +190,7 @@ class UnitRegistry:
             if singular in self.UNIT_ALIASES:
                 return self.UNIT_ALIASES[singular]
             # Common units that should be singular
-            common_units = {"cup", "tablespoon", "teaspoon", "ounce", "pound", 
+            common_units = {"cup", "tablespoon", "teaspoon", "ounce", "pound",
                            "gram", "kilogram", "liter", "milliliter", "clove",
                            "slice", "piece", "can", "package", "bunch", "stalk"}
             if singular in common_units:

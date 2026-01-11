@@ -26,7 +26,8 @@ This document consolidates the project-specific rules and guidelines for AI agen
 ### TDD Practices
 
 - **Test-First Workflow**: Write tests before implementation. Start with unit tests, followed by integration tests for application flows.
-- **Fast Tests**: Keep test suites under 1 second. Mock external dependencies (e.g., LLM calls) and avoid slow I/O. Aim for 80%+ code coverage on critical paths.
+- **Fast Tests**: Keep test suites under 1 second. Mock external dependencies (e.g., LLM calls) and avoid slow I/O.
+- **Coverage**: Maintain **80%+ code coverage** on critical paths. Run `just coverage` to verify.
 - **Test Structure**: Place backend tests in `tests/`, mirroring the source structure. Co-locate frontend tests with components. Use E2E tests for key user flows.
 
 ## Tech Design Rules
@@ -67,6 +68,7 @@ src/api/app/
 ```
 
 **Key Principles:**
+
 - **DTOs over ORM**: Use Pydantic models for all data transfer. No SQLAlchemy models.
 - **Repository Pattern**: All DB access goes through repository classes.
 - **Service Layer**: Business logic lives in services, not routes.
@@ -85,6 +87,7 @@ src/mobile/
 ```
 
 **Key Principles:**
+
 - **Tamagui Components**: Use Tamagui for all UI (compiles to native styles).
 - **TanStack Query**: All server state via `useQuery`/`useMutation`.
 - **Realtime Subscriptions**: Use `useInventorySubscription` pattern for live updates.
@@ -106,6 +109,11 @@ useEffect(() => {
 ```
 
 ## Development Workflow
+
+### Pre-Commit Checklist
+
+- [ ] **Run `just check`**: You MUST run `just check` (lint + test) before every commit. Never commit broken or unlinted code.
+- [ ] **Verify Coverage**: Ensure `just coverage` still shows 80%+ on critical paths.
 
 ### Common Commands (justfile)
 
@@ -129,6 +137,7 @@ just mobile-web     # Start Expo for web (primary target)
 ### Decision References
 
 When implementing, reference decisions from `docs/plans/open-questions.md`:
+
 - **D4**: Self-hosted Docker on Synology
 - **D6**: Multi-provider LLM adapter (Gemini, Claude, OpenAI)
 - **D13**: Lazy Discovery - add items to pantry during verification

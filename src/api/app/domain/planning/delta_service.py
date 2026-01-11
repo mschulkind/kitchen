@@ -8,7 +8,6 @@ originated in French professional kitchens in the 19th century! 👨‍🍳
 """
 
 from difflib import SequenceMatcher
-from uuid import UUID
 
 from src.api.app.domain.pantry.models import PantryItem
 from src.api.app.domain.planning.converter import UnitConverter
@@ -339,16 +338,10 @@ class DeltaService:
 
     def _is_staple(self, item_name: str) -> bool:
         """Check if an item is a common kitchen staple."""
-        # Check exact match
-        if item_name in self.ASSUMED_STAPLES:
-            return True
-
-        # Check if any staple is contained in the name
-        for staple in self.ASSUMED_STAPLES:
-            if staple in item_name:
-                return True
-
-        return False
+        # Check exact match or if any staple is contained in the name
+        return item_name in self.ASSUMED_STAPLES or any(
+            staple in item_name for staple in self.ASSUMED_STAPLES
+        )
 
     def get_staples_list(self) -> list[str]:
         """Get list of items assumed to be staples."""

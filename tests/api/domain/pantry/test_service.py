@@ -5,7 +5,7 @@ Uses mocked repositories.
 """
 
 from datetime import datetime
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
@@ -188,7 +188,7 @@ class TestPantryServiceConfirmPossession:
         mock_repository.create.return_value = sample_item
         household_id = uuid4()
 
-        result = await service.confirm_possession(household_id, "Cumin")
+        await service.confirm_possession(household_id, "Cumin")
 
         mock_repository.create.assert_called_once()
         call_args = mock_repository.create.call_args

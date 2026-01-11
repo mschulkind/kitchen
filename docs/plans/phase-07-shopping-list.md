@@ -64,8 +64,7 @@
   - Assert: List contains "Onion" qty 2.
 
 ### Phase 7B Tests (Realtime)
-
-- **Sync Scenario**:
+- [ ] **Sync Scenario**:
   1. Open Client A and Client B.
   2. Client A checks "Milk".
   3. **Verify**: Client B shows "Milk" checked within < 1s.

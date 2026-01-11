@@ -67,8 +67,7 @@ sequenceDiagram
   - Assert: Returns list of candidates (mocked or real API check).
 
 ### Phase 4B Tests (E2E)
-
-- **Full Flow**:
+- [ ] **Full Flow**:
     1. **Mock**: Upload a "test_image.jpg".
     2. **Mock**: API returns `[{"name": "Apple", "qty": 3}]`.
     3. **UI**: Verify "Apple" appears in Staging List.
