@@ -41,6 +41,7 @@ classDiagram
 ## 2.2 Implementation Details (Granular Phases)
 
 ### Phase 2A: The Ingestor & DB
+
 - **Goal**: Fetch and store raw recipe metadata (URL, Title).
 - **Tasks**:
     1. **DB**: Create `recipes` table.
@@ -50,6 +51,7 @@ classDiagram
     3. **API**: `POST /recipes/ingest { url }`.
 
 ### Phase 2B: The Parser Logic
+
 - **Goal**: Convert unstructured text into `RecipeIngredient` rows.
 - **Tasks**:
     1. **DB**: Create `recipe_ingredients` table.
@@ -63,11 +65,13 @@ classDiagram
 ## 2.3 Testing Plan
 
 ### Phase 2A Tests (Ingestor)
+
 - [ ] **Integration**: `test_ingest_url`
-    - Input: Valid URL.
-    - Assert: Recipe created in DB, Title matches page title.
+  - Input: Valid URL.
+  - Assert: Recipe created in DB, Title matches page title.
 
 ### Phase 2B Tests (Parser Unit)
+
 *Run with `pytest`*
 
 | Test Case | Input String | Expected JSON | Phase |
@@ -79,7 +83,8 @@ classDiagram
 | `test_parse_range` | "Salt and Pepper to taste" | `{qty: 0, unit: "n/a", item: "Salt and Pepper"}` | 2B |
 
 ### Phase 2B Tests (Integration)
+
 - [ ] **Full Flow**:
-    - Input: `Ingestor` saves a recipe.
-    - Action: Trigger `Parser` on that recipe.
-    - Assert: `recipe_ingredients` table populates with >5 rows.
+  - Input: `Ingestor` saves a recipe.
+  - Action: Trigger `Parser` on that recipe.
+  - Assert: `recipe_ingredients` table populates with >5 rows.

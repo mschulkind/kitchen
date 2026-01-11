@@ -37,33 +37,40 @@ sequenceDiagram
     App->>API: POST /pantry/batch_create
 ```
 
-## 4.2 Implementation Details
+## 4.2 Implementation Details (Granular Phases)
 
-### The Vision Prompt
->
-> "Analyze this image of a pantry/fridge. specific identify every food item visible. Estimate the quantity remaining if possible (e.g., 'half full'). Ignore non-food items. Return a JSON array: `[{name: str, estimated_qty: float, unit: str, location_guess: str}]`."
+### Phase 4A: Vision Pipeline
 
-### Staging UI (`StagingScreen.tsx`)
+- **Goal**: Image in -> JSON out.
+- **Tasks**:
+    1. **Mobile**: Implement `CameraService` (Take photo, resize to < 1024px).
+    2. **Storage**: Upload to Supabase Bucket `inbox`.
+    3. **Service**: `VisionService` (Python).
+        - Adapter for `Gemini 1.5 Pro` (Best for vision).
+        - Prompt Engineering (JSON enforcement).
 
-- **Split View**:
-  - Top 40%: The captured image (Zoomable).
-  - Bottom 60%: List of `PantryItemCandidate`.
-- **Interactions**:
-  - Tap item -> Edit Name/Qty.
-  - Swipe Left -> Delete (False positive).
-  - Button: "Add All to Pantry".
+### Phase 4B: Staging UI
+
+- **Goal**: The "Review" screen.
+- **Tasks**:
+    1. **Frontend**: `app/pantry/scan_result.tsx`.
+    2. **State**: Local state for the "Candidate List" (Edit/Delete before commit).
+    3. **API**: `POST /pantry/batch_create` to commit final items.
 
 ## 4.3 Testing Plan
 
-### Unit Tests (Backend)
+### Phase 4A Tests (Integration)
 
-- `test_vision_parsing`: Mock the LLM response with various JSON structures (valid, malformed, empty) and ensure the API handles it gracefully.
+- [ ] **Vision Mock**:
+  - Input: Test image URL.
+  - Action: Call `VisionService.analyze()`.
+  - Assert: Returns list of candidates (mocked or real API check).
 
-### End-to-End Tests (Mobile)
+### Phase 4B Tests (E2E)
 
-- **Mocked Vision**:
-    1. Upload a "test_image.jpg".
-    2. Mock API returns `[{"name": "Apple", "qty": 3}]`.
-    3. Verify "Apple" appears in Staging.
-    4. Click "Confirm".
-    5. Verify "Apple" appears in main Inventory.
+- **Full Flow**:
+    1. **Mock**: Upload a "test_image.jpg".
+    2. **Mock**: API returns `[{"name": "Apple", "qty": 3}]`.
+    3. **UI**: Verify "Apple" appears in Staging List.
+    4. **Action**: User changes Qty to 5 and taps "Confirm".
+    5. **Verify**: Database now has "Apple" with Qty 5.

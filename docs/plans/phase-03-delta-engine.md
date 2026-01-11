@@ -32,58 +32,49 @@ flowchart TD
     I --> K[User Verification Step]
 ```
 
-## 3.2 Implementation Details
+## 3.2 Implementation Details (Granular Phases)
 
-### The Comparator (`calculate_missing`)
+### Phase 3A: The Comparator Logic
 
-- **Input**: `List[RecipeIngredient]`, `List[PantryItem]`
-- **Output**: `List[MissingItem]` where `MissingItem` includes:
-  - `item_name`: Canonical name.
-  - `amount_needed`: The deficit.
-  - `unit`: The canonical unit.
-  - `status`: `MISSING` | `BUY` | `CHECK_MANUALLY`.
+- **Goal**: The "Math" engine. pure logic.
+- **Tasks**:
+    1. **Service**: Implement `DeltaService.calculate_missing()`.
+    2. **Converter**: Implement `UnitConverter` (handles g <-> ml via density).
+    3. **Output**: Return `MissingItem` DTOs.
+    4. **Fuzzy Matching**: Simple trigram matching (pg_trgm) or Levenshtein in Python.
 
-### 3.2.1 The Verification Step (Assumption Engine)
+### Phase 3B: The Verification UI & Logic
 
-Before a "Shopping List" is final, we must present the "Assumed Inventory" to the user.
-
-- **The "Audit" Object**:
-  - `assumptions`: List of items we think the user *has*.
-    - e.g., "Salt (Pantry)", "Olive Oil (Pantry)", "Chicken (Fridge - 2 days left)".
-      - **UI Requirement**: The user must explicitly "Confirm" these assumptions. "Yes, I really do have that salt."
-      - This catches the "Oh, I actually used the last of the salt yesterday" scenario.
-  
-  ### 3.2.2 Lazy Discovery (Implicit Inventory)
-  *Decision D13: Use verification to build the pantry.*
-  
-  When the user is verifying *missing* items (items the DB thinks they don't have):
-  1.  **Scenario**: Recipe needs "Cumin". DB says "Zero Cumin".
-  2.  **User Action**: User checks the box "I actually have this".
-  3.  **System Action**:
-      - Temporarily marks it valid for *this* plan.
-      - **Prompt**: "Add Cumin to your Pantry permanently?"
-      - **Result**: If Yes, create a `PantryItem` with default quantity (e.g., "1 jar").
-      - *Benefit*: The pantry grows organically as you cook, without a boring "Inventory Day".
-  
-  ### Density Database
-  - A simple JSON/Dict fallback for common conversions.
-  - `{"flour": 0.57, "sugar": 0.85}` (g/ml).
+- **Goal**: The "Human in the Loop".
+- **Tasks**:
+    1. **Assumption Engine**:
+        - Logic to generate the `Audit` object ("We assume you have Salt").
+    2. **Lazy Discovery**:
+        - **API**: `POST /pantry/confirm_possession { item_name }`.
+        - **Logic**: Creates a persistent `PantryItem` when user says "I have this" during verification.
+    3. **UI**: The "Categorical Checklist" screen in the App.
 
 ## 3.3 Testing Plan (The "Hard Math")
 
-### Unit Tests (Logic)
+### Phase 3A Tests (Comparator Unit)
 
-| Test Case | Recipe Req | Inventory | Expected Result |
-| :--- | :--- | :--- | :--- |
-| `test_simple_surplus` | 2 Onions | 5 Onions | `HAS_ENOUGH` (Delta +3) |
-| `test_simple_deficit` | 5 Onions | 2 Onions | `BUY 3` |
-| `test_unit_conv_success` | 500ml Milk | 1 L Milk | `HAS_ENOUGH` |
-| `test_unit_conv_complex` | 4 tbsp Butter | 1 stick (113g) Butter | `HAS_ENOUGH` (Needs density/alias knowledge) |
-| `test_fuzzy_match` | "Kosher Salt" | "Diamond Crystal Salt" | `MATCH` (User might need to verify, but treat as match) |
-| `test_density_failure` | 1 cup Spinach | 200g Spinach | `UNIT_MISMATCH` (If no density data) |
+| Test Case | Recipe Req | Inventory | Expected Result | Phase |
+| :--- | :--- | :--- | :--- | :--- |
+| `test_simple_surplus` | 2 Onions | 5 Onions | `HAS_ENOUGH` | 3A |
+| `test_simple_deficit` | 5 Onions | 2 Onions | `BUY 3` | 3A |
+| `test_unit_conv_success` | 500ml Milk | 1 L Milk | `HAS_ENOUGH` | 3A |
+| `test_density_failure` | 1 cup Spinach | 200g Spinach | `UNIT_MISMATCH` | 3A |
 
-### Property-Based Tests (Hypothesis)
+### Phase 3A Tests (Property-Based)
 
-- Generate random quantities and units.
-- Assert: `Req(x) - Inv(y) == -(Inv(y) - Req(x))`.
-- Assert: Conversions are reversible (within float epsilon).
+- **Hypothesis**: `Req(x) - Inv(y) == -(Inv(y) - Req(x))`.
+
+### Phase 3B Tests (Verification Logic)
+
+- [ ] **Lazy Discovery**:
+  - **Scenario**: User checks "I have Cumin".
+  - **Action**: Call `confirm_possession("Cumin")`.
+  - **Assert**: New `PantryItem(name="Cumin")` exists in DB.
+- [ ] **Assumption Generation**:
+  - **Scenario**: User has "Salt". Recipe needs "Salt".
+  - **Assert**: Response includes "Salt" in `assumptions` list, NOT in `missing`.

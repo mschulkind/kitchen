@@ -20,35 +20,41 @@
 - **`shopping_list_items`**:
   - `id`, `name`, `quantity`, `unit`, `is_checked`, `category`, `aisle_hint`.
 
-## 7.2 Implementation Details
+## 7.2 Implementation Details (Granular Phases)
 
-### The Aggregator
+### Phase 7A: Aggregation Engine
 
-1. **Trigger**: User clicks "Finalize Plan".
-2. **Input**: The `MealPlan`.
-3. **Process**:
-    - Extract all `RecipeIngredients`.
-    - Call `DeltaService` (Phase 3) against `Pantry`.
-    - Filter for `MISSING` or `BUY`.
-    - Merge duplicates (e.g., 2 recipes need Onions -> Sum them).
-4. **Output**: Insert rows into `shopping_list_items`.
+- **Goal**: Plan + Pantry = Shopping List.
+- **Tasks**:
+    1. **Service**: `ShoppingService.generate_from_plan(plan_id)`.
+        - Calls `DeltaService` to find deficits.
+        - Merges duplicates (Sum quantities).
+    2. **DB**: Insert into `shopping_list_items`.
 
-### Realtime Sync
+### Phase 7B: Sync & UI
 
-- Use **Supabase Realtime** on the client.
-- `channel('shopping_list').on('postgres_changes', ...)`
-- **Conflict Strategy**: Last-Write-Wins (LWW) for the boolean `is_checked` state is sufficient for V1.
+- **Goal**: Collaborative Checklist.
+- **Tasks**:
+    1. **Frontend**: `app/shopping/index.tsx`.
+    2. **Realtime**: Use `supabase.channel` to listen for `UPDATE` events on `is_checked`.
+    3. **UI**: Checkbox list grouped by Category (Produce, Dairy).
 
 ## 7.3 Testing Plan
 
-### Unit Tests
+### Phase 7A Tests (Unit)
 
-- `test_aggregation_summing`: Ensure 2 onions + 1 onion = 3 onions in the list.
-- `test_aggregation_pantry_subtraction`: Ensure existing stock is subtracted.
+- [ ] **Summing**:
+  - Input: Recipe A needs 1 Onion. Recipe B needs 2 Onions.
+  - Assert: List contains 1 item "Onion" with qty 3.
+- [ ] **Subtraction**:
+  - Input: Need 3 Onions. Have 1.
+  - Assert: List contains "Onion" qty 2.
 
-### Integration Tests
+### Phase 7B Tests (Realtime)
 
-- **Sync Test**:
-  - Client A checks "Milk".
-  - Client B (listening) should receive update within 500ms.
-  - *Note*: Hard to test in CI, usually manual or with specialized realtime test harness.
+- **Sync Scenario**:
+  1. Open Client A and Client B.
+  2. Client A checks "Milk".
+  3. **Verify**: Client B shows "Milk" checked within < 1s.
+  4. Client B unchecks "Milk".
+  5. **Verify**: Client A shows unchecked.

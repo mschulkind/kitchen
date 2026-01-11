@@ -24,33 +24,38 @@
   - `aisle`: "Aisle 12"
   - `store_id`: UUID
 
-## 8.2 Implementation Details
+## 8.2 Implementation Details (Granular Phases)
 
-### The Scraper
+### Phase 8A: Scraper & Data
 
-- **Rate Limiting**: Be polite. Cache results aggressively.
-- **Normalization**: Map "Lucerne Whole Milk Gallon" -> "Milk".
+- **Goal**: Build the Map.
+- **Tasks**:
+    1. **Research**: Reverse-engineer Shaw's mobile API (look for `aisle` field in product search).
+    2. **DB**: Populate `store_aisle_mappings` (e.g., "Cumin" -> "Aisle 4").
+    3. **Job**: Background task to update mappings lazily (when a new item appears on a list).
 
-### The Sorter
+### Phase 8B: Sorting Logic
 
-- **Default Map**:
-    1. Produce
-    2. Bakery
-    3. Deli
-    4. ...
-    5. Dairy (Back of store)
-    6. Frozen (End)
-- **Algorithm**:
-  - For each list item, lookup `aisle`.
-  - If found, assign index. If not, assign "Unknown" (bottom).
-  - Sort list by index.
+- **Goal**: Apply the Map to the List.
+- **Tasks**:
+    1. **Service**: `StoreSorter.sort(list_items)`.
+    2. **Config**: Allow user to reorder Aisle sequence (Produce -> Deli -> Aisle 1...).
+    3. **UI**: Update Shopping List to show Section Headers ("Aisle 12").
 
 ## 8.3 Testing Plan
 
-### Unit Tests
+### Phase 8A Tests (Integration)
 
-- `test_sorter`: Input `["Milk" (Aisle 12), "Apple" (Produce)]`. Expected: `["Apple", "Milk"]` (assuming Produce is index 0).
+- [ ] **API Check**:
+  - Input: Search for "Oreos".
+  - Assert: Returns "Aisle 9" (or actual value).
 
-### Integration Tests
+### Phase 8B Tests (Unit)
 
-- **Mock Scraper**: Ensure the system handles "Product Not Found" gracefully (defaults to "Uncategorized").
+- [ ] **Sorting**:
+  - Input: `["Milk" (Aisle 15), "Apple" (Produce), "Bread" (Bakery)]`.
+  - Config: Produce -> Bakery -> Aisle 1... -> Aisle 15.
+  - Assert: `["Apple", "Bread", "Milk"]`.
+- [ ] **Unknown Handling**:
+  - Input: `["Weird Fruit" (Unknown)]`.
+  - Assert: Appears at bottom or top (configurable).

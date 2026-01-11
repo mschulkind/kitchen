@@ -17,29 +17,36 @@
 - **`src/api/routes/hooks.py`**: The Webhook receiver.
 - **`src/api/domain/voice/parser.py`**: NLP logic.
 
-## 9.2 Implementation Details
+## 9.2 Implementation Details (Granular Phases)
 
-### The NLP Parser
+### Phase 9A: Webhook & NLP
 
-- **Input**: "Add milk and two bananas".
-- **Step 1**: Split compound sentences ("and").
-- **Step 2**: Extract `(item, qty)`.
-  - "milk" -> `{item: "milk", qty: 1, unit: "default"}`
-  - "two bananas" -> `{item: "banana", qty: 2, unit: "count"}`
-- **Step 3**: Call `ShoppingService.add_item`.
+- **Goal**: Accept text from Google Home/HA.
+- **Tasks**:
+    1. **API**: `POST /hooks/add-item?key=SECRET`.
+    2. **NLP**: Simple parser to split "Milk and Eggs" -> `["Milk", "Eggs"]`.
+    3. **Action**: Add to Shopping List (Unchecked).
 
-### Security
+### Phase 9B: HA Configuration (User Side)
 
-- **API Key**: The webhook URL must include a secret key in the query param `?key=xyz` to prevent unauthorized additions.
+- **Goal**: Connect the dots.
+- **Tasks**:
+    1. **Docs**: Create guide for setting up `rest_command` in Home Assistant.
+    2. **Automation**: "Hey Google, add {text} to shopping list" -> Calls Webhook.
 
 ## 9.3 Testing Plan
 
-### Unit Tests
+### Phase 9A Tests (Unit)
 
-- `test_parse_simple`: "Add bread" -> OK.
-- `test_parse_compound`: "Add bread and butter" -> Adds 2 items.
-- `test_parse_quantities`: "Add 5 apples" -> Qty 5.
+- [ ] **Parsing**:
+  - Input: "Add bread and 2 milks".
+  - Assert: `[{item: "bread"}, {item: "milk", qty: 2}]`.
+- [ ] **Security**:
+  - Input: Request without `?key`.
+  - Assert: 401 Unauthorized.
 
-### Security Test
+### Phase 9A Tests (Integration)
 
-- Attempt to call webhook without Key -> 401 Unauthorized.
+- [ ] **End-to-End**:
+  - Call Webhook with valid key and text.
+  - Verify item appears in `shopping_list_items` table.

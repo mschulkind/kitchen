@@ -16,29 +16,35 @@ The core goal is to preserve the high-quality "Agent-driven" planning experience
 To support the "Heavy AI" requirements (planning, vision) alongside "Realtime App" requirements (sync, lists), we will use a hybrid stack following **Clean Architecture** principles, deployed as a self-hosted Docker stack.
 
 ### 1. Frontend: Expo (React Native Web)
+
 - **Role**: The UI layer.
 - **Priority**: **Web First** (PWA), then Android.
 - **Key Libraries**:
-    - `expo-router`: File-based routing.
-    - `tanstack-query`: Server state management & caching.
-    - `tamagui`: Performance-focused universal UI components (Native + Web).
-    - `zustand`: Client state management (minimal).
+  - `expo-router`: File-based routing.
+  - `tanstack-query`: Server state management & caching.
+  - `tamagui`: Performance-focused universal UI components (Native + Web).
+  - `zustand`: Client state management (minimal).
 
 ### 2. Backend: Supabase (Self-Hosted via Docker)
+
 - **Role**: The Source of Truth.
 - **Components**: PostgreSQL, GoTrue (Auth), Realtime (WebSockets), Storage.
 - **Host**: Synology NAS (Docker Compose).
+- **Core Requirement**: **Realtime Multi-User Sync**.
+  - **All** shared views (Inventory, Meal Plans, Shopping Lists) must use Supabase Realtime subscriptions.
+  - Updates made by User A (e.g., checking an item, changing a plan slot) must reflect instantly on User B's device.
 
 ### 3. Backend: Python Service (The "Chef's Brain")
+
 - **Role**: The Intelligence Layer.
 - **Framework**: **FastAPI** (Async, Typed).
 - **LLM Strategy**: **Multi-Provider Adapter**.
-    - Flexible interface supporting **Gemini**, **Claude**, and **OpenAI**.
-    - Configurable per feature (e.g., Vision -> Gemini, Planning -> Claude).
+  - Flexible interface supporting **Gemini**, **Claude**, and **OpenAI**.
+  - Configurable per feature (e.g., Vision -> Gemini, Planning -> Claude).
 - **Responsibilities**:
-    - **Vision Processing**: Image -> JSON inventory.
-    - **Planning Agent**: The "Phase 0" logic.
-    - **Scraping**: Fetching and parsing recipes.
+  - **Vision Processing**: Image -> JSON inventory.
+  - **Planning Agent**: The "Phase 0" logic.
+  - **Scraping**: Fetching and parsing recipes.
 
 ---
 

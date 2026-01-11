@@ -38,43 +38,44 @@ classDiagram
     }
 ```
 
-## 5.2 Implementation Details
+## 5.2 Implementation Details (Granular Phases)
 
-### The Generator Algorithm
+### Phase 5A: Generator Logic
 
-1. **Filter**: Get all Recipes matching hard constraints (Allergies).
-2. **Score**: For each recipe, calculate:
-    - `InventoryScore`: % of ingredients owned.
-    - `SpoilageScore`: Uses items expiring soon?
-3. **Cluster**: Select top 20 recipes. Use LLM to group them into 3 coherent "Themes" (e.g., "Fast & Fresh", "Comfort Food", "Pantry Hero").
-4. **Pitch**: Generate a 1-sentence description for each theme.
-5. **Structured Output**:
-    - When the Planner *generates* new recipe ideas (vs selecting existing DB recipes), it must output **Structured JSON**.
-    - **Do Not** output just Markdown text for ingredients.
-    - **Schema**:
+- **Goal**: Generate 3 Thematic Options from Inputs.
+- **Tasks**:
+    1. **Scorer**: Implement `RecipeScorer` (Inventory % + Spoilage Weight).
+    2. **Clusterer**: Logic to pick 3 distinct "Themes".
+    3. **Generator**: LLM Prompt to generate the "Pitch".
+    4. **Output**: Enforce **Structured JSON** for recipes (D8).
+        - Schema: `{ title, ingredients: [{ item, qty, unit }] }`.
 
-        ```json
-        {
-          "title": "Spicy Chicken Tacos",
-          "ingredients": [
-            { "item": "Chicken Thighs", "qty": 1.5, "unit": "lbs" },
-            { "item": "Cumin", "qty": 2, "unit": "tsp" }
-          ]
-        }
-        ```
+### Phase 5B: Planner UI
 
-    - This bypasses the fuzzy `IngredientParser` (Phase 2) and guarantees math-ready data for the Delta Engine.
+- **Goal**: User selects a plan.
+- **Tasks**:
+    1. **Screen**: `app/plan/new.tsx`.
+    2. **Component**: `AdventureCard` (Title, Description, % Inventory Used).
+    3. **View**: `app/plan/[id].tsx` (The 4-Day Grid View).
 
 ## 5.3 Testing Plan
 
-### Unit Tests
+### Phase 5A Tests (Generator Unit)
 
-- `test_scorer_inventory_weight`: Ensure recipes using existing inventory get higher scores.
-- `test_clustering`: (Mock LLM) Ensure 3 distinct options are returned.
+- [ ] **Scoring**:
+  - Input: Recipe using "Rotting Spinach".
+  - Assert: Score > Recipe using "Canned Beans".
+- [ ] **Clustering**:
+  - Input: 50 candidates.
+  - Assert: Returns 3 Options with distinct IDs and titles.
 
-### Integration Tests
+### Phase 5B Tests (Integration)
 
 - **Full Flow**:
-  - Input: Request(4 days).
-  - Action: Call Generator.
-  - Verify: Returns exactly 3 Options. Option A contains recipes.
+  - **Input**: User requests "4 Days, No Mushrooms".
+  - **Action**: Call Generator.
+  - **Verify**:
+    1. UI shows 3 Cards.
+    2. User selects Option A.
+    3. `meal_plans` table has a new record.
+    4. App navigates to Plan Detail.

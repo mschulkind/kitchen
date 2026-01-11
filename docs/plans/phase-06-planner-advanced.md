@@ -22,36 +22,41 @@
 
 - **`src/api/domain/planning/refiner.py`**: Handles the logic for "Get me a different recipe for this slot".
 
-## 6.2 Implementation Details
+## 6.2 Implementation Details (Granular Phases)
 
-### The Re-roll Logic
+### Phase 6A: Refinement Logic
 
-- **Input**: `current_plan_day`, `slot_to_reroll` (Main/Side), `text_directive` (Optional).
-- **Process**:
-    1. Identify the constraints of the *original* plan option (e.g., "Vegetarian").
-    2. Add `text_directive` as a filter (e.g., "Spicy").
-    3. Search DB for candidates excluding the current recipe.
-    4. Return top match.
+- **Goal**: "Get me something else".
+- **Tasks**:
+    1. **DB**: Add `main_locked`, `side_locked` booleans to `meal_plan_days`.
+    2. **Service**: `RefinerService.reroll(day_id, slot, directive)`.
+        - Logic: Search DB/LLM for alternative matching constraints.
 
-### UI Components (`SlotMachine.tsx`)
+### Phase 6B: Slot Machine UI
 
-- **Visuals**:
-  - Animate the "Spin" (simple vertical slide or opacity fade).
-  - Lock Icon (Toggle).
-  - Text Input (Popover on long-press of Spin button?).
+- **Goal**: Interactive Locking and Spinning.
+- **Tasks**:
+    1. **UI**: Update `PlanDayCard` to show Main/Side slots independently.
+    2. **Interaction**:
+        - Tap Lock -> Toggle state.
+        - Tap Spin -> Call API -> Animate change.
+        - Long-press Spin -> Show "Directive" input (e.g., "Make it spicy").
 
 ## 6.3 Testing Plan
 
-### Unit Tests
+### Phase 6A Tests (Unit)
 
-- `test_lock_respect`: Request re-roll of Day 1. Ensure Main does *not* change if locked.
-- `test_directive_filtering`: Request re-roll with "No Chicken". Ensure result is not chicken.
-- `test_side_compatibility`: Ensure the new side matches the main (e.g., don't suggest Rice as a side for Risotto). *Advanced: might need LLM check.*
+- [ ] **Locking**:
+  - Input: Reroll Day 1. Main is Locked.
+  - Assert: Only Side dish changes.
+- [ ] **Directive**:
+  - Input: Reroll with "No Chicken".
+  - Assert: Returned recipe does not contain chicken ingredient/tag.
 
-### End-to-End Tests
+### Phase 6B Tests (E2E)
 
 - **The "Spin" Flow**:
     1. Open Plan.
-    2. Tap Lock on "Roast Chicken".
-    3. Tap Spin on "Day 1".
-    4. Verify Chicken remains, but Side Dish changes.
+    2. Tap **Lock** icon on "Roast Chicken" (Main).
+    3. Tap **Spin** button for the Day.
+    4. **Verify**: Main remains "Roast Chicken". Side dish updates (e.g., from "Fries" to "Salad").
