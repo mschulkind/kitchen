@@ -1,4 +1,4 @@
-recipe_dir := "phase0_flow/plans/2025-12-18_stew-and-latkes/recipes"
+recipe_dir := `ls -d phase0_flow/plans/*/ | sort | tail -n 1 | sed 's/$/recipes/'`
 output_dir := recipe_dir / "pdfs"
 css_file := recipe_dir / "recipes.css"
 

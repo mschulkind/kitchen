@@ -8,102 +8,93 @@ The core goal is to preserve the high-quality "Agent-driven" planning experience
 
 ## Architecture & Tech Stack
 
-To support the "Heavy AI" requirements (planning, vision) alongside "Realtime App" requirements (sync, lists), we will use a hybrid stack:
+To support the "Heavy AI" requirements (planning, vision) alongside "Realtime App" requirements (sync, lists), we will use a hybrid stack following **Clean Architecture** principles.
 
 ### 1. Frontend: Expo (React Native)
-- **Why**: Targets Web, iOS, and Android from a single codebase.
-- **Role**: The UI layer. Handles user interactions, camera access (for pantry scan), and offline sync.
-- **Key Libs**: `expo-router` (navigation), `tanstack-query` (data fetching), `gluestack-ui` or `tamagui` (UI components).
+- **Role**: The UI layer. Handles user interactions, camera access, and offline sync.
+- **Targets**: iOS, Android, Web (Responsive).
+- **Key Libraries**:
+    - `expo-router`: File-based routing.
+    - `tanstack-query`: Server state management & caching.
+    - `gluestack-ui` or `tamagui`: Universal UI components.
+    - `zustand`: Client state management (minimal).
 
-### 2. Backend: Supabase + Python (FastAPI/Modal)
-- **Supabase**: The "State" layer.
-    - **PostgreSQL**: Stores Pantry, Recipes, Plans, Users.
-    - **Auth**: User management.
-    - **Realtime**: Instant updates for shared shopping lists.
-- **Python Service (The "Chef's Brain")**:
-    - **Why**: Python is the native language of AI. Complex planning logic and Vision API handling are best done here, not in Edge Functions or JS.
-    - **Role**:
-        - Runs the "Phase 0" planning logic (Request -> Options -> Verification -> Final).
-        - Handles Image Processing (Pantry Vision).
-        - Scrapes recipes (Firecrawl/BeautifulSoup).
-    - **Deployment**: Can be hosted on Render/Railway (as a web service) or Modal (serverless GPU/AI functions).
+### 2. Backend: Supabase (Data Layer)
+- **Role**: The Source of Truth.
+- **PostgreSQL**: Relational data (Pantry, Recipes, Plans).
+- **Auth**: User management & Row Level Security (RLS).
+- **Storage**: Image hosting for Vision API.
+- **Realtime**: WebSockets for instant list updates.
 
----
-
-## Development Phases
-
-### Phase 1: The Foundation (Repo & Data Layer)
-**Goal**: Establish the app shell and move "Stock Lists" from Markdown to Database.
-
-*   [ ] **1.1: Project Skeleton**: Initialize Expo `src/mobile` and Python `src/api` in the monorepo.
-*   [ ] **1.2: Supabase Setup**:
-    *   Define DB Schema for `pantry_items`, `users`, `households`.
-    *   Setup Row Level Security (RLS).
-*   [ ] **1.3: Data Migration Script**: Write a script to parse existing `phase0_flow/stock_lists/*.md` files and seed the Supabase DB for the dev user.
-*   [ ] **1.4: Basic Inventory UI**: A simple list view in the app to Add/Remove/Edit items, synced with Supabase.
-
-### Phase 2: Visual Pantry (The "Magic" Feature)
-**Goal**: Removing the friction of inventory management using LLM Vision.
-
-*   [ ] **2.1: Image Upload Pipeline**: App takes a photo -> Uploads to Supabase Storage -> Triggers Python Service.
-*   [ ] **2.2: Vision Agent**:
-    *   Integrate GPT-4o / Claude 3.5 Sonnet / Gemini 1.5 Pro.
-    *   Prompt engineering: "Identify all food items, brands, and approximate fill levels. Return JSON."
-*   [ ] **2.3: Verification UI**:
-    *   Show the user the photo alongside the "Detected Items" list.
-    *   Allow quick "Confirm", "Edit", or "Reject" actions.
-*   [ ] **2.4: Categorization Logic**: Auto-tag items (Produce, Dairy, Pantry) using the LLM logic to sort them into the correct virtual storage locations.
-
-### Phase 3: The Planner Agent (Porting Phase 0)
-**Goal**: Move the "Markdown Agent" logic into a proper API workflow.
-
-*   [ ] **3.1: Plan Request API**: Endpoint `POST /plans` accepting preferences (days, focus).
-*   [ ] **3.2: Option Generator**: Port the logic that reads `stock_lists` (now from DB) and generates 4 summary options.
-*   [ ] **3.3: Selection UI**: A "Chat-like" or "Card" interface where users pick Option A, B, C, or D.
-*   [ ] **3.4: Verification & Generation**:
-    *   Backend generates the full shopping list and recipes.
-    *   Frontend renders the result (not as a markdown file, but as interactive native views).
-
-### Phase 4: Execution & Realtime
-**Goal**: Making the plan usable in the store and kitchen.
-
-*   [ ] **4.1: Interactive Shopping List**: Checkboxes, sorting by aisle (LLM enriched category).
-*   [ ] **4.2: Cooking View**: "Step-by-step" mode for recipes.
-*   [ ] **4.3: Consumption**: When a recipe is marked "Cooked", auto-decrement ingredients from the Pantry DB.
+### 3. Backend: Python Service (The "Chef's Brain")
+- **Role**: The Intelligence Layer. Handles logic that requires heavy computation or LLM interaction.
+- **Framework**: **FastAPI** (Async, Typed).
+- **Deployment**: Containerized (Docker) on Render/Railway/Fly.io.
+- **Responsibilities**:
+    - **Vision Processing**: Image -> JSON inventory.
+    - **Planning Agent**: The "Phase 0" logic (Request -> Plan).
+    - **Scraping**: Fetching and parsing recipes.
+- **Design Pattern**:
+    - **Dependency Injection**: Services injected into Routes.
+    - **Pydantic Models**: Strict data validation sharing types with Frontend (via codegen or spec).
 
 ---
 
-## Open Questions & Decisions
+## Implementation Roadmap
 
-### 1. Vision API Cost & Latency
-*   **Question**: Sending 5 high-res photos of a pantry to GPT-4o is expensive (~$0.01-$0.03 per call) and slow (5-10s).
-*   **Mitigation**:
-    *   Compress images before upload.
-    *   Use "Flash" or "Haiku" models for initial rough passes?
-    *   Is the user willing to wait 30s for a "Pantry Scan"? (Likely yes, if it saves typing 50 items).
+The project is divided into 4 sequential phases, prioritized by **value delivered to the user**.
 
-### 2. Python Hosting
-*   **Decision**: Where does the FastAPI service live?
-    *   *Option A*: **Render/Railway**. Keeps it simple, always on.
-    *   *Option B*: **Supabase Edge Functions (Python)**. Recently released, but might be limited for heavy agentic logic or scraping.
-    *   *Recommendation*: Start with a simple Container execution (Docker) that can be deployed anywhere (Render is easy).
+### [Phase 1: The Foundation](phase-1-foundation.md)
+**Focus**: Repository setup, Database Schema, and Migration.
+- Establish the `src/mobile` and `src/api` monorepo.
+- Define `pantry_items`, `recipes`, `households` tables.
+- Migrate existing Markdown data to Supabase.
+- **Deliverable**: A basic app that shows your current inventory (read-only or basic CRUD).
 
-### 3. Recipe Storage Format
-*   **Current**: Markdown files.
-*   **Future**:
-    *   Keep Markdown strings in a JSON column?
-    *   Parse into structured SQL (Instructions table, Ingredients table)?
-    *   *Recommendation*: Hybrid. Store the "Source Markdown" for LLM context, but parse "Ingredients" into a structured JSONB column for the shopping list generator to query against.
+### [Phase 2: Visual Pantry (The "Magic")](phase-2-vision.md)
+**Focus**: Reducing data entry friction.
+- Implement Camera -> API -> LLM pipeline.
+- Create the "Staging Area" UI for verifying scanned items.
+- **Deliverable**: Snap a photo of a receipt or shelf, and see your digital pantry update.
 
-### 4. Scraping Strategy
-*   **Current**: Local Firecrawl.
-*   **Future**:
-    *   Need a reliable remote scraper.
-    *   Self-host Firecrawl or use a service API?
-    *   Impacts the "Add Recipe from URL" feature in the app.
+### [Phase 3: The Planner Agent](phase-3-planning.md)
+**Focus**: Porting the core value proposition.
+- Migrate `main.py` logic to FastAPI endpoints.
+- Build the "Plan Wizard" UI (Request -> Select -> Verify).
+- **Deliverable**: Generate full meal plans and shopping lists within the app.
 
-## Next Steps
+### [Phase 4: Execution & Realtime](phase-4-execution.md)
+**Focus**: The in-store and in-kitchen experience.
+- Realtime shopping list (multi-user).
+- Offline capabilities.
+- "5-Way" Recipe Views (Mise-en-place, Chef's Shorthand).
+- **Deliverable**: A robust companion for the actual cooking process.
 
-1.  **Refine this Plan**: Review dependencies and agree on the "Hybrid Stack" approach.
-2.  **Repo Structure**: reorganizing to support `src/web` and `src/api` side-by-side.
-3.  **Prototype Vision**: Write a quick Python script to test "Photo -> Ingredients JSON" quality with current LLMs.
+---
+
+## Testing Strategy (TDD)
+
+We strictly follow **Test-Driven Development**.
+
+- **Backend (Python)**:
+    - **Tool**: `pytest`.
+    - **Unit Tests**: Mock LLM calls and DB calls. Test logic in isolation.
+    - **Integration Tests**: Use a local Supabase instance (or Dockerized Postgres) to test API endpoints.
+    - **Performance**: Tests must run in < 1s (exclude slow integration tests from default watch mode).
+
+- **Frontend (TS)**:
+    - **Tool**: `vitest` + `react-native-testing-library`.
+    - **Unit**: Test components and hooks.
+    - **Integration**: Test flows (Navigation, Form submission).
+
+## Continuous Integration
+- GitHub Actions will run on every push:
+    - Lint (Ruff/ESLint).
+    - Type Check (MyPy/TSC).
+    - Test Suites.
+
+## Open Decisions
+
+- **LLM Cost Control**: Caching strategies for repeated queries?
+- **Recipe Parser**: How to handle unstructured scraped text reliably? (Hybrid approach: keep raw text, try to parse JSON).
+- **Offline Sync Conflict Resolution**: "Last Write Wins" for V1.
