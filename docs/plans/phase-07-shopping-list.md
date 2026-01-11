@@ -25,11 +25,24 @@
 ### Phase 7A: Aggregation Engine
 
 - **Goal**: Plan + Pantry = Shopping List.
+
 - **Tasks**:
+
     1. **Service**: `ShoppingService.generate_from_plan(plan_id)`.
+
         - Calls `DeltaService` to find deficits.
+
         - Merges duplicates (Sum quantities).
-    2. **DB**: Insert into `shopping_list_items`.
+
+    2. **Stock Up Logic**:
+
+        - Check item metadata (e.g., "Canned Beans", "Rice").
+
+        - If `shelf_life > 30 days` AND `frequency == high`:
+
+        - Add `suggestion="Buy bulk? (Long shelf life)"` to the list item.
+
+    3. **DB**: Insert into `shopping_list_items`.
 
 ### Phase 7B: Sync & UI
 

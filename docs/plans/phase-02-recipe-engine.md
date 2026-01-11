@@ -1,6 +1,6 @@
 # Phase 2: The Recipe Engine 📖
 
-**Status**: 🚧 Not Started  
+**Status**: � In Progress (2A ✅ DB, 2B ✅ Parser)  
 **Priority**: 🔴 Essential (MVP Blocker)  
 **Estimated Effort**: 2-3 weeks  
 **Dependencies**: Phase 1 (Database, API structure)  
