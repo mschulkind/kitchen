@@ -23,15 +23,19 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 **Summary**: Unresolved decisions needing your input before development can proceed. Covers architecture choices, platform priorities, LLM strategy, and MVP scope. **Answer these first!**
 
 ### [central-plan.md](central-plan.md)
+
 **Summary**: Master 10-phase roadmap with architecture overview and testing strategy. The single source of truth for what gets built when.
 
 ### [frontend-redesign.md](frontend-redesign.md) ⭐ NEW
+
 **Summary**: Comprehensive spec for the transition to a Hub & Spoke navigation model, screens, and technical architecture for the mobile app.
 
 ### [frontend-tasks.md](frontend-tasks.md) ⭐ NEW
+
 **Summary**: Detailed checklist for implementing the frontend redesign, broken down by phases.
 
 ### [e2e-test-plan.md](e2e-test-plan.md) ⭐ NEW
+
 **Summary**: Strategy and status for "Strict Mode" Playwright tests across all phases.
 
 ## Documents

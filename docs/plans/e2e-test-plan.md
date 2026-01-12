@@ -25,74 +25,95 @@
 ## 2. Detailed Work Plan
 
 ### `phase1-inventory.spec.ts` (Inventory CRUD)
+
 **Current Issue**: Uses permissive helpers (`if (element.count() > 0)`). Fails to explicitly assert specific field names.
+
 **Required Actions**:
-- [ ] Remove all `if` checks. 
+
+- [ ] Remove all `if` checks.
 - [ ] Replace text locators with `getByTestId()`.
 - [ ] **TestID Mapping**:
-    - Add Item Button -> `add-item-fab`
-    - Name Input -> `item-name-input`
-    - Quantity Input -> `item-qty-input`
-    - Unit Picker -> `item-unit-picker`
-    - Save Button -> `save-item-button`
+  - Add Item Button -> `add-item-fab`
+  - Name Input -> `item-name-input`
+  - Quantity Input -> `item-qty-input`
+  - Unit Picker -> `item-unit-picker`
+  - Save Button -> `save-item-button`
 - [ ] **Flows to Verify**:
-    - Add item manually.
-    - Edit existing item (change qty).
-    - Delete item (swipe or long press).
-    - Filter list by category.
+  - Add item manually.
+  - Edit existing item (change qty).
+  - Delete item (swipe or long press).
+  - Filter list by category.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
+
 **Status**: Good.
+
 **Required Actions**:
+
 - [ ] Ensure `Import URL` test mocks the backend response to avoid hitting external sites (flaky).
 - [ ] Verify `Cooking Mode` wake lock behavior (mock `expo-keep-awake`).
 
 ### `phase3-delta.spec.ts` (Delta / Stock Check)
+
 **Current Issue**: Permissive logic for "Stock Check" button.
+
 **Required Actions**:
+
 - [ ] **Standardize UI**: Enforce that the "Check Stock" button always exists on Recipe Detail (TestID: `check-stock-button`).
 - [ ] **Strict Flows**:
-    - Open Stock Check Modal.
-    - Assert "Missing" section contains elements `missing-item-{id}`.
-    - Assert "Have" section contains elements `have-item-{id}`.
-    - Click "Missing" item -> Assert it moves to "Have".
+  - Open Stock Check Modal.
+  - Assert "Missing" section contains elements `missing-item-{id}`.
+  - Assert "Have" section contains elements `have-item-{id}`.
+  - Click "Missing" item -> Assert it moves to "Have".
 
 ### `phase4-vision.spec.ts` (Visual Pantry)
+
 **Current Issue**: Checks for *any* camera UI (video, file input).
+
 **Required Actions**:
+
 - [ ] **Mock Vision API**: Use `page.route` to intercept `/api/vision/analyze` and return a fixed JSON: `[{"name": "Banana", "qty": 5}]`.
 - [ ] **Strict Flows**:
-    - Click `scan-fab`.
-    - Upload/Snap image (mock input).
-    - Assert `staging-list` appears.
-    - Edit candidate quantity.
-    - Click `confirm-vision-items`.
-    - Assert redirection to Inventory list.
+  - Click `scan-fab`.
+  - Upload/Snap image (mock input).
+  - Assert `staging-list` appears.
+  - Edit candidate quantity.
+  - Click `confirm-vision-items`.
+  - Assert redirection to Inventory list.
 
 ### `phase5-planner.spec.ts` (Planner Core)
+
 **Status**: Good.
+
 **Required Actions**:
+
 - [ ] **Mock Generator**: Intercept `/api/planner/generate` to return 3 fixed themes.
 - [ ] Ensure "Constraints" chip selection is tested thoroughly.
 
 ### `phase6-refiner.spec.ts` (Slot Machine)
+
 **Status**: Missing / Stub.
+
 **Required Actions**:
+
 - [ ] Create file.
 - [ ] **Mock Refiner**: Intercept `/api/planner/refine` to return a swapped recipe.
 - [ ] **Flows**:
-    - Navigate to Planner.
-    - Click `lock-button` on Main Dish (Day 1).
-    - Click `spin-button` on Side Dish (Day 1).
-    - Assert Side Dish changes, Main Dish stays.
+  - Navigate to Planner.
+  - Click `lock-button` on Main Dish (Day 1).
+  - Click `spin-button` on Side Dish (Day 1).
+  - Assert Side Dish changes, Main Dish stays.
 
 ### `phase7-shopping.spec.ts` (Shopping List)
+
 **Status**: Strict but minimal.
+
 **Required Actions**:
+
 - [ ] **Expand Coverage**:
-    - **Aisle Headers**: Assert existence of `header-produce` or `header-aisle-1`.
-    - **Sync Mocking**: Simulate a second user by programmatically injecting a Supabase event (if possible) or just verify client-side optimistic UI updates.
-    - **Clear Completed**: Add items, check them, click `clear-completed-button`, assert list is empty.
+  - **Aisle Headers**: Assert existence of `header-produce` or `header-aisle-1`.
+  - **Sync Mocking**: Simulate a second user by programmatically injecting a Supabase event (if possible) or just verify client-side optimistic UI updates.
+  - **Clear Completed**: Add items, check them, click `clear-completed-button`, assert list is empty.
 
 ## 3. Implementation Guide for "Strict Mode"
 
