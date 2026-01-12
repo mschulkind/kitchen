@@ -17,11 +17,17 @@ This document consolidates the project-specific rules and guidelines for AI agen
 
 - **`docs/plans/`**: Git-tracked for planning, outlines, specs, and decisions. Use `index.md` for navigation.
 - **`context/`**: Gitignored for research, data, temporary notes, and references. Use `index.md` for organization.
+- **`scratch/`**: Git-tracked for temporary developer notes, draft code, and experimental snippets.
 - **`src/api/`**: Python FastAPI backend following Clean Architecture.
 - **`src/mobile/`**: Expo (React Native Web) frontend with Tamagui UI.
 - **`infra/docker/`**: Docker Compose and container configurations for self-hosted deployment.
 - **`tests/`**: Backend tests mirroring `src/api` structure.
 - **General**: All paths are relative to the project root. Use clear naming and READMEs.
+
+### Safety & File Deletion
+
+- **No `rm`**: Never use the `rm` command to delete files, as it is blocked by the auto-approver for safety.
+- **Trash Directory**: To "delete" a file, move it to the `trash/` directory at the project root (e.g., `mv path/to/file trash/`). This allows for manual review and recovery if needed.
 
 ### TDD Practices
 

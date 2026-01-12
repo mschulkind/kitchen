@@ -3,6 +3,7 @@ import { test, expect, Page } from '@playwright/test';
 /**
  * Phase 4B E2E Tests - Vision (Camera Scan) 📸
  *
+ * STRICT MODE: No conditional checks. Elements MUST exist.
  * Tests the vision/camera scan flow as specified in phase-04-vision.md
  *
  * Fun fact: GPT-4V can identify over 10,000 different food items! 🍕
@@ -10,170 +11,133 @@ import { test, expect, Page } from '@playwright/test';
 
 async function waitForAppReady(page: Page) {
   await page.waitForLoadState('domcontentloaded');
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
 }
 
-test.describe('Phase 4B - Vision Scan Flow', () => {
+test.describe('Phase 4B - Vision Scan Entry', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/inventory');
+    await page.goto('/(app)/inventory');
     await waitForAppReady(page);
   });
 
-  test('can find camera/scan button', async ({ page }) => {
-    const scanButton = page
-      .getByRole('button', { name: /scan|camera|photo|vision/i })
-      .or(page.getByText(/📷|📸/))
-      .or(page.locator('[data-testid="scan-button"]'));
-
-    const hasScanButton = (await scanButton.count()) > 0;
-    // Either has scan button or shows inventory page
-    const pageContent = await page.content();
-    expect(pageContent.length).toBeGreaterThan(500);
+  test('add button is visible', async ({ page }) => {
+    await expect(page.getByTestId('add-item-button')).toBeVisible();
   });
 
-  test('scan button opens camera/upload interface', async ({ page }) => {
-    const scanButton = page
-      .getByRole('button', { name: /scan|camera|photo/i })
-      .or(page.locator('[data-testid="scan-button"]'));
-
-    if ((await scanButton.count()) > 0) {
-      await scanButton.first().click();
-      await page.waitForTimeout(500);
-
-      // Should show camera preview or file upload
-      const cameraUI = page
-        .locator('video')
-        .or(page.locator('input[type="file"]'))
-        .or(page.getByText(/take photo|upload|choose/i));
-
-      const hasCameraUI = (await cameraUI.count()) > 0;
-      const pageContent = await page.content();
-      expect(pageContent.length).toBeGreaterThan(500);
-    } else {
-      expect(true).toBe(true);
-    }
+  test('add button opens action sheet with scan option', async ({ page }) => {
+    await page.getByTestId('add-item-button').click();
+    await expect(page.getByTestId('scan-item-option')).toBeVisible();
   });
 
-  test('can upload an image file', async ({ page }) => {
-    const scanButton = page
-      .getByRole('button', { name: /scan|camera|photo/i })
-      .or(page.locator('[data-testid="scan-button"]'));
-
-    if ((await scanButton.count()) > 0) {
-      await scanButton.first().click();
-      await page.waitForTimeout(500);
-
-      // Look for file input
-      const fileInput = page.locator('input[type="file"]');
-      const hasFileInput = (await fileInput.count()) > 0;
-
-      // File upload available or camera interface shown
-      expect(hasFileInput || true).toBe(true);
-    } else {
-      expect(true).toBe(true);
-    }
+  test('scan option navigates to scan result', async ({ page }) => {
+    await page.getByTestId('add-item-button').click();
+    await page.getByTestId('scan-item-option').click();
+    
+    // Should navigate to scan-result page (in mock, shows analyzing)
+    await expect(page).toHaveURL(/scan-result/);
   });
 });
 
-test.describe('Phase 4B - Staging List', () => {
-  test('staging list shows detected items', async ({ page }) => {
-    // Navigate to a scan result page if available
-    await page.goto('/inventory/scan-result');
+test.describe('Phase 4B - Staging List UI', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/(app)/inventory/scan-result');
     await waitForAppReady(page);
-
-    // Page should load (might redirect if no scan)
-    const pageContent = await page.content();
-    expect(pageContent.length).toBeGreaterThan(500);
   });
 
-  test('can edit quantity of detected item', async ({ page }) => {
-    await page.goto('/inventory/scan-result');
-    await waitForAppReady(page);
-
-    const qtyInput = page
-      .locator('input[type="number"]')
-      .or(page.getByPlaceholder(/quantity|qty/i));
-
-    if ((await qtyInput.count()) > 0) {
-      await qtyInput.first().fill('5');
-      const value = await qtyInput.first().inputValue();
-      expect(value).toBe('5');
-    } else {
-      // No scan result to edit
-      expect(true).toBe(true);
-    }
+  test('analyzing state is shown initially', async ({ page }) => {
+    await expect(page.getByText('Analyzing image...')).toBeVisible();
   });
 
-  test('can remove item from staging list', async ({ page }) => {
-    await page.goto('/inventory/scan-result');
-    await waitForAppReady(page);
-
-    const removeButton = page
-      .getByRole('button', { name: /remove|delete|×/i })
-      .or(page.locator('[data-testid="remove-item"]'));
-
-    const hasRemove = (await removeButton.count()) > 0;
-    expect(hasRemove || true).toBe(true);
+  test('detected items appear after analysis', async ({ page }) => {
+    // Wait for mock detection to complete (2 seconds)
+    await page.waitForTimeout(2500);
+    
+    await expect(page.getByTestId('detected-count')).toBeVisible();
   });
 
-  test('confirm button commits items to inventory', async ({ page }) => {
-    await page.goto('/inventory/scan-result');
-    await waitForAppReady(page);
+  test('detected items have edit button', async ({ page }) => {
+    await page.waitForTimeout(2500);
+    await expect(page.getByTestId('edit-item-0')).toBeVisible();
+  });
 
-    const confirmButton = page
-      .getByRole('button', { name: /confirm|save|add all/i })
-      .or(page.locator('[data-testid="confirm-scan"]'));
+  test('detected items have remove button', async ({ page }) => {
+    await page.waitForTimeout(2500);
+    await expect(page.getByTestId('remove-item-0')).toBeVisible();
+  });
 
-    const hasConfirm = (await confirmButton.count()) > 0;
-    expect(hasConfirm || true).toBe(true);
+  test('rescan button is visible', async ({ page }) => {
+    await page.waitForTimeout(2500);
+    await expect(page.getByTestId('rescan-button')).toBeVisible();
+  });
+
+  test('confirm all button is visible', async ({ page }) => {
+    await page.waitForTimeout(2500);
+    await expect(page.getByTestId('confirm-all-button')).toBeVisible();
   });
 });
 
-test.describe('Phase 4B - Scan Integration', () => {
-  test('full scan flow navigates correctly', async ({ page }) => {
-    await page.goto('/inventory');
+test.describe('Phase 4B - Edit Detected Item', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/(app)/inventory/scan-result');
     await waitForAppReady(page);
-
-    // Try to start scan
-    const scanButton = page
-      .getByRole('button', { name: /scan|camera/i })
-      .or(page.locator('[data-testid="scan-button"]'));
-
-    if ((await scanButton.count()) > 0) {
-      const initialUrl = page.url();
-      await scanButton.first().click();
-      await page.waitForTimeout(500);
-
-      // Should either navigate or show modal
-      const pageContent = await page.content();
-      expect(pageContent.length).toBeGreaterThan(500);
-    } else {
-      expect(true).toBe(true);
-    }
+    await page.waitForTimeout(2500);
   });
 
-  test('cancel scan returns to inventory', async ({ page }) => {
-    await page.goto('/inventory');
+  test('can enter edit mode', async ({ page }) => {
+    await page.getByTestId('edit-item-0').click();
+    await expect(page.getByTestId('edit-name-0')).toBeVisible();
+  });
+
+  test('can edit item name', async ({ page }) => {
+    await page.getByTestId('edit-item-0').click();
+    const nameInput = page.getByTestId('edit-name-0');
+    await nameInput.clear();
+    await nameInput.fill('Organic Milk');
+    await expect(nameInput).toHaveValue('Organic Milk');
+  });
+
+  test('can edit quantity', async ({ page }) => {
+    await page.getByTestId('edit-item-0').click();
+    const qtyInput = page.getByTestId('edit-qty-0');
+    await qtyInput.clear();
+    await qtyInput.fill('2');
+    await expect(qtyInput).toHaveValue('2');
+  });
+
+  test('can save edit', async ({ page }) => {
+    await page.getByTestId('edit-item-0').click();
+    await page.getByTestId('save-edit-0').click();
+    
+    // Should exit edit mode
+    await expect(page.getByTestId('edit-name-0')).not.toBeVisible();
+  });
+});
+
+test.describe('Phase 4B - Remove Detected Item', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/(app)/inventory/scan-result');
     await waitForAppReady(page);
+    await page.waitForTimeout(2500);
+  });
 
-    const scanButton = page.getByRole('button', { name: /scan|camera/i });
+  test('can remove item from list', async ({ page }) => {
+    const initialCount = await page.getByTestId('detected-count').textContent();
+    await page.getByTestId('remove-item-0').click();
+    
+    const newCount = await page.getByTestId('detected-count').textContent();
+    expect(newCount).not.toBe(initialCount);
+  });
+});
 
-    if ((await scanButton.count()) > 0) {
-      await scanButton.first().click();
-      await page.waitForTimeout(500);
+test.describe('Phase 4B - Confidence Indicators', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/(app)/inventory/scan-result');
+    await waitForAppReady(page);
+    await page.waitForTimeout(2500);
+  });
 
-      // Look for cancel button
-      const cancelButton = page.getByRole('button', { name: /cancel|back|close/i });
-
-      if ((await cancelButton.count()) > 0) {
-        await cancelButton.first().click();
-        await waitForAppReady(page);
-
-        // Should be back at inventory
-        const pageContent = await page.content();
-        expect(pageContent.length).toBeGreaterThan(500);
-      }
-    }
-    expect(true).toBe(true);
+  test('items show confidence percentage', async ({ page }) => {
+    // Look for a percentage in the detected items
+    await expect(page.getByText(/%/)).toBeVisible();
   });
 });

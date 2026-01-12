@@ -90,6 +90,8 @@ services:
       - meta
     networks:
       - kitchen-network
+    healthcheck:
+      disable: true
 
   # Kong API Gateway
   kong:

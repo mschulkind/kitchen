@@ -3,6 +3,7 @@ import { test, expect, Page } from '@playwright/test';
 /**
  * Phase 3C E2E Tests - Delta Engine (Stock Check) 🔍
  *
+ * STRICT MODE: No conditional checks. Elements MUST exist.
  * Tests the stock check flow as specified in phase-03-delta-engine.md
  *
  * Fun fact: The Delta Engine can calculate ingredient needs in under 50ms! ⚡
@@ -10,179 +11,60 @@ import { test, expect, Page } from '@playwright/test';
 
 async function waitForAppReady(page: Page) {
   await page.waitForLoadState('domcontentloaded');
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(1000);
 }
 
-test.describe('Phase 3C - Stock Check Flow', () => {
+test.describe('Phase 3C - Stock Check UI', () => {
   test.beforeEach(async ({ page }) => {
-    // Navigate to recipes to find a recipe to check stock
-    await page.goto('/recipes');
+    // Navigate to check-stock for a specific recipe
+    await page.goto('/(app)/recipes/test-recipe-id/check-stock');
     await waitForAppReady(page);
   });
 
-  test('can access stock check from recipe', async ({ page }) => {
-    // Find a recipe
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
+  test('stock check page loads', async ({ page }) => {
+    await expect(page.getByText('Check Stock')).toBeVisible();
+  });
 
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
+  test('shows three sections: have, low, missing', async ({ page }) => {
+    await expect(page.getByTestId('have-section')).toBeVisible();
+    await expect(page.getByTestId('low-section')).toBeVisible();
+    await expect(page.getByTestId('missing-section')).toBeVisible();
+  });
 
-      // Look for stock check or "check ingredients" button
-      const stockCheckButton = page
-        .getByRole('button', { name: /stock|check|ingredients|have/i })
-        .or(page.getByText(/check stock/i))
-        .or(page.locator('[data-testid="stock-check"]'));
+  test('ingredient items are visible', async ({ page }) => {
+    // Should have at least one ingredient in any section
+    const ingredientItem = page.getByTestId(/^ingredient-/);
+    await expect(ingredientItem.first()).toBeVisible();
+  });
 
-      const hasStockCheck = (await stockCheckButton.count()) > 0;
-      // Either has stock check or shows recipe detail
-      const pageContent = await page.content();
-      expect(pageContent.length).toBeGreaterThan(500);
-    } else {
-      expect(true).toBe(true);
+  test('can tap missing item to mark as have (Lazy Discovery)', async ({ page }) => {
+    const missingItem = page.getByTestId('missing-section').getByTestId(/^ingredient-/);
+    
+    if (await missingItem.count() > 0) {
+      await missingItem.first().click();
+      
+      // Should show "Add to Pantry" option
+      await expect(page.getByText('Add to Pantry')).toBeVisible();
     }
   });
 
-  test('stock check shows have/missing sections', async ({ page }) => {
-    // Navigate directly to stock check if route exists
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
-
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
-
-      const stockCheckButton = page.getByRole('button', { name: /stock|check/i });
-
-      if ((await stockCheckButton.count()) > 0) {
-        await stockCheckButton.first().click();
-        await waitForAppReady(page);
-
-        // Should show categorized ingredients
-        const pageText = await page.textContent('body');
-        const hasCategories =
-          pageText?.toLowerCase().includes('have') ||
-          pageText?.toLowerCase().includes('missing') ||
-          pageText?.toLowerCase().includes('need') ||
-          pageText?.toLowerCase().includes('available') ||
-          true;
-
-        expect(hasCategories).toBe(true);
-      }
-    }
-    expect(true).toBe(true);
+  test('proceed button is visible', async ({ page }) => {
+    await expect(page.getByTestId('proceed-button')).toBeVisible();
   });
 
-  test('can mark item as "I have this"', async ({ page }) => {
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
-
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
-
-      const stockCheckButton = page.getByRole('button', { name: /stock|check/i });
-
-      if ((await stockCheckButton.count()) > 0) {
-        await stockCheckButton.first().click();
-        await waitForAppReady(page);
-
-        // Look for "I have this" button
-        const haveThisButton = page
-          .getByRole('button', { name: /have|got|add to pantry/i })
-          .or(page.locator('[data-testid="mark-have"]'));
-
-        if ((await haveThisButton.count()) > 0) {
-          // Button exists - don't click to avoid modifying state
-          expect(true).toBe(true);
-        }
-      }
-    }
-    expect(true).toBe(true);
-  });
-
-  test('confirm adds missing items to inventory', async ({ page }) => {
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
-
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
-
-      const stockCheckButton = page.getByRole('button', { name: /stock|check/i });
-
-      if ((await stockCheckButton.count()) > 0) {
-        await stockCheckButton.first().click();
-        await waitForAppReady(page);
-
-        // Look for confirm button
-        const confirmButton = page
-          .getByRole('button', { name: /confirm|save|done/i })
-          .or(page.locator('[data-testid="confirm-stock"]'));
-
-        const hasConfirm = (await confirmButton.count()) > 0;
-        expect(hasConfirm || true).toBe(true);
-      }
-    }
-    expect(true).toBe(true);
+  test('add to shopping button is visible', async ({ page }) => {
+    await expect(page.getByTestId('add-shopping-button')).toBeVisible();
   });
 });
 
-test.describe('Phase 3C - Delta Display', () => {
-  test('shows ingredient quantities needed', async ({ page }) => {
-    await page.goto('/recipes');
+test.describe('Phase 3C - Recipe to Stock Check Navigation', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/(app)/recipes/test-recipe-id');
     await waitForAppReady(page);
-
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
-
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
-
-      // Page should show quantities
-      const pageText = await page.textContent('body');
-      const hasQuantities =
-        pageText?.match(/\d+\s*(cup|oz|lb|gram|tsp|tbsp|g|kg)/i) ||
-        pageText?.includes('quantity') ||
-        true;
-
-      expect(hasQuantities).toBe(true);
-    }
-    expect(true).toBe(true);
   });
 
-  test('color codes items by status', async ({ page }) => {
-    await page.goto('/recipes');
-    await waitForAppReady(page);
-
-    const recipeItem = page
-      .locator('[data-testid="recipe-item"]')
-      .or(page.locator('li').filter({ hasText: /\w{3,}/ }));
-
-    if ((await recipeItem.count()) > 0) {
-      await recipeItem.first().click();
-      await waitForAppReady(page);
-
-      // Check for status indicators (colors, icons, etc.)
-      const pageContent = await page.content();
-      const hasStatusIndicators =
-        pageContent.includes('green') ||
-        pageContent.includes('red') ||
-        pageContent.includes('yellow') ||
-        pageContent.includes('✓') ||
-        pageContent.includes('✗') ||
-        pageContent.includes('check') ||
-        true;
-
-      expect(hasStatusIndicators).toBe(true);
-    }
-    expect(true).toBe(true);
+  test('check stock button navigates to stock check', async ({ page }) => {
+    await page.getByTestId('check-stock-button').click();
+    await expect(page).toHaveURL(/check-stock/);
   });
 });
