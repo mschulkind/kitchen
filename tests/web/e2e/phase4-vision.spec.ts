@@ -137,7 +137,7 @@ test.describe('Phase 4B - Confidence Indicators', () => {
   });
 
   test('items show confidence percentage', async ({ page }) => {
-    // Look for a percentage in the detected items
-    await expect(page.getByText(/%/)).toBeVisible();
+    // Look for a percentage in the detected items (e.g., "95%")
+    await expect(page.getByText(/\d+%/).first()).toBeVisible();
   });
 });
