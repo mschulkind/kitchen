@@ -28,6 +28,8 @@ Instead of persistent bottom tabs, we will use a **Dashboard Hub** pattern. This
 
 ## 2. Screens & UI Design
 
+Our design philosophy is **Mobile-First but Desktop-Ready**. While the primary interface is designed for touch interaction on mobile devices, the layout must adapt intelligently to larger screens (desktop web, tablets) to utilize available space efficiently.
+
 ### 2.1. Unauthenticated Landing Page (`/landing`)
 
 - **Goal**: Welcome users and prompt login.
@@ -105,6 +107,21 @@ Instead of persistent bottom tabs, we will use a **Dashboard Hub** pattern. This
   - **Sort**: Smart sort based on store layout.
   - **Interaction**: Swipe to delete, Tap to check (moves to bottom).
   - **Voice**: Microphone icon to "Quick Add" (Phase 9).
+
+### 2.7. Responsive Design (Adaptive Layout)
+
+- **Philosophy**: "Efficient use of space." Do not just stretch mobile views.
+- **Breakpoints**: Use Tamagui's standard breakpoints (`gtSm`, `gtMd`, `gtLg`).
+- **Strategy**:
+  - **Mobile (<600px)**: Single column stack, full-width cards, drawer/modal navigation (or stack push).
+  - **Desktop (>600px)**:
+    - **Hub**: Grid layout (2-3 columns) for widgets.
+    - **Lists (Recipes/Inventory)**: Master-Detail view or Multi-column Grid (Masonry).
+    - **Forms**: Center-aligned max-width container (prevent 1000px wide inputs).
+    - **Modals**: Center dialogs instead of full-screen sheets.
+- **Navigation**:
+  - Mobile: Hamburger/Back gestures.
+  - Desktop: Persistent Sidebar or Top Navigation Bar (if space permits).
 
 ## 3. Technical Architecture
 

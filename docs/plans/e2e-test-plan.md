@@ -11,6 +11,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `phase1-inventory.spec.ts` | 1. Foundation | 🟡 Refactor | No | DB | High |
 | `phase2-recipes.spec.ts` | 2. Recipes | ✅ Ready | Yes | DB, LLM (Import) | High |
+| `phase2d-responsive.spec.ts` | 2D. Responsive | 🔴 Missing | Yes | - | Medium |
 | `phase3-delta.spec.ts` | 3. Delta | 🟡 Refactor | No | DB | High |
 | `phase4-vision.spec.ts` | 4. Vision | 🟡 Refactor | No | Vision API | Medium |
 | `phase5-planner.spec.ts` | 5. Planner | ✅ Ready | Yes | LLM (Generate) | High |
@@ -43,6 +44,27 @@
   - Edit existing item (change qty).
   - Delete item (swipe or long press).
   - Filter list by category.
+
+### `phase2d-responsive.spec.ts` (Responsive Layouts)
+
+**Goal**: Verify app adapts correctly to Mobile (375x667) and Desktop (1280x720) viewports.
+
+**Required Actions**:
+
+- [ ] **Desktop Hub Grid**:
+  - Set viewport to 1280x720.
+  - Assert `tonight-widget` and `shopping-widget` are side-by-side (or grid flow) rather than stacked vertically.
+  - Assert `module-grid` uses 3-4 columns instead of 2.
+- [ ] **Navigation Adaptation**:
+  - **Mobile**: Assert Hamburger/Back gestures work.
+  - **Desktop**: Assert Sidebar/TopNav is visible (if implemented) or layout is centered.
+- [ ] **Form Constraints**:
+  - Navigate to `/recipes/new`.
+  - Assert `recipe-form-container` width is <= 800px even on 1280px screen (check computed style or bounding box).
+- [ ] **Modals vs Dialogs**:
+  - Trigger "Add Recipe" action.
+  - **Mobile**: Assert Sheet covers bottom/full width.
+  - **Desktop**: Assert Dialog is centered with overlay.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
 

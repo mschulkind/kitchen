@@ -1,14 +1,12 @@
-```tsx
 /**
  * Landing Page 🛬
  * 
  * First screen users see. Prompts for login.
  */
 
-import { Link, useRouter } from 'expo-router';
-import { YStack, H1, H2, Paragraph, Button, XStack, Image } from 'tamagui';
+import { useRouter } from 'expo-router';
+import { YStack, H1, H2, Paragraph, Button, XStack } from 'tamagui';
 import { ChefHat, ArrowRight } from '@tamagui/lucide-icons';
-import { supabase } from '@/lib/supabase';
 
 export default function LandingScreen() {
   const router = useRouter();
@@ -20,7 +18,7 @@ export default function LandingScreen() {
   };
 
   return (
-    <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10">
+    <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10" testID="landing-screen">
       
       {/* Hero Section */}
       <YStack space="$4" alignItems="center">
@@ -64,6 +62,7 @@ export default function LandingScreen() {
       {/* Actions */}
       <YStack space="$3" marginBottom="$6">
         <Button 
+          testID="get-started-button"
           size="$6" 
           theme="orange" 
           iconAfter={<ArrowRight size={20} />}
@@ -73,7 +72,7 @@ export default function LandingScreen() {
           Get Started
         </Button>
         
-        <Button size="$4" chromeless color="$gray10">
+        <Button testID="sign-in-button" size="$4" chromeless color="$gray10">
           Already have an account? Sign In
         </Button>
       </YStack>
@@ -94,4 +93,3 @@ function FeatureItem({ icon, title, text }: { icon: string; title: string; text:
     </XStack>
   );
 }
-```

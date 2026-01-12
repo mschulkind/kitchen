@@ -1,6 +1,10 @@
-```tsx
-import { Slot, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 
+/**
+ * Auth Layout - Public routes 🔓
+ * 
+ * Handles unauthenticated screens like landing and login.
+ */
 export default function AuthLayout() {
   return (
     <Stack
@@ -11,4 +15,3 @@ export default function AuthLayout() {
     />
   );
 }
-```

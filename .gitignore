@@ -57,6 +57,7 @@ pnpm-debug.log*
 .expo/
 web-build/
 dist/
+dist-test/
 .dart-tool/
 .flutter-plugins/
 .flutter-plugins-dependencies/

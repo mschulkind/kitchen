@@ -150,7 +150,7 @@ logs:
 
 # Run API locally (without Docker)
 dev-api:
-    cd src/api && uv run uvicorn main:app --reload --host 0.0.0.0 --port 5300
+    uv run uvicorn src.api.main:app --reload --host 0.0.0.0 --port 5300
 
 # ============================================================================
 # Mobile & Frontend (Phase 1C)
@@ -158,7 +158,7 @@ dev-api:
 
 # Start Expo dev server (Web first - D3)
 dev-frontend:
-    cd src/mobile && npx expo start --web --port 8200
+    cd src/mobile && BROWSER=none npx expo start --web --port 8200
 
 web: dev-frontend
 
