@@ -133,6 +133,14 @@ dev-all: up-infra
 # Stop all containers
 down: docker-down
 
+# DANGER: Wipes the database and restarts everything from scratch
+reset-stack:
+    @printf "\033[31mDANGER: This will wipe the database and all stored data.\033[0m\n"
+    @python3 -c "if input('Type \'delete\' to continue: ') != 'delete': print('Aborted.'); exit(1)"
+    docker compose -f infra/docker/docker-compose.yml down -v
+    rm -rf infra/docker/volumes/kong/kong.yml
+    just up
+
 docker-down:
     docker compose -f infra/docker/docker-compose.yml down
 

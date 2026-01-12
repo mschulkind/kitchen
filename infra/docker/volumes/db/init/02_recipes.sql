@@ -8,7 +8,7 @@
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS public.recipes (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     household_id UUID NOT NULL REFERENCES public.households(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     source_url TEXT,
@@ -44,7 +44,7 @@ CREATE INDEX IF NOT EXISTS idx_recipes_tags
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS public.recipe_ingredients (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     recipe_id UUID NOT NULL REFERENCES public.recipes(id) ON DELETE CASCADE,
     raw_text TEXT NOT NULL,  -- Original text: "1 large onion, diced"
     quantity NUMERIC(10, 3),  -- Parsed: 1.0

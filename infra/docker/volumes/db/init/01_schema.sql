@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS "pg_trgm";  -- For fuzzy text matching
 
 -- Users table (extends Supabase auth.users)
 CREATE TABLE IF NOT EXISTS public.users (
-    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    id UUID PRIMARY KEY, -- Matches auth.users(id)
     email TEXT UNIQUE NOT NULL,
     display_name TEXT,
     avatar_url TEXT,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS public.users (
 
 -- Households (groups of users sharing inventory)
 CREATE TABLE IF NOT EXISTS public.households (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     name TEXT NOT NULL,
     owner_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS public.households (
 
 -- Household members (many-to-many with roles)
 CREATE TABLE IF NOT EXISTS public.household_members (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     household_id UUID NOT NULL REFERENCES public.households(id) ON DELETE CASCADE,
     user_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
     role TEXT NOT NULL DEFAULT 'member' CHECK (role IN ('owner', 'editor', 'viewer')),
@@ -49,7 +49,7 @@ CREATE TYPE pantry_location AS ENUM ('pantry', 'fridge', 'freezer', 'counter', '
 
 -- Pantry items table
 CREATE TABLE IF NOT EXISTS public.pantry_items (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT extensions.uuid_generate_v4(),
     household_id UUID NOT NULL REFERENCES public.households(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     quantity NUMERIC(10, 3) NOT NULL CHECK (quantity >= 0),
