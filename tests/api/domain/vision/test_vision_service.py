@@ -87,9 +87,7 @@ class TestVisionService:
     @pytest.mark.asyncio
     async def test_analyze_image_success(self, service: VisionService, household_id):
         """Test successful image analysis."""
-        request = AnalyzeImageRequest(
-            image_url="https://example.com/fridge.jpg"
-        )
+        request = AnalyzeImageRequest(image_url="https://example.com/fridge.jpg")
 
         result = await service.analyze_image(household_id, request)
 
@@ -133,6 +131,7 @@ class TestVisionService:
         result = await service.analyze_image(household_id, request)
 
         assert result.model_used == "mock"
+
 
 class TestVisionPromptValidation:
     """Phase 4A Tests - Prompt Validation. 📋
@@ -239,9 +238,7 @@ class TestVisionErrorHandling:
     async def test_processing_time_recorded(self):
         """Processing time is always recorded."""
         mock_adapter = AsyncMock()
-        mock_adapter.analyze_image.return_value = [
-            DetectedItem(name="Test", quantity=1)
-        ]
+        mock_adapter.analyze_image.return_value = [DetectedItem(name="Test", quantity=1)]
 
         service = VisionService(adapter=mock_adapter)
         result = await service.analyze_image(

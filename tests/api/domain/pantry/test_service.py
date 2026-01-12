@@ -63,9 +63,7 @@ class TestPantryServiceGetItem:
         result = await service.get_item(sample_item.id, sample_item.household_id)
 
         assert result == sample_item
-        mock_repository.get_by_id.assert_called_once_with(
-            sample_item.id, sample_item.household_id
-        )
+        mock_repository.get_by_id.assert_called_once_with(sample_item.id, sample_item.household_id)
 
     @pytest.mark.asyncio
     async def test_get_nonexistent_item_raises(self, service, mock_repository):
@@ -123,9 +121,7 @@ class TestPantryServiceUpdateItem:
         mock_repository.update.return_value = sample_item
 
         dto = UpdatePantryItemDTO(quantity=2.0)
-        result = await service.update_item(
-            sample_item.id, sample_item.household_id, dto
-        )
+        result = await service.update_item(sample_item.id, sample_item.household_id, dto)
 
         assert result == sample_item
         mock_repository.update.assert_called_once()
@@ -138,9 +134,7 @@ class TestPantryServiceUpdateItem:
         household_id = uuid4()
 
         with pytest.raises(PantryItemNotFoundError):
-            await service.update_item(
-                item_id, household_id, UpdatePantryItemDTO(quantity=2.0)
-            )
+            await service.update_item(item_id, household_id, UpdatePantryItemDTO(quantity=2.0))
 
 
 class TestPantryServiceDeleteItem:

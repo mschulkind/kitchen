@@ -96,9 +96,7 @@ class TestRecipeServiceGetRecipe:
         """Test getting an existing recipe."""
         mock_repository.get_by_id.return_value = sample_recipe
 
-        result = await service.get_recipe(
-            sample_recipe.id, sample_recipe.household_id
-        )
+        result = await service.get_recipe(sample_recipe.id, sample_recipe.household_id)
 
         assert result == sample_recipe
         mock_repository.get_by_id.assert_called_once()
@@ -208,9 +206,7 @@ class TestRecipeServiceWithIngredients:
         ingredient_texts = ["1 cup flour", "2 eggs"]
         household_id = uuid4()
 
-        await service.create_recipe(
-            household_id, dto, ingredient_texts=ingredient_texts
-        )
+        await service.create_recipe(household_id, dto, ingredient_texts=ingredient_texts)
 
         # Parser should be called with ingredient texts
         mock_parser.parse_many.assert_called_once_with(ingredient_texts)
@@ -268,9 +264,7 @@ class TestRecipeServiceUpdateRecipe:
         mock_repository.update.return_value = updated_recipe
 
         dto = UpdateRecipeDTO(title="Updated Title")
-        result = await service.update_recipe(
-            sample_recipe.id, sample_recipe.household_id, dto
-        )
+        result = await service.update_recipe(sample_recipe.id, sample_recipe.household_id, dto)
 
         assert result.title == "Updated Title"
 
@@ -282,24 +276,18 @@ class TestRecipeServiceUpdateRecipe:
         household_id = uuid4()
 
         with pytest.raises(RecipeNotFoundError):
-            await service.update_recipe(
-                recipe_id, household_id, UpdateRecipeDTO(title="New")
-            )
+            await service.update_recipe(recipe_id, household_id, UpdateRecipeDTO(title="New"))
 
 
 class TestRecipeServiceListRecipes:
     """Tests for list_recipes method."""
 
     @pytest.mark.asyncio
-    async def test_list_recipes_paginated(
-        self, service, mock_repository, sample_recipe
-    ):
+    async def test_list_recipes_paginated(self, service, mock_repository, sample_recipe):
         """Test listing recipes with pagination."""
         mock_repository.get_all_by_household.return_value = ([sample_recipe], 1)
 
-        recipes, total = await service.list_recipes(
-            sample_recipe.household_id, page=1, per_page=20
-        )
+        recipes, total = await service.list_recipes(sample_recipe.household_id, page=1, per_page=20)
 
         assert len(recipes) == 1
         assert total == 1
@@ -309,9 +297,7 @@ class TestRecipeServiceListRecipes:
         """Test listing recipes filtered by tags."""
         mock_repository.get_all_by_household.return_value = ([sample_recipe], 1)
 
-        await service.list_recipes(
-            sample_recipe.household_id, tags=["italian", "quick"]
-        )
+        await service.list_recipes(sample_recipe.household_id, tags=["italian", "quick"])
 
         mock_repository.get_all_by_household.assert_called_once()
         call_kwargs = mock_repository.get_all_by_household.call_args.kwargs
@@ -330,16 +316,12 @@ class TestRecipeServiceIngestUrl:
         # Note: This test would need the actual scraper mocked too
         # For now we verify the service method exists
         # Full integration test would use a test server
-        assert hasattr(service, 'ingest_from_url')
+        assert hasattr(service, "ingest_from_url")
 
     @pytest.mark.asyncio
-    async def test_ingest_rejects_duplicate_url(
-        self, service, mock_repository, sample_recipe
-    ):
+    async def test_ingest_rejects_duplicate_url(self, service, mock_repository, sample_recipe):
         """Test that ingesting a duplicate URL is rejected."""
         mock_repository.get_by_url.return_value = sample_recipe
 
         with pytest.raises(RecipeAlreadyExistsError):
-            await service.ingest_from_url(
-                sample_recipe.household_id, sample_recipe.source_url
-            )
+            await service.ingest_from_url(sample_recipe.household_id, sample_recipe.source_url)

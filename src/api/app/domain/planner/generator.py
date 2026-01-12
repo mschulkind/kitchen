@@ -154,7 +154,7 @@ class PlanGenerator:
         elapsed_ms = int((time.time() - start_time) * 1000)
 
         return PlanOptionsResponse(
-            options=options[:request.num_options],
+            options=options[: request.num_options],
             generation_time_ms=elapsed_ms,
         )
 
@@ -218,7 +218,9 @@ class PlanGenerator:
         if "vegetarian" in constraint_text:
             exclusions.extend(["meat", "chicken", "beef", "pork", "fish"])
         if "vegan" in constraint_text:
-            exclusions.extend(["meat", "chicken", "beef", "pork", "fish", "dairy", "egg", "cheese", "milk"])
+            exclusions.extend(
+                ["meat", "chicken", "beef", "pork", "fish", "dairy", "egg", "cheese", "milk"]
+            )
         if "gluten-free" in constraint_text or "gluten free" in constraint_text:
             exclusions.extend(["flour", "bread", "pasta", "wheat"])
         if "no mushroom" in constraint_text:
@@ -233,9 +235,7 @@ class PlanGenerator:
         for recipe in recipes:
             recipe_text = recipe.title.lower()
             if recipe.ingredients:
-                recipe_text += " " + " ".join(
-                    i.item_name.lower() for i in recipe.ingredients
-                )
+                recipe_text += " " + " ".join(i.item_name.lower() for i in recipe.ingredients)
 
             if not any(excl in recipe_text for excl in exclusions):
                 filtered.append(recipe)
@@ -286,9 +286,7 @@ class PlanGenerator:
                 title=r.title,
                 prep_time_minutes=r.prep_time_minutes,
                 inventory_match_percent=(
-                    scored_recipes[r.id].inventory_match_percent
-                    if r.id in scored_recipes
-                    else None
+                    scored_recipes[r.id].inventory_match_percent if r.id in scored_recipes else None
                 ),
                 tags=r.tags or [],
             )
@@ -297,9 +295,7 @@ class PlanGenerator:
 
         # Calculate aggregate stats
         total_match = sum(
-            scored_recipes[r.id].inventory_match_percent
-            for r in selected
-            if r.id in scored_recipes
+            scored_recipes[r.id].inventory_match_percent for r in selected if r.id in scored_recipes
         )
         avg_match = total_match / len(selected) if selected else 0
 
@@ -346,9 +342,7 @@ class PlanGenerator:
             sorted_recipes = sorted(
                 recipes,
                 key=lambda r: (
-                    scored_recipes[r.id].inventory_match_percent
-                    if r.id in scored_recipes
-                    else 0
+                    scored_recipes[r.id].inventory_match_percent if r.id in scored_recipes else 0
                 ),
                 reverse=True,
             )
@@ -387,9 +381,7 @@ class PlanGenerator:
         for recipe in sorted_recipes:
             # Simple deduplication by title similarity
             title_words = set(recipe.title.lower().split())
-            if not any(
-                len(title_words.intersection(set(t.split()))) > 2 for t in used_titles
-            ):
+            if not any(len(title_words.intersection(set(t.split()))) > 2 for t in used_titles):
                 selected.append(recipe)
                 used_titles.add(recipe.title.lower())
 
@@ -411,9 +403,7 @@ class PlanGenerator:
             return "Unknown"
 
         # Calculate average prep time
-        times = [
-            (r.total_time_minutes or r.prep_time_minutes or 30) for r in recipes
-        ]
+        times = [(r.total_time_minutes or r.prep_time_minutes or 30) for r in recipes]
         avg_time = sum(times) / len(times)
 
         if avg_time <= 20:

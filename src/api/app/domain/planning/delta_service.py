@@ -32,10 +32,18 @@ class DeltaService:
     """
 
     # Items commonly assumed to be in any kitchen (staples)
-    ASSUMED_STAPLES = frozenset({
-        "salt", "pepper", "black pepper", "water", "ice",
-        "cooking spray", "oil", "vegetable oil",
-    })
+    ASSUMED_STAPLES = frozenset(
+        {
+            "salt",
+            "pepper",
+            "black pepper",
+            "water",
+            "ice",
+            "cooking spray",
+            "oil",
+            "vegetable oil",
+        }
+    )
 
     # Minimum similarity score for fuzzy matching (0.0 - 1.0)
     FUZZY_MATCH_THRESHOLD = 0.7
@@ -196,12 +204,8 @@ class DeltaService:
 
         # Both have quantities - try to compare
         # Normalize units
-        recipe_unit_norm = self.converter.unit_registry.normalize_unit(
-            recipe_unit or "count"
-        )
-        pantry_unit_norm = self.converter.unit_registry.normalize_unit(
-            pantry_unit or "count"
-        )
+        recipe_unit_norm = self.converter.unit_registry.normalize_unit(recipe_unit or "count")
+        pantry_unit_norm = self.converter.unit_registry.normalize_unit(pantry_unit or "count")
 
         # Same unit - simple subtraction
         if recipe_unit_norm == pantry_unit_norm:
@@ -353,9 +357,7 @@ class DeltaService:
             if item.quantity is None:
                 continue
 
-            item_unit = self.converter.unit_registry.normalize_unit(
-                item.unit or "count"
-            )
+            item_unit = self.converter.unit_registry.normalize_unit(item.unit or "count")
 
             if item_unit == base_unit:
                 # Same unit - simple addition

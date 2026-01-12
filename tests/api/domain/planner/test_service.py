@@ -124,9 +124,7 @@ class TestPlannerServiceGeneration:
         recipes = [make_recipe(f"Recipe {i}") for i in range(5)]
         pantry = [make_pantry_item("Ingredient")]
 
-        response = await service.generate_options(
-            uuid4(), request, recipes, pantry
-        )
+        response = await service.generate_options(uuid4(), request, recipes, pantry)
 
         assert isinstance(response, PlanOptionsResponse)
         assert len(response.options) > 0
@@ -143,9 +141,7 @@ class TestPlannerServiceGeneration:
         recipes = [make_recipe(f"Recipe {i}") for i in range(10)]
         pantry = [make_pantry_item("Ingredient")]
 
-        response = await service.generate_options(
-            uuid4(), request, recipes, pantry
-        )
+        response = await service.generate_options(uuid4(), request, recipes, pantry)
 
         assert len(response.options) == 2
 
@@ -172,9 +168,7 @@ class TestPlannerServiceGeneration:
         ]
         pantry = []
 
-        response = await service.generate_options(
-            uuid4(), request, recipes, pantry
-        )
+        response = await service.generate_options(uuid4(), request, recipes, pantry)
 
         # Should return options (constraints applied internally)
         assert len(response.options) > 0

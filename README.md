@@ -26,7 +26,7 @@ The project is a Monorepo using a **Hybrid Stack**:
 
 ### Quick Start
 
-1. **Clone & Setup**
+1.  **Clone & Setup**
 
     ```bash
     git clone https://github.com/yourusername/kitchen.git
@@ -35,14 +35,37 @@ The project is a Monorepo using a **Hybrid Stack**:
     just setup
     ```
 
-2. **Start Infrastructure (Supabase + API)**
+2.  **Configure Environment (CRITICAL)**
+
+    You **must** configure the `.env` file before starting the stack, or the database will fail to boot.
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Open `.env` and set the following values (at minimum):
+
+    - `POSTGRES_PASSWORD`: Set this to a strong password (required).
+    - `JWT_SECRET` / `ANON_KEY` / `SERVICE_ROLE_KEY`: Generate these automatically:
+
+    ```bash
+    # Install dependency
+    uv pip install pyjwt
+
+    # Generate keys and append to .env
+    python3 scripts/generate_supabase_keys.py >> .env
+    ```
+
+    *Note: Open `.env` and clean up any duplicate keys if you ran this multiple times.*
+
+3.  **Start Infrastructure (Supabase + API)**
 
     ```bash
     # Starts Postgres, Realtime, Auth, and the Python API
     just up
     ```
 
-3. **Start Frontend**
+4.  **Start Frontend**
 
     ```bash
     # Runs Expo in web mode

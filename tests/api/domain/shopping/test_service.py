@@ -3,8 +3,6 @@
 Tests shopping list business logic.
 """
 
-
-
 from src.api.app.domain.planning.models import DeltaItem
 from src.api.app.domain.shopping.service import ShoppingService
 

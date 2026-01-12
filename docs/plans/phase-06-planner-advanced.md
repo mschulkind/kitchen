@@ -1,6 +1,6 @@
 # Phase 6: The "Slot Machine" (Refinement) 🎰
 
-**Status**: 🚧 Not Started  
+**Status**: 🚧 In Progress (Backend ✅, Frontend 🚧)
 **Priority**: 🟡 Nice-to-Have (Can simplify for MVP with basic "replace meal" button)  
 **Estimated Effort**: 1-2 weeks  
 **Dependencies**: Phase 5 (Planner Core)  

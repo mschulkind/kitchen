@@ -1,6 +1,6 @@
 # Phase 4: Visual Pantry (Vision) 📸
 
-**Status**: 🚧 Not Started  
+**Status**: 🚧 In Progress (Backend ✅, Frontend 🚧)
 **Priority**: 🟡 Nice-to-Have (Manual entry works for MVP)  
 **Estimated Effort**: 1-2 weeks  
 **Dependencies**: Phase 1 (Pantry CRUD to commit scanned items)  

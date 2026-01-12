@@ -20,6 +20,7 @@ class TestStoreSorter:
     def sample_items(self) -> list[ShoppingItem]:
         """Create sample shopping items."""
         from datetime import datetime
+
         return [
             ShoppingItem(
                 id=uuid4(),
@@ -78,6 +79,7 @@ class TestStoreSorter:
     def test_unknown_items_separate(self, sorter: StoreSorter):
         """Test unknown items go to separate list."""
         from datetime import datetime
+
         items = [
             ShoppingItem(
                 id=uuid4(),
@@ -125,6 +127,7 @@ class TestStoreSorterEdgeCases:
     def test_preserves_checked_status(self, sorter: StoreSorter):
         """Test checked status is preserved."""
         from datetime import datetime
+
         items = [
             ShoppingItem(
                 id=uuid4(),

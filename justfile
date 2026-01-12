@@ -30,7 +30,7 @@ clean:
 
 # Setup the entire project
 setup: install
-    cd tests/web && npx playwright install --with-deps chromium
+    cd tests/web && npx playwright install chromium
 
 # Install all dependencies
 install: install-py install-js
@@ -115,8 +115,20 @@ coverage: test-cov
 # Start the full stack (API + Supabase)
 up: docker-up
 
+# Start infrastructure ONLY (DB, Auth, Realtime) - for local API dev
+up-infra:
+    cp .env infra/docker/.env
+    docker compose -f infra/docker/docker-compose.yml up -d db kong auth realtime rest meta storage studio
+
 docker-up:
+    cp .env infra/docker/.env
+    @python3 -c "import os; from string import Template; print(Template(open('infra/docker/volumes/kong/kong.yml.template').read()).safe_substitute(os.environ))" > infra/docker/volumes/kong/kong.yml
     docker compose -f infra/docker/docker-compose.yml up -d
+
+# Start both Frontend and Backend locally using Hivemind
+dev-all: up-infra
+    @if ! command -v hivemind > /dev/null; then echo "Hivemind not found. Install with: go install github.com/DarthSim/hivemind/v2@latest (or brew/apt/pacman)"; exit 1; fi
+    hivemind Procfile.dev
 
 # Stop all containers
 down: docker-down

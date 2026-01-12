@@ -41,32 +41,79 @@ class VoiceParser:
     """
 
     # Command trigger words
-    ADD_TRIGGERS = frozenset({
-        "add", "put", "get", "buy", "need", "pick up", "grab",
-    })
+    ADD_TRIGGERS = frozenset(
+        {
+            "add",
+            "put",
+            "get",
+            "buy",
+            "need",
+            "pick up",
+            "grab",
+        }
+    )
 
-    REMOVE_TRIGGERS = frozenset({
-        "remove", "delete", "take off", "cross off", "cancel",
-    })
+    REMOVE_TRIGGERS = frozenset(
+        {
+            "remove",
+            "delete",
+            "take off",
+            "cross off",
+            "cancel",
+        }
+    )
 
-    CHECK_TRIGGERS = frozenset({
-        "check", "mark", "got", "checked", "done", "complete", "crossed",
-    })
+    CHECK_TRIGGERS = frozenset(
+        {
+            "check",
+            "mark",
+            "got",
+            "checked",
+            "done",
+            "complete",
+            "crossed",
+        }
+    )
 
-    ASK_TRIGGERS = frozenset({
-        "do we have", "is there", "how much", "do i have",
-        "check if", "have any",
-    })
+    ASK_TRIGGERS = frozenset(
+        {
+            "do we have",
+            "is there",
+            "how much",
+            "do i have",
+            "check if",
+            "have any",
+        }
+    )
 
-    PANTRY_TRIGGERS = frozenset({
-        "pantry", "inventory", "fridge", "freezer",
-    })
+    PANTRY_TRIGGERS = frozenset(
+        {
+            "pantry",
+            "inventory",
+            "fridge",
+            "freezer",
+        }
+    )
 
     # Words to strip from item names
-    FILLER_WORDS = frozenset({
-        "a", "an", "the", "some", "of", "to", "my", "our",
-        "list", "shopping", "please", "thanks", "okay", "hey",
-    })
+    FILLER_WORDS = frozenset(
+        {
+            "a",
+            "an",
+            "the",
+            "some",
+            "of",
+            "to",
+            "my",
+            "our",
+            "list",
+            "shopping",
+            "please",
+            "thanks",
+            "okay",
+            "hey",
+        }
+    )
 
     def parse(self, text: str) -> ParsedVoiceCommand:
         """Parse a voice command.
@@ -236,7 +283,7 @@ class VoiceParser:
         qty_match = QUANTITY_PATTERN.match(text)
         if qty_match:
             quantity = float(qty_match.group(1))
-            text = text[qty_match.end():].strip()
+            text = text[qty_match.end() :].strip()
 
         # Try to extract unit
         unit_match = UNIT_PATTERN.search(text)

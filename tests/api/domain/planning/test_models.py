@@ -160,8 +160,18 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=2,
             have_enough=[
-                DeltaItem(item_name="Salt", recipe_quantity=1, recipe_unit="tsp", status=DeltaStatus.HAS_ENOUGH),
-                DeltaItem(item_name="Sugar", recipe_quantity=2, recipe_unit="cup", status=DeltaStatus.HAS_ENOUGH),
+                DeltaItem(
+                    item_name="Salt",
+                    recipe_quantity=1,
+                    recipe_unit="tsp",
+                    status=DeltaStatus.HAS_ENOUGH,
+                ),
+                DeltaItem(
+                    item_name="Sugar",
+                    recipe_quantity=2,
+                    recipe_unit="cup",
+                    status=DeltaStatus.HAS_ENOUGH,
+                ),
             ],
         )
         assert result.needs_shopping is False
@@ -171,11 +181,26 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=3,
             partial=[
-                DeltaItem(item_name="Butter", recipe_quantity=1, recipe_unit="cup", status=DeltaStatus.PARTIAL),
+                DeltaItem(
+                    item_name="Butter",
+                    recipe_quantity=1,
+                    recipe_unit="cup",
+                    status=DeltaStatus.PARTIAL,
+                ),
             ],
             missing=[
-                DeltaItem(item_name="Milk", recipe_quantity=2, recipe_unit="cup", status=DeltaStatus.MISSING),
-                DeltaItem(item_name="Cream", recipe_quantity=1, recipe_unit="cup", status=DeltaStatus.MISSING),
+                DeltaItem(
+                    item_name="Milk",
+                    recipe_quantity=2,
+                    recipe_unit="cup",
+                    status=DeltaStatus.MISSING,
+                ),
+                DeltaItem(
+                    item_name="Cream",
+                    recipe_quantity=1,
+                    recipe_unit="cup",
+                    status=DeltaStatus.MISSING,
+                ),
             ],
         )
         shopping = result.shopping_list_items
@@ -190,10 +215,20 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=2,
             have_enough=[
-                DeltaItem(item_name="Rice", recipe_quantity=1, recipe_unit="cup", status=DeltaStatus.HAS_ENOUGH),
+                DeltaItem(
+                    item_name="Rice",
+                    recipe_quantity=1,
+                    recipe_unit="cup",
+                    status=DeltaStatus.HAS_ENOUGH,
+                ),
             ],
             assumptions=[
-                DeltaItem(item_name="Salt", recipe_quantity=1, recipe_unit="tsp", status=DeltaStatus.ASSUMED),
+                DeltaItem(
+                    item_name="Salt",
+                    recipe_quantity=1,
+                    recipe_unit="tsp",
+                    status=DeltaStatus.ASSUMED,
+                ),
             ],
         )
         assert result.can_cook_now is True
@@ -203,7 +238,12 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=1,
             unresolved=[
-                DeltaItem(item_name="Spinach", recipe_quantity=1, recipe_unit="cup", status=DeltaStatus.UNIT_MISMATCH),
+                DeltaItem(
+                    item_name="Spinach",
+                    recipe_quantity=1,
+                    recipe_unit="cup",
+                    status=DeltaStatus.UNIT_MISMATCH,
+                ),
             ],
         )
         assert result.can_cook_now is False
@@ -213,7 +253,12 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=1,
             missing=[
-                DeltaItem(item_name="Cumin", recipe_quantity=1, recipe_unit="tsp", status=DeltaStatus.MISSING),
+                DeltaItem(
+                    item_name="Cumin",
+                    recipe_quantity=1,
+                    recipe_unit="tsp",
+                    status=DeltaStatus.MISSING,
+                ),
             ],
         )
         assert result.can_cook_now is False
@@ -223,22 +268,28 @@ class TestComparisonResult:
         result = ComparisonResult(
             total_ingredients=5,
             have_enough=[
-                DeltaItem(item_name="A", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.HAS_ENOUGH),
-                DeltaItem(item_name="B", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.HAS_ENOUGH),
+                DeltaItem(
+                    item_name="A", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.HAS_ENOUGH
+                ),
+                DeltaItem(
+                    item_name="B", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.HAS_ENOUGH
+                ),
             ],
             missing=[
-                DeltaItem(item_name="C", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.MISSING),
+                DeltaItem(
+                    item_name="C", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.MISSING
+                ),
             ],
             assumptions=[
-                DeltaItem(item_name="D", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.ASSUMED),
-                DeltaItem(item_name="E", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.ASSUMED),
+                DeltaItem(
+                    item_name="D", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.ASSUMED
+                ),
+                DeltaItem(
+                    item_name="E", recipe_quantity=1, recipe_unit="x", status=DeltaStatus.ASSUMED
+                ),
             ],
         )
         assert result.total_ingredients == 5
         # Total of all lists
-        total_in_lists = (
-            len(result.have_enough)
-            + len(result.missing)
-            + len(result.assumptions)
-        )
+        total_in_lists = len(result.have_enough) + len(result.missing) + len(result.assumptions)
         assert total_in_lists == 5

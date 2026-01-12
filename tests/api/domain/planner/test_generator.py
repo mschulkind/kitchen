@@ -87,9 +87,7 @@ class TestPlanGenerator:
             num_options=3,
         )
 
-        recipes = [
-            make_recipe(f"Recipe {i}", ["ingredient"]) for i in range(10)
-        ]
+        recipes = [make_recipe(f"Recipe {i}", ["ingredient"]) for i in range(10)]
         pantry = [make_pantry_item("Ingredient")]
 
         response = generator.generate_options(request, recipes, pantry)

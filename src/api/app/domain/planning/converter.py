@@ -159,9 +159,7 @@ class UnitConverter:
 
         # Try density-based conversion (volume <-> weight)
         if ingredient:
-            density_result = self._convert_via_density(
-                value, from_unit, to_unit, ingredient
-            )
+            density_result = self._convert_via_density(value, from_unit, to_unit, ingredient)
             if density_result.success:
                 return density_result
 
@@ -296,8 +294,15 @@ class UnitConverter:
     def _is_volume_unit(self, unit: str) -> bool:
         """Check if a unit is a volume unit."""
         volume_units = {
-            "cup", "tablespoon", "teaspoon", "liter", "milliliter",
-            "fluid_ounce", "pint", "quart", "gallon",
+            "cup",
+            "tablespoon",
+            "teaspoon",
+            "liter",
+            "milliliter",
+            "fluid_ounce",
+            "pint",
+            "quart",
+            "gallon",
         }
         return unit in volume_units
 

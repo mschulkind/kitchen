@@ -77,12 +77,14 @@ class MockStoreScraper(StoreScraper):
 
         for product, aisle in self.MOCK_PRODUCTS.items():
             if query_lower in product:
-                results.append({
-                    "name": product.title(),
-                    "aisle": aisle,
-                    "price": 3.99,  # Mock price
-                    "in_stock": True,
-                })
+                results.append(
+                    {
+                        "name": product.title(),
+                        "aisle": aisle,
+                        "price": 3.99,  # Mock price
+                        "in_stock": True,
+                    }
+                )
 
         return results
 

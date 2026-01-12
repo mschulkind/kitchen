@@ -120,9 +120,7 @@ class TestWebhookSecurity:
 
         Phase 9 test: Security - Request without key returns 401.
         """
-        with patch(
-            "src.api.app.routes.hooks.get_settings"
-        ) as mock_settings:
+        with patch("src.api.app.routes.hooks.get_settings") as mock_settings:
             mock_settings.return_value.webhook_secret = "test-secret-key"
 
             response = secured_client.post(
@@ -138,9 +136,7 @@ class TestWebhookSecurity:
 
         Phase 9 test: Security - Invalid key returns 401.
         """
-        with patch(
-            "src.api.app.routes.hooks.get_settings"
-        ) as mock_settings:
+        with patch("src.api.app.routes.hooks.get_settings") as mock_settings:
             mock_settings.return_value.webhook_secret = "correct-key"
 
             response = secured_client.post(
@@ -157,9 +153,7 @@ class TestWebhookSecurity:
 
         Phase 9 test: Security - Valid key allows access.
         """
-        with patch(
-            "src.api.app.routes.hooks.get_settings"
-        ) as mock_settings:
+        with patch("src.api.app.routes.hooks.get_settings") as mock_settings:
             mock_settings.return_value.webhook_secret = "valid-secret"
 
             response = secured_client.post(
@@ -175,9 +169,7 @@ class TestWebhookSecurity:
 
         In development, if no webhook_secret is set, all requests pass.
         """
-        with patch(
-            "src.api.app.routes.hooks.get_settings"
-        ) as mock_settings:
+        with patch("src.api.app.routes.hooks.get_settings") as mock_settings:
             mock_settings.return_value.webhook_secret = ""  # No key configured
 
             response = secured_client.post(

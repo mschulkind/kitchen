@@ -204,11 +204,7 @@ class StoreSorter:
         unknown_items: list[SortedShoppingItem] = []
 
         # Get aisle order
-        aisle_order = (
-            self.aisle_config.aisle_order
-            if self.aisle_config
-            else DEFAULT_AISLE_ORDER
-        )
+        aisle_order = self.aisle_config.aisle_order if self.aisle_config else DEFAULT_AISLE_ORDER
         aisle_positions = {aisle: i for i, aisle in enumerate(aisle_order)}
 
         for item in items:
@@ -217,6 +213,7 @@ class StoreSorter:
 
             # Check if item is checked based on status
             from src.api.app.domain.shopping.models import ShoppingItemStatus
+
             is_checked = item.status == ShoppingItemStatus.CHECKED
 
             sorted_item = SortedShoppingItem(

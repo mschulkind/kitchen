@@ -40,10 +40,19 @@ class UnitRegistry:
     """
 
     # Vague units that can't be precisely measured
-    VAGUE_UNITS = frozenset({
-        "pinch", "dash", "splash", "handful", "some",
-        "to taste", "as needed", "n/a", "optional",
-    })
+    VAGUE_UNITS = frozenset(
+        {
+            "pinch",
+            "dash",
+            "splash",
+            "handful",
+            "some",
+            "to taste",
+            "as needed",
+            "n/a",
+            "optional",
+        }
+    )
 
     # Unit aliases for normalization
     UNIT_ALIASES = {
@@ -150,10 +159,21 @@ class UnitRegistry:
 
         # Unicode fractions
         unicode_fractions = {
-            "½": 0.5, "⅓": 1/3, "⅔": 2/3, "¼": 0.25,
-            "¾": 0.75, "⅕": 0.2, "⅖": 0.4, "⅗": 0.6,
-            "⅘": 0.8, "⅙": 1/6, "⅚": 5/6, "⅛": 0.125,
-            "⅜": 0.375, "⅝": 0.625, "⅞": 0.875,
+            "½": 0.5,
+            "⅓": 1 / 3,
+            "⅔": 2 / 3,
+            "¼": 0.25,
+            "¾": 0.75,
+            "⅕": 0.2,
+            "⅖": 0.4,
+            "⅗": 0.6,
+            "⅘": 0.8,
+            "⅙": 1 / 6,
+            "⅚": 5 / 6,
+            "⅛": 0.125,
+            "⅜": 0.375,
+            "⅝": 0.625,
+            "⅞": 0.875,
         }
 
         for char, value in unicode_fractions.items():
@@ -190,9 +210,24 @@ class UnitRegistry:
             if singular in self.UNIT_ALIASES:
                 return self.UNIT_ALIASES[singular]
             # Common units that should be singular
-            common_units = {"cup", "tablespoon", "teaspoon", "ounce", "pound",
-                           "gram", "kilogram", "liter", "milliliter", "clove",
-                           "slice", "piece", "can", "package", "bunch", "stalk"}
+            common_units = {
+                "cup",
+                "tablespoon",
+                "teaspoon",
+                "ounce",
+                "pound",
+                "gram",
+                "kilogram",
+                "liter",
+                "milliliter",
+                "clove",
+                "slice",
+                "piece",
+                "can",
+                "package",
+                "bunch",
+                "stalk",
+            }
             if singular in common_units:
                 return singular
 

@@ -101,7 +101,9 @@ class TestPromptBuilder:
         assert len(context.ingredients) == 3
         assert len(context.instructions) == 5
 
-    def test_identifies_available_ingredients(self, builder: PromptBuilder, sample_recipe, sample_pantry_items):
+    def test_identifies_available_ingredients(
+        self, builder: PromptBuilder, sample_recipe, sample_pantry_items
+    ):
         """Test context shows available ingredients."""
         context = builder.build_context(sample_recipe, sample_pantry_items)
 
@@ -135,7 +137,9 @@ class TestCookingService:
         return CookingService()
 
     @pytest.mark.asyncio
-    async def test_get_cooking_context(self, service: CookingService, sample_recipe, sample_pantry_items):
+    async def test_get_cooking_context(
+        self, service: CookingService, sample_recipe, sample_pantry_items
+    ):
         """Test getting cooking context."""
         context = await service.get_cooking_context(sample_recipe, sample_pantry_items)
 

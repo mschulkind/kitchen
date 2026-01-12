@@ -179,11 +179,7 @@ class ShoppingRepository:
             "updated_at": now.isoformat(),
         }
 
-        result = await (
-            self.supabase.table(self.LISTS_TABLE)
-            .insert(data)
-            .execute()
-        )
+        result = await self.supabase.table(self.LISTS_TABLE).insert(data).execute()
 
         return ShoppingList.model_validate(result.data[0])
 
@@ -304,11 +300,7 @@ class ShoppingRepository:
             "updated_at": now.isoformat(),
         }
 
-        result = await (
-            self.supabase.table(self.ITEMS_TABLE)
-            .insert(data)
-            .execute()
-        )
+        result = await self.supabase.table(self.ITEMS_TABLE).insert(data).execute()
 
         return ShoppingItem.model_validate(result.data[0])
 
@@ -342,11 +334,7 @@ class ShoppingRepository:
             for item in items
         ]
 
-        result = await (
-            self.supabase.table(self.ITEMS_TABLE)
-            .insert(data)
-            .execute()
-        )
+        result = await self.supabase.table(self.ITEMS_TABLE).insert(data).execute()
 
         return [ShoppingItem.model_validate(row) for row in result.data]
 

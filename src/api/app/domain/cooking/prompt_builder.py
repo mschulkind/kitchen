@@ -103,17 +103,12 @@ class PromptBuilder:
             pantry_items,
         )
 
-        available = [
-            f"✓ {item.item_name}" for item in result.have_enough
-        ]
+        available = [f"✓ {item.item_name}" for item in result.have_enough]
         missing = [
             f"✗ {item.item_name} ({item.delta_quantity} {item.delta_unit})"
             for item in result.missing
         ]
-        partial = [
-            f"△ {item.item_name} (need more)"
-            for item in result.partial
-        ]
+        partial = [f"△ {item.item_name} (need more)" for item in result.partial]
 
         # Generate substitution hints
         substitutions = self._generate_substitution_hints(
@@ -149,6 +144,7 @@ class PromptBuilder:
         """
         if format == "json":
             import json
+
             content = json.dumps(context.model_dump(), indent=2)
         elif format == "text":
             content = self._format_text(context)
@@ -165,7 +161,7 @@ class PromptBuilder:
         """Format context as Markdown."""
         ingredients_str = "\n".join(f"- {ing}" for ing in context.ingredients)
         instructions_str = "\n".join(
-            f"{i+1}. {step}" for i, step in enumerate(context.instructions)
+            f"{i + 1}. {step}" for i, step in enumerate(context.instructions)
         )
         available_str = "\n".join(context.available_ingredients) or "- (none)"
         missing_str = "\n".join(context.missing_ingredients) or "- (none)"
@@ -205,7 +201,7 @@ class PromptBuilder:
         lines.append("")
         lines.append("INSTRUCTIONS:")
         for i, step in enumerate(context.instructions):
-            lines.append(f"  {i+1}. {step}")
+            lines.append(f"  {i + 1}. {step}")
 
         lines.append("")
         lines.append("WHAT I HAVE:")

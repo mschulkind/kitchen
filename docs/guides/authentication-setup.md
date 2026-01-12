@@ -11,12 +11,14 @@ We use **Supabase Auth** exclusively. User sign-in is handled via OAuth 2.0 with
 You need to create a project in Google Cloud to generate the credentials.
 
 ### Step 1: Create a Project
+
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
 2. Click the project dropdown (top left) and select **"New Project"**.
 3. Name it `Kitchen-App` (or similar).
 4. Click **Create**.
 
 ### Step 2: Configure OAuth Consent Screen
+
 1. In the left sidebar, go to **APIs & Services** > **OAuth consent screen**.
 2. Select **External** (unless you have a Google Workspace organization and want to restrict it internal-only).
 3. Click **Create**.
@@ -29,6 +31,7 @@ You need to create a project in Google Cloud to generate the credentials.
 8. **Test Users**: Add your own email address so you can test logging in during development.
 
 ### Step 3: Create Credentials
+
 1. Go to **APIs & Services** > **Credentials**.
 2. Click **+ CREATE CREDENTIALS** > **OAuth client ID**.
 3. **Application type**: Select **Web application**.
@@ -39,10 +42,10 @@ You need to create a project in Google Cloud to generate the credentials.
    - *Supabase Local*: `http://127.0.0.1:54321` (required for local Auth helpers)
 6. **Authorized redirect URIs**:
    *This is where Google sends the user back after login. It must match your Supabase Auth callback URL.*
-   
+
    **For Local Development:**
    - `http://127.0.0.1:54321/auth/v1/callback`
-   
+
    **For Production (Synology):**
    - If using the standard setup: `http://YOUR_NAS_IP:8000/auth/v1/callback`
    - Or if using a reverse proxy: `https://my-kitchen-app.synology.me/auth/v1/callback`
@@ -67,6 +70,7 @@ Alternatively, create a `.env.local` file for your Supabase folder if your setup
 For the self-hosted Docker stack on Synology, you pass these credentials as environment variables to the Auth service (GoTrue).
 
 ### Update `.env`
+
 Add the following to your production `.env` file (on the NAS):
 
 ```ini

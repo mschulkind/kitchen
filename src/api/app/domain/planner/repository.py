@@ -187,11 +187,7 @@ class PlannerRepository:
             "updated_at": now.isoformat(),
         }
 
-        result = await (
-            self.supabase.table(self.PLANS_TABLE)
-            .insert(data)
-            .execute()
-        )
+        result = await self.supabase.table(self.PLANS_TABLE).insert(data).execute()
 
         plan = MealPlan.model_validate(result.data[0])
         plan.slots = []
@@ -247,12 +243,7 @@ class PlannerRepository:
             True if deleted, False if not found.
         """
         # Delete slots first
-        await (
-            self.supabase.table(self.SLOTS_TABLE)
-            .delete()
-            .eq("plan_id", str(plan_id))
-            .execute()
-        )
+        await self.supabase.table(self.SLOTS_TABLE).delete().eq("plan_id", str(plan_id)).execute()
 
         result = await (
             self.supabase.table(self.PLANS_TABLE)
@@ -308,24 +299,22 @@ class PlannerRepository:
 
         while current <= end_date:
             for meal_type in meal_types:
-                slots_data.append({
-                    "id": str(uuid4()),
-                    "plan_id": str(plan_id),
-                    "date": current.isoformat(),
-                    "meal_type": meal_type.value,
-                    "is_locked": False,
-                    "servings": 2,
-                })
+                slots_data.append(
+                    {
+                        "id": str(uuid4()),
+                        "plan_id": str(plan_id),
+                        "date": current.isoformat(),
+                        "meal_type": meal_type.value,
+                        "is_locked": False,
+                        "servings": 2,
+                    }
+                )
             current += timedelta(days=1)
 
         if not slots_data:
             return []
 
-        result = await (
-            self.supabase.table(self.SLOTS_TABLE)
-            .insert(slots_data)
-            .execute()
-        )
+        result = await self.supabase.table(self.SLOTS_TABLE).insert(slots_data).execute()
 
         return [MealSlot.model_validate(row) for row in result.data]
 

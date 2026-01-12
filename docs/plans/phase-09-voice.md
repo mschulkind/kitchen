@@ -1,7 +1,7 @@
-# Phase 9: Voice Assistant Integration 🎙️
+# Phase 9: Voice Control 🗣️
 
-**Status**: 🚧 Not Started  
-**Priority**: 🟢 Defer (Phone typing is fine for MVP)  
+**Status**: 🚧 In Progress (Backend ✅, Frontend 🚧)
+**Priority**: 🟡 Nice-to-Have (Great for messy hands)  
 **Estimated Effort**: 1 week  
 **Dependencies**: Phase 7 (Shopping list API to add items)  
 **Blocks**: None (convenience feature)

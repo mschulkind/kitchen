@@ -49,7 +49,7 @@ class TestFractionParsing:
         """Test: '⅓' -> ~0.333"""
         result = registry.parse_fraction("⅓")
         assert result is not None
-        assert abs(result - (1/3)) < 0.001
+        assert abs(result - (1 / 3)) < 0.001
 
     def test_parse_mixed_unicode(self, registry: UnitRegistry):
         """Test: '1½' -> 1.5"""

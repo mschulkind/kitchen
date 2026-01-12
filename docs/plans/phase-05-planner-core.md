@@ -1,6 +1,6 @@
 # Phase 5: The "Adventure" Planner (Core) 🎲
 
-**Status**: 🚧 Not Started  
+**Status**: 🚧 In Progress (Backend ✅, Frontend 🚧)
 **Priority**: 🔴 Essential (This is the main user workflow!)  
 **Estimated Effort**: 2-3 weeks  
 **Dependencies**: Phase 2 (Recipes), Phase 3 (Delta/Scoring logic)  

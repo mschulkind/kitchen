@@ -111,9 +111,7 @@ class PantryRepository:
             "updated_at": now.isoformat(),
         }
 
-        result = await (
-            self.supabase.table(self.TABLE_NAME).insert(data).execute()
-        )
+        result = await self.supabase.table(self.TABLE_NAME).insert(data).execute()
 
         return PantryItem.model_validate(result.data[0])
 

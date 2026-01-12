@@ -62,9 +62,7 @@ class TestListPantryItems:
             per_page=50,
         )
 
-        with patch(
-            "src.api.app.routes.pantry.get_pantry_service"
-        ) as mock_get_service:
+        with patch("src.api.app.routes.pantry.get_pantry_service") as mock_get_service:
             mock_service = AsyncMock()
             mock_service.list_items.return_value = item_list
             mock_get_service.return_value = mock_service

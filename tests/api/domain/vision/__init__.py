@@ -85,9 +85,7 @@ class TestVisionService:
     @pytest.mark.asyncio
     async def test_analyze_image_success(self, service: VisionService, household_id):
         """Test successful image analysis."""
-        request = AnalyzeImageRequest(
-            image_url="https://example.com/fridge.jpg"
-        )
+        request = AnalyzeImageRequest(image_url="https://example.com/fridge.jpg")
 
         result = await service.analyze_image(household_id, request)
 

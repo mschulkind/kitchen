@@ -84,10 +84,21 @@ class IngredientParser:
     )
 
     # Words to strip from item names
-    STRIP_WORDS = frozenset({
-        "of", "the", "a", "an", "some", "about", "approximately",
-        "or", "to", "for", "optional",
-    })
+    STRIP_WORDS = frozenset(
+        {
+            "of",
+            "the",
+            "a",
+            "an",
+            "some",
+            "about",
+            "approximately",
+            "or",
+            "to",
+            "for",
+            "optional",
+        }
+    )
 
     def __init__(
         self,
@@ -130,7 +141,7 @@ class IngredientParser:
         if quantity_match:
             quantity_str = quantity_match.group(1)
             quantity = self.unit_registry.parse_fraction(quantity_str)
-            cleaned = cleaned[quantity_match.end():].strip()
+            cleaned = cleaned[quantity_match.end() :].strip()
 
         # Step 4: Extract size descriptor (large, medium, small) before unit check
         size_descriptor = None
@@ -138,14 +149,14 @@ class IngredientParser:
         if size_match:
             size_descriptor = size_match.group(1)
             notes_parts.append(size_descriptor)
-            cleaned = cleaned[size_match.end():].strip()
+            cleaned = cleaned[size_match.end() :].strip()
 
         # Step 5: Extract unit
         unit = None
         unit_match = self.UNIT_PATTERN.match(cleaned)
         if unit_match:
             unit = self.unit_registry.normalize_unit(unit_match.group(1))
-            cleaned = cleaned[unit_match.end():].strip()
+            cleaned = cleaned[unit_match.end() :].strip()
 
         # Step 6: Handle "of" after unit (e.g., "cup of flour")
         if cleaned.lower().startswith("of "):
@@ -267,13 +278,43 @@ class IngredientParser:
     def _is_countable_item(self, item: str) -> bool:
         """Check if an item is typically counted (not measured)."""
         countable = {
-            "egg", "eggs", "onion", "onions", "clove", "cloves",
-            "potato", "potatoes", "tomato", "tomatoes", "carrot", "carrots",
-            "apple", "apples", "banana", "bananas", "lemon", "lemons",
-            "lime", "limes", "orange", "oranges", "avocado", "avocados",
-            "pepper", "peppers", "garlic", "shallot", "shallots",
-            "chicken breast", "chicken breasts", "steak", "steaks",
-            "slice", "slices", "piece", "pieces",
+            "egg",
+            "eggs",
+            "onion",
+            "onions",
+            "clove",
+            "cloves",
+            "potato",
+            "potatoes",
+            "tomato",
+            "tomatoes",
+            "carrot",
+            "carrots",
+            "apple",
+            "apples",
+            "banana",
+            "bananas",
+            "lemon",
+            "lemons",
+            "lime",
+            "limes",
+            "orange",
+            "oranges",
+            "avocado",
+            "avocados",
+            "pepper",
+            "peppers",
+            "garlic",
+            "shallot",
+            "shallots",
+            "chicken breast",
+            "chicken breasts",
+            "steak",
+            "steaks",
+            "slice",
+            "slices",
+            "piece",
+            "pieces",
         }
         return item.lower() in countable
 

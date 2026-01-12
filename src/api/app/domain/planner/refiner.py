@@ -139,17 +139,11 @@ class RefinerService:
             if word in directive_lower:
                 # Extract what to exclude
                 exclude_term = directive_lower.split(word)[-1].strip().split()[0]
-                result = [
-                    r for r in result
-                    if not self._recipe_contains(r, exclude_term)
-                ]
+                result = [r for r in result if not self._recipe_contains(r, exclude_term)]
 
         # Handle time preferences
         if any(w in directive_lower for w in ["quick", "fast", "easy", "simple"]):
-            result = [
-                r for r in result
-                if r.prep_time_minutes is None or r.prep_time_minutes <= 30
-            ]
+            result = [r for r in result if r.prep_time_minutes is None or r.prep_time_minutes <= 30]
 
         # Handle tag-based preferences
         preference_tags = {
@@ -217,6 +211,7 @@ class RefinerService:
         # In production, this would update the database
         # For now, return a mock updated slot
         from datetime import date
+
         return MealSlot(
             id=slot_id,
             plan_id=uuid4(),

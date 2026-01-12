@@ -86,6 +86,7 @@ class MockLLMVisionAdapter:
     async def _simulate_delay(self) -> None:
         """Simulate API delay."""
         import asyncio
+
         await asyncio.sleep(0.1)  # 100ms simulated delay
 
 
@@ -250,7 +251,8 @@ class OpenAIVisionAdapter:
         try:
             # Try to find JSON array in response
             import re
-            json_match = re.search(r'\[.*\]', content, re.DOTALL)
+
+            json_match = re.search(r"\[.*\]", content, re.DOTALL)
             if json_match:
                 items_data = json.loads(json_match.group())
                 return [DetectedItem(**item) for item in items_data]
@@ -287,16 +289,19 @@ class GeminiVisionAdapter:
         model = genai.GenerativeModel("gemini-1.5-pro")
 
         # Gemini can accept URLs directly
-        response = await model.generate_content_async([
-            prompt,
-            {"type": "image", "source": {"url": image_url}},
-        ])
+        response = await model.generate_content_async(
+            [
+                prompt,
+                {"type": "image", "source": {"url": image_url}},
+            ]
+        )
 
         content = response.text or "[]"
 
         try:
             import re
-            json_match = re.search(r'\[.*\]', content, re.DOTALL)
+
+            json_match = re.search(r"\[.*\]", content, re.DOTALL)
             if json_match:
                 items_data = json.loads(json_match.group())
                 return [DetectedItem(**item) for item in items_data]

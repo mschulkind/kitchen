@@ -211,9 +211,7 @@ class RecipeRepository:
             "updated_at": now.isoformat(),
         }
 
-        result = await (
-            self.supabase.table(self.RECIPES_TABLE).insert(data).execute()
-        )
+        result = await self.supabase.table(self.RECIPES_TABLE).insert(data).execute()
 
         return Recipe.model_validate(result.data[0])
 
@@ -253,8 +251,8 @@ class RecipeRepository:
         # Recalculate total time if prep or cook time changed
         if "prep_time_minutes" in update_data or "cook_time_minutes" in update_data:
             update_data["total_time_minutes"] = (
-                (update_data.get("prep_time_minutes") or 0) +
-                (update_data.get("cook_time_minutes") or 0)
+                (update_data.get("prep_time_minutes") or 0)
+                + (update_data.get("cook_time_minutes") or 0)
             ) or None
 
         result = await (
@@ -335,23 +333,23 @@ class RecipeRepository:
         data = []
 
         for i, ing in enumerate(ingredients):
-            data.append({
-                "id": str(uuid4()),
-                "recipe_id": str(recipe_id),
-                "raw_text": ing.raw_text,
-                "quantity": ing.quantity,
-                "unit": ing.unit,
-                "item_name": ing.item_name,
-                "notes": ing.notes,
-                "section": section,
-                "sort_order": i,
-                "confidence": ing.confidence,
-                "created_at": now.isoformat(),
-            })
+            data.append(
+                {
+                    "id": str(uuid4()),
+                    "recipe_id": str(recipe_id),
+                    "raw_text": ing.raw_text,
+                    "quantity": ing.quantity,
+                    "unit": ing.unit,
+                    "item_name": ing.item_name,
+                    "notes": ing.notes,
+                    "section": section,
+                    "sort_order": i,
+                    "confidence": ing.confidence,
+                    "created_at": now.isoformat(),
+                }
+            )
 
-        result = await (
-            self.supabase.table(self.INGREDIENTS_TABLE).insert(data).execute()
-        )
+        result = await self.supabase.table(self.INGREDIENTS_TABLE).insert(data).execute()
 
         return [RecipeIngredient.model_validate(row) for row in result.data]
 

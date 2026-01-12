@@ -36,5 +36,3 @@ class TestHealthEndpoint:
         data = response.json()
         assert data["status"] == "ready"
         assert "checks" in data
-
-

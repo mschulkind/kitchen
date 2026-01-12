@@ -123,11 +123,13 @@ class CookingService:
             else:
                 prep_task = f"Prepare {prep_task}"
 
-            items.append(MiseEnPlaceItem(
-                task=prep_task,
-                ingredient=ing.item_name,
-                order=order,
-            ))
+            items.append(
+                MiseEnPlaceItem(
+                    task=prep_task,
+                    ingredient=ing.item_name,
+                    order=order,
+                )
+            )
 
         return items
 
@@ -157,18 +159,21 @@ class CookingService:
             # Try to extract duration
             duration = None
             import re
+
             time_match = re.search(r"(\d+)\s*(minute|min|hour|hr)", instruction.lower())
             if time_match:
                 amount = int(time_match.group(1))
                 unit = time_match.group(2)
                 duration = amount * 60 if "hour" in unit or "hr" in unit else amount
 
-            steps.append(RecipeStep(
-                number=i + 1,
-                instruction=instruction,
-                duration_minutes=duration,
-                timer_required=timer_required,
-            ))
+            steps.append(
+                RecipeStep(
+                    number=i + 1,
+                    instruction=instruction,
+                    duration_minutes=duration,
+                    timer_required=timer_required,
+                )
+            )
 
         return steps
 

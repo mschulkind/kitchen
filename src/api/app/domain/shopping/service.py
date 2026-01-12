@@ -517,9 +517,7 @@ class ShoppingService:
                     existing.total_quantity += item.delta_quantity
                 elif item.delta_quantity is not None:
                     # Different units - just note it
-                    existing.sources.append(
-                        f"+{item.delta_quantity} {item.delta_unit or 'units'}"
-                    )
+                    existing.sources.append(f"+{item.delta_quantity} {item.delta_unit or 'units'}")
 
             # Track source if available
             if item.notes:

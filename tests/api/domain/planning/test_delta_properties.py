@@ -72,18 +72,19 @@ def assert_has_enough_or_negligible_delta(result, tolerance: float = FLOAT_TOLER
     if len(result.partial) == 1:
         delta = result.partial[0].delta_quantity
         assert delta is not None
-        assert delta == approx(0, abs=tolerance), (
-            f"Delta {delta} exceeds tolerance {tolerance}"
-        )
+        assert delta == approx(0, abs=tolerance), f"Delta {delta} exceeds tolerance {tolerance}"
         return
 
-    pytest.fail(f"Unexpected result: have_enough={len(result.have_enough)}, "
-                f"partial={len(result.partial)}, missing={len(result.missing)}")
+    pytest.fail(
+        f"Unexpected result: have_enough={len(result.have_enough)}, "
+        f"partial={len(result.partial)}, missing={len(result.missing)}"
+    )
 
 
 # =============================================================================
 # Hypothesis Strategies
 # =============================================================================
+
 
 @st.composite
 def positive_quantity(draw) -> float:
@@ -94,15 +95,28 @@ def positive_quantity(draw) -> float:
 @st.composite
 def unit_strategy(draw) -> str:
     """Generate valid units."""
-    return draw(st.sampled_from([
-        "count", "gram", "kilogram", "milliliter", "liter",
-        "cup", "tablespoon", "teaspoon", "ounce", "pound"
-    ]))
+    return draw(
+        st.sampled_from(
+            [
+                "count",
+                "gram",
+                "kilogram",
+                "milliliter",
+                "liter",
+                "cup",
+                "tablespoon",
+                "teaspoon",
+                "ounce",
+                "pound",
+            ]
+        )
+    )
 
 
 # =============================================================================
 # Property-Based Tests
 # =============================================================================
+
 
 class TestDeltaPropertyBased:
     """Property-based tests for delta calculations."""
@@ -164,9 +178,7 @@ class TestDeltaPropertyBased:
         recipe = [make_ingredient("special_ingredient", req_qty, "count")]
         pantry = []
 
-        result = service.calculate_missing(
-            recipe, pantry, include_staples_in_assumptions=False
-        )
+        result = service.calculate_missing(recipe, pantry, include_staples_in_assumptions=False)
 
         assert len(result.missing) == 1
         assert result.needs_shopping is True
@@ -177,15 +189,10 @@ class TestDeltaPropertyBased:
         """Test: Total ingredients count matches input."""
         service = DeltaService()
 
-        recipe = [
-            make_ingredient(f"item_{i}", qty, "count")
-            for i, qty in enumerate(items)
-        ]
+        recipe = [make_ingredient(f"item_{i}", qty, "count") for i, qty in enumerate(items)]
         pantry = []
 
-        result = service.calculate_missing(
-            recipe, pantry, include_staples_in_assumptions=False
-        )
+        result = service.calculate_missing(recipe, pantry, include_staples_in_assumptions=False)
 
         assert result.total_ingredients == len(items)
 
