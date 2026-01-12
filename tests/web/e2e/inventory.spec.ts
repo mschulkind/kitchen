@@ -121,3 +121,61 @@ test.describe('Kitchen App - Navigation', () => {
     expect(pageContent.length).toBeGreaterThan(500);
   });
 });
+
+test.describe('Kitchen App - Tab Navigation', () => {
+  test('planner tab loads', async ({ page }) => {
+    await page.goto('/planner');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+
+  test('shopping tab loads', async ({ page }) => {
+    await page.goto('/shopping');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+
+  test('settings tab loads', async ({ page }) => {
+    await page.goto('/settings');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+});
+
+test.describe('Kitchen App - Responsiveness', () => {
+  test('app renders on mobile viewport', async ({ page }) => {
+    // Set mobile viewport
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+
+  test('app renders on tablet viewport', async ({ page }) => {
+    // Set tablet viewport
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.goto('/');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+
+  test('app renders on desktop viewport', async ({ page }) => {
+    // Set desktop viewport
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await page.goto('/');
+    await waitForAppReady(page);
+    
+    const pageContent = await page.content();
+    expect(pageContent.length).toBeGreaterThan(500);
+  });
+});
