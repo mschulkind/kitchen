@@ -11,6 +11,7 @@ import asyncio
 import logging
 import sys
 from pathlib import Path
+from typing import TypedDict
 from uuid import UUID
 
 from supabase import acreate_client
@@ -25,7 +26,15 @@ from src.api.app.domain.pantry.repository import PantryRepository
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-STAPLES = [
+
+class StapleItem(TypedDict):
+    name: str
+    quantity: int
+    unit: str
+    location: str
+
+
+STAPLES: list[StapleItem] = [
     {"name": "Kosher Salt", "quantity": 1, "unit": "box", "location": "pantry"},
     {"name": "Black Pepper", "quantity": 1, "unit": "jar", "location": "pantry"},
     {"name": "Olive Oil", "quantity": 1, "unit": "bottle", "location": "pantry"},
