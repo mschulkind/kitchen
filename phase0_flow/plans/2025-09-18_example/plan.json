@@ -1,0 +1,41 @@
+{
+  "name": "Classic Comfort Example",
+  "theme": "Simple, comforting meals using pantry staples.",
+  "start_date": "2025-09-18",
+  "end_date": "2025-09-20",
+  "days": [
+    {
+      "date": "2025-09-18",
+      "day_name": "Day 1",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Hearty Beef & Veggie Pasta",
+          "notes": "Classic comfort food."
+        }
+      ]
+    },
+    {
+      "date": "2025-09-19",
+      "day_name": "Day 2",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Creamy Tomato Chicken",
+          "notes": "Rich and creamy."
+        }
+      ]
+    },
+    {
+      "date": "2025-09-20",
+      "day_name": "Day 3",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Simple Lasagna",
+          "notes": "Simplified classic."
+        }
+      ]
+    }
+  ]
+}

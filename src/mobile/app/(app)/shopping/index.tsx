@@ -282,10 +282,10 @@ export default function ShoppingScreen() {
             <Spinner size="large" color="$orange10" />
           </YStack>
         ) : items?.length === 0 ? (
-          <YStack flex={1} justifyContent="center" alignItems="center" padding="$6">
+          <YStack flex={1} justifyContent="center" alignItems="center" padding="$6" testID="shopping-empty-state">
             <ShoppingCart size={60} color="$gray8" />
             <H3 marginTop="$4" color="$gray11">
-              List is empty
+              Your list is empty
             </H3>
             <Paragraph color="$gray10" textAlign="center">
               Add items above or generate from your meal plan.
@@ -370,6 +370,7 @@ export default function ShoppingScreen() {
         {/* Summary Footer */}
         {items && items.length > 0 && (
           <XStack
+            testID="shopping-summary"
             padding="$4"
             borderTopWidth={1}
             borderTopColor="$gray4"

@@ -118,12 +118,12 @@ export default function CookingModeScreen() {
         alignItems="center"
         padding="$6"
         backgroundColor="$green2"
-        testID="cooking-complete"
+        testID="cooking-complete-modal"
       >
         <StatusBar hidden />
         <CheckCircle2 size={80} color="#16a34a" />
         <H1 marginTop="$4" textAlign="center">
-          🎉 Bon Appétit!
+          Cooking Complete!
         </H1>
         <Paragraph
           color="$gray11"
@@ -168,15 +168,22 @@ export default function CookingModeScreen() {
           icon={<X size={24} />}
           onPress={handleClose}
         />
+        <Button
+          testID="show-ingredients-button"
+          size="$3"
+          chromeless
+          onPress={() => {/* TODO: show ingredients panel */}}
+        >
+          Ingredients
+        </Button>
         <Text color="$gray10" fontSize="$3">
           {recipe?.title}
         </Text>
-        <YStack width={44} /> {/* Spacer for centering */}
       </XStack>
 
       {/* Progress Bar */}
       <YStack paddingHorizontal="$4" marginBottom="$2">
-        <Progress value={progress} backgroundColor="$gray4">
+        <Progress testID="progress-bar" value={progress} backgroundColor="$gray4" aria-valuenow={progress}>
           <Progress.Indicator backgroundColor="$orange10" animation="bouncy" />
         </Progress>
         <Text
@@ -212,9 +219,13 @@ export default function CookingModeScreen() {
           justifyContent="center"
           alignItems="center"
           paddingHorizontal="$4"
+          testID={`cooking-step-${currentStep}`}
         >
+          <Text testID="step-counter" color="$gray10" fontSize="$3" marginBottom="$2">
+            Step {currentStep + 1}
+          </Text>
           <H2
-            testID={`cooking-step-${currentStep}`}
+            testID="step-text"
             fontSize="$8"
             lineHeight="$9"
             textAlign="center"

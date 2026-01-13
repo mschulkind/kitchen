@@ -215,7 +215,7 @@ export default function CheckStockScreen() {
           </Paragraph>
 
           {/* You Have (Enough) */}
-          <YStack>
+          <YStack testID="have-section">
             <XStack space="$2" alignItems="center" marginBottom="$2">
               <CheckCircle2 size={20} color="#16a34a" />
               <H3 color="$green11">You Have ({groupedIngredients.have.length})</H3>
@@ -251,7 +251,7 @@ export default function CheckStockScreen() {
 
           {/* You Have (Not Enough) */}
           {groupedIngredients.partial.length > 0 && (
-            <YStack>
+            <YStack testID="low-section">
               <XStack space="$2" alignItems="center" marginBottom="$2">
                 <AlertCircle size={20} color="#f59e0b" />
                 <H3 color="$yellow11">
@@ -284,7 +284,7 @@ export default function CheckStockScreen() {
           )}
 
           {/* Missing */}
-          <YStack>
+          <YStack testID="missing-section">
             <XStack space="$2" alignItems="center" marginBottom="$2">
               <XCircle size={20} color="#dc2626" />
               <H3 color="$red11">Missing ({groupedIngredients.missing.length})</H3>

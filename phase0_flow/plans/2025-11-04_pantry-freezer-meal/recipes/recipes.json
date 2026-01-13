@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Chicken & Masa Dumplings Stew",
+    "filename": "chicken-masa-dumplings-stew.md",
+    "servings": 6,
+    "prep_time_minutes": 30,
+    "cook_time_minutes": 60,
+    "description": "Rustic and comforting stew with tender chicken, purple potatoes, smoky poblanos, and masa dumplings.",
+    "ingredients": [
+      "1 3/4 cups Masa Harina",
+      "1 1/2 cups warm water",
+      "1 teaspoon Salt",
+      "2 tablespoons olive oil",
+      "1/4 cup chopped Chives or Green Onions",
+      "2 tablespoons olive oil",
+      "1 tablespoon Onion Powder",
+      "3-4 cloves Garlic, minced",
+      "1 large Poblano Pepper, roasted, peeled, seeded, and chopped",
+      "1 cup chopped Tomatoes",
+      "6 cups Pork Broth",
+      "1 lb Purple Potatoes, cut into 1/2 inch cubes",
+      "2 cups Cubed Cooked Chicken",
+      "1 teaspoon Cumin",
+      "1 teaspoon Chili Powder",
+      "1 teaspoon Oregano",
+      "1/2 teaspoon Salt",
+      "1/4 teaspoon Black Pepper",
+      "2 cups Swiss Chard, roughly chopped",
+      "Fresh Chives or Green Onions for garnish"
+    ],
+    "instructions": [
+      "Prepare the Chochoyotes: In a medium bowl, combine masa harina, salt, and olive oil. Mix until coarse sand. Gradually add water, mixing until soft dough forms. Stir in chives. Knead, rest 10-15m. Shape into balls with indentation.",
+      "Start the Stew Base: Heat olive oil. Add onion powder and garlic, cook 1 min. Add poblano and tomatoes, cook 5 mins. Pour in broth. Add potatoes, cumin, chili powder, oregano, salt, pepper. Simmer.",
+      "Cook Chicken and Chochoyotes: Add chicken. Simmer 10-15m until potatoes tender. Drop dumplings in gently. Cook 10-15m until floating.",
+      "Finish the Stew: Stir in Swiss chard, cook 2-3m. Adjust seasoning. Serve garnished."
+    ]
+  },
+  {
+    "title": "Spicy Chicken & Poblano Soup",
+    "filename": "spicy-chicken-poblano-soup.md",
+    "servings": 6,
+    "prep_time_minutes": 25,
+    "cook_time_minutes": 45,
+    "description": "Vibrant and spicy soup highlighting smoky roasted poblanos and habanero.",
+    "ingredients": [
+      "2 tablespoons olive oil",
+      "1 tablespoon Onion Powder",
+      "3-4 cloves Garlic, minced",
+      "2 large Poblano Peppers, roasted, peeled, seeded, and chopped",
+      "1 small Habanero Pepper, minced",
+      "1 cup chopped Tomatoes",
+      "6 cups Pork Broth",
+      "1 lb Purple Potatoes, cut into 1/2 inch cubes",
+      "2 cups Cubed Cooked Chicken",
+      "1 teaspoon Cumin",
+      "1 teaspoon Chili Powder",
+      "1/2 teaspoon Salt",
+      "1/4 teaspoon Black Pepper",
+      "Juice of 1/2 Lemon",
+      "Fresh Chives or Green Onions for garnish"
+    ],
+    "instructions": [
+      "Prepare Aromatics: Heat olive oil. Add onion powder and garlic, cook 1 min. Add poblanos, habanero, tomatoes. Cook 5-7 mins.",
+      "Build the Soup: Pour in broth. Add potatoes, cumin, chili powder, salt, black pepper. Simmer. Cook 15-20m until potatoes tender.",
+      "Add Chicken and Finish: Stir in chicken, heat 5 mins. Remove from heat. Stir in lemon juice. Adjust seasoning. Serve garnished."
+    ]
+  }
+]

@@ -7,18 +7,20 @@
 
 ## 1. Test Suite Status Overview
 
-| Suite | Phase | Status | Strict? | Mocks Needed | Priority |
+All core suites are now implemented in Strict Mode.
+
+| Suite | Phase | Status | Strict? | Mocks Implemented | Priority |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `phase1-inventory.spec.ts` | 1. Foundation | ✅ Ready | Yes | DB | High |
-| `phase2-recipes.spec.ts` | 2. Recipes | ✅ Ready | Yes | DB, LLM (Import) | High |
-| `phase2d-responsive.spec.ts` | 2D. Responsive | 🔴 Missing | Yes | - | Medium |
-| `phase3-delta.spec.ts` | 3. Delta | 🚧 Skipped | Yes | DB (Seed Data) | High |
+| `phase2-recipes.spec.ts` | 2. Recipes | ✅ Ready | Yes | DB, Scraper | High |
+| `phase2d-responsive.spec.ts` | 2D. Responsive | ✅ Ready | Yes | - | Medium |
+| `phase3-delta.spec.ts` | 3. Delta | ✅ Ready | Yes | DB, Seed Recipe | High |
 | `phase4-vision.spec.ts` | 4. Vision | ✅ Ready | Yes | Vision API | Medium |
-| `phase5-planner.spec.ts` | 5. Planner | ✅ Ready | Yes | LLM (Generate) | High |
-| `phase6-refiner.spec.ts` | 6. Refiner | 🔴 Missing | Yes | Refiner API | Medium |
-| `phase7-shopping.spec.ts` | 7. Shopping | 🚧 Skipped | Yes | Realtime Sync | High |
+| `phase5-planner.spec.ts` | 5. Planner | ✅ Ready | Yes | Generator | High |
+| `phase6-refiner.spec.ts` | 6. Refiner | ✅ Ready | Yes | Refiner API | Medium |
+| `phase7-shopping.spec.ts` | 7. Shopping | ✅ Ready | Yes | Realtime Sync | High |
 | `phase8-store.spec.ts` | 8. Store | ⚪ Pending | - | Scraper API | Low |
-| `phase9-voice.spec.ts` | 9. Voice | ⚪ Pending | - | Webhook | Low |
+| `phase9-voice.spec.ts` | 9. Voice | 🟡 Backend Ready | Yes | Webhook | Low |
 | `phase10-cooking.spec.ts` | 10. Cooking | ⚪ Pending | - | - | Low |
 
 ---
@@ -26,83 +28,41 @@
 ## 2. Detailed Work Plan
 
 ### `phase1-inventory.spec.ts` (Inventory CRUD)
-
-**Status**: Mostly Complete. One skipped test.
-
-**Tasks**:
-- [ ] **Unskip Save Test**: Enable the `can fill and save item form` test.
-  - *Requirement*: Ensure `testID="save-item-button"` works and database mutation succeeds in CI environment.
-- [ ] **Verify Filter Logic**: Add specific assertion that filtering by 'Fridge' hides 'Pantry' items.
+**Status**: Implemented.
+**Coverage**: List load, Add Item (Manual/Scan), Edit, Delete, Filter by Location.
 
 ### `phase2d-responsive.spec.ts` (Responsive Layouts)
-
-**Status**: Missing.
-
-**Tasks**:
-- [ ] **Create File**: `tests/web/e2e/phase2d-responsive.spec.ts`.
-- [ ] **Implement Desktop Grid Test**:
-  - Set viewport to `1280x720`.
-  - Assert `tonight-widget` and `shopping-widget` are displayed horizontally (check bounding boxes).
-- [ ] **Implement Form Constraint Test**:
-  - Navigate to `/recipes/new` on Desktop.
-  - Assert form container width is `< 800px`.
-- [ ] **Implement Modal Test**:
-  - Trigger "Add Recipe".
-  - Assert it renders as a centered Dialog (not a bottom sheet) on Desktop.
+**Status**: Implemented.
+**Coverage**: Desktop Grid (Widgets side-by-side), Form Max-Width constraints, Desktop Centered Modals vs Mobile Sheets.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
-
-**Status**: Complete.
-
-**Tasks**:
-- [ ] **Mock Import Scraper**: Currently hits real URL. Add `page.route('**/api/v1/recipes/scrape', ...)` to return mock data (Title: "Mock Chicken", Ingredients: ["Chicken"]).
+**Status**: Implemented.
+**Coverage**: Recipe List, Search, Manual Entry, Import URL (Mocked).
 
 ### `phase3-delta.spec.ts` (Delta / Stock Check)
-
-**Status**: All tests skipped due to missing data.
-
-**Tasks**:
-- [ ] **Create Seed Recipe**: In `test.beforeAll`, programmatically insert a recipe with ID `test-recipe-id` and known ingredients (Mock Ingredient A, Mock Ingredient B).
-- [ ] **Unskip All Tests**: Remove `.skip` from `test.describe`.
-- [ ] **Verify "Missing" to "Have"**: Tap "I have this" on Mock Ingredient A and assert it moves to the "Have" section.
+**Status**: Implemented.
+**Coverage**: Stock Check UI, "Missing" to "Have" transition (Lazy Discovery), Recipe Navigation. Uses `createSeedRecipe` helper.
 
 ### `phase4-vision.spec.ts` (Visual Pantry)
-
-**Status**: Complete.
-
-**Tasks**:
-- [ ] **Verify Integration**: Ensure that clicking "Confirm All" actually adds items to the Inventory list (navigate to `/inventory` and check for item existence).
+**Status**: Implemented.
+**Coverage**: Scan Entry, Staging List (Mock Analysis), Edit Candidate, Confirm All (Integration).
 
 ### `phase5-planner.spec.ts` (Planner Core)
-
-**Status**: Complete.
-
-**Tasks**:
-- [ ] **No pending tasks**. Suite is green.
+**Status**: Implemented.
+**Coverage**: Calendar Grid, New Plan Generator Form (Days/Constraints), Mock Generation Response.
 
 ### `phase6-refiner.spec.ts` (Slot Machine)
-
-**Status**: Missing.
-
-**Tasks**:
-- [ ] **Create File**: `tests/web/e2e/phase6-refiner.spec.ts`.
-- [ ] **Implement Lock Test**:
-  - Click lock icon on a slot.
-  - Assert lock icon changes state/color.
-- [ ] **Implement Spin Test**:
-  - Click refresh/spin icon.
-  - Assert slot content changes (requires mocking the Refiner API response).
+**Status**: Implemented.
+**Coverage**: Lock/Unlock Slots, Spin/Reroll (Mock API), Bulk Actions.
 
 ### `phase7-shopping.spec.ts` (Shopping List)
+**Status**: Implemented.
+**Coverage**: Quick Add, Check/Uncheck, Clear Completed, Category Grouping. Uses `setupShoppingMocks`.
 
-**Status**: Most tests skipped.
-
-**Tasks**:
-- [ ] **Database Cleanup**: Add `test.afterEach` to clear shopping list items to ensure clean state.
-- [ ] **Unskip "Add Items"**: Enable text input and button press tests.
-- [ ] **Unskip "Check/Uncheck"**: Enable toggle tests.
-- [ ] **Unskip "Clear Completed"**: Enable clear button tests.
-- [ ] **Verify Grouping**: Assert "Apples" appears under "Produce" header (requires Mock API or correct category logic).
+### `phase9-voice.spec.ts` (Voice Control)
+**Status**: Backend Ready. UI Skipped.
+**Blocked by**: Frontend implementation of Microphone button and Voice Modal.
+**Guide**: See [Voice Assistant Setup](../guides/voice-assistant-setup.md) for Google Home integration.
 
 ## 3. Implementation Guide for "Strict Mode"
 

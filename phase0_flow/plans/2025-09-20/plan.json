@@ -1,0 +1,52 @@
+{
+  "name": "Week of 2025-09-20",
+  "theme": "Use up leftovers efficiently.",
+  "start_date": "2025-09-20",
+  "end_date": "2025-09-23",
+  "days": [
+    {
+      "date": "2025-09-20",
+      "day_name": "Day 1",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Sweet Potato & Poblano Tacos",
+          "notes": "Make tortillas from scratch."
+        }
+      ]
+    },
+    {
+      "date": "2025-09-21",
+      "day_name": "Day 2",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Chicken Thighs with Roasted Carrots",
+          "notes": "Shred leftover chicken for tomorrow."
+        }
+      ]
+    },
+    {
+      "date": "2025-09-22",
+      "day_name": "Day 3",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Creamy Chicken & Kale Pasta",
+          "notes": "Uses leftover chicken."
+        }
+      ]
+    },
+    {
+      "date": "2025-09-23",
+      "day_name": "Day 4",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Pantry Fried Rice",
+          "notes": "Clean out the fridge."
+        }
+      ]
+    }
+  ]
+}

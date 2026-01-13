@@ -1,0 +1,41 @@
+{
+  "name": "Green Stew & Brisket Party",
+  "theme": "Rich, comforting meals for family and guests.",
+  "start_date": "2025-12-18",
+  "end_date": "2025-12-20",
+  "days": [
+    {
+      "date": "2025-12-18",
+      "day_name": "Thursday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Green Maghrebi Lentil & Bread Stew",
+          "notes": "Serve with extra bread."
+        }
+      ]
+    },
+    {
+      "date": "2025-12-19",
+      "day_name": "Friday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Green Maghrebi Lentil & Bread Stew",
+          "notes": "Leftovers. Prep the brisket today!"
+        }
+      ]
+    },
+    {
+      "date": "2025-12-20",
+      "day_name": "Saturday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Slow-Cooked Beef Brisket",
+          "notes": "Dinner Party! Serve with Latkes and Cucumber Salad."
+        }
+      ]
+    }
+  ]
+}

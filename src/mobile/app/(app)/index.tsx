@@ -239,7 +239,7 @@ export default function HubScreen() {
 
           {/* Expiring Count */}
           <Card
-            testID="expiring-widget"
+            testID="pantry-widget"
             flex={1}
             bordered
             padding="$3"

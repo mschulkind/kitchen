@@ -1,0 +1,30 @@
+{
+  "name": "Pantry & Garden Feast",
+  "theme": "Zero-shopping plan using pantry, freezer, and garden stock.",
+  "start_date": "2025-11-04",
+  "end_date": "2025-11-05",
+  "days": [
+    {
+      "date": "2025-11-04",
+      "day_name": "Day 1",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Chicken & Masa Dumplings Stew",
+          "notes": "Thick & hearty with Chochoyotes."
+        }
+      ]
+    },
+    {
+      "date": "2025-11-05",
+      "day_name": "Day 2",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Spicy Chicken & Poblano Soup",
+          "notes": "Lighter, brothy, and spicy."
+        }
+      ]
+    }
+  ]
+}

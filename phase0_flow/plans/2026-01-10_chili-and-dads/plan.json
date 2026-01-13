@@ -1,0 +1,63 @@
+{
+  "name": "The 'Latent Starch' Protocol",
+  "theme": "High-Fiber, High-Protein, Resistant Starch (Cook-Cool-Reheat)",
+  "start_date": "2026-01-10",
+  "end_date": "2026-01-14",
+  "days": [
+    {
+      "date": "2026-01-10",
+      "day_name": "Saturday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Texas-Style Beef & Black Bean Chili",
+          "notes": "Kickoff meal. Serve with half a baked potato (cooled)."
+        }
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "day_name": "Sunday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Chicken \"Pot Pie\" Stew",
+          "notes": "Dad's meal. Portable feast."
+        }
+      ]
+    },
+    {
+      "date": "2026-01-12",
+      "day_name": "Monday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Potato & Chickpea Coconut Curry",
+          "notes": "Meatless Powerhouse. Roast cauliflower on the side."
+        }
+      ]
+    },
+    {
+      "date": "2026-01-13",
+      "day_name": "Tuesday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Creamy Pollock Chowder",
+          "notes": "Reheat wonder. Add diced potatoes cold to reheat in soup."
+        }
+      ]
+    },
+    {
+      "date": "2026-01-14",
+      "day_name": "Wednesday",
+      "meals": [
+        {
+          "type": "dinner",
+          "recipe_title": "Chicken Tinga Bowls",
+          "notes": "Grand Finale. Serve over shredded cabbage."
+        }
+      ]
+    }
+  ]
+}

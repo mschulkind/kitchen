@@ -1,0 +1,85 @@
+[
+  {
+    "title": "Authentic Chicken Cacciatore",
+    "filename": "chicken-cacciatore.md",
+    "servings": 4,
+    "prep_time_minutes": 20,
+    "cook_time_minutes": 50,
+    "description": "A hunter-style stew with deep tomato flavors and wine. Heart healthy with veggies.",
+    "ingredients": [
+      "4-6 Chicken Thighs (bone-in, skin-on preferred)",
+      "2 tbsp Olive Oil",
+      "1 Onion, diced",
+      "2 Carrots, diced",
+      "2 stalks Celery, diced",
+      "4 cloves Garlic, minced",
+      "1/2 cup Red Wine",
+      "1 (28 oz) can Whole Peeled Tomatoes, crushed by hand",
+      "1 tsp Dried Oregano",
+      "1 sprig Fresh Rosemary",
+      "Salt & Pepper"
+    ],
+    "instructions": [
+      "Sear Chicken: Pat chicken dry, season with salt/pepper. Sear in oil until golden brown. Remove.",
+      "Sauté Veggies: Cook onion, carrots, celery until softened. Add garlic.",
+      "Deglaze: Add wine, simmer 2-3 mins.",
+      "Simmer: Add tomatoes, oregano, rosemary. Return chicken. Cover and simmer low 30-40 mins.",
+      "Finish: Uncover, simmer 5-10 mins to thicken. Season and serve."
+    ]
+  },
+  {
+    "title": "Cod Pizzaiola (Baccalà Style)",
+    "filename": "cod-pizzaiola.md",
+    "servings": 4,
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 30,
+    "description": "Flaky cod baked in a zesty, pizza-inspired tomato sauce. High Omega-3s.",
+    "ingredients": [
+      "4 Cod Filets",
+      "2 tbsp Olive Oil",
+      "3 cloves Garlic, minced",
+      "2 (14.5 oz) cans Fire Roasted Tomatoes",
+      "1 tbsp Capers, rinsed",
+      "1/2 tsp Dried Oregano",
+      "Pinch of Red Pepper Flakes",
+      "Salt & Pepper"
+    ],
+    "instructions": [
+      "Prep: Preheat oven to 400°F.",
+      "Make Sauce: Sauté garlic in oven-safe skillet. Add tomatoes, capers, oregano, pepper flakes. Simmer 10-15 mins.",
+      "Bake: Nestle cod into sauce. Bake 12-15 mins until flaky.",
+      "Serve: Garnish with basil or parsley."
+    ]
+  },
+  {
+    "title": "Ultimate Smoky Pasta e Fagioli",
+    "filename": "smoky-pasta-e-fagioli.md",
+    "servings": 6,
+    "prep_time_minutes": 20,
+    "cook_time_minutes": 40,
+    "description": "A rich, stew-like version built on smoked meat and a deep tomato base.",
+    "ingredients": [
+      "1-2 Smoked Sausages, sliced",
+      "1 Onion, diced",
+      "2 Carrots, diced",
+      "2 stalks Celery, diced",
+      "4-5 cloves Garlic, whole peeled",
+      "1-2 tbsp Tomato Paste",
+      "1 (28 oz) can Whole Peeled Tomatoes, hand-crushed",
+      "2 (15 oz) cans Cannellini Beans",
+      "4 cups Pork Broth",
+      "1 cup Ditalini Pasta",
+      "1/2 tsp Red Pepper Flakes",
+      "1 tsp Dried Rosemary",
+      "Parmesan Rind",
+      "Salt & Pepper"
+    ],
+    "instructions": [
+      "Render: Sauté sausage until browned.",
+      "Sauté Base: Add onion, carrots, celery to fat. Cook until soft.",
+      "Deepen: Add whole garlic, pepper flakes, tomato paste. Fry paste 2 mins.",
+      "Simmer: Add tomatoes, broth, rosemary, parmesan rind. Simmer 20-30 mins.",
+      "Finish: Add ditalini and beans. Cook until pasta is al dente (10 mins). Season with splash of balsamic."
+    ]
+  }
+]
