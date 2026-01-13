@@ -43,7 +43,7 @@ STAPLES = [
 async def seed_data(household_id: UUID) -> None:
     """Main seed logic."""
     settings = get_settings()
-    
+
     # Use Service Role Key to bypass RLS
     supabase = await acreate_client(
         settings.supabase_url,
@@ -68,7 +68,7 @@ async def seed_data(household_id: UUID) -> None:
                 location=PantryLocation(item["location"]),
                 notes="Seeded staple"
             )
-            
+
             created = await repo.create(household_id, dto)
             logger.info(f"  - Created: {created.name}")
 
@@ -79,7 +79,7 @@ async def seed_data(household_id: UUID) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Seed pantry staples.")
     parser.add_argument("--household-id", type=UUID, required=True, help="Target Household UUID")
-    
+
     args = parser.parse_args()
-    
+
     asyncio.run(seed_data(args.household_id))

@@ -1,5 +1,7 @@
 # Phased Development Plan: From MVP to V1
 
+> ⚠️ **DEPRECATED**: This document is a historical artifact. Please refer to [**central-plan.md**](central-plan.md) for the current, active 11-Phase Roadmap.
+
 ## Table of Contents
 
 - [Overview](#overview)

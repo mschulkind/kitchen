@@ -80,3 +80,16 @@ This task list tracks the execution of the [Frontend Redesign Plan](./frontend-r
 - [ ] **Recipe List Adaptation**: Switch to Grid or Multi-column list on desktop.
 - [ ] **Form Constraints**: Wrap forms (Planner, Recipes) in `maxWidth` containers to prevent stretching.
 - [ ] **Navigation Check**: Ensure back buttons/navigation works without physical hardware buttons.
+
+## 6. Real Integration & Cleanup (Phase 2E)
+
+- [ ] **Real Authentication**: Wire up "Sign In" and "Get Started" to Supabase Auth (Google/Email).
+- [ ] **Profile Picture**: Replace the `pravatar.cc` placeholder with the user's real avatar (or initials).
+- [ ] **Vision API Integration**: Connect `scan-result.tsx` to the real backend `/api/v1/vision/analyze` endpoint (remove `MOCK_DETECTED_ITEMS`).
+- [ ] **Household Switcher**: Ensure the app respects the user's selected household ID (currently hardcoded or default).
+
+## 7. Visual Polish (Phase 11)
+
+- [ ] **Recipe Image UI**: Update `RecipeCard` and `RecipeDetail` to display `image_url` or a "Generate Image" button.
+- [ ] **Generation Flow**: Implement the "Generate Image" mutation and loading state (optimistic update or spinner).
+- [ ] **Placeholders**: Add a nice default placeholder for recipes without images.

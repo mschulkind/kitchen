@@ -270,9 +270,12 @@ export default function ShoppingScreen() {
           <Button
             testID="voice-add-button"
             size="$4"
-            chromeless
-            icon={<Mic size={20} color="$gray10" />}
-            disabled // Phase 9
+            theme="gray"
+            icon={<Mic size={20} />}
+            onPress={() => {
+              // TODO: Implement voice input in Phase 9
+              console.log('Voice input placeholder');
+            }}
           />
         </XStack>
 

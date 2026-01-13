@@ -16,34 +16,40 @@ The **Frontend Redesign (Phase 2A)** and **Recipe Engine (Phase 2C)** are effect
 | **6. Refiner** | ✅ | 🔴 Missing | 🚧 Integrated | **Integrated in Planner** |
 | **7. Shopping** | ✅ | 🟡 Refactor Needed | ✅ Complete | **Feature Complete** |
 | **8. Store** | ✅ | ⚪ Pending | ⚪ Pending | **Next Up** |
+| **9. Voice** | ✅ | ✅ Ready | 🚫 Scope Cut | **Backend Ready** |
+| **10. Cooking** | ✅ | ✅ Ready | ✅ Complete | **Feature Complete** |
+| **11. Imagery** | ⚪ | ⚪ Pending | ⚪ Pending | **Planned** |
 
 ## Key Achievements
 
 ### 🎨 Frontend Redesign (Completed)
+
 - **Hub Dashboard**: Implemented with realtime widgets for "Tonight's Meal", "Shopping Count", and "Expiring Items".
 - **Navigation**: Clean stack-based architecture (`(auth)` vs `(app)`).
 - **Styling**: Unified Tamagui design system.
 
 ### 🍳 Recipe Engine (Completed)
+
 - **Import Flow**: URL pasting triggers backend scraper.
 - **Manual Entry**: Dynamic ingredient/step forms.
 - **Cooking Mode**: Focus mode with wake lock and large text.
 - **Stock Check**: "Delta Engine" UI compares recipe ingredients with pantry stock.
 
 ### 📅 Planner & Shopping (Completed)
+
 - **Calendar**: Week view with lockable slots.
 - **Generator**: AI-powered plan generation with constraints.
 - **Shopping List**: Smart grouping (Aisle/Category) with realtime sync.
 
 ## Immediate Focus Areas
 
-1.  **Responsive Design (Phase 2D)**:
+1. **Responsive Design (Phase 2D)**:
     - Verify layout on Desktop Web (1280px+).
     - Ensure forms and grids adapt efficiently (don't just stretch).
-2.  **Test Hardening**:
+2. **Test Hardening**:
     - Convert remaining E2E tests (Inventory, Delta, Vision, Shopping) to **Strict Mode**.
     - Ensure tests pass reliably on CI.
-3.  **Realtime & Polish**:
+3. **Realtime & Polish**:
     - Verify WebSocket subscriptions in a multi-user environment.
     - Polish empty states and error boundaries.
 

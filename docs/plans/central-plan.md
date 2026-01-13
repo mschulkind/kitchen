@@ -66,6 +66,7 @@ The project is broken down into granular, testable phases. Each phase delivers a
 | 8 | [Store Intelligence](phase-08-store-intelligence.md) | 🟢 Defer | ✅ Complete (Backend) | 1-2 weeks |
 | 9 | [Voice Integration](phase-09-voice.md) | 🟢 Defer | ✅ Complete (Backend) | 1 week |
 | 10 | [Chef's Companion](phase-10-cooking-companion.md) | 🟡 Nice-to-Have | ✅ Complete (Backend) | 1 week |
+| 11 | [Recipe Imagery](phase-11-recipe-images.md) | 🟡 Nice-to-Have | ⚪ Pending | 3 days |
 
 **MVP Target**: Phases 1, 2, 3, 5, 7 (~10-14 weeks)  
 **Backend Status**: Phases 2-10 backend complete! 🎉
@@ -147,6 +148,13 @@ The project is broken down into granular, testable phases. Each phase delivers a
 - "Copy for AI" Prompt Generator (Context Export).
 - "5-Way" Recipe Views (Mise-en-place, etc).
 - Consumption: "Mark as Cooked" decrements inventory.
+
+### [Phase 11: Recipe Imagery](phase-11-recipe-images.md)
+
+**Goal**: Visual polish and appetite appeal.
+
+- **AI Generation**: Create consistent, professional cover images for recipes using Google's **Nano Banana** (Gemini 2.5 Flash Image).
+- **Automation**: Background job to fill missing images based on recipe title and tags.
 
 ---
 

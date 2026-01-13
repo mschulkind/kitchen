@@ -19,17 +19,17 @@ This method connects Google Assistant directly to your Kitchen API webhook.
 1.  Log in to [IFTTT](https://ifttt.com/).
 2.  Click **Create**.
 3.  **If This**: Select **Google Assistant v2**.
-    *   Choose trigger: **"Say a phrase with a text ingredient"**.
-    *   *What do you want to say?*: `Add $ to my kitchen list` (or just `Kitchen add $`).
-    *   *What's another way?*: `Buy $`.
-    *   *Your Assistant's response*: `Okay, adding $ to the kitchen list.`
+    -   Choose trigger: **"Say a phrase with a text ingredient"**.
+    -   *What do you want to say?*: `Add $ to my kitchen list` (or just `Kitchen add $`).
+    -   *What's another way?*: `Buy $`.
+    -   *Your Assistant's response*: `Okay, adding $ to the kitchen list.`
 4.  **Then That**: Select **Webhooks**.
-    *   Choose action: **"Make a web request"**.
-    *   **URL**: `https://<YOUR-API-DOMAIN>/api/v1/hooks/add-item`
-    *   **Method**: `POST`
-    *   **Content Type**: `application/json`
-    *   **Additional Headers**: `X-Webhook-Key: <YOUR_WEBHOOK_SECRET>`
-    *   **Body**: `{"text": "{{TextField}}"}`
+    -   Choose action: **"Make a web request"**.
+    -   **URL**: `https://<YOUR-API-DOMAIN>/api/v1/hooks/add-item`
+    -   **Method**: `POST`
+    -   **Content Type**: `application/json`
+    -   **Additional Headers**: `X-Webhook-Key: <YOUR_WEBHOOK_SECRET>`
+    -   **Body**: `{"text": "{{TextField}}"}`
 
 ### 2. Configure Your API
 
@@ -41,9 +41,9 @@ WEBHOOK_SECRET=my-super-secret-voice-key-123
 
 ### 3. Test It
 
-*   "Hey Google, Kitchen add Milk and Eggs."
-*   Google: "Okay, adding Milk and Eggs to the kitchen list."
-*   Check Kitchen App: "Milk" and "Eggs" should appear in your shopping list.
+-   "Hey Google, Kitchen add Milk and Eggs."
+-   Google: "Okay, adding Milk and Eggs to the kitchen list."
+-   Check Kitchen App: "Milk" and "Eggs" should appear in your shopping list.
 
 ---
 
@@ -93,19 +93,19 @@ You can then expose this script to Google Home as a Scene or use an automation t
 If your API is running on `localhost` or a local server:
 
 1.  **Cloudflare Tunnel (Recommended)**:
-    *   Install `cloudflared`.
-    *   Run `cloudflared tunnel --url http://localhost:5300`.
-    *   Use the generated `https://....trycloudflare.com` URL in IFTTT.
+    -   Install `cloudflared`.
+    -   Run `cloudflared tunnel --url http://localhost:5300`.
+    -   Use the generated `https://....trycloudflare.com` URL in IFTTT.
 
 2.  **Tailscale Funnel**:
-    *   If you use Tailscale, `tailscale funnel 5300`.
+    -   If you use Tailscale, `tailscale funnel 5300`.
 
 ### "It says 401 Unauthorized"
 
-*   Check that `X-Webhook-Key` in IFTTT matches `WEBHOOK_SECRET` in your `.env`.
-*   Ensure the header is formatted exactly as `X-Webhook-Key: value`.
+-   Check that `X-Webhook-Key` in IFTTT matches `WEBHOOK_SECRET` in your `.env`.
+-   Ensure the header is formatted exactly as `X-Webhook-Key: value`.
 
 ### "It adds 'milk and eggs' as one item"
 
-*   The backend parser (`VoiceParser`) is responsible for splitting "and".
-*   Check logs: `src/api/app/domain/voice/parser.py` logic might need tuning.
+-   The backend parser (`VoiceParser`) is responsible for splitting "and".
+-   Check logs: `src/api/app/domain/voice/parser.py` logic might need tuning.

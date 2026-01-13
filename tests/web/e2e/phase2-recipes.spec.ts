@@ -268,8 +268,10 @@ test.describe('Phase 2C - Cooking Mode', () => {
       await page.waitForTimeout(300);
     }
     
-    // Use force click to bypass any remaining overlays
-    await page.getByTestId('next-step-button').click({ force: true });
+    // Use JavaScript click to bypass overlay
+    const nextButton = page.getByTestId('next-step-button');
+    await nextButton.evaluate((btn) => (btn as HTMLButtonElement).click());
+    await page.waitForTimeout(500);
     await expect(page.getByTestId('cooking-step-1')).toBeVisible();
   });
 });

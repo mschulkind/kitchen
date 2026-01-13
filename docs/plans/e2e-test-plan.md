@@ -19,50 +19,77 @@ All core suites are now implemented in Strict Mode.
 | `phase5-planner.spec.ts` | 5. Planner | ✅ Ready | Yes | Generator | High |
 | `phase6-refiner.spec.ts` | 6. Refiner | ✅ Ready | Yes | Refiner API | Medium |
 | `phase7-shopping.spec.ts` | 7. Shopping | ✅ Ready | Yes | Realtime Sync | High |
-| `phase8-store.spec.ts` | 8. Store | ⚪ Pending | - | Scraper API | Low |
-| `phase9-voice.spec.ts` | 9. Voice | 🟡 Backend Ready | Yes | Webhook | Low |
-| `phase10-cooking.spec.ts` | 10. Cooking | ⚪ Pending | - | - | Low |
+| `phase8-store.spec.ts` | 8. Store | 🚧 Skipped | Yes | Scraper API | Low |
+| `phase9-voice.spec.ts` | 9. Voice | ✅ Ready | No | Webhook | Low |
+| `phase10-cooking.spec.ts` | 10. Cooking | ✅ Ready | Yes | Recipe Mocks | Low |
+| `phase11-images.spec.ts` | 11. Imagery | ⚪ Pending | - | - | Low |
 
 ---
 
 ## 2. Detailed Work Plan
 
 ### `phase1-inventory.spec.ts` (Inventory CRUD)
+
 **Status**: Implemented.
 **Coverage**: List load, Add Item (Manual/Scan), Edit, Delete, Filter by Location.
 
 ### `phase2d-responsive.spec.ts` (Responsive Layouts)
+
 **Status**: Implemented.
 **Coverage**: Desktop Grid (Widgets side-by-side), Form Max-Width constraints, Desktop Centered Modals vs Mobile Sheets.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
+
 **Status**: Implemented.
 **Coverage**: Recipe List, Search, Manual Entry, Import URL (Mocked).
 
 ### `phase3-delta.spec.ts` (Delta / Stock Check)
+
 **Status**: Implemented.
 **Coverage**: Stock Check UI, "Missing" to "Have" transition (Lazy Discovery), Recipe Navigation. Uses `createSeedRecipe` helper.
 
 ### `phase4-vision.spec.ts` (Visual Pantry)
+
 **Status**: Implemented.
 **Coverage**: Scan Entry, Staging List (Mock Analysis), Edit Candidate, Confirm All (Integration).
 
 ### `phase5-planner.spec.ts` (Planner Core)
+
 **Status**: Implemented.
 **Coverage**: Calendar Grid, New Plan Generator Form (Days/Constraints), Mock Generation Response.
 
 ### `phase6-refiner.spec.ts` (Slot Machine)
+
 **Status**: Implemented.
 **Coverage**: Lock/Unlock Slots, Spin/Reroll (Mock API), Bulk Actions.
 
 ### `phase7-shopping.spec.ts` (Shopping List)
+
 **Status**: Implemented.
 **Coverage**: Quick Add, Check/Uncheck, Clear Completed, Category Grouping. Uses `setupShoppingMocks`.
 
-### `phase9-voice.spec.ts` (Voice Control)
-**Status**: Backend Ready. UI Skipped.
-**Blocked by**: Frontend implementation of Microphone button and Voice Modal.
-**Guide**: See [Voice Assistant Setup](../guides/voice-assistant-setup.md) for Google Home integration.
+### `phase8-store.spec.ts` (Store Intelligence)
+
+**Status**: Skipped (Awaiting UI).
+**Coverage**: Store selection, Aisle Grouping, Sorting.
+**Blocker**: Store selection UI not yet implemented.
+
+### `phase9-voice.spec.ts` (Voice Webhook)
+
+**Status**: Ready (API Tests).
+**Coverage**: Webhook parsing (item splitting, quantities), authentication.
+**Note**: UI tests for microphone button are obsolete and skipped/removed.
+
+### `phase10-cooking.spec.ts` (Cooking Companion)
+
+**Status**: Implemented.
+**Coverage**: Cooking Mode Entry, Step Navigation, Features (Timer, Ingredients), Exit Flow. Uses `setupCookingMocks`.
+
+### `phase11-images.spec.ts` (Recipe Imagery)
+
+**Status**: Pending.
+**Coverage**: Generate Image Button, Loading State, Image Display.
+**Blocker**: API implementation.
 
 ## 3. Implementation Guide for "Strict Mode"
 

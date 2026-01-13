@@ -100,13 +100,12 @@ Our design philosophy is **Mobile-First but Desktop-Ready**. While the primary i
   - **UI**: List of "Candidates" (Name, Qty, Unit) with editable fields.
   - **Action**: "Confirm All" (Commits to DB).
 
-### 2.6. Shopping (`/shopping`)
+- **Shopping (`/shopping`)**
 
 - **List**:
   - **Grouped**: By Aisle (Phase 8) or Category (default).
   - **Sort**: Smart sort based on store layout.
   - **Interaction**: Swipe to delete, Tap to check (moves to bottom).
-  - **Voice**: Microphone icon to "Quick Add" (Phase 9).
 
 ### 2.7. Responsive Design (Adaptive Layout)
 

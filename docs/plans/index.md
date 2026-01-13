@@ -38,6 +38,10 @@ The planning phase focuses on establishing the foundational architecture, UX flo
 
 **Summary**: Strategy and status for "Strict Mode" Playwright tests across all phases.
 
+### [phase-11-recipe-images.md](phase-11-recipe-images.md) ⭐ NEW
+
+**Summary**: Plan for generating professional recipe cover images using Google's **Nano Banana** (Gemini 2.5 Flash Image).
+
 ### [../guides/voice-assistant-setup.md](../guides/voice-assistant-setup.md) ⭐ NEW
 
 **Summary**: Step-by-step guide for connecting Google Home/Assistant to the Kitchen API via Webhooks and IFTTT.

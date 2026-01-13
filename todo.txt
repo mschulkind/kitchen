@@ -5,3 +5,4 @@
 -add a way to favorite recipes, and allow seeding a plan with a favorited recipe or selected from so other sort of list.
 -we need to verify everything including all sorts of staples.
 -when specifying "1 can", also specify the size of the can
+-generate PDFs of recipes and evolve the format.

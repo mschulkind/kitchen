@@ -1,99 +1,82 @@
-# Development TODO: Phased MVP Development
+# Development TODO: The 11-Phase Roadmap 📋
 
-## Table of Contents
+> 🧭 **Navigation**: [Central Plan](central-plan.md) | [Frontend Tasks](frontend-tasks.md) | [E2E Test Plan](e2e-test-plan.md)
 
-- [Purpose](#purpose)
-- [Phase 0: Markdown-Driven MVP (Weeks 0-1)](#phase-0-markdown-driven-mvp-weeks-0-1)
-- [Phase 1: The Bare-Bones MVP (Weeks 1-3)](#phase-1-the-bare-bones-mvp-weeks-1-3)
-- [Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)](#phase-2-the-i-can-actually-cook-with-this-mvp-weeks-4-6)
-- [Phase 3: Multi-User & Realtime (Weeks 7-9)](#phase-3-multi-user--realtime-weeks-7-9)
-- [Phase 4: V1 Polish & Future-Proofing (Weeks 10-12)](#phase-4-v1-polish--future-proofing-weeks-10-12)
+This document tracks the high-level execution of the 11-Phase Roadmap.
 
-## Purpose
+## Phase 1: Foundation & Inventory (Essential) 🔴
 
-This to-do list is aligned with the [Phased Development Plan](project-phases.md). It breaks down the work into actionable items for each phase, with a focus on getting to a usable product as quickly as possible.
+- [x] **Monorepo Setup**: FastAPI + Expo + Docker.
+- [x] **Database Schema**: Users, Households, Pantry Items.
+- [x] **Backend API**: CRUD endpoints for Pantry.
+- [x] **Frontend UI**: Inventory List, Add/Edit Forms.
+- [x] **E2E Tests**: Inventory management flows.
 
----
+## Phase 2: Recipe Engine (Essential) 🔴
 
-## Phase 0: Markdown-Driven MVP (Weeks 0-1)
+- [x] **Scraper**: Firecrawl integration for recipe URL ingestion.
+- [x] **Parser**: Ingredient string to structured JSON logic.
+- [x] **Data Models**: Recipe, Ingredient, Instruction tables.
+- [x] **Frontend UI**: Recipe List, Manual Entry, Import Dialog.
+- [x] **E2E Tests**: Recipe creation and import flows.
 
-**Goal**: A conversational, markdown-based workflow to simulate and refine the meal planning process.
+## Phase 3: Delta Engine (Essential) 🔴
 
-- pending: **Conversational Flow Setup**
-  - pending: Create a new directory `phase0_flow/`.
-  - pending: Create templates for the conversational flow within `phase0_flow/`.
-- pending: **Example Generation**
-  - pending: Walk through a full conversational example in the `phase0_flow/plans/` directory.
+- [x] **Comparator Logic**: Recipe Ingredients vs. Pantry Stock algorithm.
+- [x] **Backend API**: `check-stock` endpoint.
+- [x] **Frontend UI**: "Check Stock" modal with "Missing" vs "Have" sections.
+- [x] **E2E Tests**: Lazy discovery flow ("I have this").
 
----
+## Phase 4: Visual Pantry (Nice-to-Have) 🟡
 
-## Phase 1: The Bare-Bones MVP (Weeks 1-3)
+- [x] **Vision Agent**: Gemini 1.5 Flash integration for image analysis.
+- [x] **Backend API**: Image upload and processing endpoints.
+- [x] **Frontend UI**: Camera capture and "Staging Area" for verification.
+- [x] **E2E Tests**: Scan flow mock tests.
 
-**Goal**: A single-user, web-based app that can generate a meal plan and shopping list.
+## Phase 5: Planner Core (Essential) 🔴
 
-- pending: **Project Setup**
-  - pending: Create `Procfile.dev` for Overmind. (Decision needed: [decisions/phase-4/procfile-dev.md](decisions/phase-4/procfile-dev.md))
-  - pending: Basic FastAPI backend structure.
-  - pending: Basic React frontend structure.
-  - pending: Initialize local Supabase project.
-- pending: **Core Logic**
-  - pending: Implement simple meal plan generation logic (no LLM).
-  - pending: Create initial data models in Supabase. (Decision needed: [decisions/phase-4/data-models-consolidation.md](decisions/phase-4/data-models-consolidation.md))
-  - pending: Create basic API endpoints. (Decision needed: [decisions/phase-4/api-endpoint-sketches.md](decisions/phase-4/api-endpoint-sketches.md))
-- pending: **Functional UI**
-  - pending: Create a simple React component to trigger meal plan generation.
-  - pending: Display the meal plan and shopping list as plain text.
+- [x] **Algorithm**: Inventory-aware plan generation.
+- [x] **Backend API**: Plan generation endpoints.
+- [x] **Frontend UI**: Week Calendar View, Generator Form.
+- [x] **E2E Tests**: Plan creation and viewing.
 
----
+## Phase 6: Slot Machine (Nice-to-Have) 🟡
 
-## Phase 2: The "I Can Actually Cook With This" MVP (Weeks 4-6)
+- [x] **Refiner Logic**: Lock/Spin mechanics.
+- [x] **Backend API**: Slot update endpoints.
+- [x] **Frontend UI**: Lock icons, Spin buttons (integrated in Planner).
+- [x] **E2E Tests**: Interaction tests.
 
-**Goal**: Integrate inventory tracking and LLM suggestions.
+## Phase 7: Shopping List (Essential) 🔴
 
-- pending: **Inventory**
-  - pending: Implement the inventory verification flow. (Decision needed: [decisions/phase-1/meal-planning-verification.md](decisions/phase-1/meal-planning-verification.md))
-  - pending: Build the UI for the categorical checklist.
-  - pending: Update backend logic to adjust the shopping list based on inventory.
-- pending: **LLM Integration**
-  - pending: Integrate OpenAI/Ollama for recipe suggestions.
-  - pending: Implement the approved LLM prompts.
-  - pending: Create a fallback mechanism for when the LLM is unavailable.
-- pending: **PWA & Offline**
-  - pending: Configure the app as a PWA with a service worker.
-  - pending: Implement basic offline support for viewing the shopping list. (Decision needed: [decisions/phase-3/offline-sync-mechanisms.md](decisions/phase-3/offline-sync-mechanisms.md))
+- [x] **Aggregator**: Plan + Ad-hoc items -> Shopping List.
+- [x] **Realtime**: Supabase subscriptions for sync.
+- [x] **Frontend UI**: Checklist with smart sorting.
+- [x] **E2E Tests**: Add, check, clear completed flows.
 
----
+## Phase 8: Store Intelligence (Defer) 🟢
 
-## Phase 3: Multi-User & Realtime (Weeks 7-9)
+- [x] **Backend Models**: Stores, Aisles, Mappings.
+- [ ] **Scraper**: Shaws/Generic aisle data fetcher.
+- [ ] **Sorter Logic**: Aisle-based sorting algorithm.
+- [ ] **Frontend UI**: Store selector, Aisle headers.
 
-**Goal**: Add collaborative features.
+## Phase 9: Voice Integration (Defer) 🟢
 
-- pending: **Auth & Presence**
-  - pending: Implement Google Social Login via Supabase Auth.
-  - pending: Add presence indicators to the UI.
-- pending: **Realtime Sync**
-  - pending: Implement realtime sync for shopping lists using Supabase channels.
-  - pending: Test with multiple simulated users.
-- pending: **Conflict Resolution**
-  - pending: Implement Last-Write-Wins for conflict resolution.
-  - pending: Add UI cues to show collaborators' changes.
+- [x] **Webhook API**: `POST /hooks/add-item` endpoint.
+- [x] **NLP**: Command parser.
+- [ ] **Docs**: Setup guide for Google Home (Completed).
+- [x] **Frontend UI**: Scoped out (External only).
 
----
+## Phase 10: Chef's Companion (Nice-to-Have) 🟡
 
-## Phase 4: V1 Polish & Future-Proofing (Weeks 10-12)
+- [x] **Backend API**: Recipe step tracking.
+- [x] **Frontend UI**: "Cooking Mode" (Large text, Wake lock).
+- [ ] **Inventory Decrement**: "Mark Cooked" logic.
 
-**Goal**: Refine UI/UX and solidify testing.
+## Phase 11: Recipe Imagery (Nice-to-Have) 🟡
 
-- pending: **UI/UX Polish**
-  - pending: Refine the categorical UI for shopping lists. (Decision needed: [decisions/phase-1/ui-categorical-shopping.md](decisions/phase-1/ui-categorical-shopping.md))
-  - pending: Improve mobile-first design and accessibility.
-- pending: **Testing**
-  - pending: Implement the full testing strategy (Unit, Integration, E2E). (Decision needed: [decisions/phase-4/testing-strategy-outline.md](decisions/phase-4/testing-strategy-outline.md))
-  - pending: Set up CI/CD pipeline with GitHub Actions.
-- pending: **Deployment**
-  - pending: Deploy the application to the self-hosted Raspberry Pi.
-  - pending: Document the entire deployment process.
-
-## Change Log
-
-- 2025-09-19: Cleaned up to follow markdown documentation format, converting checklists to status-prefixed bullets and adding changelog.
+- [ ] **Backend API**: Generation endpoint (Nano Banana).
+- [ ] **Worker**: Background image generation task.
+- [ ] **Frontend UI**: Display generated images.

@@ -34,7 +34,7 @@ async def import_pantry(input_file: Path, household_id: UUID) -> None:
         return
 
     settings = get_settings()
-    
+
     # Use Service Role Key to bypass RLS
     supabase = await acreate_client(
         settings.supabase_url,
@@ -62,7 +62,7 @@ async def import_pantry(input_file: Path, household_id: UUID) -> None:
                 location=PantryLocation(item["location"]),
                 notes="Legacy Import"
             )
-            
+
             created = await repo.create(household_id, dto)
             logger.info(f"  - Created: {created.name} in {created.location}")
 
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Import legacy pantry items.")
     parser.add_argument("--input-file", type=Path, required=True, help="Path to pantry.json")
     parser.add_argument("--household-id", type=UUID, required=True, help="Target Household UUID")
-    
+
     args = parser.parse_args()
-    
+
     asyncio.run(import_pantry(args.input_file, args.household_id))

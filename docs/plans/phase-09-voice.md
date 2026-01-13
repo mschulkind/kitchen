@@ -1,6 +1,6 @@
 # Phase 9: Voice Control 🗣️
 
-**Status**: 🚧 In Progress (Backend ✅, Frontend 🚧)
+**Status**: ✅ Backend Ready (Frontend Not Required)
 **Priority**: 🟡 Nice-to-Have (Great for messy hands)  
 **Estimated Effort**: 1 week  
 **Dependencies**: Phase 7 (Shopping list API to add items)  
@@ -8,7 +8,7 @@
 
 > 💡 **Tip**: Platform choice matters! See [Open Questions Q11](open-questions.md#q11-voice-assistant-platform).
 
-**Goal**: Hands-free kitchen management.
+**Goal**: Hands-free kitchen management via external integration (Google Home / Home Assistant).
 
 ## 9.1 Technical Architecture
 
@@ -23,30 +23,30 @@
 
 - **Goal**: Accept text from Google Home/HA.
 - **Tasks**:
-    1. **API**: `POST /hooks/add-item?key=SECRET`.
-    2. **NLP**: Simple parser to split "Milk and Eggs" -> `["Milk", "Eggs"]`.
+    1. **API**: `POST /hooks/add-item?key=SECRET` (Complete).
+    2. **NLP**: Simple parser to split "Milk and Eggs" -> `["Milk", "Eggs"]` (Complete).
     3. **Action**: Add to Shopping List (Unchecked).
 
-### Phase 9B: HA Configuration (User Side)
+### Phase 9B: Automation Setup (User Side)
 
 - **Goal**: Connect the dots.
 - **Tasks**:
-    1. **Docs**: Create guide for setting up `rest_command` in Home Assistant.
-    2. **Automation**: "Hey Google, add {text} to shopping list" -> Calls Webhook.
+    1. **Docs**: [Google Home Setup Guide](../guides/voice-assistant-setup.md) created.
+    2. **Automation**: "Hey Google, add {text} to shopping list" -> Calls Webhook via IFTTT or HA.
 
 ## 9.3 Testing Plan
 
-### Phase 9A Tests (Unit)
+### Phase 9A Tests (API)
 
-- [ ] **Parsing**:
+- [x] **Parsing**:
   - Input: "Add bread and 2 milks".
   - Assert: `[{item: "bread"}, {item: "milk", qty: 2}]`.
-- [ ] **Security**:
+- [x] **Security**:
   - Input: Request without `?key`.
   - Assert: 401 Unauthorized.
 
 ### Phase 9A Tests (Integration)
 
-- [ ] **End-to-End**:
+- [x] **Webhook Call**:
   - Call Webhook with valid key and text.
-  - Verify item appears in `shopping_list_items` table.
+  - Verify items appear in shopping list. (Tested in `phase9-voice.spec.ts` API tests).

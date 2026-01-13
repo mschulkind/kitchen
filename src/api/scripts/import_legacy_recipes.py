@@ -13,15 +13,15 @@ import json
 import logging
 import re
 import sys
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
-from typing import Any
 from uuid import UUID
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent.parent.parent))
 
 from supabase import acreate_client
+
 from src.api.app.core.config import get_settings
 from src.api.app.domain.planner.models import MealType, PlanStatus
 from src.api.app.domain.planner.repository import PlannerRepository
@@ -36,7 +36,7 @@ def parse_ingredient_string(raw: str) -> ParsedIngredient:
     """Heuristic parser for ingredient strings. 🧅"""
     # specific match for "2-3 lbs Chuck Roast..." -> qty=2.5? No, just take first number
     # Regex for start number: ^(\d+(?:\.\d+)?(?:-\d+)?)?\s*([a-zA-Z]+)?\s*(.*)$
-    
+
     # Very simple fallback: use whole string as item_name
     qty = None
     unit = None
@@ -49,7 +49,7 @@ def parse_ingredient_string(raw: str) -> ParsedIngredient:
             qty = float(match.group(1))
             possible_unit = match.group(2)
             name = match.group(3)
-            
+
             common_units = ["cup", "cups", "tbsp", "tsp", "oz", "lb", "lbs", "g", "kg", "ml", "l", "can", "cans", "clove", "cloves"]
             if possible_unit and possible_unit.lower().rstrip("s") in common_units:
                 unit = possible_unit
@@ -83,7 +83,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
     settings = get_settings()
     logger.info(f"Using Supabase URL: {settings.supabase_url}")
     logger.info(f"Service Key (prefix): {settings.supabase_service_role_key[:10]}...")
-    
+
     supabase = await acreate_client(
         settings.supabase_url,
         settings.supabase_service_role_key
@@ -121,7 +121,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
                 instructions=r_data.get("instructions"),
                 tags=["Legacy Import"],
             )
-            
+
             recipe = await recipe_repo.create(household_id, dto)
             logger.info(f"  - Created: {recipe.id}")
             recipe_map[title] = recipe.id
@@ -145,7 +145,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
         # Create Plan
         start_date = date.fromisoformat(plan_data["start_date"])
         end_date = date.fromisoformat(plan_data["end_date"])
-        
+
         plan = await planner_repo.create_plan(
             household_id=household_id,
             name=plan_data["name"],
@@ -158,7 +158,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
         # Create Slots (only Dinner for now as per JSON)
         await planner_repo.create_slots(plan.id, start_date, end_date, [MealType.DINNER])
         slots = await planner_repo._get_slots(plan.id) # Access internal for ease
-        
+
         # Map Plan JSON to Slots
         for day in plan_data["days"]:
             day_date = date.fromisoformat(day["date"])
@@ -176,10 +176,10 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
                 recipe_id = recipe_map.get(recipe_title)
                 if recipe_id:
                     await planner_repo.update_slot(
-                        slot.id, 
-                        plan.id, 
-                        household_id, 
-                        recipe_id=recipe_id, 
+                        slot.id,
+                        plan.id,
+                        household_id,
+                        recipe_id=recipe_id,
                         recipe_title=recipe_title,
                         notes=notes
                     )
@@ -188,9 +188,9 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
                     logger.warning(f"  - Recipe not found for plan: '{recipe_title}'")
                     # Still add notes/title even if no link
                     await planner_repo.update_slot(
-                        slot.id, 
-                        plan.id, 
-                        household_id, 
+                        slot.id,
+                        plan.id,
+                        household_id,
                         recipe_title=recipe_title,
                         notes=notes
                     )
@@ -198,7 +198,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
         # Activate the plan
         await planner_repo.update_status(plan.id, household_id, PlanStatus.ACTIVE)
         logger.info("Plan marked as ACTIVE.")
-        
+
     finally:
         # Supabase-py client doesn't need explicit close or uses a different method
         # The underlying http client might, but typically it's handled by garbage collection in scripts
@@ -209,7 +209,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Import legacy Phase 0 data.")
     parser.add_argument("--input-dir", type=Path, required=True, help="Path to plan directory")
     parser.add_argument("--household-id", type=UUID, required=True, help="Target Household UUID")
-    
+
     args = parser.parse_args()
-    
+
     asyncio.run(import_data(args.input_dir, args.household_id))
