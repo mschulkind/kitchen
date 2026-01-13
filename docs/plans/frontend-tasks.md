@@ -70,8 +70,8 @@ This task list tracks the execution of the [Frontend Redesign Plan](./frontend-r
 - [x] **Planner Grid**: Implement `src/mobile/app/(app)/planner/index.tsx`.
 - [x] **Planner Generator**: Implement `src/mobile/app/(app)/planner/new.tsx`.
 - [x] **Slot Machine**: Implement Lock/Spin UI in `planner/index.tsx`.
-- [ ] **Vision Staging**: Implement `src/mobile/app/(app)/inventory/scan-result.tsx`.
-- [ ] **Shopping List**: Implement `src/mobile/app/(app)/shopping/index.tsx` (with Aisle Groups).
+- [x] **Vision Staging**: Implement `src/mobile/app/(app)/inventory/scan-result.tsx`.
+- [x] **Shopping List**: Implement `src/mobile/app/(app)/shopping/index.tsx` (with Aisle Groups).
 
 ## 5. Responsive & Polish (Phase 2D)
 

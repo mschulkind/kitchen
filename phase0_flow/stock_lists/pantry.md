@@ -21,8 +21,6 @@
 - White Onions
 - Potatoes
 - Canned refried beans
-- Shredded parmesan cheese
-- Shredded cheese like cheddar or mozzarella
 - Ramen noodles
 - Instant ramen packets, various flavors
 - Masa Harina for corn tortillas

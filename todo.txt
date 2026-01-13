@@ -1,3 +1,6 @@
 -add property based testing. maybe we already have this?
 -add support for weights vs volumes
 -security for supabase studio?
+-keep recipes under one hour including prep, or make this configurable
+-add a way to favorite recipes, and allow seeding a plan with a favorited recipe or selected from so other sort of list.
+-we need to verify everything including all sorts of staples.

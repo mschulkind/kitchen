@@ -17,4 +17,7 @@
 
 ## Perishables
 
+- Shredded parmesan cheese
+- Shredded cheese like cheddar or mozzarella
+
 ## Other

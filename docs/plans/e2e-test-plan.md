@@ -9,14 +9,14 @@
 
 | Suite | Phase | Status | Strict? | Mocks Needed | Priority |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `phase1-inventory.spec.ts` | 1. Foundation | 🟡 Refactor | No | DB | High |
+| `phase1-inventory.spec.ts` | 1. Foundation | ✅ Ready | Yes | DB | High |
 | `phase2-recipes.spec.ts` | 2. Recipes | ✅ Ready | Yes | DB, LLM (Import) | High |
 | `phase2d-responsive.spec.ts` | 2D. Responsive | 🔴 Missing | Yes | - | Medium |
-| `phase3-delta.spec.ts` | 3. Delta | 🟡 Refactor | No | DB | High |
-| `phase4-vision.spec.ts` | 4. Vision | 🟡 Refactor | No | Vision API | Medium |
+| `phase3-delta.spec.ts` | 3. Delta | 🚧 Skipped | Yes | DB (Seed Data) | High |
+| `phase4-vision.spec.ts` | 4. Vision | ✅ Ready | Yes | Vision API | Medium |
 | `phase5-planner.spec.ts` | 5. Planner | ✅ Ready | Yes | LLM (Generate) | High |
-| `phase6-refiner.spec.ts` | 6. Refiner | 🔴 Missing | N/A | Refiner API | Medium |
-| `phase7-shopping.spec.ts` | 7. Shopping | 🟡 Expand | Yes | Realtime Sync | High |
+| `phase6-refiner.spec.ts` | 6. Refiner | 🔴 Missing | Yes | Refiner API | Medium |
+| `phase7-shopping.spec.ts` | 7. Shopping | 🚧 Skipped | Yes | Realtime Sync | High |
 | `phase8-store.spec.ts` | 8. Store | ⚪ Pending | - | Scraper API | Low |
 | `phase9-voice.spec.ts` | 9. Voice | ⚪ Pending | - | Webhook | Low |
 | `phase10-cooking.spec.ts` | 10. Cooking | ⚪ Pending | - | - | Low |
@@ -27,115 +27,82 @@
 
 ### `phase1-inventory.spec.ts` (Inventory CRUD)
 
-**Current Issue**: Uses permissive helpers (`if (element.count() > 0)`). Fails to explicitly assert specific field names.
+**Status**: Mostly Complete. One skipped test.
 
-**Required Actions**:
-
-- [ ] Remove all `if` checks.
-- [ ] Replace text locators with `getByTestId()`.
-- [ ] **TestID Mapping**:
-  - Add Item Button -> `add-item-fab`
-  - Name Input -> `item-name-input`
-  - Quantity Input -> `item-qty-input`
-  - Unit Picker -> `item-unit-picker`
-  - Save Button -> `save-item-button`
-- [ ] **Flows to Verify**:
-  - Add item manually.
-  - Edit existing item (change qty).
-  - Delete item (swipe or long press).
-  - Filter list by category.
+**Tasks**:
+- [ ] **Unskip Save Test**: Enable the `can fill and save item form` test.
+  - *Requirement*: Ensure `testID="save-item-button"` works and database mutation succeeds in CI environment.
+- [ ] **Verify Filter Logic**: Add specific assertion that filtering by 'Fridge' hides 'Pantry' items.
 
 ### `phase2d-responsive.spec.ts` (Responsive Layouts)
 
-**Goal**: Verify app adapts correctly to Mobile (375x667) and Desktop (1280x720) viewports.
+**Status**: Missing.
 
-**Required Actions**:
-
-- [ ] **Desktop Hub Grid**:
-  - Set viewport to 1280x720.
-  - Assert `tonight-widget` and `shopping-widget` are side-by-side (or grid flow) rather than stacked vertically.
-  - Assert `module-grid` uses 3-4 columns instead of 2.
-- [ ] **Navigation Adaptation**:
-  - **Mobile**: Assert Hamburger/Back gestures work.
-  - **Desktop**: Assert Sidebar/TopNav is visible (if implemented) or layout is centered.
-- [ ] **Form Constraints**:
-  - Navigate to `/recipes/new`.
-  - Assert `recipe-form-container` width is <= 800px even on 1280px screen (check computed style or bounding box).
-- [ ] **Modals vs Dialogs**:
-  - Trigger "Add Recipe" action.
-  - **Mobile**: Assert Sheet covers bottom/full width.
-  - **Desktop**: Assert Dialog is centered with overlay.
+**Tasks**:
+- [ ] **Create File**: `tests/web/e2e/phase2d-responsive.spec.ts`.
+- [ ] **Implement Desktop Grid Test**:
+  - Set viewport to `1280x720`.
+  - Assert `tonight-widget` and `shopping-widget` are displayed horizontally (check bounding boxes).
+- [ ] **Implement Form Constraint Test**:
+  - Navigate to `/recipes/new` on Desktop.
+  - Assert form container width is `< 800px`.
+- [ ] **Implement Modal Test**:
+  - Trigger "Add Recipe".
+  - Assert it renders as a centered Dialog (not a bottom sheet) on Desktop.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
 
-**Status**: Good.
+**Status**: Complete.
 
-**Required Actions**:
-
-- [ ] Ensure `Import URL` test mocks the backend response to avoid hitting external sites (flaky).
-- [ ] Verify `Cooking Mode` wake lock behavior (mock `expo-keep-awake`).
+**Tasks**:
+- [ ] **Mock Import Scraper**: Currently hits real URL. Add `page.route('**/api/v1/recipes/scrape', ...)` to return mock data (Title: "Mock Chicken", Ingredients: ["Chicken"]).
 
 ### `phase3-delta.spec.ts` (Delta / Stock Check)
 
-**Current Issue**: Permissive logic for "Stock Check" button.
+**Status**: All tests skipped due to missing data.
 
-**Required Actions**:
-
-- [ ] **Standardize UI**: Enforce that the "Check Stock" button always exists on Recipe Detail (TestID: `check-stock-button`).
-- [ ] **Strict Flows**:
-  - Open Stock Check Modal.
-  - Assert "Missing" section contains elements `missing-item-{id}`.
-  - Assert "Have" section contains elements `have-item-{id}`.
-  - Click "Missing" item -> Assert it moves to "Have".
+**Tasks**:
+- [ ] **Create Seed Recipe**: In `test.beforeAll`, programmatically insert a recipe with ID `test-recipe-id` and known ingredients (Mock Ingredient A, Mock Ingredient B).
+- [ ] **Unskip All Tests**: Remove `.skip` from `test.describe`.
+- [ ] **Verify "Missing" to "Have"**: Tap "I have this" on Mock Ingredient A and assert it moves to the "Have" section.
 
 ### `phase4-vision.spec.ts` (Visual Pantry)
 
-**Current Issue**: Checks for *any* camera UI (video, file input).
+**Status**: Complete.
 
-**Required Actions**:
-
-- [ ] **Mock Vision API**: Use `page.route` to intercept `/api/vision/analyze` and return a fixed JSON: `[{"name": "Banana", "qty": 5}]`.
-- [ ] **Strict Flows**:
-  - Click `scan-fab`.
-  - Upload/Snap image (mock input).
-  - Assert `staging-list` appears.
-  - Edit candidate quantity.
-  - Click `confirm-vision-items`.
-  - Assert redirection to Inventory list.
+**Tasks**:
+- [ ] **Verify Integration**: Ensure that clicking "Confirm All" actually adds items to the Inventory list (navigate to `/inventory` and check for item existence).
 
 ### `phase5-planner.spec.ts` (Planner Core)
 
-**Status**: Good.
+**Status**: Complete.
 
-**Required Actions**:
-
-- [ ] **Mock Generator**: Intercept `/api/planner/generate` to return 3 fixed themes.
-- [ ] Ensure "Constraints" chip selection is tested thoroughly.
+**Tasks**:
+- [ ] **No pending tasks**. Suite is green.
 
 ### `phase6-refiner.spec.ts` (Slot Machine)
 
-**Status**: Missing / Stub.
+**Status**: Missing.
 
-**Required Actions**:
-
-- [ ] Create file.
-- [ ] **Mock Refiner**: Intercept `/api/planner/refine` to return a swapped recipe.
-- [ ] **Flows**:
-  - Navigate to Planner.
-  - Click `lock-button` on Main Dish (Day 1).
-  - Click `spin-button` on Side Dish (Day 1).
-  - Assert Side Dish changes, Main Dish stays.
+**Tasks**:
+- [ ] **Create File**: `tests/web/e2e/phase6-refiner.spec.ts`.
+- [ ] **Implement Lock Test**:
+  - Click lock icon on a slot.
+  - Assert lock icon changes state/color.
+- [ ] **Implement Spin Test**:
+  - Click refresh/spin icon.
+  - Assert slot content changes (requires mocking the Refiner API response).
 
 ### `phase7-shopping.spec.ts` (Shopping List)
 
-**Status**: Strict but minimal.
+**Status**: Most tests skipped.
 
-**Required Actions**:
-
-- [ ] **Expand Coverage**:
-  - **Aisle Headers**: Assert existence of `header-produce` or `header-aisle-1`.
-  - **Sync Mocking**: Simulate a second user by programmatically injecting a Supabase event (if possible) or just verify client-side optimistic UI updates.
-  - **Clear Completed**: Add items, check them, click `clear-completed-button`, assert list is empty.
+**Tasks**:
+- [ ] **Database Cleanup**: Add `test.afterEach` to clear shopping list items to ensure clean state.
+- [ ] **Unskip "Add Items"**: Enable text input and button press tests.
+- [ ] **Unskip "Check/Uncheck"**: Enable toggle tests.
+- [ ] **Unskip "Clear Completed"**: Enable clear button tests.
+- [ ] **Verify Grouping**: Assert "Apples" appears under "Produce" header (requires Mock API or correct category logic).
 
 ## 3. Implementation Guide for "Strict Mode"
 
@@ -143,11 +110,7 @@
 2.  **Tag the Component**: Go to the source code (`src/mobile/app/...`) and add `testID="my-element-name"`.
 3.  **Write the Test**:
     ```typescript
-    // BAD
-    const btn = page.getByText('Save');
-    if (await btn.isVisible()) await btn.click();
-
-    // GOOD
     await page.getByTestId('save-button').click();
+    await expect(page.getByTestId('success-message')).toBeVisible();
     ```
-4.  **Run & Refine**: `npx playwright test phaseX-name.spec.ts`.
+4.  **Run & Refine**: `npx playwright test phaseX-name`.
