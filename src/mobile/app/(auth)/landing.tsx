@@ -60,7 +60,7 @@ export default function LandingScreen() {
           size="$6" 
           theme="orange" 
           iconAfter={<ArrowRight size={20} />}
-          onPress={() => router.push('/(auth)/signup')}
+          onPress={() => router.push('/(auth)/login')}
           fontWeight="bold"
         >
           Get Started

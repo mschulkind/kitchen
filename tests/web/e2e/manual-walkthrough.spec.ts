@@ -40,24 +40,17 @@ test.describe('Frontend Redesign Walkthrough', () => {
       await expect(page.getByText('Kitchen')).toBeVisible();
       await expect(page.getByTestId('get-started-button')).toBeVisible();
       
-      console.log('Step 2: Sign Up Flow');
+      console.log('Step 2: Google Login Flow');
       await page.getByTestId('get-started-button').click();
       
-      // Should be on Signup Screen
-      await expect(page.getByRole('heading', { name: 'Join Kitchen' })).toBeVisible();
+      // Should be on Login Screen
+      await expect(page.getByRole('heading', { name: 'Welcome to Kitchen' })).toBeVisible();
       
-      // Create a random user
-      const uniqueId = Date.now();
-      const email = `testuser${uniqueId}@example.com`;
-      const password = 'Password123!';
-      
-      await page.getByPlaceholder('Email').fill(email);
-      await page.getByPlaceholder('Password').fill(password);
-      await page.getByRole('button', { name: 'Sign Up' }).click();
+      // Click Google Login
+      await page.getByTestId('google-login-button').click();
       
       // FORCE NAVIGATION to Hub to continue testing inner modules
-      // In a real E2E, we'd wait for the redirect, but for this walkthrough 
-      // we want to verify the Planner/Recipe screens even if Auth is slow/flaky in CI.
+      // In dev mode, the app will redirect to /(app)
       await page.goto('/(app)');
       
     } else {

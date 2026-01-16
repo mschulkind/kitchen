@@ -28,6 +28,7 @@
 
 - **Planner Manual Entry**: The Planner previously only allowed "New Plan" (AI Generation). Implemented `planner/add.tsx` and updated the calendar to allow manual recipe selection for specific slots.
 - **Import Error (Lucide Icons)**: Fixed a breaking bug where `planner/add.tsx` was incorrectly importing from `@tanstack/lucide-icons` instead of `@tamagui/lucide-icons`, causing a blank screen.
+- **Auth Alignment (Google Only)**: Removed email/password signup and login. Implemented unified "Sign in with Google" flow to align with `phase-01-foundation.md` and the central development plan.
 
 ## NB / Design / Feature Request Backlog
 
