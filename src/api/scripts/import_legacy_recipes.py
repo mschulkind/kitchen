@@ -50,7 +50,23 @@ def parse_ingredient_string(raw: str) -> ParsedIngredient:
             possible_unit = match.group(2)
             name = match.group(3)
 
-            common_units = ["cup", "cups", "tbsp", "tsp", "oz", "lb", "lbs", "g", "kg", "ml", "l", "can", "cans", "clove", "cloves"]
+            common_units = [
+                "cup",
+                "cups",
+                "tbsp",
+                "tsp",
+                "oz",
+                "lb",
+                "lbs",
+                "g",
+                "kg",
+                "ml",
+                "l",
+                "can",
+                "cans",
+                "clove",
+                "cloves",
+            ]
             if possible_unit and possible_unit.lower().rstrip("s") in common_units:
                 unit = possible_unit
             else:
@@ -62,11 +78,7 @@ def parse_ingredient_string(raw: str) -> ParsedIngredient:
             pass
 
     return ParsedIngredient(
-        raw_text=raw,
-        quantity=qty,
-        unit=unit,
-        item_name=name.strip(),
-        confidence=0.8
+        raw_text=raw, quantity=qty, unit=unit, item_name=name.strip(), confidence=0.8
     )
 
 
@@ -84,10 +96,7 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
     logger.info(f"Using Supabase URL: {settings.supabase_url}")
     logger.info(f"Service Key (prefix): {settings.supabase_service_role_key[:10]}...")
 
-    supabase = await acreate_client(
-        settings.supabase_url,
-        settings.supabase_service_role_key
-    )
+    supabase = await acreate_client(settings.supabase_url, settings.supabase_service_role_key)
 
     try:
         recipe_repo = RecipeRepository(supabase)
@@ -151,24 +160,26 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
             name=plan_data["name"],
             start_date=start_date,
             end_date=end_date,
-            constraints=[plan_data.get("theme", "Legacy Import")]
+            constraints=[plan_data.get("theme", "Legacy Import")],
         )
         logger.info(f"Created Plan: {plan.name} ({plan.id})")
 
         # Create Slots (only Dinner for now as per JSON)
         await planner_repo.create_slots(plan.id, start_date, end_date, [MealType.DINNER])
-        slots = await planner_repo._get_slots(plan.id) # Access internal for ease
+        slots = await planner_repo._get_slots(plan.id)  # Access internal for ease
 
         # Map Plan JSON to Slots
         for day in plan_data["days"]:
             day_date = date.fromisoformat(day["date"])
             for meal in day["meals"]:
-                meal_type = meal["type"].lower() # "dinner"
+                meal_type = meal["type"].lower()  # "dinner"
                 recipe_title = meal.get("recipe_title")
                 notes = meal.get("notes")
 
                 # Find matching slot
-                slot = next((s for s in slots if s.date == day_date and s.meal_type == meal_type), None)
+                slot = next(
+                    (s for s in slots if s.date == day_date and s.meal_type == meal_type), None
+                )
                 if not slot:
                     logger.warning(f"No slot found for {day_date} {meal_type}")
                     continue
@@ -181,18 +192,14 @@ async def import_data(input_dir: Path, household_id: UUID) -> None:
                         household_id,
                         recipe_id=recipe_id,
                         recipe_title=recipe_title,
-                        notes=notes
+                        notes=notes,
                     )
                     logger.info(f"  - Linked '{recipe_title}' to {day_date}")
                 else:
                     logger.warning(f"  - Recipe not found for plan: '{recipe_title}'")
                     # Still add notes/title even if no link
                     await planner_repo.update_slot(
-                        slot.id,
-                        plan.id,
-                        household_id,
-                        recipe_title=recipe_title,
-                        notes=notes
+                        slot.id, plan.id, household_id, recipe_title=recipe_title, notes=notes
                     )
 
         # Activate the plan

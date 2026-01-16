@@ -22,7 +22,7 @@ All core suites are now implemented in Strict Mode.
 | `phase8-store.spec.ts` | 8. Store | 🚧 Skipped | Yes | Scraper API | Low |
 | `phase9-voice.spec.ts` | 9. Voice | ✅ Ready (API) | Yes | Webhook | Low |
 | `phase10-cooking.spec.ts` | 10. Cooking | ✅ Ready | Yes | Recipe Mocks | Low |
-| `phase11-images.spec.ts` | 11. Imagery | ⚪ Pending | - | - | Low |
+| `phase11-images.spec.ts` | 11. Imagery | ✅ Ready | Yes | Generation Mock | Low |
 
 ---
 
@@ -68,16 +68,15 @@ All core suites are now implemented in Strict Mode.
 ### `phase9-voice.spec.ts` (Voice Webhook)
 **Status**: Ready (API Tests).
 **Coverage**: Webhook parsing (item splitting, quantities), authentication.
-**Note**: UI tests for microphone button are obsolete and skipped/removed.
+**Note**: UI tests removed; focuses on API endpoint availability.
 
 ### `phase10-cooking.spec.ts` (Cooking Companion)
 **Status**: Implemented.
 **Coverage**: Cooking Mode Entry, Step Navigation, Features (Timer, Ingredients), Exit Flow. Uses `setupCookingMocks`.
 
 ### `phase11-images.spec.ts` (Recipe Imagery)
-**Status**: Pending.
-**Coverage**: Generate Image Button, Loading State, Image Display.
-**Blocker**: API implementation.
+**Status**: Implemented.
+**Coverage**: Generate Image Button, Loading State, Image Display, Placeholder states. Uses `setupImageGenerationMock`.
 
 ## 3. Implementation Guide for "Strict Mode"
 

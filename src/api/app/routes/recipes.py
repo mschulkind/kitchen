@@ -199,6 +199,97 @@ async def delete_recipe(
 
 
 # =========================================================================
+# Image Generation Endpoints (Phase 11)
+# =========================================================================
+
+
+class GenerateImageRequest(BaseModel):
+    """Request to generate a recipe image."""
+
+    style: str = Field(
+        default="professional",
+        description="Image style: professional, rustic, modern, minimal",
+    )
+
+
+class GenerateImageResponse(BaseModel):
+    """Response from image generation."""
+
+    success: bool
+    image_url: str | None = None
+    message: str | None = None
+    error: str | None = None
+
+
+@router.post("/{recipe_id}/generate-image", response_model=GenerateImageResponse)
+async def generate_recipe_image(
+    recipe_id: UUID,
+    request: GenerateImageRequest,
+    service: Annotated[RecipeService, Depends(get_recipe_service)],
+    household_id: Annotated[UUID, Depends(get_current_household_id)],
+) -> GenerateImageResponse:
+    """Generate an AI image for a recipe. 🖼️
+
+    Uses Google Gemini to create appetizing food photography.
+    Falls back to mock images in development/testing.
+
+    Fun fact: Professional food photography can cost $500+ per shot! 📸
+    """
+    from src.api.app.domain.images import (
+        GenerateImageRequest as ImageRequest,
+    )
+    from src.api.app.domain.images import (
+        get_mock_image_service,
+    )
+
+    # Get the recipe to extract title and description
+    try:
+        recipe = await service.get_recipe(recipe_id, household_id)
+    except RecipeNotFoundError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Recipe {recipe_id} not found",
+        ) from None
+
+    # Build generation request from recipe data
+    ingredients = []
+    if recipe.ingredients:
+        ingredients = [ing.item_name for ing in recipe.ingredients[:5]]
+
+    image_request = ImageRequest(
+        title=recipe.title,
+        description=recipe.description,
+        ingredients=ingredients,
+        style=request.style,
+    )
+
+    # Generate image (uses mock in dev, real Gemini in prod)
+    image_service = get_mock_image_service()
+    result = await image_service.generate_image(recipe_id, image_request)
+
+    if result.success and result.image_url:
+        # Update recipe with new image URL
+        try:
+            await service.update_recipe(
+                recipe_id,
+                household_id,
+                UpdateRecipeDTO(image_url=result.image_url),
+            )
+        except Exception as e:
+            # Log but don't fail - image was generated successfully
+            import logging
+
+            logging.warning(f"Failed to update recipe image URL: {e}")
+
+    return GenerateImageResponse(
+        success=result.success,
+        image_url=result.image_url,
+        message=result.message,
+        error=result.error,
+    )
+
+
+# =========================================================================
 # Ingredient Parsing Endpoints (Phase 2B)
 # =========================================================================
 

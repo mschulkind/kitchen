@@ -3,13 +3,14 @@
  * 
  * Card component for displaying recipe summaries in lists.
  * Includes image, title, cook time, and last cooked date.
+ * Shows a placeholder when no image is available.
  * 
  * Fun fact: The average recipe has 9 ingredients! 🧅
  */
 
 import { useRouter } from 'expo-router';
 import { Card, XStack, YStack, H4, Paragraph, Image } from 'tamagui';
-import { Clock, Calendar } from '@tamagui/lucide-icons';
+import { Clock, Calendar, Image as ImageLucide } from '@tamagui/lucide-icons';
 
 export interface RecipeCardProps {
   /** Recipe ID for navigation */
@@ -53,14 +54,28 @@ export function RecipeCard({
       marginBottom="$3"
     >
       <XStack>
-        {imageUrl && (
+        {imageUrl ? (
           <Image
+            testID="recipe-card-image"
             source={{ uri: imageUrl }}
             width={100}
             height={100}
             borderTopLeftRadius="$4"
             borderBottomLeftRadius="$4"
           />
+        ) : (
+          <YStack
+            testID="recipe-image-placeholder"
+            width={100}
+            height={100}
+            backgroundColor="$gray4"
+            borderTopLeftRadius="$4"
+            borderBottomLeftRadius="$4"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <ImageLucide size={32} color="$gray8" />
+          </YStack>
         )}
         <YStack flex={1} padding="$3" justifyContent="center">
           <H4 numberOfLines={2} color="$gray12">

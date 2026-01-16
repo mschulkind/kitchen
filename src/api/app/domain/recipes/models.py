@@ -94,6 +94,7 @@ class UpdateRecipeDTO(BaseModel):
     description: str | None = None
     instructions: list[str] | None = None
     tags: list[str] | None = None
+    image_url: str | None = Field(default=None, description="Recipe cover image URL")
 
 
 class IngestRecipeRequest(BaseModel):

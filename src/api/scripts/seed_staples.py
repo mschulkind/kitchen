@@ -49,15 +49,13 @@ STAPLES: list[StapleItem] = [
     {"name": "Milk", "quantity": 1, "unit": "gallon", "location": "fridge"},
 ]
 
+
 async def seed_data(household_id: UUID) -> None:
     """Main seed logic."""
     settings = get_settings()
 
     # Use Service Role Key to bypass RLS
-    supabase = await acreate_client(
-        settings.supabase_url,
-        settings.supabase_service_role_key
-    )
+    supabase = await acreate_client(settings.supabase_url, settings.supabase_service_role_key)
 
     try:
         repo = PantryRepository(supabase)
@@ -75,7 +73,7 @@ async def seed_data(household_id: UUID) -> None:
                 quantity=float(item["quantity"]),
                 unit=item["unit"],
                 location=PantryLocation(item["location"]),
-                notes="Seeded staple"
+                notes="Seeded staple",
             )
 
             created = await repo.create(household_id, dto)

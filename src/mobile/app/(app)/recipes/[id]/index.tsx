@@ -3,13 +3,15 @@
  * 
  * Full recipe view with ingredients, steps, and actions.
  * Per frontend-redesign.md Section 2.3
+ * Now with AI image generation! 🖼️
  * 
  * Fun fact: Recipe photos increase the chance of someone cooking it by 60%! 📸
  */
 
+import { useState } from 'react';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { ScrollView, Dimensions } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   YStack,
   XStack,
@@ -32,6 +34,8 @@ import {
   ShoppingCart,
   Edit3,
   Trash2,
+  Image as ImageLucide,
+  Wand2,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
@@ -54,6 +58,7 @@ type Step = {
 type Recipe = {
   id: string;
   title: string;
+  description?: string;
   servings?: number;
   prep_time_minutes?: number;
   cook_time_minutes?: number;
@@ -67,6 +72,8 @@ type Recipe = {
 export default function RecipeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
 
   const { data: recipe, isLoading } = useQuery({
     queryKey: ['recipe', id],
@@ -81,6 +88,30 @@ export default function RecipeDetailScreen() {
       return data as Recipe;
     },
     enabled: !!id,
+  });
+
+  // Image generation mutation
+  const generateImageMutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch(`/api/v1/recipes/${id}/generate-image`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ style: 'professional' }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to generate image');
+      }
+      
+      return response.json();
+    },
+    onSuccess: (data) => {
+      if (data.success && data.image_url) {
+        setGeneratedImageUrl(data.image_url);
+        // Invalidate recipe query to refresh
+        queryClient.invalidateQueries({ queryKey: ['recipe', id] });
+      }
+    },
   });
 
   if (isLoading) {
@@ -100,22 +131,53 @@ export default function RecipeDetailScreen() {
     );
   }
 
-  const totalTime =
-    (recipe.prep_time_minutes || 0) + (recipe.cook_time_minutes || 0);
+  const imageUrl = generatedImageUrl || recipe.image_url;
+  const isGenerating = generateImageMutation.isPending;
 
   return (
     <>
       <Stack.Screen options={{ title: recipe.title }} />
 
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-        {/* Hero Image */}
-        {recipe.image_url && (
+        {/* Hero Image or Placeholder */}
+        {imageUrl ? (
           <Image
-            source={{ uri: recipe.image_url }}
+            testID="recipe-hero-image"
+            source={{ uri: imageUrl }}
             width={SCREEN_WIDTH}
             height={SCREEN_WIDTH * 0.6}
             resizeMode="cover"
           />
+        ) : (
+          <YStack
+            testID="recipe-image-placeholder"
+            width={SCREEN_WIDTH}
+            height={SCREEN_WIDTH * 0.5}
+            backgroundColor="$gray4"
+            justifyContent="center"
+            alignItems="center"
+          >
+            {isGenerating ? (
+              <YStack alignItems="center" space="$2">
+                <Spinner testID="image-generating-indicator" size="large" color="$orange10" />
+                <Text color="$gray10">Generating appetizing image...</Text>
+              </YStack>
+            ) : (
+              <YStack alignItems="center" space="$3">
+                <ImageLucide size={64} color="$gray8" />
+                <Text color="$gray10">No image yet</Text>
+                <Button
+                  testID="generate-image-button"
+                  size="$3"
+                  theme="orange"
+                  icon={<Wand2 size={16} />}
+                  onPress={() => generateImageMutation.mutate()}
+                >
+                  Generate with AI
+                </Button>
+              </YStack>
+            )}
+          </YStack>
         )}
 
         <YStack padding="$4" space="$4">
