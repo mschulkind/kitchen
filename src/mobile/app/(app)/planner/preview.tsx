@@ -68,11 +68,19 @@ export default function PlanPreviewScreen() {
   // Apply plan mutation
   const applyPlan = useMutation({
     mutationFn: async (optionId: string) => {
-      // In production, call the API to generate and save the meal plan
-      // based on the selected theme
-      await new Promise((r) => setTimeout(r, 1500));
-      
-      // Mock: Insert meal plan entries
+      // 1. Get a real recipe to use (so FK constraints pass)
+      const { data: recipes } = await supabase
+        .from('recipes')
+        .select('id')
+        .limit(1);
+
+      const realRecipeId = recipes?.[0]?.id;
+
+      if (!realRecipeId) {
+        throw new Error('No recipes found! Please create a recipe first.');
+      }
+
+      // 2. Generate meal plan entries
       const today = new Date();
       const meals = [];
       
@@ -83,14 +91,14 @@ export default function PlanPreviewScreen() {
         meals.push({
           date: date.toISOString().split('T')[0],
           meal_type: 'main',
-          recipe_id: `mock-recipe-${i}`,
+          recipe_id: realRecipeId, // Use REAL ID
           locked: false,
         });
       }
 
-      // In real implementation:
-      // const { error } = await supabase.from('meal_plans').insert(meals);
-      // if (error) throw error;
+      // 3. Insert into Supabase
+      const { error } = await supabase.from('meal_plans').insert(meals);
+      if (error) throw error;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['meal_plans'] });

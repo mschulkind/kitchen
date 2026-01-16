@@ -30,6 +30,13 @@ export default function PlannerLayout() {
         }}
       />
       <Stack.Screen
+        name="add"
+        options={{
+          title: 'Add Meal',
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen
         name="preview"
         options={{
           title: 'Choose Your Adventure',

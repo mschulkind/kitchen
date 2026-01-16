@@ -251,7 +251,12 @@ export default function PlannerScreen() {
                         padding="$3"
                         opacity={0.5}
                         pressStyle={{ scale: 0.98 }}
-                        onPress={() => router.push('/(app)/planner/new')}
+                        onPress={() => 
+                          router.push({
+                            pathname: '/(app)/planner/add',
+                            params: { date: day.date, meal_type: 'main' }
+                          })
+                        }
                       >
                         <Text
                           fontSize="$2"
