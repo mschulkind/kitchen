@@ -38,15 +38,10 @@ test.describe('Frontend Redesign Walkthrough', () => {
     if (isLanding) {
       console.log('Verifying Landing Page');
       await expect(page.getByText('Kitchen')).toBeVisible();
-      await expect(page.getByTestId('get-started-button')).toBeVisible();
       
       console.log('Step 2: Google Login Flow');
-      await page.getByTestId('get-started-button').click();
-      
-      // Should be on Login Screen
-      await expect(page.getByRole('heading', { name: 'Welcome to Kitchen' })).toBeVisible();
-      
-      // Click Google Login
+      // Click Google Login directly on landing
+      await expect(page.getByTestId('google-login-button')).toBeVisible();
       await page.getByTestId('google-login-button').click();
       
       // FORCE NAVIGATION to Hub to continue testing inner modules

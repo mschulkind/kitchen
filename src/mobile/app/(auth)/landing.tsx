@@ -1,15 +1,47 @@
 /**
  * Landing Page 🛬
  * 
- * First screen users see. Prompts for login.
+ * First screen users see. Prompts for Google Sign In.
  */
 
+import { useState } from 'react';
 import { useRouter } from 'expo-router';
-import { YStack, H1, H2, Paragraph, Button, XStack } from 'tamagui';
-import { ChefHat, ArrowRight } from '@tamagui/lucide-icons';
+import { YStack, H1, H2, Paragraph, XStack, Spinner } from 'tamagui';
+import { ChefHat, Chrome } from '@tamagui/lucide-icons';
+
+import { supabase } from '@/lib/supabase';
+import { KitchenButton } from '@/components/Core/Button';
 
 export default function LandingScreen() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { error: authError } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+        },
+      });
+
+      if (authError) throw authError;
+      
+      // Note: In a real OAuth flow, this redirects away from the app.
+      // For local development bypass if not configured:
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Dev Mode: Bypassing real OAuth for testing');
+        router.replace('/(app)');
+      }
+    } catch (e: any) {
+      setError(e.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10" testID="landing-screen">
@@ -55,26 +87,27 @@ export default function LandingScreen() {
 
       {/* Actions */}
       <YStack space="$3" marginBottom="$6">
-        <Button 
-          testID="get-started-button"
-          size="$6" 
-          theme="orange" 
-          iconAfter={<ArrowRight size={20} />}
-          onPress={() => router.push('/(auth)/login')}
-          fontWeight="bold"
+        {error && (
+          <YStack backgroundColor="$red3" padding="$3" borderRadius="$4" marginBottom="$2">
+            <Paragraph color="$red11">{error}</Paragraph>
+          </YStack>
+        )}
+
+        <KitchenButton
+          testID="google-login-button"
+          size="$6"
+          theme="gray"
+          icon={loading ? <Spinner color="$orange10" /> : <Chrome size={24} color="$orange10" />}
+          onPress={handleGoogleLogin}
+          disabled={loading}
+          width="100%"
+          height={60}
+          borderRadius="$10"
+          borderWidth={2}
+          borderColor="$gray5"
         >
-          Get Started
-        </Button>
-        
-        <Button 
-          testID="sign-in-button" 
-          size="$4" 
-          chromeless 
-          color="$gray10"
-          onPress={() => router.push('/(auth)/login')}
-        >
-          Already have an account? Sign In
-        </Button>
+          {loading ? 'Connecting...' : 'Sign in with Google'}
+        </KitchenButton>
       </YStack>
     </YStack>
   );
