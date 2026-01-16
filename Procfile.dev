@@ -1,2 +1,2 @@
-frontend: just dev-frontend
-backend: just dev-api
+frontend: just dev-frontend 2>&1 | tee logs/frontend.log
+backend: just dev-api 2>&1 | tee logs/backend.log

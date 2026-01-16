@@ -95,7 +95,13 @@ Thumbs.db
 .env.production.local
 *.env
 
-# --- OS Generated ---
+# OS Generated
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+logs/
+
+# Chrome DevTools / MCP Artifacts
+tests/web/*.png
+tests/web/snapshot_*.txt
+

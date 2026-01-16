@@ -127,6 +127,7 @@ docker-up:
 
 # Start both Frontend and Backend locally using Hivemind
 dev-all: up-infra
+    @mkdir -p logs
     @if ! command -v hivemind > /dev/null; then echo "Hivemind not found. Install with: go install github.com/DarthSim/hivemind/v2@latest (or brew/apt/pacman)"; exit 1; fi
     hivemind Procfile.dev
 
