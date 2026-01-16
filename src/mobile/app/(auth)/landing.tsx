@@ -11,12 +11,6 @@ import { ChefHat, ArrowRight } from '@tamagui/lucide-icons';
 export default function LandingScreen() {
   const router = useRouter();
 
-  const handleMockLogin = async () => {
-    // For Phase 2, we just bypass auth to the app hub
-    // In real implementation, this would trigger Supabase Auth
-    router.replace('/(app)');
-  };
-
   return (
     <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10" testID="landing-screen">
       
@@ -66,13 +60,19 @@ export default function LandingScreen() {
           size="$6" 
           theme="orange" 
           iconAfter={<ArrowRight size={20} />}
-          onPress={handleMockLogin}
+          onPress={() => router.push('/(auth)/signup')}
           fontWeight="bold"
         >
           Get Started
         </Button>
         
-        <Button testID="sign-in-button" size="$4" chromeless color="$gray10">
+        <Button 
+          testID="sign-in-button" 
+          size="$4" 
+          chromeless 
+          color="$gray10"
+          onPress={() => router.push('/(auth)/login')}
+        >
           Already have an account? Sign In
         </Button>
       </YStack>

@@ -248,22 +248,30 @@ export default function PlannerScreen() {
                     {day.slots.length === 0 ? (
                       <Card
                         bordered
+                        borderWidth={2}
+                        borderStyle="dashed"
+                        borderColor="$gray8"
+                        backgroundColor="$gray2"
                         padding="$3"
-                        opacity={0.5}
-                        pressStyle={{ scale: 0.98 }}
+                        pressStyle={{ scale: 0.98, backgroundColor: '$gray4', borderColor: '$gray9' }}
                         onPress={() => 
                           router.push({
                             pathname: '/(app)/planner/add',
                             params: { date: day.date, meal_type: 'main' }
                           })
                         }
+                        alignItems="center"
+                        justifyContent="center"
+                        height={60}
                       >
+                        <Plus size={20} color="$gray9" />
                         <Text
                           fontSize="$2"
                           color="$gray10"
-                          textAlign="center"
+                          fontWeight="600"
+                          marginTop="$1"
                         >
-                          + Add
+                          Add Meal
                         </Text>
                       </Card>
                     ) : (
