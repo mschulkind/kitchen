@@ -29,52 +29,64 @@ All core suites are now implemented in Strict Mode.
 ## 2. Detailed Work Plan
 
 ### `phase1-inventory.spec.ts` (Inventory CRUD)
+
 **Status**: Implemented.
 **Coverage**: List load, Add Item (Manual/Scan), Edit, Delete, Filter by Location.
 
 ### `phase2d-responsive.spec.ts` (Responsive Layouts)
+
 **Status**: Implemented.
 **Coverage**: Desktop Grid (Widgets side-by-side), Form Max-Width constraints, Desktop Centered Modals vs Mobile Sheets.
 
 ### `phase2-recipes.spec.ts` (Recipe Engine)
+
 **Status**: Implemented.
 **Coverage**: Recipe List, Search, Manual Entry, Import URL (Mocked).
 
 ### `phase3-delta.spec.ts` (Delta / Stock Check)
+
 **Status**: Implemented.
 **Coverage**: Stock Check UI, "Missing" to "Have" transition (Lazy Discovery), Recipe Navigation. Uses `createSeedRecipe` helper.
 
 ### `phase4-vision.spec.ts` (Visual Pantry)
+
 **Status**: Implemented.
 **Coverage**: Scan Entry, Staging List (Mock Analysis), Edit Candidate, Confirm All (Integration).
 
 ### `phase5-planner.spec.ts` (Planner Core)
+
 **Status**: Implemented.
 **Coverage**: Calendar Grid, New Plan Generator Form (Days/Constraints), Mock Generation Response.
 
 ### `phase6-refiner.spec.ts` (Slot Machine)
+
 **Status**: Implemented.
 **Coverage**: Lock/Unlock Slots, Spin/Reroll (Mock API), Bulk Actions.
 
 ### `phase7-shopping.spec.ts` (Shopping List)
+
 **Status**: Implemented.
 **Coverage**: Quick Add, Check/Uncheck, Clear Completed, Category Grouping. Uses `setupShoppingMocks`.
 
 ### `phase8-store.spec.ts` (Store Intelligence)
+
 **Status**: Skipped (Awaiting UI).
 **Coverage**: Store selection, Aisle Grouping, Sorting.
 **Blocker**: Store selection UI not yet implemented.
 
 ### `phase9-voice.spec.ts` (Voice Webhook)
+
 **Status**: Ready (API Tests).
 **Coverage**: Webhook parsing (item splitting, quantities), authentication.
 **Note**: UI tests removed; focuses on API endpoint availability.
 
 ### `phase10-cooking.spec.ts` (Cooking Companion)
+
 **Status**: Implemented.
 **Coverage**: Cooking Mode Entry, Step Navigation, Features (Timer, Ingredients), Exit Flow. Uses `setupCookingMocks`.
 
 ### `phase11-images.spec.ts` (Recipe Imagery)
+
 **Status**: Implemented.
 **Coverage**: Generate Image Button, Loading State, Image Display, Placeholder states. Uses `setupImageGenerationMock`.
 
