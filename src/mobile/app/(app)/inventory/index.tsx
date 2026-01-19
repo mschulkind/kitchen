@@ -437,6 +437,9 @@ function AddItemSheet({
       
       if (error) throw error;
     },
+    onError: (error) => {
+      console.error('❌ Failed to add item:', error);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pantry', householdId] });
       onOpenChange(false);

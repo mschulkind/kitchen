@@ -22,6 +22,15 @@ export default function LandingScreen() {
     setError(null);
 
     try {
+      // For local development bypass if not configured:
+      if (process.env.NODE_ENV === 'development' && !process.env.EXPO_PUBLIC_USE_REAL_OAUTH) {
+        console.log('Dev Mode: Bypassing real OAuth for testing');
+        // Simulate a small delay for realistic feel
+        await new Promise(resolve => setTimeout(resolve, 500));
+        router.replace('/(app)');
+        return;
+      }
+
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -30,13 +39,6 @@ export default function LandingScreen() {
       });
 
       if (authError) throw authError;
-      
-      // Note: In a real OAuth flow, this redirects away from the app.
-      // For local development bypass if not configured:
-      if (process.env.NODE_ENV === 'development') {
-        console.log('Dev Mode: Bypassing real OAuth for testing');
-        router.replace('/(app)');
-      }
     } catch (e: any) {
       setError(e.message);
       setLoading(false);

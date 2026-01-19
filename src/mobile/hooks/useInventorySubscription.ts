@@ -88,10 +88,48 @@ export function useInventorySubscription(
 
 /**
  * Hook to get the current user's household ID.
- * In production, this would come from the auth context.
+ * Fetches from household_members table based on current auth session.
  */
-export function useHouseholdId(): string | null {
-  // TODO: Replace with actual auth integration
-  // For now, return the development household
-  return '00000000-0000-0000-0000-000000000001';
+import { useState } from 'react';
+
+export function useHouseholdId() {
+  const [householdId, setHouseholdId] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function fetchHousehold() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const { data, error } = await supabase
+          .from('household_members')
+          .select('household_id')
+          .eq('user_id', user.id)
+          .limit(1)
+          .single();
+
+        if (error && error.code !== 'PGRST116') {
+           console.error('Error fetching household:', error);
+           return;
+        }
+
+        if (mounted && data) {
+          console.log('✅ Fetched household ID:', data.household_id);
+          setHouseholdId(data.household_id);
+        }
+      } catch (e) {
+        console.error('Failed to fetch household ID:', e);
+      }
+    }
+
+    fetchHousehold();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return householdId;
 }
