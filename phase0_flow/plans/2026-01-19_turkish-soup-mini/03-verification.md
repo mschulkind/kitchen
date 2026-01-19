@@ -46,6 +46,7 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 -   [x] **Cornstarch** (Pantry) for Velveting beef.
 -   [x] **Baking Soda** (Pantry) for Velveting beef.
 -   [x] **Olive Oil** (Pantry).
+-   [x] **Honey or Brown Sugar** (Pantry).
 -   [x] **Spices:** Cumin, Coriander, Salt, Pepper, Paprika.
 
 ## Plan Specifics
