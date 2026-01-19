@@ -12,7 +12,7 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 
 -   [ ] **Red Lentils** (1 cup) for Soup.
 -   [ ] **Carrots** (2-3) for Soup base.
--   [ ] **Lemon** (1 large) for Soup finish.
+-   [ ] **Lemons** (2) for Soup & Med Bowl.
 -   [ ] **Persian Cucumbers** (4-5) for Shirazi & Med Bowl.
 -   [ ] **Tomatoes** (4-5 Roma or Vine) for Shirazi & Med Bowl.
 -   [ ] **Red Onion** (1) for Shirazi & Bowl.
@@ -36,12 +36,14 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 ## Pantry/Dairy
 
 -   [ ] **Chickpeas** (2 cans) for Med Bowl.
+-   [ ] **Vegetable Broth** (6 cups/2 cartons) for Soup.
 -   [ ] **Greek Yogurt** (1 tub) for Med Bowl sauce & Kids dip.
 -   [ ] **Tomato Paste** (Small tube/can) for Soup.
 -   [ ] **Aleppo Pepper** (or extra Paprika/Chili flakes).
 -   [ ] **Quinoa** or **Couscous** (1 box) for Med Bowl base.
 -   [x] **Rice** (Brown or White) for Stir-Fry.
 -   [x] **Soy Sauce** (Pantry).
+-   [x] **Neutral Oil** (Canola/Veg) for Stir-Fry.
 -   [x] **Sesame Oil** (Pantry).
 -   [x] **Cornstarch** (Pantry) for Velveting beef.
 -   [x] **Baking Soda** (Pantry) for Velveting beef.
