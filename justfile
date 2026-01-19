@@ -1,19 +1,34 @@
-recipe_dir := `ls -d phase0_flow/plans/*/ | sort | tail -n 1 | sed 's/$/recipes/'`
+plan_dir := `ls -d phase0_flow/plans/*/ | sort | tail -n 1 | sed 's/\/$//'`
+recipe_dir := plan_dir / "recipes"
 output_dir := recipe_dir / "pdfs"
 css_file := recipe_dir / "recipes.css"
+plan_file := plan_dir / "04-final-plan.md"
+plan_pdf := output_dir / "00-plan-overview.pdf"
 
 # List all available commands
 default:
     @just --list
 
-# Convert all recipes to PDF
-all:
+# Convert all recipes to PDF and the plan overview
+all: plan
     mkdir -p {{output_dir}}
     @for file in {{recipe_dir}}/*.md; do \
         filename=$(basename "$file" .md); \
         echo "Converting $file to {{output_dir}}/$filename.pdf"; \
         uv run pandoc "$file" -o "{{output_dir}}/$filename.pdf" --pdf-engine=weasyprint --css={{css_file}} --metadata title="Recipe" --section-divs; \
     done
+
+# Convert the meal plan overview to PDF (excluding shopping list)
+plan:
+    @mkdir -p {{output_dir}}
+    @if [ -f "{{plan_file}}" ]; then \
+        echo "Converting {{plan_file}} to {{plan_pdf}} (stripping shopping list)"; \
+        awk '/## 🛒 Consolidated Shopping List/{skip=1; next} skip && /^---/{skip=0; next} !skip' "{{plan_file}}" > "{{recipe_dir}}/.tmp-plan.md"; \
+        uv run pandoc "{{recipe_dir}}/.tmp-plan.md" -o "{{plan_pdf}}" --pdf-engine=weasyprint --css={{css_file}} --metadata title="Meal Plan Overview" --section-divs; \
+        rm "{{recipe_dir}}/.tmp-plan.md"; \
+    else \
+        echo "No plan file found at {{plan_file}}"; \
+    fi
 
 # Convert a specific recipe to PDF (e.g. just recipe green-maghrebi-stew)
 recipe name:
