@@ -10,23 +10,32 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Ensuring you have everything ready before you start the heat.*
 
-**Mise-en-place:**
+**Mise-en-place (Main & Side):**
 
-- **The Base:** 1 cup Red Lentils (rinsed), 1 medium Yellow Onion (diced), 2-3 cloves Garlic (minced).
-- **The Veg:** 2-3 Carrots (peeled/chopped), 1 Russet Potato (small dice).
-- **The Flavor Bomb:** 2 tbsp Tomato Paste, 1 tsp Cumin, 1/2 tsp Coriander, 2 tsp Aleppo Pepper (or Paprika + pinch Cayenne).
-- **Liquids:** 6 cups Vegetable Broth (approx. 1.5 x 32oz cartons).
-- **The Finish:** 1 large Lemon (cut into wedges), 5 tbsp Extra Virgin Olive Oil.
-- **Side (Shirazi Salad):** 4-5 Persian Cucumbers, 4-5 Tomatoes, 1/2 Red Onion, 1/2 cup Mint, Lime Juice.
+- **The Main (Soup) Prep:**
+    - Rinse 1 cup Red Lentils.
+    - Dice 1 medium Yellow Onion.
+    - Peel/Chop 2-3 Carrots.
+    - Small dice 1 Russet Potato.
+    - Mince 2-3 cloves Garlic.
+- **The Flavor Bomb (Soup):** 2 tbsp Tomato Paste, 1 tsp Cumin, 1/2 tsp Coriander, 2 tsp Aleppo Pepper.
+- **The Liquids (Soup):** 6 cups Vegetable Broth.
+- **The Side (Shirazi Salad) Prep:**
+    - Dice 4-5 Persian Cucumbers.
+    - Dice 4-5 Tomatoes.
+    - Mince 1/2 Red Onion.
+    - Chop 1/2 cup Mint.
+    - Squeeze Juice of 2 Limes.
 
-**Execution:**
+**Execution (Interleaved):**
 
-1. **Sweat (7m):** Heat 2 tbsp oil in a large pot. Sauté onion, garlic, carrots, and potato until softened.
-2. **Bloom (2m):** Stir in tomato paste, cumin, coriander, and 1 tsp Aleppo pepper. Toast until fragrant and deep red.
-3. **Simmer (20m):** Add broth and lentils. Boil, then simmer low/covered until lentils are soft.
-4. **Blend:** Use an immersion blender until smooth and creamy.
-5. **The Sizzle:** In a small skillet, heat 3 tbsp oil. Add remaining Aleppo pepper. Cook 1 min until the oil is red and fragrant.
-6. **Serve:** Ladle soup, drizzle with the sizzling oil, and serve with a heavy squeeze of lemon.
+1.  **Start Soup Base:** Heat oil in large pot. Sweat onion, garlic, carrots, potato (7m).
+2.  **Bloom:** Add tomato paste and spice blend to pot. Cook until fragrant (2m).
+3.  **Simmer Main:** Add broth and lentils. Bring to boil, then cover and simmer low (20m).
+4.  **Make Side (While Simmering):** While soup bubbles, mix cucumbers, tomatoes, onion, mint, lime juice, and oil in a bowl. Salt to taste. Set aside.
+5.  **Finish Main:** Blend soup until smooth.
+6.  **Sizzle Garnish:** Quickly heat oil and remaining Aleppo pepper in small pan.
+7.  **Serve:** Ladle soup (drizzle with chili oil + lemon squeeze) alongside the fresh salad.
 
 ---
 
@@ -34,11 +43,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1. **SWEET & EARTHY Base:** The onions, carrots, and potatoes provide a sweet vegetable foundation, while the red lentils add the earthy protein backbone.
-2. **BLOOMED SPICE Layer:** Frying the tomato paste and spices (cumin/coriander) in oil unlocks fat-soluble flavors that boiling water alone cannot release.
-3. **CREAMY TEXTURE Layer:** Blending the cooked potato and lentils creates a natural, dairy-free creaminess that coats the palate.
-4. **BRIGHT ACID Punch:** The fresh lemon juice squeezed at the end cuts through the starchy thickness, waking up the entire dish.
-5. **SPICY FAT Finish:** The chili-infused oil dribbled on top provides heat and a rich mouthfeel contrast to the acidic soup.
+1.  **SWEET & EARTHY Base (Main):** The onions, carrots, and potatoes provide a sweet vegetable foundation, while the red lentils add the earthy protein backbone.
+2.  **BLOOMED SPICE Layer (Main):** Frying the tomato paste and spices (cumin/coriander) in oil unlocks fat-soluble flavors that boiling water alone cannot release.
+3.  **CREAMY TEXTURE Layer (Main):** Blending the cooked potato and lentils creates a natural, dairy-free creaminess that coats the palate.
+4.  **BRIGHT ACID Punch (Side & Finish):** The lime juice in the salad and fresh lemon squeeze in the soup cut through the starchy thickness, creating a palate-cleansing effect between bites.
+5.  **SPICY FAT Finish (Garnish):** The chili-infused oil dribbled on top provides heat and a rich mouthfeel contrast to the acidic soup.
 
 ---
 
@@ -46,13 +55,14 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Quick glances while cooking.*
 
-- **Prep** all veg (dice).
+- **Prep** soup veg (dice).
 - **Sweat** mirepoix in pot (7m).
-- **Bloom** tomato paste + spices (2m).
+- **Bloom** paste + spices (2m).
 - **Simmer** w/ broth + lentils (20m).
-- **Blend** smooth.
-- **Sizzle** chili oil in small pan.
-- **Assemble:** Soup -> Chili Oil -> Lemon Squeeze.
+- **Make Side:** Chop salad veg & toss w/ dressing while soup cooks.
+- **Blend** soup smooth.
+- **Sizzle** chili oil.
+- **Assemble:** Soup w/ garnish + Side Salad.
 
 ---
 
@@ -62,13 +72,14 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 | Time | Action | Notes |
 | :--- | :--- | :--- |
-| **T-0:40** | **Prep** | Rinse lentils, dice veg. |
-| **T-0:30** | **Cook Base** | Sweat onions/carrots/potatoes. |
-| **T-0:23** | **Spices** | Add paste/spices. Bloom. |
-| **T-0:21** | **Simmer** | Add broth/lentils. Cover. |
-| **T-0:20** | **Salad** | Chop cucumbers/tomatoes (Shirazi). |
-| **T-0:05** | **Finish** | Blend soup. Heat chili oil. |
-| **T-0:00** | **Serve** | Bowls + Lemon + Salad side. |
+| **T-0:40** | **Prep** | Rinse lentils, dice soup veg. |
+| **T-0:30** | **Cook Main** | Sweat onions/carrots/potatoes. |
+| **T-0:23** | **Spices** | Add paste/spices. Bloom 2m. |
+| **T-0:21** | **Simmer** | Add broth/lentils. Cover. **Timer: 20m.** |
+| **T-0:20** | **Side Prep** | Chop cucumbers, tomatoes, onion for salad. |
+| **T-0:10** | **Side Toss** | Mix salad with lime juice/oil. Set table. |
+| **T-0:05** | **Finish Main** | Blend soup. Heat chili oil garnish. |
+| **T-0:00** | **Serve** | Hot Soup + Cold Salad. |
 
 ---
 
@@ -76,13 +87,14 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Cooking by feel and intuition.*
 
-- **SMELL:** The kitchen should smell warm and toasted (cumin) when the spices hit the oil.
-- **LOOK:** The soup will transition from chunky/clear broth to a uniform, sunny orange opaque liquid after blending.
-- **SOUND:** The quiet bubble of the simmer is replaced by the aggressive "whirrr" of the immersion blender.
-- **TOUCH:** The lentils should be completely disintegrated; the potato should be soft enough to mash against the pot wall.
-- **TASTE:** Before lemon, it feels heavy and earthy. After lemon, it sings. Adjust salt until the lemon doesn't taste "sour" but "bright."
+-   **SMELL:** The kitchen should smell warm and toasted (cumin) when the spices hit the oil for the soup.
+-   **LOOK (Side):** The salad should glisten with lime juice; the colors should be jewel-like red and green.
+-   **SOUND:** The quiet bubble of the soup simmer is replaced by the aggressive "whirrr" of the immersion blender.
+-   **TOUCH:** The lentils in the soup should be completely disintegrated; the potato soft enough to mash.
+-   **TASTE:** The soup is heavy and earthy; the salad provides a sharp, crunchy "snap" that wakes up your tongue.
 
 ---
 
 ### Kid Submeal
-- **The Catch:** Before blending the soup, fish out several chunks of potato and carrot. Serve these "nuggets" plain with a side of cheese toast or pita bread.
+-   **The Catch:** Before blending the soup, fish out several chunks of potato and carrot. Serve these "nuggets" plain with a side of cheese toast or pita bread.
+-   **The Side:** Serve cucumber slices plain (pre-dressing).

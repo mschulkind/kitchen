@@ -10,24 +10,28 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Ensuring you have everything ready before you start the heat.*
 
-**Mise-en-place:**
+**Mise-en-place (Base, Main & Fresh Side):**
 
-- **The Protein:** 2 cans (15.5oz) Chickpeas (rinsed/drained), Cumin, Salt, Pepper.
-- **The Grain:** 1 cup Quinoa or Couscous (cooked).
-- **The Roast:** Fire Roasted Roots (thawed).
-- **Fresh Base:** 1 bag Spinach (5-8oz).
-- **The Salad:** 2 Persian Cucumbers (diced), 2 Vine Tomatoes (diced), 1/4 Red Onion (sliced thin), 1/2 bunch Mint (chopped).
-- **The Sauce:** 1 cup Greek Yogurt, 1/2 bunch Dill (chopped), 1 Garlic clove (minced), Lemon zest/juice.
-- **Pantry:** Olive Oil.
+- **The Base (Grain) Prep:** 1 cup Quinoa or Couscous (cooked).
+- **The Main (Hot Veg) Prep:**
+    - 2 cans (15.5oz) Chickpeas (rinsed/drained).
+    - Spice Mix: Cumin, Salt, Pepper.
+    - Fire Roasted Roots (thawed).
+- **The Fresh Side (Salad & Sauce) Prep:**
+    - Dice 2 Persian Cucumbers.
+    - Dice 2 Vine Tomatoes.
+    - Slice 1/4 Red Onion thinly.
+    - Chop 1/2 bunch Mint.
+    - Whisk **Sauce:** 1 cup Greek Yogurt, chopped dry Dill, Minced Garlic, Lemon Zest/Juice.
 
-**Execution:**
+**Execution (Interleaved):**
 
-1. **Grain:** Cook quinoa/couscous per package instructions. Fluff and set aside.
-2. **Crisp (10m):** Heat oil in a skillet. Sauté chickpeas with cumin, salt, and pepper until golden and skins are crisp/popping. Remove.
-3. **Roots:** In the same warm pan, add a splash more oil. Sear the thawed roots to revive texture and create crispy edges.
-4. **Sauce:** Whilst cooking, whisk yogurt, dill, garlic, lemon zest, and pinch of salt in a bowl.
-5. **Salad:** Toss cucumbers, tomatoes, onion, and mint with lemon juice and oil.
-6. **Assemble:** Bed of spinach + quinoa. Sections of chickpeas, roots, and salad. Drizzle with yogurt sauce.
+1.  **Start Base:** Start Quinoa/Couscous. (15m usually).
+2.  **Prep Side (While Grain Cooks):** Chop salad vegetables. Whisk yogurt sauce. Set aside.
+3.  **Crisp Main (10m):** Heat oil in large pan. Fry chickpeas with cumin/salt until popped/crispy. Remove to a bowl.
+4.  **Sear Main:** In same hot pan, sear thawed roots to revive texture (2-3m).
+5.  **Fluff Base:** Grain should be done now. Fluff with fork.
+6.  **Assemble:** Layer Spinach -> Warm Grain -> Crispy Chickpeas -> Warm Roots -> Cold Salad -> Sauce.
 
 ---
 
@@ -35,11 +39,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1. **EARTHY Base:** The quinoa and spinach provide a neutral, healthy foundation to soak up the dressing.
-2. **SPICED CRUNCH Layer:** Frying the chickpeas dries them out, concentrating the nutty flavor and adding texture that mimics croutons.
-3. **SWEET ROAST Layer:** The fire-roasted roots (carrots/sweet potatoes) bring natural sugars that contrast the savory elements.
-4. **COLD/FRESH Layer:** The cucumber/tomato salad adds necessary moisture and raw vegetal snap.
-5. **TANGY BINDING Layer:** The dill-yogurt sauce acts as the unifier—its acidity brightens the heavy roasted roots, and its fat carries the garlic/herb oils.
+1.  **EARTHY Base (Grain):** The quinoa and spinach provide a neutral, healthy foundation to soak up the dressing.
+2.  **SPICED CRUNCH Layer (Main):** Frying the chickpeas dries them out, concentrating the nutty flavor and adding texture that mimics croutons.
+3.  **SWEET ROAST Layer (Main):** The fire-roasted roots (carrots/sweet potatoes) bring natural sugars, revived by the pan sear.
+4.  **COLD/FRESH Layer (Side):** The cucumber/tomato salad adds necessary moisture and raw vegetal snap, contrasting the hot pan ingredients.
+5.  **TANGY BINDING Layer (Sauce):** The dill-yogurt sauce acts as the unifier—its acidity brightens the heavy roasted roots, and its fat carries the garlic/herb oils.
 
 ---
 
@@ -48,10 +52,9 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 *Best for: Quick glances while cooking.*
 
 - **Start** grain (cook/fluff).
+- **Prep** Salad & Sauce while grain boils.
 - **Crisp** chickpeas (oil/cumin, high heat).
 - **Sear** thawed roots (revive texture).
-- **Whisk** Yogurt Sauce.
-- **Chop** Salad (cuke/tom/onion/mint).
 - **Assemble:** Greens -> Grain -> Piles of Veg -> Sauce.
 
 ---
@@ -62,11 +65,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 | Time | Action | Notes |
 | :--- | :--- | :--- |
-| **T-0:30** | **Grain** | Start water/stock for quinoa. |
-| **T-0:25** | **Prep** | Drain beans. Chop salad veg. |
-| **T-0:15** | **Crisp** | Pan fry chickpeas (cumin/salt). |
-| **T-0:10** | **Sauce** | Whisk yogurt ingredients. |
-| **T-0:05** | **Roots** | Remove beans. Sear roots in same pan. |
+| **T-0:30** | **Start Base** | Start water/stock for quinoa. |
+| **T-0:25** | **Prep Side** | Chop salad veg. Whisk yogurt sauce. |
+| **T-0:15** | **Crisp Main** | Pan fry chickpeas (cumin/salt). |
+| **T-0:10** | **Sear Main** | Remove beans. Sear roots in same pan. |
+| **T-0:05** | **Check** | Fluff grain. Dress salad. |
 | **T-0:00** | **Bowl** | Build bowls immediately. |
 
 ---
@@ -75,13 +78,13 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Cooking by feel and intuition.*
 
-- **SOUND:** Chickpeas should "pop" or crackle like popcorn when they are properly crisped.
-- **LOOK:** A distinct separation of colors—Red (tomato), Green (spinach/dill), Orange (roots), Golden (chickpeas).
-- **SMELL:** The warm, musky scent of toasted cumin contrasting with the sharp, grassy scent of fresh dill.
-- **TEXTURE:** Every bite should have a mix of soft (quinoa), crunch (chickpea), snap (cucumber), and silk (yogurt).
-- **TASTE:** The yogurt sauce should be tart enough to make you pucker slightly before mixing it in.
+-   **SOUND:** Chickpeas should "pop" or crackle like popcorn when they are properly crisped.
+-   **LOOK (Side vs Main):** Clear contrast between the steam rising from the golden chickpeas/roots and the cold, glistening raw salad.
+-   **SMELL:** The warm, musky scent of toasted cumin contrasting with the sharp, grassy scent of fresh dill/mint.
+-   **TEXTURE:** Every bite should have a mix of soft (quinoa), crunch (chickpea), snap (cucumber), and silk (yogurt).
+-   **TASTE:** The yogurt sauce should be tart enough to make you pucker slightly before mixing it in.
 
 ---
 
 ### Kid Submeal
-- **Rainbow Plate:** Keep everything separate. A pile of plain chickpeas, a pile of warm roots, cucumber slices, and a small bowl of yogurt "dip" on the side.
+-   **Rainbow Plate:** Keep everything separate. A pile of plain chickpeas, a pile of warm roots, cucumber slices (plain side), and a small bowl of yogurt "dip".

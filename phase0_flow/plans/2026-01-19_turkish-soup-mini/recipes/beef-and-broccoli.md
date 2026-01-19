@@ -10,23 +10,28 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Ensuring you have everything ready before you start the heat.*
 
-**Mise-en-place:**
+**Mise-en-place (Main & Companion):**
 
-- **The Protein:** 1 lb Chuck Stew Meat (sliced 1/8" thin against grain).
-- **The Velvet Marinade:** 1/2 tsp Baking Soda, 1 tbsp Cornstarch, 1 tbsp Soy Sauce.
-- **The Veg:** 2 large heads Broccoli (small bite-sized florets), 1 bunch Scallions (sliced).
-- **Aromatics:** 1 tbsp Fresh Ginger (grated), 3 cloves Garlic (minced).
-- **The Sauce:** 1/2 cup Soy Sauce, 1 tbsp Sesame Oil, 1 tbsp Brown Sugar (or Honey), 1 tsp Cornstarch.
-- **Base:** 2 cups Rice (cooked), Neutral Oil (for frying).
+- **The Main (Beef) Prep:**
+    - Slice 1 lb Chuck Stew Meat (1/8" thin against grain).
+    - Mix **Velvet Marinade:** 1/2 tsp Baking Soda, 1 tbsp Cornstarch, 1 tbsp Soy Sauce.
+- **The Companion (Rice):** 2 cups Jasmine Rice, 3 cups Water (or per cooker instructions).
+- **The Main (Veg & Sauce) Prep:**
+    - Cut 2 large heads Broccoli (bite-sized florets).
+    - Slice 1 bunch Scallions.
+    - Grate 1 tbsp Ginger.
+    - Mince 3 cloves Garlic.
+    - Mix **Sauce:** 1/2 cup Soy Sauce, 1 tbsp Sesame Oil, 1 tbsp Brown Sugar, 1 tsp Cornstarch.
 
-**Execution:**
+**Execution (Interleaved):**
 
-1. **Velvet (20m):** Toss thin beef slices with "Velvet" ingredients. Let sit 20m. Start rice now.
-2. **The Sear (5m):** Heat 2 tbsp oil in wok/skillet until smoking. Sear beef in two batches for a hard char. Remove beef.
-3. **The Veg (4m):** Add splash of oil. Stir-fry broccoli with a splash of water (cover briefly to steam) until bright green/tender-crisp.
-4. **The Finish (2m):** Return beef to pan. Add ginger, garlic, and scallions. Toss 30s.
-5. **Sauce:** Pour in mixed sauce ingredients. Toss until sauce bubbles, thickens, and coats everything glossily.
-6. **Serve:** Pile over warm rice.
+1.  **Velvet (Main):** Toss sliced beef with Velvet Marinade. **Let sit 20m.**
+2.  **Start Companion:** IMMEDIATELY start the rice (stove or cooker). This takes ~20m, exactly the velvet time.
+3.  **Prep:** While beef sits and rice cooks, chop broccoli, ginger, garlic, scallions, and mix sauce.
+4.  **Sear (Main):** Heat 2 tbsp oil in wok (smoking hot). Sear beef in batches. Remove.
+5.  **Veg (Main):** Add oil. Steam-fry broccoli (splash of water, cover 1m) until bright green.
+6.  **Finish Main:** Return beef. Add aromatics. Pour sauce. Toss 30s.
+7.  **Serve:** Rice should beep/finish just as the beef is done. Serve immediately.
 
 ---
 
@@ -34,11 +39,11 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Understanding the sequential build-up of flavors.*
 
-1. **VELVET Texture Layer:** The baking soda alters the pH of the beef, preventing protein strands from tightening, resulting in a texture usually only found in Chinese restaurants.
-2. **MAILLARD Layer:** The high-heat sear creates savory crust on the beef, essential for depth before the sauce is added.
-3. **FRESH Veg Layer:** Rapidly cooking the broccoli preserves its crunch and chlorophyl (bright green), providing contrast to the soft meat.
-4. **AROMATIC Burst:** Adding ginger and garlic *after* the meat prevents burning and ensures a fresh, spicy kick in the final seconds.
-5. **UMAMI GLAZE Layer:** The soy/cornstarch sauce binds everything together, creating the signature glossy mouthfeel.
+1.  **NEUTRAL Canvas (Companion):** The plain jasmine rice acts as a neutral sponge, essential for soaking up the intense salty/savory sauce.
+2.  **VELVET Texture Layer (Main):** The baking soda alters the pH of the beef during the 20m rest, creating a unique "bouncy" tenderness.
+3.  **MAILLARD Layer (Main):** The high-heat sear creates savory crust on the beef, essential for depth before the sauce is added.
+4.  **FRESH Veg Layer (Main):** Rapidly cooking the broccoli preserves its crunch and chlorophyl (bright green), contrasting the soft meat and fluffy rice.
+5.  **UMAMI GLAZE Layer (Main):** The soy/cornstarch sauce binds the beef and broccoli together, coating them in a glossy sheen that drips onto the rice.
 
 ---
 
@@ -46,14 +51,14 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Quick glances while cooking.*
 
-- **Velvet** beef strips (20m rest).
-- **Start** rice.
+- **Velvet** beef (set 20m timer).
+- **Start Rice** immediately.
+- **Prep** veg & sauce while waiting.
 - **Sear** beef hard (batches -> remove).
-- **Steam-fry** broccoli (water splash).
+- **Steam-fry** broccoli.
 - **Aromatics** ginger/garlic (30s).
-- **Combine** beef back in.
-- **Sauce** and reduce until glossy.
-- **Serve** over rice.
+- **Combine** beef + sauce. Thicken.
+- **Serve** over hot rice.
 
 ---
 
@@ -63,13 +68,13 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 | Time | Action | Notes |
 | :--- | :--- | :--- |
-| **T-0:35** | **Velvet** | Slice beef, toss w/ soda/starch. |
-| **T-0:30** | **Rice** | Start rice cooker/pot. |
-| **T-0:20** | **Prep** | Cut broccoli, grate ginger, mix sauce. |
-| **T-0:10** | **Sear** | High heat. Brown beef. Remove. |
-| **T-0:05** | **Veg** | Cook broccoli (crunchy). |
-| **T-0:02** | **Sauce** | Add beef/aromatics/sauce. Thicken. |
-| **T-0:00** | **Eat** | Serve immediately. |
+| **T-0:35** | **Velvet (Main)** | Slice beef, toss w/ soda/starch. Start timer. |
+| **T-0:30** | **Start Companion** | Wash rice, start rice cooker/pot. |
+| **T-0:20** | **Prep (Main)** | Cut broccoli, grate ginger, mix sauce. |
+| **T-0:10** | **Sear (Main)** | High heat. Brown beef. Remove. |
+| **T-0:05** | **Veg (Main)** | Cook broccoli (crunchy). |
+| **T-0:02** | **Finish (Main)** | Add beef/aromatics/sauce. Thicken. |
+| **T-0:00** | **Serve** | Rice + Beef finish together. |
 
 ---
 
@@ -77,13 +82,13 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 *Best for: Cooking by feel and intuition.*
 
-- **TOUCH:** Beef slices should feel slippery (cornstarch slime) before cooking, but tender (not chewy) after.
-- **SOUND:** The wok should "scream" when the beef hits it. If it sizzles gently, it's not hot enough.
-- **LOOK:** Broccoli goes from dull green to vivid "highlighter" green. Stop cooking then!
-- **SMELL:** The sharp, pungent aroma of searing ginger and garlic signals you have 30 seconds left before sauce.
-- **TASTE:** The sauce should be salty-sweet velvet coating, not a soup.
+-   **TOUCH:** Beef slices feel slippery (cornstarch) before cooking. Rice should be fluffy, separate grains, not mushy.
+-   **SOUND:** The wok should "scream" when the beef hits it. The rice cooker "click" or "beep" serves as your 5-minute warning to start the stir-fry.
+-   **LOOK:** Broccoli goes from dull green to vivid "highlighter" green. Stop cooking then!
+-   **SMELL:** The sharp, pungent aroma of searing ginger and garlic signals the dish is almost done.
+-   **TASTE:** The sauce is aggressive; eating a piece of broccoli alone might be salty, but eaten with the plain rice, it's perfect.
 
 ---
 
 ### Kid Submeal
-- **Simple Stir-Fry:** Reserve several strips of beef after searing (before the sauce) and some steamed broccoli. Serve with plain rice and a little soy sauce for dipping.
+-   **Simple Stir-Fry:** Reserve several strips of beef after searing (before the sauce) and some steamed broccoli. Serve with plain rice and a little soy sauce for dipping.

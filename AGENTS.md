@@ -153,6 +153,7 @@ When implementing, reference decisions from `docs/plans/open-questions.md`:
 - **Engaging Style**: Use lots of emojis and include fun facts throughout all documentation to make it engaging and enjoyable to read. 🍳👨‍🍳
 - **Structure**: Follow standard markdown formatting with clear headings, lists, and sections.
 - **Attribution**: Always include source attribution when applicable to respect original content creators.
+- **Recipe Formats**: When generating or updating recipes, explicitly address the "Main" and the "Side(s)" (or Companions). Ensure the execution formats (especially Mise-en-place and Timeline) clearly show how to interleave the preparation of the main dish and the side dish so they finish at the same time.
 
 ## Recipe Scraping Guidelines
 
