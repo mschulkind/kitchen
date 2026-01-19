@@ -14,6 +14,11 @@
 - **Time Constraint:** **Max 60 mins total (Prep + Cook)**, ideally **under 45 mins**.
     -   *Note:* Estimates must include realistic prep time (e.g., chopping veggies).
     -   *Strategy:* Lean on quick-cooking proteins (fish, thin strips) or passive cooking (roasting) while prepping other items.
+- **Flavor & Texture Goals:**
+    -   **Complex Layers:** Even quick meals must have depth (acid finish, bloomed spices, fresh herbs).
+    -   **Texture:** Meat must **never** be chewy or stringy.
+    -   **Technique:** Avoid long braises (2hr+) to meet time constraints. Use techniques like **velveting** (baking soda marinade) for beef or **hard searing** for flavor without toughness.
+    -   **Acid:** Liberal use of Lime/Lemon juice for brightening (e.g., Shirazi salad).
 
 ## Dietary Constraints & Architecture
 
