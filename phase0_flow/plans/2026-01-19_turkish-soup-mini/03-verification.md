@@ -10,9 +10,9 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 
 ## Produce
 
--   [ ] **Red Lentils** (1 cup) for Soup.
+-   [x] **Red Lentils** (1 cup) for Soup.
 -   [ ] **Carrots** (2-3) for Soup base.
--   [ ] **Lemons** (2) for Soup & Med Bowl.
+-   [x] **Lemons** (2) for Soup & Med Bowl.
 -   [ ] **Persian Cucumbers** (4-5) for Shirazi & Med Bowl.
 -   [ ] **Tomatoes** (4-5 Roma or Vine) for Shirazi & Med Bowl.
 -   [ ] **Red Onion** (1) for Shirazi & Bowl.
@@ -24,7 +24,7 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 -   [ ] **Ginger** (Fresh knob) for Stir-Fry.
 -   [ ] **Spinach** (1 bag) for Med Bowl base.
 -   [x] **Garlic** (Pantry - Whole).
--   [x] **White Onions** (Pantry - Have stock).
+-   [ ] **White Onions** (Pantry - Have stock).
 -   [x] **Potatoes** (Pantry - Russet) for Soup.
 
 ## Meat/Seafood
@@ -35,16 +35,16 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 
 ## Pantry/Dairy
 
--   [ ] **Chickpeas** (2 cans) for Med Bowl.
+-   [x] **Chickpeas** (2 cans) for Med Bowl.
 -   [ ] **Vegetable Broth** (6 cups/2 cartons) for Soup.
 -   [ ] **Greek Yogurt** (1 tub) for Med Bowl sauce & Kids dip.
--   [ ] **Tomato Paste** (Small tube/can) for Soup.
--   [ ] **Aleppo Pepper** (or extra Paprika/Chili flakes).
--   [ ] **Quinoa** or **Couscous** (1 box) for Med Bowl base.
+-   [x] **Tomato Paste** (Small tube/can) for Soup.
+-   [x] **Aleppo Pepper** (or extra Paprika/Chili flakes).
+-   [x] **Quinoa** or **Couscous** (1 box) for Med Bowl base.
 -   [x] **Rice** (Brown or White) for Stir-Fry.
 -   [x] **Soy Sauce** (Pantry).
 -   [x] **Neutral Oil** (Canola/Veg) for Stir-Fry.
--   [x] **Sesame Oil** (Pantry).
+-   [ ] **Sesame Oil** (Pantry).
 -   [x] **Cornstarch** (Pantry) for Velveting beef.
 -   [x] **Baking Soda** (Pantry) for Velveting beef.
 -   [x] **Olive Oil** (Pantry).
