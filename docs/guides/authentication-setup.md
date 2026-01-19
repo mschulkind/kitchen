@@ -90,3 +90,43 @@ GOTRUE_EXTERNAL_GOOGLE_REDIRECT_URI=https://my-kitchen-app.synology.me/auth/v1/c
 - **Redirect Mismatch Error**: The URL in your browser address bar when the error occurs must match *exactly* one of the "Authorized redirect URIs" in Google Console. Check for `http` vs `https` and trailing slashes.
 - **"App not verified" Warning**: This is normal in development until you submit your app for verification. Just click "Advanced" > "Go to Kitchen App (unsafe)" to proceed.
 - **Localhost vs 127.0.0.1**: Google treats these as different domains. Supabase local often defaults to `127.0.0.1`. Ensure you use the one your browser is actually visiting.
+
+## 5. Automation & Headless Testing (MCP / CI)
+
+Tools like **Chrome DevTools MCP** (used by AI agents), **Playwright**, and **Puppeteer** run in "headless" environments where interactive Google Login flows (popups, 2FA) are difficult or impossible to automate. Google also actively blocks automated browsers.
+
+To support agents and tests, we implement "Bypass Strategies".
+
+### Strategy A: The "/devlogin" Backdoor (Hardened)
+
+For local development and AI agents, we use a dedicated route `/devlogin`.
+
+1.  **Route**: `src/mobile/app/devlogin.tsx`
+2.  **Behavior**:
+    *   **Dev Mode**: Presents a login form for the service account (`admin@kitchen.local` / `admin123`).
+    *   **Production**: The file is **physically excluded** from the bundle via `metro.config.js` `exclusionList`, making the route 404 and the code non-existent.
+3.  **Usage**:
+    *   Navigate to `http://localhost:8081/devlogin`.
+    *   Click "Authorize Service Account".
+
+**Agent Instruction**: *"If stuck on auth, go to /devlogin and sign in as admin."*
+
+### Strategy B: "Service Account" User (Email/Password)
+
+Even if the app is "Google Only" for real users, enable the **Email/Password** provider in Supabase specifically for automation.
+
+1.  **Setup**:
+    *   Enable **Email/Password** provider in Supabase.
+    *   Create a user: `bot@kitchen.app` with a strong password.
+    *   (Optional) Use PostgreSQL Triggers or RLS to prevent this user from accessing real user data, or restrict Email/Password logins to *only* this specific email.
+2.  **Usage**:
+    *   Agents/Tests can use `page.fill()` on hidden/dev-only inputs to log in with credentials.
+    *   Avoids Google's bot detection entirely.
+
+### Strategy C: Session Injection (CI/Playwright)
+
+For strict E2E testing where you want to test the *application* state without using the UI to log in.
+
+1.  **Mint a Token**: Use `supabase-admin` (server-side) to generate a valid Session JWT for a test user.
+2.  **Inject**: Before the test page loads, inject this token into the browser's `localStorage` (key: `sb-<project-ref>-auth-token`).
+3.  **Reload**: The Supabase client initializes, finds the valid token, and restores the session immediately.

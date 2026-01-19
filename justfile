@@ -29,8 +29,15 @@ clean:
 # ============================================================================
 
 # Setup the entire project
-setup: install
+setup: install dev-setup
     cd tests/web && npx playwright install chromium
+
+# Development environment setup (Keys, Docker, Seeds)
+dev-setup:
+    ./scripts/setup_env.sh
+    just up-infra
+    @echo "Waiting for Auth service to start..."
+    uv run scripts/seed_dev_data.py
 
 # Install all dependencies
 install: install-py install-js
@@ -118,6 +125,7 @@ up: docker-up
 # Start infrastructure ONLY (DB, Auth, Realtime) - for local API dev
 up-infra:
     cp .env infra/docker/.env
+    @python3 -c "import os; from string import Template; print(Template(open('infra/docker/volumes/kong/kong.yml.template').read()).safe_substitute(os.environ))" > infra/docker/volumes/kong/kong.yml
     docker compose -f infra/docker/docker-compose.yml up -d db kong auth realtime rest meta storage studio
 
 docker-up:

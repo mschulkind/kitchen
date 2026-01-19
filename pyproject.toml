@@ -58,9 +58,10 @@ dev = [
     "pytest>=9.0.2",
     "pytest-asyncio>=0.25.0",
     "pytest-cov>=6.0.0",
-    "hypothesis>=6.0.0",  # Property-based testing for Phase 3
+    "hypothesis>=6.0.0", # Property-based testing for Phase 3
     "ruff>=0.14.11",
-    "httpx>=0.28.0",  # For testing FastAPI
+    "httpx>=0.28.0", # For testing FastAPI
+    "pyjwt>=2.10.1",
 ]
 
 [tool.mypy]
