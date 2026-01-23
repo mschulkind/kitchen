@@ -1,51 +1,76 @@
 # Meal Options
 
-**Context:** Single meal for tonight. strict "shop your home" rule. < 1 hour.
-**Inventory Highlights:** Canned tomatoes, Chickpeas, Masa, Rice, Pasta, Frozen Fish, Cooked Chicken, Broth, Yogurt, Cottage Cheese, Fresh Cabbage/Radish/Carrot/Celery/Pepper.
+**Context:** Single meal for tonight. strict "shop your home" rule. < 45 mins.
+**Inventory Highlights:** Canned Corn, Refried Black Beans, Canned tomatoes, Chickpeas, Rice, Pasta, Frozen Fish, Cooked Chicken, Broth, Yogurt, Cottage Cheese, Fresh Cabbage/Radish/Carrot/Celery/Pepper.
 
 ## Option 1: Fisherman's Chickpea Stew 🍲
 **The Vibe:** Hearty, warming, and rich.
-**The Dish:** A robust tomato and broth base (using that pork or beef broth) simmered with sautéed onions, carrots, celery, and ginger. We add the frozen Cod or Pollock and canned chickpeas for protein.
+**The Dish:** A robust tomato and broth base simmered with sautéed onions, carrots, celery, and ginger. We add the frozen Cod or Pollock and canned chickpeas. **Update:** Add the corn for sweetness and texture contrast against the soft fish.
 **The Layering:**
 1.  **Base:** Aromatic Mirepoix + Ginger sauté.
-2.  **Body:** Tomato & Broth reduction with paprika and cumin.
-3.  **Finish:** A cold dollop of Fage yogurt swirled in at the table for a creamy tang against the hot acidic stew.
-**Time:** ~40 mins.
+2.  **Body:** Tomato & Broth reduction with paprika, cumin, and corn.
+3.  **Finish:** A cold dollop of Fage yogurt swirled in.
+**Extra Inventory Used:** Carrots, Celery, Onions, Ginger, Canned Tomatoes, Chickpeas, Corn, Fage Yogurt.
+**Time:** ~35 mins.
+**50/25/25 Check:**
+*   **Carbs (25%):** Moderate. Chickpeas + Corn.
+*   **Protein (25%):** High. Fish + Chickpeas + Yogurt.
+*   **Veg/Fiber (50%):** High. Tomato base + Mirepoix veggies.
 
-## Option 2: Masa Street Tacos with "Chorizo" Spiced Chickpeas 🌮
-**The Vibe:** Fun, tactile, and fresh.
-**The Dish:** Homemade corn tortillas (using the Masa Harina - quick to press and sear). Filled with chickpeas pan-fried in oil with heavy chili powder, cumin, and paprika to mimic chorizo flavors.
+## Option 2: Deconstructed "Taco" Skillet 🍳
+**The Vibe:** All the taco flavors, none of the pressing work.
+**The Dish:** a base of warm creamy refried black beans. Topped with "Chorizo" spiced chickpeas and corn pan-fried until crispy.
 **The Layering:**
-1.  **Base:** Warm fresh corn tortillas.
-2.  **Filling:** Spicy crispy chickpeas + sautéed red bell pepper strips.
-3.  **Crunch:** A quick slaw of shredded cabbage, radishes, and carrots tossed in vinegar and oil.
-4.  **Cream:** Lime-y (vinegar) Yogurt crema.
-**Time:** ~50 mins (making tortillas takes the most time).
+1.  **Base:** Warm, seasoned refried black beans (thinned with a little broth/water).
+2.  **Main:** Spiced Chickpea & Corn stir-fry with onions and peppers.
+3.  **Crunch:** Slaw of shredded cabbage, radishes, and carrots.
+4.  **Cream:** Lime-y Yogurt crema drizzle.
+**Extra Inventory Used:** Refried Beans, Corn, Chickpeas, Red Bell Pepper, Cabbage, Radishes, Carrots, Fage Yogurt, Onions.
+**Time:** ~25 mins.
+**50/25/25 Check:**
+*   **Carbs (25%):** High. Beans + Corn + Chickpeas. Use slaw to volumize.
+*   **Protein (25%):** Moderate. Beans + Chickpeas + Yogurt.
+*   **Veg/Fiber (50%):** High. Cabbage slaw is key here.
 
 ## Option 3: Savory Chicken & Ginger Rice Skillet 🍚
 **The Vibe:** Comfort food with a punch.
-**The Dish:** Using the pre-cooked chicken cubes for speed. We crisp them up in butter/oil, then sauté with onions, cabbage, and lots of fresh ginger. Tossed with rice (cooked in broth if you have time, or just boiled).
+**The Dish:** Crisp up pre-cooked chicken. Sauté with onions, cabbage, corn, and lots of fresh ginger. Toss with rice.
 **The Layering:**
 1.  **Base:** Fluffy rice.
-2.  **Main:** Gingery stir-fry of chicken and melting cabbage.
-3.  **Sauce:** A blended "White Sauce" made from Cottage Cheese, Garlic, and Vinegar (blitzed smooth) drizzled over the top.
-4.  **Garnish:** Thinly sliced raw radishes for peppery crunch.
-**Time:** ~30 mins.
+2.  **Main:** Gingery stir-fry of chicken, corn, and melting cabbage.
+3.  **Sauce:** Blended "White Sauce" (Cottage Cheese + Garlic + Vinegar).
+4.  **Garnish:** Thinly sliced raw radishes.
+**Extra Inventory Used:** Cabbage, Ginger, Onions, Corn, Cottage Cheese, Radishes.
+**Time:** ~25 mins.
+**50/25/25 Check:**
+*   **Carbs (25%):** Moderate. Rice + Corn.
+*   **Protein (25%):** High. Chicken + Cottage Cheese.
+*   **Veg/Fiber (50%):** High. Cabbage bulk.
 
 ## Option 4: Roasted Veggie & Fish Grain Bowl with Raita 🥣
 **The Vibe:** Healthy, textured, and deeply flavored.
-**The Dish:** Roast the red pepper, carrots, onion wedges, and drained chickpeas on a high-heat sheet pan with oil and spices until charred. Pan-sear the fish filets separately.
+**The Dish:** Roast red pepper, carrots, onion, corn, and chickpeas until charred. Pan-sear the fish. Serve over a smear of heated refried beans for creaminess.
 **The Layering:**
-1.  **Base:** Bed of rice or pasta (buttered).
-2.  **Roast:** Charred sweet veggies and crunchy chickpeas.
-3.  **Cooling:** A quick Raita made from Greek Yogurt, grated cucumber (sub grated Radish! - it works), and dried mint/cilantro if you have it (or just cumin).
-**Time:** ~45 mins (hands-off oven time).
+1.  **Base:** Smear of warm refried beans + Bed of rice.
+2.  **Roast:** Charred sweet veggies, corn, and crunchy chickpeas.
+3.  **Cooling:** "Mooli Raita" (Yogurt + Radish).
+**Extra Inventory Used:** Red Bell Pepper, Carrots, Onions, Chickpeas, Corn, Refried Beans, Radishes, Fage Yogurt.
+**Time:** ~40 mins (oven time).
+**50/25/25 Check:**
+*   **Carbs (25%):** High. Rice + Beans + Corn + Chickpeas. Reduce rice portion.
+*   **Protein (25%):** Very High. Fish + Beans + Yogurt + Chickpeas.
+*   **Veg/Fiber (50%):** High. Roasted veggies + Raita.
 
-## Option 5: Creamy Tomato Bisque with "Cabbage Steaks" 🍅
-**The Vibe:** Sophisticated and unexpected.
-**The Dish:** A blended soup using the canned tomatoes, sautéed red bell pepper, onions, and chickpeas (for body/thickener). Enriched with cottage cheese blended in for creaminess and protein.
+## Option 5: Mexican-Inspired Tomato Soup with Black Bean "Croutons" 🍅
+**The Vibe:** Spicy, creamy, and filling.
+**The Dish:** Blended tomato, pepper, and onion soup enriched with cottage cheese. Stir in the corn at the end for pop.
 **The Layering:**
-1.  **Soup:** Smooth, creamy, acidic tomato-pepper soup.
-2.  **Side/Dipper:** Thick wedges of cabbage roasted with olive oil and parmesan cheese until crispy/charred edges (Cabbage Steaks).
-3.  **Topping:** Toasted seeds or croutons if bread is found, otherwise a swirl of olive oil and black pepper.
-**Time:** ~40 mins.
+1.  **Soup:** Smooth, creamy, spicy tomato-pepper soup with corn kernels.
+2.  **Swirl:** Refried beans thinned and swirled in (or served on side as a dip for veggies).
+3.  **Side:** Roasted Cabbage "Steaks" with cumin/chili powder.
+**Extra Inventory Used:** Canned Tomatoes, Red Bell Pepper, Onions, Corn, Refried Beans, Cottage Cheese, Cabbage.
+**Time:** ~35 mins.
+**50/25/25 Check:**
+*   **Carbs (25%):** Moderate. Beans + Corn.
+*   **Protein (25%):** Moderate/High. Cottage cheese + Beans.
+*   **Veg/Fiber (50%):** Very High. It's almost entirely vegetables.
