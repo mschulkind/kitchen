@@ -144,9 +144,11 @@ services:
       - kitchen-network
 
   # Realtime Service
+  # This container name looks inconsistent but is correct because realtime
+  # constructs the tenant id by parsing the subdomain from the container name
   realtime:
     image: supabase/realtime:v2.30.34
-    container_name: kitchen-realtime
+    container_name: realtime-dev.supabase-realtime
     restart: unless-stopped
     environment:
       APP_NAME: realtime
@@ -157,12 +159,13 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: postgres
       DB_AFTER_CONNECT_QUERY: 'SET search_path TO _realtime'
-      DB_ENC_KEY: supabaseencryptionkey
+      DB_ENC_KEY: supabaserealtime
       API_JWT_SECRET: ${JWT_SECRET}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE:-UpNVntn3cDxHJpq99YMc1T1AQgQpc8kfYTuRgBiYa15BLrx8etQoXz3gZv1/u2oq}
       ERL_AFLAGS: -proto_dist inet_tcp
       DNS_NODES: "''"
       RLIMIT_NOFILE: "10000"
+      SEED_SELF_HOST: "true"
     depends_on:
       db:
         condition: service_healthy

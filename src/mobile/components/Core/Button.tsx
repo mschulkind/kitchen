@@ -7,7 +7,7 @@
  * Fun fact: Apple's HIG recommends 44pt for comfortable finger taps! 👆
  */
 
-import { Button, ButtonProps, styled } from 'tamagui';
+import { Button, ButtonProps, styled, TamaguiElement } from 'tamagui';
 import { forwardRef } from 'react';
 
 export interface KitchenButtonProps extends ButtonProps {
@@ -19,7 +19,7 @@ export interface KitchenButtonProps extends ButtonProps {
  * Primary button component with enforced touch target size.
  * Use this instead of raw Tamagui Button throughout the app.
  */
-export const KitchenButton = forwardRef<typeof Button, KitchenButtonProps>(
+export const KitchenButton = forwardRef<TamaguiElement, KitchenButtonProps>(
   ({ children, testID, ...props }, ref) => {
     return (
       <Button

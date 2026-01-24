@@ -110,6 +110,19 @@ export default function LandingScreen() {
         >
           {loading ? 'Connecting...' : 'Sign in with Google'}
         </KitchenButton>
+
+        {/* Dev Login Backdoor */}
+        {process.env.NODE_ENV === 'development' && (
+          <KitchenButton
+            size="$3"
+            chromeless
+            onPress={() => router.push('/devlogin')}
+            marginTop="$2"
+            opacity={0.5}
+          >
+            🛠️ Dev Login
+          </KitchenButton>
+        )}
       </YStack>
     </YStack>
   );

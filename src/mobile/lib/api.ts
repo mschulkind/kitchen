@@ -5,7 +5,27 @@
  * Used for AI-powered features (planning, vision, parsing).
  */
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
+import { Platform } from 'react-native';
+
+const isAndroidEmulator = () => {
+  if (Platform.OS !== 'android') return false;
+  try {
+    const constants = (require('react-native') as any).Platform?.constants;
+    return constants?.androidID === 'generic' || constants?.manufacturer === 'unknown';
+  } catch {
+    return false;
+  }
+};
+
+const getApiUrl = () => {
+  let url = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.1.2:5300';
+  if (isAndroidEmulator() && url.includes('192.168.1.2')) {
+    return url.replace('192.168.1.2', '10.0.2.2');
+  }
+  return url;
+};
+
+const API_URL = getApiUrl();
 
 /**
  * Base fetch wrapper with error handling

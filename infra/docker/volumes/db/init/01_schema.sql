@@ -196,3 +196,10 @@ END $$;
 COMMENT ON TABLE public.pantry_items IS 'Inventory items stored in the household pantry, fridge, freezer, etc.';
 COMMENT ON COLUMN public.pantry_items.quantity IS 'Amount of the item. Use with unit for full measurement.';
 COMMENT ON COLUMN public.pantry_items.unit IS 'Unit of measurement (e.g., kg, count, ml, bunch)';
+
+-- =============================================================================
+-- Realtime Publication 📡
+-- Enable realtime subscriptions for collaborative features
+-- =============================================================================
+CREATE PUBLICATION IF NOT EXISTS supabase_realtime;
+ALTER PUBLICATION supabase_realtime ADD TABLE pantry_items;

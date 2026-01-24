@@ -113,6 +113,7 @@ export default function ShoppingScreen() {
   const addItem = useMutation({
     mutationFn: async (name: string) => {
       const { error } = await supabase.from('shopping_list').insert({
+        household_id: householdId,
         name: name.trim(),
         category: 'Other',
         checked: false,

@@ -2,16 +2,18 @@
 import os
 import sys
 import time
+
 import httpx
 from dotenv import load_dotenv
 
+
 def seed_data():
     load_dotenv()
-    
+
     port = os.getenv("SUPABASE_PORT", "8250")
     url = os.getenv("SUPABASE_URL", f"http://localhost:{port}")
     key = os.getenv("SERVICE_ROLE_KEY")
-    
+
     if not key:
         print("Error: SERVICE_ROLE_KEY not found in .env")
         sys.exit(1)
@@ -38,10 +40,10 @@ def seed_data():
             "email_confirm": True,
             "user_metadata": {"display_name": "Dev Admin"}
         }
-        
+
         try:
             response = client.post(auth_url, headers=headers, json=user_data)
-            
+
             if response.status_code == 201:
                 print(f"✅ User {email} created successfully.")
             elif response.status_code == 422:
@@ -63,26 +65,35 @@ def seed_data():
 
             # 3. Create a default household
             print("Ensuring default household exists...")
-            household_id = "h0000000-0000-0000-0000-000000000001"
-            
+            household_id = "a0000000-0000-0000-0000-000000000001"
+
+            # 3a. Clean up existing memberships to ensure we get the right household
+            print("Cleanup: Removing existing memberships for dev user...")
+            cleanup_url = f"{url}/rest/v1/household_members?user_id=eq.{user_id}"
+            client.delete(cleanup_url, headers=headers)
+
             households_url = f"{url}/rest/v1/households"
-            client.post(households_url, headers=headers, json={
+            res_h = client.post(households_url, headers=headers, json={
                 "id": household_id,
                 "name": "Dev Kitchen",
                 "owner_id": user_id
             })
+            if res_h.status_code >= 400:
+                print(f"❌ Household creation failed: {res_h.status_code} {res_h.text}")
 
             # 4. Link user to household
             members_url = f"{url}/rest/v1/household_members"
-            client.post(members_url, headers=headers, json={
+            res_m = client.post(members_url, headers=headers, json={
                 "household_id": household_id,
                 "user_id": user_id,
                 "role": "owner"
             })
+            if res_m.status_code >= 400:
+                print(f"❌ Member linking failed: {res_m.status_code} {res_m.text}")
 
             print("🚀 Dev setup complete! You can now log in at /devlogin")
             return True
-            
+
         except httpx.ConnectError:
             print(f"⏳ Connection to {url} failed. Is Docker running?")
             return False

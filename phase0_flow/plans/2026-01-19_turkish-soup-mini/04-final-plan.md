@@ -21,6 +21,7 @@
 *Buy these items to complete your plan.*
 
 **Produce**
+
 - [ ] **Carrots** (2-3 medium)
 - [ ] **Persian Cucumbers** (4-5)
 - [ ] **Tomatoes** (4-5 Roma or Vine-on)
@@ -35,6 +36,7 @@
 - [ ] **Spinach** (1 bag/clamshell, 5-8oz)
 
 **Pantry / Dairy**
+
 - [ ] **Vegetable Broth** (2 x 32oz cartons)
 - [ ] **Greek Yogurt** (1 x 32oz tub, Whole Milk pref)
 - [ ] **Sesame Oil** (1 x 5oz or 8oz bottle)
@@ -44,18 +46,21 @@
 ## 🍳 The Recipes
 
 ### 1. Monday: Turkish Lentil Soup & Shirazi Salad 🥣
+
 - **Total Time:** 40 mins.
 - **Flavor Layer:** Sizzling Aleppo/Garlic oil drizzle + Heavy Lime juice.
 - **Kid Submeal:** Plain boiled carrots/potatoes (fished out before blending) + Cheese Toast.
 - **Recipe File:** `recipes/turkish-lentil-soup.md`
 
 ### 2. Tuesday: Mediterranean "Rainbow" Bowl 🌿
+
 - **Total Time:** 30 mins.
 - **Flavor Layer:** Crispy spiced chickpeas + Lemon-Dill yogurt sauce + Minty cucumber/tomato salad.
 - **Kid Submeal:** Rainbow Plate (Separated piles of chickpeas, roots, cucumbers, and yogurt dip).
 - **Recipe File:** `recipes/mediterranean-bowl.md`
 
 ### 3. Thursday: Velveted Beef & Broccoli Stir-Fry 🥦
+
 - **Total Time:** 35 mins.
 - **Flavor Layer:** Ginger/Garlic/Sesame sauce + Velveted beef (tender, never chewy).
 - **Kid Submeal:** Plain beef strips + Steamed broccoli + Plain rice.

@@ -94,6 +94,7 @@ import { useState } from 'react';
 
 export function useHouseholdId() {
   const [householdId, setHouseholdId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -101,7 +102,13 @@ export function useHouseholdId() {
     async function fetchHousehold() {
       try {
         const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return;
+        if (!user) {
+          console.warn('⚠️ No authenticated user');
+          setError('Not authenticated');
+          return;
+        }
+
+        console.log('📍 Looking up household for user:', user.id);
 
         const { data, error } = await supabase
           .from('household_members')
@@ -110,17 +117,26 @@ export function useHouseholdId() {
           .limit(1)
           .single();
 
-        if (error && error.code !== 'PGRST116') {
-           console.error('Error fetching household:', error);
-           return;
+        if (error) {
+          if (error.code === 'PGRST116') {
+            // No rows found - user not in any household
+            console.warn('⚠️ User has no household membership. Creating default household...');
+            setError('No household found. Please create or join a household.');
+            // TODO: Implement auto-create default household or onboarding flow
+          } else {
+            console.error('❌ Error fetching household:', error.message, error.code);
+            setError(error.message);
+          }
+          return;
         }
 
         if (mounted && data) {
           console.log('✅ Fetched household ID:', data.household_id);
           setHouseholdId(data.household_id);
         }
-      } catch (e) {
-        console.error('Failed to fetch household ID:', e);
+      } catch (e: any) {
+        console.error('❌ Failed to fetch household ID:', e?.message);
+        setError(e?.message || 'Unknown error');
       }
     }
 

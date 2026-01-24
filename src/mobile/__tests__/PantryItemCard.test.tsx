@@ -31,7 +31,7 @@ const createMockItem = (overrides = {}) => ({
   name: 'Test Item',
   quantity: 2.0,
   unit: 'cups',
-  location: 'pantry',
+  location: 'pantry' as const,
   expiry_date: null,
   notes: null,
   is_staple: false,

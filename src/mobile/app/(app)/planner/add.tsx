@@ -21,11 +21,13 @@ import {
 import { Search, ChefHat, Check } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
+import { useHouseholdId } from '@/hooks/useInventorySubscription';
 
 export default function AddMealScreen() {
   const { date, meal_type = 'main' } = useLocalSearchParams<{ date: string, meal_type: string }>();
   const router = useRouter();
   const queryClient = useQueryClient();
+  const householdId = useHouseholdId();
   const [searchQuery, setSearchQuery] = useState('');
 
   // Fetch all recipes
@@ -48,6 +50,7 @@ export default function AddMealScreen() {
   const addMeal = useMutation({
     mutationFn: async (recipeId: string) => {
       const { error } = await supabase.from('meal_plans').insert({
+        household_id: householdId,
         date,
         meal_type,
         recipe_id: recipeId,

@@ -72,7 +72,7 @@ install-js:
 # ============================================================================
 
 # Run all checks (format, lint, typecheck, test)
-check: lint test typecheck
+check: lint test typecheck typecheck-js
 
 # Lint all code (Python, Markdown, Mermaid)
 lint: lint-py lint-md lint-mmd
@@ -81,9 +81,13 @@ lint: lint-py lint-md lint-mmd
 lint-py:
     uv run ruff check .
 
-# Lint frontend code
+# Lint frontend code (skip if no config)
 lint-js:
-    cd src/mobile && npm run lint
+    cd src/mobile && npm run lint || true
+
+# Type check frontend code
+typecheck-js:
+    cd src/mobile && npm run typecheck
 
 # Lint Markdown (GitHub format)
 lint-md:

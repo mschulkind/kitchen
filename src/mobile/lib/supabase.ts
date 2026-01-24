@@ -11,7 +11,25 @@ import { Platform } from 'react-native';
 
 // Environment configuration
 // In production, these come from app.json extra or environment
-const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL || 'http://localhost:8001';
+const isAndroidEmulator = () => {
+  if (Platform.OS !== 'android') return false;
+  try {
+    const constants = (require('react-native') as any).Platform?.constants;
+    return constants?.androidID === 'generic' || constants?.manufacturer === 'unknown';
+  } catch {
+    return false;
+  }
+};
+
+const getSupabaseUrl = () => {
+  let url = process.env.EXPO_PUBLIC_SUPABASE_URL || 'http://192.168.1.2:8250';
+  if (isAndroidEmulator() && url.includes('192.168.1.2')) {
+    return url.replace('192.168.1.2', '10.0.2.2');
+  }
+  return url;
+};
+
+const SUPABASE_URL = getSupabaseUrl();
 const SUPABASE_ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'test-key-for-development';
 
 // Flag to indicate if we're running in development mode without real Supabase

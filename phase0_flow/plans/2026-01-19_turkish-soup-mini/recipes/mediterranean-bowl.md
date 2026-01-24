@@ -14,15 +14,15 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 
 - **The Base (Grain) Prep:** 1 cup Quinoa or Couscous (cooked).
 - **The Main (Hot Veg) Prep:**
-    - 2 cans (15.5oz) Chickpeas (rinsed/drained).
-    - Spice Mix: Cumin, Salt, Pepper.
-    - Fire Roasted Roots (thawed).
+  - 2 cans (15.5oz) Chickpeas (rinsed/drained).
+  - Spice Mix: Cumin, Salt, Pepper.
+  - Fire Roasted Roots (thawed).
 - **The Fresh Side (Salad & Sauce) Prep:**
-    - Dice 2 Persian Cucumbers.
-    - Dice 2 Vine Tomatoes.
-    - Slice 1/4 Red Onion thinly.
-    - Chop 1/2 bunch Mint.
-    - Whisk **Sauce:** 1 cup Greek Yogurt, chopped dry Dill, Minced Garlic, Lemon Zest/Juice.
+  - Dice 2 Persian Cucumbers.
+  - Dice 2 Vine Tomatoes.
+  - Slice 1/4 Red Onion thinly.
+  - Chop 1/2 bunch Mint.
+  - Whisk **Sauce:** 1 cup Greek Yogurt, chopped dry Dill, Minced Garlic, Lemon Zest/Juice.
 
 **Execution (Interleaved):**
 
@@ -87,4 +87,5 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 ---
 
 ### Kid Submeal
+
 -   **Rainbow Plate:** Keep everything separate. A pile of plain chickpeas, a pile of warm roots, cucumber slices (plain side), and a small bowl of yogurt "dip".

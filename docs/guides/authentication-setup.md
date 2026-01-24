@@ -103,11 +103,11 @@ For local development and AI agents, we use a dedicated route `/devlogin`.
 
 1.  **Route**: `src/mobile/app/devlogin.tsx`
 2.  **Behavior**:
-    *   **Dev Mode**: Presents a login form for the service account (`admin@kitchen.local` / `admin123`).
-    *   **Production**: The file is **physically excluded** from the bundle via `metro.config.js` `exclusionList`, making the route 404 and the code non-existent.
+    -   **Dev Mode**: Presents a login form for the service account (`admin@kitchen.local` / `admin123`).
+    -   **Production**: The file is **physically excluded** from the bundle via `metro.config.js` `exclusionList`, making the route 404 and the code non-existent.
 3.  **Usage**:
-    *   Navigate to `http://localhost:8081/devlogin`.
-    *   Click "Authorize Service Account".
+    -   Navigate to `http://localhost:8081/devlogin`.
+    -   Click "Authorize Service Account".
 
 **Agent Instruction**: *"If stuck on auth, go to /devlogin and sign in as admin."*
 
@@ -116,12 +116,12 @@ For local development and AI agents, we use a dedicated route `/devlogin`.
 Even if the app is "Google Only" for real users, enable the **Email/Password** provider in Supabase specifically for automation.
 
 1.  **Setup**:
-    *   Enable **Email/Password** provider in Supabase.
-    *   Create a user: `bot@kitchen.app` with a strong password.
-    *   (Optional) Use PostgreSQL Triggers or RLS to prevent this user from accessing real user data, or restrict Email/Password logins to *only* this specific email.
+    -   Enable **Email/Password** provider in Supabase.
+    -   Create a user: `bot@kitchen.app` with a strong password.
+    -   (Optional) Use PostgreSQL Triggers or RLS to prevent this user from accessing real user data, or restrict Email/Password logins to *only* this specific email.
 2.  **Usage**:
-    *   Agents/Tests can use `page.fill()` on hidden/dev-only inputs to log in with credentials.
-    *   Avoids Google's bot detection entirely.
+    -   Agents/Tests can use `page.fill()` on hidden/dev-only inputs to log in with credentials.
+    -   Avoids Google's bot detection entirely.
 
 ### Strategy C: Session Injection (CI/Playwright)
 

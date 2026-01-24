@@ -1,3 +1,5 @@
+import { useHouseholdId } from '@/hooks/useInventorySubscription';
+
 /**
  * The Hub Dashboard 🏠
  * 
@@ -41,38 +43,62 @@ import { HubCard } from '@/components/Modules/HubCard';
 export default function HubScreen() {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const householdId = useHouseholdId();
 
   // Get today's date
   const today = new Date().toISOString().split('T')[0];
 
   // Fetch tonight's meal
   const { data: tonightMeal, isLoading: mealLoading } = useQuery({
-    queryKey: ['meal_plans', 'tonight'],
+    queryKey: ['meal_plans', 'tonight', householdId],
     queryFn: async () => {
+      // Return null immediately if no household (prevents 400 errors)
+      if (!householdId) return null;
+      console.log('Fetching tonight meal for household:', householdId);
+      
       const { data, error } = await supabase
         .from('meal_plans')
-        .select('*, recipes(id, title, cook_time_minutes, prep_time_minutes)')
+        .select(`
+          *,
+          recipes (
+            id,
+            title,
+            cook_time_minutes,
+            prep_time_minutes
+          )
+        `)
+        .eq('household_id', householdId)
         .eq('date', today)
         .eq('meal_type', 'main')
-        .single();
+        .maybeSingle();
 
-      if (error && error.code !== 'PGRST116') throw error; // PGRST116 = no rows
+      if (error) {
+        console.error('Error fetching meal:', error);
+        // Don't throw - user might just not have a meal plan yet
+        // throw error; 
+        return null;
+      }
       return data;
     },
+    enabled: !!householdId,
   });
 
   // Fetch shopping list count
   const { data: shoppingCount } = useQuery({
-    queryKey: ['shopping_list', 'count'],
+    queryKey: ['shopping_list', 'count', householdId],
     queryFn: async () => {
+      if (!householdId) return 0;
+
       const { count, error } = await supabase
         .from('shopping_list')
         .select('*', { count: 'exact', head: true })
+        .eq('household_id', householdId)
         .eq('checked', false);
 
       if (error) throw error;
       return count || 0;
     },
+    enabled: !!householdId,
   });
 
   // Fetch expiring items count
@@ -86,7 +112,7 @@ export default function HubScreen() {
       const { count, error } = await supabase
         .from('pantry_items')
         .select('*', { count: 'exact', head: true })
-        .lte('expires_at', dateStr);
+        .lte('expiry_date', dateStr);
 
       if (error) throw error;
       return count || 0;
@@ -108,7 +134,9 @@ export default function HubScreen() {
     queryClient.invalidateQueries({ queryKey: ['pantry'] });
   };
 
-  const recipe = tonightMeal?.recipes;
+  // Defensive recipe access
+  const rawRecipe = tonightMeal?.recipes;
+  const recipe = Array.isArray(rawRecipe) ? rawRecipe[0] : rawRecipe;
 
   return (
     <YStack flex={1} backgroundColor="$background" testID="hub-screen">

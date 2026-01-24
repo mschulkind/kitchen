@@ -13,15 +13,15 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 **Mise-en-place (Main & Companion):**
 
 - **The Main (Beef) Prep:**
-    - Slice 1 lb Chuck Stew Meat (1/8" thin against grain).
-    - Mix **Velvet Marinade:** 1/2 tsp Baking Soda, 1 tbsp Cornstarch, 1 tbsp Soy Sauce.
+  - Slice 1 lb Chuck Stew Meat (1/8" thin against grain).
+  - Mix **Velvet Marinade:** 1/2 tsp Baking Soda, 1 tbsp Cornstarch, 1 tbsp Soy Sauce.
 - **The Companion (Rice):** 2 cups Jasmine Rice, 3 cups Water (or per cooker instructions).
 - **The Main (Veg & Sauce) Prep:**
-    - Cut 2 large heads Broccoli (bite-sized florets).
-    - Slice 1 bunch Scallions.
-    - Grate 1 tbsp Ginger.
-    - Mince 3 cloves Garlic.
-    - Mix **Sauce:** 1/2 cup Soy Sauce, 1 tbsp Sesame Oil, 1 tbsp Brown Sugar, 1 tsp Cornstarch.
+  - Cut 2 large heads Broccoli (bite-sized florets).
+  - Slice 1 bunch Scallions.
+  - Grate 1 tbsp Ginger.
+  - Mince 3 cloves Garlic.
+  - Mix **Sauce:** 1/2 cup Soy Sauce, 1 tbsp Sesame Oil, 1 tbsp Brown Sugar, 1 tsp Cornstarch.
 
 **Execution (Interleaved):**
 
@@ -91,4 +91,5 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 ---
 
 ### Kid Submeal
+
 -   **Simple Stir-Fry:** Reserve several strips of beef after searing (before the sauce) and some steamed broccoli. Serve with plain rice and a little soy sauce for dipping.

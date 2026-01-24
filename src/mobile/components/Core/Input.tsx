@@ -9,6 +9,7 @@
 
 import { Input, InputProps, styled, XStack, Text } from 'tamagui';
 import { forwardRef } from 'react';
+import { TextInput } from 'react-native';
 
 export interface KitchenInputProps extends InputProps {
   /** Test ID for E2E selection */
@@ -23,7 +24,7 @@ export interface KitchenInputProps extends InputProps {
  * Primary input component with enforced touch target size.
  * Use this instead of raw Tamagui Input throughout the app.
  */
-export const KitchenInput = forwardRef<typeof Input, KitchenInputProps>(
+export const KitchenInput = forwardRef<TextInput, KitchenInputProps>(
   ({ testID, label, error, ...props }, ref) => {
     return (
       <>

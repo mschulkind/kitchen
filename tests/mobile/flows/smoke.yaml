@@ -1,0 +1,4 @@
+appId: com.kitchen.app
+---
+- launchApp
+- assertVisible: "Kitchen"

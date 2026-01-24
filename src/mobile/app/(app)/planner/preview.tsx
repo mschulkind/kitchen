@@ -27,6 +27,7 @@ import { Check, Sparkles } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
 import { KitchenButton } from '@/components/Core/Button';
+import { useHouseholdId } from '@/hooks/useInventorySubscription';
 
 type PlanOption = {
   id: string;
@@ -39,6 +40,7 @@ export default function PlanPreviewScreen() {
   const { options: optionsParam } = useLocalSearchParams<{ options: string }>();
   const router = useRouter();
   const queryClient = useQueryClient();
+  const householdId = useHouseholdId();
   
   const options: PlanOption[] = optionsParam
     ? JSON.parse(optionsParam)
@@ -89,6 +91,7 @@ export default function PlanPreviewScreen() {
         date.setDate(date.getDate() + i);
         
         meals.push({
+          household_id: householdId,
           date: date.toISOString().split('T')[0],
           meal_type: 'main',
           recipe_id: realRecipeId, // Use REAL ID

@@ -4,14 +4,14 @@
  * Tests the realtime subscription behavior for inventory updates.
  */
 
-import { renderHook, act, waitFor } from '@testing-library/react-hooks';
+import { renderHook, act, waitFor } from '@testing-library/react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 
 // Mock supabase client
 const mockSubscribe = jest.fn();
-const mockOn = jest.fn(() => ({ subscribe: mockSubscribe }));
-const mockChannel = jest.fn(() => ({ on: mockOn }));
+const mockOn = jest.fn().mockReturnValue({ subscribe: mockSubscribe });
+const mockChannel = jest.fn().mockReturnValue({ on: mockOn });
 const mockRemoveChannel = jest.fn();
 
 jest.mock('../lib/supabase', () => ({
@@ -111,7 +111,7 @@ describe('useInventorySubscription', () => {
 
     it('removes old channel when householdId changes', () => {
       const { rerender } = renderHook(
-        ({ householdId }) => useInventorySubscription(householdId),
+        ({ householdId }: { householdId: string | null }) => useInventorySubscription(householdId),
         { 
           wrapper: createWrapper(),
           initialProps: { householdId: 'household-1' }
@@ -140,7 +140,7 @@ describe('useInventorySubscription', () => {
 
       // Capture the callback passed to .on()
       let changeCallback: Function;
-      mockOn.mockImplementation((event, config, callback) => {
+      (mockOn as jest.Mock).mockImplementation((event: any, config: any, callback: any) => {
         changeCallback = callback;
         return { subscribe: mockSubscribe };
       });
@@ -172,7 +172,7 @@ describe('useInventorySubscription', () => {
       );
 
       let changeCallback: Function;
-      mockOn.mockImplementation((event, config, callback) => {
+      (mockOn as jest.Mock).mockImplementation((event: any, config: any, callback: any) => {
         changeCallback = callback;
         return { subscribe: mockSubscribe };
       });
@@ -201,7 +201,7 @@ describe('useInventorySubscription', () => {
       );
 
       let changeCallback: Function;
-      mockOn.mockImplementation((event, config, callback) => {
+      (mockOn as jest.Mock).mockImplementation((event: any, config: any, callback: any) => {
         changeCallback = callback;
         return { subscribe: mockSubscribe };
       });

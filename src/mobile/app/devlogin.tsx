@@ -17,24 +17,58 @@ export default function DevLoginScreen() {
   const [password, setPassword] = useState('admin123');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [debugInfo, setDebugInfo] = useState<string>('');
 
   // 🛡️ SECURITY: Fail-safe for production
   if (process.env.NODE_ENV !== 'development') {
     return <Redirect href="/" />;
   }
 
+  const testConnection = async () => {
+    try {
+      // @ts-ignore - accessing internal property for debugging
+      const url = supabase.supabaseUrl;
+      setDebugInfo(`Checking connection to: ${url}...`);
+      
+      const res = await fetch(`${url}/realtime/v1/health`, { method: 'GET' }).catch(e => {
+        throw new Error(`Fetch failed: ${e.message}`);
+      });
+      
+      setDebugInfo(`Connection OK: ${url} (Status: ${res.status})`);
+      return true;
+    } catch (e: any) {
+      setDebugInfo(`Connection Failed: ${e.message}`);
+      return false;
+    }
+  };
+
   const handleLogin = async () => {
     setLoading(true);
     setError(null);
+    setDebugInfo('Authenticating...');
 
     try {
-      const { error: authError } = await supabase.auth.signInWithPassword({
+      // Test connection first
+      const isConnected = await testConnection();
+      if (!isConnected) {
+        throw new Error('Could not connect to Supabase. See debug info.');
+      }
+
+      // Add a timeout to the login request
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Login timed out (10s)')), 10000)
+      );
+
+      const loginPromise = supabase.auth.signInWithPassword({
         email,
         password,
       });
 
+      const { data, error: authError } = await Promise.race([loginPromise, timeoutPromise]) as any;
+
       if (authError) throw authError;
 
+      setDebugInfo('Login successful! Redirecting...');
       // Redirect to app on success
       router.replace('/(app)');
     } catch (e: any) {
@@ -96,7 +130,14 @@ export default function DevLoginScreen() {
           </YStack>
         )}
 
+        {debugInfo ? (
+          <YStack backgroundColor="$gray3" padding="$2" borderRadius="$4" marginBottom="$2">
+            <Paragraph size="$2" color="$gray11" fontFamily="$mono">{debugInfo}</Paragraph>
+          </YStack>
+        ) : null}
+
         <Button
+          testID="dev-login-button"
           theme="red"
           size="$5"
           onPress={handleLogin}

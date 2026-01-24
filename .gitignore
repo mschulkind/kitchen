@@ -60,8 +60,8 @@ dist-test/
 .dart-tool/
 .flutter-plugins/
 .flutter-plugins-dependencies/
-/android/
-/ios/
+android/
+ios/
 *.jks
 *.keystore
 *.p12
@@ -101,6 +101,9 @@ ehthumbs.db
 logs/
 
 # Chrome DevTools / MCP Artifacts
+.chrome-data/
+*.png
 tests/web/*.png
 tests/web/snapshot_*.txt
+tests/web/inventory_debug.html
 

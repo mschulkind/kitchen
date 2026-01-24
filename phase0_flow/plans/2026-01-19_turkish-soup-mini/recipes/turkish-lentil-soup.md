@@ -13,19 +13,19 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 **Mise-en-place (Main & Side):**
 
 - **The Main (Soup) Prep:**
-    - Rinse 1 cup Red Lentils.
-    - Dice 1 medium Yellow Onion.
-    - Peel/Chop 2-3 Carrots.
-    - Small dice 1 Russet Potato.
-    - Mince 2-3 cloves Garlic.
+  - Rinse 1 cup Red Lentils.
+  - Dice 1 medium Yellow Onion.
+  - Peel/Chop 2-3 Carrots.
+  - Small dice 1 Russet Potato.
+  - Mince 2-3 cloves Garlic.
 - **The Flavor Bomb (Soup):** 2 tbsp Tomato Paste, 1 tsp Cumin, 1/2 tsp Coriander, 2 tsp Aleppo Pepper.
 - **The Liquids (Soup):** 6 cups Vegetable Broth.
 - **The Side (Shirazi Salad) Prep:**
-    - Dice 4-5 Persian Cucumbers.
-    - Dice 4-5 Tomatoes.
-    - Mince 1/2 Red Onion.
-    - Chop 1/2 cup Mint.
-    - Squeeze Juice of 2 Limes.
+  - Dice 4-5 Persian Cucumbers.
+  - Dice 4-5 Tomatoes.
+  - Mince 1/2 Red Onion.
+  - Chop 1/2 cup Mint.
+  - Squeeze Juice of 2 Limes.
 
 **Execution (Interleaved):**
 
@@ -96,5 +96,6 @@ Here are 5 different ways to view the execution of this recipe. Choose the one t
 ---
 
 ### Kid Submeal
+
 -   **The Catch:** Before blending the soup, fish out several chunks of potato and carrot. Serve these "nuggets" plain with a side of cheese toast or pita bread.
 -   **The Side:** Serve cucumber slices plain (pre-dressing).

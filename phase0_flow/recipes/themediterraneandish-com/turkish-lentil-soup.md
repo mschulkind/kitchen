@@ -2,21 +2,21 @@ Source: https://www.themediterraneandish.com/turkish-lentil-soup/#wprm-recipe-co
 
 # Turkish Lentil Soup (Mercimek Çorbası)
 
-### Ingredients
+## Ingredients
 
-* 5 tablespoons extra virgin olive oil
-* 1 medium yellow onion, chopped
-* 3 garlic cloves, minced, divided
-* 2 to 3 carrots, peeled and chopped
-* 1 medium russet potato, peeled and small diced or chopped
-* Kosher salt
-* 2 tablespoons tomato paste
-* 6 cups low-sodium vegetable broth
-* 2 teaspoons Aleppo pepper, divided
-* 1 teaspoon cumin
-* ½ teaspoon coriander
-* 1 cup red lentils, picked over and rinsed
-* 1 large lemon, cut into wedges
+- 5 tablespoons extra virgin olive oil
+- 1 medium yellow onion, chopped
+- 3 garlic cloves, minced, divided
+- 2 to 3 carrots, peeled and chopped
+- 1 medium russet potato, peeled and small diced or chopped
+- Kosher salt
+- 2 tablespoons tomato paste
+- 6 cups low-sodium vegetable broth
+- 2 teaspoons Aleppo pepper, divided
+- 1 teaspoon cumin
+- ½ teaspoon coriander
+- 1 cup red lentils, picked over and rinsed
+- 1 large lemon, cut into wedges
 
 ### Instructions
 

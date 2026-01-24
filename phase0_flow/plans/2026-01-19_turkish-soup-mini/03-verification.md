@@ -30,7 +30,7 @@ Please review the list below. I have pre-checked `[x]` items I believe you have 
 ## Meat/Seafood
 
 -   [x] **Chuck Stew Meat** (Freezer) for Stir-Fry.
-    -   *Note:* Will slice thin while partially frozen.
+-   *Note:* Will slice thin while partially frozen.
 -   [x] **Fire Roasted Roots** (Freezer) for Med Bowl.
 
 ## Pantry/Dairy

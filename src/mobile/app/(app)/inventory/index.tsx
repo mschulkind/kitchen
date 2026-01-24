@@ -26,9 +26,9 @@ import {
   Search,
   Package,
   Camera,
-  SortAsc,
   Filter,
   ChevronDown,
+  AlertTriangle,
 } from '@tamagui/lucide-icons';
 
 import { supabase, Database } from '@/lib/supabase';
@@ -46,6 +46,8 @@ export default function InventoryScreen() {
   const householdId = useHouseholdId();
   const queryClient = useQueryClient();
   
+  console.log("📦 Rendering InventoryScreen");
+
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('name');
   const [filterLocation, setFilterLocation] = useState<FilterLocation>('all');
@@ -56,10 +58,13 @@ export default function InventoryScreen() {
   useInventorySubscription(householdId);
 
   // Fetch pantry items
-  const { data: items, isLoading, refetch, isRefetching } = useQuery({
+  const { data: items, isLoading, error, refetch, isRefetching } = useQuery({
     queryKey: ['pantry', householdId],
     queryFn: async () => {
-      if (!householdId) return [];
+      if (!householdId) {
+        console.warn('⚠️ No householdId available for pantry query');
+        return [];
+      }
       
       const { data, error } = await supabase
         .from('pantry_items')
@@ -67,7 +72,11 @@ export default function InventoryScreen() {
         .eq('household_id', householdId)
         .order('name');
 
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Error fetching pantry items:', error.message);
+        throw error;
+      }
+      console.log('✅ Fetched pantry items:', data?.length || 0);
       return data as PantryItem[];
     },
     enabled: !!householdId,
@@ -104,10 +113,10 @@ export default function InventoryScreen() {
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'expiry':
-          if (!a.expires_at && !b.expires_at) return 0;
-          if (!a.expires_at) return 1;
-          if (!b.expires_at) return -1;
-          return new Date(a.expires_at).getTime() - new Date(b.expires_at).getTime();
+          if (!a.expiry_date && !b.expiry_date) return 0;
+          if (!a.expiry_date) return 1;
+          if (!b.expiry_date) return -1;
+          return new Date(a.expiry_date).getTime() - new Date(b.expiry_date).getTime();
         case 'quantity':
           return (a.quantity || 0) - (b.quantity || 0);
         case 'location':
@@ -131,9 +140,11 @@ export default function InventoryScreen() {
   }, [processedItems]);
 
   const locationOrder = ['fridge', 'freezer', 'pantry', 'counter', 'garden'];
-  const sortedLocations = Object.keys(groupedItems).sort(
-    (a, b) => locationOrder.indexOf(a) - locationOrder.indexOf(b)
-  );
+  const sortedLocations = useMemo(() => {
+    return Object.keys(groupedItems).sort(
+      (a, b) => locationOrder.indexOf(a) - locationOrder.indexOf(b)
+    );
+  }, [groupedItems]);
 
   // Expiring items count
   const expiringCount = useMemo(() => {
@@ -141,7 +152,7 @@ export default function InventoryScreen() {
     const soon = new Date();
     soon.setDate(soon.getDate() + 3);
     return items.filter(
-      (i) => i.expires_at && new Date(i.expires_at) <= soon
+      (i) => i.expiry_date && new Date(i.expiry_date) <= soon
     ).length;
   }, [items]);
 
@@ -156,10 +167,11 @@ export default function InventoryScreen() {
   };
 
   return (
-    <>
+    <YStack flex={1} backgroundColor="$background" minHeight="100%" fullscreen>
       <Stack.Screen
         options={{
           title: 'Pantry',
+          headerShown: true,
           headerRight: () => (
             <Button
               testID="add-item-button"
@@ -173,11 +185,18 @@ export default function InventoryScreen() {
         }}
       />
 
-      <YStack flex={1} backgroundColor="$background">
+      <YStack flex={1}>
         {/* Search & Filter Bar */}
-        <YStack padding="$3" borderBottomWidth={1} borderBottomColor="$gray4">
+        <YStack padding="$3" borderBottomWidth={1} borderBottomColor="$gray4" backgroundColor="$background">
           <XStack space="$2" marginBottom="$2">
-            <XStack flex={1} alignItems="center" space="$2">
+            <XStack
+              flex={1}
+              alignItems="center"
+              space="$2"
+              backgroundColor="$gray2"
+              paddingHorizontal="$3"
+              borderRadius="$4"
+            >
               <Search size={18} color="$gray10" />
               <Input
                 testID="search-input"
@@ -192,6 +211,7 @@ export default function InventoryScreen() {
             </XStack>
           </XStack>
 
+          {/* Filters (Temporarily disabled for debugging) */}
           <XStack space="$2">
             {/* Sort Selector */}
             <Select
@@ -204,6 +224,7 @@ export default function InventoryScreen() {
                 flex={1}
                 size="$3"
                 iconAfter={ChevronDown}
+                backgroundColor="$gray2"
               >
                 <Select.Value placeholder="Sort by" />
               </Select.Trigger>
@@ -237,6 +258,7 @@ export default function InventoryScreen() {
                 flex={1}
                 size="$3"
                 iconAfter={ChevronDown}
+                backgroundColor="$gray2"
               >
                 <Select.Value placeholder="Filter" />
               </Select.Trigger>
@@ -285,7 +307,20 @@ export default function InventoryScreen() {
         </YStack>
 
         {/* Item List */}
-        {isLoading ? (
+        {error ? (
+          <YStack flex={1} justifyContent="center" alignItems="center" padding="$6">
+            <AlertTriangle size={64} color="$red10" />
+            <Text fontSize="$6" marginTop="$4" textAlign="center" color="$red11">
+              Failed to load pantry
+            </Text>
+            <Text color="$gray10" textAlign="center" marginTop="$2">
+              {(error as any)?.message || 'Unknown error'}
+            </Text>
+            <Button marginTop="$4" onPress={() => refetch()}>
+              Try Again
+            </Button>
+          </YStack>
+        ) : isLoading ? (
           <YStack flex={1} justifyContent="center" alignItems="center">
             <Spinner size="large" color="$blue10" />
             <Text marginTop="$3" color="$gray10">Loading pantry...</Text>
@@ -403,7 +438,7 @@ export default function InventoryScreen() {
           householdId={householdId}
         />
       </YStack>
-    </>
+    </YStack>
   );
 }
 
@@ -453,7 +488,13 @@ function AddItemSheet({
   return (
     <Sheet
       open={open}
-      onOpenChange={onOpenChange}
+      onOpenChange={(isOpen) => {
+        onOpenChange(isOpen);
+        // Reset scroll position when sheet closes (web workaround)
+        if (!isOpen && typeof window !== 'undefined') {
+          setTimeout(() => window.scrollTo(0, 0), 100);
+        }
+      }}
       snapPoints={[50]}
       dismissOnSnapToBottom
     >
@@ -462,6 +503,14 @@ function AddItemSheet({
         <Sheet.Handle />
         <YStack space="$4" marginTop="$4">
           <Text fontSize="$7" fontWeight="bold">Add Item ➕</Text>
+
+          {createMutation.isError && (
+              <YStack backgroundColor="$red4" padding="$2" borderRadius="$2">
+                <Text color="$red11" fontSize="$3">
+                  {(createMutation.error as any)?.message || 'Failed to add item'}
+                </Text>
+              </YStack>
+          )}
           
           <Input
             testID="item-name-input"
@@ -469,7 +518,6 @@ function AddItemSheet({
             placeholder="Item name (e.g., Milk)"
             value={name}
             onChangeText={setName}
-            autoFocus
           />
           
           <XStack space="$3">
