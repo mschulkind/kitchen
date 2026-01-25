@@ -12,6 +12,11 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+# Environment
+.env
+.env.*
+!.env.example
+
 # Android / Mobile
 src/mobile/android/
 src/mobile/ios/
@@ -36,10 +41,11 @@ pdfs/
 .pytest_cache/
 .ruff_cache/
 .chrome-data/
+logs/
+samples/
 
 # Local Dev Scripts/Tools
 debug_env.sh
-test_adb.py
 test_adb.py
 tools/maestro/
 *.png
@@ -47,3 +53,6 @@ test-results/
 playwright-report/
 dist/
 
+# Test Snapshots/Debug
+tests/web/*.html
+tests/web/snapshot_*.txt
