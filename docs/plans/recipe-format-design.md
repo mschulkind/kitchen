@@ -1,6 +1,6 @@
 # Recipe Output Format Design
 
-**Status:** Draft
+**Status:** Finalized
 **Last Updated:** 2026-01-25
 **Context:** Phase 0 Meal Planning Workflow
 
@@ -23,86 +23,72 @@ Each recipe file MUST follow this high-level structure:
     -   `# Title 🥘` (H1 with Emoji)
     -   `*Subtitle/Vibe description in italics.*`
 
-2.  **Mise-en-place Section (`### Mise-en-place`):**
-    -   A bulleted list of prep tasks that *must* be completed before cooking starts.
-    -   **Rule:** These are order-independent tasks (e.g., "Dice onion", "Rinse lentils").
-    -   **Grouping:** Group by category (Produce, Protein, Pantry) or by station (Board, Sink).
+2.  **Ingredients & Prep (`### Ingredients & Prep`):**
+    -   A container `div` holding two groups for side-by-side layout.
+    -   **Group 1: Ready to Use:** Ingredients needing no prep.
+    -   **Group 2: To Prep:** Ingredients needing knife work (`Item -> Action`).
+    -   **Markdown Syntax:**
+        ```html
+        <div class="prep-container">
+        <div class="prep-group">
+        <span class="prep-category">Ready to Use</span>
+        ... bulleted list ...
+        </div>
+        <div class="prep-group">
+        <span class="prep-category">To Prep</span>
+        ... bulleted list ...
+        </div>
+        </div>
+        ```
 
 3.  **Execution Table (The Core):**
-    -   A Markdown table that drives the cooking process.
-    -   **Constraint:** Horizontal rules between steps (standard row borders). No vertical borders.
-    -   **Time Tracking:** The first column is always `Time` (e.g., `T-40`).
+    -   **Full Width** table with fixed columns.
+    -   **Columns:** `Time | Ingredients | Action`
+    -   **Ingredient Formatting:**
+        -   Must use `<span>` tags (not `div`) to ensure visibility in PDF engine.
+        -   **Structure:** `<span class="ing-item"><span class="amt">Amount</span><span class="name">Name</span></span>`
+        -   **Visual:** Each item on a new line, amount right-aligned, name left-aligned.
 
-## 4. Table Variants
-We support three primary table layouts depending on the complexity of the meal.
+## 4. Table Layout Variants
+We support one primary "Standard" layout, but the CSS allows for variations if needed.
 
-### Variant A: Standard (Linear)
-*Best for: One-pot meals, soups, stews, or simple stir-frys.*
+### Standard Layout (Verified)
 
-| Column Header | Width (Approx) | Content Rules |
+| Column Header | Width (Fixed) | Content Rules |
 | :--- | :--- | :--- |
-| **Time** | 15% | `T-Minus` format (e.g., **T-30**). Bold. |
-| **Ingredients** | 35% | List *only* ingredients added in this step. Include amounts. |
-| **Action** | 50% | **Bold Verb** followed by instruction. |
+| **Time** | 10% | `T-Minus` format (e.g., **T-30**). Bold. |
+| **Ingredients** | 35% | List ingredients using the `.ing-item` span class. |
+| **Action** | 55% | **Bold Verb** followed by instruction. |
 
 **Markdown Example:**
 ```markdown
 | Time | Ingredients | Action |
 | :--- | :--- | :--- |
-| **T-10** | 1 cup Peas | **Simmer:** Add peas. Cover. |
-```
-
-### Variant B: Parallel (Multi-Track)
-*Best for: Meals with a Main + Side, or Oven + Stove workflows.*
-
-| Column Header | Width (Approx) | Content Rules |
-| :--- | :--- | :--- |
-| **Time** | 15% | `T-Minus` format. |
-| **Station 1** | 42% | e.g., "Pot (Heat)" or "Main". |
-| **Station 2** | 42% | e.g., "Board (Prep)" or "Side Dish". |
-
-**Markdown Example:**
-```markdown
-| Time | Pot (Heat) | Board (Prep) |
-| :--- | :--- | :--- |
-| **T-20** | **Simmer:** Cover pot. | Chop cucumber side. |
-```
-
-### Variant C: High-Density (Compact)
-*Best for: Complex recipes needing maximum vertical efficiency.*
-
-| Column Header | Width (Approx) | Content Rules |
-| :--- | :--- | :--- |
-| **Time** | 15% | `T-Minus` format. |
-| **Action** | 20% | **ALL CAPS VERB** (e.g., **SAUTÉ**). |
-| **Details** | 65% | Ingredients (bolded) mixed with instructions. |
-
-**Markdown Example:**
-```markdown
-| Time | Action | Details |
-| :--- | :--- | :--- |
-| **T-05** | **WILT** | Stir in **2 cups Spinach**. Season w/ S&P. |
+| **T-10** | <span class="ing-item"><span class="amt">1 cup</span><span class="name">Peas</span></span> | **Simmer:** Add peas. Cover. |
 ```
 
 ## 5. Styling (CSS) Specifications
 The `recipes.css` controls the visual presentation.
 
 -   **Fonts:** Sans-serif (Helvetica Neue/Arial). Clean, modern.
+-   **Layout:**
+    -   **Body:** Full width (`max-width: 100%`).
+    -   **Prep Columns:** `.prep-container` uses `column-count: 2`.
 -   **Tables:**
-    -   `border-collapse: collapse;`
-    -   `th`: Light gray background (`#f8f9fa`), bold, bottom border (`2px solid #ddd`).
-    -   `td`: Bottom border (`1px solid #eee`) only. **No vertical borders.**
-    -   Padding: `4px 8px` for comfortable density.
--   **Headers:**
-    -   H1: spans all columns (if multi-column layout used).
-    -   H2/H3: Colored (Orange `#e67e22` for H2, Grey `#7f8c8d` for H3).
--   **Page Layout:**
-    -   Margins: `1.5cm`.
-    -   Footer: "Page X" centered.
+    -   `table-layout: fixed;` (Critical for column sizing).
+    -   `width: 100%`.
+    -   `border-collapse: collapse`.
+    -   `td`: Top alignment, generous padding (`10px`).
+-   **Column Widths:**
+    -   Enforced via `width: XX% !important`.
+-   **Ingredient Items (`.ing-item`):**
+    -   `display: block;` (Forces newline).
+    -   `.amt`: `display: inline-block; width: 35%; text-align: right;`.
+    -   `.name`: `display: inline-block; width: 60%; text-align: left;`.
 
 ## 6. Implementation Checklist
 When generating a new recipe:
-1.  [ ] Determine if the flow is Linear (Var A) or Parallel (Var B).
-2.  [ ] Write the `### Mise-en-place` section first.
-3.  [ ] Construct the table ensuring the `Time` column is chronological (counting down to T-00).
-4.  [ ] verify `recipes.css` is present in the directory or logically linked.
+1.  [ ] Write the `### Ingredients & Prep` section using the HTML wrapper.
+2.  [ ] Construct the table ensuring the `Time` column is chronological.
+3.  [ ] Format ALL table ingredients using the `<span class="ing-item">...</span>` pattern.
+4.  [ ] Verify `recipes.css` includes the fixed-width rules.
