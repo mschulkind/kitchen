@@ -1,109 +1,49 @@
-# --- Python ---
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Testing & Coverage
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-htmlcov/
-playwright-report/
-test-results/
-
-# --- Node.js & NPM ---
+# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.npm/
+.venv/
+__pycache__/
+*.pyc
 
-# --- Expo & React Native ---
-.expo/
-web-build/
-dist/
-dist-test/
-.dart-tool/
-.flutter-plugins/
-.flutter-plugins-dependencies/
-android/
-ios/
-*.jks
-*.keystore
-*.p12
-*.key
-
-# --- Supabase & Docker ---
-# Ignore local DB data but keep the directory structure
-infra/docker/volumes/db/*
-!infra/docker/volumes/db/.keep
-infra/docker/volumes/db_raw/*
-!infra/docker/volumes/db_raw/.keep
-infra/docker/volumes/storage/*
-!infra/docker/volumes/storage/.keep
-infra/docker/volumes/backups/*
-!infra/docker/volumes/backups/.keep
-
-# --- IDEs & Editors ---
-.idea/
+# IDEs
 .vscode/
-*.swp
-*.swo
+.idea/
+
+# OS
 .DS_Store
 Thumbs.db
 
-# --- Environment Variables ---
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*.env
+# Android / Mobile
+src/mobile/android/
+src/mobile/ios/
+*.apk
+*.aab
+*.bundle
+.expo/
+metro.log
+emulator.log
+emulator_screenshot.png
 
-# OS Generated
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-logs/
+# Maestro
+maestro_debug.log
+.maestro/tests/
 
-# Chrome DevTools / MCP Artifacts
+# Project Specific
+context/
+trash/
+pdfs/
+.hypothesis/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
 .chrome-data/
+
+# Local Dev Scripts/Tools
+debug_env.sh
+test_adb.py
+test_adb.py
+tools/maestro/
 *.png
-tests/web/*.png
-tests/web/snapshot_*.txt
-tests/web/inventory_debug.html
+test-results/
+playwright-report/
+dist/
 
