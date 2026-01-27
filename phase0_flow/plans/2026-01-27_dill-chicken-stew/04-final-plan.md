@@ -27,7 +27,7 @@
 2.  **Sauté:** Soften onion and carrots in oil (T-25).
 3.  **Bloom:** Add garlic, ginger, turmeric, and chili flakes. Cook until fragrant (T-20).
 4.  **Simmer:** Pour in coconut milk and add the braised chicken. Simmer gently for 10-15 mins to heat chicken through (T-18).
-5.  **Finish:** Stir in frozen spinach (it wilts instantly) and the chopped fresh dill. Season with salt and a splash of vinegar or lime juice (T-5).
+5.  **Finish:** Stir in frozen spinach (it wilts instantly) and the chopped fresh dill. Season with salt and the juice of 1 fresh lime (T-5).
 
 ---
 

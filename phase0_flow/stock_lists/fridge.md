@@ -17,6 +17,8 @@
 
 ## Perishables
 
+- Limes (4)
+- Lemon (1)
 - Carrots
 - Celery
 - Bell Peppers

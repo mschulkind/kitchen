@@ -72,11 +72,11 @@
       "minutes_before_done": 5,
       "duration_minutes": 5,
       "action_name": "Finish & Serve",
-      "action_description": "Stir in spinach (wilts instantly) and dill. Season with salt/acid.",
+      "action_description": "Stir in spinach (wilts instantly) and dill. Season with salt and fresh lime juice.",
       "ingredients": [
         { "amount": "2 cups", "name": "Spinach" },
         { "amount": "1 bunch", "name": "Fresh Dill" },
-        { "amount": "To taste", "name": "Salt & Vinegar/Lime" }
+        { "amount": "1", "name": "Lime (juiced)" }
       ]
     }
   ]
