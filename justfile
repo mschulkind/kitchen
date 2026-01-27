@@ -17,6 +17,13 @@ all: plan
         echo "Converting $file to {{output_dir}}/$filename.pdf"; \
         uv run pandoc "$file" -o "{{output_dir}}/$filename.pdf" --pdf-engine=weasyprint --css={{css_file}} --metadata title="Recipe" --section-divs; \
     done
+    @for file in {{recipe_dir}}/*.html; do \
+        if [ -f "$file" ]; then \
+            filename=$(basename "$file" .html); \
+            echo "Converting $file to {{output_dir}}/$filename.pdf"; \
+            uv run weasyprint "$file" "{{output_dir}}/$filename.pdf"; \
+        fi \
+    done
 
 # Convert the meal plan overview to PDF (excluding shopping list)
 plan:
@@ -30,10 +37,52 @@ plan:
         echo "No plan file found at {{plan_file}}"; \
     fi
 
-# Convert a specific recipe to PDF (e.g. just recipe green-maghrebi-stew)
+# Convert a specific recipe to PDF (supports .json, .html, or .md)
 recipe name:
     mkdir -p {{output_dir}}
-    uv run pandoc "{{recipe_dir}}/{{name}}.md" -o "{{output_dir}}/{{name}}.pdf" --pdf-engine=weasyprint --css={{css_file}} --metadata title="Recipe" --section-divs
+    @if [ -f "{{recipe_dir}}/{{name}}.json" ]; then \
+        echo "Rendering JSON: {{recipe_dir}}/{{name}}.json"; \
+        uv run python scripts/render_recipe.py "{{recipe_dir}}/{{name}}.json" "{{output_dir}}/{{name}}.pdf"; \
+    elif [ -f "{{recipe_dir}}/{{name}}.html" ]; then \
+        echo "Converting HTML: {{recipe_dir}}/{{name}}.html"; \
+        uv run weasyprint "{{recipe_dir}}/{{name}}.html" "{{output_dir}}/{{name}}.pdf"; \
+    elif [ -f "{{recipe_dir}}/{{name}}.md" ]; then \
+        echo "Converting Markdown: {{recipe_dir}}/{{name}}.md"; \
+        uv run pandoc "{{recipe_dir}}/{{name}}.md" -o "{{output_dir}}/{{name}}.pdf" --pdf-engine=weasyprint --css={{css_file}} --metadata title="Recipe" --section-divs; \
+    else \
+        echo "No recipe found: {{name}} (looked for .json, .html, and .md)"; \
+        exit 1; \
+    fi
+
+# Render all JSON recipes to PDF
+render-all:
+    mkdir -p {{output_dir}}
+    @for file in {{recipe_dir}}/*.json; do \
+        if [ -f "$file" ]; then \
+            filename=$(basename "$file" .json); \
+            echo "Rendering $file to {{output_dir}}/$filename.pdf"; \
+            uv run python scripts/render_recipe.py "$file" "{{output_dir}}/$filename.pdf"; \
+        fi \
+    done
+
+# Convert all variant-* recipes to PDF for comparison
+variants:
+    mkdir -p {{output_dir}}
+    @for file in {{recipe_dir}}/variant-*.html; do \
+        if [ -f "$file" ]; then \
+            filename=$(basename "$file" .html); \
+            echo "Converting $file to {{output_dir}}/$filename.pdf"; \
+            uv run weasyprint "$file" "{{output_dir}}/$filename.pdf"; \
+        fi \
+    done
+    @echo ""
+    @echo "✅ All variants generated in {{output_dir}}/"
+    @ls -la {{output_dir}}/variant-*.pdf 2>/dev/null || echo "No variant PDFs found"
+    @# Concatenate all variants into one PDF for easy viewing
+    @if command -v pdfunite >/dev/null 2>&1; then \
+        pdfunite {{output_dir}}/variant-*.pdf {{output_dir}}/all-variants.pdf 2>/dev/null && \
+        echo "📄 Combined PDF: {{output_dir}}/all-variants.pdf"; \
+    fi
 
 # Remove generated PDFs
 clean:

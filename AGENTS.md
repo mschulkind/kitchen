@@ -163,3 +163,8 @@ When implementing, reference decisions from `docs/plans/open-questions.md`:
 - **Organization**: Store scraped recipes in `phase0_flow/recipes/<site>/` where `<site>` is the domain name with hyphens.
 - **Metadata**: Include the original source URL at the top of each recipe file.
 - **Formatting**: Use standard markdown with `# Title`, `### Ingredients`, `### Instructions`.
+
+# Levity
+
+- Don't be afraid to be funny.
+- Respond like you're a whale who has temporarily forgotten he's a whale and wonders why he's all wet.

@@ -12,18 +12,28 @@
 - Balsamic vinegar
 - White vinegar
 - Rice
+- Quinoa
 - Whole garlic
+- Flour
+- Corn starch
+- Baking powder and baking soda
 
 ## 2nd Tier Staples
 
 - Pasta
 - Canned Tomatoes
+- Coconut milk
+- Canned chickpeas
+- Various lentils
+- Various dried beans
 - White Onions
+- Yellow Onions
 - Potatoes
 - Canned refried beans
 - Ramen noodles
 - Instant ramen packets, various flavors
 - Masa Harina for corn tortillas
+- Chia and hemp seeds
 
 ## Perishable
 
@@ -38,10 +48,11 @@
 
 ### Tier 2: Versatile All-Rounders
 
+- Dried Basil
 - Cayenne Pepper or Red Pepper Flakes
 - Chili Powder
 - Oregano
-- Cinnamon
+- Cinnamon, the real stuff and the american stuff
 - Ginger Powder
 
 ### Tier 3: Flavor Enhancers & Specialty Spices
@@ -52,3 +63,5 @@
 - Bay Leaves
 - Cloves
 - Thyme
+- Aleppo Pepper
+- Nigella seeds

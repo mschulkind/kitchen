@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+    size: Letter;
+    margin: 1.5cm;
+    @bottom-center {
+        content: "Page " counter(page);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #999;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #333;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.5em;
+    font-size: 20pt;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+/* ============================================
+   PREP SECTION - Two column layout
+   ============================================ */
+.prep-container {
+    display: flex;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.prep-group {
+    flex: 1;
+}
+
+.prep-category {
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+ul {
+    margin-top: 0.2em;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 0.3em;
+}
+
+/* ============================================
+   EXECUTION STEPS - Table layout for alignment
+   ============================================ */
+.exec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+}
+
+.exec-table thead {
+    background-color: #f8f9fa;
+}
+
+.exec-table th {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+}
+
+.exec-table th.col-time {
+    width: 70px;
+    text-align: center;
+}
+
+.exec-table th.col-ing {
+    width: 170px;
+}
+
+.exec-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+.exec-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Time column */
+.col-time {
+    text-align: center;
+    width: 70px;
+}
+
+.time-countdown {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #2c3e50;
+    line-height: 1.1;
+}
+
+.time-duration {
+    font-size: 8pt;
+    color: #e67e22;
+    margin-top: 2px;
+}
+
+/* Ingredients column - grey box style */
+.col-ing {
+    width: 180px;
+    min-width: 180px;
+}
+
+.ing-box {
+    background: #f5f5f5;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.ing-row {
+    display: flex;
+    padding: 2px 0;
+    border-bottom: 1px solid #e8e8e8;
+    white-space: nowrap;
+}
+
+.ing-row:last-child {
+    border-bottom: none;
+}
+
+.amt {
+    flex: 0 0 60px;
+    text-align: right;
+    font-weight: bold;
+    color: #e67e22;
+    padding-right: 8px;
+    font-size: 9pt;
+}
+
+.name {
+    flex: 1;
+    color: #333;
+}
+
+/* Action column */
+.col-action {
+}
+
+/* Meanwhile block */
+.meanwhile-block {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background-color: #e8f4fd;
+    border: 1px solid #3498db;
+    border-left: 4px solid #3498db;
+    border-radius: 0 4px 4px 0;
+    font-size: 9pt;
+}
+
+.meanwhile-header {
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 4px;
+}
+
+.meanwhile-header::before {
+    content: "📋 ";
+}
+
+.meanwhile-content {
+    color: #333;
+}
+
+.meanwhile-ing {
+    font-weight: bold;
+    color: #555;
+}
+</style>
+</head>
+<body>
+
+<h1>{{ recipe.title }}{% if recipe.emoji %} {{ recipe.emoji }}{% endif %}</h1>
+{% if recipe.subtitle %}
+<p class="subtitle">{{ recipe.subtitle }}</p>
+{% endif %}
+
+<h3>Ingredients & Prep</h3>
+
+<div class="prep-container">
+<div class="prep-group">
+<span class="prep-category">Ready to Use (No Board Work)</span>
+<ul>
+{% for item in recipe.prep.ready_to_use %}
+<li><strong>{{ item.amount }}</strong> {{ item.name }}{% if item.note %} ({{ item.note }}){% endif %}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="prep-group">
+<span class="prep-category">To Prep (Knife Work)</span>
+<ul>
+{% for item in recipe.prep.knife_work %}
+<li><strong>{{ item.amount }}</strong> {{ item.name }} → <em>{{ item.prep }}</em></li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+<hr>
+
+<h3>Execution Steps</h3>
+
+<table class="exec-table">
+<thead>
+<tr>
+<th class="col-time">Time</th>
+<th class="col-ing">Ingredients</th>
+<th class="col-action">Action</th>
+</tr>
+</thead>
+<tbody>
+{% for step in recipe.steps %}
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-{{ "%02d"|format(step.minutes_before_done) }}</div>
+<div class="time-duration">{% if step.minutes_before_done == 0 %}🍽️ Done!{% else %}⏱ {{ step.duration_minutes }} min{% endif %}</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+{% for ing in step.ingredients %}
+<div class="ing-row">
+<span class="amt">{{ ing.amount }}</span>
+<span class="name">{{ ing.name }}</span>
+</div>
+{% endfor %}
+</div>
+</td>
+<td class="col-action">
+<strong>{{ step.action_name }}:</strong> {{ step.action_description }}
+{% if step.meanwhile %}
+<div class="meanwhile-block">
+<div class="meanwhile-header">MEANWHILE</div>
+<div class="meanwhile-content">
+<span class="meanwhile-ing">{{ step.meanwhile.ingredients }}</span> → {{ step.meanwhile.action }}
+</div>
+</div>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+</body>
+</html>

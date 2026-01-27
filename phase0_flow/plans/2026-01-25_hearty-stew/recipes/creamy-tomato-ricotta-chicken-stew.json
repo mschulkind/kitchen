@@ -1,0 +1,107 @@
+{
+  "title": "Creamy Tomato & \"Ricotta\" Chicken Stew",
+  "emoji": "🍅",
+  "subtitle": "A creamy, high-protein stew without the cream.",
+  "servings": 6,
+  "total_time_minutes": 40,
+  "prep": {
+    "ready_to_use": [
+      { "amount": "1 cup", "name": "Quinoa", "note": "rinsed" },
+      { "amount": "1 can", "name": "Whole Peeled Tomatoes", "note": "28oz" },
+      { "amount": "4 cups", "name": "Broth", "note": "Beef/Pork" },
+      { "amount": "1 cup", "name": "Cottage Cheese" },
+      { "amount": "2 cups", "name": "Mixed Greens / Spinach" },
+      { "amount": "1 tbsp", "name": "Dried Basil" },
+      { "amount": "1 tsp", "name": "Oregano" },
+      { "amount": "—", "name": "Olive Oil, Salt, Pepper" }
+    ],
+    "knife_work": [
+      { "amount": "1.5 lbs", "name": "Chicken Breast", "prep": "Slice thin" },
+      { "amount": "1 large", "name": "Yellow Onion", "prep": "Dice" },
+      { "amount": "2-3", "name": "Carrots", "prep": "Dice" },
+      { "amount": "2 stalks", "name": "Celery", "prep": "Dice" },
+      { "amount": "2", "name": "Bell Peppers", "prep": "Dice" },
+      { "amount": "3 cloves", "name": "Garlic", "prep": "Mince" },
+      { "amount": "—", "name": "Radishes", "prep": "Slice thin" },
+      { "amount": "—", "name": "Parmesan", "prep": "Grate" }
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 40,
+      "duration_minutes": 7,
+      "action_name": "Sauté Base",
+      "action_description": "Heat oil in large pot over Med-High heat. Add the mirepoix (onions, carrots, celery, peppers). Cook until softened.",
+      "ingredients": [
+        { "amount": "1 tbsp", "name": "Olive Oil" },
+        { "amount": "1 large", "name": "Onion" },
+        { "amount": "2-3", "name": "Carrots" },
+        { "amount": "2 stalks", "name": "Celery" },
+        { "amount": "2", "name": "Peppers" }
+      ]
+    },
+    {
+      "minutes_before_done": 33,
+      "duration_minutes": 1,
+      "action_name": "Bloom Spices",
+      "action_description": "Add garlic and dried herbs. Stir constantly until fragrant.",
+      "ingredients": [
+        { "amount": "3 cloves", "name": "Garlic" },
+        { "amount": "1 tbsp", "name": "Dried Basil" },
+        { "amount": "1 tsp", "name": "Oregano" }
+      ]
+    },
+    {
+      "minutes_before_done": 32,
+      "duration_minutes": 12,
+      "action_name": "Simmer",
+      "action_description": "Pour in tomatoes (crushing them), broth, and quinoa. Bring to a boil, then reduce to simmer. Cover.",
+      "ingredients": [
+        { "amount": "28 oz", "name": "Tomatoes" },
+        { "amount": "4 cups", "name": "Broth" },
+        { "amount": "1 cup", "name": "Quinoa" }
+      ]
+    },
+    {
+      "minutes_before_done": 20,
+      "duration_minutes": 10,
+      "action_name": "Poach Protein",
+      "action_description": "Stir in the sliced chicken. Simmer <strong>uncovered</strong> until cooked through.",
+      "ingredients": [
+        { "amount": "1.5 lbs", "name": "Chicken" }
+      ],
+      "meanwhile": {
+        "ingredients": "Cottage Cheese + Hot Broth",
+        "action": "Blend on high until completely smooth. Set aside for T-10."
+      }
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 1,
+      "action_name": "Combine",
+      "action_description": "Remove pot from heat (chicken is done). Stir the creamy cheese mixture into the stew. It should turn a creamy pink.",
+      "ingredients": [
+        { "amount": "", "name": "Blended Cheese" }
+      ]
+    },
+    {
+      "minutes_before_done": 5,
+      "duration_minutes": 5,
+      "action_name": "Wilt",
+      "action_description": "Stir in greens. Let them wilt. Taste and season with Salt & Pepper.",
+      "ingredients": [
+        { "amount": "2 cups", "name": "Greens" }
+      ]
+    },
+    {
+      "minutes_before_done": 0,
+      "duration_minutes": 0,
+      "action_name": "Serve",
+      "action_description": "Ladle into bowls. Top with sliced radishes and parmesan.",
+      "ingredients": [
+        { "amount": "", "name": "Radishes" },
+        { "amount": "", "name": "Parmesan" }
+      ]
+    }
+  ]
+}

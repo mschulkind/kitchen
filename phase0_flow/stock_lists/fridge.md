@@ -17,7 +17,15 @@
 
 ## Perishables
 
+- Carrots
+- Celery
+- Bell Peppers
+- Radishes
+- Mixed Greens
+- Cottage Cheese
+- Greek Yogurt
 - Shredded parmesan cheese
 - Shredded cheese like cheddar or mozzarella
+- Dill
 
 ## Other

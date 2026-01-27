@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Recipe",
+  "description": "A structured recipe format for Kitchen project PDF rendering",
+  "type": "object",
+  "required": ["title", "prep", "steps"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Recipe title"
+    },
+    "emoji": {
+      "type": "string",
+      "description": "Optional emoji for the title"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Optional tagline or description"
+    },
+    "servings": {
+      "type": "integer",
+      "description": "Number of servings"
+    },
+    "total_time_minutes": {
+      "type": "integer",
+      "description": "Total cook time in minutes"
+    },
+    "prep": {
+      "type": "object",
+      "description": "Ingredients grouped by prep type",
+      "required": ["ready_to_use", "knife_work"],
+      "properties": {
+        "ready_to_use": {
+          "type": "array",
+          "description": "Ingredients that need no prep",
+          "items": {
+            "type": "object",
+            "required": ["amount", "name"],
+            "properties": {
+              "amount": { "type": "string" },
+              "name": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "knife_work": {
+          "type": "array",
+          "description": "Ingredients that need cutting/prep",
+          "items": {
+            "type": "object",
+            "required": ["amount", "name", "prep"],
+            "properties": {
+              "amount": { "type": "string" },
+              "name": { "type": "string" },
+              "prep": { "type": "string", "description": "How to prep: dice, mince, slice, etc." }
+            }
+          }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "description": "Execution steps in countdown order",
+      "items": {
+        "type": "object",
+        "required": ["minutes_before_done", "action_name", "action_description", "ingredients"],
+        "properties": {
+          "minutes_before_done": {
+            "type": "integer",
+            "description": "T-minus minutes (40 means T-40, 0 means done)"
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "description": "How long this step takes"
+          },
+          "action_name": {
+            "type": "string",
+            "description": "Short action label (e.g., 'Sauté Base', 'Simmer')"
+          },
+          "action_description": {
+            "type": "string",
+            "description": "Detailed instructions"
+          },
+          "ingredients": {
+            "type": "array",
+            "description": "Ingredients used in this step",
+            "items": {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "amount": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            }
+          },
+          "meanwhile": {
+            "type": "object",
+            "description": "Optional parallel task during this step",
+            "properties": {
+              "ingredients": { "type": "string" },
+              "action": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+/* 
+   Updated recipes.css - Span-Based Layout & Forced Widths
+*/
+@page {
+    size: Letter;
+    margin: 1.5cm;
+    @bottom-center {
+        content: "Page " counter(page);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #999;
+    }
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #333;
+    max-width: 100%;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.8em;
+    font-size: 20pt;
+}
+
+h2, h3 {
+    color: #2c3e50;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* Prep Columns */
+.prep-container {
+    column-count: 2;
+    column-gap: 2em;
+    margin-bottom: 2em;
+}
+
+.prep-group {
+    break-inside: avoid;
+    margin-bottom: 1em;
+}
+
+.prep-category {
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+ul {
+    margin-top: 0.2em;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+li {
+    margin-bottom: 0.3em;
+}
+
+/* 
+   Table Layout
+   Using table-layout: fixed for precise column control
+*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: 9.5pt;
+    table-layout: fixed;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    padding: 8px 10px;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    vertical-align: top;
+}
+
+/* 
+   Column Widths - Compact Time & Ingredients, expand Action
+   Using fixed layout, col 1 + col 2 = small, col 3 gets remainder
+*/
+th:nth-child(1),
+td:nth-child(1) {
+    width: 7% !important;
+    min-width: 7% !important;
+    max-width: 7% !important;
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 18% !important;
+    min-width: 18% !important;
+    max-width: 18% !important;
+    padding-right: 8px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 75% !important;
+}
+
+/* 
+   Ingredient Item Styling - Span Based
+*/
+span.ing-item {
+    display: block; /* Force new line */
+    margin-bottom: 4px;
+    border-bottom: 1px dotted #eee; /* Optional guide line */
+    padding-bottom: 2px;
+}
+
+span.amt {
+    display: inline-block;
+    width: 35%; 
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+    padding-right: 10px;
+}
+
+span.name {
+    display: inline-block;
+    width: 55%; 
+    text-align: left;
+    color: #000;
+}
