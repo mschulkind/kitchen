@@ -1,44 +1,39 @@
-# Meal Plan Options: Shop the Kitchen
+# Meal Plan Options: Shop the Kitchen (50/25/25 Edition)
 
-**Goal:** Use Cabbage & Taco Chicken (plus potential Chickpea Chorizo).
-**Theme:** Creative use of pantry staples to support the core proteins.
+**Goal:** Use Cabbage & Taco Chicken.
+**Constraint:** Strict 50% Veggie / 25% Protein / 25% Starch ratio.
 
-## Option 1: Fresh Masa Street Tacos (The "Handmade" Path)
-*Classic taco night, elevating it with homemade tortillas since you have Masa Harina.*
-- **Main:** Rastelli’s Chicken Strips warm in the tortillas.
-- **Second Protein:** **Chickpea Chorizo** (sautéed with onions) as a second taco option.
-- **Veggie:** **Cabbage**, Radish, and Lime Slaw (Crunchy/Acidic).
-- **Starch:** Fresh Corn Tortillas (from Pantry Masa Harina).
-- **Shop:** Fresh Cilantro (optional), Avocado (optional).
-
-## Option 2: Loaded Burrito Bowls (The "Volume" Path)
-*Hearty rice bowls using pantry staples and fridge veggies.*
-- **Base:** Lime-Rice (Pantry Rice) + Refried Beans (Pantry).
-- **Protein:** Chicken Strips.
-- **Crunch:** **Chickpea Chorizo** roasted until crispy (like spiced croutons) scattered on top.
-- **Veggie:** Shredded **Cabbage** & Mixed Greens salad with a Yogurt-Lime Crema dressing.
-- **Shop:** Avocado (optional).
-
-## Option 3: Taco-Spiced Cabbage Skillet (The "Low Carb" Path)
-*A "deconstructed egg roll" vibe but with taco flavors.*
-- **Base:** Sautéed **Cabbage**, Onions, Bell Peppers, and Carrots.
-- **Protein:** Chicken Strips chopped and tossed in.
-- **Second Protein:** **Chickpea Chorizo** crumbled in for texture and spice depth.
-- **Topping:** Dollop of Greek Yogurt and fresh Radish slices.
+## Option 1: The "Masa Strip" Chilaquiles Salad
+*A voluminous warm salad using the rustic masa technique.*
+- **50% Veggie:** A massive base of shredded **Cabbage**, Radish, and Mixed Greens.
+- **25% Starch:** "Rustic" Masa Strips (made from Masa Harina) simmered in a quick red sauce (Canned Tomatoes + Chipotle/Spices) and ladled *over* the cool greens.
+- **25% Protein:** Taco Chicken Strips warming in the sauce.
 - **Shop:** None.
 
-## Option 4: Mexican-Style Ramen (The "Wildcard" Path)
-*Fun fusion using your pantry ramen stash.*
-- **Base:** Ramen Noodles in a broth spiked with Taco seasoning, Lime, and a splash of Coconut Milk (Pantry) for creaminess.
-- **Protein:** Chicken Strips (added at the end).
-- **Veggie:** **Cabbage** and Carrots wilted in the hot broth.
-- **Garnish:** Sliced Radishes and a soft-boiled Egg (Fridge).
-- **Shop:** Scallions (optional).
+## Option 2: Sizzling "Fajita" Cabbage Skillet
+*Replacing the tortilla with a mountain of veggies.*
+- **50% Veggie:** High-heat seared **Cabbage** wedges, Bell Peppers, and Onions (charred hard).
+- **25% Starch:** A side of Mexican Rice (Rice + Tomato paste) or a few rustic Masa Strips on the side.
+- **25% Protein:** Taco Chicken Strips & optional Chickpea Chorizo.
+- **Shop:** None.
 
-## Option 5: Chilaquiles-Style Skillet (The "Comfort" Path)
-*Using Masa to make rustic chips (totopos) or thick strips, simmered in sauce.*
-- **Base:** Homemade thick tortilla chips/strips (Masa) fried/baked, then simmered in a quick sauce made from Canned Tomatoes + Spices.
-- **Protein:** Chicken Strips laid on top.
-- **Veggie:** Raw Shredded **Cabbage** and Radish piled high on top for fresh contrast.
-- **Finish:** Drizzle of Greek Yogurt and crumbled Cheese.
+## Option 3: Spicy Cabbage & Chickpea Stew
+*A broth-heavy, warming bowl.*
+- **50% Veggie:** **Cabbage** melting into a tomato-based broth with Celery and Carrots.
+- **25% Starch:** **Chickpeas** (canned) acting as the primary starch/carb source.
+- **25% Protein:** Taco Chicken Strips added at the end to stay tender.
+- **Shop:** None.
+
+## Option 4: "Inside-Out" Tostadas
+*The cabbage is the "shell" (bed).*
+- **50% Veggie:** A solid layer of Cabbage Slaw (Lime/Cumin dressing) covering the plate.
+- **25% Starch:** Crumbled Tostada shells (or rustic Masa chips) scattered on top for crunch, plus a thin smear of Refried Beans.
+- **25% Protein:** Taco Chicken Strips & crumbled Cheese.
+- **Shop:** None.
+
+## Option 5: Roasted Cabbage Steaks with Polenta-Style Masa
+*A knife-and-fork dinner.*
+- **50% Veggie:** Thick **Cabbage** rounds roasted with olive oil and cumin until caramelized.
+- **25% Starch:** Soft "Polenta" made from Masa Harina (creamy corn porridge) with a bit of cheese.
+- **25% Protein:** Taco Chicken Strips piled on top of the steaks.
 - **Shop:** None.

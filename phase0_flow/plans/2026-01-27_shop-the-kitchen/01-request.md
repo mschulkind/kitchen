@@ -14,3 +14,4 @@
 ## Requirements
 - Provide 5 distinct paths/options.
 - Focus on using what's on hand ("Shop the kitchen").
+- **Strict Macro Goal:** 50% Veggies, 25% Protein, 25% Starch. All options must rely heavily on cabbage volume.
