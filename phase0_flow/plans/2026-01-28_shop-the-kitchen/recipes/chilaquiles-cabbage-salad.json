@@ -1,0 +1,104 @@
+{
+  "title": "Chilaquiles Cabbage Salad",
+  "emoji": "🥗",
+  "subtitle": "Warm, saucy chicken & charred masa strips over a mountain of lime-cabbage.",
+  "servings": 3,
+  "total_time_minutes": 35,
+  "prep": {
+    "ready_to_use": [
+      { "amount": "12-16 oz", "name": "Taco Chicken Strips" },
+      { "amount": "1 cup", "name": "Masa Harina" },
+      { "amount": "2/3 cup", "name": "Warm Water" },
+      { "amount": "1 can", "name": "Diced Tomatoes (14.5oz)" },
+      { "amount": "1 cup", "name": "Frozen Spinach" },
+      { "amount": "1 tsp", "name": "Chili Powder" },
+      { "amount": "1/2 tsp", "name": "Cumin" },
+      { "amount": "Pinch", "name": "Salt" },
+      { "amount": "1 tbsp", "name": "Olive Oil" },
+      { "amount": "Topping", "name": "Greek Yogurt" },
+      { "amount": "Topping", "name": "Shredded Cheese" }
+    ],
+    "knife_work": [
+      { "amount": "1/2 head", "name": "Green Cabbage", "prep": "Shred very thin" },
+      { "amount": "4-5", "name": "Radishes", "prep": "Slice thin" },
+      { "amount": "1/2", "name": "Yellow Onion", "prep": "Dice" },
+      { "amount": "1 tsp", "name": "Garlic", "prep": "Mince" },
+      { "amount": "2", "name": "Limes", "prep": "Juice" }
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 35,
+      "duration_minutes": 10,
+      "action_name": "Mix Dough",
+      "action_description": "Mix masa, water, and salt until it feels like Play-Doh. Flatten 2-3 balls between parchment paper into rough sheets. Slice into 1-inch strips.",
+      "ingredients": [
+        { "amount": "1 cup", "name": "Masa Harina" },
+        { "amount": "2/3 cup", "name": "Warm Water" },
+        { "amount": "Pinch", "name": "Salt" }
+      ]
+    },
+    {
+      "minutes_before_done": 25,
+      "duration_minutes": 5,
+      "action_name": "Char Strips",
+      "action_description": "Heat a dry large skillet over Med-High. Cook strips for 2-3 mins per side until firm with black charred spots. Set aside.",
+      "ingredients": [
+        { "amount": "", "name": "Masa Strips" }
+      ]
+    },
+    {
+      "minutes_before_done": 20,
+      "duration_minutes": 5,
+      "action_name": "Sear Protein",
+      "action_description": "In same hot skillet, sear raw chicken strips until browned and cooked through (6-8 mins). Set aside with masa strips.",
+      "ingredients": [
+        { "amount": "1 tbsp", "name": "Olive Oil" },
+        { "amount": "16 oz", "name": "Chicken Strips" }
+      ]
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 3,
+      "action_name": "Build Sauce Base",
+      "action_description": "Reduce heat to Medium. Sauté onions and garlic in pan drippings (2 mins). Add spices and toast (30s).",
+      "ingredients": [
+        { "amount": "1/2", "name": "Onion (Diced)" },
+        { "amount": "1 tsp", "name": "Garlic (Minced)" },
+        { "amount": "1 tsp", "name": "Chili Powder" },
+        { "amount": "1/2 tsp", "name": "Cumin" }
+      ]
+    },
+    {
+      "minutes_before_done": 12,
+      "duration_minutes": 7,
+      "action_name": "Simmer & Wilt",
+      "action_description": "Pour in tomatoes. Simmer to thicken (3 mins). Stir in frozen spinach and cook until thawed.",
+      "ingredients": [
+        { "amount": "14.5 oz", "name": "Tomatoes" },
+        { "amount": "1 cup", "name": "Frozen Spinach" }
+      ]
+    },
+    {
+      "minutes_before_done": 5,
+      "duration_minutes": 5,
+      "action_name": "The Bed",
+      "action_description": "Toss cabbage and radishes with lime juice and salt. Pile a massive amount onto each plate.",
+      "ingredients": [
+        { "amount": "1/2 head", "name": "Cabbage (Shredded)" },
+        { "amount": "4-5", "name": "Radishes" },
+        { "amount": "2", "name": "Limes (Juice)" }
+      ]
+    },
+    {
+      "minutes_before_done": 0,
+      "duration_minutes": 0,
+      "action_name": "Finish",
+      "action_description": "Toss chicken & masa strips into sauce to warm. Ladle over cabbage. Top with yogurt & cheese.",
+      "ingredients": [
+        { "amount": "", "name": "Chicken & Masa" },
+        { "amount": "", "name": "Yogurt & Cheese" }
+      ]
+    }
+  ]
+}

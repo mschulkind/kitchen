@@ -1,6 +1,6 @@
 # Request: Shop the Kitchen - Cabbage & Taco Chicken
 
-**Date:** 2026-01-27
+**Date:** 2026-01-28
 **Goal:** Shop the kitchen plan for tomorrow.
 
 ## Core Ingredients
