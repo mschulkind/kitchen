@@ -29,5 +29,6 @@
 - Shredded parmesan cheese
 - Shredded cheese like cheddar or mozzarella
 - Dill
+- 1/2 Green Cabbage
 
 ## Other

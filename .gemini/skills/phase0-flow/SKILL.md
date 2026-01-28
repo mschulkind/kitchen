@@ -81,6 +81,18 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
 5.  **Commit**: Commit all new files (markdown plan, recipe files, and generated PDFs).
 6.  **Completion**: Inform the user that the plan and PDFs are ready! 📄✨
 
+## Recipe Standards
+
+When creating the final JSON recipe, adhere to these strict rules:
+
+1.  **Prep Completeness**: Every single ingredient listed in the steps (grey boxes) MUST be listed in the top `prep` section (either `ready_to_use` or `knife_work`). This includes spices, oils, water splashes, and garnishes.
+2.  **Measurements**:
+    -   **Cans**: Must include sizes (e.g., "13.5 oz can Coconut Milk", "28 oz can Tomatoes").
+    -   **Spices**: Must have specific measurements (e.g., "1 tsp Turmeric", not just "Turmeric").
+3.  **Qualitative Guidance**:
+    -   **Judgement Calls**: Provide guidance for vague steps (e.g., "Add water 1 tbsp at a time until pourable").
+    -   **Sensory Cues**: Describe success states (e.g., "until onion is translucent", "until chicken is opaque and firm").
+
 ## File Structure Reference
 
 ```text

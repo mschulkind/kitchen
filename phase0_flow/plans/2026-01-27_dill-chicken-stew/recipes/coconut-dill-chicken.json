@@ -7,16 +7,22 @@
   "prep": {
     "ready_to_use": [
       { "amount": "1.5 lbs", "name": "Braised Chicken Thighs", "note": "frozen or thawed" },
-      { "amount": "1 can", "name": "Coconut Milk", "note": "full fat" },
+      { "amount": "13.5 oz", "name": "Coconut Milk", "note": "full fat can" },
       { "amount": "2 cups", "name": "Frozen Spinach" },
       { "amount": "1 bunch", "name": "Fresh Dill", "note": "chopped" },
-      { "amount": "1 cup", "name": "Rice", "note": "for serving" }
+      { "amount": "1 cup", "name": "Rice", "note": "for serving" },
+      { "amount": "1.5 cups", "name": "Water/Broth", "note": "for rice + splash for stew" },
+      { "amount": "1 tbsp", "name": "Oil" },
+      { "amount": "1 tsp", "name": "Turmeric" },
+      { "amount": "1/2 tsp", "name": "Red Pepper Flakes" },
+      { "amount": "To taste", "name": "Salt" }
     ],
     "knife_work": [
       { "amount": "1 medium", "name": "Onion", "prep": "Dice" },
       { "amount": "2-3", "name": "Carrots", "prep": "Dice small" },
       { "amount": "3 cloves", "name": "Garlic", "prep": "Minced" },
-      { "amount": "1 inch", "name": "Ginger", "prep": "Grated (or 1 tsp powder)" }
+      { "amount": "1 inch", "name": "Ginger", "prep": "Grated (or 1 tsp powder)" },
+      { "amount": "1", "name": "Lime", "prep": "Juiced" }
     ]
   },
   "steps": [
@@ -24,21 +30,21 @@
       "minutes_before_done": 30,
       "duration_minutes": 5,
       "action_name": "Start Rice",
-      "action_description": "Get the rice going in a separate pot or rice cooker.",
+      "action_description": "Get the rice going in a separate pot. Cook until fluffy and water is absorbed.",
       "ingredients": [
         { "amount": "1 cup", "name": "Rice" },
         { "amount": "1.5 cups", "name": "Water/Broth" }
       ],
       "meanwhile": {
         "ingredients": "Chicken",
-        "action": "Run frozen bag under cold water to loosen."
+        "action": "Run frozen bag under cold water to loosen clumps."
       }
     },
     {
       "minutes_before_done": 25,
       "duration_minutes": 5,
       "action_name": "Sauté Aromatics",
-      "action_description": "Heat oil in a large pot. Sauté onion and carrots until softening.",
+      "action_description": "Heat oil in a large pot. Sauté onion and carrots until onion is translucent and carrots soften slightly.",
       "ingredients": [
         { "amount": "1 tbsp", "name": "Oil" },
         { "amount": "1", "name": "Onion" },
@@ -49,7 +55,7 @@
       "minutes_before_done": 20,
       "duration_minutes": 2,
       "action_name": "Bloom Spices",
-      "action_description": "Add garlic, ginger, and spices. Cook 1 min until fragrant.",
+      "action_description": "Add garlic, ginger, turmeric, and flakes. Cook 1 min until very fragrant and spices darken slightly.",
       "ingredients": [
         { "amount": "3 cloves", "name": "Garlic" },
         { "amount": "1 inch", "name": "Ginger" },
@@ -61,7 +67,7 @@
       "minutes_before_done": 18,
       "duration_minutes": 13,
       "action_name": "Simmer Base",
-      "action_description": "Add coconut milk and chicken. Simmer gently to heat chicken through.",
+      "action_description": "Add coconut milk and chicken. Simmer gently until bubbling and chicken is hot. Add water 1/4 cup at a time if too thick.",
       "ingredients": [
         { "amount": "1 can", "name": "Coconut Milk" },
         { "amount": "All", "name": "Braised Chicken" },
@@ -72,11 +78,12 @@
       "minutes_before_done": 5,
       "duration_minutes": 5,
       "action_name": "Finish & Serve",
-      "action_description": "Stir in spinach (wilts instantly) and dill. Season with salt and fresh lime juice.",
+      "action_description": "Stir in spinach (wilts instantly) and dill. Season with salt and lime juice to taste.",
       "ingredients": [
         { "amount": "2 cups", "name": "Spinach" },
         { "amount": "1 bunch", "name": "Fresh Dill" },
-        { "amount": "1", "name": "Lime (juiced)" }
+        { "amount": "1", "name": "Lime (juiced)" },
+        { "amount": "To taste", "name": "Salt" }
       ]
     }
   ]
