@@ -1,0 +1,85 @@
+{
+  "title": "Pressure Cooker Beef Stew",
+  "emoji": "🥩",
+  "subtitle": "Classic comfort food in a fraction of the time. No mushrooms.",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "2-3 lbs", "name": "Chuck Roast", "note": "Cut into 1.5 inch cubes"},
+      {"amount": "2 tbsp", "name": "Flour", "note": "For coating beef"},
+      {"amount": "2 cups", "name": "Beef Broth"},
+      {"amount": "1 tbsp", "name": "Worcestershire Sauce"},
+      {"amount": "1 sprig", "name": "Rosemary"},
+      {"amount": "2 sprigs", "name": "Thyme"},
+      {"amount": "2 tbsp", "name": "Oil"},
+      {"amount": "2 tbsp", "name": "Cornstarch + Water", "note": "Slurry"}
+    ],
+    "knife_work": [
+      {"amount": "1", "name": "Onion", "prep": "chopped"},
+      {"amount": "3", "name": "Carrots", "prep": "chunked (1 inch)"},
+      {"amount": "2 stalks", "name": "Celery", "prep": "chopped"},
+      {"amount": "3", "name": "Red Potatoes", "prep": "cubed (1.5 inch)"},
+      {"amount": "3 cloves", "name": "Garlic", "prep": "minced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 75,
+      "duration_minutes": 15,
+      "ingredients": [
+        {"amount": "2-3 lbs", "name": "Beef"},
+        {"amount": "Veg", "name": "Carrots/Cel/Pot/Onion"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Cube beef (1.5\"). Chop onions/celery. Chunk carrots/potatoes. Mince garlic. Toss beef in flour/salt/pepper."
+    },
+    {
+      "minutes_before_done": 60,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "Cubed", "name": "Beef"},
+        {"amount": "2 tbsp", "name": "Oil"}
+      ],
+      "action_name": "Brown Beef",
+      "action_description": "Set IP to Sauté. Brown beef in batches (don't crowd!). Aim for a dark crust on at least 2 sides. Remove."
+    },
+    {
+      "minutes_before_done": 50,
+      "duration_minutes": 3,
+      "ingredients": [
+        {"amount": "1", "name": "Onion"},
+        {"amount": "3 cloves", "name": "Garlic"}
+      ],
+      "action_name": "Deglaze",
+      "action_description": "Add onion/garlic. Sauté 2m. Add splash of broth to scrape up ALL brown bits (crucial to avoid burn error)."
+    },
+    {
+      "minutes_before_done": 45,
+      "duration_minutes": 1,
+      "ingredients": [
+        {"amount": "All", "name": "Beef"},
+        {"amount": "2 cups", "name": "Broth"},
+        {"amount": "Herbs", "name": "Rosemary/Thyme"},
+        {"amount": "All", "name": "Veg (Carrot/Red Pot/Cel)"}
+      ],
+      "action_name": "Pressure Cook",
+      "action_description": "Return beef. Add broth, herbs, Worcestershire, and veggies on top. Seal. High Pressure 35 mins."
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 10,
+      "ingredients": [],
+      "action_name": "Release",
+      "action_description": "Natural release for 10 mins (better for meat tenderness), then quick release."
+    },
+    {
+      "minutes_before_done": 5,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "2 tbsp", "name": "Cornstarch Slurry"}
+      ],
+      "action_name": "Thicken",
+      "action_description": "Set to Sauté. Stir in slurry. Bubble for 2-3 mins until gravy is thick and glossy.",
+      "meanwhile": { "ingredients": "Kids Bowl", "action": "PULL: Meat and potatoes are distinct and mild, usually kid safe!" }
+    }
+  ]
+}

@@ -7,6 +7,7 @@
 - [Kid Meals](#kid-meals)
 - [Composition](#composition)
 - [Prioritization](#prioritization)
+- [Appliances](#appliances)
 
 ## Likes
 
@@ -39,3 +40,7 @@ Prioritize using ingredients that are perishable that are in the stock lists. Fr
 Line up meals in a plan that share as many ingredients as possible from the list of things that need
 to be purchased that aren't already in stock. Also sequence recipes where the leftovers from one
 night can be repurposed for the next night's recipe.
+
+## Appliances
+
+- Electric Pressure Cooker (Instant Pot style)

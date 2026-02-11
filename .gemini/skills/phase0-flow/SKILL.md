@@ -29,12 +29,16 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
 ### Step 1: The Request
 
 1.  **Context**: The user has created a `01-request.md` in a new plan directory (e.g., `phase0_flow/plans/YYYY-MM-DD_my-plan/`).
-2.  **Action**: Read `01-request.md`, `phase0_flow/stock_lists/`, and `phase0_flow/general_preferences/`.
+2.  **Action**:
+    -   Read `01-request.md`.
+    -   Read `phase0_flow/stock_lists/` and `phase0_flow/general_preferences/`.
+    -   **Read recent plans**: Check `phase0_flow/plans/` (last 1-2 plans) to understand the current style and naming conventions.
 3.  **Goal**: Understand the user's needs, constraints, and current inventory.
 
 ### Step 2: The Options
 
 1.  **Action**: Generate 4-5 high-level meal plan summaries based on the request.
+    -   **Check Dislikes**: explicitly check `general_preferences/process.md` (or similar) for dislikes (e.g., mushrooms, olives) and ensure options respect them.
 2.  **Output**: Create `02-options.md` in the plan directory.
     -   Each option should have a theme.
     -   List key *new* ingredients to buy for each option.
@@ -50,9 +54,11 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
     -   Categorize them (Produce, Dairy, Pantry, etc.).
     -   Pre-check (`[x]`) items you believe are in stock based on `stock_lists`.
     -   Leave unknown/out-of-stock items unchecked (`[ ]`).
-4.  **Output 2**: Create individual markdown files for each recipe in a `recipes/` subdirectory.
-    -   These are "provisional" drafts to ensure all spices, garnishes, and techniques (like velveting) are documented.
-    -   Ensure recipes include specific "Flavor Layer" and "Kid Submeal" notes.
+4.  **Output 2**: Create individual recipe files in a `recipes/` subdirectory.
+    -   **Format Decision**:
+        -   **Markdown (`.md`)**: Good for simple plans. Use standard headers.
+        -   **JSON (`.json`)**: REQUIRED for high-quality "templated" PDF generation (Time/Ingredients columns). Use this if the user asks for "templated" or "nice" PDFs.
+    -   These are "provisional" drafts to ensure all spices, garnishes, and techniques are documented.
 5.  **Commit**: Commit the changes.
 6.  **Interaction**: **STOP EXECUTION.** Ask the user to review the provisional recipes and `03-verification.md`. Do not proceed to Step 4 until the user confirms the ingredients and recipes.
 
@@ -74,24 +80,63 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
     -   Include the final menu.
     -   Include the **Consolidated Shopping List** (only items strictly needed).
     -   Include full recipes with instructions.
-3.  **Output 2: Recipe Files**: Finalize individual recipe markdown files in the `recipes/` subdirectory.
-    -   Format them according to standard recipe markdown (Title, Ingredients, Instructions).
+3.  **Output 2: Recipe Files**: Finalize individual recipe files in the `recipes/` subdirectory.
+    -   Ensure they match the chosen format (.md or .json).
 4.  **Output 3: PDFs**: Run the PDF generation command.
-    -   Command: `just all` (This targets the latest plan directory automatically).
+    -   Command: `just all` (Targets .md/.html files).
+    -   Command: `just render-all` (Targets .json files -> templated PDFs). *Use this if using JSON format.*
 5.  **Commit**: Commit all new files (markdown plan, recipe files, and generated PDFs).
 6.  **Completion**: Inform the user that the plan and PDFs are ready! 📄✨
 
 ## Recipe Standards
 
-When creating the final JSON recipe, adhere to these strict rules:
+### JSON Format (For Templated PDFs)
+
+If using JSON, follow this structure:
+
+```json
+{
+  "title": "Recipe Name",
+  "emoji": "🥘",
+  "prep": {
+    "ready_to_use": [ {"amount": "1 tsp", "name": "Salt"} ],
+    "knife_work": [ {"amount": "1", "name": "Onion", "prep": "diced"} ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 5,
+      "ingredients": [ {"amount": "1 tbsp", "name": "Oil"} ],
+      "action_name": "Sauté",
+      "action_description": "Cook onions until translucent.",
+      "meanwhile": { "ingredients": "Parsley", "action": "chop" }
+    }
+  ]
+}
+```
+
+### General Rules
 
 1.  **Prep Completeness**: Every single ingredient listed in the steps (grey boxes) MUST be listed in the top `prep` section (either `ready_to_use` or `knife_work`). This includes spices, oils, water splashes, and garnishes.
-2.  **Measurements**:
-    -   **Cans**: Must include sizes (e.g., "13.5 oz can Coconut Milk", "28 oz can Tomatoes").
-    -   **Spices**: Must have specific measurements (e.g., "1 tsp Turmeric", not just "Turmeric").
-3.  **Qualitative Guidance**:
-    -   **Judgement Calls**: Provide guidance for vague steps (e.g., "Add water 1 tbsp at a time until pourable").
-    -   **Sensory Cues**: Describe success states (e.g., "until onion is translucent", "until chicken is opaque and firm").
+2.  **Strict Time Management**: 
+    -   **Total Time**: Include all prep (slicing, dicing, measuring) in the total time estimate.
+    -   **Step-by-Step Prep**: The first step in the execution table **MUST** be "Mise en Place" and account for all chopping, slicing, and measuring.
+    -   **JSON Requirement**:
+        ```json
+        {
+          "minutes_before_done": 45,
+          "duration_minutes": 10,
+          "ingredients": [ {"amount": "1", "name": "Onion"}, {"amount": "2", "name": "Carrots"} ],
+          "action_name": "Mise en Place",
+          "action_description": "Dice onion. Slice carrots into coins."
+        }
+        ```
+    -   **Meal Caps**: Standard meals must be **30-45 minutes total**. One "complex" meal per plan can be up to **60 minutes**.
+    -   **Layered Flavors**: Achieving deep flavor in short times requires techniques like fond-building, blooming spices, and high-heat roasting.
+3.  **Specifics & Guidance**:
+    -   **Cans**: MUST include sizes (e.g., "13.5 oz can Coconut Milk", "28 oz can Tomatoes").
+    -   **Sensory Cues**: Instructions MUST describe what to look/smell/listen for (e.g., "until onion is translucent", "until fragrant but not brown").
+    -   **Kid Pulls**: If a component needs to be saved for kids before spicing/saucing, this **MUST** be explicitly marked in the "meanwhile" or "action_description" field (e.g., "PULL: Remove 1 cup of plain pasta for kids").
 
 ## File Structure Reference
 

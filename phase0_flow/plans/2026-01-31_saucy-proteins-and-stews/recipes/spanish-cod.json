@@ -1,0 +1,70 @@
+{
+  "title": "Spanish-Style Poached Cod (Bacalao)",
+  "emoji": "🐟",
+  "subtitle": "Cod poached gently in a smoky tomato and pepper sauce. No olives!",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "4", "name": "Cod Filets", "note": "Pat dry, salt & pepper"},
+      {"amount": "1 can (14.5 oz)", "name": "Diced Tomatoes", "note": "Petite diced is best"},
+      {"amount": "1 tsp", "name": "Smoked Paprika"},
+      {"amount": "1 tbsp", "name": "Olive Oil"}
+    ],
+    "knife_work": [
+      {"amount": "1", "name": "Onion", "prep": "sliced into strips"},
+      {"amount": "1", "name": "Bell Pepper", "prep": "sliced into strips"},
+      {"amount": "2 cloves", "name": "Garlic", "prep": "sliced thin"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 40,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1", "name": "Onion"},
+        {"amount": "1", "name": "Bell Pepper"},
+        {"amount": "2 cloves", "name": "Garlic"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Slice onion and peppers into thin strips. Slice garlic thinly. Pat cod dry and season with salt/pepper."
+    },
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 8,
+      "ingredients": [
+        {"amount": "1 tbsp", "name": "Olive Oil"},
+        {"amount": "1", "name": "Onion"},
+        {"amount": "1", "name": "Bell Pepper"}
+      ],
+      "action_name": "Sauté Veg",
+      "action_description": "In a deep skillet, sauté onions and peppers until soft and slightly browned (about 6-8 mins)."
+    },
+    {
+      "minutes_before_done": 22,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1 can (14.5 oz)", "name": "Tomatoes"},
+        {"amount": "1 tsp", "name": "Smoked Paprika"},
+        {"amount": "2 cloves", "name": "Garlic"}
+      ],
+      "action_name": "Make Sauce",
+      "action_description": "Add garlic (cook 30s until fragrant), then tomatoes and paprika. Simmer for 5 mins to thicken slightly."
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 8,
+      "ingredients": [
+        {"amount": "4", "name": "Cod Filets"}
+      ],
+      "action_name": "Poach Fish",
+      "action_description": "Nestle cod into the sauce. Cover pan. Simmer gently for 6-8 mins until fish flakes easily with a fork.",
+      "meanwhile": { "ingredients": "Kids Plate", "action": "PULL: Fish can be served with just a little sauce wiped off if needed, or plain green beans." }
+    },
+    {
+      "minutes_before_done": 0,
+      "duration_minutes": 0,
+      "ingredients": [],
+      "action_name": "Serve",
+      "action_description": "Serve cod with a big scoop of sauce and green beans on the side."
+    }
+  ]
+}

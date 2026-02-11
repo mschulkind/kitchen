@@ -1,0 +1,87 @@
+{
+  "title": "Chicken with Creamy Lemon-Dill Sauce",
+  "emoji": "🍋",
+  "subtitle": "Bright, creamy, and dairy-free (using coconut milk). Served with roasted carrots.",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "1 can (13.5 oz)", "name": "Coconut Milk", "note": "Full fat is best"},
+      {"amount": "1 tbsp", "name": "Olive Oil"},
+      {"amount": "1/2 cup", "name": "Chicken Broth", "note": "Or water"},
+      {"amount": "To taste", "name": "Salt & Pepper"}
+    ],
+    "knife_work": [
+      {"amount": "2", "name": "Chicken Breasts", "prep": "butterflied & pounded thin"},
+      {"amount": "4", "name": "Carrots", "prep": "sliced into 1/4 inch coins"},
+      {"amount": "3 cloves", "name": "Garlic", "prep": "minced"},
+      {"amount": "1/4 cup", "name": "Fresh Dill", "prep": "chopped"},
+      {"amount": "1", "name": "Lemon", "prep": "zested and juiced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 40,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "2", "name": "Chicken Breasts"},
+        {"amount": "4", "name": "Carrots"},
+        {"amount": "3 cloves", "name": "Garlic"},
+        {"amount": "1/4 cup", "name": "Dill"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Butterfly chicken. Slice carrots into coins. Mince garlic. Chop dill. Zest/juice lemon."
+    },
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "4", "name": "Carrots"},
+        {"amount": "1 tbsp", "name": "Olive Oil"},
+        {"amount": "Pinch", "name": "Salt"}
+      ],
+      "action_name": "Roast Carrots",
+      "action_description": "Toss carrots with oil/salt. Spread on baking sheet. Roast at 425°F (220°C) until tender and caramelized edges."
+    },
+    {
+      "minutes_before_done": 25,
+      "duration_minutes": 8,
+      "ingredients": [
+        {"amount": "2", "name": "Chicken Breasts"},
+        {"amount": "1 tbsp", "name": "Olive Oil"}
+      ],
+      "action_name": "Sear Chicken",
+      "action_description": "Sear chicken in hot skillet (med-high) for 3-4 mins per side until golden brown and cooked through (internal 165°F). Remove and set aside.",
+      "meanwhile": { "ingredients": "Kids Plate", "action": "PULL: Set aside plain chicken/carrots" }
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "3 cloves", "name": "Garlic"},
+        {"amount": "1/2 cup", "name": "Broth"}
+      ],
+      "action_name": "Start Sauce",
+      "action_description": "Reduce heat to medium. Sauté garlic 30s until fragrant. Deglaze with broth, scraping up all the tasty brown bits (fond)."
+    },
+    {
+      "minutes_before_done": 13,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1 can (13.5 oz)", "name": "Coconut Milk"},
+        {"amount": "1", "name": "Lemon Zest"}
+      ],
+      "action_name": "Simmer",
+      "action_description": "Add coconut milk and zest. Simmer until slightly thickened and coats the back of a spoon."
+    },
+    {
+      "minutes_before_done": 8,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "1", "name": "Lemon Juice"},
+        {"amount": "1/4 cup", "name": "Dill"},
+        {"amount": "Reserved", "name": "Chicken"}
+      ],
+      "action_name": "Finish",
+      "action_description": "Stir in lemon juice and dill. Taste for salt. Return chicken to pan just to warm through."
+    }
+  ]
+}
