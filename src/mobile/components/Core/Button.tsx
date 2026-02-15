@@ -20,7 +20,8 @@ export interface KitchenButtonProps extends ButtonProps {
  * Use this instead of raw Tamagui Button throughout the app.
  */
 export const KitchenButton = forwardRef<TamaguiElement, KitchenButtonProps>(
-  ({ children, testID, ...props }, ref) => {
+  ({ children, testID, onPress, disabled, ...props }, ref) => {
+    const handlePress = disabled ? undefined : onPress;
     return (
       <Button
         ref={ref}
@@ -28,8 +29,11 @@ export const KitchenButton = forwardRef<TamaguiElement, KitchenButtonProps>(
         minHeight={44}
         minWidth={44}
         paddingHorizontal="$4"
-        pressStyle={{ scale: 0.97, opacity: 0.9 }}
+        pressStyle={disabled ? undefined : { scale: 0.97, opacity: 0.9 }}
         animation="quick"
+        disabled={disabled}
+        onPress={handlePress}
+        pointerEvents={disabled ? 'none' : 'auto'}
         {...props}
       >
         {children}

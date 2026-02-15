@@ -13,14 +13,26 @@ const mockSubscribe = jest.fn();
 const mockOn = jest.fn().mockReturnValue({ subscribe: mockSubscribe });
 const mockChannel = jest.fn().mockReturnValue({ on: mockOn });
 const mockRemoveChannel = jest.fn();
+const mockGetUser = jest.fn().mockResolvedValue({ data: { user: null }, error: null });
+const mockSingle = jest.fn().mockResolvedValue({ data: null, error: { code: 'PGRST116', message: 'No rows' } });
+const mockLimit = jest.fn().mockReturnValue({ single: mockSingle });
+const mockEq = jest.fn().mockReturnValue({ limit: mockLimit });
+const mockSelect = jest.fn().mockReturnValue({ eq: mockEq });
+const mockFrom = jest.fn().mockReturnValue({ select: mockSelect });
 
-jest.mock('../lib/supabase', () => ({
-  supabase: {
-    channel: mockChannel,
-    removeChannel: mockRemoveChannel,
-  },
-  Database: {},
-}));
+jest.mock('../lib/supabase', () => {
+  return {
+    supabase: {
+      channel: (...args: any[]) => mockChannel(...args),
+      removeChannel: (...args: any[]) => mockRemoveChannel(...args),
+      auth: {
+        getUser: (...args: any[]) => mockGetUser(...args),
+      },
+      from: (...args: any[]) => mockFrom(...args),
+    },
+    Database: {},
+  };
+});
 
 import { useInventorySubscription, useHouseholdId } from '../hooks/useInventorySubscription';
 
@@ -222,10 +234,28 @@ describe('useInventorySubscription', () => {
 });
 
 describe('useHouseholdId', () => {
-  it('returns development household ID for now', () => {
+  it('returns null when no user is authenticated', async () => {
+    mockGetUser.mockResolvedValueOnce({ data: { user: null }, error: null });
+    
     const { result } = renderHook(() => useHouseholdId());
 
-    // Development placeholder
-    expect(result.current).toBe('00000000-0000-0000-0000-000000000001');
+    // Initially null while fetching
+    expect(result.current).toBeNull();
+    
+    // After async resolution, still null (no user)
+    await waitFor(() => {
+      expect(result.current).toBeNull();
+    });
+  });
+
+  it('returns household ID when user is authenticated', async () => {
+    mockGetUser.mockResolvedValueOnce({ data: { user: { id: 'user-123' } }, error: null });
+    mockSingle.mockResolvedValueOnce({ data: { household_id: 'hh-456' }, error: null });
+
+    const { result } = renderHook(() => useHouseholdId());
+
+    await waitFor(() => {
+      expect(result.current).toBe('hh-456');
+    });
   });
 });
