@@ -73,7 +73,8 @@ export default function RecipesListScreen() {
     setIsImporting(true);
     try {
       // Call recipe scraper API
-      const response = await fetch('/api/recipes/scrape', {
+      const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
+      const response = await fetch(`${apiUrl}/api/v1/recipes/ingest`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: importUrl }),
