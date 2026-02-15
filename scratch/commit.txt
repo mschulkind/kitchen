@@ -1,0 +1,8 @@
+feat(planning): Finalize and document LLM prompts
+
+Approved and integrated the final set of 4 LLM prompts for meal suggestions.
+
+- Updated decision log at `plans/decisions/phase-1/llm-prompts.md` to reflect the approved prompts.
+- Synchronized the `plans/design-system.md` with the finalized prompt templates.
+
+This completes the task from `plans/development-todo.md` to "Develop LLM prompt examples for meal suggestions."
