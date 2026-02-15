@@ -54,6 +54,8 @@ export function HubCard({
       justifyContent="center"
       alignItems="center"
       elevate
+      role="button"
+      aria-label={`${title}: ${subtitle}`}
       {...props}
     >
       <YStack alignItems="center" space="$2">

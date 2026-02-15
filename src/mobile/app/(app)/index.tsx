@@ -103,8 +103,9 @@ export default function HubScreen() {
 
   // Fetch expiring items count
   const { data: expiringCount } = useQuery({
-    queryKey: ['pantry', 'expiring'],
+    queryKey: ['pantry', 'expiring', householdId],
     queryFn: async () => {
+      if (!householdId) return 0;
       const threeDaysFromNow = new Date();
       threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
       const dateStr = threeDaysFromNow.toISOString().split('T')[0];
@@ -112,11 +113,13 @@ export default function HubScreen() {
       const { count, error } = await supabase
         .from('pantry_items')
         .select('*', { count: 'exact', head: true })
+        .eq('household_id', householdId)
         .lte('expiry_date', dateStr);
 
       if (error) throw error;
       return count || 0;
     },
+    enabled: !!householdId,
   });
 
   // Get greeting based on time of day
