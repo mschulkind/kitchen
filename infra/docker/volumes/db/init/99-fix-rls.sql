@@ -10,9 +10,17 @@ GRANT ALL ON users TO authenticated;
 GRANT ALL ON household_members TO authenticated;
 GRANT ALL ON pantry_items TO authenticated;
 GRANT ALL ON households TO authenticated;
+GRANT ALL ON recipes TO authenticated;
+GRANT ALL ON recipe_ingredients TO authenticated;
+GRANT ALL ON meal_plans TO authenticated;
+GRANT ALL ON shopping_list TO authenticated;
 
 -- Grant permissions to service_role (Critical for Seeding)
 GRANT ALL ON users TO service_role;
 GRANT ALL ON household_members TO service_role;
 GRANT ALL ON pantry_items TO service_role;
 GRANT ALL ON households TO service_role;
+GRANT ALL ON recipes TO service_role;
+GRANT ALL ON recipe_ingredients TO service_role;
+GRANT ALL ON meal_plans TO service_role;
+GRANT ALL ON shopping_list TO service_role;
