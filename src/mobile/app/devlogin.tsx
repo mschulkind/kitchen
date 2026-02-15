@@ -30,7 +30,7 @@ export default function DevLoginScreen() {
       const url = supabase.supabaseUrl;
       setDebugInfo(`Checking connection to: ${url}...`);
       
-      const res = await fetch(`${url}/realtime/v1/health`, { method: 'GET' }).catch(e => {
+      const res = await fetch(`${url}/auth/v1/health`, { method: 'GET' }).catch(e => {
         throw new Error(`Fetch failed: ${e.message}`);
       });
       
