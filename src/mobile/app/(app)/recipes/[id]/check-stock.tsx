@@ -33,6 +33,7 @@ import {
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
+import { useHouseholdId } from '@/hooks/useInventorySubscription';
 import { KitchenButton } from '@/components/Core/Button';
 
 type Ingredient = {
@@ -54,6 +55,7 @@ export default function CheckStockScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const queryClient = useQueryClient();
+  const householdId = useHouseholdId();
   
   const [ingredientStatuses, setIngredientStatuses] = useState<
     Record<string, StockStatus>
@@ -76,14 +78,17 @@ export default function CheckStockScreen() {
 
   // Fetch pantry items for comparison
   const { data: pantryItems, isLoading: pantryLoading } = useQuery({
-    queryKey: ['pantry'],
+    queryKey: ['pantry', householdId],
     queryFn: async () => {
+      if (!householdId) return [];
       const { data, error } = await supabase
         .from('pantry_items')
-        .select('name, quantity, unit');
+        .select('name, quantity, unit')
+        .eq('household_id', householdId);
       if (error) throw error;
       return data;
     },
+    enabled: !!householdId,
   });
 
   // Calculate initial statuses based on pantry

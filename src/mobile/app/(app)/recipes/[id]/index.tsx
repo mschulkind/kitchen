@@ -93,7 +93,8 @@ export default function RecipeDetailScreen() {
   // Image generation mutation
   const generateImageMutation = useMutation({
     mutationFn: async () => {
-      const response = await fetch(`/api/v1/recipes/${id}/generate-image`, {
+      const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
+      const response = await fetch(`${apiUrl}/api/v1/recipes/${id}/generate-image`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ style: 'professional' }),

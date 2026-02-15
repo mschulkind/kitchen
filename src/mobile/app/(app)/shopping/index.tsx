@@ -75,9 +75,11 @@ export default function ShoppingScreen() {
   const { data: items, isLoading, refetch, isRefetching } = useQuery({
     queryKey: ['shopping_list', householdId],
     queryFn: async () => {
+      if (!householdId) return [];
       const { data, error } = await supabase
         .from('shopping_list')
         .select('*')
+        .eq('household_id', householdId)
         .order('checked')
         .order('category')
         .order('name');
@@ -85,10 +87,12 @@ export default function ShoppingScreen() {
       if (error) throw error;
       return data as ShoppingItem[];
     },
+    enabled: !!householdId,
   });
 
   // Realtime subscription
   useEffect(() => {
+    if (!householdId) return;
     const channel = supabase
       .channel('shopping_list_changes')
       .on(
@@ -97,6 +101,7 @@ export default function ShoppingScreen() {
           event: '*',
           schema: 'public',
           table: 'shopping_list',
+          filter: `household_id=eq.${householdId}`,
         },
         () => {
           queryClient.invalidateQueries({ queryKey: ['shopping_list'] });
@@ -107,11 +112,12 @@ export default function ShoppingScreen() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [queryClient]);
+  }, [queryClient, householdId]);
 
   // Add item mutation
   const addItem = useMutation({
     mutationFn: async (name: string) => {
+      if (!householdId) throw new Error('No household — please sign in');
       const { error } = await supabase.from('shopping_list').insert({
         household_id: householdId,
         name: name.trim(),
