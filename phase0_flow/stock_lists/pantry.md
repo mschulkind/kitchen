@@ -9,14 +9,16 @@
 ## Staples
 
 - Olive Oil
+- Coconut Oil
+- Avocado Oil
 - Balsamic vinegar
 - White vinegar
 - Rice
 - Quinoa
-- Whole garlic
 - Flour
 - Corn starch
 - Baking powder and baking soda
+- Bouillon (various: chicken, beef, vegetable)
 
 ## 2nd Tier Staples
 
@@ -65,3 +67,9 @@
 - Thyme
 - Aleppo Pepper
 - Nigella seeds
+- Flax seeds
+- Pumpkin seeds (no shell)
+- Poppy seeds
+- Sesame seeds
+- Hemp seeds
+- Chia seeds

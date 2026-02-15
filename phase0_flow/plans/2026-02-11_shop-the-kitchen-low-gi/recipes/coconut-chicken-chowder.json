@@ -1,0 +1,101 @@
+{
+  "title": "Coconut Chicken & Potato Low-GI Chowder",
+  "emoji": "🥣",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "4-5", "name": "Chicken Breasts"},
+      {"amount": "1 can", "name": "Coconut Milk"},
+      {"amount": "2 tbsp", "name": "Butter"},
+      {"amount": "1/2 cup", "name": "Greek Yogurt"},
+      {"amount": "1/4 cup", "name": "Cottage Cheese"},
+      {"amount": "1 tbsp", "name": "Bouillon"},
+      {"amount": "1 tsp", "name": "Aleppo Pepper"},
+      {"amount": "1 tbsp", "name": "Apple Cider Vinegar"},
+      {"amount": "1 tbsp", "name": "Coconut Oil"},
+      {"amount": "1 tbsp", "name": "Flax Seeds", "prep": "crushed/ground"},
+      {"amount": "1 tsp", "name": "Nigella Seeds"},
+      {"amount": "1 tbsp", "name": "Sesame Seeds"},
+      {"amount": "to taste", "name": "Parmesan", "prep": "grated"}
+    ],
+    "knife_work": [
+      {"amount": "1.5 lbs", "name": "Red Potatoes", "prep": "diced 1/2 inch"},
+      {"amount": "1/2 head", "name": "Cabbage", "prep": "thinly shredded"},
+      {"amount": "1", "name": "Yellow Onion", "prep": "diced"},
+      {"amount": "2", "name": "Bell Peppers", "prep": "diced"},
+      {"amount": "2 tbsp", "name": "Minced Garlic"},
+      {"amount": "1/4 cup", "name": "Fresh Parsley", "prep": "chopped"},
+      {"amount": "2 cups", "name": "Fresh Spinach", "prep": "roughly chopped"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 45,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1.5 lbs", "name": "Red Potatoes"},
+        {"amount": "1/2 head", "name": "Cabbage"},
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "2", "name": "Bell Peppers"},
+        {"amount": "1/4 cup", "name": "Fresh Parsley"},
+        {"amount": "2 cups", "name": "Fresh Spinach"},
+        {"amount": "1 tbsp", "name": "Flax Seeds"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Dice potatoes, onion, and peppers. Shred cabbage. Chop parsley and spinach. Crush flax seeds using a mortar and pestle or spice grinder.",
+      "meanwhile": { "ingredients": "Garlic", "action": "measure" }
+    },
+    {
+      "minutes_before_done": 35,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1 tbsp", "name": "Coconut Oil"},
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "2", "name": "Bell Peppers"},
+        {"amount": "2 tbsp", "name": "Minced Garlic"},
+        {"amount": "1 tsp", "name": "Aleppo Pepper"}
+      ],
+      "action_name": "Sauté",
+      "action_description": "Set Instant Pot to Sauté. Heat oil, then cook onions and peppers until soft. Add garlic and Aleppo pepper for the final 60 seconds until fragrant.",
+      "meanwhile": { "ingredients": "Bouillon", "action": "ready" }
+    },
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 15,
+      "ingredients": [
+        {"amount": "4-5", "name": "Chicken Breasts"},
+        {"amount": "1.5 lbs", "name": "Red Potatoes"},
+        {"amount": "1 can", "name": "Coconut Milk"},
+        {"amount": "1 tbsp", "name": "Bouillon"}
+      ],
+      "action_name": "Pressure Cook",
+      "action_description": "Add chicken, potatoes, coconut milk, and bouillon. Ensure liquid covers at least the bottom. Secure lid and set to High Pressure for 10 minutes. (Time includes 5 mins for pressure to build).",
+      "meanwhile": { "ingredients": "Parsley", "action": "prepare garnish" }
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "2 tbsp", "name": "Butter"},
+        {"amount": "1/2 cup", "name": "Greek Yogurt"},
+        {"amount": "1/4 cup", "name": "Cottage Cheese"}
+      ],
+      "action_name": "Shred & Thicken",
+      "action_description": "Quick release pressure. Remove chicken to a bowl and shred. Mash a few potato chunks in the pot to thicken. Stir in butter, yogurt, and cottage cheese.",
+      "meanwhile": { "ingredients": "Shredded chicken", "action": "return to pot" }
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1/2 head", "name": "Cabbage"},
+        {"amount": "2 cups", "name": "Fresh Spinach"},
+        {"amount": "1 tbsp", "name": "Apple Cider Vinegar"},
+        {"amount": "1/4 cup", "name": "Fresh Parsley"},
+        {"amount": "Seeds & Parm", "name": "Garnishes"}
+      ],
+      "action_name": "Wilt & Finish",
+      "action_description": "Stir in shredded cabbage and spinach. Close lid (off) for 5 mins to wilt. Stir in vinegar and parsley. Serve topped with crushed flax, sesame, nigella, and grated parmesan.",
+      "meanwhile": { "ingredients": "None", "action": "Bowl it up!" }
+    }
+  ]
+}

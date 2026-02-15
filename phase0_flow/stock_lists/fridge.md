@@ -25,7 +25,11 @@
 - Cottage Cheese
 - Greek Yogurt
 - Shredded parmesan cheese
+- Parmesan cheese wedge
 - Shredded cheese like cheddar or mozzarella
 - Dill
+- Avocado
+- Parsley
+- Fresh Spinach
 
 ## Other

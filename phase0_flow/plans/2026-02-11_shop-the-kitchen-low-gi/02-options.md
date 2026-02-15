@@ -1,46 +1,57 @@
 # Meal Plan Options: Shop the Kitchen (Low GI 1:5:5:5)
 
-**Goal:** Hit the 1:5:5:5 ratio (Fiber:Fat:Carb:Protein) using Cabbage, Chicken, and Potatoes.
-
-## Option 1: Roasted Cabbage "Steaks" & Smashed Potatoes with Pan-Seared Chicken
-*A "knife and fork" dinner where the cabbage is the star.*
-- **Fiber (1):** Cabbage rounds roasted until caramelized + skins on red potatoes.
-- **Fat (5):** A rich butter and dill pan sauce for the chicken.
-- **Carb (5):** Boiled and then smashed/crisped red potatoes.
-- **Protein (5):** Pan-seared chicken breast.
-
-## Option 2: Warm Chicken & Potato Salad with Shredded Cabbage & Radish
-*A hearty, voluminous salad using radishes for sharp crunch.*
-- **Fiber (1):** Thinly shredded raw cabbage and sliced radishes.
-- **Fat (5):** Olive oil and Greek yogurt-based dressing with dill.
-- **Carb (5):** Diced boiled red potatoes tossed while warm into the dressing.
-- **Protein (5):** Shredded or cubed roasted chicken breast.
-
-## Option 3: Sheet Pan Chicken, Potatoes, and "Melting" Cabbage
-*A simple one-pan meal where the cabbage gets soft and sweet.*
-- **Fiber (1):** Large cabbage wedges and roasted radishes (roasting makes them sweet!).
-- **Fat (5):** Generous olive oil coating + shredded parmesan cheese finish.
-- **Carb (5):** Thinly sliced potato coins roasted until crisp.
-- **Protein (5):** Herb-rubbed chicken breast strips.
-
-## Option 4: Chicken & Cabbage "Stir-Fry" with Crispy Potato Matchsticks
-*A textural play on a classic stir-fry.*
-- **Fiber (1):** Quick-sautéed cabbage and celery.
-- **Fat (5):** Cooking in butter/oil + a sprinkle of chia/hemp seeds for healthy fats.
-- **Carb (5):** Potatoes cut into matchsticks and fried until crispy (acting as the "noodle").
-- **Protein (5):** Thinly sliced chicken breast.
-
-## Option 5: Instant Pot Chicken & Potato Stew with Shredded Cabbage Finish
-*A comforting, thick bowl.*
-- **Fiber (1):** Cabbage stirred in at the very end to maintain bite, plus carrots/celery.
-- **Fat (5):** Stirring in cottage cheese or Greek yogurt at the end for creaminess.
-- **Carb (5):** Red potatoes (some mashed into the broth to thicken).
-- **Protein (5):** Pressure-cooked chicken breast, shredded.
+**Goal:** Hit the 1:5:5:5 ratio (Fiber:Fat:Carb:Protein) using Chicken Breasts, Cabbage, Potatoes, and Seeds.
 
 ---
 
-### 🙋 Questions for the Chef:
-1. Do you have any **fresh herbs** like parsley or cilantro? (I saw dill in your fridge stock!).
-2. Do you have **Mustard** or **Apple Cider Vinegar**? (Great for low-GI dressings).
-3. Do you have **Butter** or **Avocado**? (Needed to help hit that "5" in Fat).
-4. Do you have any **Nuts/Seeds** (like the hemp/chia in your pantry) for extra fiber/fat?
+## Option 1: "Everything" Seed-Crusted Chicken
+*A high-texture meal leveraging your seed collection for healthy fats and crunch.*
+
+### 📝 Abbreviated Recipe
+1. **Prep Veg:** Slice cabbage into 1" thick "steaks". Slice potatoes into thin coins. Toss both in avocado oil/salt and roast at 425°F until tender and browned (~20-25 mins).
+2. **Prep Chicken:** Butterfly chicken breasts. Press one side firmly into a mix of **Pumpkin, Sesame, Poppy, and Nigella seeds**.
+3. **Cook:** Pan-fry chicken in **Butter** (seed-side down first) until crispy and cooked through.
+4. **Finish:** Serve with a side of sliced **Avocado** and a squeeze of lemon/vinegar.
+
+### 🔄 Refinement Paths
+- **A: The Dip:** Add a quick "Mustard-Yogurt" sauce for the chicken.
+- **B: The Crust:** Add grated **Parmesan** into the seed mix for a savory, cheesy crust.
+- **C: The Veg:** Roast the **Radishes** alongside the cabbage for a sweet, mellow addition.
+
+---
+
+## Option 2: Creamy Parsley-Garlic Chicken
+*Rich, herby, and comforting with a focus on the fresh parsley.*
+
+### 📝 Abbreviated Recipe
+1. **Prep Starch:** Boil red potatoes until soft. Drain and smash with **Butter**, a splash of bouillon, and **Parmesan**.
+2. **Cook Veg:** Sauté shredded cabbage and onions in **Butter** until "meltingly" soft. Stir in **Fresh Spinach** at the end.
+3. **Cook Chicken:** Season chicken breasts and sear in a pan. Remove and make a quick pan sauce with **Garlic, Bouillon, and lots of Parsley**. Stir in a dollop of **Greek Yogurt** for creaminess.
+4. **Finish:** Plate the chicken over the mash, drizzled with the herb sauce. Serve with **Avocado**.
+
+### 🔄 Refinement Paths
+- **A: The Glaze:** Use **Balsamic Vinegar** instead of white vinegar in the sauce for a darker, sweeter finish.
+- **B: The Mash:** Fold in sautéed **Bell Peppers** into the smashed potatoes for color and flavor.
+- **C: The Fat:** Use **Cottage Cheese** instead of yogurt for a higher-protein, chunkier texture in the sauce.
+
+---
+
+## Option 5: Instant Pot Creamy Chicken & Spinach Bowl
+*A thick, one-pot comfort meal that's very low effort.*
+
+### 📝 Abbreviated Recipe
+1. **IP Cook:** Place chicken breasts, diced potatoes, onions, and **Bouillon** in the IP. Cook on **High Pressure for 10 mins**.
+2. **Shred:** Quick release. Remove chicken and shred.
+3. **Thicken:** Mash some of the potatoes directly into the liquid. Stir in **Butter, Greek Yogurt, and Cottage Cheese**.
+4. **Wilt:** Stir the shredded chicken back in along with **Frozen Spinach** and thinly shredded **Cabbage**. Let sit on "Keep Warm" for 5 mins to wilt the greens.
+5. **Garnish:** Top with **Nigella Seeds, Pumpkin Seeds**, and fresh **Parsley**.
+
+### 🔄 Refinement Paths
+- **A: The Texture:** Keep the potatoes whole and the cabbage in larger chunks for a more "stew-like" feel.
+- **B: The Spice:** Add **Red Pepper Flakes** or **Aleppo Pepper** for a kick.
+- **C: The Seeds:** Toasted **Sesame and Flax seeds** stirred in for a nutty, high-fiber finish.
+
+---
+
+### 🙋 Final Selection?
+Which of these three "feels" like dinner? Once you choose, I'll generate the full verification list and final plan! 🐳✨
