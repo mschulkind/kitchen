@@ -47,7 +47,7 @@ async def get_current_household_id() -> UUID:
 
     This is a placeholder until auth is implemented.
     """
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 class RecipeListResponse(BaseModel):

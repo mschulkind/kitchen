@@ -45,7 +45,7 @@ async def get_recipes_for_planning() -> list:
     async with get_supabase() as supabase:
         repository = RecipeRepository(supabase)
         recipes, _ = await repository.get_all_by_household(
-            UUID("00000000-0000-0000-0000-000000000001"),
+            UUID("a0000000-0000-0000-0000-000000000001"),
             page=1,
             per_page=200,  # Get all
         )
@@ -63,7 +63,7 @@ async def get_pantry_items() -> list:
     async with get_supabase() as supabase:
         repository = PantryRepository(supabase)
         items, _ = await repository.get_all_by_household(
-            UUID("00000000-0000-0000-0000-000000000001"),
+            UUID("a0000000-0000-0000-0000-000000000001"),
             page=1,
             per_page=500,  # Get all
         )
@@ -73,7 +73,7 @@ async def get_pantry_items() -> list:
 # TODO: Replace with actual auth
 async def get_current_household_id() -> UUID:
     """Get the current user's household ID."""
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 # =========================================================================
