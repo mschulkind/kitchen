@@ -5,7 +5,7 @@
  * Touch-friendly design with large targets (44x44px min).
  */
 
-import { Alert } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import { Link } from 'expo-router';
 import { XStack, YStack, Text, Card, Button } from 'tamagui';
 import { Trash2, Edit3, AlertTriangle } from '@tamagui/lucide-icons';
@@ -28,14 +28,20 @@ export function PantryItemCard({ item, onDelete }: PantryItemCardProps) {
     new Date(item.expiry_date) < new Date();
 
   const handleDelete = () => {
-    Alert.alert(
-      'Delete Item',
-      `Are you sure you want to delete "${item.name}"?`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: onDelete },
-      ]
-    );
+    if (Platform.OS === 'web') {
+      if (window.confirm(`Delete "${item.name}"?`)) {
+        onDelete();
+      }
+    } else {
+      Alert.alert(
+        'Delete Item',
+        `Are you sure you want to delete "${item.name}"?`,
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Delete', style: 'destructive', onPress: onDelete },
+        ]
+      );
+    }
   };
 
   return (

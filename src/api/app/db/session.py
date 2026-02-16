@@ -30,7 +30,5 @@ async def get_supabase() -> AsyncGenerator[AsyncClient]:
             result = await supabase.table("pantry_items").select("*").execute()
     """
     client = await get_supabase_client()
-    try:
-        yield client
-    finally:
-        await client.aclose()
+    yield client
+    # AsyncClient has no close method; no cleanup needed
