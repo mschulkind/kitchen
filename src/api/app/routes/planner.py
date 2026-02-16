@@ -11,6 +11,7 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from pydantic import BaseModel
 
 from src.api.app.db.session import get_supabase
 from src.api.app.domain.pantry.repository import PantryRepository
@@ -287,3 +288,38 @@ async def unlock_slot(
             detail="Slot not found",
         )
     return slot
+
+
+class AssignSlotRequest(BaseModel):
+    """Request to assign a recipe to a meal slot."""
+
+    recipe_id: UUID | None = None
+    notes: str | None = None
+
+
+@router.post("/plans/{plan_id}/slots/{slot_id}/assign")
+async def assign_slot(
+    plan_id: UUID,
+    slot_id: UUID,
+    request: AssignSlotRequest,
+    service: Annotated[PlannerService, Depends(get_planner_service)],
+    household_id: Annotated[UUID, Depends(get_current_household_id)],
+) -> MealSlot:
+    """Assign a recipe to a meal slot. 🍽️
+
+    Set recipe_id to null to clear the slot.
+    """
+    try:
+        slot = await service.update_slot(
+            slot_id,
+            plan_id,
+            household_id,
+            recipe_id=request.recipe_id,
+            notes=request.notes,
+        )
+        return slot
+    except PlanNotFoundError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Plan {plan_id} not found",
+        ) from None

@@ -10,7 +10,7 @@
 
 import { useState } from 'react';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { ScrollView, Dimensions } from 'react-native';
+import { ScrollView, Dimensions, Platform, Alert } from 'react-native';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   YStack,
@@ -109,6 +109,33 @@ export default function RecipeDetailScreen() {
     },
   });
 
+  // Delete recipe mutation
+  const deleteRecipeMutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch(`${API_URL}/api/v1/recipes/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error('Failed to delete recipe');
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['recipes'] });
+      router.replace('/(app)/recipes');
+    },
+  });
+
+  const handleDelete = () => {
+    if (Platform.OS === 'web') {
+      if (window.confirm(`Delete "${recipe?.title}"? This cannot be undone.`)) {
+        deleteRecipeMutation.mutate();
+      }
+    } else {
+      Alert.alert('Delete Recipe', `Delete "${recipe?.title}"? This cannot be undone.`, [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete', style: 'destructive', onPress: () => deleteRecipeMutation.mutate() },
+      ]);
+    }
+  };
+
   if (isLoading) {
     return (
       <YStack flex={1} justifyContent="center" alignItems="center">
@@ -131,7 +158,29 @@ export default function RecipeDetailScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: recipe.title }} />
+      <Stack.Screen options={{ 
+        title: recipe.title,
+        headerRight: () => (
+          <XStack space="$2">
+            <Button
+              testID="edit-recipe-button"
+              size="$3"
+              circular
+              chromeless
+              icon={<Edit3 size={20} color="$blue10" />}
+              onPress={() => router.push(`/(app)/recipes/${id}/edit`)}
+            />
+            <Button
+              testID="delete-recipe-button"
+              size="$3"
+              circular
+              chromeless
+              icon={<Trash2 size={20} color="$red10" />}
+              onPress={handleDelete}
+            />
+          </XStack>
+        ),
+      }} />
 
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         {/* Hero Image or Placeholder */}

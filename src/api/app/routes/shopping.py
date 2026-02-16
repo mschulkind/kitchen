@@ -28,6 +28,7 @@ from src.api.app.domain.shopping.service import (
     ShoppingListNotFoundError,
     ShoppingService,
 )
+from src.api.app.domain.store.sorter import StoreSorter
 
 router = APIRouter(prefix="/shopping", tags=["Shopping 🛒"])
 
@@ -290,3 +291,63 @@ async def clear_checked_items(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Shopping list {list_id} not found",
         ) from None
+
+
+# =========================================================================
+# Store Sorting
+# =========================================================================
+
+
+@router.get("/lists/{list_id}/sorted")
+async def get_sorted_shopping_list(
+    list_id: UUID,
+    service: Annotated[ShoppingService, Depends(get_shopping_service)],
+    household_id: Annotated[UUID, Depends(get_current_household_id)],
+) -> dict:
+    """Get shopping list sorted by store aisle. 🏪
+
+    Uses the StoreSorter to group items by aisle for efficient shopping.
+    """
+    try:
+        shopping_list = await service.get_list(list_id, household_id)
+    except ShoppingListNotFoundError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Shopping list {list_id} not found",
+        ) from None
+
+    sorter = StoreSorter()
+    sorted_list = sorter.sort_list(shopping_list.items, list_id)
+    summary = sorter.get_aisle_summary(sorted_list)
+
+    return {
+        "list_id": str(list_id),
+        "aisles": [
+            {
+                "name": aisle,
+                "items": [
+                    {
+                        "id": str(item.item_id),
+                        "name": item.name,
+                        "quantity": item.quantity,
+                        "unit": item.unit,
+                        "checked": item.is_checked,
+                    }
+                    for item in sorted_list.items
+                    if item.aisle == aisle
+                ],
+            }
+            for aisle in dict.fromkeys(i.aisle for i in sorted_list.items)
+        ],
+        "unknown": [
+            {
+                "id": str(item.item_id),
+                "name": item.name,
+                "quantity": item.quantity,
+                "unit": item.unit,
+                "checked": item.is_checked,
+            }
+            for item in sorted_list.unknown_items
+        ],
+        "summary": summary,
+    }
