@@ -162,8 +162,15 @@ export default function PlannerScreen() {
         }
       }
 
-      // Deduplicate and insert into shopping list
-      const unique = [...new Set(allIngredients.map((n) => n.toLowerCase()))];
+      // Deduplicate against existing shopping list
+      const { data: existing } = await supabase
+        .from('shopping_list')
+        .select('name')
+        .eq('household_id', householdId)
+        .eq('checked', false);
+      const existingNames = new Set((existing || []).map((e: { name: string }) => e.name.toLowerCase()));
+      const unique = [...new Set(allIngredients.map((n) => n.toLowerCase()))]
+        .filter((name) => !existingNames.has(name));
       const rows = unique.map((name) => ({
         household_id: householdId,
         name,
