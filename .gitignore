@@ -56,3 +56,5 @@ dist/
 # Test Snapshots/Debug
 tests/web/*.html
 tests/web/snapshot_*.txt
+notes.txt
+scratch/
