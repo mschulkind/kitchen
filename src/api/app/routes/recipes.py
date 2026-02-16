@@ -135,7 +135,9 @@ async def create_recipe(
     For URL ingestion, use POST /recipes/ingest instead.
     """
     try:
-        return await service.create_recipe(household_id, dto)
+        return await service.create_recipe(
+            household_id, dto, ingredient_texts=dto.ingredient_texts
+        )
     except RecipeAlreadyExistsError as e:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
