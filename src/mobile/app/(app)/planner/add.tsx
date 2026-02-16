@@ -60,7 +60,7 @@ export default function AddMealScreen() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
-      router.back();
+      router.replace('/(app)/planner');
     },
   });
 
