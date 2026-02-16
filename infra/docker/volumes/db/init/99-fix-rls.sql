@@ -24,3 +24,13 @@ GRANT ALL ON recipes TO service_role;
 GRANT ALL ON recipe_ingredients TO service_role;
 GRANT ALL ON meal_plans TO service_role;
 GRANT ALL ON shopping_list TO service_role;
+
+-- Grant permissions to anon role (used by API server with anon key)
+GRANT ALL ON users TO anon;
+GRANT ALL ON household_members TO anon;
+GRANT ALL ON pantry_items TO anon;
+GRANT ALL ON households TO anon;
+GRANT ALL ON recipes TO anon;
+GRANT ALL ON recipe_ingredients TO anon;
+GRANT ALL ON meal_plans TO anon;
+GRANT ALL ON shopping_list TO anon;

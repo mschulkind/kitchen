@@ -185,98 +185,102 @@ export default function RecipesListScreen() {
           onPress={() => setShowActionSheet(true)}
         />
 
-        {/* Action Sheet for Add Options */}
-        <Sheet
-          modal
-          open={showActionSheet}
-          onOpenChange={setShowActionSheet}
-          snapPoints={[40]}
-          dismissOnSnapToBottom
-        >
-          <Sheet.Overlay />
-          <Sheet.Frame padding="$4">
-            <Sheet.Handle />
-            <YStack space="$3" marginTop="$4">
-              <H1 size="$5">Add Recipe</H1>
-              
-              <Button
-                testID="paste-url-option"
-                size="$5"
-                icon={<LinkIcon size={20} />}
-                onPress={() => {
-                  setShowActionSheet(false);
-                  setShowUrlDialog(true);
-                }}
-              >
-                Paste URL
-              </Button>
-              
-              <Button
-                testID="manual-entry-option"
-                size="$5"
-                icon={<Edit3 size={20} />}
-                chromeless
-                onPress={() => {
-                  setShowActionSheet(false);
-                  router.push('/(app)/recipes/new');
-                }}
-              >
-                Manual Entry
-              </Button>
-              
-              <Button
-                testID="scan-option"
-                size="$5"
-                icon={<Camera size={20} />}
-                chromeless
-                disabled
-              >
-                Scan (Coming Soon)
-              </Button>
-            </YStack>
-          </Sheet.Frame>
-        </Sheet>
+        {/* Action Sheet for Add Options — conditionally rendered to avoid ghost content on web */}
+        {showActionSheet && (
+          <Sheet
+            modal
+            open={showActionSheet}
+            onOpenChange={setShowActionSheet}
+            snapPoints={[40]}
+            dismissOnSnapToBottom
+          >
+            <Sheet.Overlay />
+            <Sheet.Frame padding="$4">
+              <Sheet.Handle />
+              <YStack space="$3" marginTop="$4">
+                <H1 size="$5">Add Recipe</H1>
+                
+                <Button
+                  testID="paste-url-option"
+                  size="$5"
+                  icon={<LinkIcon size={20} />}
+                  onPress={() => {
+                    setShowActionSheet(false);
+                    setShowUrlDialog(true);
+                  }}
+                >
+                  Paste URL
+                </Button>
+                
+                <Button
+                  testID="manual-entry-option"
+                  size="$5"
+                  icon={<Edit3 size={20} />}
+                  chromeless
+                  onPress={() => {
+                    setShowActionSheet(false);
+                    router.push('/(app)/recipes/new');
+                  }}
+                >
+                  Manual Entry
+                </Button>
+                
+                <Button
+                  testID="scan-option"
+                  size="$5"
+                  icon={<Camera size={20} />}
+                  chromeless
+                  disabled
+                >
+                  Scan (Coming Soon)
+                </Button>
+              </YStack>
+            </Sheet.Frame>
+          </Sheet>
+        )}
 
-        {/* URL Import Dialog */}
-        <Sheet
-          modal
-          open={showUrlDialog}
-          onOpenChange={setShowUrlDialog}
-          snapPoints={[35]}
-          dismissOnSnapToBottom
-        >
-          <Sheet.Overlay />
-          <Sheet.Frame padding="$4">
-            <Sheet.Handle />
-            <YStack space="$4" marginTop="$4">
-              <H1 size="$5">Import from URL</H1>
-              
-              <Input
-                placeholder="https://example.com/recipe"
-                value={importUrl}
-                onChangeText={setImportUrl}
-                autoCapitalize="none"
-                keyboardType="url"
-                testID="recipe-url-input"
-              />
-              
-              {isImporting && (
-                <XStack space="$2" alignItems="center">
-                  <Spinner size="small" />
-                  <Text color="$gray10">Parsing recipe...</Text>
-                </XStack>
-              )}
-              
-              <Button
-                theme="orange"
-                onPress={handleImportUrl}
-                disabled={!importUrl.trim() || isImporting}
-              >
-                Import
-              </Button>
-            </YStack>
-          </Sheet.Frame>
-        </Sheet>
+        {/* URL Import Dialog — conditionally rendered to avoid ghost content on web */}
+        {showUrlDialog && (
+          <Sheet
+            modal
+            open={showUrlDialog}
+            onOpenChange={setShowUrlDialog}
+            snapPoints={[35]}
+            dismissOnSnapToBottom
+          >
+            <Sheet.Overlay />
+            <Sheet.Frame padding="$4">
+              <Sheet.Handle />
+              <YStack space="$4" marginTop="$4">
+                <H1 size="$5">Import from URL</H1>
+                
+                <Input
+                  placeholder="https://example.com/recipe"
+                  value={importUrl}
+                  onChangeText={setImportUrl}
+                  autoCapitalize="none"
+                  keyboardType="url"
+                  testID="recipe-url-input"
+                />
+                
+                {isImporting && (
+                  <XStack space="$2" alignItems="center">
+                    <Spinner size="small" />
+                    <Text color="$gray10">Parsing recipe...</Text>
+                  </XStack>
+                )}
+                
+                <Button
+                  theme="orange"
+                  onPress={handleImportUrl}
+                  disabled={!importUrl.trim() || isImporting}
+                >
+                  Import
+                </Button>
+              </YStack>
+            </Sheet.Frame>
+          </Sheet>
+        )}
       </YStack>
     </>
   );

@@ -389,54 +389,58 @@ export default function InventoryScreen() {
           onPress={() => router.push('/(app)/inventory/scan-result')}
         />
 
-        {/* Add Options Sheet */}
-        <Sheet
-          modal
-          open={showActionSheet}
-          onOpenChange={setShowActionSheet}
-          snapPoints={[35]}
-          dismissOnSnapToBottom
-        >
-          <Sheet.Overlay />
-          <Sheet.Frame padding="$4">
-            <Sheet.Handle />
-            <YStack space="$3" marginTop="$4">
-              <Text fontSize="$6" fontWeight="bold">Add Item</Text>
-              
-              <Button
-                testID="scan-item-option"
-                size="$5"
-                icon={<Camera size={20} />}
-                onPress={() => {
-                  setShowActionSheet(false);
-                  router.push('/(app)/inventory/scan-result');
-                }}
-              >
-                Scan with Camera
-              </Button>
-              
-              <Button
-                testID="manual-add-option"
-                size="$5"
-                chromeless
-                icon={<Plus size={20} />}
-                onPress={() => {
-                  setShowActionSheet(false);
-                  setIsAddSheetOpen(true);
-                }}
-              >
-                Add Manually
-              </Button>
-            </YStack>
-          </Sheet.Frame>
-        </Sheet>
+        {/* Add Options Sheet — conditionally rendered for web */}
+        {showActionSheet && (
+          <Sheet
+            modal
+            open={showActionSheet}
+            onOpenChange={setShowActionSheet}
+            snapPoints={[35]}
+            dismissOnSnapToBottom
+          >
+            <Sheet.Overlay />
+            <Sheet.Frame padding="$4">
+              <Sheet.Handle />
+              <YStack space="$3" marginTop="$4">
+                <Text fontSize="$6" fontWeight="bold">Add Item</Text>
+                
+                <Button
+                  testID="scan-item-option"
+                  size="$5"
+                  icon={<Camera size={20} />}
+                  onPress={() => {
+                    setShowActionSheet(false);
+                    router.push('/(app)/inventory/scan-result');
+                  }}
+                >
+                  Scan with Camera
+                </Button>
+                
+                <Button
+                  testID="manual-add-option"
+                  size="$5"
+                  chromeless
+                  icon={<Plus size={20} />}
+                  onPress={() => {
+                    setShowActionSheet(false);
+                    setIsAddSheetOpen(true);
+                  }}
+                >
+                  Add Manually
+                </Button>
+              </YStack>
+            </Sheet.Frame>
+          </Sheet>
+        )}
 
-        {/* Add Item Sheet */}
-        <AddItemSheet
-          open={isAddSheetOpen}
-          onOpenChange={setIsAddSheetOpen}
-          householdId={householdId}
-        />
+        {/* Add Item Sheet — conditionally rendered for web */}
+        {isAddSheetOpen && (
+          <AddItemSheet
+            open={isAddSheetOpen}
+            onOpenChange={setIsAddSheetOpen}
+            householdId={householdId}
+          />
+        )}
       </YStack>
     </YStack>
   );

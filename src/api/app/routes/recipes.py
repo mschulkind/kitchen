@@ -163,6 +163,11 @@ async def ingest_recipe(
                 "existing_id": str(e.existing_recipe.id),
             },
         ) from None
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"Failed to fetch or parse recipe: {e}",
+        ) from None
 
 
 @router.patch("/{recipe_id}", response_model=Recipe)
