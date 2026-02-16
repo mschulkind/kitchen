@@ -91,6 +91,10 @@ class CreateRecipeDTO(BaseModel):
     tags: list[str] | None = None
     raw_markdown: str | None = None  # Optional per D12
     ingredients: list[IngredientInput] | None = None
+    ingredient_texts: list[str] | None = Field(
+        default=None,
+        description="Raw ingredient texts to parse (alternative to structured ingredients)",
+    )
 
 
 class UpdateRecipeDTO(BaseModel):

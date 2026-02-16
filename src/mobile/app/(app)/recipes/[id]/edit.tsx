@@ -147,7 +147,7 @@ export default function EditRecipeScreen() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['recipe', id] });
       queryClient.invalidateQueries({ queryKey: ['recipes'] });
-      router.back();
+      router.replace(`/(app)/recipes/${id}`);
     },
   });
 
