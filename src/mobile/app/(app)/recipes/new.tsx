@@ -24,10 +24,11 @@ import {
 } from 'tamagui';
 import { Plus, Trash2, GripVertical, Save } from '@tamagui/lucide-icons';
 
-import { supabase } from '@/lib/supabase';
 import { KitchenInput } from '@/components/Core/Input';
 import { KitchenButton } from '@/components/Core/Button';
 import { Screen } from '@/components/Layout/Screen';
+
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
 
 type IngredientInput = {
   id: string;
@@ -80,30 +81,29 @@ export default function NewRecipeScreen() {
       const validIngredients = ingredients.filter((i) => i.name.trim());
       const validSteps = steps.filter((s) => s.instruction.trim());
 
-      // Save to Supabase
-      const { data: recipe, error: recipeError } = await supabase
-        .from('recipes')
-        .insert({
+      // Save via API
+      const response = await fetch(`${API_URL}/api/v1/recipes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           title: title.trim(),
           servings: parseInt(servings) || 4,
           prep_time_minutes: prepTime ? parseInt(prepTime) : null,
           cook_time_minutes: cookTime ? parseInt(cookTime) : null,
-          ingredients_json: validIngredients.map((i, idx) => ({
-            order: idx + 1,
+          instructions: validSteps.map((s) => s.instruction.trim()),
+          ingredients: validIngredients.map((i) => ({
             name: i.name.trim(),
-            quantity: i.quantity.trim(),
-            unit: i.unit.trim(),
+            quantity: i.quantity.trim() || null,
+            unit: i.unit.trim() || null,
           })),
-          steps_json: validSteps.map((s, idx) => ({
-            order: idx + 1,
-            instruction: s.instruction.trim(),
-          })),
-        })
-        .select()
-        .single();
+        }),
+      });
 
-      if (recipeError) throw recipeError;
-      return recipe;
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || 'Failed to create recipe');
+      }
+      return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['recipes'] });

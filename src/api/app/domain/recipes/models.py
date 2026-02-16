@@ -70,6 +70,14 @@ class Recipe(BaseModel):
     ingredients: list[RecipeIngredient] | None = None
 
 
+class IngredientInput(BaseModel):
+    """Structured ingredient input from manual entry forms. 🧾"""
+
+    name: str
+    quantity: str | float | None = None
+    unit: str | None = None
+
+
 class CreateRecipeDTO(BaseModel):
     """Data for creating a new recipe. ➕"""
 
@@ -82,6 +90,7 @@ class CreateRecipeDTO(BaseModel):
     instructions: list[str] | None = None
     tags: list[str] | None = None
     raw_markdown: str | None = None  # Optional per D12
+    ingredients: list[IngredientInput] | None = None
 
 
 class UpdateRecipeDTO(BaseModel):
