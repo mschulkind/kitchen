@@ -1,8 +1,8 @@
 # 🐋 Kitchen App — User Flow Tracker & QA Central
 
 > **Purpose**: Central document for spec agreement, QA tracking, and roadmap planning.
-> **Last Updated**: 2026-02-17 (Round 4 — planner assignment + shopping categories)
-> **Status**: 🟢 Round 4 complete — 46/58 scenarios passing (79%)! 🐋
+> **Last Updated**: 2026-02-17 (Round 4 — planner + shopping + category features)
+> **Status**: 🟢 Round 4 complete — 48/58 scenarios passing (83%)! 🐋🎉
 
 ---
 
@@ -11,9 +11,9 @@
 | Metric | Count |
 |--------|-------|
 | Total Scenarios | 58 |
-| ✅ Pass | 46 |
+| ✅ Pass | 48 |
 | ⚠️ Partial | 1 |
-| ⬜ Untested/Skipped | 6 |
+| ⬜ Untested/Skipped | 4 |
 | 🚫 Blocked | 5 |
 | 🔧 Bugs Fixed (cumulative) | 20 |
 
@@ -32,7 +32,7 @@
 | P1A — Pantry/Inventory | 8 | 7/8 | 🟢 88% |
 | P1B — Recipes | 10 | 10/10 | 🟢 100% |
 | P1C — Shopping Lists | 8 | 7/8 | 🟢 88% |
-| P2A — Meal Planner | 8 | 5/8 | 🟡 63% |
+| P2A — Meal Planner | 8 | 7/8 | 🟢 88% |
 | P2B — Delta Engine | 4 | 4/4 | 🟢 100% |
 | P2C — Cooking Mode | 5 | 5/5 | 🟢 100% |
 | P2D — Vision / Scanning | 4 | 0/4 | 🚫 Blocked (needs API key) |
@@ -347,8 +347,8 @@ These must pass before anything else is testable. **All passing!** 🎉
 - **Preconditions**: Day has assigned meal
 - **Steps**: Click remove on meal
 - **Expected**: Meal removed from day slot
-- **Status**: ⬜ Untested
-- **Notes**: Needs assigned meals to test
+- **Status**: ✅ Pass
+- **Notes**: R4 — Trash2 icon button on meal cards, deletes from meal_plans table, card disappears from day slot
 
 ### PLN-05: AI meal plan generation
 - **Priority**: P2
@@ -371,8 +371,8 @@ These must pass before anything else is testable. **All passing!** 🎉
 - **Preconditions**: Active plan with meals
 - **Steps**: Click generate shopping list
 - **Expected**: Shopping list created with all needed ingredients
-- **Status**: ⬜ Untested
-- **Notes**: Needs active plan with meals
+- **Status**: ✅ Pass
+- **Notes**: R4 — "Shopping List (N meals)" button at bottom of planner, fetches recipe ingredients via API, deduplicates, auto-categorizes with guessCategory(), inserts into shopping_list. Quick Salad → lettuce, tomatoes, cucumber, olive oil all added.
 
 ### PLN-08: View meal plan history
 - **Priority**: P2
@@ -623,15 +623,16 @@ These must pass before anything else is testable. **All passing!** 🎉
 - **P0 Auth & Navigation** — 100% passing (6/6), all bugs fixed. Login, hub, navigation, session persistence all working. Ship it! 🚀
 - **P1A Pantry/Inventory** — 88% passing (7/8). CRUD, search, location filter all working. Only realtime sync blocked by infra.
 - **P1B Recipes** — 100% passing (10/10). List, detail, search, create, edit, delete, check-stock, URL import form all working. 🎉
-- **P1C Shopping Lists** — 88% passing (7/8). Add, check, uncheck, delete, clear completed all working. Category grouping partial (backend ready, frontend needs wiring). Realtime sync blocked by infra.
+- **P1C Shopping Lists** — 88% passing (7/8). Add, check, uncheck, delete, clear completed all working. Category auto-detection working. Realtime sync blocked by infra.
+- **P2A Meal Planner** — 88% passing (7/8). View, add meal, remove meal, lock/reroll, shopping list generation all working. Only drag-and-drop untested.
 - **P2B Delta Engine** — 100% passing (4/4). Stock check, fuzzy matching, unit conversion, add-to-shopping all working.
 - **P2C Cooking Mode** — 100% passing (5/5). Step-by-step navigation, mise-en-place checklist, wake lock, done cooking all working. 🍳
 
 ### 🟡 Quick Wins (High Impact, Low Effort)
 1. ~~**Wire store sorter to shopping list frontend**~~ → Done via client-side `guessCategory()` (Round 4)
 2. ~~**Planner meal assignment UI**~~ → Done, "Add Meal" → recipe picker → assign (Round 4)
-3. **Planner remove/swap meals** — Need delete button on assigned meal slots (PLN-04)
-4. **Generate shopping from plan** — Need to aggregate ingredients from all assigned recipes (PLN-07)
+3. ~~**Planner remove meals**~~ → Done, Trash2 icon button on meal cards (Round 4)
+4. ~~**Generate shopping from plan**~~ → Done, aggregates ingredients with auto-categorization (Round 4)
 
 ### 🟠 Needs Infrastructure Work
 - **Supabase Realtime** — WebSocket 404 blocks multi-user sync. Need to verify realtime service is running on NAS Docker deployment.
@@ -648,16 +649,16 @@ These must pass before anything else is testable. **All passing!** 🎉
 | Cooking Mode | ✅ Full | ✅ Step-by-step + Mise-en-place | ✅ Working | 🟢 Done (R3) |
 | Store Intelligence | ✅ Full + API endpoint | ✅ Client-side categorization | ✅ Working | 🟢 Done (R4) |
 | Planner Assignment | ✅ API endpoint | ✅ Recipe picker + insert | ✅ Working | 🟢 Done (R4) |
+| Planner Remove/Shopping | ✅ N/A (client-side) | ✅ Remove + Shopping List gen | ✅ Working | 🟢 Done (R4) |
 | Vision/Scanning | ✅ Full | ✅ Scan result UI | 🚫 Needs API key | 🔴 Blocked |
 | Voice Commands | ✅ Parser done | ❌ No frontend | ⚠️ Handlers are stubs | 🟡 Backend-only |
 | Recipe Images | ✅ Full | ✅ Generate button | 🚫 Needs API key | 🔴 Blocked |
 
 ### 🎯 Next Sprint Priorities
-1. **Wire planner meal assignment** — Complete PLN-03 to unlock PLN-04 through PLN-07
-2. **Fix Supabase Realtime** — Unblock INV-08 and SHOP-08 multi-user sync
-3. **Integrate store sorter in frontend** — Shopping list aisle-based sorting
-4. **API auth with JWT** — Replace hardcoded household_id
-5. **Set up Gemini API key** — Unblock vision, meal plan AI, and image generation
+1. **Fix Supabase Realtime** — Unblock INV-08 and SHOP-08 multi-user sync
+2. **API auth with JWT** — Replace hardcoded household_id
+3. **Set up Gemini API key** — Unblock vision, meal plan AI, and image generation
+4. **PLN-06: Drag and drop meals** — Complex UI, lower priority
 6. **Voice frontend** — Add mic button or voice assistant integration
 
 ---
@@ -684,6 +685,6 @@ These decisions require user input before we can proceed:
 | Round 1 | 2026-02-15 | 24 | 14 | 14 | 38/58 (66%) |
 | Round 2 | 2026-02-16 | 34 | 0 | 0 | 38/58 (66%) |
 | Round 3 | 2026-02-17 | 20 | 6 | 6 | 44/58 (76%) |
-| Round 4 | 2026-02-17 | 8 | 0 | 0 | 46/58 (79%) |
+| Round 4 | 2026-02-17 | 8 | 0 | 0 | 48/58 (83%) |
 
 **Cumulative progress**: 38% → 66% → 76% → 79% passing 📈
