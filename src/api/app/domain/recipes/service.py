@@ -136,6 +136,18 @@ class RecipeService:
             if existing:
                 raise RecipeAlreadyExistsError(dto.source_url, existing)
 
+        # Build ingredient_texts from structured ingredients if not provided
+        if not ingredient_texts and dto.ingredients:
+            ingredient_texts = []
+            for ing in dto.ingredients:
+                parts = []
+                if ing.quantity:
+                    parts.append(str(ing.quantity))
+                if ing.unit:
+                    parts.append(ing.unit)
+                parts.append(ing.name)
+                ingredient_texts.append(" ".join(parts))
+
         # Normalize title
         dto = CreateRecipeDTO(
             title=dto.title.strip(),
