@@ -97,7 +97,7 @@ export default function CookingModeScreen() {
       .update({ last_cooked_at: new Date().toISOString() })
       .eq('id', id);
 
-    router.back();
+    router.replace(`/(app)/recipes/${id}`);
   }, [id, router]);
 
   if (isLoading) {
