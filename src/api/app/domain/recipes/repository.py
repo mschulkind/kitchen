@@ -370,3 +370,29 @@ class RecipeRepository:
         )
 
         return len(result.data)
+
+    async def replace_ingredients(
+        self, recipe_id: UUID, ingredient_texts: list[str]
+    ) -> None:
+        """Replace all ingredients with raw text entries.
+
+        Clears existing ingredients, then inserts new ones from text.
+        """
+        await self.clear_ingredients(recipe_id)
+        rows = []
+        for i, text in enumerate(ingredient_texts):
+            rows.append(
+                {
+                    "id": str(uuid4()),
+                    "recipe_id": str(recipe_id),
+                    "raw_text": text,
+                    "item_name": text.split()[-1] if text.strip() else text,
+                    "sort_order": i,
+                }
+            )
+        if rows:
+            await (
+                self.supabase.table(self.INGREDIENTS_TABLE)
+                .insert(rows)
+                .execute()
+            )
