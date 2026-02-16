@@ -36,6 +36,7 @@ import {
 import { supabase } from '@/lib/supabase';
 import { useHouseholdId } from '@/hooks/useInventorySubscription';
 import { KitchenButton, KitchenInput } from '@/components';
+import { guessCategory } from '@/lib/categories';
 
 type ShoppingItem = {
   id: string;
@@ -63,27 +64,6 @@ const CATEGORY_ORDER = [
   'Beverages',
   'Other',
 ];
-
-// Auto-categorize items by keyword matching (mirrors backend StoreSorter)
-function guessCategory(name: string): string {
-  const n = name.toLowerCase();
-  const produce = ['apple','banana','orange','lemon','lime','tomato','potato','onion','garlic','lettuce','spinach','kale','carrot','celery','pepper','cucumber','avocado','broccoli','mushroom','corn','bean','pea','herb','basil','cilantro','parsley','mint','ginger','fruit','vegetable','berry','grape','melon','mango','peach','pear','plum','strawberr','blueberr','raspberr'];
-  const dairy = ['milk','cheese','yogurt','butter','cream','egg','sour cream','cottage','mozzarella','cheddar','parmesan','ricotta'];
-  const meat = ['chicken','beef','pork','steak','ground','sausage','bacon','ham','turkey','lamb','fish','salmon','tuna','shrimp','crab','lobster','meat','seafood'];
-  const bakery = ['bread','bagel','roll','bun','croissant','muffin','tortilla','pita','cake','cookie','pie','pastry','donut'];
-  const frozen = ['frozen','ice cream','pizza','waffle'];
-  const beverages = ['water','juice','soda','coffee','tea','beer','wine','milk'];
-  const pantry = ['rice','pasta','noodle','flour','sugar','salt','oil','vinegar','sauce','soup','can','cereal','oat','honey','syrup','spice','pepper','cinnamon','cumin','paprika','oregano','thyme'];
-
-  if (produce.some(k => n.includes(k))) return 'Produce';
-  if (dairy.some(k => n.includes(k))) return 'Dairy';
-  if (meat.some(k => n.includes(k))) return 'Meat & Seafood';
-  if (bakery.some(k => n.includes(k))) return 'Bakery';
-  if (frozen.some(k => n.includes(k))) return 'Frozen';
-  if (beverages.some(k => n.includes(k)) && !dairy.some(k => n.includes(k))) return 'Beverages';
-  if (pantry.some(k => n.includes(k))) return 'Pantry';
-  return 'Other';
-}
 
 export default function ShoppingScreen() {
   const householdId = useHouseholdId();
