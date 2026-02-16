@@ -33,9 +33,9 @@ import {
 import { supabase } from '@/lib/supabase';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
 
 type Step = {
-  order: number;
   instruction: string;
 };
 
@@ -52,18 +52,14 @@ export default function CookingModeScreen() {
   const { data: recipe, isLoading } = useQuery({
     queryKey: ['recipe', id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('recipes')
-        .select('id, title, steps_json')
-        .eq('id', id)
-        .single();
-      if (error) throw error;
-      return data;
+      const response = await fetch(`${API_URL}/api/v1/recipes/${id}`);
+      if (!response.ok) throw new Error('Failed to fetch recipe');
+      return response.json();
     },
     enabled: !!id,
   });
 
-  const steps: Step[] = recipe?.steps_json || [];
+  const steps: Step[] = (recipe?.instructions || []).map((instruction: string) => ({ instruction }));
   const totalSteps = steps.length;
   const progress = totalSteps > 0 ? ((currentStep + 1) / totalSteps) * 100 : 0;
 
