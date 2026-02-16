@@ -30,10 +30,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  Trash2,
+  ShoppingCart,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
 import { FAB } from '@/components/Core/Button';
+import { useHouseholdId } from '@/hooks/useInventorySubscription';
+import { guessCategory } from '@/lib/categories';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const DAY_WIDTH = (SCREEN_WIDTH - 48) / 4;
@@ -57,6 +61,7 @@ type DayPlan = {
 export default function PlannerScreen() {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const householdId = useHouseholdId();
   const [weekOffset, setWeekOffset] = useState(0);
 
   // Calculate date range for current view
@@ -122,6 +127,58 @@ export default function PlannerScreen() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
+    },
+  });
+
+  // Remove meal mutation
+  const removeMeal = useMutation({
+    mutationFn: async (slotId: string) => {
+      const { error } = await supabase
+        .from('meal_plans')
+        .delete()
+        .eq('id', slotId);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
+    },
+  });
+
+  // Generate shopping list from all assigned meals
+  const generateShoppingList = useMutation({
+    mutationFn: async () => {
+      if (!householdId || !mealPlans?.length) return;
+      const recipeIds = [...new Set(mealPlans.map((mp) => mp.recipe_id))];
+      const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
+
+      // Fetch ingredients for each recipe
+      const allIngredients: string[] = [];
+      for (const rid of recipeIds) {
+        const res = await fetch(`${apiUrl}/api/v1/recipes/${rid}`);
+        if (!res.ok) continue;
+        const recipe = await res.json();
+        for (const ing of recipe.ingredients || []) {
+          allIngredients.push(ing.item_name || ing.raw_text || 'unknown');
+        }
+      }
+
+      // Deduplicate and insert into shopping list
+      const unique = [...new Set(allIngredients.map((n) => n.toLowerCase()))];
+      const rows = unique.map((name) => ({
+        household_id: householdId,
+        name,
+        category: guessCategory(name),
+        checked: false,
+      }));
+      if (rows.length > 0) {
+        const { error } = await supabase.from('shopping_list').insert(rows);
+        if (error) throw error;
+      }
+      return unique.length;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['shopping_list'] });
+      router.push('/(app)/shopping');
     },
   });
 
@@ -281,15 +338,14 @@ export default function PlannerScreen() {
                           bordered
                           padding="$2"
                           testID={`slot-${slot.id}`}
-                          pressStyle={{ scale: 0.98 }}
-                          onPress={() =>
-                            router.push(`/(app)/recipes/${slot.recipe_id}`)
-                          }
                         >
                           <Text
                             fontSize="$2"
                             numberOfLines={2}
                             color="$gray12"
+                            onPress={() =>
+                              router.push(`/(app)/recipes/${slot.recipe_id}`)
+                            }
                           >
                             {slot.recipe_title}
                           </Text>
@@ -326,6 +382,14 @@ export default function PlannerScreen() {
                                 testID={`reroll-${slot.id}`}
                               />
                             )}
+                            <Button
+                              size="$1"
+                              circular
+                              chromeless
+                              icon={<Trash2 size={12} color="$red10" />}
+                              onPress={() => removeMeal.mutate(slot.id)}
+                              testID={`remove-${slot.id}`}
+                            />
                           </XStack>
                         </Card>
                       ))
@@ -335,6 +399,31 @@ export default function PlannerScreen() {
               ))}
             </XStack>
           </ScrollView>
+        )}
+
+        {/* Generate Shopping List button when meals are planned */}
+        {!isLoading && mealPlans && mealPlans.length > 0 && (
+          <XStack padding="$3" borderTopWidth={1} borderTopColor="$gray4">
+            <Button
+              testID="generate-shopping-button"
+              flex={1}
+              size="$4"
+              theme="blue"
+              icon={
+                generateShoppingList.isPending ? (
+                  <Spinner size="small" />
+                ) : (
+                  <ShoppingCart size={18} />
+                )
+              }
+              onPress={() => generateShoppingList.mutate()}
+              disabled={generateShoppingList.isPending}
+            >
+              {generateShoppingList.isPending
+                ? 'Generating...'
+                : `Shopping List (${mealPlans.length} meals)`}
+            </Button>
+          </XStack>
         )}
 
         {/* Empty State */}
