@@ -37,10 +37,11 @@ import { useHouseholdId } from '@/hooks/useInventorySubscription';
 import { KitchenButton } from '@/components/Core/Button';
 
 type Ingredient = {
-  order: number;
-  name: string;
-  quantity: string;
-  unit: string;
+  id?: string;
+  item_name: string;
+  quantity: number | null;
+  unit: string | null;
+  raw_text?: string;
 };
 
 type StockStatus = 'have-enough' | 'have-partial' | 'missing';
@@ -50,6 +51,8 @@ type IngredientWithStatus = Ingredient & {
   pantryQuantity?: number;
   pantryUnit?: string;
 };
+
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
 
 export default function CheckStockScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -65,13 +68,9 @@ export default function CheckStockScreen() {
   const { data: recipe, isLoading: recipeLoading } = useQuery({
     queryKey: ['recipe', id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('recipes')
-        .select('id, title, ingredients_json')
-        .eq('id', id)
-        .single();
-      if (error) throw error;
-      return data;
+      const response = await fetch(`${API_URL}/api/v1/recipes/${id}`);
+      if (!response.ok) throw new Error('Failed to fetch recipe');
+      return response.json();
     },
     enabled: !!id,
   });
@@ -93,19 +92,18 @@ export default function CheckStockScreen() {
 
   // Calculate initial statuses based on pantry
   useEffect(() => {
-    if (!recipe?.ingredients_json || !pantryItems) return;
+    if (!recipe?.ingredients || !pantryItems) return;
 
     const statuses: Record<string, StockStatus> = {};
     
-    recipe.ingredients_json.forEach((ingredient: Ingredient, idx: number) => {
-      const key = `${idx}-${ingredient.name}`;
+    recipe.ingredients.forEach((ingredient: Ingredient, idx: number) => {
+      const key = `${idx}-${ingredient.item_name}`;
       const pantryMatch = pantryItems.find(
-        (p) => p.name.toLowerCase() === ingredient.name.toLowerCase()
+        (p: any) => p.name.toLowerCase() === ingredient.item_name.toLowerCase()
       );
 
       if (pantryMatch) {
-        // Simple comparison - in production, use unit conversion
-        const neededQty = parseFloat(ingredient.quantity) || 1;
+        const neededQty = ingredient.quantity || 1;
         const haveQty = pantryMatch.quantity || 0;
         
         if (haveQty >= neededQty) {
@@ -127,8 +125,8 @@ export default function CheckStockScreen() {
   const addToPantry = useMutation({
     mutationFn: async (ingredient: Ingredient) => {
       const { error } = await supabase.from('pantry_items').insert({
-        name: ingredient.name,
-        quantity: parseFloat(ingredient.quantity) || 1,
+        name: ingredient.item_name,
+        quantity: ingredient.quantity || 1,
         unit: ingredient.unit || 'item',
         location: 'pantry',
       });
@@ -136,7 +134,7 @@ export default function CheckStockScreen() {
     },
     onSuccess: (_, ingredient) => {
       const key = Object.keys(ingredientStatuses).find((k) =>
-        k.endsWith(`-${ingredient.name}`)
+        k.endsWith(`-${ingredient.item_name}`)
       );
       if (key) {
         setIngredientStatuses((prev) => ({
@@ -152,7 +150,7 @@ export default function CheckStockScreen() {
   const addToShoppingList = useMutation({
     mutationFn: async (ingredients: Ingredient[]) => {
       const items = ingredients.map((i) => ({
-        name: i.name,
+        name: i.item_name,
         quantity: i.quantity,
         unit: i.unit,
         checked: false,
@@ -167,14 +165,14 @@ export default function CheckStockScreen() {
 
   // Group ingredients by status
   const groupedIngredients = useMemo(() => {
-    if (!recipe?.ingredients_json) return { have: [], partial: [], missing: [] };
+    if (!recipe?.ingredients) return { have: [], partial: [], missing: [] };
 
     const have: IngredientWithStatus[] = [];
     const partial: IngredientWithStatus[] = [];
     const missing: IngredientWithStatus[] = [];
 
-    recipe.ingredients_json.forEach((ingredient: Ingredient, idx: number) => {
-      const key = `${idx}-${ingredient.name}`;
+    recipe.ingredients.forEach((ingredient: Ingredient, idx: number) => {
+      const key = `${idx}-${ingredient.item_name}`;
       const status = ingredientStatuses[key] || 'missing';
       const item = { ...ingredient, status };
 
@@ -243,7 +241,7 @@ export default function CheckStockScreen() {
                   >
                     <CheckCircle2 size={18} color="#16a34a" />
                     <Text flex={1} marginLeft="$2">
-                      {item.name}
+                      {item.item_name}
                     </Text>
                     <Text color="$gray10">
                       {item.quantity} {item.unit}
@@ -277,7 +275,7 @@ export default function CheckStockScreen() {
                   >
                     <AlertCircle size={18} color="#f59e0b" />
                     <Text flex={1} marginLeft="$2">
-                      {item.name}
+                      {item.item_name}
                     </Text>
                     <Text color="$gray10" marginRight="$2">
                       Need: {item.quantity} {item.unit}
@@ -313,7 +311,7 @@ export default function CheckStockScreen() {
                   >
                     <XCircle size={18} color="#dc2626" />
                     <Text flex={1} marginLeft="$2">
-                      {item.name}
+                      {item.item_name}
                     </Text>
                     <Text color="$gray10" marginRight="$2">
                       {item.quantity} {item.unit}

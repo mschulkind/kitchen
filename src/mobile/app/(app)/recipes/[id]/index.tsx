@@ -38,21 +38,18 @@ import {
   Wand2,
 } from '@tamagui/lucide-icons';
 
-import { supabase } from '@/lib/supabase';
 import { KitchenButton, FAB } from '@/components/Core/Button';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 type Ingredient = {
-  order: number;
-  name: string;
-  quantity: string;
-  unit: string;
-};
-
-type Step = {
-  order: number;
-  instruction: string;
+  id: string;
+  raw_text: string;
+  item_name: string;
+  quantity: number | null;
+  unit: string | null;
+  notes: string | null;
+  sort_order: number;
 };
 
 type Recipe = {
@@ -64,10 +61,12 @@ type Recipe = {
   cook_time_minutes?: number;
   image_url?: string;
   source_url?: string;
-  ingredients_json: Ingredient[];
-  steps_json: Step[];
+  instructions?: string[];
+  ingredients?: Ingredient[];
   created_at: string;
 };
+
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
 
 export default function RecipeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -78,14 +77,9 @@ export default function RecipeDetailScreen() {
   const { data: recipe, isLoading } = useQuery({
     queryKey: ['recipe', id],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('recipes')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-      if (error) throw error;
-      return data as Recipe;
+      const response = await fetch(`${API_URL}/api/v1/recipes/${id}`);
+      if (!response.ok) throw new Error('Failed to fetch recipe');
+      return response.json() as Promise<Recipe>;
     },
     enabled: !!id,
   });
@@ -229,18 +223,18 @@ export default function RecipeDetailScreen() {
               Ingredients
             </H3>
             <Card bordered padding="$3">
-              {recipe.ingredients_json?.map((ingredient, idx) => (
+              {recipe.ingredients?.map((ingredient, idx) => (
                 <XStack
-                  key={idx}
+                  key={ingredient.id || idx}
                   paddingVertical="$2"
                   borderBottomWidth={
-                    idx < recipe.ingredients_json.length - 1 ? 1 : 0
+                    idx < (recipe.ingredients?.length ?? 0) - 1 ? 1 : 0
                   }
                   borderBottomColor="$gray4"
                   testID={`ingredient-${idx}`}
                 >
                   <Text flex={1} color="$gray12">
-                    {ingredient.name}
+                    {ingredient.item_name}
                   </Text>
                   <Text color="$gray10">
                     {ingredient.quantity} {ingredient.unit}
@@ -256,7 +250,7 @@ export default function RecipeDetailScreen() {
               Instructions
             </H3>
             <YStack space="$3">
-              {recipe.steps_json?.map((step, idx) => (
+              {recipe.instructions?.map((step, idx) => (
                 <XStack key={idx} space="$3" testID={`step-${idx}`}>
                   <YStack
                     width={32}
@@ -267,11 +261,11 @@ export default function RecipeDetailScreen() {
                     alignItems="center"
                   >
                     <Text fontWeight="bold" color="$orange11">
-                      {step.order || idx + 1}
+                      {idx + 1}
                     </Text>
                   </YStack>
                   <Paragraph flex={1} color="$gray12" lineHeight="$5">
-                    {step.instruction}
+                    {step}
                   </Paragraph>
                 </XStack>
               ))}
