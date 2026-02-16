@@ -1,11 +1,14 @@
 """Voice Service - Voice command processing. 🎙️
 
 Handles voice commands from Google Assistant, Alexa, etc.
+Wires parsed commands to actual DB operations via Supabase.
 
 Fun fact: Voice shopping is expected to reach $40 billion by 2027! 🛒
 """
 
-from uuid import UUID
+from uuid import UUID, uuid4
+
+from supabase import AsyncClient
 
 from src.api.app.domain.voice.models import (
     ParsedVoiceCommand,
@@ -19,23 +22,20 @@ from src.api.app.domain.voice.parser import VoiceParser
 class VoiceService:
     """Service for processing voice commands. 🎤
 
-    Orchestrates parsing and action execution.
+    Orchestrates parsing and action execution against Supabase.
 
     Example:
-        >>> service = VoiceService()
-        >>> response = await service.process_command(request)
+        >>> service = VoiceService(supabase_client)
+        >>> response = await service.process_command(household_id, request)
         >>> print(response.message)  # "Added milk to your shopping list"
     """
 
     def __init__(
         self,
+        supabase: AsyncClient | None = None,
         parser: VoiceParser | None = None,
     ) -> None:
-        """Initialize the service.
-
-        Args:
-            parser: Voice command parser.
-        """
+        self.supabase = supabase
         self.parser = parser or VoiceParser()
 
     async def process_command(
@@ -87,10 +87,23 @@ class VoiceService:
                 command_type=VoiceCommandType.ADD_ITEM,
             )
 
-        # In production: call ShoppingService to add items
         item_names = [item.name for item in parsed.items]
 
-        # Format response
+        if self.supabase:
+            rows = [
+                {
+                    "id": str(uuid4()),
+                    "household_id": str(household_id),
+                    "name": item.name,
+                    "quantity": str(int(item.quantity)) if item.quantity != 1.0 else "1",
+                    "unit": item.unit,
+                    "category": "Other",
+                    "checked": False,
+                }
+                for item in parsed.items
+            ]
+            await self.supabase.table("shopping_list").insert(rows).execute()
+
         if len(item_names) == 1:
             message = f"Added {item_names[0]} to your shopping list."
         elif len(item_names) == 2:
@@ -120,7 +133,16 @@ class VoiceService:
 
         item_names = [item.name for item in parsed.items]
 
-        # In production: call ShoppingService to remove items
+        if self.supabase:
+            for name in item_names:
+                await (
+                    self.supabase.table("shopping_list")
+                    .delete()
+                    .eq("household_id", str(household_id))
+                    .ilike("name", name)
+                    .execute()
+                )
+
         message = f"Removed {', '.join(item_names)} from your list."
 
         return VoiceWebhookResponse(
@@ -144,7 +166,16 @@ class VoiceService:
 
         item_names = [item.name for item in parsed.items]
 
-        # In production: call ShoppingService to check items
+        if self.supabase:
+            for name in item_names:
+                await (
+                    self.supabase.table("shopping_list")
+                    .update({"checked": True})
+                    .eq("household_id", str(household_id))
+                    .ilike("name", name)
+                    .execute()
+                )
+
         message = f"Checked off {', '.join(item_names)}."
 
         return VoiceWebhookResponse(
@@ -168,9 +199,25 @@ class VoiceService:
 
         item_name = parsed.items[0].name
 
-        # In production: call PantryService to check inventory
-        # For now, return placeholder
-        message = f"Let me check... You have some {item_name} in the fridge."
+        if self.supabase:
+            result = await (
+                self.supabase.table("pantry_items")
+                .select("name, quantity, unit, location")
+                .eq("household_id", str(household_id))
+                .ilike("name", f"%{item_name}%")
+                .execute()
+            )
+            matches = result.data or []
+            if matches:
+                item = matches[0]
+                loc = item.get("location", "pantry")
+                qty = item.get("quantity", "some")
+                unit = item.get("unit", "")
+                message = f"Yes! You have {qty} {unit} of {item['name']} in the {loc}."
+            else:
+                message = f"No, I don't see any {item_name} in your pantry."
+        else:
+            message = f"Let me check... You have some {item_name} in the fridge."
 
         return VoiceWebhookResponse(
             success=True,
@@ -192,9 +239,29 @@ class VoiceService:
             )
 
         item_names = [item.name for item in parsed.items]
+        location = parsed.raw_text.lower()
+        if "fridge" in location:
+            loc = "fridge"
+        elif "freezer" in location:
+            loc = "freezer"
+        else:
+            loc = "pantry"
 
-        # In production: call PantryService to add items
-        message = f"Added {', '.join(item_names)} to your pantry."
+        if self.supabase:
+            rows = [
+                {
+                    "id": str(uuid4()),
+                    "household_id": str(household_id),
+                    "name": item.name,
+                    "quantity": int(item.quantity),
+                    "unit": item.unit or "count",
+                    "location": loc,
+                }
+                for item in parsed.items
+            ]
+            await self.supabase.table("pantry_items").insert(rows).execute()
+
+        message = f"Added {', '.join(item_names)} to your {loc}."
 
         return VoiceWebhookResponse(
             success=True,
