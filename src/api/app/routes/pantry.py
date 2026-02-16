@@ -40,7 +40,7 @@ async def get_current_household_id() -> UUID:
     In production, this would decode the JWT and fetch the household.
     """
     # Default household for development
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 @router.get("", response_model=PantryItemList)

@@ -34,7 +34,7 @@ async def get_vision_service() -> VisionService:
 # TODO: Replace with actual auth
 async def get_current_household_id() -> UUID:
     """Get the current user's household ID."""
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 @router.post("/analyze", response_model=AnalyzeImageResponse)

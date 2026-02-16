@@ -62,7 +62,7 @@ async def get_household_from_key() -> UUID:
 
     In production, would map API keys to households.
     """
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 @router.post("/add-item", response_model=VoiceWebhookResponse)

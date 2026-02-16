@@ -42,7 +42,7 @@ async def get_shopping_service() -> AsyncGenerator[ShoppingService]:
 # TODO: Replace with actual auth - get from JWT token
 async def get_current_household_id() -> UUID:
     """Get the current user's household ID."""
-    return UUID("00000000-0000-0000-0000-000000000001")
+    return UUID("a0000000-0000-0000-0000-000000000001")
 
 
 async def get_current_user_id() -> UUID:
