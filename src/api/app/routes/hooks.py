@@ -11,6 +11,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Header, HTTPException, status
 
 from src.api.app.core.config import get_settings
+from src.api.app.db.session import get_supabase_client
 from src.api.app.domain.voice.models import (
     VoiceWebhookRequest,
     VoiceWebhookResponse,
@@ -22,7 +23,8 @@ router = APIRouter(prefix="/hooks", tags=["Webhooks 🔊"])
 
 async def get_voice_service() -> VoiceService:
     """Dependency injection for VoiceService."""
-    return VoiceService()
+    client = await get_supabase_client()
+    return VoiceService(supabase=client)
 
 
 async def verify_webhook_key(

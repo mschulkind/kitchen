@@ -32,6 +32,7 @@ import {
   Sparkles,
   Trash2,
   ShoppingCart,
+  ArrowRightLeft,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
@@ -63,6 +64,7 @@ export default function PlannerScreen() {
   const queryClient = useQueryClient();
   const householdId = useHouseholdId();
   const [weekOffset, setWeekOffset] = useState(0);
+  const [movingSlotId, setMovingSlotId] = useState<string | null>(null);
 
   // Calculate date range for current view
   const dateRange = useMemo(() => {
@@ -140,6 +142,21 @@ export default function PlannerScreen() {
       if (error) throw error;
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
+    },
+  });
+
+  // Move meal to a different day
+  const moveMeal = useMutation({
+    mutationFn: async ({ slotId, newDate }: { slotId: string; newDate: string }) => {
+      const { error } = await supabase
+        .from('meal_plans')
+        .update({ date: newDate })
+        .eq('id', slotId);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      setMovingSlotId(null);
       queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
     },
   });
@@ -380,14 +397,28 @@ export default function PlannerScreen() {
                               testID={`lock-${slot.id}`}
                             />
                             {!slot.locked && (
-                              <Button
-                                size="$1"
-                                circular
-                                chromeless
-                                icon={<RefreshCw size={12} color="$orange10" />}
-                                onPress={() => rerollSlot.mutate(slot.id)}
-                                testID={`reroll-${slot.id}`}
-                              />
+                              <>
+                                <Button
+                                  size="$1"
+                                  circular
+                                  chromeless
+                                  icon={<RefreshCw size={12} color="$orange10" />}
+                                  onPress={() => rerollSlot.mutate(slot.id)}
+                                  testID={`reroll-${slot.id}`}
+                                />
+                                <Button
+                                  size="$1"
+                                  circular
+                                  chromeless
+                                  icon={<ArrowRightLeft size={12} color="$blue10" />}
+                                  onPress={() =>
+                                    setMovingSlotId(
+                                      movingSlotId === slot.id ? null : slot.id
+                                    )
+                                  }
+                                  testID={`move-${slot.id}`}
+                                />
+                              </>
                             )}
                             <Button
                               size="$1"
@@ -397,6 +428,29 @@ export default function PlannerScreen() {
                               onPress={() => removeMeal.mutate(slot.id)}
                               testID={`remove-${slot.id}`}
                             />
+                          </XStack>
+                          {movingSlotId === slot.id && (
+                            <XStack flexWrap="wrap" gap="$1" marginTop="$2">
+                              {dayPlans
+                                .filter((d) => d.date !== day.date)
+                                .map((d) => (
+                                  <Button
+                                    key={d.date}
+                                    size="$2"
+                                    theme="blue"
+                                    onPress={() =>
+                                      moveMeal.mutate({
+                                        slotId: slot.id,
+                                        newDate: d.date,
+                                      })
+                                    }
+                                    testID={`move-to-${d.date}`}
+                                  >
+                                    {d.dayName}
+                                  </Button>
+                                ))}
+                            </XStack>
+                          )}
                           </XStack>
                         </Card>
                       ))

@@ -5,17 +5,25 @@
  */
 
 import { useState, useEffect } from 'react';
-import { YStack, XStack, Text, H1, H2, Card, Switch, Button, Separator } from 'tamagui';
-import { User, Home, Bell, Moon, LogOut } from '@tamagui/lucide-icons';
+import { YStack, XStack, Text, H1, H2, Card, Switch, Button, Separator, Input } from 'tamagui';
+import { User, Home, Bell, Moon, LogOut, Store } from '@tamagui/lucide-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { supabase } from '@/lib/supabase';
 
+const STORE_KEY = 'preferred_store';
+
 export default function SettingsScreen() {
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [preferredStore, setPreferredStore] = useState('');
+  const [storeSaved, setStoreSaved] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setUserEmail(data.session?.user?.email ?? null);
+    });
+    AsyncStorage.getItem(STORE_KEY).then((val) => {
+      if (val) setPreferredStore(val);
     });
   }, []);
 
@@ -83,6 +91,37 @@ export default function SettingsScreen() {
             </XStack>
             <Switch size="$3" />
           </XStack>
+        </YStack>
+      </Card>
+
+      {/* Preferred Store */}
+      <H2 marginBottom="$2">Preferred Store 🏪</H2>
+      <Card elevate padding="$4" marginBottom="$4">
+        <YStack space="$3">
+          <XStack alignItems="center" space="$3">
+            <Store size={20} color="#6b7280" />
+            <Text>Your go-to grocery store</Text>
+          </XStack>
+          <Input
+            testID="preferred-store-input"
+            placeholder="e.g. Trader Joe's, Costco..."
+            value={preferredStore}
+            onChangeText={(val: string) => {
+              setPreferredStore(val);
+              setStoreSaved(false);
+            }}
+          />
+          <Button
+            testID="save-store-button"
+            size="$3"
+            theme="green"
+            onPress={async () => {
+              await AsyncStorage.setItem(STORE_KEY, preferredStore);
+              setStoreSaved(true);
+            }}
+          >
+            {storeSaved ? '✅ Saved!' : 'Save Store'}
+          </Button>
         </YStack>
       </Card>
 
