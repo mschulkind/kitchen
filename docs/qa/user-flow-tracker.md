@@ -1,8 +1,8 @@
 # 🐋 Kitchen App — User Flow Tracker & QA Central
 
 > **Purpose**: Central document for spec agreement, QA tracking, and roadmap planning.
-> **Last Updated**: 2026-02-17 (Round 4 — planner + shopping + category features)
-> **Status**: 🟢 Round 4 complete — 48/58 scenarios passing (83%)! 🐋🎉
+> **Last Updated**: 2026-02-17 (Round 5 — full QA pass, dedup fix, all verified)
+> **Status**: 🟢 Round 5 complete — 48/58 scenarios passing (83%)! All implementable features verified! 🐋🎉
 
 ---
 
@@ -15,7 +15,7 @@
 | ⚠️ Partial | 1 |
 | ⬜ Untested/Skipped | 4 |
 | 🚫 Blocked | 5 |
-| 🔧 Bugs Fixed (cumulative) | 20 |
+| 🔧 Bugs Fixed (cumulative) | 22 |
 
 ### Automated Test Health 🧪
 
@@ -602,6 +602,8 @@ These must pass before anything else is testable. **All passing!** 🎉
 | BUG-18 | COOK-05 | Done Cooking `router.back()` fails with no history — changed to `router.replace()` | Medium | 🔧 Fixed (R3) |
 | BUG-19 | RCP-03 | CreateRecipeDTO missing `ingredient_texts` field — ingredients silently dropped on API create | High | 🔧 Fixed (R3) |
 | BUG-20 | RCP-06 | UpdateRecipeDTO missing `ingredient_texts` field — ingredient updates silently ignored on PATCH | High | 🔧 Fixed (R3) |
+| BUG-21 | DEL-04 | Check-stock "Add to Shopping List" inserts duplicates — no dedup against existing items | Medium | 🔧 Fixed (R5) |
+| BUG-22 | DEL-04 | Check-stock shopping insert missing `category` field — items go to "Other" | Low | 🔧 Fixed (R5) |
 
 ### Known Issues (Not Yet Fixed) 🐛
 
@@ -686,5 +688,6 @@ These decisions require user input before we can proceed:
 | Round 2 | 2026-02-16 | 34 | 0 | 0 | 38/58 (66%) |
 | Round 3 | 2026-02-17 | 20 | 6 | 6 | 44/58 (76%) |
 | Round 4 | 2026-02-17 | 8 | 0 | 0 | 48/58 (83%) |
+| Round 5 | 2026-02-17 | 0 | 2 | 0 | 48/58 (83%) |
 
 **Cumulative progress**: 38% → 66% → 76% → 79% passing 📈
