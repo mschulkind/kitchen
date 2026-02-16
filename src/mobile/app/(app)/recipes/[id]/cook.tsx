@@ -8,7 +8,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { Dimensions, Pressable, StatusBar } from 'react-native';
+import { Dimensions, Pressable, StatusBar, ScrollView } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { useKeepAwake } from 'expo-keep-awake';
@@ -17,17 +17,21 @@ import {
   XStack,
   H1,
   H2,
+  H3,
   Text,
   Paragraph,
   Button,
   Spinner,
   Progress,
+  Card,
+  Checkbox,
 } from 'tamagui';
 import {
   ChevronLeft,
   ChevronRight,
   X,
   CheckCircle2,
+  Check,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
@@ -47,6 +51,8 @@ export default function CookingModeScreen() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [showIngredients, setShowIngredients] = useState(false);
+  const [checkedIngredients, setCheckedIngredients] = useState<Set<number>>(new Set());
 
   // Fetch recipe steps
   const { data: recipe, isLoading } = useQuery({
@@ -60,6 +66,7 @@ export default function CookingModeScreen() {
   });
 
   const steps: Step[] = (recipe?.instructions || []).map((instruction: string) => ({ instruction }));
+  const ingredients = recipe?.ingredients || [];
   const totalSteps = steps.length;
   const progress = totalSteps > 0 ? ((currentStep + 1) / totalSteps) * 100 : 0;
 
@@ -168,7 +175,7 @@ export default function CookingModeScreen() {
           testID="show-ingredients-button"
           size="$3"
           chromeless
-          onPress={() => {/* TODO: show ingredients panel */}}
+          onPress={() => setShowIngredients(!showIngredients)}
         >
           Ingredients
         </Button>
@@ -191,6 +198,64 @@ export default function CookingModeScreen() {
           Step {currentStep + 1} of {totalSteps}
         </Text>
       </YStack>
+
+      {/* Mise-en-Place Panel */}
+      {showIngredients && (
+        <Card
+          testID="mise-en-place-panel"
+          bordered
+          elevate
+          marginHorizontal="$4"
+          marginBottom="$2"
+          padding="$3"
+          maxHeight={SCREEN_HEIGHT * 0.4}
+        >
+          <XStack justifyContent="space-between" alignItems="center" marginBottom="$2">
+            <H3 fontSize="$4">🧑‍🍳 Mise en Place</H3>
+            <Text color="$gray10" fontSize="$2">
+              {checkedIngredients.size}/{ingredients.length} ready
+            </Text>
+          </XStack>
+          <ScrollView>
+            {ingredients.map((ingredient: any, idx: number) => (
+              <XStack
+                key={idx}
+                padding="$2"
+                alignItems="center"
+                opacity={checkedIngredients.has(idx) ? 0.5 : 1}
+                testID={`mise-item-${idx}`}
+              >
+                <Checkbox
+                  size="$4"
+                  checked={checkedIngredients.has(idx)}
+                  onCheckedChange={() => {
+                    setCheckedIngredients((prev) => {
+                      const next = new Set(prev);
+                      if (next.has(idx)) next.delete(idx);
+                      else next.add(idx);
+                      return next;
+                    });
+                  }}
+                >
+                  <Checkbox.Indicator>
+                    <Check size={14} />
+                  </Checkbox.Indicator>
+                </Checkbox>
+                <Text
+                  flex={1}
+                  marginLeft="$2"
+                  textDecorationLine={checkedIngredients.has(idx) ? 'line-through' : 'none'}
+                >
+                  {ingredient.item_name || ingredient.name}
+                </Text>
+                <Text color="$gray10" fontSize="$2">
+                  {ingredient.quantity} {ingredient.unit}
+                </Text>
+              </XStack>
+            ))}
+          </ScrollView>
+        </Card>
+      )}
 
       {/* Step Content - Large Touch Zones */}
       <XStack flex={1}>

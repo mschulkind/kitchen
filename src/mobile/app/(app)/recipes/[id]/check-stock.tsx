@@ -149,7 +149,9 @@ export default function CheckStockScreen() {
   // Add to shopping list mutation
   const addToShoppingList = useMutation({
     mutationFn: async (ingredients: Ingredient[]) => {
+      if (!householdId) throw new Error('No household — please sign in');
       const items = ingredients.map((i) => ({
+        household_id: householdId,
         name: i.item_name,
         quantity: i.quantity,
         unit: i.unit,

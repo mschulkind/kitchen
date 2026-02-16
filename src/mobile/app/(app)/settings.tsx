@@ -4,10 +4,24 @@
  * App configuration and user preferences.
  */
 
+import { useState, useEffect } from 'react';
 import { YStack, XStack, Text, H1, H2, Card, Switch, Button, Separator } from 'tamagui';
 import { User, Home, Bell, Moon, LogOut } from '@tamagui/lucide-icons';
 
+import { supabase } from '@/lib/supabase';
+
 export default function SettingsScreen() {
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setUserEmail(data.session?.user?.email ?? null);
+    });
+  }, []);
+
+  const displayName = userEmail || 'Guest User';
+  const isSignedIn = !!userEmail;
+
   return (
     <YStack flex={1} padding="$4" backgroundColor="$background">
       <H1 marginBottom="$4">Settings ⚙️</H1>
@@ -26,10 +40,12 @@ export default function SettingsScreen() {
             <User size={30} color="#2563eb" />
           </YStack>
           <YStack flex={1}>
-            <Text fontSize="$5" fontWeight="600">Guest User</Text>
-            <Text color="$gray10" fontSize="$3">Sign in for sync</Text>
+            <Text fontSize="$5" fontWeight="600">{displayName}</Text>
+            <Text color="$gray10" fontSize="$3">
+              {isSignedIn ? 'Signed in' : 'Sign in for sync'}
+            </Text>
           </YStack>
-          <Button size="$3" theme="blue">Sign In</Button>
+          {!isSignedIn && <Button size="$3" theme="blue">Sign In</Button>}
         </XStack>
       </Card>
 
