@@ -451,7 +451,6 @@ export default function PlannerScreen() {
                                 ))}
                             </XStack>
                           )}
-                          </XStack>
                         </Card>
                       ))
                     )}
