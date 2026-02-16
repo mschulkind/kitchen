@@ -35,6 +35,7 @@ import {
 import { supabase } from '@/lib/supabase';
 import { useHouseholdId } from '@/hooks/useInventorySubscription';
 import { KitchenButton } from '@/components/Core/Button';
+import { guessCategory } from '@/lib/categories';
 
 type Ingredient = {
   id?: string;
@@ -150,15 +151,27 @@ export default function CheckStockScreen() {
   const addToShoppingList = useMutation({
     mutationFn: async (ingredients: Ingredient[]) => {
       if (!householdId) throw new Error('No household — please sign in');
-      const items = ingredients.map((i) => ({
-        household_id: householdId,
-        name: i.item_name,
-        quantity: i.quantity,
-        unit: i.unit,
-        checked: false,
-      }));
-      const { error } = await supabase.from('shopping_list').insert(items);
-      if (error) throw error;
+      // Fetch existing items to avoid duplicates
+      const { data: existing } = await supabase
+        .from('shopping_list')
+        .select('name')
+        .eq('household_id', householdId)
+        .eq('checked', false);
+      const existingNames = new Set((existing || []).map((e: { name: string }) => e.name.toLowerCase()));
+      const newItems = ingredients
+        .filter((i) => !existingNames.has(i.item_name.toLowerCase()))
+        .map((i) => ({
+          household_id: householdId,
+          name: i.item_name,
+          quantity: i.quantity,
+          unit: i.unit,
+          category: guessCategory(i.item_name),
+          checked: false,
+        }));
+      if (newItems.length > 0) {
+        const { error } = await supabase.from('shopping_list').insert(newItems);
+        if (error) throw error;
+      }
     },
     onSuccess: () => {
       router.push('/(app)/shopping');
