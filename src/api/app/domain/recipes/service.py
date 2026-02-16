@@ -191,9 +191,18 @@ class RecipeService:
         Raises:
             RecipeNotFoundError: If recipe doesn't exist.
         """
+        # Handle ingredient re-parsing if provided
+        ingredient_texts = dto.ingredient_texts
+        dto.ingredient_texts = None  # Don't pass raw texts to repository
+
         recipe = await self.repository.update(recipe_id, household_id, dto)
         if not recipe:
             raise RecipeNotFoundError(recipe_id)
+
+        if ingredient_texts:
+            await self.repository.replace_ingredients(recipe_id, ingredient_texts)
+            recipe.ingredients = await self.repository._get_ingredients(recipe_id)
+
         return recipe
 
     async def delete_recipe(self, recipe_id: UUID, household_id: UUID) -> None:
