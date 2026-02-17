@@ -26,18 +26,119 @@ This guide walks you through **every feature** of the Kitchen meal planning app.
 ## Setup & Getting Started
 
 ### Prerequisites
-- Backend API running: `http://localhost:5300`
-- Frontend running: `http://localhost:8200`
-- Both services should be active
 
-### Starting the Services
+✅ **Already Configured:**
+- `.env` file — fully set up with credentials
+- `overmind` — installed via mise
+- `just` — command runner installed
 
-**Terminal 1 — Start the API:**
+⚠️ **You Need:**
+- Docker running (if you don't have it, skip to Option 3 below)
+- 3 terminal windows or tmux session
+
+### Quick Start: One Command (If Docker is Running)
+
 ```bash
 cd /workspace
-SUPABASE_URL=http://192.168.1.2:8250 \
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NjgxOTk0MjUsImV4cCI6MjA4MzU1OTQyNX0.wiPYoEVwcFKQOTXEZ8UfZsFWoFCQvoqATXcSJeZJVK8 \
-PYTHONDONTWRITEBYTECODE=1 python3 -B -m uvicorn src.api.main:app --host 0.0.0.0 --port 5300
+
+# Terminal 1: Start infrastructure (Supabase, Auth, DB)
+./just up-infra
+# Wait ~30 seconds for services to be ready
+
+# Terminal 2: Start everything else (API + Frontend in Overmind)
+overmind start
+```
+
+**Result:** Two processes in tmux managed by Overmind
+- Frontend: `http://localhost:8200`
+- Backend API: `http://localhost:5300`
+
+**Manage them with:**
+```bash
+overmind status              # See what's running
+overmind connect frontend    # View frontend logs
+overmind connect backend     # View backend logs
+overmind quit                # Stop everything
+```
+
+---
+
+### Option 1: Start Everything with Overmind (Full Stack) 🚀
+
+**Use this if Docker is running:**
+
+```bash
+cd /workspace
+
+# First time setup
+./just up-infra
+
+# Then start API + Frontend (in one tmux session)
+overmind start
+```
+
+Overmind creates a **tmux session** with two windows:
+- **Panel 1**: Frontend logs
+- **Panel 2**: Backend logs
+
+**Useful commands:**
+```bash
+# View all running services
+overmind status
+
+# Switch to frontend logs window
+overmind connect frontend
+
+# Switch to backend logs window
+overmind connect backend
+
+# Restart just the backend
+overmind restart backend
+
+# Stop everything gracefully (Ctrl+C also works)
+overmind quit
+```
+
+---
+
+### Option 2: Start Services Separately (3 Terminals)
+
+**Use this if you prefer separate windows:**
+
+**Terminal 1 — Start Infrastructure:**
+```bash
+cd /workspace
+./just up-infra
+```
+Wait for Docker services to report ready (~30 seconds).
+
+**Terminal 2 — Start the Backend API:**
+```bash
+cd /workspace
+./just dev-api
+```
+Wait for `Uvicorn running on http://0.0.0.0:5300`.
+
+**Terminal 3 — Start the Frontend:**
+```bash
+cd /workspace
+./just web
+```
+Wait for Expo to show the dev server URL.
+
+---
+
+### Option 3: Manual Commands (No Docker / Fallback)
+
+**If Docker isn't available on your machine:**
+
+This assumes you have Supabase running elsewhere (on NAS or local).
+
+**Terminal 1 — Start the Backend API:**
+```bash
+cd /workspace
+SUPABASE_URL=http://localhost:8250 \
+uv run uvicorn src.api.main:app --reload --host 0.0.0.0 --port 5300
 ```
 
 **Terminal 2 — Start the Frontend:**
@@ -46,7 +147,23 @@ cd /workspace/src/mobile
 BROWSER=none npx expo start --web --port 8200
 ```
 
-Wait for both to show "ready" messages. 🟢
+Then open `http://localhost:8200` in browser.
+
+---
+
+### Verify Everything is Running
+
+Once services start, you should see:
+
+```
+✅ Frontend running at: http://localhost:8200
+✅ Backend API at:     http://localhost:5300
+✅ Auth/DB at:         http://localhost:8250 (Supabase)
+```
+
+**Open browser to**: `http://localhost:8200`
+
+You should see the Kitchen login page. If not, check terminal logs for errors.
 
 ---
 
