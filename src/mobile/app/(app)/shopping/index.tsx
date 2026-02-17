@@ -30,7 +30,6 @@ import {
   Trash2,
   Check,
   ShoppingCart,
-  Mic,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
@@ -274,16 +273,6 @@ export default function ShoppingScreen() {
             icon={<Plus size={20} />}
             onPress={handleAddItem}
             disabled={!newItemName.trim() || addItem.isPending}
-          />
-          <Button
-            testID="voice-add-button"
-            size="$4"
-            theme="gray"
-            icon={<Mic size={20} />}
-            onPress={() => {
-              // TODO: Implement voice input in Phase 9
-              console.log('Voice input placeholder');
-            }}
           />
         </XStack>
 

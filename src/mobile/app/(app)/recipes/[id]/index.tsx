@@ -236,13 +236,13 @@ export default function RecipeDetailScreen() {
                   <Text color="$gray10">{recipe.servings} servings</Text>
                 </XStack>
               )}
-              {recipe.prep_time_minutes && (
+              {recipe.prep_time_minutes != null && recipe.prep_time_minutes > 0 && (
                 <XStack space="$1" alignItems="center">
                   <Clock size={16} color="$gray10" />
                   <Text color="$gray10">{recipe.prep_time_minutes}m prep</Text>
                 </XStack>
               )}
-              {recipe.cook_time_minutes && (
+              {recipe.cook_time_minutes != null && recipe.cook_time_minutes > 0 && (
                 <XStack space="$1" alignItems="center">
                   <ChefHat size={16} color="$gray10" />
                   <Text color="$gray10">{recipe.cook_time_minutes}m cook</Text>

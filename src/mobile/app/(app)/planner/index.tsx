@@ -265,6 +265,8 @@ export default function PlannerScreen() {
             chromeless
             icon={<ChevronLeft size={20} />}
             onPress={() => setWeekOffset((o) => o - 1)}
+            disabled={weekOffset <= 0}
+            opacity={weekOffset <= 0 ? 0.3 : 1}
           />
           <Text fontWeight="600" color="$gray11">
             {dateRange[0].toLocaleDateString('en-US', {

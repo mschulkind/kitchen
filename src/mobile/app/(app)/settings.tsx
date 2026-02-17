@@ -129,7 +129,6 @@ export default function SettingsScreen() {
       <Card elevate padding="$4">
         <YStack space="$2">
           <Text color="$gray10" fontSize="$2">Kitchen App v0.1.0</Text>
-          <Text color="$gray10" fontSize="$2">Phase 1: Foundation & Inventory</Text>
         </YStack>
       </Card>
     </YStack>

@@ -49,7 +49,9 @@ export function HubCard({
       backgroundColor={color}
       borderRadius="$6"
       pressStyle={{ scale: 0.96, opacity: 0.9 }}
+      hoverStyle={{ scale: 1.02, opacity: 0.95 }}
       animation="bouncy"
+      cursor="pointer"
       onPress={() => router.push(href as any)}
       justifyContent="center"
       alignItems="center"
