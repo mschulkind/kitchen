@@ -1,8 +1,8 @@
 # 🐋 Kitchen App — User Flow Tracker & QA Central
 
 > **Purpose**: Central document for spec agreement, QA tracking, and roadmap planning.
-> **Last Updated**: 2026-02-17 (Round 6 — voice handlers wired, move meal, store preference)
-> **Status**: 🟢 Round 6 complete — 52/58 scenarios passing (90%)! Voice, Move Meal, Store Preference all working! 🐋🎉
+> **Last Updated**: 2026-02-17 (Round 7 — user feedback implementation, UX overhaul)
+> **Status**: 🟢 Round 7 complete — Major UX overhaul from manual QA feedback! Auth fix, desktop polish, planner redesign, cooking mode parked 🐋🎉
 
 ---
 
