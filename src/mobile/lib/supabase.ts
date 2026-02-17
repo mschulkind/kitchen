@@ -22,11 +22,23 @@ const isAndroidEmulator = () => {
 };
 
 const getSupabaseUrl = () => {
-  let url = process.env.EXPO_PUBLIC_SUPABASE_URL || 'http://192.168.1.2:8250';
-  if (isAndroidEmulator() && url.includes('192.168.1.2')) {
-    return url.replace('192.168.1.2', '10.0.2.2');
+  // Explicit override from env (takes precedence)
+  if (process.env.EXPO_PUBLIC_SUPABASE_URL) {
+    return process.env.EXPO_PUBLIC_SUPABASE_URL;
   }
-  return url;
+
+  // Web/Browser: Use localhost
+  if (Platform.OS === 'web') {
+    return 'http://localhost:8250';
+  }
+
+  // Android Emulator: Map 192.168.1.2 -> 10.0.2.2
+  if (isAndroidEmulator()) {
+    return 'http://10.0.2.2:8250';
+  }
+
+  // Physical device or iOS: Use NAS IP
+  return 'http://192.168.1.2:8250';
 };
 
 const SUPABASE_URL = getSupabaseUrl();
