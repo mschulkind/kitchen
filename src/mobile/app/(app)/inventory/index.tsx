@@ -167,7 +167,7 @@ export default function InventoryScreen() {
   };
 
   return (
-    <YStack flex={1} backgroundColor="$background" minHeight="100%" fullscreen>
+    <YStack flex={1} backgroundColor="$background" minHeight="100%" fullscreen maxWidth={800} width="100%" alignSelf="center">
       <Stack.Screen
         options={{
           title: 'Pantry',

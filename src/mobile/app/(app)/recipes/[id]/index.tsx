@@ -173,7 +173,7 @@ export default function RecipeDetailScreen() {
         ),
       }} />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 100, maxWidth: 800, width: '100%', alignSelf: 'center' }}>
         {/* Hero Image or Placeholder */}
         {imageUrl ? (
           <Image

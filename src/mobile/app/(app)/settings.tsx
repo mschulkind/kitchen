@@ -31,7 +31,7 @@ export default function SettingsScreen() {
   const isSignedIn = !!userEmail;
 
   return (
-    <YStack flex={1} padding="$4" backgroundColor="$background">
+    <YStack flex={1} padding="$4" backgroundColor="$background" maxWidth={700} width="100%" alignSelf="center">
       <H1 marginBottom="$4">Settings ⚙️</H1>
 
       {/* Account Section */}

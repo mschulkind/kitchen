@@ -249,7 +249,7 @@ export default function PlannerScreen() {
         }}
       />
 
-      <YStack flex={1} backgroundColor="$background">
+      <YStack flex={1} backgroundColor="$background" maxWidth={900} width="100%" alignSelf="center">
         {/* Week Navigation */}
         <XStack
           justifyContent="space-between"

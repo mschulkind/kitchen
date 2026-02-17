@@ -254,7 +254,7 @@ export default function ShoppingScreen() {
         }}
       />
 
-      <YStack flex={1} backgroundColor="$background">
+      <YStack flex={1} backgroundColor="$background" maxWidth={800} width="100%" alignSelf="center">
         {/* Add Item Input */}
         <XStack padding="$4" space="$2" borderBottomWidth={1} borderBottomColor="$gray4">
           <Input

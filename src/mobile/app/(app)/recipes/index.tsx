@@ -120,7 +120,7 @@ export default function RecipesListScreen() {
         }}
       />
 
-      <YStack flex={1} backgroundColor="$background" padding="$4">
+      <YStack flex={1} backgroundColor="$background" padding="$4" maxWidth={800} width="100%" alignSelf="center">
         {/* Search Bar */}
         <XStack marginBottom="$4">
           <KitchenInput

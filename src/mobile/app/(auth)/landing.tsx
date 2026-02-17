@@ -52,7 +52,7 @@ export default function LandingScreen() {
   };
 
   return (
-    <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10" testID="landing-screen">
+    <YStack flex={1} backgroundColor="$background" justifyContent="space-between" padding="$6" paddingTop="$10" testID="landing-screen" maxWidth={500} width="100%" alignSelf="center">
       
       {/* Hero Section */}
       <YStack space="$4" alignItems="center">
