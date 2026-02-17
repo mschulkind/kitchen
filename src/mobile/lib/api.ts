@@ -18,11 +18,23 @@ const isAndroidEmulator = () => {
 };
 
 const getApiUrl = () => {
-  let url = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.1.2:5300';
-  if (isAndroidEmulator() && url.includes('192.168.1.2')) {
-    return url.replace('192.168.1.2', '10.0.2.2');
+  // Explicit override from env (takes precedence)
+  if (process.env.EXPO_PUBLIC_API_URL) {
+    return process.env.EXPO_PUBLIC_API_URL;
   }
-  return url;
+
+  // Web/Browser: Use localhost
+  if (Platform.OS === 'web') {
+    return 'http://localhost:5300';
+  }
+
+  // Android Emulator: Map 192.168.1.2 -> 10.0.2.2
+  if (isAndroidEmulator()) {
+    return 'http://10.0.2.2:5300';
+  }
+
+  // Physical device or iOS: Use NAS IP
+  return 'http://192.168.1.2:5300';
 };
 
 const API_URL = getApiUrl();
