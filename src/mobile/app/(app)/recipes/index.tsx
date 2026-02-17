@@ -22,7 +22,7 @@ import {
   H1,
   Paragraph,
 } from 'tamagui';
-import { Plus, Search, Link as LinkIcon, Edit3, Camera } from '@tamagui/lucide-icons';
+import { Plus, Search, Link as LinkIcon, MessageCircle } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
 import { RecipeCard } from '@/components/Modules/RecipeCard';
@@ -144,7 +144,7 @@ export default function RecipesListScreen() {
             <Paragraph color="$gray10" textAlign="center" marginTop="$2">
               {searchQuery 
                 ? 'Try a different search term'
-                : 'Import a recipe from a URL or create one manually'}
+                : 'Import a recipe from a URL or chat with AI to craft one'}
             </Paragraph>
             <Button
               testID="add-first-recipe"
@@ -191,7 +191,7 @@ export default function RecipesListScreen() {
             modal
             open={showActionSheet}
             onOpenChange={setShowActionSheet}
-            snapPoints={[40]}
+            snapPoints={[35]}
             dismissOnSnapToBottom
           >
             <Sheet.Overlay />
@@ -209,30 +209,17 @@ export default function RecipesListScreen() {
                     setShowUrlDialog(true);
                   }}
                 >
-                  Paste URL
+                  Import from URL
                 </Button>
                 
                 <Button
-                  testID="manual-entry-option"
+                  testID="chat-recipe-option"
                   size="$5"
-                  icon={<Edit3 size={20} />}
-                  chromeless
-                  onPress={() => {
-                    setShowActionSheet(false);
-                    router.push('/(app)/recipes/new');
-                  }}
-                >
-                  Manual Entry
-                </Button>
-                
-                <Button
-                  testID="scan-option"
-                  size="$5"
-                  icon={<Camera size={20} />}
+                  icon={<MessageCircle size={20} />}
                   chromeless
                   disabled
                 >
-                  Scan (Coming Soon)
+                  Chat with AI (Coming Soon)
                 </Button>
               </YStack>
             </Sheet.Frame>
