@@ -1,14 +1,14 @@
 /**
  * Planner Calendar Screen 📅
  * 
- * Week/4-day view of meal plan with slots.
- * Per frontend-redesign.md Section 2.4
+ * Week view of meal plan with clear, labeled actions.
+ * Simplified UX: one clear path to plan meals.
  * 
  * Fun fact: Meal planning saves an average of $2,000/year on groceries! 💰
  */
 
 import { useState, useMemo } from 'react';
-import { ScrollView, Dimensions } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter, Stack } from 'expo-router';
 import {
@@ -21,27 +21,25 @@ import {
   Button,
   Card,
   Spinner,
+  Separator,
 } from 'tamagui';
 import {
   Calendar,
   Plus,
   Lock,
-  RefreshCw,
+  Unlock,
   ChevronLeft,
   ChevronRight,
   Sparkles,
   Trash2,
   ShoppingCart,
-  ArrowRightLeft,
+  ArrowRight,
 } from '@tamagui/lucide-icons';
 
 import { supabase } from '@/lib/supabase';
-import { FAB } from '@/components/Core/Button';
 import { useHouseholdId } from '@/hooks/useInventorySubscription';
 import { guessCategory } from '@/lib/categories';
-
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const DAY_WIDTH = (SCREEN_WIDTH - 48) / 4;
+import { ConfirmDialog } from '@/components/Core/ConfirmDialog';
 
 type MealSlot = {
   id: string;
@@ -55,6 +53,7 @@ type MealSlot = {
 type DayPlan = {
   date: string;
   dayName: string;
+  dayNum: string;
   isToday: boolean;
   slots: MealSlot[];
 };
@@ -64,7 +63,7 @@ export default function PlannerScreen() {
   const queryClient = useQueryClient();
   const householdId = useHouseholdId();
   const [weekOffset, setWeekOffset] = useState(0);
-  const [movingSlotId, setMovingSlotId] = useState<string | null>(null);
+  const [deleteSlot, setDeleteSlot] = useState<MealSlot | null>(null);
 
   // Calculate date range for current view
   const dateRange = useMemo(() => {
@@ -120,18 +119,6 @@ export default function PlannerScreen() {
     },
   });
 
-  // Reroll slot mutation (Phase 6)
-  const rerollSlot = useMutation({
-    mutationFn: async (slotId: string) => {
-      // In real implementation, call LLM to suggest new recipe
-      // For now, just invalidate to show loading
-      await new Promise((r) => setTimeout(r, 1000));
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
-    },
-  });
-
   // Remove meal mutation
   const removeMeal = useMutation({
     mutationFn: async (slotId: string) => {
@@ -146,21 +133,6 @@ export default function PlannerScreen() {
     },
   });
 
-  // Move meal to a different day
-  const moveMeal = useMutation({
-    mutationFn: async ({ slotId, newDate }: { slotId: string; newDate: string }) => {
-      const { error } = await supabase
-        .from('meal_plans')
-        .update({ date: newDate })
-        .eq('id', slotId);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      setMovingSlotId(null);
-      queryClient.invalidateQueries({ queryKey: ['meal_plans'] });
-    },
-  });
-
   // Generate shopping list from all assigned meals
   const generateShoppingList = useMutation({
     mutationFn: async () => {
@@ -168,7 +140,6 @@ export default function PlannerScreen() {
       const recipeIds = [...new Set(mealPlans.map((mp) => mp.recipe_id))];
       const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5300';
 
-      // Fetch ingredients for each recipe
       const allIngredients: string[] = [];
       for (const rid of recipeIds) {
         const res = await fetch(`${apiUrl}/api/v1/recipes/${rid}`);
@@ -179,7 +150,6 @@ export default function PlannerScreen() {
         }
       }
 
-      // Deduplicate against existing shopping list
       const { data: existing } = await supabase
         .from('shopping_list')
         .select('name')
@@ -218,38 +188,19 @@ export default function PlannerScreen() {
       
       return {
         date: dateStr,
-        dayName: date.toLocaleDateString('en-US', { weekday: 'short' }),
+        dayName: date.toLocaleDateString('en-US', { weekday: 'long' }),
+        dayNum: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
         isToday: dateStr === todayStr,
         slots: daySlots,
       };
     });
   }, [dateRange, mealPlans]);
 
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.getDate().toString();
-  };
-
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerRight: () => (
-            <Button
-              testID="new-plan-button"
-              size="$3"
-              theme="green"
-              icon={<Sparkles size={18} />}
-              onPress={() => router.push('/(app)/planner/new')}
-              marginRight="$2"
-            >
-              New Plan
-            </Button>
-          ),
-        }}
-      />
+      <Stack.Screen options={{ title: 'Meal Planner', headerShown: true }} />
 
-      <YStack flex={1} backgroundColor="$background" maxWidth={900} width="100%" alignSelf="center">
+      <YStack flex={1} backgroundColor="$background" maxWidth={700} width="100%" alignSelf="center">
         {/* Week Navigation */}
         <XStack
           justifyContent="space-between"
@@ -261,32 +212,30 @@ export default function PlannerScreen() {
           <Button
             testID="prev-week-button"
             size="$3"
-            circular
             chromeless
             icon={<ChevronLeft size={20} />}
             onPress={() => setWeekOffset((o) => o - 1)}
             disabled={weekOffset <= 0}
             opacity={weekOffset <= 0 ? 0.3 : 1}
-          />
-          <Text fontWeight="600" color="$gray11">
-            {dateRange[0].toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-            })}{' '}
-            -{' '}
-            {dateRange[6].toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-            })}
+            cursor="pointer"
+          >
+            Prev
+          </Button>
+          <Text fontWeight="600" fontSize="$4" color="$gray12">
+            {weekOffset === 0 ? 'This Week' : 
+             weekOffset === 1 ? 'Next Week' :
+             `${dateRange[0].toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${dateRange[6].toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
           </Text>
           <Button
             testID="next-week-button"
             size="$3"
-            circular
             chromeless
             icon={<ChevronRight size={20} />}
             onPress={() => setWeekOffset((o) => o + 1)}
-          />
+            cursor="pointer"
+          >
+            Next
+          </Button>
         </XStack>
 
         {isLoading ? (
@@ -294,101 +243,97 @@ export default function PlannerScreen() {
             <Spinner size="large" color="$green10" />
           </YStack>
         ) : (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <XStack padding="$2">
-              {dayPlans.map((day) => (
-                <YStack
-                  key={day.date}
-                  width={DAY_WIDTH}
-                  marginHorizontal="$1"
-                  testID={`day-column-${day.date}`}
+          <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 120 }}>
+            {/* Day-by-day vertical list */}
+            {dayPlans.map((day) => (
+              <YStack key={day.date} marginBottom="$4" testID={`day-column-${day.date}`}>
+                {/* Day Header */}
+                <XStack
+                  alignItems="center"
+                  space="$2"
+                  marginBottom="$2"
                 >
-                  {/* Day Header */}
                   <YStack
-                    alignItems="center"
-                    padding="$2"
-                    backgroundColor={day.isToday ? '$green3' : '$gray2'}
+                    paddingHorizontal="$3"
+                    paddingVertical="$1"
+                    backgroundColor={day.isToday ? '$green4' : '$gray3'}
                     borderRadius="$3"
-                    marginBottom="$2"
                   >
                     <Text
-                      fontSize="$2"
-                      color={day.isToday ? '$green11' : '$gray10'}
+                      fontSize="$3"
+                      fontWeight="bold"
+                      color={day.isToday ? '$green11' : '$gray11'}
                     >
                       {day.dayName}
                     </Text>
-                    <Text
-                      fontSize="$5"
-                      fontWeight="bold"
-                      color={day.isToday ? '$green11' : '$gray12'}
-                    >
-                      {formatDate(day.date)}
-                    </Text>
                   </YStack>
+                  <Text fontSize="$2" color="$gray10">{day.dayNum}</Text>
+                  {day.isToday && (
+                    <Text fontSize="$2" color="$green10" fontWeight="600">Today</Text>
+                  )}
+                </XStack>
 
-                  {/* Meal Slots */}
+                {/* Meal Cards */}
+                {day.slots.length === 0 ? (
+                  <Card
+                    bordered
+                    borderWidth={1}
+                    borderStyle="dashed"
+                    borderColor="$gray6"
+                    backgroundColor="$gray2"
+                    padding="$3"
+                    pressStyle={{ scale: 0.98, backgroundColor: '$gray3' }}
+                    hoverStyle={{ borderColor: '$gray8' }}
+                    cursor="pointer"
+                    onPress={() => 
+                      router.push({
+                        pathname: '/(app)/planner/add',
+                        params: { date: day.date, meal_type: 'main' }
+                      })
+                    }
+                  >
+                    <XStack alignItems="center" justifyContent="center" space="$2">
+                      <Plus size={16} color="$gray9" />
+                      <Text fontSize="$3" color="$gray9">
+                        Add a meal
+                      </Text>
+                    </XStack>
+                  </Card>
+                ) : (
                   <YStack space="$2">
-                    {day.slots.length === 0 ? (
+                    {day.slots.map((slot) => (
                       <Card
+                        key={slot.id}
                         bordered
-                        borderWidth={2}
-                        borderStyle="dashed"
-                        borderColor="$gray8"
-                        backgroundColor="$gray2"
                         padding="$3"
-                        pressStyle={{ scale: 0.98, backgroundColor: '$gray4', borderColor: '$gray9' }}
-                        onPress={() => 
-                          router.push({
-                            pathname: '/(app)/planner/add',
-                            params: { date: day.date, meal_type: 'main' }
-                          })
-                        }
-                        alignItems="center"
-                        justifyContent="center"
-                        height={60}
+                        testID={`slot-${slot.id}`}
+                        backgroundColor={slot.locked ? '$green2' : '$background'}
+                        borderColor={slot.locked ? '$green6' : '$gray5'}
                       >
-                        <Plus size={20} color="$gray9" />
-                        <Text
-                          fontSize="$2"
-                          color="$gray10"
-                          fontWeight="600"
-                          marginTop="$1"
-                        >
-                          Add Meal
-                        </Text>
-                      </Card>
-                    ) : (
-                      day.slots.map((slot) => (
-                        <Card
-                          key={slot.id}
-                          bordered
-                          padding="$2"
-                          testID={`slot-${slot.id}`}
-                        >
+                        <XStack justifyContent="space-between" alignItems="center">
+                          {/* Recipe name — tappable */}
                           <Text
-                            fontSize="$2"
-                            numberOfLines={2}
+                            fontSize="$4"
+                            fontWeight="500"
                             color="$gray12"
+                            flex={1}
+                            cursor="pointer"
                             onPress={() =>
                               router.push(`/(app)/recipes/${slot.recipe_id}`)
                             }
                           >
                             {slot.recipe_title}
                           </Text>
-                          <XStack
-                            justifyContent="flex-end"
-                            marginTop="$1"
-                            space="$1"
-                          >
+
+                          {/* Action buttons — clearly labeled */}
+                          <XStack space="$2" alignItems="center">
                             <Button
-                              size="$1"
-                              circular
+                              size="$2"
                               chromeless
-                              icon={
-                                <Lock
-                                  size={12}
-                                  color={slot.locked ? '$green10' : '$gray8'}
-                                />
+                              cursor="pointer"
+                              icon={slot.locked ? 
+                                <Lock size={14} color="$green10" /> : 
+                                <Unlock size={14} color="$gray8" />
                               }
                               onPress={() =>
                                 toggleLock.mutate({
@@ -399,78 +344,56 @@ export default function PlannerScreen() {
                               testID={`lock-${slot.id}`}
                             />
                             {!slot.locked && (
-                              <>
-                                <Button
-                                  size="$1"
-                                  circular
-                                  chromeless
-                                  icon={<RefreshCw size={12} color="$orange10" />}
-                                  onPress={() => rerollSlot.mutate(slot.id)}
-                                  testID={`reroll-${slot.id}`}
-                                />
-                                <Button
-                                  size="$1"
-                                  circular
-                                  chromeless
-                                  icon={<ArrowRightLeft size={12} color="$blue10" />}
-                                  onPress={() =>
-                                    setMovingSlotId(
-                                      movingSlotId === slot.id ? null : slot.id
-                                    )
-                                  }
-                                  testID={`move-${slot.id}`}
-                                />
-                              </>
+                              <Button
+                                size="$2"
+                                chromeless
+                                cursor="pointer"
+                                icon={<Trash2 size={14} color="$red9" />}
+                                onPress={() => setDeleteSlot(slot)}
+                                testID={`remove-${slot.id}`}
+                              />
                             )}
-                            <Button
-                              size="$1"
-                              circular
-                              chromeless
-                              icon={<Trash2 size={12} color="$red10" />}
-                              onPress={() => removeMeal.mutate(slot.id)}
-                              testID={`remove-${slot.id}`}
-                            />
                           </XStack>
-                          {movingSlotId === slot.id && (
-                            <XStack flexWrap="wrap" gap="$1" marginTop="$2">
-                              {dayPlans
-                                .filter((d) => d.date !== day.date)
-                                .map((d) => (
-                                  <Button
-                                    key={d.date}
-                                    size="$2"
-                                    theme="blue"
-                                    onPress={() =>
-                                      moveMeal.mutate({
-                                        slotId: slot.id,
-                                        newDate: d.date,
-                                      })
-                                    }
-                                    testID={`move-to-${d.date}`}
-                                  >
-                                    {d.dayName}
-                                  </Button>
-                                ))}
-                            </XStack>
-                          )}
-                        </Card>
-                      ))
-                    )}
+                        </XStack>
+                      </Card>
+                    ))}
+                    {/* Add another meal to this day */}
+                    <Button
+                      size="$3"
+                      chromeless
+                      icon={<Plus size={14} color="$gray9" />}
+                      cursor="pointer"
+                      onPress={() =>
+                        router.push({
+                          pathname: '/(app)/planner/add',
+                          params: { date: day.date, meal_type: 'side' }
+                        })
+                      }
+                    >
+                      <Text fontSize="$2" color="$gray9">Add another</Text>
+                    </Button>
                   </YStack>
-                </YStack>
-              ))}
-            </XStack>
+                )}
+              </YStack>
+            ))}
           </ScrollView>
         )}
 
-        {/* Generate Shopping List button when meals are planned */}
-        {!isLoading && mealPlans && mealPlans.length > 0 && (
-          <XStack padding="$3" borderTopWidth={1} borderTopColor="$gray4">
+        {/* Bottom Action Bar */}
+        <YStack
+          padding="$3"
+          borderTopWidth={1}
+          borderTopColor="$gray4"
+          backgroundColor="$background"
+          space="$2"
+        >
+          {/* Generate Shopping List — only when meals exist */}
+          {!isLoading && mealPlans && mealPlans.length > 0 && (
             <Button
               testID="generate-shopping-button"
-              flex={1}
               size="$4"
               theme="blue"
+              cursor="pointer"
               icon={
                 generateShoppingList.isPending ? (
                   <Spinner size="small" />
@@ -483,39 +406,36 @@ export default function PlannerScreen() {
             >
               {generateShoppingList.isPending
                 ? 'Generating...'
-                : `Shopping List (${mealPlans.length} meals)`}
+                : `Generate Shopping List (${mealPlans.length} meals)`}
             </Button>
-          </XStack>
-        )}
+          )}
 
-        {/* Empty State */}
-        {!isLoading && mealPlans?.length === 0 && (
-          <YStack
-            position="absolute"
-            top="40%"
-            left={0}
-            right={0}
-            alignItems="center"
-            padding="$6"
+          {/* AI Plan button — always visible */}
+          <Button
+            testID="generate-plan-button"
+            size="$4"
+            theme="green"
+            cursor="pointer"
+            icon={<Sparkles size={18} />}
+            onPress={() => router.push('/(app)/planner/new')}
           >
-            <Calendar size={60} color="$gray8" />
-            <H3 marginTop="$3" color="$gray11">
-              No meals planned
-            </H3>
-            <Paragraph color="$gray10" textAlign="center">
-              Tap "New Plan" to let AI suggest meals for the week!
-            </Paragraph>
-          </YStack>
-        )}
-
-        {/* FAB */}
-        <FAB
-          testID="generate-plan-fab"
-          icon={<Sparkles size={24} color="white" />}
-          backgroundColor="$green10"
-          onPress={() => router.push('/(app)/planner/new')}
-        />
+            Generate AI Meal Plan
+          </Button>
+        </YStack>
       </YStack>
+
+      {/* Delete Confirmation */}
+      <ConfirmDialog
+        open={!!deleteSlot}
+        title="Remove Meal"
+        message={`Remove "${deleteSlot?.recipe_title}" from the plan?`}
+        confirmText="Remove"
+        onConfirm={() => {
+          if (deleteSlot) removeMeal.mutate(deleteSlot.id);
+          setDeleteSlot(null);
+        }}
+        onCancel={() => setDeleteSlot(null)}
+      />
     </>
   );
 }
