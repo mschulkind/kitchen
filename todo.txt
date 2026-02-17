@@ -1,18 +1,8 @@
--clicking login with google shows the dashboard, then if I refresh, I go back to logged out.
--what is regular login? I don't see tha tanywhere and I didn't think we were supposed to have it.
--whuile the dashboard buttons work, there's no indication for the mouse that they are buttons
--I want to organize the non-perishable stuff around things that are just regularly kept in stock, so I don't want to have ot track an inventory of what is in the pantry exactly, I just want to log that it is something that I keep around, so you should use it when making recipes, but I still want to expliciltly verify that I have each of these items when making a plan.
--delete confirmation modal should be something we design not the browser confirm thing.
--there's a weird 0 after "10 min prep" on the salad recipe
--I don't want to ever create a new recipe myself. they sources should only be from an agent. we can look up recipes, but I mostly want to craft them custom based on a set of requirements and a set of ingredients. just like in the phase0 stuff.
--2 sources for recipes initially: 1. the add by conversation options. have a conversation with an agent and hash it out. 2. as part of a meal plan, probably after you cook it and you save it as a favorite.
--no need for voice input button on shopping list.
--shopping list add should have autocompleet from a list of common supermarket items, as well as from a history of what we have shopped for in the past. we'll want to built a profile on each item with any notes, pictures, as well as metadata like what aisle it's in for what store. we'll start with supporting just a single store here, but I'd also like a taxonomy classification so we can guess at aisles and what might be nearby.
--app seems very mobile centric. go through everythign, use devtools for screenshots, and make it look a whole lot nicer for using on a desktop. 
--meal planner offers to plan me a meal for yesterday for some reason.
--meal planner has lots of little buttons, and a wizard looking button in the bottom right and a enw plan in the top right, but also I can add meals to days? this is all very disjointed and confusing ot me. think through a better UX flow for this. do some research (use the skill) to come up with a better design here. make sure it is thought out, linear, and buttons are discoverable and clearly labeled or indicate what they do.
--let's back burner cooking mode for now. so let's disable that functionality entirely and take it off the roadmap. put it in a parking lot. the only functionality I want here is the PDF output and a prompt to copy/paste to anotehr agent for help while cooking.
--remove the versioning/phase from the settings page.
+-create a spec for every major feature that describes user stories, functionality, that sort of thing. I want to document what we THINK the set of features and user flows should be everywhere, so then we can talk about in deatil what they really should be and impleent that. create a new directory that has an index for every major thing then a separate doc with lots of deatils about each thing.
+
+
+
+
 
 
 -add property based testing. maybe we already have this?

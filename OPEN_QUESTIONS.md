@@ -4,61 +4,37 @@ Tracked questions that need user decisions before implementation.
 
 ---
 
-## OQ-1: Pantry "Staples" Concept
+## ~~OQ-1: Pantry "Staples" Concept~~ → Answered ✅
 
-**Context:** User wants non-perishable items to be tracked differently — not as counted inventory but as "things I keep in stock." These items should be used when making recipes but explicitly verified during meal planning.
-
-**Options:**
-1. **Tag-based**: Add a "staple" flag to pantry items. Staples skip quantity tracking, show as "in stock" or "not in stock"
-2. **Separate list**: New "Staples" section distinct from perishable pantry. Two views: Staples (salt, flour, oil) vs Perishables (milk, chicken, veggies)
-3. **Hybrid**: Pantry items have a "type" field — `perishable` (track quantity/expiry) or `staple` (binary in-stock, verified during planning)
-
-**Impact:** Database schema change, pantry UI rework, recipe ingredient matching, meal plan verification flow.
-
-**Status:** ⏳ Awaiting user input
+Moved to Answered Questions below.
 
 ---
 
-## OQ-2: Shopping List Autocomplete & Item Profiles
+## ~~OQ-2: Shopping List Autocomplete & Item Profiles~~ → Answered ✅
 
-**Context:** User wants autocomplete when adding shopping items, sourced from common supermarket items AND history. Each item should build a profile over time with notes, pictures, aisle info, and taxonomy classification for aisle guessing.
-
-**Questions:**
-1. Where should the item taxonomy come from? (USDA food database? Custom seed list? User-built?)
-2. How detailed should store/aisle info be at launch? (Just category? Specific aisle number? Per-store?)
-3. Should item profiles be per-household or global?
-
-**Impact:** New `item_profiles` table, autocomplete API endpoint, taxonomy seed data, shopping UI rework.
-
-**Status:** ⏳ Awaiting user input
+Moved to Answered Questions below.
 
 ---
 
-## OQ-3: Recipe Chat with AI
+## OQ-3: Recipe Chat with AI → Needs Full Spec 📋
 
 **Context:** User wants recipe creation via conversation with an AI agent, not manual forms. Two sources: (1) chat-based recipe crafting from requirements + ingredients, (2) saving favorites from meal plans.
 
-**Questions:**
-1. Which LLM provider to use? (Gemini, Claude, OpenAI — or multi-provider per D6?)
-2. Should the chat happen in-app or redirect to an external agent?
-3. What's the conversation flow? (User describes what they want → agent proposes → user refines → save?)
+**Decision:** This is complex enough to warrant its own feature spec. See `docs/specs/05-recipe-ai-chat.md` for the full treatment.
 
-**Impact:** New chat UI, LLM integration, recipe creation pipeline.
+**Key constraints from user:**
+- Use Ollama for development (local LLM)
+- Multi-provider support long-term (Gemini, Claude, OpenAI per D6)
+- Backburner image generation and image processing for now
+- Focus on LLM generation of recipe plans first
 
-**Status:** ⏳ Awaiting user input
+**Status:** 🔄 Being specced out in `docs/specs/05-recipe-ai-chat.md`
 
 ---
 
-## OQ-4: Infrastructure Blockers
+## ~~OQ-4: Infrastructure Blockers~~ → Answered ✅
 
-**Context:** 6 scenarios remain blocked on infrastructure.
-
-**Questions:**
-1. Is Supabase Realtime running on the NAS Docker? (blocks INV-08, SHOP-08)
-2. Are Gemini/OpenAI API keys available? (blocks VIS-01-03, IMG-01)
-3. Can the backend reach external URLs? (blocks RCP-02 URL scraping)
-
-**Status:** ⏳ Awaiting user input
+Moved to Answered Questions below.
 
 ---
 
@@ -75,3 +51,23 @@ Tracked questions that need user decisions before implementation.
 ### AQ-3: Voice Input on Shopping
 **Decision:** Remove voice input button from shopping list.
 **Implemented:** Round 7 — removed button.
+
+### AQ-4: Pantry Staples (was OQ-1)
+**Decision:** Use a tag/checkbox (`is_staple`) on pantry items. Add a sort/filter view that splits staples from non-staples. NOT a separate list — just a boolean flag with a view option.
+**Status:** To be implemented. See `docs/specs/03-pantry-inventory.md`.
+
+### AQ-5: Shopping Autocomplete & Item Profiles (was OQ-2)
+**Decision:**
+- Use USDA database for taxonomy, but only user-friendly common names ("Bananas" not technical descriptions)
+- Include aisle numbers where possible
+- Categorization via KNN-style classification — specific enough that category predicts aisle
+- Global profiles are minimal seed data, not user-editable
+- Per-household overrides allowed for specific fields (notes, preferred brand, etc.)
+**Status:** To be implemented. See `docs/specs/07-shopping-lists.md`.
+
+### AQ-6: Infrastructure (was OQ-4)
+**Decision:**
+- Supabase Realtime: Now available, should work
+- LLM: Use Ollama for development. Backburner image gen and image processing. Focus on LLM recipe generation.
+- Internet: Full access available from backend
+**Status:** Unblocks realtime testing & recipe URL import. Vision/image features remain parked.
