@@ -144,7 +144,7 @@ export default function HubScreen() {
   return (
     <YStack flex={1} backgroundColor="$background" testID="hub-screen">
       <ScrollView
-        contentContainerStyle={{ padding: 20, paddingBottom: 40 }}
+        contentContainerStyle={{ padding: 20, paddingBottom: 40, maxWidth: 800, width: '100%', alignSelf: 'center' }}
         refreshControl={
           <RefreshControl refreshing={false} onRefresh={handleRefresh} />
         }
