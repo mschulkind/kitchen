@@ -10,7 +10,7 @@
 
 import { useState } from 'react';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { ScrollView, Dimensions, Platform, Alert } from 'react-native';
+import { ScrollView, Dimensions } from 'react-native';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   YStack,
@@ -39,6 +39,7 @@ import {
 } from '@tamagui/lucide-icons';
 
 import { KitchenButton, FAB } from '@/components/Core/Button';
+import { ConfirmDialog } from '@/components/Core/ConfirmDialog';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -123,18 +124,7 @@ export default function RecipeDetailScreen() {
     },
   });
 
-  const handleDelete = () => {
-    if (Platform.OS === 'web') {
-      if (window.confirm(`Delete "${recipe?.title}"? This cannot be undone.`)) {
-        deleteRecipeMutation.mutate();
-      }
-    } else {
-      Alert.alert('Delete Recipe', `Delete "${recipe?.title}"? This cannot be undone.`, [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Delete', style: 'destructive', onPress: () => deleteRecipeMutation.mutate() },
-      ]);
-    }
-  };
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   if (isLoading) {
     return (
@@ -175,8 +165,9 @@ export default function RecipeDetailScreen() {
               size="$3"
               circular
               chromeless
+              cursor="pointer"
               icon={<Trash2 size={20} color="$red10" />}
-              onPress={handleDelete}
+              onPress={() => setShowDeleteConfirm(true)}
             />
           </XStack>
         ),
@@ -332,12 +323,16 @@ export default function RecipeDetailScreen() {
         </YStack>
       </ScrollView>
 
-      {/* Start Cooking FAB */}
-      <FAB
-        testID="start-cooking-fab"
-        icon={<ChefHat size={24} color="white" />}
-        backgroundColor="$green10"
-        onPress={() => router.push(`/(app)/recipes/${id}/cook`)}
+      {/* Delete Confirmation */}
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete Recipe"
+        message={`Delete "${recipe?.title}"? This cannot be undone.`}
+        onConfirm={() => {
+          setShowDeleteConfirm(false);
+          deleteRecipeMutation.mutate();
+        }}
+        onCancel={() => setShowDeleteConfirm(false)}
       />
     </>
   );

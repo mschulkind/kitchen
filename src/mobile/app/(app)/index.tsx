@@ -232,18 +232,6 @@ export default function HubScreen() {
               </Paragraph>
             )}
           </Card.Header>
-          {recipe && (
-            <Card.Footer padded>
-              <Button
-                testID="start-cooking-button"
-                theme="green"
-                icon={<ChefHat size={16} />}
-                onPress={() => router.push(`/(app)/recipes/${recipe.id}/cook`)}
-              >
-                Start Cooking
-              </Button>
-            </Card.Footer>
-          )}
         </Card>
 
         {/* Quick Stats Row */}
