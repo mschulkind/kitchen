@@ -25,8 +25,14 @@ export default function LandingScreen() {
       // For local development bypass if not configured:
       if (process.env.NODE_ENV === 'development' && !process.env.EXPO_PUBLIC_USE_REAL_OAUTH) {
         console.log('Dev Mode: Bypassing real OAuth for testing');
-        // Simulate a small delay for realistic feel
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Use dev login credentials to create a real session that persists
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email: 'admin@kitchen.local',
+          password: 'admin123',
+        });
+        if (signInError) {
+          console.warn('Dev auto-login failed, routing anyway:', signInError.message);
+        }
         router.replace('/(app)');
         return;
       }

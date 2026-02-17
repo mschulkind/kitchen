@@ -183,6 +183,8 @@ export default function HubScreen() {
           bordered
           animation="bouncy"
           pressStyle={{ scale: 0.98 }}
+          hoverStyle={{ borderColor: '$gray8' }}
+          cursor="pointer"
           marginBottom="$4"
           onPress={() =>
             recipe?.id && router.push(`/(app)/recipes/${recipe.id}`)
@@ -206,7 +208,7 @@ export default function HubScreen() {
                   {recipe.title}
                 </Paragraph>
                 <XStack space="$3" marginTop="$1">
-                  {recipe.prep_time_minutes && (
+                  {recipe.prep_time_minutes != null && recipe.prep_time_minutes > 0 && (
                     <XStack space="$1" alignItems="center">
                       <Clock size={14} color="$gray10" />
                       <Paragraph fontSize="$2" color="$gray10">
@@ -214,7 +216,7 @@ export default function HubScreen() {
                       </Paragraph>
                     </XStack>
                   )}
-                  {recipe.cook_time_minutes && (
+                  {recipe.cook_time_minutes != null && recipe.cook_time_minutes > 0 && (
                     <XStack space="$1" alignItems="center">
                       <ChefHat size={14} color="$gray10" />
                       <Paragraph fontSize="$2" color="$gray10">
@@ -253,6 +255,8 @@ export default function HubScreen() {
             bordered
             padding="$3"
             pressStyle={{ scale: 0.98 }}
+            hoverStyle={{ borderColor: '$gray8' }}
+            cursor="pointer"
             onPress={() => router.push('/(app)/shopping')}
           >
             <XStack space="$2" alignItems="center">
@@ -276,6 +280,8 @@ export default function HubScreen() {
             padding="$3"
             backgroundColor={expiringCount && expiringCount > 0 ? '$yellow2' : undefined}
             pressStyle={{ scale: 0.98 }}
+            hoverStyle={{ borderColor: '$gray8' }}
+            cursor="pointer"
             onPress={() => router.push('/(app)/inventory')}
           >
             <XStack space="$2" alignItems="center">
