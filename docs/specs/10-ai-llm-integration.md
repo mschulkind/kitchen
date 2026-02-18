@@ -193,6 +193,117 @@ RULES:
 
 ---
 
+## 📊 Recipe Scoring Algorithm
+
+> From the original phase-05 spec and planning-algorithm-and-ux.md — the math behind smart recipe selection.
+
+### Scoring Dimensions
+
+Each recipe in the database is scored across multiple dimensions when generating meal plans:
+
+| Dimension | Weight | Description |
+|-----------|--------|-------------|
+| **Pantry Match** | 40% | What % of ingredients does the user already have? |
+| **Spoilage Urgency** | 20% | Does it use ingredients that are about to expire? |
+| **Effort Match** | 15% | Does prep/cook time match the user's request? |
+| **Preference Match** | 15% | Does it align with dietary prefs, cuisine biases, favorites? |
+| **Novelty** | 10% | Has the user cooked this recently? Variety bonus for new recipes. |
+
+### Scoring Formula
+
+```python
+def score_recipe(recipe, pantry, preferences, request):
+    # Pantry match: % of ingredients available
+    pantry_score = matching_ingredients / total_ingredients
+    
+    # Spoilage: bonus for using expiring items
+    spoilage_score = sum(
+        1.0 / max(days_until_expiry(item), 1)  
+        for item in matching_expiring_items
+    ) / total_ingredients
+    
+    # Effort: penalty for mismatch with requested effort level
+    effort_score = 1.0 - abs(recipe.effort_level - request.effort) / max_effort
+    
+    # Preference: bonus for matching cuisine, dietary, favorites
+    pref_score = (
+        cuisine_match * 0.4 + 
+        dietary_match * 0.4 + 
+        is_favorite * 0.2
+    )
+    
+    # Novelty: penalty for recently cooked
+    novelty_score = min(days_since_last_cooked / 14, 1.0)
+    
+    return (
+        pantry_score * 0.40 +
+        spoilage_score * 0.20 +
+        effort_score * 0.15 +
+        pref_score * 0.15 +
+        novelty_score * 0.10
+    )
+```
+
+### Scoring Context
+
+The Tweak Bar sliders (from spec 06) directly modify these weights. "Empty Fridge" mode cranks Pantry Match to 60%. "Wild" mode cranks Novelty to 30%.
+
+---
+
+## 🔮 Prompt Templates Library
+
+> From the original design-system.md — standardized prompts for all AI interactions.
+
+### 1. Basic Meal Plan Generation
+```
+You are a meal planning assistant. Generate a {days}-day meal plan for 
+{servings} people, using as many of these pantry items as possible: 
+{pantry_list} and garden items: {garden_list}. Prioritize ingredient 
+reuse and simple recipes (under 45min prep). Exclude {diet_restrictions}. 
+Output valid JSON: {days: [{day, recipe_name, ingredients_used, 
+new_shopping_list_items, instructions}]}
+```
+
+### 2. Recipe Substitution & Customization
+```
+You are a recipe customization assistant. The user wants to make 
+'{recipe_name}' which requires {full_ingredients_list}. They only have: 
+{available_pantry}. Suggest substitutions for missing ingredients. 
+Consider dietary preferences: {prefs}. Output JSON: {original_recipe, 
+substitutions: [{original, substitute, rationale}], adjusted_instructions, 
+nutritional_notes}
+```
+
+### 3. Low-Waste Plan with Leftovers
+```
+You are a waste-reduction assistant. Create a 3-day meal plan that 
+minimizes food waste. Use leftovers from: {previous_meals} and pantry: 
+{pantry_list}. Focus on {cuisine_pref} recipes. Output JSON: {days: 
+[{day, recipe_name, uses_leftovers_from, shopping_list_additions}]}
+```
+
+### 4. Garden Surplus Optimization
+```
+You are a garden-to-table assistant. Suggest 2-3 recipes using garden 
+surplus: {garden_items_with_quantities}. Supplement with staples: 
+{pantry_staples}. Respect: {diet_restrictions}. Output JSON: {recipes: 
+[{recipe_name, key_garden_ingredients, full_ingredient_list, instructions, 
+prep_time_minutes}]}
+```
+
+### 5. Ingredient Parser (LLM-Enhanced)
+```
+Parse this ingredient line into structured data. Return JSON:
+{quantity, unit, item_name, notes, section, confidence}
+
+Input: "{raw_ingredient_text}"
+Examples:
+- "1 large onion, diced" → {quantity: 1, unit: "large", item_name: "onion", notes: "diced"}
+- "2 cans (14.5 oz) diced tomatoes" → {quantity: 2, unit: "can (14.5 oz)", item_name: "diced tomatoes"}
+```
+
+---
+
 ## Open Questions
 
 ### OQ-AI-01: Ollama Access
@@ -212,3 +323,9 @@ Should we replace the rule-based ingredient parser with an LLM parser? More accu
 
 ### OQ-AI-06: Caching
 Should we cache LLM responses? (e.g., same pantry + same query = cached result)
+
+### OQ-AI-07: Fine-Tuning vs. Prompting
+Should we fine-tune a small model on recipe data for better structured output? Or is prompt engineering sufficient?
+
+### OQ-AI-08: Multi-Model Strategy
+Should different features use different models? (e.g., fast/cheap model for categorization, powerful model for recipe chat)

@@ -260,6 +260,82 @@ Frontend                    Backend                     LLM
 
 ---
 
+## 🧑‍🍳 Context Export: The "Chef's Chat" Bridge
+
+> From the original planning-algorithm-and-ux.md — a power-user feature for using external AI assistants while cooking.
+
+### The "Copy for AI" Feature
+
+A prominent "Copy for AI" button on every Recipe and Plan view generates a rich, formatted prompt and copies it to the clipboard. The user can then paste it into their preferred external LLM (Gemini Advanced, ChatGPT, Claude) for real-time cooking help.
+
+### Prompt Format
+
+```text
+You are my Sous Chef. Here is what I am cooking:
+
+RECIPE: Chicken Tinga Tacos
+- Servings: 4
+- Ingredients: [List with user's specific brands/quantities]
+- Steps: [Full instructions]
+
+MY INVENTORY CONTEXT:
+- I have: [Related pantry items, e.g., "Sour cream (low)"]
+
+CURRENT STATE:
+I am about to start. Please be ready to answer questions about 
+substitutions, timing, or technique. Wait for my first question.
+```
+
+### Use Cases
+- "Can I sub greek yogurt for sour cream?"
+- "How do I know when the chicken is done?"
+- "I'm running behind on the rice — what can I do?"
+- "What wine pairs with this?"
+
+### Implementation
+- Backend: `POST /cooking/export/{recipe_id}` (already built!)
+- Frontend: "Copy for AI" button → clipboard API
+- Include pantry context and stock status in the export
+- Optional: Include the full meal plan context if cooking multiple dishes
+
+---
+
+## 🧠 Prompt Engineering: System Prompt Design
+
+### Core System Prompt Template
+
+```text
+You are a friendly, creative chef assistant for the Kitchen app.
+
+HOUSEHOLD CONTEXT:
+- Household size: {household_size}
+- Dietary restrictions: {restrictions}
+- Dislikes: {dislikes}
+- Equipment: {equipment}
+
+PANTRY CONTENTS (current):
+{pantry_items_formatted}
+
+CONVERSATION GUIDELINES:
+1. Always propose 2-3 options when asked for recipe ideas
+2. Calculate pantry match % for each proposal
+3. Suggest substitutions for missing ingredients
+4. Return structured JSON for recipe data (ingredients with qty/unit/name)
+5. Be encouraging and fun — use food emojis
+6. If the user seems indecisive, ask focused questions to narrow down
+7. Consider ingredient reuse across meals
+```
+
+### Specialized Prompt Templates
+
+1. **"Use What's Expiring"**: Prioritize items near expiry date
+2. **"Garden Surplus"**: Focus on fresh garden produce
+3. **"Low-Waste Leftover"**: Build on previous meals' leftovers
+4. **"Budget-Friendly"**: Minimize shopping list additions
+5. **"Kid-Friendly"**: Simple flavors, no spice, fun presentation ideas
+
+---
+
 ## Open Questions
 
 ### OQ-CHAT-01: Ollama Model Selection
@@ -285,3 +361,9 @@ What happens if the LLM is unavailable? Show error? Suggest URL import instead?
 
 ### OQ-CHAT-08: Cost / Rate Limiting
 For cloud LLMs (production), how do we manage costs? Per-household rate limits?
+
+### OQ-CHAT-09: Conversation Starters
+Should the app suggest different conversation starters based on time of day, pantry state, or season? (e.g., "It's Friday — how about something special?" or "Your spinach expires tomorrow — let's use it!")
+
+### OQ-CHAT-10: Recipe Comparison
+When AI proposes 2-3 options, should there be a side-by-side comparison view? (Time, difficulty, pantry match, ingredients needed)
