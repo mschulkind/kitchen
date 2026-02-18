@@ -239,6 +239,200 @@ plan_slots
 
 ---
 
+## 🎰 The Slot Machine: Granular Meal Refinement
+
+> These ideas come from the original "Planning Algorithm & UX" design and Phase 6 spec. They describe the **dream UX** for meal plan refinement — turning plan tweaking from a chore into something fun.
+
+### The Concept
+
+Once a user has selected an "Adventure Path" (theme), the plan is displayed as a grid where each day has **component slots** (Main dish, Side dish). The user can interact with these slots like a slot machine — locking what they like, spinning what they don't.
+
+### Slot Machine UI
+
+```
+┌─────────────── Monday ───────────────┐
+│ 🔒 Main: Honey Garlic Chicken  [🎰] │
+│ 🔓 Side: Roasted Broccoli      [🎰] │
+└──────────────────────────────────────┘
+┌─────────────── Tuesday ──────────────┐
+│ 🔓 Main: Chicken Tinga Tacos   [🎰] │
+│ 🔓 Side: Mexican Rice          [🎰] │
+└──────────────────────────────────────┘
+```
+
+### Interactions
+
+- **🔒 Lock**: Tap the lock icon on any component (Main or Side) to preserve it during re-rolls
+- **🎰 Spin (Single Slot)**: Tap the spin icon on just the Main or just the Side — keeps the other
+- **🎰 Spin (Whole Day)**: Spin button at day level replaces all unlocked slots for that day
+- **🌀 Global Re-roll**: "Shuffle all unlocked slots" across the entire plan, respecting the theme
+- **💬 Micro-Direction**: When hitting Spin, optional text input appears: "Make it spicy", "Too heavy, something lighter", "Kids won't eat this"
+- **Long-press Spin**: Shows the directive input for more targeted re-rolling
+
+### Data Model for Slot Machine
+
+```sql
+-- Extends meal_plan_days or plan_slots
+ALTER TABLE plan_slots ADD COLUMN is_main_locked BOOLEAN DEFAULT FALSE;
+ALTER TABLE plan_slots ADD COLUMN is_side_locked BOOLEAN DEFAULT FALSE;
+ALTER TABLE plan_slots ADD COLUMN side_recipe_id UUID REFERENCES recipes(id);
+```
+
+### Refinement API
+
+```
+POST /api/v1/plans/{plan_id}/reroll
+Body: {
+  "day_date": "2026-02-20",
+  "slot": "main" | "side" | "both",
+  "directive": "Make it spicy",  // optional
+  "locked_slots": ["2026-02-19:main", "2026-02-20:main"]
+}
+Response: { "new_recipe": { ... }, "alternatives": [...] }
+```
+
+---
+
+## 🃏 The Card Stack: Theme Selection UX
+
+> From the original "Choose Your Own Adventure" design — the AI doesn't just generate a plan, it generates **strategy options** that feel meaningfully different.
+
+### Strategy Pitch
+
+The AI analyzes inventory + preferences and proposes 3 distinct **Adventure Paths**:
+
+> **User**: "Plan for Mon-Thu. Use the chicken."
+>
+> **AI**: "Okay, here are 3 ways we can play this:"
+>
+> 1. 🏠 **The "Efficiency" Path**: Roast the whole chicken Monday. Tacos Tuesday. Soup Wednesday. (Low effort, high reuse).
+> 2. 🌍 **The "Global Tour" Path**: Chicken Curry (Indian) on Mon. Chicken Schnitzel (German) on Tue. (High variety, more prep).
+> 3. 🥗 **The "Healthy/Light" Path**: Poached chicken salads and grain bowls. (Low calorie, fresh).
+
+### Card Stack UI
+
+- **Visual**: Horizontal scroll of "Strategy Cards"
+- **Content**: Large emoji + theme name + "Why this path?" narrative + "Inventory Used" progress bar + estimated shopping items count
+- **Selection**: Tap card to select, green border + checkmark appears
+- **Animation**: Cards fan out like a hand of cards, selected card slides to center
+
+### The Algorithm (Under the Hood)
+
+1. **Inventory & Constraint Retrieval**: Fetch pantry items (qty > 0), user preferences, filtered recipes
+2. **Candidate Pool Generation**: Score every recipe by:
+   - **Use-Up Score**: How many pantry items does it use? (Weighted by expiry — rotting spinach scores highest)
+   - **Effort Score**: Prep time vs. user's "Low effort" request
+   - **Preference Match**: Does it fit the "Vibe"?
+3. **Strategy Clustering** (The Magic): LLM takes top 20 candidates and groups them:
+   - Cluster 1: Common Ingredient (e.g., "All use Chicken")
+   - Cluster 2: Common Vibe (e.g., "Quick & Easy")
+   - Cluster 3: Novelty (e.g., "Recipes you haven't tried")
+4. **Narrative Generation**: LLM writes the "Pitch" for each path
+
+### Data Structures
+
+```typescript
+type PlanRequest = {
+  dateRange: DateRange;
+  attendees: number;
+  constraints: string[];  // "No dairy"
+  goals: string[];        // "Use spinach"
+};
+
+type PlanStrategy = {
+  id: string;
+  title: string;           // "The Comfort Route"
+  description: string;     // "Hearty meals for a rainy week."
+  primary_focus: "efficiency" | "variety" | "speed" | "health" | "adventure";
+  preview_recipes: RecipeStub[];
+  inventory_usage_pct: number;
+  estimated_shopping_items: number;
+};
+
+type DraftPlan = {
+  strategy_id: string;
+  days: {
+    date: Date;
+    main: Recipe;
+    side: Recipe | null;
+    locked: boolean;
+    alternatives: Recipe[];  // Pre-fetched for "Spinning"
+  }[];
+};
+```
+
+---
+
+## 🎚️ The Tweak Bar: Algorithm Weight Controls
+
+Instead of (or in addition to) typing constraints, give the user **sliders** for the algorithm weights:
+
+| Slider | Left | Right |
+|--------|------|-------|
+| **Adventurousness** | 🏠 Safe | 🌍 Wild |
+| **Effort** | 😴 Lazy | 👨‍🍳 Chef Mode |
+| **Pantry Usage** | 🛒 Buy Fresh | 🧹 Empty Fridge |
+| **Health** | 🍔 Comfort | 🥗 Clean Eating |
+
+These sliders directly weight the scoring algorithm: a "Wild + Chef Mode + Empty Fridge" configuration surfaces complex recipes using obscure pantry items, while "Safe + Lazy + Buy Fresh" gives simple crowd-pleasers with a bigger shopping list.
+
+---
+
+## 🍗 Leftover Chain: Multi-Day Ingredient Reuse
+
+> From the original brief: "The app will prioritize recipes that share ingredients, use up garden surpluses, and incorporate leftovers (e.g., roast chicken one night, chicken soup the next)."
+
+### How It Works
+
+1. **Detection**: When generating plans, AI identifies "leftover chain" opportunities
+2. **Display**: Day 2 meals show "Uses leftovers from Day 1" badge
+3. **Tracking**: After cooking, prompt "Did you have leftovers? How much?" — feeds into next day's plan
+4. **Scoring**: Leftover chains get a scoring bonus (less food waste = better plan)
+
+### Example Chain
+
+```
+Day 1: Whole Roast Chicken (4 servings) → 2 servings leftover
+Day 2: Chicken Tinga Tacos (uses leftover chicken) → leftover tortillas
+Day 3: Chicken Tortilla Soup (uses leftover chicken + tortillas)
+```
+
+**Fun fact:** 🐋 Whale sharks filter 6,000 liters of water per hour but still manage zero food waste. That's the energy we want. ♻️
+
+---
+
+## 🎮 Gamification Ideas (Future)
+
+> Inspired by research into apps like Mealime, Kitmate, Recipe Roulette, and Duolingo-style habit building.
+
+### Recipe Roulette / Tinder-Style Swiping
+- **Swipe right** on recipes you'd eat this week, **swipe left** to skip
+- AI learns your preferences from swipe patterns
+- Great for "I don't know what I want" moments — faster than browsing
+
+### Cooking Streaks
+- Track consecutive days/weeks of cooking at home
+- Milestone badges: "Week Warrior 🏅", "Month Master 🎖️", "Global Explorer 🌍" (tried 5 cuisines)
+- Gentle streak notifications: "You've cooked 12 days in a row!"
+
+### Family Voting
+- Each household member votes on proposed meals (👍/👎 or ⭐ ratings)
+- AI weighs votes by household role (e.g., the cook's vote counts more)
+- Weekly "Most Popular Meal" highlight
+- "Dad's Pick of the Week" leaderboard
+
+### Ingredient Challenges
+- "Pantry Challenge": Cook using only what's in your pantry this week
+- "Use It or Lose It": Challenge to use 3 expiring items before they go bad
+- "Global Tour": Cook one dish from a different country each week
+
+### Achievement System
+- Badges for milestones (first recipe imported, first plan generated, 10th meal cooked)
+- Skill recognition: "Pasta Master" (cooked 10 pasta dishes), "Grill Sergeant" (5 grilled meals)
+- Progress bars for long-term goals
+
+---
+
 ## Open Questions
 
 ### OQ-PLN-01: Data Model Reconciliation
@@ -258,3 +452,12 @@ The phase 0 prototypes emphasize main + side pairing. How explicit should this b
 
 ### OQ-PLN-06: Leftover Tracking
 Phase 0 mentions "repurposing leftovers" (e.g., roast chicken → soup). Should the planner track leftovers and suggest follow-up meals?
+
+### OQ-PLN-07: Gamification MVP
+Which gamification feature should we try first? Cooking streaks are simplest. Tinder-swiping is flashiest. Family voting requires multi-user. What's the best ROI?
+
+### OQ-PLN-08: Tweak Bar Implementation
+Should the Tweak Bar (sliders) be part of the plan generation screen, or a separate "preferences" view that persists across sessions?
+
+### OQ-PLN-09: Leftover Chain Automation
+How much should leftover chains be automated vs. manual? Should the AI assume leftovers, or only suggest chains when user confirms leftovers?

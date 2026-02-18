@@ -154,6 +154,60 @@ Need store data model, per-store aisle config, learning algorithm.
 
 ---
 
+## 🅿️ P7: Recipe PDF Output (Planned)
+
+> From recipe-format-design.md — beautiful printable recipe cards.
+
+### Concept
+- Generate PDF recipe cards with professional food-magazine layout
+- Include mise-en-place checklists, interleaved timelines for main + side
+- Color-coded sections (orange = active cooking, blue = prep, green = resting)
+- Countdown timer cues embedded as text
+- QR code back to in-app recipe
+- Backend: Jinja2 templates → WeasyPrint PDF generation
+
+### API (Planned)
+```
+GET /api/v1/recipes/{id}/pdf
+GET /api/v1/recipes/{id}/pdf?side_recipe_id={uuid}&include_shopping=true
+```
+
+### Reactivation Cost: Medium
+Need template design, WeasyPrint integration, and font/styling choices.
+
+---
+
+## 🅿️ P8: Batch Cooking / Meal Prep Mode (Idea)
+
+> Inspired by MealPrepPro and the original brief's "leftovers" vision.
+
+### Concept
+- "Prep Day" mode: select multiple recipes, get a unified prep timeline
+- Shared prep steps consolidated ("dice onions for recipes A, B, and C at once")
+- Container portioning guide ("divide into 4 containers, 3 for freezer")
+- Automatic scaling for batch sizes
+- Integrates with leftover chain tracking in planner
+
+### Reactivation Cost: High
+Significant new feature, but aligns well with existing recipe + planner infrastructure.
+
+---
+
+## 🅿️ P9: Smart Home / IoT Integration (Idea)
+
+> Inspired by Whisk (Samsung Food) and smart kitchen trends.
+
+### Concept
+- Integration with smart kitchen timers
+- Oven temperature presets sent to smart oven
+- Smart fridge inventory sync (if supported)
+- Google Home / Alexa voice assistant integration (webhook base already exists)
+
+### Reactivation Cost: High
+Depends on specific devices, but webhook infrastructure is already built.
+
+---
+
 ## Summary
 
 | Feature | Code Exists | Backend | Entry Points | Reactivation |
@@ -164,3 +218,6 @@ Need store data model, per-store aisle config, learning algorithm.
 | Voice Commands | ✅ Webhook routes | ✅ 3 endpoints | ❌ Button removed | N/A (works) |
 | Manual Recipe | ✅ new.tsx | ✅ POST endpoint | ❌ Removed from menu | Very Low |
 | Store Intelligence | ⚠️ Basic only | ✅ Sort endpoint | ✅ Settings input | Medium |
+| Recipe PDF | ❌ | ❌ | ❌ | Medium |
+| Batch Cooking | ❌ | ❌ | ❌ | High |
+| Smart Home / IoT | ⚠️ Webhooks | ✅ Voice endpoints | ❌ | High |

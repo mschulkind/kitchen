@@ -213,6 +213,103 @@ recipe_ingredients
 
 ---
 
+## 📄 Recipe PDF Export
+
+> From the original recipe-format-design.md — generate beautiful, printable recipe cards.
+
+### Concept
+
+A "Print / Export" button on any recipe generates a formatted PDF with:
+- **Header**: Recipe title, source attribution, servings, times
+- **Mise en Place**: Organized ingredient checklist by section
+- **Timeline**: Interleaved steps for main dish + side dish that finish at the same time
+- **Shopping List**: Only missing items (after stock check)
+
+### Format Ideas
+- Color-coded sections (orange for active cooking, blue for prep, green for resting)
+- Countdown timers embedded as text cues ("Set timer: 25 min")
+- QR code linking back to the in-app recipe for digital access while shopping
+- Jinja2 template rendering on the backend → PDF via WeasyPrint or similar
+
+### API
+```
+GET /api/v1/recipes/{id}/pdf
+GET /api/v1/recipes/{id}/pdf?include_shopping=true&side_recipe_id={uuid}
+```
+
+---
+
+## ⭐ Favorites & Recipe Organization
+
+> From todo.txt and the original phase specs — ways to curate and prioritize your recipe collection.
+
+### Favorites
+- **Star/Heart icon** on recipe cards and detail view
+- `is_favorite BOOLEAN` field on recipes table
+- Favorites filter on the recipe list ("Show favorites only")
+- Favorites get **priority weighting** in meal plan generation — the AI should prefer your favorites
+- "Save as Favorite" prompt after cooking a meal from the planner
+
+### Tags & Categories
+- User-assignable tags: "weeknight", "kid-friendly", "date night", "meal prep", "comfort food", "quick", "vegetarian"
+- AI auto-suggests tags based on recipe content during import/creation
+- Tag-based filtering on recipe list (multi-select chip bar)
+- Tags influence meal plan diversity — AI avoids planning 5 "comfort food" meals in a row
+
+### Recipe Collections (Future)
+- Curated lists: "Summer Grilling", "Slow Cooker Favorites", "Holiday Meals"
+- Share collections with other households
+- Import community-curated collections
+
+---
+
+## 📏 Recipe Scaling
+
+> From todo.txt — handle different serving sizes intelligently.
+
+### How It Works
+- Recipe detail shows a **servings adjuster** (stepper: -/+)
+- Changing servings recalculates all ingredient quantities proportionally
+- Stock check uses the **adjusted quantities**, not the original
+- Shopping list items reflect the scaled amounts
+- Some ingredients don't scale linearly (e.g., salt, spices) — flag these
+
+### Smart Scaling Rules
+- Round to practical measurements (don't say "0.67 cups" — say "⅔ cup")
+- Handle unit conversions during scaling (e.g., 0.25 cups → 4 tablespoons)
+- Flag when scaling down below practical minimums ("Can't halve 1 egg easily")
+
+---
+
+## 🏷️ Ingredient Specification Improvements
+
+> From todo.txt — "when specifying '1 can', also specify the size of the can"
+
+### Can/Package Sizes
+- Ingredient parser should extract container sizes: "1 can (14.5 oz) diced tomatoes"
+- Display both container count AND volume/weight
+- Stock check matches against actual pantry container sizes
+- Common can sizes stored as reference data: 14.5oz, 15oz, 28oz, etc.
+
+### Weight vs. Volume Support
+- Support both weight (grams, oz, lbs) and volume (cups, tbsp, ml) measurements
+- Smart conversion between weight and volume for common ingredients
+- User preference for metric vs. imperial (stored in settings)
+
+---
+
+## ⏱️ Time-Based Filtering
+
+> From todo.txt — "keep recipes under one hour including prep, or make this configurable"
+
+- **Default filter**: Show total time (prep + cook) on recipe cards
+- **Time filter** on recipe list: "Under 30 min", "Under 1 hour", "Any time"
+- **Configurable max time** in settings (household preference)
+- AI plan generation respects time constraints: "Only weeknight-friendly meals (under 45 min)"
+- Time-based tags auto-applied: "Quick" (< 30 min), "Medium" (30-60 min), "Project" (> 60 min)
+
+---
+
 ## Open Questions
 
 ### OQ-RCP-01: Recipe Categories/Tags
@@ -229,3 +326,12 @@ Current parser has confidence scores. Should we show low-confidence parses to us
 
 ### OQ-RCP-05: Recipe Source Variety
 Beyond URL import and AI chat, should we support other sources? (e.g., shared recipes from other households, curated collections)
+
+### OQ-RCP-06: PDF Layout
+Should PDFs include interleaved main+side timelines by default? Or only when a side dish is specified?
+
+### OQ-RCP-07: Favorite Weighting
+How much should favorites influence meal plan generation? Always include at least 1 favorite per week? Or just boost their score?
+
+### OQ-RCP-08: Scaling Edge Cases
+How to handle non-linear scaling (salt, yeast, baking powder)? Manual override table? AI suggestion?

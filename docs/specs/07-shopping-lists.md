@@ -315,3 +315,63 @@ The user mentioned starting with one store. When do we add multi-store? What cha
 
 ### OQ-SHOP-06: Recipe Source Annotation
 When items come from meal plan generation, should the list show which recipe they're for? (e.g., "Chicken thighs — for Honey Garlic Chicken")
+
+---
+
+## 🏪 Store Intelligence (Future Enhancement)
+
+> From the original phase-08 spec — make shopping lists aware of actual store layouts.
+
+### Phase 1: Basic Category Sorting (Built)
+- Items sorted by grocery category: Produce → Dairy → Meat → Bakery → Frozen → Beverages → Pantry → Other
+- Works for any store since most follow similar general layouts
+
+### Phase 2: Per-Store Aisle Mapping (Planned)
+- User can configure aisle numbers per category for their preferred store
+- Shopping list sorted by actual aisle order for that specific store
+- "Learning mode": app remembers when users manually reorder items
+
+### Phase 3: Advanced Store Intelligence (Future)
+- **Store floor plan visualization** — map view of the store with your items plotted
+- **Optimal path calculation** — shortest walking route through the store
+- **Multi-store support** — different aisle configs per store, pick which store you're at
+- **Community data** — share aisle mappings with other users of the same store
+- **Price tracking** — estimated cost per item, budget totals
+
+### Per-Store Data Model (Future)
+```sql
+CREATE TABLE store_configs (
+  id UUID PRIMARY KEY,
+  household_id UUID REFERENCES households(id),
+  store_name TEXT NOT NULL,
+  is_default BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE store_aisle_mappings (
+  id UUID PRIMARY KEY,
+  store_config_id UUID REFERENCES store_configs(id),
+  category TEXT NOT NULL,       -- e.g., "Produce"
+  aisle_number TEXT,            -- e.g., "1" or "Perimeter"
+  sort_order INTEGER,           -- order when walking the store
+  notes TEXT                    -- e.g., "Back wall"
+);
+```
+
+---
+
+## 🛒 Grocery Delivery Integration (Future Idea)
+
+> Inspired by Mealime, Whisk, and other apps that connect to delivery services.
+
+### Concept
+- Export shopping list to delivery services (Instacart, Amazon Fresh, Walmart)
+- One-tap "Order Online" button that pre-fills your cart
+- Price comparison across services
+- Delivery scheduling from within the app
+
+### Implementation
+- Most services have affiliate APIs or URL-based cart building
+- Start with simple "export as text" for manual pasting
+- Graduate to API integration for popular services
+
+**Fun fact:** 🐋 Whales migrate thousands of miles for food but never use Instacart. We can do better. 📦
