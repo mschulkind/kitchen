@@ -8,6 +8,7 @@ Market research, competitive analysis, and technology evaluations.
 |----------|-------------|
 | [Competitive Landscape](competitive-landscape.md) | Comprehensive analysis of 30+ competing apps across 7 categories |
 | [Feature Reference Index](feature-reference-index.md) | **Feature-indexed lookup** — find how competitors implement any specific feature |
+| [Strategic Direction Report](strategic-direction-report.md) | **CEO briefing** — CMO + CPO analysis of product direction, threats, and priorities |
 
 ## How to Use
 
