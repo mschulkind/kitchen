@@ -54,6 +54,6 @@ The [User Flow Tracker](user-flow-tracker.md) is the source of truth for what's 
 
 | Date | Session | Key Findings |
 |------|---------|-------------|
-| 2026-01-16 | [Log 1](logs/manual_testing_log.md) | Early testing protocol, first bugs found |
-| 2026-01-19 | [Log 2](logs/manual_testing_log_2026-01-19.md) | OAuth & pantry persistence blockers identified |
+| 2026-01-16 | [Log 1](log-2026-01-16.md) | Early testing protocol, first bugs found |
+| 2026-01-19 | [Log 2](log-2026-01-19.md) | OAuth & pantry persistence blockers identified |
 | 2026-02-16+ | Rounds 3-7 | 23 bugs fixed, 90% pass rate achieved |
