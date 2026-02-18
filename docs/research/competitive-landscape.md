@@ -161,6 +161,27 @@ The kitchen/meal planning app market in 2025–2026 is **fragmented across 6+ ca
 - **Weaknesses:** No free version; per-platform purchase; no real-time collaboration
 - **Kitchen Opportunity:** We match their scraping quality AND add AI chat, multi-user, real-time sync.
 
+### Cooked.wiki
+- **Website:** [cooked.wiki](https://cooked.wiki)
+- **Pricing:** Free (core); Patron subscription for premium features
+- **Platforms:** Web (PWA)
+- **Best For:** AI-powered recipe cleanup, video-to-recipe, and beautiful cook mode
+- **Key Features:**
+  - AI strips cluttered recipe websites into clean instructions (the "original" smart cooking app)
+  - **Video-to-recipe:** YouTube, TikTok, Instagram → step-by-step instructions
+  - **Sub-recipe diagrams:** break complex recipes into clickable flowcharts
+  - **Ingredient sorting by role** — see importance at a glance
+  - **AI voice reads recipe** as audio playlist while you cook
+  - **Voice conversation capture** — record someone explaining a recipe, AI structures it
+  - Import from any file: Word, PDF, photos of handwritten recipes
+  - Auto-generated beautiful printable PDFs
+  - Public profile for social sharing
+  - Automatic recipe organization
+- **Reviews:** "Smartest web app I've used in years." Featured worldwide for innovation.
+- **Strengths:** Best AI recipe extraction in market; video import is magical; sub-recipe flowcharts unique; generous free tier (no ads, ever)
+- **Weaknesses:** Web-only (no native app); no meal planning or shopping lists; no inventory
+- **Kitchen Opportunity:** Their video-to-recipe and voice capture are genuinely innovative. Sub-recipe diagrams align with our interleaved cooking timeline. Their clean extraction quality is the bar to beat. We cover all the categories they DON'T (planning, shopping, pantry, multi-user).
+
 ### CopyMeThat
 - **Website:** [copymethat.com](https://www.copymethat.com)
 - **Pricing:** Free (core); paid premium
@@ -552,6 +573,8 @@ How Kitchen stacks up against the competitive landscape:
 | PDF Export | ❌ | 🔮 Spec'd | Paprika | 🔴 Behind |
 | Expense Tracking | ❌ | — | KitchenOwl (unique) | 🟡 Niche |
 | Photo Pantry Scan | ❌ | 🔮 Future | Portions Master | 🔴 Behind |
+| Video-to-Recipe | ❌ | 🔮 Future | Cooked.wiki (unique) | 🔴 Behind |
+| Sub-Recipe Diagrams | ❌ | 🔮 Future | Cooked.wiki (unique) | 🔴 Behind |
 | Leftover Chain | ❌ | 🔮 Spec'd | Nobody! | ✅ **Unique** |
 | Family Voting | ❌ | 🔮 Spec'd | MealChef | 🟡 Equal |
 
@@ -585,6 +608,7 @@ How Kitchen stacks up against the competitive landscape:
 3. **Long-term:** Voice cooking, grocery delivery integration, gamification — these drive retention and delight
 
 ### 💡 Ideas Stolen From Competitors
+- **From Cooked.wiki:** Video-to-recipe extraction, sub-recipe flowcharts, AI voice reading recipes
 - **From Tandoor:** Invest in mobile UX polish (their Kitshn app is gorgeous)
 - **From AnyList:** Auto-categorize shopping items by aisle from day one
 - **From SideChef:** Adaptive pacing in cook mode (detects user speed)
