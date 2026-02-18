@@ -14,6 +14,7 @@
 | [**architecture/**](architecture/) | Technical architecture, design system, UX flows, decisions | [architecture/README.md](architecture/README.md) |
 | [**roadmap/**](roadmap/) | Current status, priorities, and future vision | [roadmap/README.md](roadmap/README.md) |
 | [**qa/**](qa/) | QA tracking, test results, manual testing logs | [qa/README.md](qa/README.md) |
+| [**research/**](research/) | Market research, competitive analysis, technology evaluations | [research/README.md](research/README.md) |
 | [**obsolete/**](obsolete/) | Archived docs — kept for reference, may be deleted | [obsolete/README.md](obsolete/README.md) |
 
 ---
@@ -31,6 +32,7 @@
 - **"What decisions have been made?"** → [Architecture Decisions](architecture/decisions/)
 - **"What's still undecided?"** → [Open Questions](../OPEN_QUESTIONS.md)
 - **"What's parked for later?"** → [Parking Lot Spec](specs/11-parking-lot.md)
+- **"Who are our competitors?"** → [Competitive Landscape](research/competitive-landscape.md)
 
 ---
 
