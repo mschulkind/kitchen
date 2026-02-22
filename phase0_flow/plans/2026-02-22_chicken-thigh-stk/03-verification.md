@@ -15,8 +15,8 @@
 - [ ] Ginger (User has powder, but fresh is a bonus if found)
 
 ### 🥫 Pantry
-- [ ] Coconut Milk (13.5 oz can) - **Need to confirm quantity in pantry**
-- [x] Coconut Oil or Avocado Oil (for sautéing)
+- [x] Coconut Milk (13.5 oz can)
+- [x] Coconut Oil or Avocado Oil (Backup only)
 - [x] Cumin (ground)
 - [x] Coriander (ground)
 - [x] Ginger Powder
@@ -30,6 +30,6 @@
 ---
 
 ## 🧐 Verification Questions
-1. **Coconut Milk:** Do you have a full 13.5 oz can, or a partial?
-2. **The Schmaltz:** Should we use the schmaltz (the fat on top of the stock) for sautéing the onions to add extra "chicken-y" depth, or keep it lighter with coconut oil?
-3. **Starch:** The root veggies provide some starch, but would you like a side of **Quinoa** or **Rice** to soak up that golden sauce, or keep it as a thick stew/potage?
+1. **Coconut Milk:** CONFIRMED (Full 13.5 oz can). ✅
+2. **The Schmaltz:** CONFIRMED (Use for sautéing). ✅
+3. **Starch:** CONFIRMED (Just stew, no side). ✅
