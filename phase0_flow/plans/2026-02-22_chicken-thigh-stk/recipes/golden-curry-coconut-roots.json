@@ -1,0 +1,84 @@
+{
+  "title": "Golden Curry Coconut Roots & Greens",
+  "emoji": "🥘",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "1-2 cups", "name": "Braised Chicken Thighs", "prep": "shredded or chopped"},
+      {"amount": "1 cup", "name": "Braise Liquid / Chicken Stock"},
+      {"amount": "13.5 oz can", "name": "Coconut Milk"},
+      {"amount": "1 bag", "name": "Fire-roasted Root Vegetables"},
+      {"amount": "2-3 cups", "name": "Fresh Spinach"},
+      {"amount": "1 tbsp", "name": "Chicken Schmaltz (or Coconut Oil)"},
+      {"amount": "1 tsp", "name": "Ground Cumin"},
+      {"amount": "1 tsp", "name": "Ground Coriander"},
+      {"amount": "1/2 tsp", "name": "Ginger Powder"},
+      {"amount": "1/2 tsp", "name": "Aleppo Pepper"},
+      {"amount": "to taste", "name": "Salt & Pepper"}
+    ],
+    "knife_work": [
+      {"amount": "1", "name": "Yellow Onion", "prep": "diced"},
+      {"amount": "3 cloves", "name": "Garlic", "prep": "minced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "3 cloves", "name": "Garlic"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Dice the onion and mince the garlic. Shred or chop the leftover chicken thighs. Measure out your spices into a small bowl.",
+      "meanwhile": { "ingredients": "Spinach", "action": "Wash and pat dry the spinach if needed." }
+    },
+    {
+      "minutes_before_done": 20,
+      "duration_minutes": 7,
+      "ingredients": [
+        {"amount": "1 tbsp", "name": "Chicken Schmaltz"},
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "3 cloves", "name": "Garlic"}
+      ],
+      "action_name": "Sauté Aromatics",
+      "action_description": "In a large pot or deep skillet, melt the schmaltz over medium heat. Add the onion and sauté until translucent (about 5 mins). Stir in the garlic and cook for 1-2 minutes until fragrant.",
+      "meanwhile": { "ingredients": "Spices", "action": "Get your cumin, coriander, and ginger ready." }
+    },
+    {
+      "minutes_before_done": 13,
+      "duration_minutes": 3,
+      "ingredients": [
+        {"amount": "1 tsp", "name": "Cumin"},
+        {"amount": "1 tsp", "name": "Coriander"},
+        {"amount": "1/2 tsp", "name": "Ginger Powder"}
+      ],
+      "action_name": "Bloom Spices",
+      "action_description": "Add the cumin, coriander, and ginger powder to the pot. Stir constantly for 1-2 minutes until the spices smell toasted and aromatic. Be careful not to burn them!",
+      "meanwhile": { "ingredients": "Liquids", "action": "Open the coconut milk and get the braise stock ready." }
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 7,
+      "ingredients": [
+        {"amount": "13.5 oz", "name": "Coconut Milk"},
+        {"amount": "1 cup", "name": "Chicken Stock"},
+        {"amount": "1 bag", "name": "Fire-roasted Root Vegetables"},
+        {"amount": "1-2 cups", "name": "Chicken Thighs"}
+      ],
+      "action_name": "Simmer & Meld",
+      "action_description": "Pour in the coconut milk and chicken stock, scraping any browned bits from the bottom of the pot. Stir in the frozen root vegetables and the chicken. Bring to a gentle simmer for 5-7 minutes until everything is hot and the sauce has slightly thickened.",
+      "meanwhile": { "ingredients": "Spinach", "action": "PULL: Remove a small bowl of chicken and root veggies for kids if they aren't fans of 'saucy' greens." }
+    },
+    {
+      "minutes_before_done": 3,
+      "duration_minutes": 3,
+      "ingredients": [
+        {"amount": "2-3 cups", "name": "Fresh Spinach"},
+        {"amount": "1/2 tsp", "name": "Aleppo Pepper"}
+      ],
+      "action_name": "The Finish",
+      "action_description": "Stir in the fresh spinach and cook just until wilted (about 1-2 minutes). Season with salt and black pepper to taste. Ladle into bowls and top with a sprinkle of Aleppo pepper.",
+      "meanwhile": { "action": "Serve immediately while steaming hot." }
+    }
+  ]
+}
