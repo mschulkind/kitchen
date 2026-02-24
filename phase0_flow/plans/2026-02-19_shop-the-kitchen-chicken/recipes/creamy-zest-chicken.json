@@ -1,0 +1,82 @@
+{
+  "title": "Creamy Zest Spanish Chicken & Chickpeas",
+  "emoji": "🍋",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "1.5 lbs", "name": "Chicken Breast", "prep": "cubed"},
+      {"amount": "15 oz can", "name": "Chickpeas", "prep": "rinsed and drained"},
+      {"amount": "10 oz bag", "name": "Frozen Spinach", "prep": "thawed and squeezed dry"},
+      {"amount": "1/2 cup", "name": "Greek Yogurt"},
+      {"amount": "1", "name": "Lemon", "prep": "zested and juiced"},
+      {"amount": "1 tsp", "name": "Aleppo Pepper"},
+      {"amount": "1/2 tsp", "name": "Cumin"},
+      {"amount": "1/2 tsp", "name": "Dried Oregano"},
+      {"amount": "1 tsp", "name": "Chicken Bouillon"},
+      {"amount": "2 tbsp", "name": "Olive Oil"},
+      {"amount": "1 tbsp", "name": "Butter"},
+      {"amount": "to taste", "name": "Salt and Pepper"},
+      {"amount": "Optional", "name": "Parmesan Cheese", "prep": "for topping"}
+    ],
+    "knife_work": [
+      {"amount": "1", "name": "Onion", "prep": "diced"},
+      {"amount": "2", "name": "Bell Peppers", "prep": "diced"},
+      {"amount": "2 stalks", "name": "Celery", "prep": "thinly sliced"},
+      {"amount": "4", "name": "Radishes", "prep": "thinly sliced into rounds"},
+      {"amount": "4 cloves", "name": "Garlic", "prep": "minced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1.5 lbs", "name": "Chicken Breast"},
+        {"amount": "1", "name": "Onion"},
+        {"amount": "2", "name": "Bell Peppers"},
+        {"amount": "2 stalks", "name": "Celery"},
+        {"amount": "4 cloves", "name": "Garlic"},
+        {"amount": "10 oz bag", "name": "Frozen Spinach"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Cube chicken into bite-sized pieces. Dice onion and peppers. Slice celery and radishes. Mince garlic. Thaw spinach in microwave for 2 mins, then squeeze bone-dry in a kitchen towel. Zest and juice the lemon.",
+      "meanwhile": { "ingredients": "Spices & Yogurt", "action": "Mix yogurt with lemon zest and 1 tbsp of the lemon juice in a small bowl. Set aside." }
+    },
+    {
+      "minutes_before_done": 20,
+      "duration_minutes": 6,
+      "ingredients": [ {"amount": "1 tbsp", "name": "Olive Oil"}, {"amount": "1.5 lbs", "name": "Chicken"} ],
+      "action_name": "Sear Chicken",
+      "action_description": "Heat oil in a large skillet over medium-high heat. Season chicken with salt and pepper. Sear until golden-brown on all sides (about 5-6 mins). It doesn't need to be fully cooked yet. Remove chicken to a plate."
+    },
+    {
+      "minutes_before_done": 14,
+      "duration_minutes": 5,
+      "ingredients": [ {"amount": "1 tbsp", "name": "Olive Oil"}, {"amount": "1", "name": "Onion"}, {"amount": "2", "name": "Peppers"}, {"amount": "2 stalks", "name": "Celery"}, {"amount": "4 cloves", "name": "Garlic"} ],
+      "action_name": "Sauté Veggies",
+      "action_description": "Add remaining oil to the same skillet. Sauté onion, peppers, and celery until they begin to soften (4 mins). Stir in the garlic and cook for 1 min until fragrant.",
+      "meanwhile": { "ingredients": "Chickpeas", "action": "Rinse and drain if not already done." }
+    },
+    {
+      "minutes_before_done": 9,
+      "duration_minutes": 6,
+      "ingredients": [ {"amount": "15 oz can", "name": "Chickpeas"}, {"amount": "1 tsp", "name": "Aleppo Pepper"}, {"amount": "1/2 tsp", "name": "Cumin"}, {"amount": "1/2 tsp", "name": "Oregano"}, {"amount": "1 tsp", "name": "Bouillon"}, {"amount": "10 oz bag", "name": "Spinach"} ],
+      "action_name": "Spice & Simmer",
+      "action_description": "Add chickpeas, all dry spices, and bouillon to the pan. Stir to coat. Return the chicken and any juices to the pan along with the squeezed spinach and a splash of water (2-3 tbsp). Cover and simmer for 5-6 mins until chicken is cooked through."
+    },
+    {
+      "minutes_before_done": 3,
+      "duration_minutes": 3,
+      "ingredients": [ {"amount": "1 tbsp", "name": "Butter"}, {"amount": "1/2 cup", "name": "Greek Yogurt Mixture"}, {"amount": "to taste", "name": "Remaining Lemon Juice"} ],
+      "action_name": "Creamy Finish",
+      "action_description": "REDUCE HEAT TO LOW. Stir in the butter until melted. Gently fold in the yogurt/lemon mixture. Stir constantly for 1-2 mins until a creamy sauce forms. Do not let it boil! Adjust seasoning with salt, pepper, and more lemon juice if needed."
+    },
+    {
+      "minutes_before_done": 0,
+      "duration_minutes": 0,
+      "ingredients": [ {"amount": "4", "name": "Radishes"}, {"amount": "Optional", "name": "Parmesan Cheese"} ],
+      "action_name": "Serve",
+      "action_description": "Spoon into bowls. Garnish with sliced radishes for crunch and a dusting of Parmesan. Serve immediately.",
+      "meanwhile": { "ingredients": "Kids", "action": "PULL: If kids want plain components, save some seared chicken and chickpeas before the spice/yogurt steps." }
+    }
+  ]
+}

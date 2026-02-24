@@ -1,0 +1,82 @@
+{
+  "title": "Ultimate Beef & Bean Stew",
+  "emoji": "🍲",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "28 oz can", "name": "Whole Peeled Tomatoes"},
+      {"amount": "15 oz can", "name": "Organic Fat-Free Refried Black Beans"},
+      {"amount": "15 oz can", "name": "Amy’s Refried Black Beans"},
+      {"amount": "1-2 tsp", "name": "Beef Bouillon"},
+      {"amount": "2 tbsp", "name": "Chili Powder"},
+      {"amount": "1 tbsp", "name": "Cumin"},
+      {"amount": "1 tsp", "name": "Aleppo Pepper"},
+      {"amount": "1 tsp", "name": "Dried Oregano"},
+      {"amount": "to taste", "name": "Salt & Black Pepper"},
+      {"amount": "as needed", "name": "Greek Yogurt"},
+      {"amount": "as needed", "name": "Shredded Cheese"}
+    ],
+    "knife_work": [
+      {"amount": "2 lbs", "name": "Ground Beef"},
+      {"amount": "1-2", "name": "Onions", "prep": "diced"},
+      {"amount": "2-3", "name": "Bell Peppers", "prep": "diced"},
+      {"amount": "2-3", "name": "Carrots", "prep": "diced small"},
+      {"amount": "2-3 stalks", "name": "Celery", "prep": "diced"},
+      {"amount": "3-4 cloves", "name": "Garlic", "prep": "minced"},
+      {"amount": "1-2", "name": "Avocados", "prep": "sliced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 45,
+      "duration_minutes": 12,
+      "ingredients": [
+        {"amount": "1-2", "name": "Onions"},
+        {"amount": "2-3", "name": "Bell Peppers"},
+        {"amount": "2-3", "name": "Carrots"},
+        {"amount": "2-3", "name": "Celery"},
+        {"amount": "3-4", "name": "Garlic"},
+        {"amount": "28 oz", "name": "Whole Tomatoes"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Dice onions, peppers, carrots, and celery. Mince garlic. Hand-crush the whole tomatoes into a bowl.",
+      "meanwhile": { "ingredients": "Beef", "action": "set aside" }
+    },
+    {
+      "minutes_before_done": 33,
+      "duration_minutes": 15,
+      "ingredients": [
+        {"amount": "2 lbs", "name": "Ground Beef"},
+        {"amount": "prepped", "name": "Veggies"},
+        {"amount": "minced", "name": "Garlic"}
+      ],
+      "action_name": "Sear & Sauté",
+      "action_description": "Brown beef in a large pot over high heat. Add diced onions, peppers, carrots, and celery. Sauté until softened (8-10 mins). Stir in garlic for 1 min.",
+      "meanwhile": { "ingredients": "Beans", "action": "open cans" }
+    },
+    {
+      "minutes_before_done": 18,
+      "duration_minutes": 15,
+      "ingredients": [
+        {"amount": "both cans", "name": "Refried Beans"},
+        {"amount": "crushed", "name": "Tomatoes"},
+        {"amount": "1-2 tsp", "name": "Bouillon"},
+        {"amount": "all", "name": "Spices"}
+      ],
+      "action_name": "The Meld",
+      "action_description": "Stir in tomatoes, both cans of beans, bouillon, and spices. Simmer on medium-low. The beans will melt into a thick, velvety gravy.",
+      "meanwhile": { "ingredients": "Avocado", "action": "slice" }
+    },
+    {
+      "minutes_before_done": 3,
+      "duration_minutes": 3,
+      "ingredients": [
+        {"amount": "to taste", "name": "Yogurt"},
+        {"amount": "to taste", "name": "Cheese"},
+        {"amount": "sliced", "name": "Avocado"}
+      ],
+      "action_name": "Finish & Serve",
+      "action_description": "Ladle into bowls. Top with a dollop of Greek yogurt, shredded cheese, and avocado slices.",
+      "meanwhile": { "ingredients": "Table", "action": "set" }
+    }
+  ]
+}

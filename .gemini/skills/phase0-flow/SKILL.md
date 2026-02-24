@@ -7,16 +7,12 @@ description: A markdown-driven conversational meal planning workflow that result
 
 This skill guides you through the "Phase 0" markdown-driven conversational meal planning flow. The goal is to produce a complete meal plan, a verified shopping list, and PDF recipes without a UI.
 
-## Table of Contents
+## Lingo & Shortcuts 🗣️
 
-- [Overview](#overview)
-- [Workflow Steps](#workflow-steps)
-  - [Step 1: The Request](#step-1-the-request)
-  - [Step 2: The Options](#step-2-the-options)
-  - [Step 3: Ingredient Verification & Provisional Recipes](#step-3-ingredient-verification--provisional-recipes)
-  - [Step 4: Shopping List Verification](#step-4-shopping-list-verification)
-  - [Step 5: Final Plan & PDFs](#step-5-final-plan--pdfs)
-- [File Structure](#file-structure)
+- **STK (Shop the Kitchen)**: A request where **NO shopping** is allowed. Every ingredient MUST be verified against `phase0_flow/stock_lists/`. If a user says "STK," ensure the final shopping list is empty.
+- **Low-GI**: Focus on fiber, protein, and non-starchy vegetables. Minimize refined carbs (white rice, white pasta, flour) and sugar. Check recent plans for this established pattern.
+- **Kid Pull**: Explicitly marking a step in the recipe to remove a portion for picky eaters before spicing/saucing.
+- **Shortcut: "1 night phase0 STK plan"**: When triggered, bypass the typical 3-5 meal variety and focus on a single, high-quality, zero-shopping meal for tonight.
 
 ## Overview
 
@@ -32,7 +28,10 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
 2.  **Action**:
     -   Read `01-request.md`.
     -   Read `phase0_flow/stock_lists/` and `phase0_flow/general_preferences/`.
-    -   **Read recent plans**: Check `phase0_flow/plans/` (last 1-2 plans) to understand the current style and naming conventions.
+    -   **Read recent plans**: Check `phase0_flow/plans/` (last 1-2 plans) to understand:
+        -   Naming conventions (e.g., `YYYY-MM-DD_title`).
+        -   **Dietary/Health goals**: Look for repeating themes like "Low-GI" or "Heart Healthy."
+        -   Formatting style for recipes and plans.
 3.  **Goal**: Understand the user's needs, constraints, and current inventory.
 
 ### Step 2: The Options
@@ -75,16 +74,17 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
 
 ### Step 5: Final Plan & PDFs
 
-1.  **Action**: Generate the final assets.
+1.  **Action**: Generate the final assets. **This step is MANDATORY and must be performed automatically once the user gives the final "go-ahead."**
 2.  **Output 1: Markdown Plan**: Create `04-final-plan.md`.
     -   Include the final menu.
     -   Include the **Consolidated Shopping List** (only items strictly needed).
     -   Include full recipes with instructions.
 3.  **Output 2: Recipe Files**: Finalize individual recipe files in the `recipes/` subdirectory.
-    -   Ensure they match the chosen format (.md or .json).
+    -   **ALWAYS** create a JSON version of the recipe to enable high-quality PDF generation.
+    -   Ensure they match the required JSON structure (Prep, Steps, Meanwhile).
 4.  **Output 3: PDFs**: Run the PDF generation command.
-    -   Command: `just all` (Targets .md/.html files).
-    -   Command: `just render-all` (Targets .json files -> templated PDFs). *Use this if using JSON format.*
+    -   Command: `just render-all` (Targets .json files -> templated PDFs).
+    -   **Verification**: Confirm the PDF files exist in the `recipes/` directory after the command runs.
 5.  **Commit**: Commit all new files (markdown plan, recipe files, and generated PDFs).
 6.  **Completion**: Inform the user that the plan and PDFs are ready! 📄✨
 
