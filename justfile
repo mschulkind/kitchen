@@ -5,8 +5,8 @@ css_file := recipe_dir / "recipes.css"
 plan_file := plan_dir / "04-final-plan.md"
 plan_pdf := output_dir / "00-plan-overview.pdf"
 
-# Source WeasyPrint native lib paths (nix packages) — appends to existing LD_LIBRARY_PATH
-export LD_LIBRARY_PATH := `bash -c 'p=""; for lib in libgobject libpango libcairo libharfbuzz libfontconfig libgdk_pixbuf libfreetype libffi; do f=$(ls /nix/store/*/lib/${lib}*.so 2>/dev/null | head -1); [ -n "$f" ] && p="${p:+$p:}$(dirname $f)"; done; echo "${p}:/lib:/usr/lib"'`
+# Nix store lib paths not needed — system pango/cairo/harfbuzz work fine.
+# The previous LD_LIBRARY_PATH hack could pick up bin-path-links (bundling glibc) causing crashes.
 
 # List all available commands
 default:
