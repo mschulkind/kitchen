@@ -128,6 +128,29 @@ Each ingredient gets its **own grey box** (`.ing-box`). This prevents horizontal
 </div>
 ```
 
+### Recipe JSON: one ingredient per entry
+
+In the recipe JSON `ingredients` arrays, **never combine multiple items in one entry**. Each ingredient must be its own object so it renders as its own grey box.
+
+```json
+// ✅ GOOD: each ingredient is a separate entry
+"ingredients": [
+    {"amount": "", "name": "Onion"},
+    {"amount": "", "name": "Scallion Whites"},
+    {"amount": "", "name": "Snap Peas"},
+    {"amount": "1 tsp", "name": "Turmeric"}
+]
+```
+
+```json
+// ❌ BAD: comma-separated list in one entry stretches the column
+"ingredients": [
+    {"amount": "All", "name": "Onion, Scallion Whites, Snap Peas, Garlic"}
+]
+```
+
+Use an empty string `""` for amount when the ingredient was already portioned in the prep section.
+
 ### Debugging tips
 
 1. **Render to HTML first** to inspect in a browser: change `render_recipe.py` to write the intermediate HTML
