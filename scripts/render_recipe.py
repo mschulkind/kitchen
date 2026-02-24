@@ -40,7 +40,7 @@ def render_html(recipe: dict) -> str:
 
 def render_pdf(html_content: str, output_path: Path) -> None:
     """Convert HTML to PDF using WeasyPrint."""
-    HTML(string=html_content).write_pdf(output_path)
+    HTML(string=html_content, base_url=str(TEMPLATE_DIR)).write_pdf(output_path)
     print(f"✅ Generated: {output_path}")
 
 
