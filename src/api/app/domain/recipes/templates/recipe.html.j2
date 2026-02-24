@@ -6,6 +6,7 @@
 @font-face {
     font-family: "Noto Emoji";
     src: url("fonts/NotoEmoji-Regular.ttf");
+    unicode-range: U+200D, U+2300-23FF, U+2600-27BF, U+2B50, U+FE00-FE0F, U+1F000-1FAFF;
 }
 
 @page {
@@ -13,7 +14,7 @@
     margin: 1.5cm;
     @bottom-center {
         content: "Page " counter(page);
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Noto Emoji";
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 9pt;
         color: #999;
     }
@@ -24,7 +25,7 @@
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Noto Emoji";
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 10pt;
     line-height: 1.4;
     color: #333;
