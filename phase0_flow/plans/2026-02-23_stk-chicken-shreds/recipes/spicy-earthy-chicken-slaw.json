@@ -1,0 +1,106 @@
+{
+  "title": "Spicy-Earthy Smushed Chicken & Sprout Slaw",
+  "emoji": "🥗🔥",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "2 cups", "name": "Smushed Braised Chicken Thighs"},
+      {"amount": "1 tbsp", "name": "Balsamic Vinegar"},
+      {"amount": "1/2 tsp", "name": "Chicken Bouillon"},
+      {"amount": "1/2 tsp", "name": "Ginger Powder"},
+      {"amount": "1/2 tsp", "name": "Aleppo Pepper"},
+      {"amount": "1 pinch", "name": "Cayenne Pepper"},
+      {"amount": "1 tbsp", "name": "Sesame Seeds"},
+      {"amount": "1 tbsp", "name": "Pumpkin Seeds"},
+      {"amount": "1 tbsp", "name": "Olive Oil or Avocado Oil"},
+      {"amount": "to taste", "name": "Salt and Black Pepper"}
+    ],
+    "knife_work": [
+      {"amount": "1 small bag", "name": "Brussels Sprouts", "prep": "finely shaved"},
+      {"amount": "1", "name": "Carrot", "prep": "grated"},
+      {"amount": "2 cloves", "name": "Garlic", "prep": "minced"},
+      {"amount": "1/4", "name": "Yellow Onion", "prep": "thinly sliced"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 25,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1 small bag", "name": "Brussels Sprouts"},
+        {"amount": "1", "name": "Carrot"},
+        {"amount": "2 cloves", "name": "Garlic"},
+        {"amount": "1/4", "name": "Yellow Onion"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Shave the brussels sprouts very thin (a mandoline or sharp knife works great). Grate the carrot and mince the garlic. Slice the onion into thin half-moons.",
+      "meanwhile": {
+        "ingredients": "Chicken",
+        "action": "Ensure chicken is smushed and ready."
+      }
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 3,
+      "ingredients": [
+        {"amount": "1 tbsp", "name": "Sesame Seeds"},
+        {"amount": "1 tbsp", "name": "Pumpkin Seeds"}
+      ],
+      "action_name": "Toast Seeds",
+      "action_description": "In a large skillet or wok over medium heat, toast the sesame and pumpkin seeds until fragrant and slightly golden (about 2-3 minutes). Remove and set aside.",
+      "meanwhile": {
+        "ingredients": "Heat",
+        "action": "Wipe out the pan."
+      }
+    },
+    {
+      "minutes_before_done": 12,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1 tbsp", "name": "Olive Oil or Avocado Oil"},
+        {"amount": "1/4", "name": "Yellow Onion"},
+        {"amount": "1 small bag", "name": "Brussels Sprouts"},
+        {"amount": "1", "name": "Carrot"}
+      ],
+      "action_name": "Sauté Veg",
+      "action_description": "Increase heat to medium-high. Add the fat/oil and the onion. Sauté for 2 minutes, then add the shaved sprouts and grated carrot. Cook, stirring occasionally, until the sprouts are slightly wilted and charred in spots.",
+      "meanwhile": {
+        "ingredients": "Spices",
+        "action": "Measure out ginger, aleppo, and cayenne."
+      }
+    },
+    {
+      "minutes_before_done": 7,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "2 cloves", "name": "Garlic"},
+        {"amount": "1/2 tsp", "name": "Ginger Powder"},
+        {"amount": "1/2 tsp", "name": "Aleppo Pepper"},
+        {"amount": "1 pinch", "name": "Cayenne Pepper"},
+        {"amount": "2 cups", "name": "Smushed Chicken Thighs"},
+        {"amount": "1 tbsp", "name": "Balsamic Vinegar"},
+        {"amount": "1/2 tsp", "name": "Chicken Bouillon"}
+      ],
+      "action_name": "The Smush & Glaze",
+      "action_description": "Stir in the garlic and spices for 1 minute until fragrant. Add the smushed chicken, balsamic vinegar, and bouillon. Toss everything together vigorously, allowing the chicken to coat the vegetables. Cook for 3-4 minutes until everything is hot and the glaze has thickened.",
+      "meanwhile": {
+        "ingredients": "Taste",
+        "action": "Check for salt/pepper."
+      }
+    },
+    {
+      "minutes_before_done": 2,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "to taste", "name": "Salt and Black Pepper"},
+        {"amount": "1 tbsp", "name": "Sesame Seeds"},
+        {"amount": "1 tbsp", "name": "Pumpkin Seeds"}
+      ],
+      "action_name": "Finish & Serve",
+      "action_description": "Season with salt and pepper to taste. Fold in half of the toasted seeds. Transfer to a bowl and top with the remaining seeds and an extra sprinkle of Aleppo pepper if you want more heat.",
+      "meanwhile": {
+        "ingredients": "None",
+        "action": "Serve immediately."
+      }
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+    size: Letter;
+    margin: 1.5cm;
+    @bottom-center {
+        content: "Page " counter(page);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #999;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #333;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.5em;
+    font-size: 20pt;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+/* ============================================
+   PREP SECTION - Two column layout
+   ============================================ */
+.prep-container {
+    display: flex;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.prep-group {
+    flex: 1;
+}
+
+.prep-category {
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+ul {
+    margin-top: 0.2em;
+    padding-left: 1.2em;
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 0.3em;
+}
+
+/* ============================================
+   EXECUTION STEPS - Table layout for alignment
+   ============================================ */
+.exec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+}
+
+.exec-table thead {
+    background-color: #f8f9fa;
+}
+
+.exec-table th {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+}
+
+.exec-table th.col-time {
+    width: 70px;
+    text-align: center;
+}
+
+.exec-table th.col-ing {
+    width: 170px;
+}
+
+.exec-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+
+.exec-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Time column */
+.col-time {
+    text-align: center;
+    width: 70px;
+}
+
+.time-countdown {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #2c3e50;
+    line-height: 1.1;
+}
+
+.time-duration {
+    font-size: 8pt;
+    color: #e67e22;
+    margin-top: 2px;
+}
+
+/* Ingredients column - grey box style */
+.col-ing {
+    width: 180px;
+    min-width: 180px;
+}
+
+.ing-box {
+    background: #f5f5f5;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.ing-row {
+    display: flex;
+    padding: 2px 0;
+    border-bottom: 1px solid #e8e8e8;
+    white-space: nowrap;
+}
+
+.ing-row:last-child {
+    border-bottom: none;
+}
+
+.amt {
+    flex: 0 0 60px;
+    text-align: right;
+    font-weight: bold;
+    color: #e67e22;
+    padding-right: 8px;
+    font-size: 9pt;
+}
+
+.name {
+    flex: 1;
+    color: #333;
+}
+
+/* Action column */
+.col-action {
+}
+
+/* Meanwhile block */
+.meanwhile-block {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background-color: #e8f4fd;
+    border: 1px solid #3498db;
+    border-left: 4px solid #3498db;
+    border-radius: 0 4px 4px 0;
+    font-size: 9pt;
+}
+
+.meanwhile-header {
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 4px;
+}
+
+.meanwhile-header::before {
+    content: "📋 ";
+}
+
+.meanwhile-content {
+    color: #333;
+}
+
+.meanwhile-ing {
+    font-weight: bold;
+    color: #555;
+}
+</style>
+</head>
+<body>
+
+<h1>Creamy Zest Spanish Chicken & Chickpeas 🍋</h1>
+
+
+<h3>Ingredients & Prep</h3>
+
+<div class="prep-container">
+<div class="prep-group">
+<span class="prep-category">Ready to Use (No Board Work)</span>
+<ul>
+
+<li><strong>1.5 lbs</strong> Chicken Breast</li>
+
+<li><strong>15 oz can</strong> Chickpeas</li>
+
+<li><strong>10 oz bag</strong> Frozen Spinach</li>
+
+<li><strong>1/2 cup</strong> Greek Yogurt</li>
+
+<li><strong>1</strong> Lemon</li>
+
+<li><strong>1 tsp</strong> Aleppo Pepper</li>
+
+<li><strong>1/2 tsp</strong> Cumin</li>
+
+<li><strong>1/2 tsp</strong> Dried Oregano</li>
+
+<li><strong>1 tsp</strong> Chicken Bouillon</li>
+
+<li><strong>2 tbsp</strong> Olive Oil</li>
+
+<li><strong>1 tbsp</strong> Butter</li>
+
+<li><strong>to taste</strong> Salt and Pepper</li>
+
+<li><strong>Optional</strong> Parmesan Cheese</li>
+
+</ul>
+</div>
+
+<div class="prep-group">
+<span class="prep-category">To Prep (Knife Work)</span>
+<ul>
+
+<li><strong>1</strong> Onion → <em>diced</em></li>
+
+<li><strong>2</strong> Bell Peppers → <em>diced</em></li>
+
+<li><strong>2 stalks</strong> Celery → <em>thinly sliced</em></li>
+
+<li><strong>4</strong> Radishes → <em>thinly sliced into rounds</em></li>
+
+<li><strong>4 cloves</strong> Garlic → <em>minced</em></li>
+
+</ul>
+</div>
+</div>
+
+<hr>
+
+<h3>Execution Steps</h3>
+
+<table class="exec-table">
+<thead>
+<tr>
+<th class="col-time">Time</th>
+<th class="col-ing">Ingredients</th>
+<th class="col-action">Action</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-30</div>
+<div class="time-duration">⏱ 10 min</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">1.5 lbs</span>
+<span class="name">Chicken Breast</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1</span>
+<span class="name">Onion</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">2</span>
+<span class="name">Bell Peppers</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">2 stalks</span>
+<span class="name">Celery</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">4 cloves</span>
+<span class="name">Garlic</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">10 oz bag</span>
+<span class="name">Frozen Spinach</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Mise en Place:</strong> Cube chicken into bite-sized pieces. Dice onion and peppers. Slice celery and radishes. Mince garlic. Thaw spinach in microwave for 2 mins, then squeeze bone-dry in a kitchen towel. Zest and juice the lemon.
+
+<div class="meanwhile-block">
+<div class="meanwhile-header">MEANWHILE</div>
+<div class="meanwhile-content">
+<span class="meanwhile-ing">Spices & Yogurt</span> → Mix yogurt with lemon zest and 1 tbsp of the lemon juice in a small bowl. Set aside.
+</div>
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-20</div>
+<div class="time-duration">⏱ 6 min</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">1 tbsp</span>
+<span class="name">Olive Oil</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1.5 lbs</span>
+<span class="name">Chicken</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Sear Chicken:</strong> Heat oil in a large skillet over medium-high heat. Season chicken with salt and pepper. Sear until golden-brown on all sides (about 5-6 mins). It doesn't need to be fully cooked yet. Remove chicken to a plate.
+
+</td>
+</tr>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-14</div>
+<div class="time-duration">⏱ 5 min</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">1 tbsp</span>
+<span class="name">Olive Oil</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1</span>
+<span class="name">Onion</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">2</span>
+<span class="name">Peppers</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">2 stalks</span>
+<span class="name">Celery</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">4 cloves</span>
+<span class="name">Garlic</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Sauté Veggies:</strong> Add remaining oil to the same skillet. Sauté onion, peppers, and celery until they begin to soften (4 mins). Stir in the garlic and cook for 1 min until fragrant.
+
+<div class="meanwhile-block">
+<div class="meanwhile-header">MEANWHILE</div>
+<div class="meanwhile-content">
+<span class="meanwhile-ing">Chickpeas</span> → Rinse and drain if not already done.
+</div>
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-09</div>
+<div class="time-duration">⏱ 6 min</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">15 oz can</span>
+<span class="name">Chickpeas</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1 tsp</span>
+<span class="name">Aleppo Pepper</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1/2 tsp</span>
+<span class="name">Cumin</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1/2 tsp</span>
+<span class="name">Oregano</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1 tsp</span>
+<span class="name">Bouillon</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">10 oz bag</span>
+<span class="name">Spinach</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Spice & Simmer:</strong> Add chickpeas, all dry spices, and bouillon to the pan. Stir to coat. Return the chicken and any juices to the pan along with the squeezed spinach and a splash of water (2-3 tbsp). Cover and simmer for 5-6 mins until chicken is cooked through.
+
+</td>
+</tr>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-03</div>
+<div class="time-duration">⏱ 3 min</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">1 tbsp</span>
+<span class="name">Butter</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">1/2 cup</span>
+<span class="name">Greek Yogurt Mixture</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">to taste</span>
+<span class="name">Remaining Lemon Juice</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Creamy Finish:</strong> REDUCE HEAT TO LOW. Stir in the butter until melted. Gently fold in the yogurt/lemon mixture. Stir constantly for 1-2 mins until a creamy sauce forms. Do not let it boil! Adjust seasoning with salt, pepper, and more lemon juice if needed.
+
+</td>
+</tr>
+
+<tr>
+<td class="col-time">
+<div class="time-countdown">T-00</div>
+<div class="time-duration">🍽️ Done!</div>
+</td>
+<td class="col-ing">
+<div class="ing-box">
+
+<div class="ing-row">
+<span class="amt">4</span>
+<span class="name">Radishes</span>
+</div>
+
+<div class="ing-row">
+<span class="amt">Optional</span>
+<span class="name">Parmesan Cheese</span>
+</div>
+
+</div>
+</td>
+<td class="col-action">
+<strong>Serve:</strong> Spoon into bowls. Garnish with sliced radishes for crunch and a dusting of Parmesan. Serve immediately.
+
+<div class="meanwhile-block">
+<div class="meanwhile-header">MEANWHILE</div>
+<div class="meanwhile-content">
+<span class="meanwhile-ing">Kids</span> → PULL: If kids want plain components, save some seared chicken and chickpeas before the spice/yogurt steps.
+</div>
+</div>
+
+</td>
+</tr>
+
+</tbody>
+</table>
+
+</body>
+</html>
