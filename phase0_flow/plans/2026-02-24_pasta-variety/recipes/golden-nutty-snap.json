@@ -1,0 +1,101 @@
+{
+  "title": "The Golden Nutty Snap Pasta",
+  "emoji": "🥥🥓🍗",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "1 box", "name": "Pasta"},
+      {"amount": "13.5 oz can", "name": "Coconut Milk"},
+      {"amount": "3", "name": "Egg Yolks"},
+      {"amount": "1 tsp", "name": "Turmeric"},
+      {"amount": "1/2 tsp", "name": "Ginger Powder"},
+      {"amount": "2 tbsp", "name": "Pumpkin Seeds"},
+      {"amount": "1 tbsp", "name": "Sesame Seeds"},
+      {"amount": "1 tbsp", "name": "Olive Oil"},
+      {"amount": "1 tbsp", "name": "Butter"},
+      {"amount": "to taste", "name": "Salt & Pepper"}
+    ],
+    "knife_work": [
+      {"amount": "2-3", "name": "Chicken Breasts", "prep": "cut into bite-sized cubes"},
+      {"amount": "4-6 slices", "name": "Bacon", "prep": "chopped into bits"},
+      {"amount": "8 oz", "name": "Snap Peas", "prep": "ends trimmed, halved on a diagonal"},
+      {"amount": "1", "name": "Small Onion", "prep": "finely diced"},
+      {"amount": "3 cloves", "name": "Garlic", "prep": "minced"},
+      {"amount": "2", "name": "Scallions", "prep": "thinly sliced (whites and greens separated)"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 40,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "", "name": "Chicken"},
+        {"amount": "", "name": "Bacon"},
+        {"amount": "", "name": "Onion"},
+        {"amount": "", "name": "Garlic"},
+        {"amount": "", "name": "Scallion"},
+        {"amount": "", "name": "Snap Peas"}
+      ],
+      "action_name": "Mise en Place (The Setup!) 🔪",
+      "action_description": "Get all your chopping done first. This makes the cooking part stress-free! Separate the scallion whites from the greens. Put the chicken and bacon on one plate, and the veggies on another.",
+      "meanwhile": { "ingredients": "Water", "action": "Start a large pot of salted water boiling." }
+    },
+    {
+      "minutes_before_done": 30,
+      "duration_minutes": 8,
+      "ingredients": [
+        {"amount": "Chopped", "name": "Bacon"}
+      ],
+      "action_name": "Crispy Bacon & Seeds 🥓🌻",
+      "action_description": "In a large cold skillet, add the bacon bits. Turn heat to medium. Cook until the fat renders and the bacon is super crispy. In the last 2 mins, toss in the pumpkin and sesame seeds to toast in the bacon fat. Remove EVERYTHING with a slotted spoon to a paper towel, but LEAVE THE FAT in the pan!",
+      "meanwhile": { "ingredients": "Pasta", "action": "Drop the pasta into the boiling water." }
+    },
+    {
+      "minutes_before_done": 22,
+      "duration_minutes": 7,
+      "ingredients": [
+        {"amount": "Cubed", "name": "Chicken"},
+        {"amount": "as needed", "name": "Salt & Pepper"}
+      ],
+      "action_name": "The Golden Sear 🍗🔥",
+      "action_description": "Increase heat to medium-high. Add chicken to the bacon fat. Don't crowd the pan! Let them sit for 3 mins without moving to get a brown crust. Flip and cook until done. **PULL:** Remove a few pieces of plain chicken and bacon for the kids now!",
+      "meanwhile": { "ingredients": "Veggies", "action": "Get your onions and snap peas ready." }
+    },
+    {
+      "minutes_before_done": 15,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "", "name": "Onion"},
+        {"amount": "", "name": "Scallion Whites"},
+        {"amount": "", "name": "Snap Peas"},
+        {"amount": "", "name": "Garlic"},
+        {"amount": "1 tsp", "name": "Turmeric"},
+        {"amount": "1/2 tsp", "name": "Ginger Powder"}
+      ],
+      "action_name": "The Snap & Bloom 🟡🌱",
+      "action_description": "Add the onion and scallion whites to the pan. Sauté for 2 mins. Add the snap peas, garlic, turmeric, and ginger. Stir constantly for 2 mins. The snap peas should stay bright green and 'snappy'—don't let them get soft! **PULL:** Scoop out some plain snap peas for the kids.",
+      "meanwhile": { "ingredients": "Sauce", "action": "In a bowl, whisk coconut milk, 3 egg yolks, and a pinch of salt until smooth." }
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "Cooked", "name": "Pasta"},
+        {"amount": "Whisked", "name": "Coconut/Egg Mixture"}
+      ],
+      "action_name": "The Silky Finish 🥥✨",
+      "action_description": "**CRITICAL STEP:** Turn heat to LOW. Add the cooked pasta (save a splash of pasta water!). Pour in the coconut-egg mixture. Stir VIGOROUSLY and constantly for 2-3 mins. The residual heat will thicken the eggs into a silky sauce. If it looks too dry, add a splash of pasta water. DO NOT let it boil or the eggs will scramble!",
+      "meanwhile": { "ingredients": "Garnish", "action": "Get your crispy bacon, seeds, and scallion greens ready." }
+    },
+    {
+      "minutes_before_done": 5,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "Crispy", "name": "Bacon & Seeds"},
+        {"amount": "Sliced", "name": "Scallion Greens"}
+      ],
+      "action_name": "Serve & Enjoy! 🍽️🎉",
+      "action_description": "Fold in half of the crispy bacon/seed mix. Plate the pasta and top with the remaining crunch and scallion greens. Season with fresh black pepper.",
+      "meanwhile": { "ingredients": "Kids", "action": "Serve the kids their plain pasta with butter, plain chicken, and plain snap peas!" }
+    }
+  ]
+}
