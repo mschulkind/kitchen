@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <style>
+@font-face {
+    font-family: "Noto Emoji";
+    src: url("fonts/NotoEmoji-Regular.ttf");
+    unicode-range: U+200D, U+2300-23FF, U+2600-27BF, U+2B50, U+FE00-FE0F, U+1F000-1FAFF;
+}
+
 @page {
     size: Letter;
     margin: 1.5cm;
@@ -255,7 +261,7 @@ li {
 <tr>
 <td class="col-time">
 <div class="time-countdown">T-{{ "%02d"|format(step.minutes_before_done) }}</div>
-<div class="time-duration">{% if step.minutes_before_done == 0 %}🍽️ Done!{% else %}⏱ {{ step.duration_minutes }} min{% endif %}</div>
+<div class="time-duration">{% if step.minutes_before_done == 0 %}🍽 Done!{% else %}⏱ {{ step.duration_minutes }} min{% endif %}</div>
 </td>
 <td class="col-ing">
 {% for ing in step.ingredients %}
