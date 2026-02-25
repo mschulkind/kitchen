@@ -9,6 +9,7 @@ Example:
     python render_recipe.py recipes/stew.json pdfs/stew.pdf
 """
 
+import base64
 import json
 import re
 import sys
@@ -24,18 +25,19 @@ TEMPLATE_DIR = Path(__file__).parent.parent / "src/api/app/domain/recipes/templa
 EMOJI_DIR = TEMPLATE_DIR / "emoji"
 TEMPLATE_NAME = "recipe.html.j2"
 
-# Preload emoji SVGs as data URIs for inline rendering
-_EMOJI_SVGS: dict[str, str] = {}
+# Preload emoji images as base64 data URIs for inline rendering
+_EMOJI_IMGS: dict[str, str] = {}
 
 
-def _load_emoji_svgs() -> None:
-    """Load all emoji SVGs from the emoji directory."""
-    if _EMOJI_SVGS:
+def _load_emoji_imgs() -> None:
+    """Load all emoji PNGs from the emoji directory as base64 data URIs."""
+    if _EMOJI_IMGS:
         return
-    for svg_file in EMOJI_DIR.glob("*.svg"):
-        codepoint = int(svg_file.stem, 16)
+    for png_file in EMOJI_DIR.glob("*.png"):
+        codepoint = int(png_file.stem, 16)
         char = chr(codepoint)
-        _EMOJI_SVGS[char] = svg_file.read_text()
+        b64 = base64.b64encode(png_file.read_bytes()).decode()
+        _EMOJI_IMGS[char] = f"data:image/png;base64,{b64}"
 
 
 # Regex matching emoji codepoints (and stripping U+FE0F variation selectors)
@@ -46,16 +48,13 @@ _EMOJI_RE = re.compile(
 
 
 def _emoji_to_img(match: re.Match) -> str:
-    """Replace an emoji char with an inline SVG <img> tag."""
+    """Replace an emoji char with an inline color PNG <img> tag."""
     char = match.group(1)
-    svg = _EMOJI_SVGS.get(char)
-    if not svg:
-        return char  # No SVG available, keep the character
-    # Inline SVG as a data URI image sized to match surrounding text
-    import base64
-    b64 = base64.b64encode(svg.encode()).decode()
+    data_uri = _EMOJI_IMGS.get(char)
+    if not data_uri:
+        return char  # No image available, keep the character
     return (
-        f'<img src="data:image/svg+xml;base64,{b64}" '
+        f'<img src="{data_uri}" '
         f'style="height:1em;vertical-align:-0.15em;display:inline" />'
     )
 
@@ -73,7 +72,7 @@ def load_recipe(json_path: Path) -> dict:
 
 def render_html(recipe: dict) -> str:
     """Render recipe data to HTML using Jinja2 template."""
-    _load_emoji_svgs()
+    _load_emoji_imgs()
     env = Environment(
         loader=FileSystemLoader(TEMPLATE_DIR),
         autoescape=False,  # We trust our recipe content
