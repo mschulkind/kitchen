@@ -3,12 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <style>
-@font-face {
-    font-family: "Noto Emoji";
-    src: url("fonts/NotoEmoji-Regular.ttf");
-    unicode-range: U+200D, U+2300-23FF, U+2600-27BF, U+2B50, U+FE00-FE0F, U+1F000-1FAFF;
-}
-
 @page {
     size: Letter;
     margin: 1.5cm;
@@ -202,7 +196,7 @@ li {
 }
 
 .meanwhile-header::before {
-    content: "📋 ";
+    content: "";
 }
 
 .meanwhile-content {
@@ -217,7 +211,7 @@ li {
 </head>
 <body>
 
-<h1>{{ recipe.title }}{% if recipe.emoji %} {{ recipe.emoji }}{% endif %}</h1>
+<h1>{{ recipe.title }}{% if recipe.emoji %} {{ recipe.emoji|emojify }}{% endif %}</h1>
 {% if recipe.subtitle %}
 <p class="subtitle">{{ recipe.subtitle }}</p>
 {% endif %}
@@ -261,7 +255,7 @@ li {
 <tr>
 <td class="col-time">
 <div class="time-countdown">T-{{ "%02d"|format(step.minutes_before_done) }}</div>
-<div class="time-duration">{% if step.minutes_before_done == 0 %}🍽 Done!{% else %}⏱ {{ step.duration_minutes }} min{% endif %}</div>
+<div class="time-duration">{% if step.minutes_before_done == 0 %}{{ "🍽"|emojify }} Done!{% else %}{{ "⏱"|emojify }} {{ step.duration_minutes }} min{% endif %}</div>
 </td>
 <td class="col-ing">
 {% for ing in step.ingredients %}
@@ -272,10 +266,10 @@ li {
 {% endfor %}
 </td>
 <td class="col-action">
-<strong>{{ step.action_name }}:</strong> {{ step.action_description }}
+<strong>{{ step.action_name|emojify }}:</strong> {{ step.action_description|emojify }}
 {% if step.meanwhile %}
 <div class="meanwhile-block">
-<div class="meanwhile-header">MEANWHILE</div>
+<div class="meanwhile-header">{{ "📋"|emojify }} MEANWHILE</div>
 <div class="meanwhile-content">
 <span class="meanwhile-ing">{{ step.meanwhile.ingredients }}</span> → {{ step.meanwhile.action }}
 </div>
