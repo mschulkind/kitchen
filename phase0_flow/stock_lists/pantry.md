@@ -66,10 +66,17 @@
 - Cloves
 - Thyme
 - Aleppo Pepper
-- Nigella seeds
-- Flax seeds
-- Pumpkin seeds (no shell)
-- Poppy seeds
-- Sesame seeds
-- Hemp seeds
-- Chia seeds
+- Nigella seeds (Bulk)
+- Whole Flax seeds (Bulk)
+- Pumpkin seeds (shelled, Bulk)
+- Poppy seeds (Bulk)
+- Sesame seeds (Bulk)
+- Hemp hearts (Bulk)
+- Chia seeds (Bulk)
+- Sunflower seeds (Bulk)
+- Cacao nibs (Bulk)
+
+### Appliances & Tools
+- Coffee Grinder (Dedicated for flax/seeds)
+- Electric Pressure Cooker (Instant Pot style)
+- Smoker

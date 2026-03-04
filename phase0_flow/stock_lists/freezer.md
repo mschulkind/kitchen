@@ -13,6 +13,7 @@
 
 Assume meat is raw unless otherwise specified.
 
+- **The Freezer Mix**: A bulk blend of sesame, poppy, nigella, sunflower, pumpkin, hemp hearts, and whole flax seeds (all shelled).
 - Stuffing bread, 2 loaves
 - Cod filets
 - Beef broth x 1
@@ -23,3 +24,4 @@ Assume meat is raw unless otherwise specified.
 - frozen peppers
 - frozen greenbeans, carrots, peas
 - Boneless Skinless Chicken Breasts
+
