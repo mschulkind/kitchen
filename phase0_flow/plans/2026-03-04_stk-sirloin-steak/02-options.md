@@ -1,23 +1,19 @@
-# Plan Options: STK Sirloin Steak & Cauliflower Night
+# Plan Options: STK "Super Seeded" Sirloin Steak Night
 
 **Date:** Wednesday, March 4, 2026
-**Goal:** A high-quality STK meal using existing stock.
+**Goal:** A high-quality STK meal using existing stock, specifically targeting the **1:5:5:5 ratio** using your bulk seed inventory.
 
 ---
 
-## 📅 The Options
+## 📅 The 5 Seeded Options
 
-| Option | Title | Main Components & "Steer" | Kid-Friendly Path |
+| Option | Title | Seed Strategy & Flavor | Kid-Pull Strategy |
 | :--- | :--- | :--- | :--- |
-## 📅 Option 1 Refined: 3 "Takes" on Aleppo-Garlic Steak
-
-Since you chose Option 1 and prefer **chopped/roasted cauliflower** (no ricing) and **no sides**, here are 3 ways to execute it while staying close to the **1:5:5:5 ratio**:
-
-| Take | Title | Flavor & Technique | Kid-Pull Strategy |
-| :--- | :--- | :--- | :--- |
-| **A** | **Zesty Mediterranean Tahini Bowl** | **Profile:** Lemon-Garlic-Tahini. **Technique:** Steak seared with Aleppo; Veg roasted with cumin. **Finish:** Drizzled with a yogurt-tahini-lemon sauce. | Pull plain steak and roasted florets before saucing. |
-| **B** | **Creamy Aleppo Butter Skillet** | **Profile:** Smoky-Garlic-Butter. **Technique:** Veg roasted until caramelized; Steak seared in butter. **Finish:** Tossed with Greek yogurt/cottage cheese for a creamy coating. | Pull plain steak and roasted florets before the creamy fold. |
-| **C** | **Nutty Seed-Crusted Roast Bowl** | **Profile:** Savory-Garlic-Crunch. **Technique:** Veg roasted with crushed flax/sesame seeds and Aleppo. **Finish:** Topped with a dollop of yogurt/fresh herbs. | Pull plain steak and roasted florets before the seed toss. |
+| **A** | **The "Freezer Mix" Crusted Steak** | **Seeds:** Uses the **Freezer Seed Mix** as a crust for the steak. **Veg:** Roasted cauliflower & peppers with Aleppo. **Finish:** Lemon-butter drizzle. | Pull plain steak and florets before the seed crusting. |
+| **B** | **Creamy Hemp & Nigella Skillet** | **Seeds:** **Hemp hearts** for protein/fat and **Nigella** for smokiness. **Veg:** Cauliflower simmered in a creamy yogurt/garlic sauce. | Pull seared steak and plain cauliflower before the creamy sauce. |
+| **C** | **Zesty Pepita & Sesame Roast** | **Seeds:** Heavy **Pumpkin & Sesame** seeds roasted *with* the cauliflower for extreme crunch. **Veg:** Peppers and lemon zest. **Finish:** Olive oil & garlic. | Pull roasted florets and steak before the lemon/garlic toss. |
+| **D** | **Flax-Thickened Aleppo Skillet** | **Seeds:** **Ground Flax** used to thicken a pan sauce (STK Gravy). **Veg:** Roasted cauliflower serves as the base for the rich sauce. | Pull steak strips and plain florets before saucing. |
+| **E** | **The "Super Seed" Warm Bowl** | **Seeds:** A massive hit of the **Freezer Mix** tossed into a warm salad of steak and peppers. **Veg:** Roasted cauliflower florets. **Finish:** Tahini-Lemon (if found) or Greek Yogurt. | Separate steak and cauliflower before the "Super Seed" toss. |
 
 ---
 
@@ -26,8 +22,8 @@ Since you chose Option 1 and prefer **chopped/roasted cauliflower** (no ricing) 
 
 ---
 
-## 🛠️ Final Selection Questions:
-1. **Which "Take" (A, B, or C) appeals to you most?**
-2. **Stock Check:** Do you have **Greek yogurt**, **cottage cheese**, **butter**, or **tahini**?
-3. **Seed Check:** Do you have **flax**, **sesame**, or **chia** seeds (to hit the fiber/fat ratio)?
-4. **Aromatics:** Do you have **lemon/lime**, **garlic**, and **onions**?
+## 🛠️ Final Stock Check:
+1. **Which Seeded Option (A-E) do you want me to build?** 🥘
+2. **Dairy Check:** Do you have **Greek yogurt**, **cottage cheese**, or **butter**?
+3. **Aromatics:** Do you have **lemon/lime**, **garlic**, and **onions**?
+4. **Tahini Check:** Did you find the **tahini**, or should we stick to **Greek yogurt/butter** for the base?
