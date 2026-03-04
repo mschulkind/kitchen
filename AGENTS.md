@@ -9,6 +9,7 @@ This document consolidates the project-specific rules and guidelines for AI agen
 - [Implementation Patterns](#implementation-patterns)
 - [Development Workflow](#development-workflow)
 - [Documentation Guidelines](#documentation-guidelines)
+- [User Preferences & Dietary Goals](#user-preferences-&amp;-dietary-goals)
 - [Recipe Scraping Guidelines](#recipe-scraping-guidelines)
 
 ## Project Structure and Practices
@@ -154,6 +155,29 @@ When implementing, reference decisions from `docs/plans/open-questions.md`:
 - **Structure**: Follow standard markdown formatting with clear headings, lists, and sections.
 - **Attribution**: Always include source attribution when applicable to respect original content creators.
 - **Recipe Formats**: When generating or updating recipes, explicitly address the "Main" and the "Side(s)" (or Companions). Ensure the execution formats (especially Mise-en-place and Timeline) clearly show how to interleave the preparation of the main dish and the side dish so they finish at the same time.
+
+## User Preferences & Dietary Goals
+
+This section tracks the family's evolving dietary needs and kitchen preferences. 🥗
+
+### Dietary Goals & Themes
+- **Low-GI Focus**: Prioritize fiber, protein, and non-starchy vegetables. Minimize refined carbs (white rice, white pasta, flour) and sugar.
+- **Heart Healthy**: Focus on healthy fats and lean proteins.
+- **Macro Ratios**: Recent plans favor a **1:5:5:5 ratio** (Fiber:Fat:Carb:Protein).
+- **Bold Flavors**: Frequent use of Aleppo pepper, lemon, garlic, and fresh herbs (especially from the garden). 🌶️🍋
+
+### Likes & Dislikes
+- **Likes**: Spicy food (to a degree), hearty salads, pasta dishes, Brussels sprouts, broccoli, and roasted carrots.
+- **Dislikes**: Olives, mushrooms, and too much cilantro. ❌🍄
+
+### Kid-Friendly Strategy ("Kid Pulls")
+- The kids are picky eaters who like simple pasta with butter or mac and cheese.
+- **The Pull**: Design recipes so a portion (e.g., plain pasta, seared meat) can be removed *before* adding spices, sauces, or "adult" veggies.
+
+### Composition & Workflow
+- **Veggie Component**: Every meal MUST have a veggie component (roasted, sautéed, or mixed in).
+- **Shop the Kitchen (STK)**: Frequent preference for using existing stock (pantry/freezer) without new shopping.
+- **Appliances**: Electric Pressure Cooker (Instant Pot), Smoker (for thighs/roasts), and standard pan-searing.
 
 ## Recipe Scraping Guidelines
 
