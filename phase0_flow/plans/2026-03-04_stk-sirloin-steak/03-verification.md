@@ -1,7 +1,7 @@
-# Ingredient Verification: Super Seeded Sesame-Steak Bowl
+# Ingredient Verification: Creamy Sesame-Hemp Steak Skillet
 
 **Date:** Wednesday, March 4, 2026
-**Theme:** STK / Low-GI / 1:5:5:5 Ratio
+**Theme:** STK / Low-GI / Option B Refined
 
 ---
 
@@ -16,29 +16,29 @@
 - [x] Bell Peppers (2-3)
 - [x] Garlic (Whole frozen peeled & Diced jar)
 - [x] Onion (1 yellow or white)
-- [x] Cilantro/Herbs (Optional, check garden)
 
 ### 🥫 Pantry & Seeds
 - [x] **The Freezer Seed Mix** (Bulk: Sesame, poppy, nigella, sunflower, pumpkin, hemp, flax)
-- [x] Sesame Seeds (Extra bulk)
+- [x] **Hemp Hearts** (Bulk)
+- [x] **Nigella Seeds** (Bulk)
+- [x] Sesame Seeds (Extra bulk for grinding)
 - [x] Aleppo Pepper
 - [x] Salt & Black Pepper
 - [x] Olive Oil / Avocado Oil
 - [x] Butter
 - [x] Lemon or Lime juice (Bottled)
 - [?] Cumin (Check Tier 2 spices)
-- [?] Tahini (Optional few tbsp)
 
 ### 🛠️ Equipment
-- [x] Coffee Grinder (For seed pulsing)
-- [x] Sheet Pan (For roasting)
-- [x] Heavy Skillet (For searing steak)
+- [x] Coffee Grinder (For toasted sesame "flour")
+- [x] Large Heavy Skillet (Cast iron or deep stainless)
 
 ---
 
-## 📅 The Plan
-1. **Roast:** Chop and roast cauliflower and peppers until caramelized.
-2. **Sear:** Thinly slice steak strips (cross-cut) and sear hard with garlic/Aleppo.
-3. **Sauce:** Mix Greek yogurt, lime juice, and **coffee-ground toasted sesame seeds**.
-4. **Finish:** Toss everything into a warm bowl and top with the **Freezer Seed Mix**.
-5. **PULL:** Separate plain steak and cauliflower for the kids before saucing/seeding.
+## 📅 The Plan (Option B)
+1. **Mise:** Slice steak thin. Chop cauliflower into small, quick-cooking florets.
+2. **Grind:** Toast sesame seeds and grind in coffee grinder to make a nutty "sesame flour".
+3. **Sear:** Sear steak strips hard with butter/Aleppo. **PULL for kids.**
+4. **Sauté/Simmer:** Sauté onions, peppers, and cauliflower. Add a splash of bouillon or water to steam cauliflower until tender-crisp.
+5. **Creamy Finish:** Fold in a mix of Greek yogurt, ground sesame, lime, garlic, **Hemp hearts**, and **Nigella seeds**.
+6. **Garnish:** Top with the **Freezer Seed Mix**.
