@@ -24,9 +24,10 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
 
 ### Step 1: The Request
 
-1.  **Context**: The user has created a `01-request.md` in a new plan directory (e.g., `phase0_flow/plans/YYYY-MM-DD_my-plan/`).
+1.  **Context**: The user has either created a `01-request.md` in a new plan directory (e.g., `phase0_flow/plans/YYYY-MM-DD_my-plan/`) OR provided a request via chat.
 2.  **Action**:
-    -   Read `01-request.md`.
+    -   If the request was via chat, **create the plan directory** and `01-request.md` with the request details.
+    -   Read `01-request.md` (or the chat history).
     -   Read `phase0_flow/stock_lists/` and `phase0_flow/general_preferences/`.
     -   **Read recent plans**: Check `phase0_flow/plans/` (last 1-2 plans) to understand:
         -   Naming conventions (e.g., `YYYY-MM-DD_title`).
@@ -42,7 +43,7 @@ This skill guides you through the "Phase 0" markdown-driven conversational meal 
     -   Each option should have a theme.
     -   List key *new* ingredients to buy for each option.
 3.  **Commit**: Commit the changes.
-4.  **Interaction**: **STOP EXECUTION.** Present the options to the user and ask them to choose one via chat. Do not proceed to Step 3 until the user has made a choice.
+4.  **Interaction**: **STOP EXECUTION.** Present the options to the user in chat and ask them to choose one. Do not proceed to Step 3 until the user has made a choice.
 
 ### Step 3: Ingredient Verification & Provisional Recipes
 
