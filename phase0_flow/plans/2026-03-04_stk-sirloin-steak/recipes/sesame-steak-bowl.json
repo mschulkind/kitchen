@@ -1,0 +1,92 @@
+{
+  "title": "Super Seeded Sesame-Steak Bowl",
+  "emoji": "🥩🥗",
+  "prep": {
+    "ready_to_use": [
+      {"amount": "1.5 lbs", "name": "Sirloin Tip Steak", "prep": "sliced thin across the grain"},
+      {"amount": "1 tbsp", "name": "Olive Oil"},
+      {"amount": "1 tbsp", "name": "Butter"},
+      {"amount": "2 tbsp", "name": "Lemon or Lime juice"},
+      {"amount": "1/2 cup", "name": "Greek Yogurt"},
+      {"amount": "2 tbsp", "name": "Sesame Seeds", "prep": "toasted and pulsed in coffee grinder"},
+      {"amount": "1/2 cup", "name": "Freezer Seed Mix"},
+      {"amount": "1 tsp", "name": "Aleppo Pepper"},
+      {"amount": "1 tsp", "name": "Garlic Powder"},
+      {"amount": "1 tsp", "name": "Cumin"},
+      {"amount": "2 cloves", "name": "Garlic", "prep": "minced or from jar"},
+      {"amount": "1 tsp", "name": "Salt"},
+      {"amount": "1/2 tsp", "name": "Black Pepper"}
+    ],
+    "knife_work": [
+      {"amount": "1 head", "name": "Cauliflower", "prep": "chopped into bite-sized florets"},
+      {"amount": "2", "name": "Bell Peppers", "prep": "sliced into strips"},
+      {"amount": "1", "name": "Yellow Onion", "prep": "sliced thin"}
+    ]
+  },
+  "steps": [
+    {
+      "minutes_before_done": 45,
+      "duration_minutes": 10,
+      "ingredients": [
+        {"amount": "1", "name": "Cauliflower"},
+        {"amount": "2", "name": "Bell Peppers"},
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "1.5 lbs", "name": "Sirloin Tip Steak"}
+      ],
+      "action_name": "Mise en Place",
+      "action_description": "Chop cauliflower into bite-sized florets. Slice peppers and onion. Thinly slice the partially frozen steak *across the grain* into long strips. Pulse 2 tbsp toasted sesame seeds in the coffee grinder until coarse.",
+      "meanwhile": { "ingredients": "Freezer Seed Mix", "action": "set aside for garnish" }
+    },
+    {
+      "minutes_before_done": 35,
+      "duration_minutes": 25,
+      "ingredients": [
+        {"amount": "1", "name": "Cauliflower"},
+        {"amount": "2", "name": "Bell Peppers"},
+        {"amount": "1", "name": "Yellow Onion"},
+        {"amount": "1 tbsp", "name": "Olive Oil"},
+        {"amount": "1 tsp", "name": "Salt"},
+        {"amount": "1 tsp", "name": "Cumin"}
+      ],
+      "action_name": "Roast Veggies",
+      "action_description": "Toss cauliflower, peppers, and onion with olive oil, salt, and cumin on a sheet pan. Roast at 425°F (220°C) for 20-25 minutes until caramelized and tender.",
+      "meanwhile": { "ingredients": "Sesame Seeds", "action": "toast lightly in a pan if not already" }
+    },
+    {
+      "minutes_before_done": 10,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1/2 cup", "name": "Greek Yogurt"},
+        {"amount": "2 tbsp", "name": "Pulsed Sesame Seeds"},
+        {"amount": "2 tbsp", "name": "Lime Juice"},
+        {"amount": "1/2 tsp", "name": "Garlic (jar)"}
+      ],
+      "action_name": "Make Sesame Sauce",
+      "action_description": "Whisk together Greek yogurt, ground sesame seeds, lime juice, and a pinch of salt. Adjust with a splash of water for drizzle consistency.",
+      "meanwhile": { "ingredients": "Steak", "action": "season with Aleppo and garlic powder" }
+    },
+    {
+      "minutes_before_done": 5,
+      "duration_minutes": 5,
+      "ingredients": [
+        {"amount": "1.5 lbs", "name": "Steak Strips"},
+        {"amount": "1 tbsp", "name": "Butter"},
+        {"amount": "1 tsp", "name": "Aleppo Pepper"}
+      ],
+      "action_name": "Hard Sear",
+      "action_description": "Heat a heavy skillet until smoking. Add butter and sear steak strips in a single layer (work in batches if needed). Sear 1-2 mins per side for high heat caramelization. PULL: Set aside 1/2 cup plain steak and roasted cauliflower for kids before spicing.",
+      "meanwhile": { "ingredients": "Cauliflower", "action": "pull from oven" }
+    },
+    {
+      "minutes_before_done": 0,
+      "duration_minutes": 2,
+      "ingredients": [
+        {"amount": "1/2 cup", "name": "Freezer Seed Mix"},
+        {"amount": "1 tbsp", "name": "Sesame Yogurt Sauce"}
+      ],
+      "action_name": "Assemble & Garnish",
+      "action_description": "Combine roasted veggies and seared steak in warm bowls. Drizzle generously with the Sesame Yogurt Sauce. Top with a heavy hit of the Freezer Seed Mix for crunch and fiber.",
+      "meanwhile": { "ingredients": "Cilantro", "action": "garnish if available" }
+    }
+  ]
+}
