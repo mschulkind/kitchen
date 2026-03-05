@@ -13,11 +13,11 @@
 - Butter (salted and unsalted)
 - Ketchup
 - Salad dressing
-- Minced garlic
+- Minced/Diced garlic (jar)
+- **Lemon & Lime juice (bottled)**
 
 ## Perishables
 
-- Lemon (1)
 - Carrots
 - Celery
 - Bell Peppers

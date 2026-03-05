@@ -136,19 +136,16 @@ If using JSON, follow this structure:
     -   **Layered Flavors**: Achieving deep flavor in short times requires techniques like fond-building, blooming spices, and high-heat roasting.
 3.  **Specifics & Guidance**:
     -   **Cans**: MUST include sizes (e.g., "13.5 oz can Coconut Milk", "28 oz can Tomatoes").
-    -   **Sensory Cues**: Instructions MUST describe what to look/smell/listen for (e.g., "until onion is translucent", "until fragrant but not brown").
-    -   **Kid Pulls**: If a component needs to be saved for kids before spicing/saucing, this **MUST** be explicitly marked in the "meanwhile" or "action_description" field (e.g., "PULL: Remove 1 cup of plain pasta for kids").
+### General Rules
 
-## File Structure Reference
+1.  **Prep Completeness**: Every single ingredient listed in the steps (grey boxes) MUST be listed in the top `prep` section (either `ready_to_use` or `knife_work`). This includes spices, oils, water splashes, and garnishes.
+    -   **Beef/Protein Prep**: Ensure any special prep (e.g., "slice thin against the grain") is explicitly listed in the `knife_work` or `ready_to_use` section AND emphasized in the "Mise en Place" step.
+2.  **Workflow Optimization & "Destinations"**:
+    -   **Group by Destination**: In the `knife_work` section and the "Mise en Place" step, group ingredients by when they enter the pan.
+    -   **Explicit Instructions**: Tell the user *where* to put prepped items to minimize dishes (e.g., "Dice onions and peppers; place in the same bowl as they will be added to the pan together," or "Chop cauliflower and keep on the cutting board to add directly to the pot later").
+    -   **Dish Minimization**: Actively look for ways to reduce the number of bowls/tools used. If items can go directly from the board to the pan, say so.
+3.  **Strict Time Management**: 
 
-```text
-phase0_flow/
-  stock_lists/
-    pantry.md, fridge.md, ...
-  general_preferences/
-    staple_meals.md, ...
-  plans/
-    YYYY-MM-DD_plan-name/
       01-request.md
       02-options.md
       03-verification.md
