@@ -12,6 +12,7 @@ Example:
 import base64
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -27,10 +28,73 @@ TEMPLATE_NAME = "recipe.html.j2"
 
 # Preload emoji images as base64 data URIs for inline rendering
 _EMOJI_IMGS: dict[str, str] = {}
+_FONT_CACHE: "TTFont | None" = None  # noqa: F821 — lazy-loaded
+
+
+def _find_noto_color_emoji() -> Path | None:
+    """Locate the Noto Color Emoji font via fc-match."""
+    try:
+        result = subprocess.run(
+            ["fc-match", "--format=%{file}", "Noto Color Emoji"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0 and result.stdout:
+            p = Path(result.stdout.strip())
+            if p.exists():
+                return p
+    except Exception:
+        pass
+    # Fallback to common paths
+    for candidate in [
+        Path("/usr/share/fonts/noto/NotoColorEmoji.ttf"),
+        Path.home() / ".local/share/fonts/NotoColorEmoji.ttf",
+    ]:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def _extract_emoji_png(char: str) -> bytes | None:
+    """Extract a PNG bitmap for a single emoji from Noto Color Emoji (CBDT)."""
+    global _FONT_CACHE
+    try:
+        from fontTools.ttLib import TTFont
+    except ImportError:
+        return None
+
+    if _FONT_CACHE is None:
+        font_path = _find_noto_color_emoji()
+        if not font_path:
+            _FONT_CACHE = False  # type: ignore[assignment]
+            return None
+        _FONT_CACHE = TTFont(str(font_path))
+
+    if _FONT_CACHE is False:
+        return None
+
+    font = _FONT_CACHE
+    if "CBDT" not in font:
+        return None
+
+    cmap = font.getBestCmap()
+    glyph_name = cmap.get(ord(char))
+    if not glyph_name:
+        return None
+
+    cbdt = font["CBDT"]
+    for strike_idx, strike_data in enumerate(cbdt.strikeData):
+        if glyph_name in strike_data:
+            bitmap = strike_data[glyph_name]
+            raw = bitmap.data
+            # CBDT format 17: 5 bytes SmallGlyphMetrics + 4 bytes data-length + PNG
+            data_len = int.from_bytes(raw[5:9], "big")
+            return raw[9 : 9 + data_len]
+
+    return None
 
 
 def _load_emoji_imgs() -> None:
-    """Load all emoji PNGs from the emoji directory as base64 data URIs."""
+    """Load pre-baked emoji PNGs from disk as base64 data URIs."""
     if _EMOJI_IMGS:
         return
     for png_file in EMOJI_DIR.glob("*.png"):
@@ -52,7 +116,14 @@ def _emoji_to_img(match: re.Match) -> str:
     char = match.group(1)
     data_uri = _EMOJI_IMGS.get(char)
     if not data_uri:
-        return char  # No image available, keep the character
+        # Try extracting from system Noto Color Emoji font on the fly
+        png_data = _extract_emoji_png(char)
+        if png_data:
+            b64 = base64.b64encode(png_data).decode()
+            data_uri = f"data:image/png;base64,{b64}"
+            _EMOJI_IMGS[char] = data_uri  # cache for reuse
+        else:
+            return ""  # strip unknown emoji — raw chars render giant via pango
     return (
         f'<img src="{data_uri}" '
         f'style="height:1em;vertical-align:-0.15em;display:inline" />'
@@ -60,7 +131,7 @@ def _emoji_to_img(match: re.Match) -> str:
 
 
 def emojify(text: str) -> Markup:
-    """Replace emoji characters with inline SVG images."""
+    """Replace emoji characters with inline PNG images."""
     return Markup(_EMOJI_RE.sub(_emoji_to_img, str(text)))
 
 
