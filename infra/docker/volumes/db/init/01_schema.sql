@@ -201,5 +201,9 @@ COMMENT ON COLUMN public.pantry_items.unit IS 'Unit of measurement (e.g., kg, co
 -- Realtime Publication 📡
 -- Enable realtime subscriptions for collaborative features
 -- =============================================================================
-CREATE PUBLICATION IF NOT EXISTS supabase_realtime;
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_publication WHERE pubname = 'supabase_realtime') THEN
+    CREATE PUBLICATION supabase_realtime;
+  END IF;
+END $$;
 ALTER PUBLICATION supabase_realtime ADD TABLE pantry_items;
